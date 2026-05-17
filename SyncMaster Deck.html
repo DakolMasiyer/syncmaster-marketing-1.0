@@ -1,0 +1,2586 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SyncMaster — Digital Marketing Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0C0C10;
+    --surface: #131318;
+    --surface-2: #1A1A24;
+    --border: #252532;
+    --border-2: #32324A;
+    --gold: #F2C94C;
+    --teal: #38D1B5;
+    --coral: #F26B5E;
+    --purple: #9B72F2;
+    --white: #F0F0F6;
+    --mid: #C0C0D0;
+    --muted: #787890;
+
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --t: 0.35s;
+
+    --topbar-h: 56px;
+    --bottombar-h: 44px;
+
+    --display: "Syne", ui-sans-serif, system-ui, sans-serif;
+    --body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    background: var(--bg);
+  }
+
+  body {
+    color: var(--white);
+    background: var(--bg);
+    font-family: var(--body);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  /* Grain overlay — two layers for depth */
+  .grain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  .grain-micro {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.025;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='96' height='96'><filter id='nm'><feTurbulence type='fractalNoise' baseFrequency='2.2' numOctaves='1' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23nm)'/></svg>");
+    background-size: 96px 96px;
+    transform: scale(0.4);
+    transform-origin: top left;
+    width: 250%;
+    height: 250%;
+  }
+
+  /* ---------------- Top Bar ---------------- */
+  .topbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--topbar-h);
+    z-index: 100;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 0 32px;
+    background: rgba(12, 12, 16, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .topbar-haze {
+    position: fixed;
+    top: var(--topbar-h);
+    left: 0; right: 0;
+    height: 40px;
+    pointer-events: none;
+    z-index: 99;
+    background: linear-gradient(to bottom, rgba(12, 12, 16, 0.6), transparent);
+  }
+  .brand {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.145em;
+    justify-self: start;
+    font-feature-settings: "ss01";
+  }
+  .current-title {
+    font-family: var(--body);
+    font-weight: 300;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    transition: opacity var(--t) var(--ease);
+    justify-self: center;
+    text-align: center;
+  }
+  .counter {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.125em;
+    justify-self: end;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "ss01";
+  }
+  .counter .sep { margin: 0 4px; opacity: 0.7; }
+
+  /* ---------------- Side Nav ---------------- */
+  .sidenav {
+    position: fixed;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid var(--border-2);
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                border-radius 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .dot:hover { width: 14px; border-color: var(--mid); border-radius: 4px; }
+  .dot.active {
+    width: 24px;
+    height: 8px;
+    border-radius: 4px;
+    background: var(--dot-accent, var(--gold));
+    border-color: var(--dot-accent, var(--gold));
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--dot-accent, var(--gold)) 10%, transparent),
+                0 0 18px color-mix(in oklab, var(--dot-accent, var(--gold)) 45%, transparent);
+  }
+
+  /* ---------------- Bottom Bar ---------------- */
+  .bottombar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: var(--bottombar-h);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 0 32px;
+    background: rgba(12, 12, 16, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border);
+  }
+  .progress-track {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .progress-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0%;
+    background: var(--gold);
+    transition: width 0.15s linear;
+  }
+  .next-label {
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: opacity var(--t) var(--ease);
+  }
+  .next-label.hide { opacity: 0; pointer-events: none; }
+  .next-label .arrow { color: var(--gold); }
+  .next-label .name { color: var(--mid); }
+
+  /* ---------------- Slides ---------------- */
+  .slide {
+    position: relative;
+    min-height: 100vh;
+    height: 100vh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--topbar-h) 80px var(--bottombar-h);
+    overflow: hidden;
+  }
+  .slide-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Accent glow per slide */
+  .slide::before {
+    content: "";
+    position: absolute;
+    left: -200px;
+    bottom: -200px;
+    width: 1200px;
+    height: 1200px;
+    background: radial-gradient(circle at center, var(--accent, var(--gold)) 0%, transparent 60%);
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .slide[data-accent="gold"]   { --accent: var(--gold); }
+  .slide[data-accent="teal"]   { --accent: var(--teal); }
+  .slide[data-accent="coral"]  { --accent: var(--coral); }
+  .slide[data-accent="purple"] { --accent: var(--purple); }
+
+  /* Per-slide custom accent glows (override the generic one above) */
+  .slide-purpose::before {
+    left: -150px;
+    bottom: -200px;
+    width: 1400px;
+    height: 1400px;
+    background: radial-gradient(circle at center, rgba(242, 201, 76, 0.05) 0%, transparent 60%);
+    opacity: 1;
+  }
+  .slide-canvas::before {
+    left: auto;
+    right: -200px;
+    top: -200px;
+    bottom: auto;
+    width: 1200px;
+    height: 1200px;
+    background: radial-gradient(circle at center, rgba(155, 114, 242, 0.04) 0%, transparent 60%);
+    opacity: 1;
+  }
+  .slide-roadmap::before {
+    left: auto;
+    right: -150px;
+    bottom: -200px;
+    width: 1400px;
+    height: 1400px;
+    background: radial-gradient(circle at center, rgba(242, 107, 94, 0.05) 0%, transparent 60%);
+    opacity: 1;
+  }
+
+  /* Shell placeholder content (visual scaffold only — no slide copy yet) */
+  .placeholder {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    color: var(--muted);
+  }
+  .placeholder .eyebrow {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--accent, var(--gold));
+    text-transform: uppercase;
+  }
+  .placeholder .ph-title {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(48px, 6vw, 88px);
+    line-height: 0.98;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    margin: 0;
+  }
+  .placeholder .ph-meta {
+    font-family: var(--body);
+    font-weight: 300;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ---------------- Slide 01 — Purpose ---------------- */
+  .slide-purpose .slide-inner {
+    max-width: 1280px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  .purpose-left { display: flex; flex-direction: column; }
+  .purpose-step {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.145em;
+    color: var(--gold);
+    font-feature-settings: "ss01";
+  }
+  .purpose-title {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 52px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    margin: 14px 0 0;
+    font-feature-settings: "ss01";
+  }
+  .purpose-subtitle {
+    font-family: var(--body);
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--muted);
+    margin-top: 12px;
+    max-width: 280px;
+  }
+  .purpose-divider {
+    width: 48px;
+    height: 1px;
+    background: var(--border);
+    margin: 28px 0;
+  }
+
+  .phase-list {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .phase-list::before {
+    content: "";
+    position: absolute;
+    left: 14px;
+    top: 18px;
+    height: calc(100% - 36px);
+    width: 0;
+    border-left: 1px dashed rgba(242, 201, 76, 0.2);
+  }
+  .phase {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    align-self: flex-start;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-family: var(--body);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    background: rgba(242, 201, 76, 0.08);
+    border: 1px solid rgba(242, 201, 76, 0.16);
+  }
+  .phase .num {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0;
+  }
+  .phase--active {
+    background: var(--gold);
+    color: #1B1606;
+    border-color: var(--gold);
+  }
+  .phase--active .num { color: #1B1606; }
+  .phase--two   { background: rgba(242, 201, 76, 0.12); }
+  .phase--three { background: rgba(242, 201, 76, 0.08); }
+
+  /* Right content */
+  .purpose-right {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+  }
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 16px;
+  }
+  .p-card {
+    background: rgba(242, 201, 76, 0.05);
+    border: 1px solid rgba(242, 201, 76, 0.18);
+    border-radius: 14px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+    min-height: 0;
+    overflow-y: auto;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+  }
+  .p-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(242, 201, 76, 0.28);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+  .p-card .label {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.125em;
+    color: var(--gold);
+    font-feature-settings: "ss01";
+  }
+  .p-card .body {
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--white);
+    margin: 0;
+  }
+  .p-card .body .arrow { color: var(--gold); margin: 0 2px; }
+  .p-card .sub {
+    font-family: var(--body);
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+  }
+  .p-card .big {
+    font-family: var(--display);
+    font-weight: 800;
+    color: var(--gold);
+    letter-spacing: -0.01em;
+    line-height: 1;
+    margin: 4px 0 2px;
+  }
+  .p-card .big.size-l { font-size: 36px; }
+  .p-card .big.size-m { font-size: 28px; }
+  .p-card .sublabel {
+    font-family: var(--body);
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--mid);
+  }
+  .p-card .detail {
+    font-family: var(--body);
+    font-weight: 300;
+    font-size: 11px;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .smart {
+    background: rgba(242, 201, 76, 0.04);
+    border: 1px solid rgba(242, 201, 76, 0.14);
+    border-radius: 10px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .smart .label {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .smart .text {
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--mid);
+    margin: 0;
+    min-width: 0;
+    flex: 1 1 0;
+  }
+  .smart .text .arrow { color: var(--gold); margin: 0 4px; }
+
+  /* Entrance animations */
+  .slide-purpose .anim {
+    opacity: 0;
+    transition:
+      opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: var(--d, 0s);
+    will-change: opacity, transform;
+  }
+  .slide-purpose .anim--left { transform: translateX(-40px); }
+  .slide-purpose .anim--up   { transform: translateY(24px); }
+
+  .slide-purpose.in-view .anim {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slide-purpose .anim { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ---------------- Slide 02 — Canvas ---------------- */
+  .slide-canvas {
+    padding-top: calc(var(--topbar-h) + 40px);
+    padding-bottom: calc(var(--bottombar-h) + 4px);
+  }
+  .slide-canvas .slide-inner {
+    max-width: 1360px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .canvas-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 80px;
+  }
+  .canvas-head .left { display: flex; flex-direction: column; gap: 8px; }
+  .canvas-head .step {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.145em;
+    color: var(--purple);
+    font-feature-settings: "ss01";
+  }
+  .canvas-head .title {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    margin: 0;
+    font-feature-settings: "ss01";
+  }
+  .canvas-head .sub {
+    font-family: var(--body);
+    font-weight: 300;
+    font-size: 12px;
+    color: var(--muted);
+    text-align: right;
+    max-width: 260px;
+  }
+
+  .canvas {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-rows: 22% 36% 24% 18%;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--surface);
+  }
+  .canvas-row { display: grid; min-height: 0; }
+  .canvas-row--1 { grid-template-columns: 1fr 1fr; }
+  .canvas-row--2 { grid-template-columns: 1.1fr 1fr 1.3fr 1fr 1.2fr; }
+  .canvas-row--3 { grid-template-columns: 1.1fr 2.3fr 2.2fr; }
+  .canvas-row--4 { grid-template-columns: 1fr 1fr; }
+
+  .c-cell {
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+    min-height: 0;
+    overflow: auto;
+    position: relative;
+    transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .c-cell:hover {
+    transform: translateY(-2px);
+    background: var(--surface-2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+  }
+  .c-cell.l-gold:hover   { border-color: rgba(242, 201, 76, 0.10); }
+  .c-cell.l-teal:hover   { border-color: rgba(56, 209, 181, 0.10); }
+  .c-cell.l-coral:hover  { border-color: rgba(242, 107, 94, 0.10); }
+  .c-cell.l-purple:hover { border-color: rgba(155, 114, 242, 0.10); }
+  .canvas-row > .c-cell:last-child { border-right: 0; }
+  .canvas-row--4 > .c-cell { border-bottom: 0; }
+
+  .c-cell .c-label {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.125em;
+    text-transform: uppercase;
+    font-feature-settings: "ss01";
+  }
+  .c-cell.l-gold   .c-label { color: var(--gold); }
+  .c-cell.l-teal   .c-label { color: var(--teal); }
+  .c-cell.l-coral  .c-label { color: var(--coral); }
+  .c-cell.l-purple .c-label { color: var(--purple); }
+
+  .c-cell .c-body {
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: 12px;
+    color: var(--mid);
+    line-height: 1.65;
+    margin: 0;
+    white-space: pre-line;
+  }
+  .c-cell .c-body em {
+    color: var(--white);
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  /* Entrance animations */
+  .slide-canvas .anim {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: var(--d, 0s);
+    will-change: opacity, transform;
+  }
+  .slide-canvas .head-anim {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition:
+      opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0.1s;
+  }
+  .slide-canvas.in-view .anim,
+  .slide-canvas.in-view .head-anim {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slide-canvas .anim,
+    .slide-canvas .head-anim { opacity: 1; transform: none; transition: none; }
+  }
+
+  .phase-callout {
+    margin-top: 16px;
+    background: rgba(242, 201, 76, 0.05);
+    border: 1px solid rgba(242, 201, 76, 0.15);
+    border-radius: 8px;
+    padding: 12px;
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: 12px;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--mid);
+    max-width: 280px;
+  }
+  .phase-callout .accent { color: var(--gold); font-style: normal; font-weight: 500; }
+
+  /* Scroll indicator (Slide 1 only) */
+  .scroll-cue {
+    position: absolute;
+    left: 50%;
+    bottom: 64px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 1;
+    transition: opacity 0.5s var(--ease);
+  }
+  .scroll-cue.hidden { opacity: 0; }
+  .scroll-cue .cue-text {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    font-feature-settings: "ss01";
+  }
+  .scroll-cue .cue-chev {
+    width: 14px;
+    height: 14px;
+    color: var(--muted);
+    animation: cueBounce 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+  @keyframes cueBounce {
+    0%, 100% { transform: translateY(0); opacity: 0.55; }
+    50%      { transform: translateY(6px); opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-cue .cue-chev { animation: none; opacity: 0.8; }
+  }
+
+  /* ---------------- Slide 03 — Roadmap ---------------- */
+  .slide-roadmap {
+    padding-top: calc(var(--topbar-h) + 32px);
+    padding-bottom: calc(var(--bottombar-h) + 4px);
+  }
+  .slide-roadmap .slide-inner {
+    max-width: 1400px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .rm-zone-label {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.125em;
+    color: var(--coral);
+    margin-bottom: 10px;
+    font-feature-settings: "ss01";
+  }
+  .rm-zone-label .sep { color: var(--border-2); margin: 0 8px; }
+
+  /* Zone A — Building Blocks */
+  .rm-blocks {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 14px;
+  }
+  .rm-block-col { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .rm-block-head {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .rm-pill-stack { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+  .rm-pill {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-family: var(--body);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    line-height: 1.3;
+    background: var(--surface-2);
+    color: var(--muted);
+    border: 1px solid transparent;
+  }
+  .rm-pill.t-gold   { background: rgba(242,201,76,0.14); color: var(--gold); }
+  .rm-pill.t-teal   { background: rgba(56,209,181,0.14); color: var(--teal); }
+  .rm-pill.t-coral  { background: rgba(242,107,94,0.14); color: var(--coral); }
+  .rm-pill.t-purple { background: rgba(155,114,242,0.14); color: var(--purple); }
+
+  /* Zone B — Basic Flow */
+  .rm-flow {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .rm-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+    flex-shrink: 1;
+  }
+  .rm-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    line-height: 1;
+    background: var(--surface-2);
+  }
+  .rm-icon.b-gold   { background: rgba(242,201,76,0.14); }
+  .rm-icon.b-teal   { background: rgba(56,209,181,0.14); }
+  .rm-icon.b-coral  { background: rgba(242,107,94,0.14); }
+  .rm-icon.b-purple { background: rgba(155,114,242,0.14); }
+  .rm-node .label {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--white);
+    letter-spacing: 0.02em;
+  }
+  .rm-node .sub {
+    font-family: var(--body);
+    font-weight: 300;
+    font-size: 10px;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.3;
+  }
+  .rm-arrow {
+    color: var(--border-2);
+    font-size: 18px;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-bottom: 22px;
+  }
+
+  /* Zone C — Months */
+  .rm-months {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  .rm-month {
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+  }
+  .rm-month.m-gold  { background: rgba(242,201,76,0.06); border: 1px solid rgba(242,201,76,0.18); }
+  .rm-month.m-teal  { background: rgba(56,209,181,0.06); border: 1px solid rgba(56,209,181,0.18); }
+  .rm-month.m-coral { background: rgba(242,107,94,0.06); border: 1px solid rgba(242,107,94,0.18); }
+
+  .rm-month .header {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+  }
+  .rm-month.m-gold  .header { color: var(--gold); }
+  .rm-month.m-teal  .header { color: var(--teal); }
+  .rm-month.m-coral .header { color: var(--coral); }
+
+  .rm-month .month-title {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 1.1;
+    color: var(--white);
+    margin: 0;
+    letter-spacing: -0.005em;
+  }
+  .rm-month .month-divider {
+    height: 1px;
+    margin: 2px 0 0;
+  }
+  .rm-month.m-gold  .month-divider { background: rgba(242,201,76,0.2); }
+  .rm-month.m-teal  .month-divider { background: rgba(56,209,181,0.2); }
+  .rm-month.m-coral .month-divider { background: rgba(242,107,94,0.2); }
+
+  .rm-tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-height: 0;
+    overflow-y: auto;
+    flex: 1 1 0;
+  }
+  .rm-task {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 7px 10px;
+    border-radius: 8px;
+    background: rgba(12,12,16,0.45);
+    font-family: var(--body);
+    font-size: 12px;
+    line-height: 1.45;
+    color: var(--mid);
+  }
+  .rm-task::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+  .rm-month.m-gold  .rm-task::before { background: var(--gold); }
+  .rm-month.m-teal  .rm-task::before { background: var(--teal); }
+  .rm-month.m-coral .rm-task::before { background: var(--coral); }
+
+  .rm-task .task-body { min-width: 0; }
+  .rm-task .ttag {
+    display: inline-block;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 8px;
+    vertical-align: middle;
+    transform: translateY(-1px);
+  }
+  .rm-task .ttag.t-global { color: var(--coral); background: rgba(242,107,94,0.12); }
+  .rm-task .ttag.t-validation { color: var(--gold); background: rgba(242,201,76,0.12); }
+
+  .rm-proof {
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .rm-proof .ptag {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+  }
+  .rm-proof .ptext {
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: var(--white);
+  }
+  .rm-month.m-gold  .rm-proof { background: rgba(242,201,76,0.06); border: 1px solid rgba(242,201,76,0.20); }
+  .rm-month.m-teal  .rm-proof { background: rgba(56,209,181,0.06); border: 1px solid rgba(56,209,181,0.20); }
+  .rm-month.m-coral .rm-proof { background: rgba(242,107,94,0.06); border: 1px solid rgba(242,107,94,0.20); }
+  .rm-month.m-gold  .rm-proof .ptag { color: var(--gold); }
+  .rm-month.m-teal  .rm-proof .ptag { color: var(--teal); }
+  .rm-month.m-coral .rm-proof .ptag { color: var(--coral); }
+
+  .rm-kpis {
+    margin-top: auto;
+    background: rgba(12,12,16,0.55);
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .rm-kpis .ktag {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+  .rm-kpis .kline {
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: var(--mid);
+  }
+  .rm-month.m-gold  .rm-kpis .kline .a { color: var(--gold); }
+  .rm-month.m-teal  .rm-kpis .kline .a { color: var(--teal); }
+  .rm-month.m-coral .rm-kpis .kline .a { color: var(--coral); }
+
+  /* Split KPI variant (Month 3 — global vs nollywood) */
+  .rm-kpis.split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 12px;
+  }
+  .rm-kpis.split .kbox {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+  }
+  .rm-kpis.split .kbox + .kbox {
+    border-left: 1px solid var(--border);
+    padding-left: 12px;
+  }
+  .rm-kpis.split .kbox .ktag.t-coral { color: var(--coral); margin-bottom: 4px; }
+  .rm-kpis.split .kbox .ktag.t-gold  { color: var(--gold);  margin-bottom: 4px; }
+  .rm-kpis.split .kbox .kline { font-size: 11px; line-height: 1.4; }
+  .rm-kpis.split .kbox .kline .a.t-coral { color: var(--coral); }
+  .rm-kpis.split .kbox .kline .a.t-gold  { color: var(--gold); }
+
+  /* Split KPI: stack on narrower columns */
+  @media (max-width: 1280px) {
+    .rm-kpis.split { grid-template-columns: 1fr; gap: 10px; }
+    .rm-kpis.split .kbox + .kbox {
+      border-left: 0;
+      border-top: 1px solid var(--border);
+      padding-left: 0;
+      padding-top: 10px;
+    }
+  }
+
+  /* Entrance animations */
+  .slide-roadmap .anim {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: var(--d, 0s);
+    will-change: opacity, transform;
+  }
+  .slide-roadmap .anim--month { transform: translateY(24px); transition-duration: 0.6s; }
+  .slide-roadmap.in-view .anim { opacity: 1; transform: translate(0, 0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slide-roadmap .anim { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+
+  /* ---------------- Scrollbar styling (subtle) ---------------- */
+  .p-card,
+  .c-cell,
+  .rm-tasks,
+  .rm-flow,
+  .rm-months {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-2) transparent;
+  }
+  .p-card::-webkit-scrollbar,
+  .c-cell::-webkit-scrollbar,
+  .rm-tasks::-webkit-scrollbar,
+  .rm-flow::-webkit-scrollbar,
+  .rm-months::-webkit-scrollbar {
+    width: 4px; height: 4px;
+  }
+  .p-card::-webkit-scrollbar-thumb,
+  .c-cell::-webkit-scrollbar-thumb,
+  .rm-tasks::-webkit-scrollbar-thumb,
+  .rm-flow::-webkit-scrollbar-thumb,
+  .rm-months::-webkit-scrollbar-thumb {
+    background: var(--border-2);
+    border-radius: 4px;
+  }
+  .p-card::-webkit-scrollbar-track,
+  .c-cell::-webkit-scrollbar-track,
+  .rm-tasks::-webkit-scrollbar-track,
+  .rm-flow::-webkit-scrollbar-track,
+  .rm-months::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* ---------------- Responsive ---------------- */
+
+  /* Narrow desktops / large tablets */
+  @media (max-width: 1180px) {
+    .slide { padding-left: 56px; padding-right: 56px; }
+    .slide-purpose .slide-inner { grid-template-columns: 280px 1fr; gap: 40px; }
+    .purpose-title { font-size: 44px; }
+    .canvas-head .title { font-size: 28px; }
+    .rm-blocks { gap: 10px; }
+    .rm-pill { font-size: 10.5px; padding: 4px 10px; }
+  }
+
+  /* Tablet / mobile landscape */
+  @media (max-width: 900px) {
+    html { scroll-snap-type: none; }
+    .slide {
+      padding: calc(var(--topbar-h) + 24px) 24px calc(var(--bottombar-h) + 16px);
+      height: auto;
+      min-height: 100vh;
+      scroll-snap-align: none;
+      scroll-snap-stop: normal;
+    }
+    .sidenav { right: 14px; gap: 10px; }
+
+    /* Slide 1 — stack */
+    .slide-purpose .slide-inner { grid-template-columns: 1fr; gap: 28px; }
+    .purpose-title { font-size: 38px; }
+    .purpose-subtitle { max-width: none; }
+    .phase-list { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+    .phase-list::before { display: none; }
+    .card-grid { grid-template-columns: 1fr; }
+    .p-card { padding: 20px; overflow: visible; }
+    .p-card .big.size-l { font-size: 32px; }
+    .p-card .big.size-m { font-size: 24px; }
+    .scroll-cue { display: none; }
+
+    /* Slide 2 — cells size to content, no equal-row constraint */
+    .slide-canvas .slide-inner { gap: 16px; height: auto; min-height: calc(100vh - var(--topbar-h) - var(--bottombar-h) - 56px); }
+    .canvas-head { flex-direction: column; align-items: flex-start; }
+    .canvas-head .sub { text-align: left; max-width: none; }
+    .canvas {
+      grid-template-rows: none;
+      grid-auto-rows: auto;
+      flex: 0 0 auto;
+    }
+    .canvas-row { grid-auto-rows: auto; }
+    .canvas-row--2 { grid-template-columns: 1fr 1fr; }
+    .canvas-row--3 { grid-template-columns: 1fr; }
+    .canvas-row--2 > .c-cell:nth-child(2n) { border-right: 0; }
+    .canvas-row--3 > .c-cell { border-bottom: 1px solid var(--border); }
+    .canvas-row--3 > .c-cell:last-child { border-bottom: 0; }
+    .c-cell { overflow: visible; min-height: 0; }
+
+    /* Slide 3 — stack months, wrap blocks, scroll the flow */
+    .rm-blocks { grid-template-columns: repeat(3, 1fr); }
+    .rm-flow {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      overflow-x: auto;
+      overflow-y: hidden;
+      gap: 12px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .rm-node { flex: 0 0 auto; min-width: 84px; }
+    .rm-arrow { flex: 0 0 auto; }
+    .rm-months {
+      grid-template-columns: 1fr;
+      grid-auto-rows: auto;
+      overflow-y: visible;
+    }
+    .rm-month { padding: 16px; }
+    .rm-tasks { overflow: visible; flex: 0 0 auto; }
+  }
+
+  /* Phone portrait */
+  @media (max-width: 560px) {
+    .topbar { padding: 0 18px; }
+    .current-title { display: none; }
+    .bottombar { padding: 0 18px; gap: 14px; }
+    .next-label { font-size: 10px; letter-spacing: 0.1em; }
+    .next-label .name { max-width: 100px; overflow: hidden; text-overflow: ellipsis; }
+    .sidenav { display: none; }
+    .slide { padding-left: 18px; padding-right: 18px; }
+
+    .purpose-title { font-size: 32px; }
+    .canvas-head .title { font-size: 22px; }
+
+    .rm-blocks { grid-template-columns: repeat(2, 1fr); }
+    .rm-flow { padding: 12px 14px; }
+    .rm-node .label { font-size: 10px; }
+    .rm-node .sub { display: none; }
+    .rm-arrow { margin-bottom: 0; font-size: 14px; }
+    .smart { padding: 12px 14px; }
+    .smart .text { font-size: 12px; }
+  }
+
+  /* Short viewports — release scroll-snap so content can scroll within slide */
+  @media (max-height: 760px) {
+    .slide {
+      height: auto;
+      min-height: 100vh;
+      padding-top: calc(var(--topbar-h) + 24px);
+      padding-bottom: calc(var(--bottombar-h) + 12px);
+    }
+    .slide-canvas .slide-inner,
+    .slide-roadmap .slide-inner {
+      height: auto;
+      min-height: calc(100vh - var(--topbar-h) - var(--bottombar-h) - 40px);
+    }
+  }
+
+  /* ============================================================
+     SLIDE 04 — Execution Tracker
+     ============================================================ */
+  .slide-execution {
+    display: block;
+    padding: 96px 80px 60px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+  }
+  .slide-execution::-webkit-scrollbar { display: none; }
+
+  .slide-execution::before {
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    width: 1600px;
+    height: 1600px;
+    background: radial-gradient(circle at center, rgba(56, 209, 181, 0.04) 0%, transparent 60%);
+    opacity: 1;
+    pointer-events: none;
+  }
+
+  .exec-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---- Metrics strip ---- */
+  .metrics-strip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 24px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    position: sticky;
+    top: calc(var(--topbar-h) + 8px);
+    z-index: 4;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .metric {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+  }
+  .metric + .metric { border-left: 1px solid var(--border); padding-left: 24px; }
+  .metric .m-label {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.125em;
+    text-transform: uppercase;
+    font-feature-settings: "ss01";
+  }
+  .metric.a-coral  .m-label,
+  .metric.a-coral  .m-current { color: var(--coral); }
+  .metric.a-gold   .m-label,
+  .metric.a-gold   .m-current { color: var(--gold); }
+  .metric.a-teal   .m-label,
+  .metric.a-teal   .m-current { color: var(--teal); }
+  .metric.a-purple .m-label,
+  .metric.a-purple .m-current { color: var(--purple); }
+
+  .metric .m-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1;
+  }
+  .metric .m-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--surface-2);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    font-family: var(--body);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .metric .m-btn:hover { background: var(--border); color: var(--white); border-color: var(--border-2); }
+  .metric .m-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+  .metric .m-current {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 28px;
+    letter-spacing: -0.005em;
+    cursor: pointer;
+    line-height: 1;
+    min-width: 28px;
+    text-align: center;
+    font-feature-settings: "ss01";
+  }
+  .metric .m-input {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 28px;
+    width: 64px;
+    background: var(--surface-2);
+    border: 1px solid var(--border-2);
+    color: var(--white);
+    border-radius: 6px;
+    padding: 2px 6px;
+    text-align: center;
+    -moz-appearance: textfield;
+  }
+  .metric .m-input::-webkit-inner-spin-button,
+  .metric .m-input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+  .metric .m-slash {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--muted);
+    margin: 0 2px;
+  }
+  .metric .m-target {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--muted);
+  }
+  .metric .m-bar {
+    height: 3px;
+    border-radius: 2px;
+    background: var(--border);
+    overflow: hidden;
+  }
+  .metric .m-bar-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+  .metric.a-coral  .m-bar-fill { background: var(--coral); }
+  .metric.a-gold   .m-bar-fill { background: var(--gold); }
+  .metric.a-teal   .m-bar-fill { background: var(--teal); }
+  .metric.a-purple .m-bar-fill { background: var(--purple); }
+
+  /* ---- Phase blocks ---- */
+  .phase-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+  .phase-block::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--p-accent, var(--teal));
+  }
+  .phase-block.p-gold  { --p-accent: var(--gold); --p-accent-rgb: 242, 201, 76; }
+  .phase-block.p-teal  { --p-accent: var(--teal); --p-accent-rgb: 56, 209, 181; }
+  .phase-block.p-coral { --p-accent: var(--coral); --p-accent-rgb: 242, 107, 94; }
+
+  .phase-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 24px 18px 28px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .phase-meta { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .phase-badge {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: var(--p-accent);
+    font-feature-settings: "ss01";
+  }
+  .phase-title {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--white);
+    margin: 0;
+    letter-spacing: -0.005em;
+  }
+  .phase-count {
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: 12px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .phase-rt {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+  .phase-ring { transform: rotate(-90deg); }
+  .phase-ring .ring-track { stroke: var(--border); }
+  .phase-ring .ring-fill {
+    stroke: var(--p-accent);
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.4s ease;
+  }
+  .phase-chev {
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    transition: transform 0.3s var(--ease), color 0.2s ease;
+  }
+  .phase-head:hover .phase-chev { color: var(--white); }
+  .phase-block.collapsed .phase-chev { transform: rotate(-180deg); }
+
+  .phase-bar {
+    height: 2px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 0 24px 0 28px;
+  }
+  .phase-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--p-accent);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+
+  .phase-body {
+    padding: 16px 24px 20px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: max-height 0.35s var(--ease), padding 0.35s var(--ease), opacity 0.25s var(--ease);
+    overflow: hidden;
+  }
+  .phase-block.collapsed .phase-body {
+    max-height: 0 !important;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
+  }
+
+  .phase-sublabel {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 6px;
+    margin-bottom: 2px;
+    font-feature-settings: "ss01";
+  }
+  .phase-sublabel.s-coral { color: var(--coral); }
+  .phase-sublabel.s-gold { color: var(--gold); }
+  .phase-sublabel:first-child { margin-top: 0; }
+
+  /* ---- Task items ---- */
+  .task {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: var(--surface-2);
+    cursor: pointer;
+    transition: background 0.2s ease, opacity 0.2s ease;
+  }
+  .task:hover { background: rgba(26, 26, 36, 1.0); filter: brightness(1.08); }
+  .task.checked { background: var(--surface); }
+
+  .task .check {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    border: 1.5px solid var(--border-2);
+    background: transparent;
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .task .check svg { width: 10px; height: 10px; opacity: 0; transition: opacity 0.15s ease; color: #0C0C10; }
+  .task.checked .check svg { opacity: 1; }
+  .phase-block.p-gold  .task.checked .check { background: var(--gold);  border-color: var(--gold); }
+  .phase-block.p-teal  .task.checked .check { background: var(--teal);  border-color: var(--teal); }
+  .phase-block.p-coral .task.checked .check { background: var(--coral); border-color: var(--coral); }
+
+  .task .task-text {
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--mid);
+    transition: color 0.2s ease;
+    min-width: 0;
+  }
+  .task.checked .task-text {
+    color: var(--muted);
+    text-decoration: line-through;
+    text-decoration-color: rgba(120, 120, 144, 0.55);
+  }
+  .task .t-pill {
+    display: inline-block;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 8px;
+    vertical-align: middle;
+    transform: translateY(-1px);
+  }
+  .task .t-pill.t-global     { color: var(--coral); background: rgba(242, 107, 94, 0.15); }
+  .task .t-pill.t-validation { color: var(--gold);  background: rgba(242, 201, 76, 0.15); }
+
+  /* ---- Action row ---- */
+  .exec-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 6px;
+  }
+  .exec-btn {
+    font-family: var(--body);
+    font-weight: 500;
+    font-size: 12px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+  .exec-btn.reset {
+    background: transparent;
+    border: 1px solid var(--border-2);
+    color: var(--muted);
+  }
+  .exec-btn.reset:hover { color: var(--white); border-color: var(--mid); }
+  .exec-btn.export {
+    background: rgba(56, 209, 181, 0.1);
+    border: 1px solid rgba(56, 209, 181, 0.25);
+    color: var(--teal);
+  }
+  .exec-btn.export:hover { background: rgba(56, 209, 181, 0.18); border-color: rgba(56, 209, 181, 0.45); }
+
+  /* ---- Entrance animations ---- */
+  .slide-execution .anim {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: var(--d, 0s);
+    will-change: opacity, transform;
+  }
+  .slide-execution.in-view .anim { opacity: 1; transform: translate(0, 0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slide-execution .anim { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ---- Slide 4 responsive ---- */
+  @media (max-width: 1100px) {
+    .slide-execution { padding: 88px 48px 56px; }
+    .metrics-strip { gap: 16px; padding: 14px 18px; }
+    .metric + .metric { padding-left: 16px; }
+    .metric .m-current { font-size: 24px; }
+    .metric .m-slash, .metric .m-target { font-size: 16px; }
+  }
+  @media (max-width: 900px) {
+    .slide-execution {
+      padding: calc(var(--topbar-h) + 24px) 24px calc(var(--bottombar-h) + 16px);
+      overflow-y: visible;
+      height: auto;
+    }
+    .metrics-strip { position: relative; top: 0; grid-template-columns: repeat(2, 1fr); }
+    .metric + .metric { border-left: 0; padding-left: 0; }
+    .metric:nth-child(2n) { border-left: 1px solid var(--border); padding-left: 16px; }
+    .metric:nth-child(n+3) { border-top: 1px solid var(--border); padding-top: 16px; }
+    .phase-head { padding: 16px 18px 16px 22px; flex-wrap: wrap; }
+    .phase-bar { margin: 0 18px 0 22px; }
+    .phase-body { padding: 14px 18px 18px 22px; }
+  }
+  @media (max-width: 560px) {
+    .slide-execution { padding-left: 18px; padding-right: 18px; }
+    .metrics-strip { grid-template-columns: 1fr; }
+    .metric + .metric { border-top: 1px solid var(--border); padding-top: 14px; }
+    .metric:nth-child(2n) { border-left: 0; padding-left: 0; }
+    .phase-title { font-size: 14px; }
+    .phase-ring { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Grain overlay -->
+<div class="grain" aria-hidden="true"></div>
+<div class="grain-micro" aria-hidden="true"></div>
+
+<!-- Top bar -->
+<header class="topbar" role="banner">
+  <div class="brand">SYNCMASTER</div>
+  <div class="current-title" id="currentTitle">Strategy</div>
+  <div class="counter" aria-live="polite">
+    <span id="counterCurrent">01</span><span class="sep">/</span><span id="counterTotal">04</span>
+  </div>
+</header>
+<div class="topbar-haze" aria-hidden="true"></div>
+
+<!-- Side nav -->
+<nav class="sidenav" aria-label="Slide navigation" id="sidenav"></nav>
+
+<!-- Bottom bar -->
+<footer class="bottombar" role="contentinfo">
+  <div class="progress-track" aria-hidden="true">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+  <div class="next-label" id="nextLabel">
+    <span class="arrow">NEXT →</span>
+    <span class="name" id="nextName">Canvas</span>
+  </div>
+</footer>
+
+<!-- Slides -->
+<main id="deck">
+  <section class="slide slide-purpose" data-accent="gold" data-title="Strategy" id="slide-1" data-screen-label="01 Strategy">
+    <div class="slide-inner">
+      <!-- LEFT COLUMN -->
+      <div class="purpose-left">
+        <div class="purpose-step anim anim--left" style="--d: 0.10s">STEP 01</div>
+        <h1 class="purpose-title anim anim--left" style="--d: 0.15s">Purpose</h1>
+        <p class="purpose-subtitle anim anim--left" style="--d: 0.20s">Why SyncMaster is on digital channels — and how we get there</p>
+        <div class="purpose-divider anim anim--left" style="--d: 0.25s"></div>
+        <ol class="phase-list">
+          <li class="phase phase--active anim anim--left" style="--d: 0.30s"><span class="num">①</span><span>Credibility</span></li>
+          <li class="phase phase--two anim anim--left" style="--d: 0.35s"><span class="num">②</span><span>Composer Acquisition</span></li>
+          <li class="phase phase--three anim anim--left" style="--d: 0.40s"><span class="num">③</span><span>Global Producer Outreach</span></li>
+        </ol>
+        <div class="phase-callout anim anim--left" style="--d: 0.45s"><span class="accent">Nollywood</span> = proving ground. <span class="accent">Global supervisors</span> = the actual market.</div>
+      </div>
+
+      <!-- RIGHT CONTENT -->
+      <div class="purpose-right">
+        <div class="card-grid">
+          <article class="p-card anim anim--up" style="--d: 0.15s">
+            <div class="label">OUR PURPOSE</div>
+            <p class="body">Build credibility → attract African composers → reach global producers &amp; music supervisors at studios, streamers, and ad agencies who pay professional sync fees. Nollywood is where we prove the playbook. The world is where we scale it.</p>
+            <p class="sub">We are not just building a platform. We are systematising a network already placing African music on global streaming platforms.</p>
+          </article>
+
+          <article class="p-card anim anim--up" style="--d: 0.25s">
+            <div class="label">OUR STRATEGY</div>
+            <p class="body">Founder story <span class="arrow">+</span> educational content <span class="arrow">+</span> composer spotlights — all three in parallel.</p>
+            <p class="sub">Multi-signal presence is how credibility is built before the first global placement.</p>
+          </article>
+
+          <article class="p-card anim anim--up" style="--d: 0.35s">
+            <div class="label">MONTH 1 TARGET</div>
+            <div class="big size-l">50–100</div>
+            <div class="sublabel">Email signups</div>
+            <p class="detail">People actively raising their hand</p>
+          </article>
+
+          <article class="p-card anim anim--up" style="--d: 0.45s">
+            <div class="label">MONTH 1 TARGET</div>
+            <div class="big size-m">Inbound DMs</div>
+            <div class="sublabel">From composers + producers</div>
+            <p class="detail">Tracking begins Day 1 — direction matters more than volume</p>
+          </article>
+        </div>
+
+        <div class="smart anim anim--up" style="--d: 0.55s">
+          <div class="label">SMART GOAL</div>
+          <p class="text">By Day 90 — 20 vetted composers · 10 briefs (5 global + 5 Nollywood validation) · 3 placements in pipeline <span class="arrow">→</span> first commission. Global placements are the prize. Nollywood data is the proof.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll cue — slide 1 only -->
+    <div class="scroll-cue" id="scrollCue" aria-hidden="true">
+      <span class="cue-text">SCROLL TO EXPLORE</span>
+      <svg class="cue-chev" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </div>
+  </section>
+
+  <section class="slide slide-canvas" data-accent="purple" data-title="Canvas" id="slide-2" data-screen-label="02 Canvas">
+    <div class="slide-inner">
+      <header class="canvas-head">
+        <div class="left head-anim">
+          <div class="step">PAGE 02</div>
+          <h2 class="title">Digital Marketing Canvas</h2>
+        </div>
+        <div class="sub head-anim">AARRR growth model mapped to SyncMaster V1</div>
+      </header>
+
+      <div class="canvas">
+        <!-- Row 1 -->
+        <div class="canvas-row canvas-row--1">
+          <div class="c-cell l-gold anim" style="--d: 0.20s">
+            <div class="c-label">Mission</div>
+            <p class="c-body"><em>Connect African composers to global screens.</em> Curated, cleared, and ready. We solve composer invisibility + producer overwhelm simultaneously.</p>
+          </div>
+          <div class="c-cell l-gold anim" style="--d: 0.20s">
+            <div class="c-label">Vision</div>
+            <p class="c-body">The definitive sync licensing platform for African music. <em>Phase 1:</em> curated concierge. <em>Phase 4:</em> open-but-vetted marketplace when manual matching no longer scales.</p>
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="canvas-row canvas-row--2">
+          <div class="c-cell l-purple anim" style="--d: 0.35s">
+            <div class="c-label">Brand</div>
+            <p class="c-body">Dark editorial. Premium curation. <em>“Spotify meets A&amp;R portal.”</em> Human taste, not algorithm. Every composer manually vetted.</p>
+          </div>
+          <div class="c-cell l-teal anim" style="--d: 0.35s">
+            <div class="c-label">Acquisition</div>
+            <p class="c-body"><em>Composers:</em> Instagram · Twitter/X · YouTube · SoundCloud · Targeted IG/FB ads (Lagos)
+<em>Producers (global):</em> LinkedIn · Sync Summit · Midem · SXSW · Music supervisor groups · Warm intros via Prime/Netflix network
+<em>Nollywood (validation):</em> WhatsApp · Direct outreach</p>
+          </div>
+          <div class="c-cell l-gold anim" style="--d: 0.35s">
+            <div class="c-label">Value Propositions</div>
+            <p class="c-body"><em>Tunde:</em> “We are the connection.” Global briefs, no agent needed.
+<em>Amara:</em> “5 curated African tracks. Clean rights. 48 hours.” Authentic sound global supervisors can’t find anywhere else.</p>
+          </div>
+          <div class="c-cell l-coral anim" style="--d: 0.35s">
+            <div class="c-label">Referral</div>
+            <p class="c-body">SA Showmax composer → refers African composer peers.
+Prime / Netflix producers → refer global music supervisors, creative directors at international agencies, and production company heads in US, UK, Europe — not just Nollywood.</p>
+          </div>
+          <div class="c-cell l-teal anim" style="--d: 0.35s">
+            <div class="c-label">Target Audience</div>
+            <p class="c-body"><em>Tunde</em> — Lagos, 22–30, professional composer, no representation, produces beats + film scores.
+<em>Amara</em> — global music supervisor or senior producer at a studio, streamer (Netflix, Prime, Apple TV+), or ad agency (WPP, Publicis, Dentsu). Nollywood producers = early validation cohort only, not the end market.</p>
+          </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="canvas-row canvas-row--3">
+          <div class="c-cell l-teal anim" style="--d: 0.50s">
+            <div class="c-label">Activation</div>
+            <p class="c-body"><em>Composer:</em> submits first track to a live brief.
+<em>Producer:</em> receives 5 curated tracks in 48 hrs.</p>
+          </div>
+          <div class="c-cell l-coral anim" style="--d: 0.50s">
+            <div class="c-label">Revenue</div>
+            <p class="c-body"><em>15–20% commission</em> on every placement fee. Charged to producer. No placement = no fee. Manual invoicing in V1.
+One Netflix sync &gt; 10 Nollywood placements in revenue terms — <em>this is why global is the real target.</em></p>
+          </div>
+          <div class="c-cell l-purple anim" style="--d: 0.50s">
+            <div class="c-label">Market</div>
+            <p class="c-body"><em>Global sync market: $500M+ annually.</em> African music is structurally underrepresented on every major sync platform. No rights-clear, Africa-first sync portal exists for global supervisors. <em>Competitors:</em> TAXI, DISCO, Musicbed — none Africa-first. Nollywood = proving ground. Global streamers + agencies = the actual market.</p>
+          </div>
+        </div>
+
+        <!-- Row 4 -->
+        <div class="canvas-row canvas-row--4">
+          <div class="c-cell l-teal anim" style="--d: 0.65s">
+            <div class="c-label">Retention — Composers</div>
+            <p class="c-body">New briefs keep composers active. A&amp;R feedback builds loyalty. <em>North star:</em> placements per month.</p>
+          </div>
+          <div class="c-cell l-coral anim" style="--d: 0.65s">
+            <div class="c-label">Retention — Producers</div>
+            <p class="c-body"><em>2nd brief = proof of value.</em> Target: 50% retention post-first brief. Speed + relationship is the V1 retention mechanism.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide slide-roadmap" data-accent="coral" data-title="Roadmap" id="slide-3" data-screen-label="03 Roadmap">
+    <div class="slide-inner">
+      <!-- ZONE A — Building Blocks -->
+      <div class="rm-zone anim" style="--d: 0.10s">
+        <div class="rm-zone-label">STEP A <span class="sep">·</span> BUILDING BLOCKS</div>
+        <div class="rm-blocks">
+          <div class="rm-block-col">
+            <div class="rm-block-head">Business</div>
+            <div class="rm-pill-stack">
+              <span class="rm-pill t-gold">Marketplace</span>
+              <span class="rm-pill">Two-sided</span>
+            </div>
+          </div>
+          <div class="rm-block-col">
+            <div class="rm-block-head">Offer</div>
+            <div class="rm-pill-stack">
+              <span class="rm-pill t-gold">Curated sync</span>
+              <span class="rm-pill">5 tracks / 48hrs</span>
+              <span class="rm-pill">Rights-clear</span>
+            </div>
+          </div>
+          <div class="rm-block-col">
+            <div class="rm-block-head">Customers</div>
+            <div class="rm-pill-stack">
+              <span class="rm-pill t-teal">Tunde</span>
+              <span class="rm-pill t-coral">Amara</span>
+              <span class="rm-pill">Nollywood-first</span>
+            </div>
+          </div>
+          <div class="rm-block-col">
+            <div class="rm-block-head">Location</div>
+            <div class="rm-pill-stack">
+              <span class="rm-pill t-teal">Lagos</span>
+              <span class="rm-pill t-teal">South Africa</span>
+              <span class="rm-pill">Global / remote</span>
+            </div>
+          </div>
+          <div class="rm-block-col">
+            <div class="rm-block-head">Channels</div>
+            <div class="rm-pill-stack">
+              <span class="rm-pill t-teal">Instagram</span>
+              <span class="rm-pill t-teal">Twitter / X</span>
+              <span class="rm-pill t-teal">LinkedIn</span>
+              <span class="rm-pill">WhatsApp</span>
+              <span class="rm-pill">Email</span>
+            </div>
+          </div>
+          <div class="rm-block-col">
+            <div class="rm-block-head">Action</div>
+            <div class="rm-pill-stack">
+              <span class="rm-pill t-gold">Email signup</span>
+              <span class="rm-pill t-purple">Composer apply</span>
+              <span class="rm-pill t-coral">Post brief</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ZONE B — Basic Flow -->
+      <div class="rm-zone anim" style="--d: 0.25s">
+        <div class="rm-zone-label">STEP B <span class="sep">·</span> BASIC ROADMAP</div>
+        <div class="rm-flow">
+          <div class="rm-node">
+            <div class="rm-icon b-gold">🎯</div>
+            <div class="label">Vision</div>
+            <div class="sub">African music / global screens</div>
+          </div>
+          <div class="rm-arrow">→</div>
+          <div class="rm-node">
+            <div class="rm-icon b-teal">👤</div>
+            <div class="label">Audience</div>
+            <div class="sub">Tunde + Amara</div>
+          </div>
+          <div class="rm-arrow">→</div>
+          <div class="rm-node">
+            <div class="rm-icon">📍</div>
+            <div class="label">Location</div>
+            <div class="sub">Lagos + SA</div>
+          </div>
+          <div class="rm-arrow">→</div>
+          <div class="rm-node">
+            <div class="rm-icon b-teal">📣</div>
+            <div class="label">Channels</div>
+            <div class="sub">IG · X · WA · Email</div>
+          </div>
+          <div class="rm-arrow">→</div>
+          <div class="rm-node">
+            <div class="rm-icon b-purple">🌐</div>
+            <div class="label">Presence</div>
+            <div class="sub">Website + Socials</div>
+          </div>
+          <div class="rm-arrow">→</div>
+          <div class="rm-node">
+            <div class="rm-icon b-coral">⚡</div>
+            <div class="label">Action</div>
+            <div class="sub">Apply · Post brief</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ZONE C — Month Columns -->
+      <div class="rm-zone" style="display: flex; flex-direction: column; flex: 1; min-height: 0;">
+        <div class="rm-zone-label anim" style="--d: 0.30s">STEP C <span class="sep">·</span> 90-DAY EXECUTION</div>
+        <div class="rm-months">
+          <!-- MONTH 1 — Credibility -->
+          <article class="rm-month m-gold anim anim--month" style="--d: 0.35s">
+            <div class="header">MONTH 1 · DAYS 1–30</div>
+            <h3 class="month-title">Credibility</h3>
+            <div class="month-divider"></div>
+            <div class="rm-tasks">
+              <div class="rm-task">Launch social profiles — Instagram, Twitter/X, LinkedIn</div>
+              <div class="rm-task">Publish founder story post — why SyncMaster exists</div>
+              <div class="rm-task">Blog: “African Composer’s Guide to Sync Licensing”</div>
+              <div class="rm-task">Blog: “What Nollywood Producers Need About Rights”</div>
+              <div class="rm-task">Activate warm network — follow + engage 40 composers</div>
+              <div class="rm-task">Join 5 communities — Nollywood WhatsApp + music Discord</div>
+              <div class="rm-task">Launch email waitlist landing page</div>
+            </div>
+            <div class="rm-proof">
+              <div class="ptag">★ PROOF POINT</div>
+              <div class="ptext">SA Showmax composer spotlight — makes Tunde believe SyncMaster is real.</div>
+            </div>
+            <div class="rm-kpis">
+              <div class="ktag">MONTH 1 KPIS</div>
+              <div class="kline"><span class="a">→</span> 50–100 email signups</div>
+              <div class="kline"><span class="a">→</span> Inbound DMs tracking begins</div>
+              <div class="kline"><span class="a">→</span> 5 community relationships</div>
+            </div>
+          </article>
+
+          <!-- MONTH 2 — Composer Acquisition -->
+          <article class="rm-month m-teal anim anim--month" style="--d: 0.45s">
+            <div class="header">MONTH 2 · DAYS 31–60</div>
+            <h3 class="month-title">Composer Acquisition</h3>
+            <div class="month-divider"></div>
+            <div class="rm-tasks">
+              <div class="rm-task">DM 40 identified composers — personalised, not templated</div>
+              <div class="rm-task">Run IG / Facebook ads targeting Lagos composers ($200–500)</div>
+              <div class="rm-task">Post 3×/week composer-facing content on IG + Twitter/X</div>
+              <div class="rm-task">Publish: “What SyncMaster looks for in a composer”</div>
+              <div class="rm-task">Post composer spotlight series — build exclusivity signal</div>
+              <div class="rm-task">Shift community tone from listener to thought leader</div>
+            </div>
+            <div class="rm-proof">
+              <div class="ptag">★ PROOF POINT</div>
+              <div class="ptext">SA Showmax composer long-form spotlight — Tunde’s aspirational outcome made real.</div>
+            </div>
+            <div class="rm-kpis">
+              <div class="ktag">MONTH 2 KPIS</div>
+              <div class="kline"><span class="a">→</span> 40 applications</div>
+              <div class="kline"><span class="a">→</span> 20 vetted onboarded</div>
+              <div class="kline"><span class="a">→</span> 3 spotlights published</div>
+            </div>
+          </article>
+
+          <!-- MONTH 3 — Global Producer Acquisition -->
+          <article class="rm-month m-coral anim anim--month" style="--d: 0.55s">
+            <div class="header">MONTH 3 · DAYS 61–90</div>
+            <h3 class="month-title">Global Producer Acquisition</h3>
+            <div class="month-divider"></div>
+            <div class="rm-tasks">
+              <div class="rm-task"><span class="task-body"><span class="ttag t-global">GLOBAL</span>Warm intros to international music supervisors via existing Prime Video + Netflix producer network</span></div>
+              <div class="rm-task"><span class="task-body"><span class="ttag t-global">GLOBAL</span>LinkedIn Ads — music supervisors globally, job-title targeting: “music supervisor”, “head of music”, “sync licensing” ($700–1,200)</span></div>
+              <div class="rm-task"><span class="task-body"><span class="ttag t-global">GLOBAL</span>Outreach to Music Supervisors Group + Guild of Music Supervisors Facebook communities</span></div>
+              <div class="rm-task"><span class="task-body"><span class="ttag t-global">GLOBAL</span>Submit composer roster to DISCO + TAXI — get on global supervisor radar</span></div>
+              <div class="rm-task"><span class="task-body"><span class="ttag t-global">GLOBAL</span>Attend or sponsor 1 global event: Sync Summit, Midem, SXSW Music, or A3C Atlanta</span></div>
+              <div class="rm-task"><span class="task-body"><span class="ttag t-global">GLOBAL</span>Publish: “Why Global Music Supervisors Are Missing Africa’s Best Composers”</span></div>
+              <div class="rm-task"><span class="task-body"><span class="ttag t-validation">VALIDATION</span>Warm WhatsApp outreach to Nollywood producers via existing network — generate first brief data</span></div>
+              <div class="rm-task"><span class="task-body"><span class="ttag t-validation">VALIDATION</span>Track Nollywood results separately as validation cohort, not folded into global KPIs</span></div>
+            </div>
+            <div class="rm-proof">
+              <div class="ptag">★ PROOF POINT</div>
+              <div class="ptext">Prime / Netflix producer refers a global music supervisor peer to SyncMaster — first global referral chain activated.</div>
+            </div>
+            <div class="rm-kpis split">
+              <div class="kbox">
+                <div class="ktag t-coral">GLOBAL</div>
+                <div class="kline"><span class="a t-coral">→</span> 30 global supervisors contacted</div>
+                <div class="kline"><span class="a t-coral">→</span> 5 global briefs received</div>
+                <div class="kline"><span class="a t-coral">→</span> 2 global placements in pipeline</div>
+                <div class="kline"><span class="a t-coral">→</span> 1 warm referral to global peer</div>
+              </div>
+              <div class="kbox">
+                <div class="ktag t-gold">NOLLYWOOD VALIDATION</div>
+                <div class="kline"><span class="a t-gold">→</span> 20 Nollywood producers contacted</div>
+                <div class="kline"><span class="a t-gold">→</span> 5 validation briefs received</div>
+                <div class="kline"><span class="a t-gold">→</span> 1 Nollywood placement</div>
+                <div class="kline"><span class="a t-gold">→</span> 3 placement data points generated</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 04 — Execution Tracker
+       ============================================================ -->
+  <section class="slide slide-execution" data-accent="teal" data-title="Execution" id="slide-4" data-screen-label="04 Execution">
+    <div class="slide-inner exec-inner">
+
+      <!-- METRICS STRIP -->
+      <div class="metrics-strip anim" style="--d: 0.10s" id="metricsStrip">
+        <div class="metric a-coral" data-key="global_briefs" data-target="5">
+          <div class="m-label">GLOBAL BRIEFS</div>
+          <div class="m-row">
+            <button class="m-btn m-minus" type="button" aria-label="Decrement">−</button>
+            <span class="m-current">0</span>
+            <span class="m-slash">/</span>
+            <span class="m-target">5</span>
+            <button class="m-btn m-plus" type="button" aria-label="Increment">+</button>
+          </div>
+          <div class="m-bar"><div class="m-bar-fill"></div></div>
+        </div>
+        <div class="metric a-gold" data-key="nollywood_briefs" data-target="5">
+          <div class="m-label">NOLLYWOOD BRIEFS</div>
+          <div class="m-row">
+            <button class="m-btn m-minus" type="button" aria-label="Decrement">−</button>
+            <span class="m-current">0</span>
+            <span class="m-slash">/</span>
+            <span class="m-target">5</span>
+            <button class="m-btn m-plus" type="button" aria-label="Increment">+</button>
+          </div>
+          <div class="m-bar"><div class="m-bar-fill"></div></div>
+        </div>
+        <div class="metric a-teal" data-key="composers_onboarded" data-target="20">
+          <div class="m-label">COMPOSERS ONBOARDED</div>
+          <div class="m-row">
+            <button class="m-btn m-minus" type="button" aria-label="Decrement">−</button>
+            <span class="m-current">0</span>
+            <span class="m-slash">/</span>
+            <span class="m-target">20</span>
+            <button class="m-btn m-plus" type="button" aria-label="Increment">+</button>
+          </div>
+          <div class="m-bar"><div class="m-bar-fill"></div></div>
+        </div>
+        <div class="metric a-purple" data-key="placements" data-target="3">
+          <div class="m-label">PLACEMENTS IN PIPELINE</div>
+          <div class="m-row">
+            <button class="m-btn m-minus" type="button" aria-label="Decrement">−</button>
+            <span class="m-current">0</span>
+            <span class="m-slash">/</span>
+            <span class="m-target">3</span>
+            <button class="m-btn m-plus" type="button" aria-label="Increment">+</button>
+          </div>
+          <div class="m-bar"><div class="m-bar-fill"></div></div>
+        </div>
+      </div>
+
+      <!-- PHASE 1 -->
+      <section class="phase-block p-gold anim" style="--d: 0.20s" data-phase="p1" data-title="Credibility">
+        <header class="phase-head">
+          <div class="phase-meta">
+            <span class="phase-badge">PHASE 01 · DAYS 1–30</span>
+            <h3 class="phase-title">Credibility</h3>
+            <span class="phase-count"><span class="done">0</span> / <span class="total">8</span> tasks complete</span>
+          </div>
+          <div class="phase-rt">
+            <svg class="phase-ring" width="36" height="36" viewBox="0 0 36 36" aria-hidden="true">
+              <circle class="ring-track" cx="18" cy="18" r="15" fill="none" stroke-width="3"/>
+              <circle class="ring-fill"  cx="18" cy="18" r="15" fill="none" stroke-width="3"
+                      stroke-dasharray="94.25" stroke-dashoffset="94.25"/>
+            </svg>
+            <span class="phase-chev" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5l3.5 3 3.5-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+        </header>
+        <div class="phase-bar"><div class="phase-bar-fill"></div></div>
+        <div class="phase-body">
+          <div class="task" data-id="p1-1"><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text">Launch social profiles — Instagram, Twitter/X, LinkedIn</span></div>
+          <div class="task" data-id="p1-2"><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text">Publish founder story post — why SyncMaster exists</span></div>
+          <div class="task" data-id="p1-3"><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text">Blog post: “The African Composer’s Guide to Sync Licensing”</span></div>
+          <div class="task" data-id="p1-4"><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text">Blog post: “What Nollywood Producers Need to Know About Rights”</span></div>
+          <div class="task" data-id="p1-5"><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text">Activate warm network — follow + engage 40 target composers</span></div>
+          <div class="task" data-id="p1-6"><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text">Join 5 communities — Nollywood WhatsApp + music Discord groups</span></div>
+          <div class="task" data-id="p1-7"><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text">Launch email waitlist landing page</span></div>
+          <div class="task" data-id="p1-8"><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text">Publish SA Showmax composer spotlight — first proof point content</span></div>
+        </div>
+      </section>
+
+      <!-- PHASE 2 -->
+      <section class="phase-block p-teal anim" style="--d: 0.30s" data-phase="p2" data-title="Composer Acquisition">
+        <header class="phase-head">
+          <div class="phase-meta">
+            <span class="phase-badge">PHASE 02 · DAYS 31–60</span>
+            <h3 class="phase-title">Composer Acquisition</h3>
+            <span class="phase-count"><span class="done">0</span> / <span class="total">7</span> tasks complete</span>
+          </div>
+          <div class="phase-rt">
+            <svg class="phase-ring" width="36" height="36" viewBox="0 0 36 36" aria-hidden="true">
+              <circle class="ring-track" cx="18" cy="18" r="15" fill="none" stroke-width="3"/>
+              <circle class="ring-fill"  cx="18" cy="18" r="15" fill="none" stroke-width="3"
+                      stroke-dasharray="94.25" stroke-dashoffset="94.25"/>
+            </svg>
+            <span class="phase-chev" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5l3.5 3 3.5-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+        </header>
+        <div class="phase-bar"><div class="phase-bar-fill"></div></div>
+        <div class="phase-body">
+          <div class="task" data-id="p2-1"><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text">DM 40 identified composers — personalised, not templated</span></div>
+          <div class="task" data-id="p2-2"><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text">Run IG / Facebook ads targeting Lagos composers ($200–500)</span></div>
+          <div class="task" data-id="p2-3"><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text">Post 3× / week composer-facing content on IG + Twitter/X</span></div>
+          <div class="task" data-id="p2-4"><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text">Publish: “What SyncMaster looks for in a composer application”</span></div>
+          <div class="task" data-id="p2-5"><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text">Post composer spotlight series — build exclusivity signal</span></div>
+          <div class="task" data-id="p2-6"><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text">Shift community tone from listener to thought leader</span></div>
+          <div class="task" data-id="p2-7"><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text">Onboard 20 vetted composers — application to vetted under 5 days</span></div>
+        </div>
+      </section>
+
+      <!-- PHASE 3 -->
+      <section class="phase-block p-coral anim" style="--d: 0.40s" data-phase="p3" data-title="Global Producer Acquisition">
+        <header class="phase-head">
+          <div class="phase-meta">
+            <span class="phase-badge">PHASE 03 · DAYS 61–90</span>
+            <h3 class="phase-title">Global Producer Acquisition</h3>
+            <span class="phase-count"><span class="done">0</span> / <span class="total">8</span> tasks complete</span>
+          </div>
+          <div class="phase-rt">
+            <svg class="phase-ring" width="36" height="36" viewBox="0 0 36 36" aria-hidden="true">
+              <circle class="ring-track" cx="18" cy="18" r="15" fill="none" stroke-width="3"/>
+              <circle class="ring-fill"  cx="18" cy="18" r="15" fill="none" stroke-width="3"
+                      stroke-dasharray="94.25" stroke-dashoffset="94.25"/>
+            </svg>
+            <span class="phase-chev" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5l3.5 3 3.5-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+        </header>
+        <div class="phase-bar"><div class="phase-bar-fill"></div></div>
+        <div class="phase-body">
+          <div class="phase-sublabel s-coral">GLOBAL TRACK</div>
+          <div class="task" data-id="p3-1"><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><span class="t-pill t-global">GLOBAL</span>Warm intros to international music supervisors via existing Prime Video + Netflix producer network</span></div>
+          <div class="task" data-id="p3-2"><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><span class="t-pill t-global">GLOBAL</span>LinkedIn Ads — music supervisors globally, job-title targeting ($700–1,200)</span></div>
+          <div class="task" data-id="p3-3"><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><span class="t-pill t-global">GLOBAL</span>Outreach to Music Supervisors Group + Guild of Music Supervisors communities</span></div>
+          <div class="task" data-id="p3-4"><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><span class="t-pill t-global">GLOBAL</span>Submit composer roster to DISCO + TAXI — get on global supervisor radar</span></div>
+          <div class="task" data-id="p3-5"><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><span class="t-pill t-global">GLOBAL</span>Attend or sponsor 1 global event: Sync Summit, Midem, SXSW Music, or A3C Atlanta</span></div>
+          <div class="task" data-id="p3-6"><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><span class="t-pill t-global">GLOBAL</span>Publish: “Why Global Music Supervisors Are Missing Africa’s Best Composers”</span></div>
+          <div class="phase-sublabel s-gold">NOLLYWOOD VALIDATION COHORT</div>
+          <div class="task" data-id="p3-7"><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><span class="t-pill t-validation">VALIDATION</span>Warm WhatsApp outreach to Nollywood producers via existing network — generate first brief data</span></div>
+          <div class="task" data-id="p3-8"><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><span class="t-pill t-validation">VALIDATION</span>Track Nollywood results separately — validation cohort, not folded into global KPIs</span></div>
+        </div>
+      </section>
+
+      <!-- ACTIONS -->
+      <div class="exec-actions anim" style="--d: 0.50s">
+        <button class="exec-btn reset" type="button" id="resetBtn">Reset Progress</button>
+        <button class="exec-btn export" type="button" id="exportBtn">Export Progress</button>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<script>
+(() => {
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  const sidenav = document.getElementById('sidenav');
+  const currentTitle = document.getElementById('currentTitle');
+  const counterCurrent = document.getElementById('counterCurrent');
+  const counterTotal = document.getElementById('counterTotal');
+  const progressFill = document.getElementById('progressFill');
+  const nextLabel = document.getElementById('nextLabel');
+  const nextName = document.getElementById('nextName');
+
+  counterTotal.textContent = String(total).padStart(2, '0');
+
+  // Build dots
+  const dots = slides.map((slide, i) => {
+    const b = document.createElement('button');
+    b.className = 'dot';
+    b.type = 'button';
+    b.setAttribute('aria-label', `Go to slide ${i + 1}: ${slide.dataset.title || ''}`);
+    b.addEventListener('click', () => {
+      slide.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    sidenav.appendChild(b);
+    return b;
+  });
+
+  let activeIndex = 0;
+
+  // Map slide accent -> CSS color var for dot glow
+  const ACCENT_VARS = {
+    gold:   'var(--gold)',
+    teal:   'var(--teal)',
+    coral:  'var(--coral)',
+    purple: 'var(--purple)',
+  };
+
+  function setActive(i) {
+    if (i === activeIndex) return;
+    activeIndex = i;
+    const slide = slides[i];
+    const accent = ACCENT_VARS[slide.dataset.accent] || ACCENT_VARS.gold;
+    dots.forEach((d, idx) => {
+      const isActive = idx === i;
+      d.classList.toggle('active', isActive);
+      if (isActive) d.style.setProperty('--dot-accent', accent);
+    });
+
+    const title = slide.dataset.title || '';
+    // Soft cross-fade for title
+    currentTitle.style.opacity = '0';
+    setTimeout(() => {
+      currentTitle.textContent = title;
+      currentTitle.style.opacity = '1';
+    }, 120);
+
+    counterCurrent.textContent = String(i + 1).padStart(2, '0');
+
+    const next = slides[i + 1];
+    if (next) {
+      nextName.textContent = next.dataset.title || '';
+      nextLabel.classList.remove('hide');
+    } else {
+      nextLabel.classList.add('hide');
+    }
+
+    // Scroll cue: hide once past slide 1
+    if (scrollCue) {
+      scrollCue.classList.toggle('hidden', i > 0);
+    }
+  }
+
+  const scrollCue = document.getElementById('scrollCue');
+
+  // Initial state
+  dots[0].classList.add('active');
+  dots[0].style.setProperty('--dot-accent', ACCENT_VARS[slides[0].dataset.accent] || ACCENT_VARS.gold);
+  currentTitle.textContent = slides[0].dataset.title || '';
+  counterCurrent.textContent = '01';
+  const firstNext = slides[1];
+  if (firstNext) nextName.textContent = firstNext.dataset.title || '';
+  else nextLabel.classList.add('hide');
+
+  // IntersectionObserver for active slide
+  const io = new IntersectionObserver((entries) => {
+    // Pick the most visible
+    let best = null;
+    for (const e of entries) {
+      if (!best || e.intersectionRatio > best.intersectionRatio) best = e;
+    }
+    if (best && best.isIntersecting) {
+      const idx = slides.indexOf(best.target);
+      if (idx !== -1) setActive(idx);
+    }
+  }, { threshold: [0.4, 0.6, 0.8] });
+
+  slides.forEach(s => io.observe(s));
+
+  // Entrance animation trigger — fires when a slide is sufficiently in view.
+  const animIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+      } else if (e.intersectionRatio === 0) {
+        // Reset so animation can replay on re-entry
+        e.target.classList.remove('in-view');
+      }
+    });
+  }, { threshold: [0, 0.3] });
+  slides.forEach(s => animIO.observe(s));
+
+  // Progress fill on scroll
+  function updateProgress() {
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - window.innerHeight;
+    const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+    progressFill.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  // Keyboard nav
+  let navLock = false;
+  function goTo(i) {
+    const clamped = Math.max(0, Math.min(total - 1, i));
+    slides[clamped].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  window.addEventListener('keydown', (e) => {
+    if (navLock) return;
+    let handled = false;
+    if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
+      goTo(activeIndex + 1); handled = true;
+    } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      goTo(activeIndex - 1); handled = true;
+    } else if (e.key === 'Home') {
+      goTo(0); handled = true;
+    } else if (e.key === 'End') {
+      goTo(total - 1); handled = true;
+    }
+    if (handled) {
+      e.preventDefault();
+      navLock = true;
+      setTimeout(() => { navLock = false; }, 380);
+    }
+  });
+})();
+</script>
+
+<script>
+/* ============================================================
+   Slide 04 — Execution Tracker logic
+   ============================================================ */
+(() => {
+  const METRIC_DEFS = [
+    { key: 'global_briefs',       target: 5  },
+    { key: 'nollywood_briefs',    target: 5  },
+    { key: 'composers_onboarded', target: 20 },
+    { key: 'placements',          target: 3  },
+  ];
+
+  const PHASES = [
+    { id: 'p1', label: 'PHASE 1 — CREDIBILITY',                  tasks: [
+      { id: 'p1-1', text: 'Launch social profiles — Instagram, Twitter/X, LinkedIn' },
+      { id: 'p1-2', text: 'Publish founder story post — why SyncMaster exists' },
+      { id: 'p1-3', text: 'Blog post: "The African Composer\u2019s Guide to Sync Licensing"' },
+      { id: 'p1-4', text: 'Blog post: "What Nollywood Producers Need to Know About Rights"' },
+      { id: 'p1-5', text: 'Activate warm network — follow + engage 40 target composers' },
+      { id: 'p1-6', text: 'Join 5 communities — Nollywood WhatsApp + music Discord groups' },
+      { id: 'p1-7', text: 'Launch email waitlist landing page' },
+      { id: 'p1-8', text: 'Publish SA Showmax composer spotlight — first proof point content' },
+    ] },
+    { id: 'p2', label: 'PHASE 2 — COMPOSER ACQUISITION',         tasks: [
+      { id: 'p2-1', text: 'DM 40 identified composers — personalised, not templated' },
+      { id: 'p2-2', text: 'Run IG / Facebook ads targeting Lagos composers ($200–500)' },
+      { id: 'p2-3', text: 'Post 3×/week composer-facing content on IG + Twitter/X' },
+      { id: 'p2-4', text: 'Publish: "What SyncMaster looks for in a composer application"' },
+      { id: 'p2-5', text: 'Post composer spotlight series — build exclusivity signal' },
+      { id: 'p2-6', text: 'Shift community tone from listener to thought leader' },
+      { id: 'p2-7', text: 'Onboard 20 vetted composers — application to vetted under 5 days' },
+    ] },
+    { id: 'p3', label: 'PHASE 3 — GLOBAL PRODUCER ACQUISITION',  tasks: [
+      { id: 'p3-1', text: '[GLOBAL] Warm intros to international music supervisors via existing Prime Video + Netflix producer network' },
+      { id: 'p3-2', text: '[GLOBAL] LinkedIn Ads — music supervisors globally, job-title targeting ($700–1,200)' },
+      { id: 'p3-3', text: '[GLOBAL] Outreach to Music Supervisors Group + Guild of Music Supervisors communities' },
+      { id: 'p3-4', text: '[GLOBAL] Submit composer roster to DISCO + TAXI — get on global supervisor radar' },
+      { id: 'p3-5', text: '[GLOBAL] Attend or sponsor 1 global event: Sync Summit, Midem, SXSW Music, or A3C Atlanta' },
+      { id: 'p3-6', text: '[GLOBAL] Publish: "Why Global Music Supervisors Are Missing Africa\u2019s Best Composers"' },
+      { id: 'p3-7', text: '[VALIDATION] Warm WhatsApp outreach to Nollywood producers via existing network — generate first brief data' },
+      { id: 'p3-8', text: '[VALIDATION] Track Nollywood results separately — validation cohort, not folded into global KPIs' },
+    ] },
+  ];
+
+  const METRIC_LABELS = {
+    global_briefs:       'Global Briefs',
+    nollywood_briefs:    'Nollywood Briefs',
+    composers_onboarded: 'Composers Onboarded',
+    placements:          'Placements in Pipeline',
+  };
+
+  const RING_CIRC = 94.25; // 2π × 15
+
+  // ---------- State ----------
+  function loadMetrics() {
+    let m;
+    try { m = JSON.parse(localStorage.getItem('sm_metrics') || '{}'); }
+    catch (e) { m = {}; }
+    METRIC_DEFS.forEach(({ key }) => {
+      if (typeof m[key] !== 'number' || isNaN(m[key])) m[key] = 0;
+    });
+    return m;
+  }
+  function loadTasks() {
+    let t;
+    try { t = JSON.parse(localStorage.getItem('sm_tasks') || '{}'); }
+    catch (e) { t = {}; }
+    return t || {};
+  }
+  function saveMetrics(m) { localStorage.setItem('sm_metrics', JSON.stringify(m)); }
+  function saveTasks(t)   { localStorage.setItem('sm_tasks',   JSON.stringify(t)); }
+
+  let metrics = loadMetrics();
+  let tasks   = loadTasks();
+
+  // ---------- Hydrate metrics UI ----------
+  const metricEls = document.querySelectorAll('#metricsStrip .metric');
+
+  function renderMetric(el) {
+    const key = el.dataset.key;
+    const target = parseInt(el.dataset.target, 10) || 0;
+    const value = Math.max(0, Math.min(target, metrics[key] || 0));
+    metrics[key] = value;
+
+    el.querySelector('.m-current').textContent = String(value);
+    const pct = target > 0 ? (value / target) * 100 : 0;
+    el.querySelector('.m-bar-fill').style.width = pct + '%';
+
+    el.querySelector('.m-minus').disabled = value <= 0;
+    el.querySelector('.m-plus').disabled  = value >= target;
+  }
+
+  function clampMetric(el, raw) {
+    const target = parseInt(el.dataset.target, 10) || 0;
+    let v = parseInt(raw, 10);
+    if (isNaN(v)) v = 0;
+    return Math.max(0, Math.min(target, v));
+  }
+
+  metricEls.forEach((el) => {
+    const key = el.dataset.key;
+    const current = el.querySelector('.m-current');
+
+    el.querySelector('.m-minus').addEventListener('click', (e) => {
+      e.stopPropagation();
+      metrics[key] = clampMetric(el, (metrics[key] || 0) - 1);
+      saveMetrics(metrics);
+      renderMetric(el);
+    });
+    el.querySelector('.m-plus').addEventListener('click', (e) => {
+      e.stopPropagation();
+      metrics[key] = clampMetric(el, (metrics[key] || 0) + 1);
+      saveMetrics(metrics);
+      renderMetric(el);
+    });
+
+    // Inline edit on click of current number
+    current.addEventListener('click', () => {
+      const target = parseInt(el.dataset.target, 10) || 0;
+      const input = document.createElement('input');
+      input.type = 'number';
+      input.className = 'm-input';
+      input.min = '0';
+      input.max = String(target);
+      input.value = String(metrics[key] || 0);
+
+      const finish = (commit) => {
+        if (commit) {
+          metrics[key] = clampMetric(el, input.value);
+          saveMetrics(metrics);
+        }
+        input.replaceWith(current);
+        renderMetric(el);
+      };
+
+      current.replaceWith(input);
+      input.focus();
+      input.select();
+      input.addEventListener('blur',  () => finish(true));
+      input.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Enter')  { ev.preventDefault(); input.blur(); }
+        if (ev.key === 'Escape') { ev.preventDefault(); finish(false); }
+      });
+    });
+
+    renderMetric(el);
+  });
+
+  // ---------- Hydrate phases + tasks ----------
+  const phaseBlocks = document.querySelectorAll('.phase-block');
+
+  function renderPhase(phaseEl) {
+    const taskEls = phaseEl.querySelectorAll('.task');
+    const total   = taskEls.length;
+    let done = 0;
+    taskEls.forEach((t) => {
+      const id = t.dataset.id;
+      const checked = !!tasks[id];
+      t.classList.toggle('checked', checked);
+      if (checked) done++;
+    });
+
+    const pct = total > 0 ? done / total : 0;
+    phaseEl.querySelector('.phase-count .done').textContent = String(done);
+    phaseEl.querySelector('.phase-count .total').textContent = String(total);
+    phaseEl.querySelector('.phase-bar-fill').style.width = (pct * 100) + '%';
+    const ringFill = phaseEl.querySelector('.ring-fill');
+    if (ringFill) ringFill.setAttribute('stroke-dashoffset', String(RING_CIRC * (1 - pct)));
+  }
+
+  phaseBlocks.forEach((phaseEl) => {
+    // Task toggling
+    phaseEl.querySelectorAll('.task').forEach((t) => {
+      t.addEventListener('click', () => {
+        const id = t.dataset.id;
+        tasks[id] = !tasks[id];
+        if (!tasks[id]) delete tasks[id];
+        saveTasks(tasks);
+        renderPhase(phaseEl);
+      });
+    });
+
+    // Collapse on header click — measure max-height for animation
+    const body = phaseEl.querySelector('.phase-body');
+    const head = phaseEl.querySelector('.phase-head');
+    const setOpenHeight = () => {
+      if (!phaseEl.classList.contains('collapsed')) {
+        body.style.maxHeight = body.scrollHeight + 'px';
+      }
+    };
+    body.style.maxHeight = body.scrollHeight + 'px';
+    head.addEventListener('click', (e) => {
+      // Don't collapse if the click landed inside a task or button
+      if (e.target.closest('.task') || e.target.closest('button')) return;
+      const collapsing = !phaseEl.classList.contains('collapsed');
+      if (collapsing) {
+        body.style.maxHeight = body.scrollHeight + 'px';
+        // Force reflow so transition runs
+        void body.offsetHeight;
+        phaseEl.classList.add('collapsed');
+        body.style.maxHeight = '0px';
+      } else {
+        phaseEl.classList.remove('collapsed');
+        body.style.maxHeight = body.scrollHeight + 'px';
+      }
+    });
+    // Keep height fresh on resize
+    window.addEventListener('resize', () => setOpenHeight());
+
+    renderPhase(phaseEl);
+  });
+
+  // ---------- Reset ----------
+  const resetBtn = document.getElementById('resetBtn');
+  resetBtn.addEventListener('click', () => {
+    if (!confirm('Reset all progress? This will clear every checkbox and counter.')) return;
+    localStorage.removeItem('sm_metrics');
+    localStorage.removeItem('sm_tasks');
+    metrics = loadMetrics();
+    tasks = {};
+    metricEls.forEach(renderMetric);
+    phaseBlocks.forEach(renderPhase);
+  });
+
+  // ---------- Export ----------
+  const exportBtn = document.getElementById('exportBtn');
+  exportBtn.addEventListener('click', () => {
+    const now = new Date();
+    const stamp = now.toISOString().slice(0, 10);
+    const human = now.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+
+    let out = '';
+    out += '─────────────────────────────────\n';
+    out += 'SYNCMASTER — EXECUTION PROGRESS\n';
+    out += 'Exported: ' + human + '\n\n';
+
+    out += 'NORTH STAR METRICS\n';
+    const pad = (s, n) => (s + '                          ').slice(0, n);
+    METRIC_DEFS.forEach(({ key, target }) => {
+      const v = metrics[key] || 0;
+      out += pad(METRIC_LABELS[key] + ':', 24) + ' ' + v + ' / ' + target + '\n';
+    });
+    out += '\n';
+
+    PHASES.forEach((phase) => {
+      const done  = phase.tasks.filter(t => tasks[t.id]).length;
+      const total = phase.tasks.length;
+      out += phase.label + ' (' + done + '/' + total + ' complete)\n';
+      phase.tasks.forEach((t) => {
+        out += (tasks[t.id] ? '✓ ' : '○ ') + t.text + '\n';
+      });
+      out += '\n';
+    });
+
+    out += '─────────────────────────────────\n';
+
+    const blob = new Blob([out], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'syncmaster-progress-' + stamp + '.txt';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => {
+      URL.revokeObjectURL(url);
+      a.remove();
+    }, 0);
+  });
+})();
+</script>
+</body>
+</html>
