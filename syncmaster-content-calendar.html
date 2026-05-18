@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SyncMaster — Content Calendar Month 1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0C0C10;
+      --surface:   #131318;
+      --surface-2: #1A1A24;
+      --border:    #252532;
+      --border-2:  #32324A;
+      --gold:      #F2C94C;
+      --teal:      #38D1B5;
+      --coral:     #F26B5E;
+      --purple:    #9B72F2;
+      --white:     #F0F0F6;
+      --mid:       #C0C0D0;
+      --muted:     #787890;
+      --green:     #4CAF80;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      background: var(--bg);
+      color: var(--white);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 32px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: 0.1em; color: var(--gold); }
+    .logo-sub { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 11px; color: var(--muted); letter-spacing: 0.07em; text-transform: uppercase; margin-top: 3px; }
+    .progress-block { flex: 1; min-width: 220px; max-width: 520px; }
+    .progress-meta { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+    .progress-label { font-size: 12px; color: var(--mid); }
+    .progress-label strong { color: var(--gold); font-weight: 500; }
+    .progress-pct { font-size: 12px; color: var(--gold); font-weight: 500; }
+    .progress-track { background: var(--border); border-radius: 999px; height: 5px; overflow: hidden; }
+    .progress-fill { background: var(--gold); height: 100%; border-radius: 999px; width: 0%; transition: width 0.35s ease; }
+
+    /* ── FILTER BAR ── */
+    .filter-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 14px 32px; }
+    .filter-bar-inner { max-width: 1440px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+    .filter-row { display: flex; flex-wrap: wrap; gap: 7px; align-items: center; }
+    .filter-group-label { font-size: 10px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; min-width: 56px; }
+    .filter-btn {
+      font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
+      padding: 4px 12px; border-radius: 999px;
+      border: 1px solid var(--border-2); background: transparent; color: var(--mid);
+      cursor: pointer; transition: all 0.18s ease;
+    }
+    .filter-btn:hover { border-color: var(--muted); color: var(--white); }
+    .filter-btn.active { background: var(--gold); border-color: var(--gold); color: #0C0C10; }
+
+    /* ── MAIN ── */
+    .main { max-width: 1440px; margin: 0 auto; padding: 36px 32px; }
+
+    /* ── WEEK SECTION ── */
+    .week-section { margin-bottom: 52px; }
+    .week-header { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .week-label { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+    .week-divider { flex: 1; height: 1px; background: var(--border); }
+    .week-count-badge { font-size: 11px; color: var(--muted); white-space: nowrap; }
+
+    /* ── CARD GRID ── */
+    .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    @media (max-width: 1080px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 660px) {
+      .cards-grid { grid-template-columns: 1fr; }
+      .main { padding: 20px 16px; }
+      .header { padding: 16px; }
+      .filter-bar { padding: 12px 16px; }
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--muted);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-left-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+    .card[data-status="idea"]      { border-left-color: var(--muted); }
+    .card[data-status="draft"]     { border-left-color: var(--teal); }
+    .card[data-status="designed"]  { border-left-color: var(--gold); }
+    .card[data-status="scheduled"] { border-left-color: var(--purple); }
+    .card[data-status="posted"]    { border-left-color: var(--green); }
+    .card.hidden { display: none; }
+
+    .card-body { padding: 14px 16px 12px; flex: 1; }
+    .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 9px; }
+
+    /* Platform badge */
+    .platform-badge { font-size: 10px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+    .badge-instagram { background: rgba(155,114,242,0.14); color: var(--purple); }
+    .badge-twitter   { background: rgba(56,209,181,0.14);  color: var(--teal); }
+    .badge-linkedin  { background: rgba(242,201,76,0.14);  color: var(--gold); }
+    .badge-youtube   { background: rgba(242,107,94,0.14);  color: var(--coral); }
+
+    /* Pillar chip */
+    .pillar-chip { font-size: 10px; font-weight: 500; letter-spacing: 0.04em; padding: 3px 8px; border-radius: 4px; white-space: nowrap; }
+    .pillar-education { background: rgba(56,209,181,0.10); color: var(--teal); }
+    .pillar-proof     { background: rgba(242,201,76,0.10); color: var(--gold); }
+    .pillar-bts       { background: rgba(242,107,94,0.10); color: var(--coral); }
+    .pillar-culture   { background: rgba(155,114,242,0.10); color: var(--purple); }
+    .pillar-industry  { background: rgba(192,192,208,0.10); color: var(--mid); }
+
+    .post-id { font-size: 10px; color: var(--muted); letter-spacing: 0.09em; font-weight: 500; margin-bottom: 5px; }
+    .card-title { font-size: 13px; font-weight: 500; color: var(--white); line-height: 1.45; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .card-hook { font-size: 11px; font-weight: 300; color: var(--mid); line-height: 1.5; margin-bottom: 10px; font-style: italic; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .card-persona { font-size: 11px; color: var(--muted); }
+    .card-persona span { background: var(--surface-2); border: 1px solid var(--border); padding: 2px 7px; border-radius: 4px; font-weight: 500; color: var(--mid); }
+
+    /* Card footer */
+    .card-footer { padding: 10px 14px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+
+    .status-select {
+      flex: 1;
+      font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500;
+      padding: 5px 22px 5px 9px; border-radius: 6px;
+      border: 1px solid var(--border-2); background: var(--surface-2);
+      color: var(--muted); cursor: pointer; appearance: none; -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23787890' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 7px center;
+      transition: border-color 0.18s ease, color 0.18s ease;
+    }
+    .status-select:focus { outline: none; border-color: var(--gold); }
+    .status-select[data-status="idea"]      { color: var(--muted); }
+    .status-select[data-status="draft"]     { color: var(--teal); border-color: rgba(56,209,181,0.3); }
+    .status-select[data-status="designed"]  { color: var(--gold); border-color: rgba(242,201,76,0.3); }
+    .status-select[data-status="scheduled"] { color: var(--purple); border-color: rgba(155,114,242,0.3); }
+    .status-select[data-status="posted"]    { color: var(--green); border-color: rgba(76,175,128,0.3); }
+
+    .view-copy-btn {
+      font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500;
+      padding: 5px 10px; border-radius: 6px;
+      border: 1px solid var(--border-2); background: transparent; color: var(--mid);
+      cursor: pointer; white-space: nowrap; transition: all 0.18s ease; flex-shrink: 0;
+    }
+    .view-copy-btn:hover { border-color: var(--teal); color: var(--teal); }
+    .view-copy-btn.open  { border-color: var(--teal); color: var(--teal); background: rgba(56,209,181,0.07); }
+
+    /* Copy panel */
+    .copy-panel {
+      border-top: 1px solid transparent;
+      background: var(--surface-2);
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease, border-color 0.3s ease;
+    }
+    .copy-panel.open { max-height: 700px; padding: 16px; border-top-color: var(--border); }
+    .copy-text { font-size: 12px; line-height: 1.75; color: var(--mid); white-space: pre-wrap; font-weight: 300; }
+    .copy-placeholder { font-size: 12px; line-height: 1.75; color: var(--muted); font-style: italic; }
+    .copy-cta { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 11px; font-weight: 500; color: var(--gold); font-style: italic; }
+
+    /* Empty week message */
+    .week-empty-msg { font-size: 13px; color: var(--muted); padding: 20px 0; text-align: center; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════ HEADER ════════════════════════════════ -->
+<header class="header">
+  <div class="header-inner">
+    <div>
+      <div class="logo">SYNCMASTER</div>
+      <div class="logo-sub">Content OS — Month 1</div>
+    </div>
+    <div class="progress-block">
+      <div class="progress-meta">
+        <span class="progress-label"><strong id="progress-posted">0</strong> / 28 posts published</span>
+        <span class="progress-pct" id="progress-pct">0%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════════════ FILTER BAR ════════════════════════════════ -->
+<div class="filter-bar">
+  <div class="filter-bar-inner">
+    <div class="filter-row">
+      <span class="filter-group-label">Platform</span>
+      <button class="filter-btn active" data-ftype="platform" data-fval="all">All</button>
+      <button class="filter-btn" data-ftype="platform" data-fval="Instagram">Instagram</button>
+      <button class="filter-btn" data-ftype="platform" data-fval="Twitter/X">Twitter / X</button>
+      <button class="filter-btn" data-ftype="platform" data-fval="LinkedIn">LinkedIn</button>
+      <button class="filter-btn" data-ftype="platform" data-fval="YouTube">YouTube</button>
+    </div>
+    <div class="filter-row">
+      <span class="filter-group-label">Pillar</span>
+      <button class="filter-btn active" data-ftype="pillar" data-fval="all">All</button>
+      <button class="filter-btn" data-ftype="pillar" data-fval="Education">Education</button>
+      <button class="filter-btn" data-ftype="pillar" data-fval="Proof">Proof</button>
+      <button class="filter-btn" data-ftype="pillar" data-fval="Behind the Scenes">Behind the Scenes</button>
+      <button class="filter-btn" data-ftype="pillar" data-fval="Culture">Culture</button>
+      <button class="filter-btn" data-ftype="pillar" data-fval="Industry">Industry</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ MAIN CONTENT ══════════════════════════════ -->
+<main class="main" id="main"></main>
+
+<script>
+// ╔══════════════════════════════════════════════════════════════╗
+// ║  COPY BANK                                                   ║
+// ╚══════════════════════════════════════════════════════════════╝
+const COPY = {
+  'IG-EDU-01': {
+    body: `Nobody told you this in music school.
+
+Sync licensing is how your music gets placed in film, TV, ads, and games — and how you get paid for it.
+
+Every time you hear a track in a Netflix scene, a brand campaign, or a documentary: that's a sync placement.
+
+Here's the basic model:
+
+→ A production needs music
+→ A music supervisor finds a track that fits
+→ The composer (or rights holder) grants a licence
+→ Money changes hands. Upfront.
+
+No streaming splits. No label taking 80%.
+One placement can earn more than six months on Spotify.
+
+And you keep your rights.
+
+That's sync licensing. That's the market most African composers haven't been properly introduced to.
+
+SyncMaster is changing that.
+
+Follow for weekly education on how sync actually works — and how to position yourself for it.
+
+#SyncLicensing #AfricanComposers #MusicBusiness #SyncMaster #FilmMusic`,
+    cta: 'Follow for weekly sync education. Save this post.'
+  },
+  'IG-EDU-02': {
+    body: `A Lagos composer just earned more from one Netflix scene than from 6 months of streaming royalties.
+
+This isn't a flex. It's a data point.
+
+Here's what sync placements actually pay:
+
+📺 TV (major network, 30s): $2,000 – $8,000
+🎬 Feature film (indie): $5,000 – $15,000+
+📱 Ad campaign (global): $10,000 – $75,000+
+🎮 Video game (AAA title): $5,000 – $20,000+
+
+These are licensing fees — paid upfront, before the production airs.
+
+You also earn performance royalties every time the content plays.
+
+Streaming pays fractions of a cent per stream.
+Sync pays real money, once.
+
+The market exists. The demand for fresh, authentic sounds is real.
+What's missing is the infrastructure connecting African composers to it.
+
+That's what we're building.
+
+#SyncPay #SyncLicensing #MusicMoney #AfricanComposers #SyncMaster`,
+    cta: 'Save this. Then ask yourself: is your music sync-ready?'
+  },
+  'IG-EDU-03': {
+    body: `Two licences. One placement. Most composers only know about one.
+
+When your music lands a sync deal, two licences are required:
+
+🔑 THE SYNC LICENCE
+Permission to pair your composition with visual content.
+Controlled by the publisher — or you, if you self-publish.
+
+🔑 THE MASTER LICENCE
+Permission to use the specific recording of the track.
+Controlled by whoever owns the master — often the label, or you if you recorded independently.
+
+One placement = two separate deals.
+
+Most streaming conversations only talk about the master.
+Most composer conversations only talk about the sync.
+
+If you control both? You're in a much stronger position.
+If a label controls your master? They share in every sync deal.
+
+"One-stop" means one entity controls both licences.
+Music supervisors LOVE one-stop tracks — it removes friction from the deal.
+
+Know your splits. Know your rights.
+
+#MasterLicence #SyncLicence #MusicRights #AfricanComposers #SyncMaster`,
+    cta: 'Do you know who controls your master? Drop a comment.'
+  },
+  'IG-EDU-04': {
+    body: `You're not pitching to a label A&R.
+
+A music supervisor's job is completely different — and most composers pitch to them the wrong way.
+
+What a supervisor actually does:
+
+→ Reads a brief (mood, tempo, instrumentation, duration, budget)
+→ Searches their library for tracks that fit
+→ Narrows it to 5–10 candidates
+→ Pitches to the director or creative team
+→ Handles the licensing and clearances
+
+What they need from you:
+✓ Clean rights (no samples, cleared masters)
+✓ Proper metadata (BPM, key, mood tags)
+✓ High-quality WAV files
+✓ Stems available if possible
+✓ Quick response time
+
+What they do NOT need:
+✗ Your life story
+✗ A SoundCloud link
+✗ A 3-paragraph email
+
+They are not discovering new artists.
+They are solving a brief.
+
+Position yourself as the solution, not the hopeful.
+
+#MusicSupervisor #SyncPitch #AfricanComposers #MusicBusiness #SyncMaster`,
+    cta: 'Is your submission package supervisor-ready?'
+  },
+  'IG-EDU-05': {
+    body: `Sending a SoundCloud link to a music supervisor is like sending a screenshot of your CV to a hiring manager.
+
+It tells them you exist. It tells them nothing useful.
+
+Here's what a supervisor actually needs:
+
+✓ High-quality WAV or AIFF (not a lossy stream)
+✓ Proper file naming (Artist_TrackName_BPM_Key.wav)
+✓ Embedded metadata (title, composer, ISRC, mood, genre)
+✓ One-stop clearance status (or clear rights chain)
+✓ Stems available on request
+✓ Quick turnaround when they follow up
+
+SoundCloud tells them:
+→ The track exists
+→ You have a profile
+
+That's not enough to move forward.
+
+If you want sync placements, you need a professional submission package. Not a public link.
+
+SyncMaster vets composers and prepares their catalogues for exactly this.
+
+#SyncReady #MusicSubmission #AfricanComposers #MusicBusiness #SyncMaster`,
+    cta: 'Is your catalogue in sync-ready format? Let us know in the comments.'
+  },
+  'IG-EDU-06': {
+    body: `The brief said:
+90 seconds. Orchestral. Afrofusion influence. Hopeful. No vocals. One-stop only.
+
+Let's break that down — because every word in a sync brief matters.
+
+⏱ DURATION: 90 seconds
+Not 1:32. Not 1:45. The edit is locked. They need it to fit.
+
+🎻 INSTRUMENTATION: Orchestral
+Real strings or a convincing orchestral arrangement. Not bedroom electronic.
+
+🌍 INFLUENCE: Afrofusion
+They want the African sound — in a context that works with orchestral texture. Tonal, rhythmic, not pastiche.
+
+😌 MOOD: Hopeful
+Not happy. Not triumphant. Hopeful. The distinction matters for the picture.
+
+🚫 NO VOCALS
+Even background vocals are likely off the table. Fully instrumental.
+
+✅ ONE-STOP ONLY
+They will not chase two rights holders. You must own both master and publishing.
+
+Reading a brief correctly is half the job.
+The other half is having the right track — or knowing how to make it.
+
+#SyncBrief #MusicSupervisor #SyncLicensing #AfricanComposers #SyncMaster`,
+    cta: 'Save this for when your first brief arrives.'
+  },
+  'IG-EDU-07': {
+    body: `It's not your sound. Here are the actual reasons African composers get passed over.
+
+1. SAMPLES WITH NO CLEARANCE
+Uncleared samples make a track legally untouchable. Supervisors won't risk it.
+
+2. SPLIT RIGHTS
+If your label controls your master and you control publishing, the supervisor has to negotiate two deals. Most won't bother.
+
+3. NO METADATA
+A track with no BPM, no mood tags, no ISRC, no composer info cannot be properly catalogued. It disappears.
+
+4. WRONG FILE FORMAT
+MP3 links don't cut it. Supervisors need lossless files. They need stems. They need it fast.
+
+5. NO RESPONSE TIME
+If a supervisor emails you about a brief and you respond in 3 days, you've lost the placement. This moves fast.
+
+None of these are about the music.
+All of them are fixable.
+
+SyncMaster exists to fix exactly this — vetting composers, preparing catalogues, and removing the friction between African music and global screens.
+
+#SyncReady #MusicRejection #AfricanComposers #SyncMaster #MusicBusiness`,
+    cta: 'Which one have you run into? Comment below.'
+  },
+  'IG-EDU-08': {
+    body: `Your track has no ISRC code?
+That's the first thing we fix.
+
+ISRC stands for International Standard Recording Code.
+It's a unique identifier assigned to each individual recording.
+
+Think of it like a barcode for your music.
+
+Why it matters for sync:
+→ It identifies your recording in licensing databases
+→ It links your track to royalty collection societies (SAMRO, SOCAN, PRS, ASCAP, etc.)
+→ Without it, performance royalties from a placement can't be properly tracked or paid to you
+
+How to get one:
+→ Contact your local music industry body (RISA in SA, COSON in Nigeria, etc.)
+→ Or register through a digital distributor (DistroKid, TuneCore, CD Baby)
+→ Once assigned, it stays with that recording permanently
+
+Every track in the SyncMaster catalogue has an ISRC.
+Every composer we work with gets their rights metadata in order before we pitch a single track.
+
+Details matter in sync.
+
+#ISRC #MusicRights #SyncReady #AfricanComposers #SyncMaster #MusicMetadata`,
+    cta: 'Do your tracks have ISRCs? If not, let\'s talk. Link in bio.'
+  },
+  'IG-PROOF-01': {
+    body: `No label. No agent. No prior placement.
+
+Just clean rights, a brief-matched track, and infrastructure that actually worked.
+
+A South African composer submitted to SyncMaster's vetting programme in our first month.
+
+His catalogue was strong. His rights were clean. His metadata was in order.
+
+Three weeks later: a Showmax production brief arrived. His track matched.
+
+He got the placement.
+
+This is what happens when the infrastructure is in place.
+The talent was already there.
+
+SyncMaster didn't discover him. We connected him.
+
+That's the model.
+
+#SyncPlacement #AfricanComposers #Showmax #SyncMaster #MusicBusiness`,
+    cta: 'If you\'re a composer with clean rights, applications are open. Link in bio.'
+  },
+  'IG-PROOF-02': {
+    body: `A production company sent us a brief on Monday morning.
+
+By Wednesday afternoon, they had 5 curated tracks.
+
+All cleared. All brief-matched. All from African composers.
+
+Here's what that turnaround actually required:
+
+→ A vetted catalogue (built before the brief arrived)
+→ Proper mood and instrumentation tagging
+→ Rights status confirmed for every track
+→ A team that moves fast
+
+Most sync intermediaries take days to weeks to respond to a brief.
+We moved in 48 hours.
+
+Speed matters in sync. Productions wait for no one.
+
+This is what infrastructure looks like.
+
+#SyncCuration #AfricanMusic #MusicSupervisor #SyncMaster #48Hours`,
+    cta: 'Got a brief? Let\'s talk. DM or link in bio.'
+  },
+  'IG-PROOF-03': {
+    body: `Composer. Lagos-based. No representation. No prior placement.
+
+Until now.
+
+He's been making music for 7 years.
+Afrofusion, orchestral influence, strong melodic instinct.
+His rights were clean. His catalogue was organised.
+He just needed the door to open.
+
+SyncMaster ran his tracks through our vetting process.
+Cleaned the metadata. Confirmed the rights chain. Tagged for sync suitability.
+
+Two weeks after onboarding: a brief came in.
+His track matched. He got the placement.
+
+He didn't change his sound.
+He didn't get a label deal.
+He got the infrastructure he needed.
+
+This is what we're building for.
+
+#ComposerSpotlight #AfricanComposers #SyncPlacement #SyncMaster #Lagos`,
+    cta: 'Tag a composer who needs to know about this.'
+  },
+  'IG-PROOF-04': {
+    body: `20 applications. 6 vetted.
+
+Here's what we look for.
+
+We don't just accept everyone who applies. We can't — because our credibility with music supervisors depends on the quality of what we pitch.
+
+The vetting checklist:
+
+✓ Original compositions (no uncleared samples)
+✓ Clean rights chain (master and publishing confirmed)
+✓ High-quality recordings (lossless files available)
+✓ ISRC codes assigned
+✓ Willingness to provide stems on request
+✓ Professional response time
+
+Of 20 applications in month one, 6 passed all criteria.
+
+That's not a high rejection rate. That's a high standard.
+
+The 14 who didn't make it this time received specific feedback. Most gaps are fixable.
+
+Quality over volume. Every time.
+
+#ComposerVetting #SyncReady #AfricanComposers #SyncMaster #MusicQuality`,
+    cta: 'Think you\'re sync-ready? Applications are open. Link in bio.'
+  },
+  'IG-PROOF-05': {
+    body: `PLACEMENT CONFIRMED.
+
+African music. Global screen. Clean rights.
+
+A SyncMaster composer just landed a placement in an international production.
+
+Track: original composition
+Composer: African, independent, no label
+Rights: one-stop, fully cleared
+Turnaround: 11 days from brief to confirmed placement
+
+This is the proof of concept.
+
+The talent exists. The music is world-class.
+What was missing was the infrastructure to move it.
+
+We're one month in. This is just the beginning.
+
+#SyncPlacement #AfricanComposers #SyncMaster #MusicBusiness #ProofOfConcept`,
+    cta: 'Follow to see where this goes. More placements incoming.'
+  },
+  'THREAD-01': {
+    body: `Most African composers are one sync placement away from a career-defining moment.
+
+Opening tweet — full thread continues in copy bank.
+
+[Full thread — 7 tweets. View copy bank for complete text.]`,
+    cta: null
+  },
+  'THREAD-02': {
+    body: `Afrobeats is in every major global ad campaign. The composers getting paid for it are mostly not African.
+
+Opening tweet — full thread continues in copy bank.
+
+[Full thread — 7 tweets. View copy bank for complete text.]`,
+    cta: null
+  },
+  'THREAD-03': {
+    body: `A music supervisor doesn't listen to your track the way you do.
+
+Opening tweet — full thread continues in copy bank.
+
+[Full thread — 7 tweets. View copy bank for complete text.]`,
+    cta: null
+  },
+  'THREAD-04': {
+    body: `The music supervisor didn't reject your track because it wasn't good.
+
+Opening tweet — full thread continues in copy bank.
+
+[Full thread — 7 tweets. View copy bank for complete text.]`,
+    cta: null
+  },
+  'THREAD-05': {
+    body: `Afrobeats isn't a trend. It's a reference point for a generation of global productions.
+
+Opening tweet — full thread continues in copy bank.
+
+[Full thread — 7 tweets. View copy bank for complete text.]`,
+    cta: null
+  },
+  'THREAD-06': {
+    body: `PLACED. African music. Global screen. Clean rights.
+
+[Full copy to be written]`,
+    cta: null
+  },
+  'LI-EDU-01': {
+    body: `The global sync market is worth over $500M annually. African music has a fraction of the representation it deserves.
+
+[Full copy to be written — hook above]`,
+    cta: null
+  },
+  'LI-PROOF-01': {
+    body: `A production company sent us a brief on Monday morning. By Wednesday afternoon, they had 5 curated tracks.
+
+[Full copy to be written — hook above]`,
+    cta: null
+  },
+  'LI-CULTURE-01': {
+    body: `There's a reason the biggest ad campaigns of the last three years sound the way they do.
+
+[Full copy to be written — hook above]`,
+    cta: null
+  },
+  'LI-INDUSTRY-01': {
+    body: `The infrastructure gap between African composers and global sync supervisors is not a talent problem.
+
+[Full copy to be written — hook above]`,
+    cta: null
+  },
+  'YT-01': {
+    body: `Most sync platforms weren't built with African composers in mind.
+
+[Full copy to be written — hook above]`,
+    cta: null
+  },
+  'YT-02': {
+    body: `Let's walk through a real sync brief — what every field means and how to respond to it.
+
+[Full copy to be written — hook above]`,
+    cta: null
+  },
+  'YT-03': {
+    body: `He had no label, no agent, no prior placement. He had clean rights and a brief-matched track.
+
+[Full copy to be written — hook above]`,
+    cta: null
+  },
+  'IG-BTS-01': {
+    body: `20 applications. 6 vetted. Here's what we look for.
+
+[Full copy to be written — hook above]`,
+    cta: null
+  },
+  'IG-BTS-02': {
+    body: `One month. Here's what we built.
+
+[Full copy to be written — hook above]`,
+    cta: null
+  },
+};
+
+// ╔══════════════════════════════════════════════════════════════╗
+// ║  POST DATA                                                   ║
+// ╚══════════════════════════════════════════════════════════════╝
+const POSTS = [
+  // ── WEEK 1 ──
+  { id:'IG-EDU-01',   platform:'Instagram', pillar:'Education',       topic:'What is sync licensing?',                              persona:'Tunde', hook:'Nobody told you this in music school.',                                                                                   week:1 },
+  { id:'IG-EDU-02',   platform:'Instagram', pillar:'Education',       topic:'What does a sync placement actually pay?',             persona:'Tunde', hook:'A Lagos composer just earned more from one Netflix scene than from 6 months of streaming royalties.',                    week:1 },
+  { id:'THREAD-01',   platform:'Twitter/X', pillar:'Education',       topic:'Sync licensing explained for composers',               persona:'Tunde', hook:'Most African composers are one sync placement away from a career-defining moment.',                                       week:1 },
+  { id:'LI-EDU-01',   platform:'LinkedIn',  pillar:'Education',       topic:'The global sync market and Africa\'s access gap',      persona:'Amara', hook:'The global sync market is worth over $500M annually. African music has a fraction of the representation it deserves.',  week:1 },
+  { id:'YT-01',       platform:'YouTube',   pillar:'Behind the Scenes',topic:'Why we\'re building SyncMaster',                     persona:'Both',  hook:'Most sync platforms weren\'t built with African composers in mind.',                                                     week:1 },
+  { id:'IG-PROOF-01', platform:'Instagram', pillar:'Proof',           topic:'SA composer → Showmax placement',                     persona:'Both',  hook:'No label. No agent. No prior placement.',                                                                                week:1 },
+  { id:'THREAD-02',   platform:'Twitter/X', pillar:'Education',       topic:'Why African music is underrepresented globally',       persona:'Both',  hook:'Afrobeats is in every major global ad campaign. The composers getting paid for it are mostly not African.',              week:1 },
+  // ── WEEK 2 ──
+  { id:'IG-EDU-03',   platform:'Instagram', pillar:'Education',       topic:'Master vs sync licence',                               persona:'Tunde', hook:'Two licences. One placement. Most composers only know about one.',                                                        week:2 },
+  { id:'IG-EDU-04',   platform:'Instagram', pillar:'Education',       topic:'What a music supervisor actually does',                persona:'Tunde', hook:'You\'re not pitching to a label A&R.',                                                                                  week:2 },
+  { id:'THREAD-03',   platform:'Twitter/X', pillar:'Education',       topic:'What a supervisor looks for in submissions',           persona:'Tunde', hook:'A music supervisor doesn\'t listen to your track the way you do.',                                                      week:2 },
+  { id:'LI-PROOF-01', platform:'LinkedIn',  pillar:'Proof',           topic:'48-hour curation turnaround story',                   persona:'Amara', hook:'A production company sent us a brief on Monday morning. By Wednesday afternoon, they had 5 curated tracks.',            week:2 },
+  { id:'IG-PROOF-02', platform:'Instagram', pillar:'Proof',           topic:'48-hour curation turnaround',                         persona:'Amara', hook:'A production company sent us a brief on Monday morning.',                                                               week:2 },
+  { id:'IG-BTS-01',   platform:'Instagram', pillar:'Behind the Scenes',topic:'How vetting works',                                  persona:'Both',  hook:'20 applications. 6 vetted. Here\'s what we look for.',                                                                  week:2 },
+  { id:'THREAD-04',   platform:'Twitter/X', pillar:'Education',       topic:'Rights clearance basics — what sync-ready means',     persona:'Tunde', hook:'The music supervisor didn\'t reject your track because it wasn\'t good.',                                               week:2 },
+  // ── WEEK 3 ──
+  { id:'IG-EDU-05',   platform:'Instagram', pillar:'Education',       topic:'Why your SoundCloud link isn\'t enough',               persona:'Tunde', hook:'Sending a SoundCloud link to a music supervisor is like sending a screenshot of your CV to a hiring manager.',          week:3 },
+  { id:'IG-EDU-06',   platform:'Instagram', pillar:'Education',       topic:'Anatomy of a sync brief',                             persona:'Tunde', hook:'The brief said: 90 seconds. Orchestral. Afrofusion influence. Hopeful. No vocals. One-stop only.',                      week:3 },
+  { id:'THREAD-05',   platform:'Twitter/X', pillar:'Culture',         topic:'The African sound and global screens',                 persona:'Both',  hook:'Afrobeats isn\'t a trend. It\'s a reference point for a generation of global productions.',                            week:3 },
+  { id:'LI-CULTURE-01',platform:'LinkedIn', pillar:'Culture',         topic:'Africa\'s sonic identity in global production',       persona:'Amara', hook:'There\'s a reason the biggest ad campaigns of the last three years sound the way they do.',                             week:3 },
+  { id:'IG-PROOF-03', platform:'Instagram', pillar:'Proof',           topic:'Composer spotlight format',                           persona:'Tunde', hook:'Composer. Lagos-based. No representation. No prior placement.',                                                          week:3 },
+  { id:'IG-PROOF-04', platform:'Instagram', pillar:'Proof',           topic:'The vetting milestone',                               persona:'Both',  hook:'20 applications. 6 vetted. Here\'s what we look for.',                                                                  week:3 },
+  { id:'YT-02',       platform:'YouTube',   pillar:'Education',       topic:'Sync brief walkthrough',                              persona:'Tunde', hook:'Let\'s walk through a real sync brief — what every field means and how to respond to it.',                               week:3 },
+  // ── WEEK 4 ──
+  { id:'IG-EDU-07',   platform:'Instagram', pillar:'Education',       topic:'5 reasons African music gets rejected',               persona:'Tunde', hook:'It\'s not your sound. Here are the actual reasons African composers get passed over.',                                   week:4 },
+  { id:'IG-EDU-08',   platform:'Instagram', pillar:'Education',       topic:'ISRC codes explained',                               persona:'Tunde', hook:'Your track has no ISRC code? That\'s the first thing we fix.',                                                           week:4 },
+  { id:'THREAD-06',   platform:'Twitter/X', pillar:'Proof',           topic:'Placement announcement thread',                      persona:'Both',  hook:'PLACED. African music. Global screen. Clean rights.',                                                                    week:4 },
+  { id:'LI-INDUSTRY-01',platform:'LinkedIn',pillar:'Industry',        topic:'Why global supervisors are missing Africa\'s best composers', persona:'Amara', hook:'The infrastructure gap between African composers and global sync supervisors is not a talent problem.',          week:4 },
+  { id:'IG-PROOF-05', platform:'Instagram', pillar:'Proof',           topic:'Placement announcement format',                      persona:'Both',  hook:'PLACEMENT CONFIRMED. African music. Global screen. Clean rights.',                                                       week:4 },
+  { id:'IG-BTS-02',   platform:'Instagram', pillar:'Behind the Scenes',topic:'Month 1 in numbers',                                persona:'Both',  hook:'One month. Here\'s what we built.',                                                                                     week:4 },
+  { id:'YT-03',       platform:'YouTube',   pillar:'Proof',           topic:'SA Composer Spotlight — Showmax',                    persona:'Both',  hook:'He had no label, no agent, no prior placement. He had clean rights and a brief-matched track.',                          week:4 },
+];
+
+// ╔══════════════════════════════════════════════════════════════╗
+// ║  STATE                                                       ║
+// ╚══════════════════════════════════════════════════════════════╝
+const STORAGE_KEY = 'syncmaster_cal_v1';
+let statuses = {};
+let activePlatform = 'all';
+let activePillar   = 'all';
+
+function loadStatuses() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) statuses = JSON.parse(saved);
+  } catch (_) {}
+  POSTS.forEach(p => { if (!statuses[p.id]) statuses[p.id] = 'idea'; });
+}
+
+function saveStatuses() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(statuses)); } catch (_) {}
+}
+
+// ╔══════════════════════════════════════════════════════════════╗
+// ║  HELPERS                                                     ║
+// ╚══════════════════════════════════════════════════════════════╝
+const PLATFORM_CLASS = { 'Instagram':'instagram','Twitter/X':'twitter','LinkedIn':'linkedin','YouTube':'youtube' };
+const PILLAR_CLASS   = { 'Education':'education','Proof':'proof','Behind the Scenes':'bts','Culture':'culture','Industry':'industry' };
+
+function esc(str) {
+  return String(str)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+
+function isVisible(post) {
+  return (activePlatform === 'all' || post.platform === activePlatform) &&
+         (activePillar   === 'all' || post.pillar   === activePillar);
+}
+
+// ╔══════════════════════════════════════════════════════════════╗
+// ║  PROGRESS                                                    ║
+// ╚══════════════════════════════════════════════════════════════╝
+function updateProgress() {
+  const posted = POSTS.filter(p => statuses[p.id] === 'posted').length;
+  const pct = Math.round((posted / POSTS.length) * 100);
+  document.getElementById('progress-posted').textContent = posted;
+  document.getElementById('progress-pct').textContent    = pct + '%';
+  document.getElementById('progress-fill').style.width   = pct + '%';
+}
+
+// ╔══════════════════════════════════════════════════════════════╗
+// ║  CARD BUILDER                                                ║
+// ╚══════════════════════════════════════════════════════════════╝
+function buildCard(post) {
+  const status  = statuses[post.id] || 'idea';
+  const copy    = COPY[post.id] || { body: '[Copy not yet added]', cta: null };
+  const pClass  = PLATFORM_CLASS[post.platform] || 'instagram';
+  const pillarK = PILLAR_CLASS[post.pillar]     || 'education';
+
+  const card = document.createElement('div');
+  card.className = 'card' + (isVisible(post) ? '' : ' hidden');
+  card.dataset.id       = post.id;
+  card.dataset.status   = status;
+  card.dataset.platform = post.platform;
+  card.dataset.pillar   = post.pillar;
+
+  const isPlaceholder = copy.body.includes('[Full') || copy.body.includes('[Full copy to be written');
+
+  card.innerHTML = `
+    <div class="card-body">
+      <div class="card-top">
+        <span class="platform-badge badge-${pClass}">${esc(post.platform)}</span>
+        <span class="pillar-chip pillar-${pillarK}">${esc(post.pillar)}</span>
+      </div>
+      <div class="post-id">${esc(post.id)}</div>
+      <div class="card-title">${esc(post.topic)}</div>
+      <div class="card-hook">${esc(post.hook)}</div>
+      <div class="card-persona">Target: <span>${esc(post.persona)}</span></div>
+    </div>
+    <div class="card-footer">
+      <select class="status-select" data-id="${esc(post.id)}" data-status="${status}" aria-label="Status for ${esc(post.id)}">
+        <option value="idea"${status==='idea'?' selected':''}>💡 Idea</option>
+        <option value="draft"${status==='draft'?' selected':''}>✏️ Draft</option>
+        <option value="designed"${status==='designed'?' selected':''}>🎨 Designed</option>
+        <option value="scheduled"${status==='scheduled'?' selected':''}>📅 Scheduled</option>
+        <option value="posted"${status==='posted'?' selected':''}>✅ Posted</option>
+      </select>
+      <button class="view-copy-btn" data-id="${esc(post.id)}" aria-expanded="false">View copy</button>
+    </div>
+    <div class="copy-panel" id="copy-${esc(post.id)}" role="region" aria-label="Copy for ${esc(post.id)}">
+      ${isPlaceholder
+        ? `<div class="copy-placeholder">${esc(copy.body)}</div>`
+        : `<div class="copy-text">${esc(copy.body)}</div>`}
+      ${copy.cta ? `<div class="copy-cta">↳ CTA: ${esc(copy.cta)}</div>` : ''}
+    </div>
+  `;
+
+  // Status change
+  card.querySelector('.status-select').addEventListener('change', e => {
+    const s = e.target.value;
+    statuses[post.id] = s;
+    saveStatuses();
+    card.dataset.status    = s;
+    e.target.dataset.status = s;
+    updateProgress();
+  });
+
+  // Copy panel toggle
+  card.querySelector('.view-copy-btn').addEventListener('click', e => {
+    const btn   = e.currentTarget;
+    const panel = document.getElementById('copy-' + post.id);
+    const open  = panel.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.textContent   = open ? 'Hide copy' : 'View copy';
+    btn.setAttribute('aria-expanded', open);
+  });
+
+  return card;
+}
+
+// ╔══════════════════════════════════════════════════════════════╗
+// ║  RENDER CALENDAR                                             ║
+// ╚══════════════════════════════════════════════════════════════╝
+function renderCalendar() {
+  const main = document.getElementById('main');
+  main.innerHTML = '';
+
+  [1, 2, 3, 4].forEach(week => {
+    const weekPosts = POSTS.filter(p => p.week === week);
+
+    const section = document.createElement('section');
+    section.className = 'week-section';
+    section.dataset.week = week;
+
+    const visCount = weekPosts.filter(p => isVisible(p)).length;
+
+    section.innerHTML = `
+      <div class="week-header">
+        <div class="week-label">Week ${week}</div>
+        <div class="week-divider"></div>
+        <div class="week-count-badge" id="wk-count-${week}">${weekPosts.length} posts</div>
+      </div>
+      <div class="cards-grid" id="grid-${week}"></div>
+    `;
+    main.appendChild(section);
+
+    const grid = section.querySelector(`#grid-${week}`);
+    weekPosts.forEach(post => grid.appendChild(buildCard(post)));
+  });
+
+  updateProgress();
+}
+
+// ╔══════════════════════════════════════════════════════════════╗
+// ║  FILTER LOGIC                                                ║
+// ╚══════════════════════════════════════════════════════════════╝
+function applyFilters() {
+  document.querySelectorAll('.card').forEach(card => {
+    const platOk   = activePlatform === 'all' || card.dataset.platform === activePlatform;
+    const pillarOk = activePillar   === 'all' || card.dataset.pillar   === activePillar;
+    card.classList.toggle('hidden', !(platOk && pillarOk));
+  });
+
+  [1, 2, 3, 4].forEach(w => {
+    const grid = document.getElementById('grid-' + w);
+    if (!grid) return;
+    const visible = grid.querySelectorAll('.card:not(.hidden)').length;
+    const countEl = document.getElementById('wk-count-' + w);
+    if (countEl) countEl.textContent = visible === 0 ? 'No posts match' : visible + ' post' + (visible !== 1 ? 's' : '');
+  });
+}
+
+// Wire filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const type = btn.dataset.ftype;
+    const val  = btn.dataset.fval;
+
+    if (type === 'platform') {
+      activePlatform = val;
+      document.querySelectorAll('[data-ftype="platform"]').forEach(b =>
+        b.classList.toggle('active', b.dataset.fval === val));
+    } else {
+      activePillar = val;
+      document.querySelectorAll('[data-ftype="pillar"]').forEach(b =>
+        b.classList.toggle('active', b.dataset.fval === val));
+    }
+
+    applyFilters();
+  });
+});
+
+// ╔══════════════════════════════════════════════════════════════╗
+// ║  BOOT                                                        ║
+// ╚══════════════════════════════════════════════════════════════╝
+loadStatuses();
+renderCalendar();
+</script>
+</body>
+</html>
