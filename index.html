@@ -25,6 +25,7 @@
     --ease: cubic-bezier(0.4, 0, 0.2, 1);
     --t: 0.35s;
 
+    --navbar-h: 36px;
     --topbar-h: 56px;
     --bottombar-h: 44px;
 
@@ -76,10 +77,92 @@
     height: 250%;
   }
 
+  /* ---------------- Site Nav Bar ---------------- */
+  #siteNav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--navbar-h);
+    z-index: 10001;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 0 24px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    font-family: var(--body);
+  }
+  .snav-brand {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    flex-shrink: 0;
+    margin-right: 20px;
+    font-feature-settings: "ss01";
+  }
+  .snav-divider {
+    width: 1px;
+    height: 16px;
+    background: var(--border);
+    margin-right: 20px;
+    flex-shrink: 0;
+  }
+  .snav-items {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .snav-items::-webkit-scrollbar { display: none; }
+  .snav-item {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 12px;
+    height: var(--navbar-h);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s var(--ease);
+    cursor: pointer;
+    user-select: none;
+  }
+  a.snav-item:hover { color: var(--white); }
+  a.snav-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 12px; right: 12px;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.2s var(--ease);
+  }
+  a.snav-item:hover::after { transform: scaleX(0.5); }
+  a.snav-item.active { color: var(--white); }
+  a.snav-item.active::after { transform: scaleX(1); }
+  .snav-item.snav-soon { color: #3a3a4a; cursor: not-allowed; }
+  .snav-badge {
+    font-size: 8px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: #3a3a4a;
+    border: 1px solid #2a2a38;
+    border-radius: 2px;
+    padding: 1px 4px;
+    line-height: 1.4;
+  }
+
   /* ---------------- Top Bar ---------------- */
   .topbar {
     position: fixed;
-    top: 0; left: 0; right: 0;
+    top: var(--navbar-h); left: 0; right: 0;
     height: var(--topbar-h);
     z-index: 100;
     display: grid;
@@ -93,7 +176,7 @@
   }
   .topbar-haze {
     position: fixed;
-    top: var(--topbar-h);
+    top: calc(var(--navbar-h) + var(--topbar-h));
     left: 0; right: 0;
     height: 40px;
     pointer-events: none;
@@ -225,7 +308,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: var(--topbar-h) 80px var(--bottombar-h);
+    padding: calc(var(--navbar-h) + var(--topbar-h)) 80px var(--bottombar-h);
     overflow: hidden;
   }
   .slide-inner {
@@ -545,7 +628,7 @@
 
   /* ---------------- Slide 02 — Canvas ---------------- */
   .slide-canvas {
-    padding-top: calc(var(--topbar-h) + 40px);
+    padding-top: calc(var(--navbar-h) + var(--topbar-h) + 40px);
     padding-bottom: calc(var(--bottombar-h) + 4px);
   }
   .slide-canvas .slide-inner {
@@ -748,7 +831,7 @@
 
   /* ---------------- Slide 03 — Roadmap ---------------- */
   .slide-roadmap {
-    padding-top: calc(var(--topbar-h) + 32px);
+    padding-top: calc(var(--navbar-h) + var(--topbar-h) + 32px);
     padding-bottom: calc(var(--bottombar-h) + 4px);
   }
   .slide-roadmap .slide-inner {
@@ -1119,7 +1202,7 @@
   @media (max-width: 900px) {
     html { scroll-snap-type: none; }
     .slide {
-      padding: calc(var(--topbar-h) + 24px) 24px calc(var(--bottombar-h) + 16px);
+      padding: calc(var(--navbar-h) + var(--topbar-h) + 24px) 24px calc(var(--bottombar-h) + 16px);
       height: auto;
       min-height: 100vh;
       scroll-snap-align: none;
@@ -1140,7 +1223,7 @@
     .scroll-cue { display: none; }
 
     /* Slide 2 — cells size to content, no equal-row constraint */
-    .slide-canvas .slide-inner { gap: 16px; height: auto; min-height: calc(100vh - var(--topbar-h) - var(--bottombar-h) - 56px); }
+    .slide-canvas .slide-inner { gap: 16px; height: auto; min-height: calc(100vh - var(--navbar-h) - var(--topbar-h) - var(--bottombar-h) - 56px); }
     .canvas-head { flex-direction: column; align-items: flex-start; }
     .canvas-head .sub { text-align: left; max-width: none; }
     .canvas {
@@ -1204,13 +1287,13 @@
     .slide {
       height: auto;
       min-height: 100vh;
-      padding-top: calc(var(--topbar-h) + 24px);
+      padding-top: calc(var(--navbar-h) + var(--topbar-h) + 24px);
       padding-bottom: calc(var(--bottombar-h) + 12px);
     }
     .slide-canvas .slide-inner,
     .slide-roadmap .slide-inner {
       height: auto;
-      min-height: calc(100vh - var(--topbar-h) - var(--bottombar-h) - 40px);
+      min-height: calc(100vh - var(--navbar-h) - var(--topbar-h) - var(--bottombar-h) - 40px);
     }
   }
 
@@ -1258,7 +1341,7 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
     position: sticky;
-    top: calc(var(--topbar-h) + 8px);
+    top: calc(var(--navbar-h) + var(--topbar-h) + 8px);
     z-index: 4;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -1606,7 +1689,7 @@
   }
   @media (max-width: 900px) {
     .slide-execution {
-      padding: calc(var(--topbar-h) + 24px) 24px calc(var(--bottombar-h) + 16px);
+      padding: calc(var(--navbar-h) + var(--topbar-h) + 24px) 24px calc(var(--bottombar-h) + 16px);
       overflow-y: visible;
       height: auto;
     }
@@ -1629,6 +1712,20 @@
 </style>
 </head>
 <body>
+
+<!-- Site Nav Bar -->
+<nav id="siteNav" role="navigation" aria-label="Site navigation">
+  <div class="snav-brand">SYNCMASTER</div>
+  <div class="snav-divider" aria-hidden="true"></div>
+  <div class="snav-items">
+    <a href="/" class="snav-item" data-page="index">Strategy Deck</a>
+    <a href="/content-pillars.html" class="snav-item" data-page="content-pillars">Content Pillars</a>
+    <span class="snav-item snav-soon">Outreach System <span class="snav-badge">SOON</span></span>
+    <span class="snav-item snav-soon">Playbooks <span class="snav-badge">SOON</span></span>
+    <span class="snav-item snav-soon">Measurement <span class="snav-badge">SOON</span></span>
+    <span class="snav-item snav-soon">Growth Loops <span class="snav-badge">SOON</span></span>
+  </div>
+</nav>
 
 <!-- Grain overlay -->
 <div class="grain" aria-hidden="true"></div>
@@ -2579,6 +2676,19 @@ One Netflix sync &gt; 10 Nollywood placements in revenue terms — <em>this is w
       URL.revokeObjectURL(url);
       a.remove();
     }, 0);
+  });
+})();
+</script>
+
+<script>
+/* Site nav — active page highlight */
+(() => {
+  const path = location.pathname.replace(/\/$/, '') || '/';
+  document.querySelectorAll('#siteNav a.snav-item').forEach(a => {
+    const href = a.getAttribute('href').replace(/\/$/, '') || '/';
+    if (path === href || (href === '' && path === '/')) {
+      a.classList.add('active');
+    }
   });
 })();
 </script>
