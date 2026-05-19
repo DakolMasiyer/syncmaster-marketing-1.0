@@ -1,0 +1,358 @@
+{
+  "nodes": [
+    {
+      "id": "calendar-build-plan_content_calendar",
+      "label": "Content Calendar",
+      "file_type": "document",
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "calendar-build-plan_build_plan",
+      "label": "Build Plan",
+      "file_type": "document",
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "calendar-build-plan_gap_analysis",
+      "label": "Gap Analysis",
+      "file_type": "document",
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "calendar-build-plan_content_bank",
+      "label": "Content Bank (Ideas Layer)",
+      "file_type": "document",
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "calendar-build-plan_source_content_module",
+      "label": "Source Content Module",
+      "file_type": "document",
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "calendar-build-plan_repurposing_engine",
+      "label": "Repurposing Engine",
+      "file_type": "document",
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "calendar-build-plan_content_calendar_module",
+      "label": "Content Calendar Module",
+      "file_type": "document",
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "calendar-build-plan_standalone_content_module",
+      "label": "Standalone Content Module",
+      "file_type": "document",
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "calendar-build-plan_calendar_logic",
+      "label": "Calendar Logic (packages/lib/calendar.ts)",
+      "file_type": "document",
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "calendar-build-plan_calendar_item",
+      "label": "CalendarItem data model",
+      "file_type": "document",
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "calendar-build-plan_auto_schedule_function",
+      "label": "autoSchedule function",
+      "file_type": "document",
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "calendar-build-plan_schedule_map",
+      "label": "scheduleMap",
+      "file_type": "document",
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "calendar-build-plan_weekly_default_distribution",
+      "label": "Weekly Default Distribution",
+      "file_type": "document",
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "calendar-build-plan_rationale_step1",
+      "label": "Core types and scheduling logic must be built first as they form the foundation for the calendar.",
+      "file_type": "document",
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "calendar-build-plan_rationale_step2",
+      "label": "The Content Bank provides the ideas that feed into the source content and repurposing engines.",
+      "file_type": "document",
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "calendar-build-plan_rationale_step3",
+      "label": "The Source Content Module creates the long-form content that is then repurposed.",
+      "file_type": "document",
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "calendar-build-plan_rationale_step4",
+      "label": "The Repurposing Engine generates platform-specific variations from the source content.",
+      "file_type": "document",
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "calendar-build-plan_rationale_step5",
+      "label": "The Calendar UI allows users to interact with the scheduled content and make adjustments.",
+      "file_type": "document",
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "calendar-build-plan_rationale_step6",
+      "label": "The Standalone Content Module allows for quick posts that are not tied to the idea bank.",
+      "file_type": "document",
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "calendar-build-plan_rationale_step1",
+      "target": "calendar-build-plan_calendar_item",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "calendar-build-plan_rationale_step1",
+      "target": "calendar-build-plan_calendar_logic",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "calendar-build-plan_rationale_step2",
+      "target": "calendar-build-plan_content_bank",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "calendar-build-plan_rationale_step3",
+      "target": "calendar-build-plan_source_content_module",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "calendar-build-plan_rationale_step4",
+      "target": "calendar-build-plan_repurposing_engine",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "calendar-build-plan_rationale_step5",
+      "target": "calendar-build-plan_content_calendar_module",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "calendar-build-plan_rationale_step6",
+      "target": "calendar-build-plan_standalone_content_module",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "calendar-build-plan_content_bank",
+      "target": "calendar-build-plan_source_content_module",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "calendar-build-plan_source_content_module",
+      "target": "calendar-build-plan_repurposing_engine",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "calendar-build-plan_repurposing_engine",
+      "target": "calendar-build-plan_content_calendar_module",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "calendar-build-plan_standalone_content_module",
+      "target": "calendar-build-plan_content_calendar_module",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "calendar-build-plan_calendar_logic",
+      "target": "calendar-build-plan_content_calendar_module",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "calendar-build-plan_calendar_item",
+      "target": "calendar-build-plan_calendar_logic",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "calendar-build-plan_calendar_item",
+      "target": "calendar-build-plan_content_calendar_module",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "calendar-build-plan.md",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}
