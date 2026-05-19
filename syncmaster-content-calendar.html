@@ -71,10 +71,14 @@
     .chip-list { display: flex; flex-direction: column; gap: 2px; flex: 1; overflow: hidden; }
 
     /* ── CHIPS ── */
-    .post-chip { display: flex; align-items: center; gap: 4px; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 500; cursor: pointer; border: none; text-align: left; width: 100%; white-space: nowrap; overflow: hidden; transition: filter 0.15s; }
+    .post-chip { display: flex; align-items; center; gap: 4px; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 500; cursor: pointer; border: none; text-align: left; width: 100%; white-space: nowrap; overflow: hidden; transition: filter 0.15s; border-left: 2px solid transparent; }
     .post-chip:hover { filter: brightness(1.2); }
     .post-chip.chip-hidden { display: none; }
     .chip-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+
+    .post-chip[data-status="todo"]       { border-left-color: var(--muted); }
+    .post-chip[data-status="inprogress"] { border-left-color: var(--gold); }
+    .post-chip[data-status="done"]       { border-left-color: var(--green); opacity: 0.7; }
     .chip-label { overflow: hidden; text-overflow: ellipsis; flex: 1; }
     .chip-instagram { background: rgba(155,114,242,0.16); color: var(--purple); }
     .chip-instagram .chip-dot { background: var(--purple); }
@@ -130,11 +134,9 @@
     .modal-ftr-row { display: flex; align-items: center; gap: 12px; }
     .status-select { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; padding: 6px 22px 6px 9px; border-radius: 6px; border: 1px solid var(--border-2); background: var(--surface-2); color: var(--muted); cursor: pointer; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23787890' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 7px center; transition: border-color 0.18s, color 0.18s; flex: 1; }
     .status-select:focus { outline: none; border-color: var(--gold); }
-    .status-select[data-status="idea"]      { color: var(--muted); }
-    .status-select[data-status="draft"]     { color: var(--teal);   border-color: rgba(56,209,181,0.3); }
-    .status-select[data-status="designed"]  { color: var(--gold);   border-color: rgba(242,201,76,0.3); }
-    .status-select[data-status="scheduled"] { color: var(--purple); border-color: rgba(155,114,242,0.3); }
-    .status-select[data-status="posted"]    { color: var(--green);  border-color: rgba(76,175,128,0.3); }
+    .status-select[data-status="todo"]       { color: var(--muted); }
+    .status-select[data-status="inprogress"] { color: var(--gold);   border-color: rgba(242,201,76,0.3); }
+    .status-select[data-status="done"]       { color: var(--green);  border-color: rgba(76,175,128,0.3); }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
@@ -234,11 +236,9 @@
         <div style="flex:1">
           <div class="modal-field-label">Status</div>
           <select class="status-select" id="modal-status">
-            <option value="idea">💡 Idea</option>
-            <option value="draft">✏️ Draft</option>
-            <option value="designed">🎨 Designed</option>
-            <option value="scheduled">📅 Scheduled</option>
-            <option value="posted">✅ Posted</option>
+            <option value="todo">○ To Do</option>
+            <option value="inprogress">◐ In Progress</option>
+            <option value="done">● Done</option>
           </select>
         </div>
       </div>
@@ -1432,7 +1432,10 @@ Follow along. The best is still coming.
 // ═══════════════════════════════════════════════════════════
 const POSTS = [
   // ── JUN 1 (Mon) — Blog + LinkedIn + Twitter Thread
-  { id:'BLOG-01',          date:'2026-06-01', platform:'Blog',      pillar:'Education',        type:'Blog',     topic:'Sync Licensing 101: The African Composer\'s Guide',             persona:'Tunde', hook:'Nobody talks about this in music school — so we wrote the guide.' },
+{ id:'MILESTONE-CPG', date:'2026-05-31', platform:'Blog', pillar:'Behind the Scenes',
+  type:'Article', topic:'Content Pillars Guide published',
+  persona:'Both', hook:'Month 1 planning foundation — content pillars, platform strategy, and copy bank.' },
+{ id:'BLOG-01',          date:'2026-06-01', platform:'Blog',      pillar:'Education',        type:'Blog',     topic:'Sync Licensing 101: The African Composer\'s Guide',             persona:'Tunde', hook:'Nobody talks about this in music school — so we wrote the guide.' },
   { id:'LI-EDU-01',        date:'2026-06-01', platform:'LinkedIn',  pillar:'Education',        type:'Article',  topic:'The global sync market and Africa\'s access gap',               persona:'Amara', hook:'The global sync market is worth over $500M annually. African music has a fraction of the representation it deserves.' },
   { id:'THREAD-01',        date:'2026-06-01', platform:'Twitter/X', pillar:'Education',        type:'Thread',   topic:'Sync licensing explained for composers',                        persona:'Tunde', hook:'Most African composers are one sync placement away from a career-defining moment.' },
   // ── JUN 2 (Tue)
@@ -1457,7 +1460,7 @@ const POSTS = [
   { id:'IG-BTS-01',        date:'2026-06-10', platform:'Instagram', pillar:'Behind the Scenes',type:'Carousel', topic:'How vetting works',                                            persona:'Both',  hook:'20 applications. 6 vetted. Here\'s what we look for.' },
   { id:'THREAD-04',        date:'2026-06-10', platform:'Twitter/X', pillar:'Education',        type:'Thread',   topic:'Rights clearance basics — what sync-ready means',              persona:'Tunde', hook:'The music supervisor didn\'t reject your track because it wasn\'t good.' },
   // ── JUN 11 (Thu)
-  { id:'IG-EDU-04',        date:'2026-06-11', platform:'Instagram', pillar:'Education',        type:'Carousel', topic:'What a music supervisor actually does',                        persona:'Tunde', hook:'You\'re not pitching to a label A&R.' },
+  { id:'IG-EDU-04',        date:'2026-06-11', platform:'Instagram', pillar:'Education',        type:'Single',   topic:'What a music supervisor actually does',                        persona:'Tunde', hook:'You\'re not pitching to a label A&R.' },
   // ── JUN 12 (Fri)
   { id:'IG-PROOF-02',      date:'2026-06-12', platform:'Instagram', pillar:'Proof',            type:'Carousel', topic:'48-hour curation turnaround',                                  persona:'Amara', hook:'A production company sent us a brief on Monday morning.' },
   // ── JUN 13 (Sat)
@@ -1508,7 +1511,7 @@ const POSTS = [
 // ═══════════════════════════════════════════════════════════
 // STATE & STORAGE
 // ═══════════════════════════════════════════════════════════
-const STORAGE_KEY = 'syncmaster_cal_v2';
+const STORAGE_KEY = 'syncmaster_cal_v3';
 let state = { statuses: {}, sourceUrls: {} };
 let currentYear  = 2026;
 let currentMonth = 5; // 0-indexed: June
@@ -1528,7 +1531,14 @@ function loadState() {
     const v1 = localStorage.getItem('syncmaster_cal_v1');
     if (v1 && !Object.keys(state.statuses).length) state.statuses = JSON.parse(v1);
   } catch (_) {}
-  POSTS.forEach(p => { if (!state.statuses[p.id]) state.statuses[p.id] = 'idea'; if (!state.sourceUrls[p.id]) state.sourceUrls[p.id] = ''; });
+  // After loading, migrate old values:
+  const V2_MAP = { idea:'todo', draft:'todo', designed:'inprogress', scheduled:'inprogress', posted:'done' };
+  Object.keys(state.statuses).forEach(id => {
+    if (V2_MAP[state.statuses[id]]) state.statuses[id] = V2_MAP[state.statuses[id]];
+  });
+  POSTS.forEach(p => { if (!state.statuses[p.id]) state.statuses[p.id] = 'todo'; if (!state.sourceUrls[p.id]) state.sourceUrls[p.id] = ''; });
+  // Force MILESTONE-CPG to done status
+  state.statuses['MILESTONE-CPG'] = 'done';
 }
 function saveState() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (_) {} }
 
@@ -1539,6 +1549,9 @@ const MONTH_NAMES = ['January','February','March','April','May','June','July','A
 const PLATFORM_CHIP = { 'Instagram':'chip-instagram','Twitter/X':'chip-twitter','LinkedIn':'chip-linkedin','YouTube':'chip-youtube','Blog':'chip-blog' };
 const PLATFORM_BADGE = { 'Instagram':'badge-instagram','Twitter/X':'badge-twitter','LinkedIn':'badge-linkedin','YouTube':'badge-youtube','Blog':'badge-blog' };
 const PILLAR_CLASS   = { 'Education':'pillar-education','Proof':'pillar-proof','Behind the Scenes':'pillar-bts','Culture':'pillar-culture','Industry':'pillar-industry' };
+const PILLAR_ABBR = {
+  'Education':'Edu','Proof':'Proof','Behind the Scenes':'BTS','Culture':'Culture','Industry':'Ind'
+};
 
 function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function isVisible(p) {
@@ -1553,10 +1566,10 @@ function fmtDate(iso) { const [y,m,d]=iso.split('-').map(Number); return `${MONT
 // ═══════════════════════════════════════════════════════════
 function updateProgress() {
   const monthPosts = POSTS.filter(p => { if (!p.date) return false; const [y,m]=p.date.split('-').map(Number); return y===currentYear && m-1===currentMonth; });
-  const posted = monthPosts.filter(p => state.statuses[p.id]==='posted').length;
+  const done = monthPosts.filter(p => state.statuses[p.id]==='done').length;
   const total  = monthPosts.length;
-  const pct    = total ? Math.round(posted/total*100) : 0;
-  document.getElementById('prog-posted').textContent = posted;
+  const pct    = total ? Math.round(done/total*100) : 0;
+  document.getElementById('prog-posted').textContent = done;
   document.getElementById('prog-total').textContent  = total;
   document.getElementById('prog-pct').textContent    = pct+'%';
   document.getElementById('prog-fill').style.width   = pct+'%';
@@ -1656,8 +1669,9 @@ function buildChip(post, hidden) {
   const btn = document.createElement('button');
   btn.className = `post-chip ${chipClass}${hidden ? ' chip-hidden' : ''}`;
   btn.dataset.id = post.id;
+  btn.dataset.status = state.statuses[post.id] || 'todo';
   const dot = document.createElement('span'); dot.className = 'chip-dot';
-  const lbl = document.createElement('span'); lbl.className = 'chip-label'; lbl.textContent = post.type;
+  const lbl = document.createElement('span'); lbl.className = 'chip-label'; lbl.textContent = post.type + ' · ' + (PILLAR_ABBR[post.pillar] || post.pillar);
   btn.appendChild(dot);
   btn.appendChild(lbl);
   btn.addEventListener('click', () => openModal(post.id));
