@@ -1,0 +1,283 @@
+SyncMaster Bash
+
+# PROJECT: SyncMaster
+
+## Overview
+SyncMaster is a curated sync licensing platform designed to connect independent composers and artists with film, TV, advertising, gaming, and brand opportunities through structured sync briefs and streamlined rights workflows.
+
+The platform focuses on:
+- Quality over volume
+- Curated composer network
+- Structured sync briefs
+- Fast licensing workflow
+- Rights clarity and administration
+- Global + emerging market focus (especially Africa)
+
+---
+
+# Core Positioning
+
+SyncMaster is a curated sync brief marketplace that helps producers find the right music faster and helps composers access real opportunities.
+
+---
+
+# Target Users
+
+## Supply Side (Primary)
+- Film composers
+- TV composers
+- Trailer composers
+- Indie artists
+- Music producers
+- Sound designers
+
+## Demand Side
+- Film producers
+- TV producers
+- Advertising agencies
+- Music supervisors
+- Post production houses
+- Content studios
+- Streaming platforms
+
+---
+
+# Core Problem
+
+## Producers
+- Hard to find the right music quickly
+- Too many irrelevant submissions
+- Rights and licensing complexity
+- Time constraints
+
+## Composers
+- No access to real briefs
+- Lack of industry connections
+- No structured opportunities
+- Low visibility
+
+---
+
+# MVP Focus
+
+Primary MVP Feature:
+- Sync Briefs
+
+---
+
+# MVP Features
+
+## Composer Side
+- Apply to briefs
+- Upload music
+- Profile page
+- Genre tagging
+- Credits
+
+## Producer Side
+- Create brief
+- Browse submissions
+- Shortlist composers
+- Contact composers
+
+## Admin
+- Review briefs
+- Curate composers
+- Approve submissions
+
+---
+
+# No-Code MVP Stack
+
+Frontend
+- Webflow or Framer
+
+Backend
+- Airtable
+
+Automation
+- Zapier / Make
+
+Forms
+- Tally / Typeform
+
+Email
+- Gmail / Resend
+
+Community
+- Slack / Discord
+
+---
+
+# Growth Targets (End of Year)
+
+- 1000 briefs
+- 100 composers minimum
+- Early producer relationships
+- Curated ecosystem
+
+---
+
+# Growth Strategy
+
+## Phase 1
+Manual Concierge Model
+- Source briefs manually
+- Curate composers manually
+- Build relationships
+
+## Phase 2
+Private Beta
+- Invite composers
+- Invite producers
+- Controlled growth
+
+## Phase 3
+Public MVP
+- Open signups
+- Launch sync briefs
+
+---
+
+# Communities to Source Users
+
+## Composers
+- VI-Control
+- Scorecast
+- Composer communities
+- Discord groups
+- LinkedIn
+
+## Producers
+- Stage32
+- ProductionHUB
+- Mandy
+- LinkedIn
+- Film communities
+
+---
+
+# Differentiation
+
+SyncMaster focuses on:
+- Curated opportunities
+- Emerging markets
+- Faster workflow
+- Rights clarity
+- Quality network
+
+---
+
+# Success Metrics
+
+- Number of briefs
+- Active composers
+- Submissions per brief
+- Successful placements
+- Repeat producers
+
+---
+
+# Immediate Next Steps
+
+1. Build Sync Brief submission form
+2. Create composer waitlist
+3. Create producer waitlist
+4. Launch manual concierge
+5. Onboard first 20 composers
+6. Source first 10 briefs
+
+---
+
+# Long Term Vision
+
+Become the leading global sync licensing platform for independent composers and emerging production markets.
+
+---
+
+# Current Stage
+
+Pre MVP
+Relationship building
+Manual workflow
+Validation stage
+
+---
+
+# Request
+
+Help design:
+- MVP architecture
+- Product roadmap
+- Growth strategy
+- UI/UX wireframes
+- Automation workflows
+
+Help Build: 
+
+Since you already know what Anthropic Claude should design, here’s what it should help you build — from a product manager perspective:
+
+What Claude Should Help You Build
+
+1. Product Foundation
+	•	Product roadmap
+	•	MVP scope definition
+	•	Feature prioritisation
+	•	User flows
+	•	Product requirements
+
+2. MVP Infrastructure
+	•	No code architecture
+	•	Database structure (composers, briefs, submissions)
+	•	Automation workflows
+	•	Email flows
+	•	Admin system
+
+3. Sync Brief System (Core Product)
+	•	Sync brief template
+	•	Submission workflow
+	•	Composer application system
+	•	Shortlisting workflow
+	•	Notification system
+
+4. Growth Engine
+	•	Composer onboarding funnel
+	•	Producer onboarding funnel
+	•	Waitlist system
+	•	Referral loop
+	•	Early adopter programme
+
+5. Marketplace Mechanics
+	•	Supply acquisition strategy (composers)
+	•	Demand acquisition strategy (producers)
+	•	Matching logic
+	•	Curation workflow
+
+6. Operational System (Important Early)
+	•	Manual concierge workflow
+	•	Brief sourcing process
+	•	Composer vetting system
+	•	Placement tracking
+
+7. Metrics & Tracking
+	•	Success metrics dashboard
+	•	Growth metrics
+	•	Product usage metrics
+	•	Marketplace health metrics
+
+8. Launch Strategy
+	•	Private beta plan
+	•	First 20 composers strategy
+	•	First 10 briefs strategy
+	•	Early partnership strategy
+
+⸻
+
+The Most Important Things to Build First
+
+In order:
+	1.	Sync Brief submission system
+	2.	Composer onboarding system
+	3.	Manual matching workflow
+	4.	Early producer pipeline
+	5.	Private beta system
