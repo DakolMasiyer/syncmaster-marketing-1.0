@@ -71,7 +71,7 @@ concrete: send a brief, not a follow-up call.
 ```
 Hi [First Name],
 
-Thought this might be useful context after the demo.
+More context on how the process works — useful after what you saw today.
 
 Brief came in Monday morning: 45-second open. Global NGO campaign. Hopeful, organic,
 contemporary African. One-stop. Delivery window: 48 hours.

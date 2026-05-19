@@ -26,32 +26,28 @@
 Hey [First Name],
 
 Nobody explained this in music school.
-And it's worth more than anything they did teach you. ↓
 
-Sync licensing = your music in film, TV, ads & games.
+Sync licensing — your music in film, TV, ads, and games — pays at a different scale than streaming.
 
 One Netflix scene: $5,000–$20,000.
 One global ad campaign: $10,000–$75,000.
-Upfront. Not per stream.
+Upfront. Not per stream. You also earn performance royalties every time the content airs.
 
-Here's the full breakdown — swipe through all 8 slides:
+The demand for African music in global productions is real and growing. Here's what actually determines whether a composer gets there:
 
-→ What sync licensing actually is
-→ Who's involved and what they each do  
-→ What placements actually pay (with real numbers)
-→ The two licences in every single deal
-→ What music supervisors actually look for
-→ What "sync-ready" means for your catalogue
-→ The African opportunity right now
-→ How to get started this week
+→ Rights documented — not just owned, but provable
+→ Metadata clean enough for a supervisor to find your track
+→ Stems packaged before a brief arrives
+→ A system that responds to a brief in under 24 hours
 
-This is the foundation. Everything else builds on it.
+Most African composers are producing work that would fit global briefs. What's missing isn't the music — it's the infrastructure.
 
-Save this. Share it with a composer who needs to know.
+That's what sync-ready means. And that's what we built.
 
-#SyncLicensing #AfricanComposers #MusicBusiness #FilmMusic #SyncMaster
+If you want the full breakdown of how it works, reply and I'll send it over.
 
-[P.S. I noticed you're creating amazing music - have you ever wondered how to get it placed in global ads or films?]
+[SIGN_OFF]
+SyncMaster
 ```
 
 ### Alignment:
@@ -76,40 +72,29 @@ Save this. Share it with a composer who needs to know.
 ```
 Hey [First Name],
 
-A Lagos composer just earned more from one Netflix scene than from 6 months of streaming royalties.
+A Lagos-based composer just earned more from one placement than from six months of streaming royalties.
 
-This is not exceptional. This is the market rate. ↓
+This is market rate — not exceptional.
 
 Here's what sync placements actually pay:
 
-📺 TV (major network, 30 sec)
-$2,000 – $8,000
+TV (major network, 30 seconds): $2,000–$8,000
+Feature film (indie): $5,000–$15,000+
+Global ad campaign: $10,000–$75,000+
+AAA video game: $5,000–$20,000+
 
-🎬 Feature film (indie)  
-$5,000 – $15,000+
+These are upfront licensing fees. Not royalties. Not splits. Not "exposure."
 
-📱 Global ad campaign
-$10,000 – $75,000+
+You also earn performance royalties every time the content airs — on top of the placement fee.
 
-🎮 AAA video game
-$5,000 – $20,000+
+The market exists. African composers are winning briefs right now.
 
-These are upfront licensing fees.
-Not royalties. Not splits. Not "exposure."
+What's missing is the infrastructure: rights confirmed, metadata clean, stems ready, a system that responds in under 24 hours.
 
-You also earn performance royalties every time the content airs.
+SyncMaster is that infrastructure. If you want to know whether your catalogue is ready, I can run a quick audit. Reply and I'll tell you what needs work.
 
-Streaming: fractions of a cent per play.
-Sync: thousands, once, yours.
-
-The market exists. The demand is real.
-What's missing is the infrastructure connecting African composers to it.
-
-Save this. Then ask yourself: is your music in the room?
-
-#SyncLicensing #AfricanComposers #MusicBusiness #SyncMaster #StreamingVsSync
-
-[P.S. The composers getting paid aren't fundamentally different from you - they just had the right infrastructure in place.]
+[SIGN_OFF]
+SyncMaster
 ```
 
 ### Alignment:
@@ -136,7 +121,7 @@ Hey [First Name],
 
 Before you pitch to a single music supervisor, run this audit on your own catalogue.
 
-Here are the 6 things every composer needs to fix first. ↓
+Here are the 6 things every composer needs to fix first.
 
 1/ SAMPLE CLEARANCE
 Are all your samples cleared?
@@ -168,11 +153,9 @@ Can you respond to a brief in under 24 hours?
 Test it before you need it.
 The brief window closes whether you're ready or not.
 
-Fix these six things. Then pitch.
+Fix these six things. Then apply.
 
-#SyncReady #AfricanComposers #SyncMaster #SyncLicensing #MusicBusiness
-
-[P.S. We're accepting applications now - link in the comments if you'd like us to review your catalogue for sync-readiness.]
+[P.S. We're accepting applications now. Reply with "ready" if you'd like us to review your catalogue against this list — I'll send you the link.]
 ```
 
 ### Alignment:

@@ -20,15 +20,15 @@
 ```
 Hi [First Name],
 
-I've been following your work - especially [specific project/show/brand they worked on]. 
+Came across your work on [specific project/show/brand] — wanted to reach out.
 
-Quick question: When you're briefing for African music, what's the biggest frustration you hit?
+Quick question: when you're briefing for African music, what's the biggest frustration you hit?
 
-For most supervisors I talk to, it's not finding the music - it's the 40% of workflow time spent on rights administration instead of creative selection.
+For most supervisors I talk to, it's not finding the music — it's the 40% of workflow time spent on rights administration instead of creative selection.
 
-We built SyncMaster to flip that - so you spend less time on clearance and more time finding the perfect fit.
+We built SyncMaster to flip that: less time on clearance, more time on creative selection.
 
-Would it be worth 15 minutes to see how we're helping supervisors solve briefs in 24 hours with rights-cleared African music?
+Worth 15 minutes to see how it works in practice?
 ```
 
 ### Alignment:
@@ -49,18 +49,17 @@ Would it be worth 15 minutes to see how we're helping supervisors solve briefs i
 ```
 Hi [First Name],
 
-Following up on my note about sync workflow - thought you might find this interesting:
+A few numbers from this month that are relevant to what I mentioned:
 
-In Month 2, supervisors using SyncMaster saw:
-• Average brief-to-delivery: 31 hours (was 42)
-• Rights confirmation: 5 hours (was 9)  
-• Zero rights issues in placements
+Brief-to-delivery: 31 hours (down from 42)
+Rights confirmation: 5 hours (down from 9)
+Rights issues in placements: 0
 
-One supervisor told me: "We received a brief for an orchestral Afrofusion track. We returned 5 curated options in 31 hours. The producer has never worked this fast."
+One supervisor's note after their first brief: "We returned 5 curated options in 31 hours. The producer has never moved this fast."
 
-The difference isn't the music - it's having the infrastructure ready before the brief arrives.
+The difference isn't the music — it's having the rights work done before the brief arrives.
 
-If you're solving briefs where African music could fit, I'd love to show you exactly how this works in practice.
+If you're solving briefs where African music could fit, I can show you what we'd send back.
 ```
 
 ### Alignment:
@@ -94,7 +93,7 @@ Total: 31 hours from brief to delivery.
 Rights work: 5 hours.  
 Creative selection time: 26 hours.
 
-We operate in 24 because every composer is vetted, every track tagged, every stem ready, every rights document filed.
+We operate in 24 hours because every composer is vetted, every track tagged, every stem ready, every rights document filed.
 
 If you have a brief coming up where African music could work, I'd love to run it through our system and show you what we'd send back.
 ```

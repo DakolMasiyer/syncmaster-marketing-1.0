@@ -46,7 +46,7 @@ Before we go further — a straight answer to the question most composers ask fi
 
 On average, composers in our system receive their first brief match within 3–5 weeks of going live. Some faster. It depends on catalogue depth, genre fit with active briefs, and how quickly we get through onboarding.
 
-The onboarding window is the part you control. The 10 days below are yours to move through as fast as you want.
+The onboarding window is the part you control. This 10-day window is yours to move through as fast as you want.
 
 First step — reply to this email with 3 tracks you want in your initial pitch catalogue. One should represent your strongest commercial work. One should show range. One can be whatever you think supervisors haven't heard from African composers yet.
 
