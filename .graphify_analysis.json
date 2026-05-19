@@ -1,0 +1,179 @@
+{
+  "communities": {
+    "0": [
+      "calendar-build-plan_content_bank",
+      "calendar-build-plan_rationale_step2",
+      "calendar-build-plan_rationale_step3",
+      "calendar-build-plan_source_content_module"
+    ],
+    "1": [
+      "calendar-build-plan_content_calendar_module",
+      "calendar-build-plan_rationale_step5",
+      "calendar-build-plan_rationale_step6",
+      "calendar-build-plan_standalone_content_module"
+    ],
+    "2": [
+      "calendar-build-plan_calendar_item",
+      "calendar-build-plan_calendar_logic",
+      "calendar-build-plan_rationale_step1"
+    ],
+    "3": [
+      "calendar-build-plan_rationale_step4",
+      "calendar-build-plan_repurposing_engine"
+    ],
+    "4": [
+      "calendar-build-plan_content_calendar"
+    ],
+    "5": [
+      "calendar-build-plan_build_plan"
+    ],
+    "6": [
+      "calendar-build-plan_gap_analysis"
+    ],
+    "7": [
+      "calendar-build-plan_auto_schedule_function"
+    ],
+    "8": [
+      "calendar-build-plan_schedule_map"
+    ],
+    "9": [
+      "calendar-build-plan_weekly_default_distribution"
+    ]
+  },
+  "cohesion": {
+    "0": 0.5,
+    "1": 0.5,
+    "2": 1.0,
+    "3": 1.0,
+    "4": 1.0,
+    "5": 1.0,
+    "6": 1.0,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 1.0
+  },
+  "gods": [
+    {
+      "id": "calendar-build-plan_content_calendar_module",
+      "label": "Content Calendar Module",
+      "degree": 5
+    },
+    {
+      "id": "calendar-build-plan_source_content_module",
+      "label": "Source Content Module",
+      "degree": 3
+    },
+    {
+      "id": "calendar-build-plan_repurposing_engine",
+      "label": "Repurposing Engine",
+      "degree": 3
+    },
+    {
+      "id": "calendar-build-plan_calendar_logic",
+      "label": "Calendar Logic (packages/lib/calendar.ts)",
+      "degree": 3
+    },
+    {
+      "id": "calendar-build-plan_calendar_item",
+      "label": "CalendarItem data model",
+      "degree": 3
+    },
+    {
+      "id": "calendar-build-plan_content_bank",
+      "label": "Content Bank (Ideas Layer)",
+      "degree": 2
+    },
+    {
+      "id": "calendar-build-plan_standalone_content_module",
+      "label": "Standalone Content Module",
+      "degree": 2
+    },
+    {
+      "id": "calendar-build-plan_rationale_step1",
+      "label": "Core types and scheduling logic must be built first as they form the foundation for the calendar.",
+      "degree": 2
+    },
+    {
+      "id": "calendar-build-plan_rationale_step2",
+      "label": "The Content Bank provides the ideas that feed into the source content and repurposing engines.",
+      "degree": 1
+    },
+    {
+      "id": "calendar-build-plan_rationale_step3",
+      "label": "The Source Content Module creates the long-form content that is then repurposed.",
+      "degree": 1
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Source Content Module",
+      "target": "Repurposing Engine",
+      "source_files": [
+        "calendar-build-plan.md",
+        "calendar-build-plan.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "shares_data_with",
+      "note": "Bridges community 0 \u2192 community 3"
+    },
+    {
+      "source": "Repurposing Engine",
+      "target": "Content Calendar Module",
+      "source_files": [
+        "calendar-build-plan.md",
+        "calendar-build-plan.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "shares_data_with",
+      "note": "Bridges community 3 \u2192 community 1"
+    },
+    {
+      "source": "Calendar Logic (packages/lib/calendar.ts)",
+      "target": "Content Calendar Module",
+      "source_files": [
+        "calendar-build-plan.md",
+        "calendar-build-plan.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "shares_data_with",
+      "note": "Bridges community 1 \u2192 community 2"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `Content Calendar Module` connect `Community 1` to `Community 2`, `Community 3`?",
+      "why": "High betweenness centrality (0.307) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `Repurposing Engine` connect `Community 3` to `Community 0`, `Community 1`?",
+      "why": "High betweenness centrality (0.255) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `Source Content Module` connect `Community 0` to `Community 3`?",
+      "why": "High betweenness centrality (0.190) - this node is a cross-community bridge."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 4 inferred relationships involving `Content Calendar Module` (e.g. with `Repurposing Engine` and `Standalone Content Module`) actually correct?",
+      "why": "`Content Calendar Module` has 4 INFERRED edges - model-reasoned connections that need verification."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 2 inferred relationships involving `Source Content Module` (e.g. with `Content Bank (Ideas Layer)` and `Repurposing Engine`) actually correct?",
+      "why": "`Source Content Module` has 2 INFERRED edges - model-reasoned connections that need verification."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 2 inferred relationships involving `Repurposing Engine` (e.g. with `Source Content Module` and `Content Calendar Module`) actually correct?",
+      "why": "`Repurposing Engine` has 2 INFERRED edges - model-reasoned connections that need verification."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 2 inferred relationships involving `Calendar Logic (packages/lib/calendar.ts)` (e.g. with `Content Calendar Module` and `CalendarItem data model`) actually correct?",
+      "why": "`Calendar Logic (packages/lib/calendar.ts)` has 2 INFERRED edges - model-reasoned connections that need verification."
+    }
+  ]
+}
