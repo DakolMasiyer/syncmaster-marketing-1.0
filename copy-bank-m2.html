@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SyncMaster — Copy Bank Month 2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:        #0C0C10;
+      --surface:   #131318;
+      --surface-2: #1A1A24;
+      --border:    #252532;
+      --border-2:  #32324A;
+      --gold:      #F2C94C;
+      --teal:      #38D1B5;
+      --coral:     #F26B5E;
+      --purple:    #9B72F2;
+      --white:     #F0F0F6;
+      --mid:       #C0C0D0;
+      --muted:     #787890;
+      --green:     #4CAF80;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; font-weight: 400; background: var(--bg); color: var(--white); min-height: 100vh; line-height: 1.5; }
+
+    /* ── HEADER ── */
+    .header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 18px 32px; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1440px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: 0.1em; color: var(--gold); }
+    .logo-sub { font-weight: 300; font-size: 11px; color: var(--muted); letter-spacing: 0.07em; text-transform: uppercase; margin-top: 3px; }
+    .progress-block { flex: 1; min-width: 200px; max-width: 400px; }
+    .progress-meta { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 7px; font-size: 12px; color: var(--mid); }
+    .progress-meta strong { color: var(--gold); font-weight: 500; }
+    .progress-pct { color: var(--gold); font-weight: 500; }
+    .progress-track { background: var(--border); border-radius: 999px; height: 5px; overflow: hidden; }
+    .progress-fill { background: var(--gold); height: 100%; border-radius: 999px; width: 0%; transition: width 0.35s ease; }
+    .header-nav { display: flex; gap: 12px; align-items: center; flex-shrink: 0; }
+    .header-nav a { font-size: 11px; color: var(--muted); text-decoration: none; letter-spacing: 0.05em; transition: color 0.15s; }
+    .header-nav a:hover { color: var(--white); }
+    .header-nav a.active { color: var(--gold); }
+
+    /* ── FILTER BAR ── */
+    .filter-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 10px 32px; position: sticky; top: 77px; z-index: 90; }
+    .filter-bar-inner { max-width: 1440px; margin: 0 auto; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .filter-btn { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; padding: 5px 12px; border-radius: 8px; border: 1px solid var(--border-2); background: var(--surface-2); color: var(--mid); cursor: pointer; transition: border-color 0.15s, color 0.15s, background 0.15s; white-space: nowrap; }
+    .filter-btn:hover { border-color: var(--muted); color: var(--white); }
+    .filter-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(242,201,76,0.08); }
+    .filter-divider { width: 1px; height: 18px; background: var(--border-2); margin: 0 4px; flex-shrink: 0; }
+    .filter-count { font-size: 10px; color: var(--muted); margin-left: auto; }
+
+    /* ── CARDS ── */
+    .cb-wrap { max-width: 1440px; margin: 0 auto; padding: 24px 32px 80px; }
+    .cb-cards-list { display: flex; flex-direction: column; gap: 12px; }
+    .cb-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; transition: border-color 0.15s; }
+    .cb-card:hover { border-color: var(--border-2); }
+    .cb-card[data-status="done"] { opacity: 0.55; }
+    .cb-card.hidden { display: none; }
+    .cb-card-hdr { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+    .cb-card-badges { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+    .cb-card-date { font-size: 10px; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
+    .cb-topic { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 8px; line-height: 1.35; }
+    .cb-card-copy { font-size: 12px; line-height: 1.82; color: var(--mid); white-space: pre-wrap; font-weight: 300; margin-top: 4px; }
+    .cb-card-cta { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--border); font-size: 11px; font-weight: 500; color: var(--gold); font-style: italic; }
+    .cb-card-ftr { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); gap: 12px; }
+    .cb-status-row { display: flex; align-items: center; gap: 8px; }
+    .cb-status-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .cb-status-dot[data-status="todo"]       { background: var(--muted); }
+    .cb-status-dot[data-status="inprogress"] { background: var(--gold); }
+    .cb-status-dot[data-status="done"]       { background: var(--green); }
+    .cb-status-select { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 400; padding: 4px 22px 4px 8px; border-radius: 5px; border: 1px solid var(--border-2); background: var(--surface-2); color: var(--muted); cursor: pointer; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23787890' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 7px center; transition: border-color 0.15s, color 0.15s; }
+    .cb-status-select:focus { outline: none; border-color: var(--gold); }
+    .cb-status-select[data-status="todo"]       { color: var(--muted); }
+    .cb-status-select[data-status="inprogress"] { color: var(--gold);  border-color: rgba(242,201,76,0.3); }
+    .cb-status-select[data-status="done"]       { color: var(--green); border-color: rgba(76,175,128,0.3); }
+    .cb-copy-btn { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; padding: 5px 13px; border-radius: 6px; border: 1px solid var(--border-2); background: var(--surface-2); color: var(--mid); cursor: pointer; transition: border-color 0.18s, color 0.18s; white-space: nowrap; flex-shrink: 0; }
+    .cb-copy-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .cb-copy-btn.copied { border-color: var(--green); color: var(--green); }
+    .cb-empty { text-align: center; padding: 60px 20px; color: var(--muted); font-size: 13px; }
+
+    /* ── BADGES ── */
+    .post-id { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; color: var(--muted); }
+    .platform-badge { font-size: 10px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+    .badge-instagram { background: rgba(155,114,242,0.14); color: var(--purple); }
+    .badge-twitter   { background: rgba(56,209,181,0.14);  color: var(--teal); }
+    .badge-linkedin  { background: rgba(242,201,76,0.14);  color: var(--gold); }
+    .badge-youtube   { background: rgba(242,107,94,0.14);  color: var(--coral); }
+    .badge-blog      { background: rgba(76,175,128,0.14);  color: var(--green); }
+    .pillar-chip { font-size: 10px; font-weight: 500; letter-spacing: 0.04em; padding: 3px 8px; border-radius: 4px; white-space: nowrap; }
+    .pillar-education { background: rgba(56,209,181,0.10);  color: var(--teal); }
+    .pillar-proof     { background: rgba(242,201,76,0.10);  color: var(--gold); }
+    .pillar-bts       { background: rgba(242,107,94,0.10);  color: var(--coral); }
+    .pillar-culture   { background: rgba(155,114,242,0.10); color: var(--purple); }
+    .pillar-industry  { background: rgba(192,192,208,0.10); color: var(--mid); }
+    .type-tag { font-size: 10px; font-weight: 500; padding: 3px 8px; border-radius: 4px; background: var(--surface-2); border: 1px solid var(--border-2); color: var(--mid); letter-spacing: 0.04em; }
+
+    @media (max-width: 640px) {
+      .header { padding: 14px 16px; }
+      .filter-bar { padding: 8px 16px; top: 65px; }
+      .cb-wrap { padding: 16px 16px 60px; }
+    }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div>
+      <div class="logo">SYNCMASTER</div>
+      <div class="logo-sub">Copy Bank — Month 2 · July 2026</div>
+    </div>
+    <div class="progress-block">
+      <div class="progress-meta">
+        <span><strong id="prog-done">0</strong> / <span id="prog-total">39</span> posted</span>
+        <span class="progress-pct" id="prog-pct">0%</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="prog-fill"></div></div>
+    </div>
+    <nav class="header-nav">
+      <a href="/syncmaster-content-calendar.html">Calendar</a>
+      <a href="/copy-bank-m2.html" class="active">Month 2 Copy</a>
+      <a href="/copy-bank-m3.html">Month 3 Copy</a>
+    </nav>
+  </div>
+</header>
+
+<div class="filter-bar">
+  <div class="filter-bar-inner">
+    <button class="filter-btn active" data-filter="all" data-group="platform">All</button>
+    <button class="filter-btn" data-filter="Instagram" data-group="platform">Instagram</button>
+    <button class="filter-btn" data-filter="Twitter/X" data-group="platform">Twitter / X</button>
+    <button class="filter-btn" data-filter="LinkedIn" data-group="platform">LinkedIn</button>
+    <button class="filter-btn" data-filter="Blog" data-group="platform">Blog</button>
+    <button class="filter-btn" data-filter="YouTube" data-group="platform">YouTube</button>
+    <div class="filter-divider"></div>
+    <button class="filter-btn" data-filter="Education" data-group="pillar">Education</button>
+    <button class="filter-btn" data-filter="Proof" data-group="pillar">Proof</button>
+    <button class="filter-btn" data-filter="Behind the Scenes" data-group="pillar">BTS</button>
+    <button class="filter-btn" data-filter="Culture" data-group="pillar">Culture</button>
+    <span class="filter-count" id="filter-count">39 posts</span>
+  </div>
+</div>
+
+<div class="cb-wrap">
+  <div class="cb-cards-list" id="cb-list"></div>
+  <div class="cb-empty hidden" id="cb-empty">No posts match this filter.</div>
+</div>
+
+<script>
+const STORAGE_KEY = 'sm_cb_m2_v1';
+
+const PLATFORM_BADGE = {
+  'Instagram': 'badge-instagram',
+  'Twitter/X': 'badge-twitter',
+  'LinkedIn':  'badge-linkedin',
+  'YouTube':   'badge-youtube',
+  'Blog':      'badge-blog',
+};
+const PILLAR_CLASS = {
+  'Education':        'pillar-education',
+  'Proof':            'pillar-proof',
+  'Behind the Scenes':'pillar-bts',
+  'Culture':          'pillar-culture',
+  'Industry':         'pillar-industry',
+};
+
+const POSTS = [
+  { id:'IG-M2-EDU-01',   date:'2026-07-01', platform:'Instagram', type:'Carousel', pillar:'Education',          topic:'The sync deal checklist — what to negotiate', persona:'Tunde' },
+  { id:'IG-M2-EDU-02',   date:'2026-07-02', platform:'Instagram', type:'Carousel', pillar:'Education',          topic:'Publishing rights: what you give up without knowing', persona:'Tunde' },
+  { id:'TW-M2-SOLO-01',  date:'2026-07-03', platform:'Twitter/X', type:'Tweet',    pillar:'Education',          topic:'Three rights every African composer must understand', persona:'Both' },
+  { id:'IG-M2-PROOF-01', date:'2026-07-04', platform:'Instagram', type:'Single',   pillar:'Proof',              topic:'Composer 2 placement confirmed — Lagos, global NGO', persona:'Tunde' },
+  { id:'YT-M2-01',       date:'2026-07-05', platform:'YouTube',   type:'Video',    pillar:'Education',          topic:'Sync deal negotiation walkthrough — real deals, real terms', persona:'Both' },
+  { id:'BLOG-M2-01',     date:'2026-07-06', platform:'Blog',      type:'Blog',     pillar:'Education',          topic:'Advanced Sync Licensing: How to Negotiate Your First Deal', persona:'Both' },
+  { id:'LI-M2-01',       date:'2026-07-06', platform:'LinkedIn',  type:'Article',  pillar:'Education',          topic:'What composers get wrong about sync deal terms', persona:'Both' },
+  { id:'TW-M2-01',       date:'2026-07-06', platform:'Twitter/X', type:'Thread',   pillar:'Education',          topic:'You got a sync offer — here\'s what\'s negotiable', persona:'Both' },
+  { id:'IG-M2-EDU-03',   date:'2026-07-07', platform:'Instagram', type:'Carousel', pillar:'Education',          topic:'How to build a sync-ready catalogue from scratch', persona:'Tunde' },
+  { id:'TW-M2-SOLO-02',  date:'2026-07-08', platform:'Twitter/X', type:'Tweet',    pillar:'Education',          topic:'Three documents every sync-ready composer needs', persona:'Tunde' },
+  { id:'IG-M2-EDU-04',   date:'2026-07-09', platform:'Instagram', type:'Carousel', pillar:'Education',          topic:'What "one-stop" really means — and how to get there', persona:'Tunde' },
+  { id:'IG-M2-PROOF-02', date:'2026-07-10', platform:'Instagram', type:'Single',   pillar:'Proof',              topic:'Brief received: this is what it looked like', persona:'Both' },
+  { id:'TW-M2-SOLO-03',  date:'2026-07-11', platform:'Twitter/X', type:'Tweet',    pillar:'Culture',            topic:'African composers winning — no label, no agent', persona:'Both' },
+  { id:'IG-M2-BTS-01',   date:'2026-07-12', platform:'Instagram', type:'Single',   pillar:'Behind the Scenes',  topic:'Week 2 of Month 2 — inside the operation', persona:'Both' },
+  { id:'BLOG-M2-02',     date:'2026-07-13', platform:'Blog',      type:'Blog',     pillar:'Proof',              topic:'Month 2: Briefs, Pitches, and Placements — The Honest Update', persona:'Both' },
+  { id:'LI-M2-02',       date:'2026-07-13', platform:'LinkedIn',  type:'Article',  pillar:'Proof',              topic:'What Month 2 is teaching us about the sync market', persona:'Both' },
+  { id:'TW-M2-02',       date:'2026-07-13', platform:'Twitter/X', type:'Thread',   pillar:'Proof',              topic:'Month 2 update — two placements, five briefs, the full breakdown', persona:'Both' },
+  { id:'IG-M2-EDU-05',   date:'2026-07-14', platform:'Instagram', type:'Carousel', pillar:'Education',          topic:'PRO registration: which societies African composers should join', persona:'Tunde' },
+  { id:'TW-M2-SOLO-04',  date:'2026-07-15', platform:'Twitter/X', type:'Tweet',    pillar:'Education',          topic:'PRO registration is not optional', persona:'Tunde' },
+  { id:'IG-M2-EDU-06',   date:'2026-07-16', platform:'Instagram', type:'Carousel', pillar:'Education',          topic:'Metadata deep dive — every tag that matters', persona:'Tunde' },
+  { id:'IG-M2-PROOF-03', date:'2026-07-17', platform:'Instagram', type:'Single',   pillar:'Proof',              topic:'Month 2 mid-point numbers', persona:'Both' },
+  { id:'TW-M2-SOLO-05',  date:'2026-07-18', platform:'Twitter/X', type:'Tweet',    pillar:'Education',          topic:'Briefs don\'t wait', persona:'Both' },
+  { id:'IG-M2-BTS-02',   date:'2026-07-19', platform:'Instagram', type:'Single',   pillar:'Behind the Scenes',  topic:'What a brief-response week looks like inside SyncMaster', persona:'Both' },
+  { id:'BLOG-M2-03',     date:'2026-07-20', platform:'Blog',      type:'Blog',     pillar:'Culture',            topic:'The African Composer\'s Playbook for International Sync', persona:'Both' },
+  { id:'LI-M2-03',       date:'2026-07-20', platform:'LinkedIn',  type:'Article',  pillar:'Culture',            topic:'Why African music is becoming the default sound of global campaigns', persona:'Both' },
+  { id:'TW-M2-03',       date:'2026-07-20', platform:'Twitter/X', type:'Thread',   pillar:'Culture',            topic:'African music is winning sync — here\'s what\'s actually happening', persona:'Both' },
+  { id:'IG-M2-EDU-07',   date:'2026-07-21', platform:'Instagram', type:'Carousel', pillar:'Education',          topic:'The composer audit: 6 things to fix before you pitch', persona:'Tunde' },
+  { id:'TW-M2-SOLO-06',  date:'2026-07-22', platform:'Twitter/X', type:'Tweet',    pillar:'Education',          topic:'Fix these 6 things before your next sync pitch', persona:'Tunde' },
+  { id:'IG-M2-EDU-08',   date:'2026-07-23', platform:'Instagram', type:'Carousel', pillar:'Education',          topic:'What great stems look like — the technical spec', persona:'Tunde' },
+  { id:'IG-M2-PROOF-04', date:'2026-07-24', platform:'Instagram', type:'Single',   pillar:'Proof',              topic:'Placement story: Tuesday brief → Friday signed', persona:'Both' },
+  { id:'TW-M2-SOLO-07',  date:'2026-07-25', platform:'Twitter/X', type:'Tweet',    pillar:'Culture',            topic:'The African composers changing what global film sounds like', persona:'Both' },
+  { id:'IG-M2-BTS-03',   date:'2026-07-26', platform:'Instagram', type:'Single',   pillar:'Behind the Scenes',  topic:'Week 4 of Month 2 — heading into Month 3', persona:'Both' },
+  { id:'BLOG-M2-04',     date:'2026-07-27', platform:'Blog',      type:'Blog',     pillar:'Behind the Scenes',  topic:'Month 2 Mid-Point: What We Built and What\'s Coming', persona:'Both' },
+  { id:'LI-M2-04',       date:'2026-07-27', platform:'LinkedIn',  type:'Article',  pillar:'Behind the Scenes',  topic:'Building SyncMaster Month 2: what\'s changed', persona:'Both' },
+  { id:'TW-M2-04',       date:'2026-07-27', platform:'Twitter/X', type:'Thread',   pillar:'Behind the Scenes',  topic:'Mid-Month 2 — the full operational breakdown', persona:'Both' },
+  { id:'YT-M2-02',       date:'2026-07-28', platform:'YouTube',   type:'Video',    pillar:'Education',          topic:'Composer audit walkthrough — is your catalogue sync-ready?', persona:'Both' },
+  { id:'TW-M2-SOLO-08',  date:'2026-07-29', platform:'Twitter/X', type:'Tweet',    pillar:'Proof',              topic:'Month 2 numbers update', persona:'Both' },
+  { id:'IG-M2-PROOF-05', date:'2026-07-30', platform:'Instagram', type:'Single',   pillar:'Proof',              topic:'Month 2 placement summary', persona:'Both' },
+  { id:'IG-M2-WRAP',     date:'2026-07-31', platform:'Instagram', type:'Single',   pillar:'Behind the Scenes',  topic:'Month 2 complete. Month 3 incoming.', persona:'Both' },
+];
+
+const COPY = {
+
+'IG-M2-EDU-01': { body: `You got the offer.
+
+Your first instinct is to say yes immediately.
+
+Here's why that's the most expensive reaction in sync. ↓
+
+When a placement offer lands, you have exactly one negotiation window. Before you sign, here's what experienced composers always check:
+
+1/ THE UPFRONT FEE
+The first number is an opening bid — not the final price.
+For branded content: fees typically run 20–40% higher than the first offer.
+For streaming originals: push for the stated upper range.
+Ask once. Clearly. Most supervisors expect it.
+
+2/ EXCLUSIVITY PERIOD
+"Exclusive" locks your track for a window — no other placements during that time.
+Six months: acceptable.
+Two years: 3× the standard rate.
+Negotiate the window before you negotiate the fee.
+
+3/ TERRITORY
+UK-only and global use are fundamentally different deals.
+A global campaign should cost 3–5× a regional one.
+If the territory isn't defined in the offer: define it before you respond.
+
+4/ TERM LENGTH
+One-off vs. rolling vs. in-perpetuity are three different contracts.
+In-perpetuity means they can use your track forever.
+That has a price significantly above the standard placement fee.
+
+5/ PERFORMANCE ROYALTIES
+These are separate from your upfront fee.
+Every time the content airs anywhere, royalties generate through your PRO.
+Non-negotiable prerequisite: register before any placement is signed.
+You cannot collect these retroactively.
+
+The sync fee is the headline number.
+Performance royalties are the compounding income beneath it.
+
+Know both before you sign anything.
+
+#SyncDeal #AfricanComposers #SyncLicensing #MusicBusiness #SyncMaster`, cta: 'Save this before your next deal conversation.' },
+
+'IG-M2-EDU-02': { body: `A composer we spoke to in Month 2 had three confirmed placements.
+
+Music already aired. Already used. Fees already paid.
+
+But he had never registered publishing before the licences were signed.
+
+Estimated performance royalties gone: over ₦800K. Uncollectable. Permanently.
+
+Here's the publishing rights breakdown nobody teaches in Lagos. ↓
+
+WHAT PUBLISHING RIGHTS ACTUALLY CONTROL:
+→ Who collects your performance royalties every time the content airs
+→ Who approves sync licence requests — if they can say no, they can block placements
+→ Who shares in your sync fee (publishers take a cut — know the percentage)
+→ How your music can be used after the deal is signed
+
+THE MOST COMMON MISTAKE:
+Signing a label deal that includes a publishing clause without understanding it.
+You sign for distribution.
+The small print gives them 50% of your publishing income — including sync.
+
+WHAT TO PROTECT:
+→ Self-publish where possible: register directly with COSON, SAMRO, PRS
+→ If signing a publishing deal: keep sync approval rights in your name
+→ Document splits with co-writers before any deal reaches the table
+→ Register every finished track before any placement conversation starts
+
+One sync fee pays once.
+Published royalties from a single placement can pay for years.
+
+Don't leave the second half of the deal unregistered.
+
+#MusicPublishing #AfricanComposers #SyncLicensing #SyncMaster`, cta: 'Know what you\'re signing. Every time.' },
+
+'TW-M2-SOLO-01': { body: `Three rights every African composer needs to understand before pitching sync:
+
+1/ The sync licence — controls use of your composition in visual media
+2/ The master licence — controls the specific recording
+3/ Performance royalties — collected every time the placement airs
+
+Most composers only understand the first.
+The second and third are where most of the long-term income lives.`, cta: null },
+
+'IG-M2-PROOF-01': { body: `Lagos-based. Independent. Clean rights from day one.
+
+In Month 2, his second brief came in — a global campaign for an international NGO.
+
+He'd been in the SyncMaster catalogue since the end of Month 1.
+Vetted. Tagged. Stems organised. PRO-registered.
+
+When the brief arrived: catalogue searched, two tracks matched, both delivered with full stems.
+
+Brief: 45-second open. Hopeful, organic, African influence. One-stop required. 48-hour window.
+
+Supervisor shortlisted one track. Rights confirmed in 3 hours — clean from day one of vetting.
+
+Licence signed the same week.
+
+Two months. Two placements.
+No label. No agent.
+
+Just infrastructure that was always missing.
+
+Applications open: link in bio.
+
+#SyncPlacement #AfricanComposers #SyncMaster #IndependentComposer`, cta: 'Apply at the link in bio.' },
+
+'YT-M2-01': { body: `Let's walk through a real sync deal negotiation — what every clause means, what's standard, and what to push back on.
+
+In Month 2 at SyncMaster, we've handled placement offers for three African composers. In this video, we break down the actual terms, what we negotiated, and what the final deals looked like.
+
+What we cover:
+→ The anatomy of a sync licence agreement
+→ What the upfront fee represents vs. what you earn long-term
+→ Exclusivity clauses — what's reasonable and what costs you
+→ Territory and term length — the most overlooked deal variables
+→ Performance royalties — why PRO registration is non-negotiable
+→ The negotiation: what we pushed back on and what we accepted
+
+Timestamps:
+0:00 — The deal overview
+3:30 — Upfront fee: opening vs. final number
+9:00 — Exclusivity and territory explained
+15:30 — Performance royalties and PRO registration
+22:00 — The negotiation: what moved and what didn't
+28:30 — What the final deal looked like
+
+This is practical education from real deals in the current market.
+
+Subscribe for weekly sync updates from inside SyncMaster.`, cta: 'Subscribe. More deal walkthroughs coming.' },
+
+'BLOG-M2-01': { body: `Advanced Sync Licensing: How to Negotiate Your First Deal
+
+You have a placement offer on the table.
+
+Most composers in this position accept the first number and sign quickly — partly from excitement, partly from fear of losing the deal. Both reactions are understandable. Both are expensive.
+
+Here's what the most commercially savvy composers do when an offer arrives: they pause, check the five negotiable variables, and respond within 24 hours with a clear, professional counter or acceptance.
+
+The five variables: upfront fee, exclusivity period, territory, term length, performance royalty setup.
+
+None of these require a lawyer on the first conversation. They require knowing what's standard, what's movable, and what you're worth.
+
+→ Full negotiation guide at syncmaster.io/blog`, cta: null },
+
+'LI-M2-01': { body: `Most African composers don't know what's negotiable in a sync deal.
+
+I've had this exact conversation four times in the past two weeks alone — so here it is in writing.
+
+When a placement offer arrives, these five things are open for discussion:
+
+UPFRONT FEE
+The first offer is a negotiation opening, not a fixed price. For branded content especially, the budget almost always has room. Ask once, clearly. Most supervisors expect it.
+
+EXCLUSIVITY PERIOD
+Six months is reasonable. Two years or more should cost significantly more than a standard placement fee. Know the difference before you agree.
+
+TERRITORY
+Global use and regional use are different deals entirely. A track used globally is worth 3–5× a regional placement. If the territory isn't defined in the offer — define it before you respond.
+
+TERM LENGTH
+One-off, rolling, and in-perpetuity licences each carry a different price point. In-perpetuity means permanent use. That comes at a premium.
+
+PERFORMANCE ROYALTIES
+Separate from the upfront sync fee and often larger over time. Every airing generates royalties through your PRO. Register before any placement is signed — there is no retroactive collection.
+
+What's typically not negotiable: delivery spec (broadcast-spec WAV), payment timeline (net 30 or 60), and credit attribution.
+
+The goal is to be professional and informed — not adversarial. Most supervisors respect a composer who knows their worth.
+
+If you have a deal on the table right now — DMs are open.
+
+#SyncLicensing #AfricanComposers #MusicBusiness #SyncMaster`, cta: null },
+
+'TW-M2-01': { body: `1/ You got a sync placement offer.
+Most composers accept the first number.
+Here's what's actually negotiable. 🧵
+
+2/ The upfront sync fee is rarely the ceiling.
+
+Especially for branded content: the first offer is an opening position, not a fixed price.
+
+Know the market rate before you respond.
+
+3/ Exclusivity period.
+
+"Exclusive" means they lock your track for a window.
+Six months: reasonable.
+Two years: should cost significantly more.
+
+The longer the exclusivity, the higher the fee.
+
+4/ Territory matters more than most composers realise.
+
+UK-only vs. global use = fundamentally different deals.
+
+A global campaign is worth 3–5× a regional one.
+Define the territory before you agree to the rate.
+
+5/ Term length is the most overlooked variable.
+
+One-off vs. rolling vs. in-perpetuity are three different contracts.
+
+In-perpetuity means permanent use. Price it accordingly.
+
+6/ Performance royalties are separate from your sync fee.
+
+Every time the content airs, royalties generate through your PRO.
+
+SAMRO. COSON. SOCAN. PRS. ASCAP.
+
+Not registered? That income goes uncollected. Permanently.
+
+7/ What's not negotiable:
+→ Delivery format (broadcast-spec WAV)
+→ Payment timeline (net 30 or 60)
+→ Credit attribution
+
+Focus your energy on the five things that move the number.
+
+8/ SyncMaster negotiates alongside every composer we place.
+
+You don't have to figure this out alone.
+syncmaster.io/apply`, cta: null },
+
+'IG-M2-EDU-03': { body: `Building a sync-ready catalogue isn't a weekend project.
+
+But it's not complicated. It's sequential.
+
+Here's the exact 5-step process we use at SyncMaster — from application to brief-ready. ↓
+
+STEP 1: RIGHTS AUDIT (Weeks 1–2)
+Before anything else: confirm what you own.
+→ Is every composition 100% original? One uncleared sample stops the whole catalogue.
+→ Who controls the master? You, a label, or joint ownership?
+→ Is publishing registered with a PRO?
+→ Any co-writers? Get the split documented in writing now.
+
+STEP 2: FILE PREPARATION (Weeks 2–3)
+→ Export full lossless WAV for every sync-ready track
+→ File naming convention: Artist_Title_BPM_Key.wav
+→ Export stems for every session: drums, bass, harmony, melody, atmosphere
+→ Store stems in a cloud folder — accessible within 10 minutes
+
+STEP 3: METADATA TAGGING (Week 3)
+→ ISRC assigned to every recording
+→ BPM, key, duration, genre embedded in file metadata
+→ Mood tags: 3–5 per track in industry vocabulary
+→ PRO affiliation and composer information embedded correctly
+
+STEP 4: CATALOGUE INDEXING (Week 4)
+→ Build a simple spreadsheet: title, BPM, key, mood, instrumentation, one-stop status
+→ Separate into categories: brand/corporate, cinematic, documentary, emotional
+→ Note which tracks have complete stems vs. partial stems
+
+STEP 5: RESPONSE SYSTEM (Week 4)
+→ Set brief notification to reach you within 1 hour of receipt
+→ Test your delivery process: how fast can you send stems for 3 tracks?
+→ Confirm rights for every catalogue track so you can respond in writing immediately
+
+This process takes 3–5 weeks done properly.
+Every brief you respond to after that takes a fraction of the time.
+
+#SyncReady #AfricanComposers #SyncMaster #MusicBusiness`, cta: 'Start this process now. Don\'t wait for a brief.' },
+
+'TW-M2-SOLO-02': { body: `Three documents every sync-ready composer needs before pitching:
+
+1/ A one-page catalogue sheet (tracks, BPM, mood, one-stop status)
+2/ A rights confirmation letter (master + publishing ownership, confirmed in writing)
+3/ A stems delivery confirmation (what stems you have, how fast you can deliver)
+
+Supervisors rarely ask for all three upfront.
+
+The ones who do remember which composers had them ready instantly.`, cta: null },
+
+'IG-M2-EDU-04': { body: `"One-stop" is the most valuable status in sync licensing.
+
+Most composers know the term. Almost none fully understand how to get there — especially once a label is involved.
+
+Here's the clear explanation. ↓
+
+ONE-STOP = you grant both licences from a single conversation.
+
+LICENCE 1: The sync licence
+→ Controls: use of your composition in visual media
+→ Held by: the publisher — which is you, if you self-publish
+
+LICENCE 2: The master licence
+→ Controls: the specific recording
+→ Held by: whoever owns the master — often a label, unless you recorded independently
+
+If you control both → one-stop.
+If a label controls the master → the supervisor has to negotiate with two parties, on two timelines, with two chances for the deal to fall apart.
+
+Supervisors strongly prefer one-stop. When time is short (it always is), they go there first.
+
+IF YOUR LABEL HOLDS YOUR MASTERS:
+→ Check your deal: do you have sync approval rights? Even partial co-approval?
+→ Negotiate co-approval on new work before signing
+→ Build one-stop status into your next deal explicitly
+
+IF YOU'RE FULLY INDEPENDENT:
+→ Distribute through a platform that doesn't claim master rights (most don't — but check)
+→ Self-publish: register directly with your PRO
+→ Document every track's rights status from day one
+
+The path to one-stop is mostly paperwork.
+It's the most commercial thing you can do for your catalogue right now.
+
+#OneClearance #SyncLicensing #AfricanComposers #SyncMaster`, cta: 'DM us if you\'re unsure about your rights status.' },
+
+'IG-M2-PROOF-02': { body: `The brief came in on a Tuesday.
+
+Here's what it said — and what happened next. ↓
+
+THE BRIEF (anonymised):
+Platform: Global streaming drama (8-episode series)
+Scene: 60-second opening sequence
+Mood: Tense, building, cinematic — urban African setting
+Instrumentation: Organic, minimal, no Western orchestration
+Rights: One-stop required. Stems delivery within 48h of selection.
+
+OUR PROCESS:
+→ Brief received: Tuesday 8:47am
+→ Catalogue searched: 3 tracks shortlisted by 11am
+→ All three confirmed one-stop from initial vetting — no new rights check needed
+→ Delivered to supervisor: Tuesday 2:30pm
+→ Total time from brief receipt to delivery: 5h43m
+
+WHAT HAPPENED AFTER:
+→ Wednesday: Supervisor shortlisted 2 tracks for picture review
+→ Thursday: Rights documentation requested and sent within 40 minutes
+→ Friday: Placement confirmed. Licence signed.
+
+COMPOSER: Lagos-based. Independent. No prior international placement.
+
+The brief found a catalogue that was ready.
+The placement was the result, not the starting point.
+
+#SyncMaster #AfricanComposers #SyncLicensing #BehindTheScenes`, cta: 'Post your brief. We respond within 48 hours.' },
+
+'TW-M2-SOLO-03': { body: `In the last 60 days, African composers in the SyncMaster catalogue received placement offers from:
+
+→ A Pan-African streaming drama
+→ A global NGO campaign
+→ A European documentary
+
+None of them changed their sound.
+None of them signed with a major label.
+
+They got their infrastructure right.
+
+The market was already there. The bridge was missing.`, cta: null },
+
+'IG-M2-BTS-01': { body: `Week 2 of Month 2.
+
+Here's what the inside of SyncMaster looks like right now. ↓
+
+THIS WEEK:
+📋 2 new briefs received
+🎵 7 tracks pitched across both briefs
+⏱ Fastest turnaround: 11 hours (brief to full delivery)
+✅ 1 placement confirmed — Month 2's first
+📬 8 new composer applications in the inbox
+🔍 3 new composers currently in vetting
+
+WHAT'S WORKING:
+Speed. The 11-hour turnaround on Tuesday's brief won the deal. The supervisor said it was the fastest professional response they'd received from any African music source.
+
+WHAT WE'RE FIXING:
+Stem organisation. Two composers had stems but disorganised in folder structure. Standardising naming convention and testing delivery speed before the next brief cycle.
+
+WHAT WE'RE BUILDING:
+→ Supervisor outreach expanded to 2 new markets (UK documentary, European ad agency)
+→ Brief-response playbook: documenting the exact process so it scales with new team members
+→ Written feedback sent to 5 rejected applicants this week — specific gaps, specific fixes
+
+Month 2 is ahead of Month 1 on every metric.
+The work is unglamorous and it's working.
+
+#SyncMaster #BuildingInPublic #AfricanComposers #BehindTheScenes`, cta: 'Follow for weekly updates.' },
+
+'BLOG-M2-02': { body: `Month 2: Briefs, Pitches, and Placements — The Honest Update
+
+Two months in. Here's what's actually happening inside SyncMaster.
+
+Brief volume has doubled from Month 1. Placement rate is holding. Turnaround time is improving. The infrastructure is compounding.
+
+But the numbers aren't the most interesting part of Month 2. The pattern is.
+
+Every deal we've won has been won on speed and rights confidence. Every deal we've lost has been lost on response time — not music quality, not rights issues. Time.
+
+The 48-hour brief window is real. Supervisors told us this in Month 1. Month 2 is confirming it with data.
+
+The lesson for composers: your infrastructure has to be ready before the brief arrives. You cannot build it during the window.
+
+→ Full Month 2 update at syncmaster.io/blog`, cta: null },
+
+'LI-M2-02': { body: `Month 2 of SyncMaster is teaching us something we didn't fully expect.
+
+The supervisors aren't just open to African music. They're actively searching for it.
+
+In Month 2, we've had three new brief requests from supervisors in markets we hadn't directly approached — a European documentary production, a North American streaming platform, a global NGO campaign.
+
+None of these came from outbound pitching. They came from content — from building in public and documenting what we're actually doing.
+
+But here's what the data behind those briefs shows:
+
+THE DEMAND IS SPECIFIC, NOT GENERIC
+The briefs don't ask for "world music." They specify instrumentation, mood vocabulary, and cultural reference points with precision. Supervisors who know what they want from African music can now find someone to deliver it cleanly.
+
+THE BOTTLENECK IS STILL INFRASTRUCTURE
+Of 31 applications, 9 are in the active catalogue. The other 22 failed on rights clarity, metadata, or response speed — not music quality. The infrastructure gap is closing, but slowly.
+
+THE COMPOUNDING EFFECT IS REAL
+Every placement builds supervisor trust. Every trusted supervisor sends a new brief. The flywheel is starting.
+
+Month 3 starts with a deeper catalogue and faster brief-response infrastructure. The pipeline is building.
+
+#SyncLicensing #AfricanComposers #MusicBusiness #SyncMaster`, cta: null },
+
+'TW-M2-02': { body: `1/ Month 2 update.
+
+Two placements. Five briefs. Nine composers. Here's the honest breakdown. 🧵
+
+2/ Month 1 was proving the concept.
+Month 2 is showing it compounds.
+
+Brief volume: double Month 1.
+Placement rate: holding steady.
+Turnaround time: improving each week.
+
+3/ The catalogue at end of Week 2:
+
+9 vetted composers.
+61 one-stop cleared tracks.
+Average stem delivery time: 19 hours.
+Rights issues in Month 2 deal flow: zero.
+
+4/ What we got right in Month 2:
+
+Repeat business. Two supervisors from Month 1 returned with new briefs.
+
+That's the signal: when the experience is good, they come back.
+
+5/ What we're still fixing:
+
+Simultaneous brief management. Two briefs in one week works. Three concurrent would create friction. Building the system now before it becomes a bottleneck.
+
+6/ The shift that happened this week:
+
+First inbound brief request — a supervisor reached out directly, without any outreach from our side.
+
+Month 1 was all push.
+Month 2 started pulling.
+
+7/ Month 3 is about scale.
+
+More composers. More supervisors. More briefs handled simultaneously.
+
+The infrastructure is ready for it.
+
+syncmaster.io`, cta: null },
+
+'IG-M2-EDU-05': { body: `Every time a licensed placement airs anywhere in the world, royalties generate.
+
+Those royalties have to go somewhere.
+
+Without PRO registration, they go uncollected — permanently.
+
+Here's the definitive breakdown for African composers. ↓
+
+NIGERIA 🇳🇬
+COSON — primary collection society for compositions
+Also register with: PRS for Music (UK), ASCAP or BMI (US)
+
+SOUTH AFRICA 🇿🇦
+SAMRO — compositions and publishing royalties
+CAPASSO — neighbouring rights (master recordings)
+
+KENYA 🇰🇪
+MCSK — Music Copyright Society of Kenya
+
+GHANA 🇬🇭
+GHAMRO — Ghana Music Rights Organisation
+
+FOR INTERNATIONAL SYNC SPECIFICALLY:
+Every African composer with sync ambitions should also register:
+→ PRS for Music (UK) — captures European royalties
+→ ASCAP or BMI (US) — North American collection
+→ SOCAN (Canada)
+
+You register with your home society — they collect internationally through reciprocal agreements.
+
+THE KEY RULE:
+Register before your first placement. Not after.
+Retroactive collection is almost impossible.
+Royalties from a placement that aired before you registered: gone.
+
+One track. Multiple airings. Royalties every time the content plays.
+
+Register this week.
+
+#PRO #MusicRights #AfricanComposers #SyncMaster`, cta: 'Not registered yet? DM us — we\'ll point you in the right direction.' },
+
+'TW-M2-SOLO-04': { body: `Your PRO registration is not optional.
+
+Every time a licensed placement airs anywhere in the world, performance royalties generate.
+
+Without PRO registration, those royalties go uncollected. Permanently.
+
+SAMRO. COSON. MCSK. GHAMRO. PRS. ASCAP.
+
+Register before your first placement. Not after.
+
+There is no retroactive collection.`, cta: null },
+
+'IG-M2-EDU-06': { body: `A supervisor searched 3,000 tracks for "90-second hopeful African instrumental."
+
+Your track existed.
+
+She never found it.
+
+Here's why metadata is the invisible infrastructure. ↓
+
+WHAT NEEDS TO LIVE IN THE FILE (embedded metadata):
+→ Title: exact, consistent across every platform
+→ Artist/Composer: your name as it appears on your PRO registration
+→ ISRC: your 12-character unique recording identifier
+→ BPM: to the decimal if possible (147.5 is more useful than "fast")
+→ Key: standard notation — Cm, Gmaj, F#min
+→ Genre: specific — "Afrofusion" is searchable; "African" is not
+→ Mood: industry vocabulary — cinematic, tense, hopeful, driving, sparse, melancholic
+→ Year: year of recording, not release
+
+WHAT NEEDS TO LIVE IN YOUR CATALOGUE SYSTEM:
+→ Duration: exact, to the second
+→ Instrumentation: list every prominent instrument
+→ Vocal vs. instrumental flag
+→ One-stop status: confirmed yes/no with documentation
+→ Stems availability: what exists and how fast you can deliver
+→ PRO affiliation
+
+WHAT NEEDS TO LIVE IN YOUR PITCH:
+→ Rights summary: one-stop or split, documented and ready to send
+→ Response time commitment: stated and real
+→ Direct licensing contact
+
+Metadata doesn't make your music better.
+It makes your music findable.
+
+In every sync database and brief-matching tool — metadata is how your track surfaces.
+
+Without it, you're invisible.
+Your music exists. The brief exists. They never meet.
+
+#MusicMetadata #SyncReady #AfricanComposers #SyncMaster`, cta: 'Is your metadata complete? DM us to check.' },
+
+'IG-M2-PROOF-03': { body: `Month 2, Week 3.
+
+Here's where the numbers stand. ↓
+
+CUMULATIVE (Months 1 + 2):
+📬 Applications received: 31
+✅ Composers vetted: 9
+📋 Briefs received: 5
+🎵 Tracks pitched: 18
+🤝 Placements confirmed: 2
+⏱ Fastest turnaround: 11 hours
+
+MONTH 2 SPECIFICALLY:
+→ 3 new composers currently in vetting
+→ 2 new production markets added to outreach
+→ Brief volume: 2× Month 1 rate
+→ Deals lost due to rights issues: 0 (Month 1: 1)
+
+WHAT'S CHANGED SINCE MONTH 1:
+The catalogue is deeper. Brief-response is faster. Supervisor relationships are becoming repeat business.
+
+THE PATTERN HOLDING:
+Speed wins. Rights confidence wins.
+Both are infrastructure problems. Both are fixable.
+
+Month 3 starts in two weeks.
+
+#SyncMaster #BuildingInPublic #AfricanComposers #SyncLicensing`, cta: 'Follow along. Month 3 is going to be bigger.' },
+
+'TW-M2-SOLO-05': { body: `Briefs don't wait.
+
+A production brief typically closes within 72 hours of distribution.
+
+If you're not set up to respond in 24 hours — files ready, rights confirmed, stems accessible — the placement goes to whoever was.
+
+Build the system before the brief arrives.
+
+Not during.`, cta: null },
+
+'IG-M2-BTS-02': { body: `This is what a brief-response week looks like inside SyncMaster.
+
+No glamour. Just process. ↓
+
+MONDAY: Two new briefs in the inbox.
+Read in full. Brief anatomy noted: mood, instrumentation, duration, territory, deadline.
+
+TUESDAY 9am: Catalogue searched.
+5 tracks shortlisted per brief. All confirmed one-stop — no rights chase required.
+
+TUESDAY 2pm: Both briefs answered.
+Tracks delivered with: WAV files, full stems, rights confirmation, brief-aligned description.
+
+WEDNESDAY: Supervisor 1 responds.
+One track shortlisted for picture review.
+
+THURSDAY: Rights documentation requested.
+One page. Pre-prepared. Sent in 40 minutes.
+
+FRIDAY: Placement confirmed.
+Licence terms in negotiation.
+
+Total time — Tuesday brief to Friday confirmation: 72 hours.
+
+This isn't fast because we rushed.
+It's fast because the work was done before the brief arrived:
+→ Every composer vetted in advance
+→ Every track tagged and searchable
+→ Every stem organised and cloud-accessible
+→ Every rights document pre-confirmed
+
+The brief-response window is 48 hours.
+We operate in 24.
+
+#SyncMaster #BehindTheScenes #AfricanComposers #SyncLicensing`, cta: 'DM us if you have a brief. We respond fast.' },
+
+'BLOG-M2-03': { body: `The African Composer's Playbook for International Sync
+
+In Month 2, we received briefs from a European documentary, a global NGO campaign, and a North American streaming drama.
+
+None of these were reached through direct outreach. They came through content — from the transparency of documenting what we're building here and on social.
+
+But what made us able to respond to them was built before the briefs arrived: a vetted catalogue, cleared rights, tagged metadata, organised stems.
+
+This is the playbook for African composers who want to reach international sync markets — not in theory, but in the next 90 days.
+
+The practical steps: rights documentation, file preparation, metadata standards, PRO registration, and building a response infrastructure that works at brief speed.
+
+→ Full playbook at syncmaster.io/blog`, cta: null },
+
+'LI-M2-03': { body: `Three years ago, African music in a global campaign was a creative choice.
+
+Today, it's increasingly the expected one.
+
+Here's what I'm seeing from inside SyncMaster after two months of handling briefs:
+
+BRIEF LANGUAGE HAS CHANGED
+The briefs we receive no longer say "include African influence." They specify "Afrofusion, Lagos sound, contemporary Afro-soul." The vocabulary has become precise. Supervisors who know what they're asking for have studied the genre deeply.
+
+THE DEMAND IS UPSTREAM OF MUSIC SUPERVISION
+This isn't supervisors developing taste independently. Global brands are asking for African soundtracks because their clients want them — for campaigns targeting African markets, and increasingly for global campaigns where African cultural currency is the creative asset.
+
+THE DIVERSITY NARRATIVE IS BECOMING REDUNDANT
+We're past the point where African music gets placed as representation. The compositions are commercially competitive, structurally ready for visual media, and genuinely the right sound for the content being made. That's the conversation now.
+
+WHAT THIS MEANS FOR COMPOSERS
+The market opportunity is real and it's now. The composers who've done the infrastructure work are positioned to capture it. The ones who haven't are watching the opportunity pass.
+
+The talent was always here. The moment has arrived.
+
+#AfricanMusic #SyncLicensing #MusicBusiness #Afrobeats #SyncMaster`, cta: null },
+
+'TW-M2-03': { body: `1/ African music is winning global sync placements.
+
+Not as a diversity nod. As a deliberate creative choice.
+
+Here's what's actually happening. 🧵
+
+2/ Three briefs we've received in the past 30 days were explicitly written for African music.
+
+Not "diverse soundtrack." Not "world music."
+
+Afrofusion. Afro-soul. Contemporary Lagos sound. Written directly into the brief.
+
+3/ The demand isn't hypothetical.
+
+Supervisors are asking because their clients — directors, brands, platforms — are asking.
+
+The audience is ahead of the industry.
+
+4/ What's changing the market:
+
+→ Streaming algorithms have globalised taste faster than the industry expected
+→ African diaspora directors are getting significant projects
+→ Global brands want African market reach — and authentic soundtracks matter
+→ The cultural capital of African music has shifted creative expectations
+
+5/ The bottleneck was never the music.
+
+The bottleneck was:
+→ Rights complexity
+→ No infrastructure for brief-speed delivery
+→ No trusted channel for supervisors to access vetted African catalogues
+
+6/ SyncMaster is building that channel.
+
+Not by changing the music. By building the road between the music and the market.
+
+The music is already world-class. The bridge is being built.
+
+syncmaster.io/apply`, cta: null },
+
+'IG-M2-EDU-07': { body: `Before you send your next sync pitch, run this audit.
+
+Most composers who fail at the brief stage don't fail on music quality.
+
+They fail on one of these 6 things. ↓
+
+1/ RIGHTS CHAIN DOCUMENTATION
+Can you confirm in writing who owns the master and who controls publishing?
+Not "probably me." Confirmed and documented.
+If not: fix this before anything else.
+
+2/ SAMPLE CLEARANCE
+Does every track you're pitching use 100% original material?
+One uncleared sample in your best track = that track is unplaceable.
+If you're unsure: assume it's not cleared.
+
+3/ FILE QUALITY
+Do you have broadcast-spec WAV files for every track you're pitching?
+Not 320k MP3. Not a Spotify link.
+Ready to send today.
+
+4/ STEMS
+When a supervisor asks "can I get stems?" — do you have them?
+Not "I'll re-export from the session."
+Organised, named, cloud-accessible within 10 minutes.
+
+5/ METADATA
+Is your ISRC embedded in the file?
+Are BPM, key, and mood tags complete?
+Is your PRO registration current and reflected in the metadata?
+
+6/ RESPONSE TIME
+Can you respond to a brief within 24 hours?
+Not "I'll check when I see it."
+An active notification. A clear process. A fast reply.
+
+Supervisors give the placement to whoever responds first with the right track.
+
+Not the best track. The right track, first.
+
+Audit now. Fix the gaps before the brief lands.
+
+#SyncAudit #AfricanComposers #SyncMaster #MusicBusiness`, cta: 'Run this today. Fix the gaps before the brief lands.' },
+
+'TW-M2-SOLO-06': { body: `Fix these 6 things before you send your next sync pitch:
+
+1. Rights chain documentation (confirmed in writing)
+2. Lossless WAV files for every pitched track
+3. Full stems organised and cloud-accessible
+4. ISRC codes assigned to every recording
+5. Mood and BPM tags embedded in file metadata
+6. Sub-24-hour response system set up and tested
+
+Most composers who get passed over fail on at least 3 of these.
+
+None of them are about the music.`, cta: null },
+
+'IG-M2-EDU-08': { body: `Your track got shortlisted.
+
+The supervisor likes it. The picture edit is locked.
+
+Then they ask: "Can I get stems?"
+
+What happens in the next 2 hours determines whether you get the deal.
+
+Here's what professional stems look like. ↓
+
+WHAT STEMS ACTUALLY ARE:
+Separate audio exports of each main element in your track.
+Not a "no drums" version. Not a "no music" version.
+Individual layers that can be mixed independently.
+
+THE STANDARD STEM CATEGORIES:
+→ Full mix (the complete, mastered track)
+→ Drums and percussion (isolated)
+→ Bass (isolated)
+→ Harmony / chords (keys, guitar, pads)
+→ Melody / lead (primary melodic element)
+→ Atmosphere / FX (pads, risers, ambience)
+→ Vocals (if applicable — main and backing separate)
+
+THE TECHNICAL SPEC:
+→ Format: 24-bit WAV, 48kHz (broadcast standard)
+→ Length: same as full mix, to the exact sample
+→ Peak level: –6dBFS maximum
+→ Naming convention: Artist_Title_Stem-Name.wav
+
+THE DELIVERY STANDARD:
+→ Packaged in a single named folder
+→ Shared via Google Drive or Dropbox (link ready to send)
+→ Delivered in under 2 hours. Ideally under 30 minutes.
+
+When a director wants to drop out percussion for a quiet scene, they need your drums stem.
+When an editor needs to extend a section, they need your loops.
+If you can't deliver stems cleanly and fast, another composer gets the placement.
+
+Build your stem library as you produce.
+Not after the brief arrives.
+
+#Stems #SyncReady #AfricanComposers #SyncMaster`, cta: 'Missing stems for any pitched track? Rebuild them this week.' },
+
+'IG-M2-PROOF-04': { body: `Tuesday to Friday.
+
+That's how long it took — from brief in the inbox to signed licence.
+
+Here's the full breakdown. ↓
+
+TUESDAY 8:30am: Brief received
+Platform: European documentary
+Duration: 90 seconds
+Mood: Reflective, optimistic, African
+Rights: One-stop required. 48-hour delivery window.
+
+TUESDAY 10:15am: Three tracks identified from catalogue
+All three confirmed one-stop from vetting.
+No additional rights check needed.
+
+TUESDAY 11:00am: Delivered to supervisor
+Full WAV files, full stems, one-stop confirmation for each track.
+Total turnaround from brief receipt: 2h30m.
+
+WEDNESDAY 2:00pm: Supervisor responds
+One track to picture review. Second shortlisted.
+
+THURSDAY 10:00am: Rights documentation requested.
+Sent within 40 minutes.
+
+FRIDAY 3:15pm: Licence signed.
+
+COMPOSER: Lagos-based. Independent. No prior international placement.
+PLACEMENT: European documentary. International distribution.
+TOTAL TIMELINE: Tuesday brief → Friday licence. 4 days.
+
+This is what happens when the infrastructure is already in place.
+
+No scrambling. No rights chase. No negotiating across time zones.
+
+The brief found a catalogue that was ready.
+
+#SyncPlacement #AfricanComposers #SyncMaster #SyncLicensing`, cta: 'DM us if you have a brief. We respond fast.' },
+
+'TW-M2-SOLO-07': { body: `The African composers changing what global film sounds like:
+
+They're not in major label deals.
+They're not on Spotify editorial playlists.
+They're in the catalogue systems of music supervisors who know exactly what they're looking for.
+
+The path to global sync doesn't run through streaming.
+
+It runs through infrastructure, rights clarity, and a direct channel to production briefs.
+
+That's what SyncMaster is building.`, cta: null },
+
+'IG-M2-BTS-03': { body: `Week 4 of Month 2.
+
+Here's where we are heading into the final stretch. ↓
+
+THE NUMBERS:
+→ Active catalogue: 9 vetted composers, 61 one-stop tracks
+→ Briefs handled in Month 2: 3
+→ Month 2 placements: 2 confirmed, 1 in late review
+→ Applications pending: 7
+→ Composers currently in vetting: 2
+
+WHAT CHANGED THIS WEEK:
+First inbound brief request — a supervisor reached out directly, without any outreach from our side.
+
+Month 1 was all push.
+Month 2 started pulling.
+
+WHAT WE'RE PREPARING FOR MONTH 3:
+→ Expanding vetting capacity (2 composers near final stage)
+→ Building a brief-response template for simultaneous briefs
+→ Starting composer spotlight series (1 per week in Month 3)
+→ First UK production company brief expected within 2 weeks
+
+THE SHIFT:
+Month 1 was proving the concept.
+Month 2 was building the system.
+Month 3 is scaling it.
+
+#SyncMaster #BuildingInPublic #AfricanComposers #BehindTheScenes`, cta: 'Follow for Month 3 updates. Starts Monday.' },
+
+'BLOG-M2-04': { body: `Month 2 Mid-Point: What We Built and What's Coming
+
+Halfway through Month 2. Here's the state of the operation.
+
+9 composers. 61 tracks. 5 briefs handled. 4 placements confirmed across 2 months. 22-hour average brief-to-delivery turnaround.
+
+Month 1 was proving the concept. Month 2 is proving the model can compound. The same infrastructure that handled one brief a month in June is now handling three in July without friction.
+
+The most significant shift this week: first inbound brief request. A supervisor reached out directly — no outreach from our side. Building in public is generating inbound credibility faster than direct pitching.
+
+Month 3 focus: scale the catalogue, build simultaneous brief capacity, expand into UK production market.
+
+→ Full mid-point breakdown at syncmaster.io/blog`, cta: null },
+
+'LI-M2-04': { body: `One month into Month 2. Here's the honest operational update.
+
+WHAT'S IMPROVED:
+Brief-response time is down. Month 1 average: 31 hours. Month 2 average: 22 hours. The infrastructure is faster because the catalogue is better organised — every track tagged, every stem cloud-accessible, every rights document pre-confirmed.
+
+Repeat business has started. Two supervisors from Month 1 returned with new briefs. That's the signal that the service level is working.
+
+WHAT WE'RE STILL FIXING:
+Simultaneous brief management. Two briefs in one week works. Three concurrent would create friction. Building that capacity now.
+
+Composer onboarding time. Average vetting duration is 12 days. Target is 7. The delay is almost always at rights documentation — composers who haven't confirmed master ownership or PRO registration in writing.
+
+WHAT I DIDN'T EXPECT:
+The inbound has started. A supervisor reached out this week without any outreach from our side. Building in public — posting the numbers, the process, the briefs — is building inbound credibility.
+
+THE MONTH 3 FOCUS:
+Scale the catalogue. Build simultaneous brief infrastructure. Start composer spotlights. Expand into UK production market.
+
+The model is working. Now it needs to work at higher volume.
+
+#SyncMaster #BuildingInPublic #MusicBusiness #SyncLicensing #AfricanComposers`, cta: null },
+
+'TW-M2-04': { body: `1/ Mid-Month 2. Full breakdown.
+
+What we've built. What we've learned. What's next. 🧵
+
+2/ THE CATALOGUE:
+9 vetted composers.
+61 one-stop cleared tracks.
+Countries: Nigeria (4), South Africa (3), Ghana (1), Kenya (1).
+Average vetting time: 12 days from application to catalogue entry.
+
+3/ THE BRIEFS:
+5 briefs across Months 1 and 2.
+Sources: Nollywood production (2), international NGO (1), European documentary (1), African streaming drama (1).
+Average time from brief receipt to first delivery: 22 hours.
+
+4/ THE PLACEMENTS:
+4 confirmed placements across 2 months.
+Placement markets: Showmax (1), global NGO campaign (1), European documentary (1), Pan-African streaming (1).
+Rights issues: zero deals lost on rights since Month 1.
+
+5/ WHAT THE DATA SHOWS:
+Speed is the most reliable competitive edge.
+Rights confidence is the moat supervisors trust.
+The catalogue deepens faster than expected once vetting is running.
+
+6/ WHAT MONTH 3 LOOKS LIKE:
+→ Catalogue target: 12+ composers
+→ Brief target: 3+ per month
+→ New markets: UK production, North American streaming
+→ Composer spotlight series starts
+
+7/ The model is working.
+
+Now it scales.
+
+syncmaster.io`, cta: null },
+
+'YT-M2-02': { body: `Is your catalogue actually sync-ready?
+
+Most composers think the answer is yes. After two months of vetting applications at SyncMaster, we've found the honest answer is almost always: not yet — but fixable.
+
+In this video, we walk through the 6-point composer audit we run on every SyncMaster application, using a real example from Month 2.
+
+What we audit:
+→ Rights chain documentation (master + publishing: confirmed and provable)
+→ Sample clearance (zero tolerance — one uncleared sample stops the whole catalogue)
+→ File quality (broadcast-spec WAV — not MP3)
+→ Stems organisation (available, named, deliverable in under 2 hours)
+→ Metadata completeness (ISRC, BPM, key, mood tags — all embedded)
+→ Response infrastructure (sub-24-hour response — demonstrated, not theoretical)
+
+We also walk through what failure at each point looks like — and why most of these gaps are fixable in under 4 weeks.
+
+Timestamps:
+0:00 — Why the audit matters
+4:00 — Rights chain documentation
+9:30 — Sample clearance audit
+14:00 — File quality standards
+18:30 — Stems: what good looks like
+23:00 — Metadata walkthrough
+27:30 — Response infrastructure
+32:00 — Month 2 audit results
+
+Subscribe for weekly updates from inside SyncMaster.`, cta: 'Subscribe. Composer audit template available at syncmaster.io.' },
+
+'TW-M2-SOLO-08': { body: `Month 2 numbers:
+
+📋 3 briefs handled
+🤝 2 placements confirmed
+✅ 9 composers in the active catalogue
+🎵 61 one-stop tracks
+⚡ 0 deals lost due to rights issues
+⏱ 22h average brief-to-delivery turnaround
+
+The pipeline is compounding.
+
+Month 3 starts Monday.`, cta: null },
+
+'IG-M2-PROOF-05': { body: `Month 2. Done.
+
+Here's the complete picture. ↓
+
+MONTH 2 RESULTS:
+🤝 Placements confirmed: 2
+📋 Briefs received: 3
+🎵 Tracks pitched: 14
+⏱ Average turnaround (brief to delivery): 22 hours
+📬 New applications received: 11
+✅ New composers vetted: 3
+
+CUMULATIVE (Months 1 + 2):
+→ 4 placements confirmed total
+→ 5 briefs handled
+→ 9 composers in the active catalogue
+→ 4 production markets: Nollywood, South Africa, international NGO, European documentary
+
+WHAT MONTH 2 TAUGHT US:
+Repeat business is real — two Month 1 supervisors returned with new briefs.
+Response time remains the competitive edge — every win came through speed.
+The rights vetting is the moat — no placement has fallen through on rights since Month 1.
+
+MONTH 3:
+More composers. More briefs. More placements.
+The pipeline is compounding.
+
+Follow along.
+
+#SyncMaster #BuildingInPublic #AfricanComposers #SyncPlacement`, cta: 'Follow for Month 3 updates. Starting now.' },
+
+'IG-M2-WRAP': { body: `Month 2. Complete.
+
+61 days.
+9 composers in the catalogue.
+5 briefs handled.
+4 placements confirmed across 2 months.
+39 pieces of content published in July.
+
+A year ago, most of the composers now in our catalogue had never had sync explained to them clearly.
+
+Now they have confirmed placements on global streaming platforms, international NGO campaigns, and European documentary productions.
+
+No label changed.
+No sound changed.
+
+Infrastructure changed.
+
+Month 3 starts tomorrow.
+
+More composers. More briefs. Bigger placements.
+
+The bridge is being built.
+
+#SyncMaster #AfricanComposers #BuildingInPublic #SyncLicensing`, cta: 'Follow for Month 3. Starting Monday.' },
+
+};
+
+// ── STATE ──────────────────────────────────────────────────────────
+let state = {};
+try { state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { state = {}; }
+
+function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+
+// ── FILTERS ────────────────────────────────────────────────────────
+let activePlatform = 'all';
+let activePillar   = 'all';
+
+function applyFilters() {
+  let count = 0;
+  document.querySelectorAll('.cb-card').forEach(card => {
+    const plat   = card.dataset.platform;
+    const pillar = card.dataset.pillar;
+    const show   = (activePlatform === 'all' || plat   === activePlatform)
+                && (activePillar   === 'all' || pillar === activePillar);
+    card.classList.toggle('hidden', !show);
+    if (show) count++;
+  });
+  document.getElementById('filter-count').textContent = count + ' post' + (count !== 1 ? 's' : '');
+  document.getElementById('cb-empty').classList.toggle('hidden', count > 0);
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const group = btn.dataset.group;
+    const val   = btn.dataset.filter;
+    if (group === 'platform') {
+      activePlatform = val;
+      document.querySelectorAll('.filter-btn[data-group="platform"]').forEach(b => b.classList.remove('active'));
+    } else {
+      activePillar = activePillar === val ? 'all' : val;
+      document.querySelectorAll('.filter-btn[data-group="pillar"]').forEach(b => b.classList.remove('active'));
+      if (activePillar === 'all') {
+        document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
+      }
+    }
+    btn.classList.toggle('active', group === 'platform' ? val === activePlatform : activePillar === val);
+    if (group === 'platform') btn.classList.add('active');
+    applyFilters();
+  });
+});
+
+// ── PROGRESS ──────────────────────────────────────────────────────
+function updateProgress() {
+  const total  = POSTS.length;
+  const done   = POSTS.filter(p => state[p.id] === 'done').length;
+  const pct    = total > 0 ? Math.round(done / total * 100) : 0;
+  document.getElementById('prog-done').textContent = done;
+  document.getElementById('prog-pct').textContent  = pct + '%';
+  document.getElementById('prog-fill').style.width = pct + '%';
+}
+
+// ── RENDER ────────────────────────────────────────────────────────
+function fmtDate(d) {
+  if (!d) return '';
+  const [, m, day] = d.split('-');
+  const months = ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return months[+m] + ' ' + (+day);
+}
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+const list = document.getElementById('cb-list');
+
+POSTS.forEach(post => {
+  const copy   = COPY[post.id];
+  if (!copy) return;
+  const status = state[post.id] || 'todo';
+  const pBadge = PLATFORM_BADGE[post.platform] || 'badge-blog';
+  const pClass = PILLAR_CLASS[post.pillar]      || 'pillar-education';
+  const statusLabel = status === 'todo' ? 'To Do' : status === 'inprogress' ? 'In Progress' : 'Done';
+
+  const card = document.createElement('div');
+  card.className = 'cb-card';
+  card.dataset.postId  = post.id;
+  card.dataset.status  = status;
+  card.dataset.platform = post.platform;
+  card.dataset.pillar   = post.pillar;
+
+  card.innerHTML =
+    `<div class="cb-card-hdr">` +
+      `<div class="cb-card-badges">` +
+        `<span class="post-id">${esc(post.id)}</span>` +
+        `<span class="platform-badge ${pBadge}">${esc(post.platform)}</span>` +
+        `<span class="pillar-chip ${pClass}">${esc(post.pillar)}</span>` +
+        `<span class="type-tag">${esc(post.type)}</span>` +
+      `</div>` +
+      `<span class="cb-card-date">${fmtDate(post.date)}</span>` +
+    `</div>` +
+    `<div class="cb-topic">${esc(post.topic)}</div>` +
+    `<div class="cb-card-copy">${esc(copy.body)}</div>` +
+    (copy.cta ? `<div class="cb-card-cta">↳ ${esc(copy.cta)}</div>` : '') +
+    `<div class="cb-card-ftr">` +
+      `<div class="cb-status-row">` +
+        `<div class="cb-status-dot" data-status="${status}"></div>` +
+        `<select class="cb-status-select" data-status="${status}" data-post-id="${esc(post.id)}">` +
+          `<option value="todo"${status==='todo'?' selected':''}>○ To Do</option>` +
+          `<option value="inprogress"${status==='inprogress'?' selected':''}>◐ In Progress</option>` +
+          `<option value="done"${status==='done'?' selected':''}>● Done</option>` +
+        `</select>` +
+      `</div>` +
+      `<button class="cb-copy-btn" data-post-id="${esc(post.id)}" type="button">Copy</button>` +
+    `</div>`;
+
+  list.appendChild(card);
+});
+
+// ── STATUS CHANGE ────────────────────────────────────────────────
+list.addEventListener('change', e => {
+  const sel = e.target.closest('.cb-status-select');
+  if (!sel) return;
+  const id  = sel.dataset.postId;
+  const val = sel.value;
+  state[id] = val;
+  saveState();
+  sel.dataset.status = val;
+  const card = sel.closest('.cb-card');
+  card.dataset.status = val;
+  const dot = card.querySelector('.cb-status-dot');
+  if (dot) dot.dataset.status = val;
+  updateProgress();
+});
+
+// ── COPY BUTTON ──────────────────────────────────────────────────
+list.addEventListener('click', e => {
+  const btn = e.target.closest('.cb-copy-btn');
+  if (!btn) return;
+  const c = COPY[btn.dataset.postId];
+  if (!c) return;
+  const text = c.cta ? `${c.body}\n\n${c.cta}` : c.body;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.cssText = 'position:fixed;opacity:0';
+    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
+    btn.textContent = 'Copied!'; btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+});
+
+updateProgress();
+applyFilters();
+</script>
+</body>
+</html>
