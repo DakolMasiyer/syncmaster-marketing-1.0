@@ -153,6 +153,37 @@
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 3px; }
+
+    /* ── VIEW TABS ── */
+    .view-tab-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 32px; }
+    .view-tab-bar-inner { max-width: 1440px; margin: 0 auto; display: flex; }
+    .vtab { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; padding: 14px 20px 13px; border: none; background: none; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; transition: color 0.18s, border-bottom-color 0.18s; }
+    .vtab:hover { color: var(--white); }
+    .vtab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+    /* ── COPY BANK PANEL ── */
+    #copy-bank { display: none; }
+    .cb-panel-wrap { max-width: 1440px; margin: 0 auto; padding: 24px 32px 60px; }
+    .cb-cards-list { display: flex; flex-direction: column; gap: 12px; }
+    .cb-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; transition: border-color 0.15s; }
+    .cb-card:hover { border-color: var(--border-2); }
+    .cb-card[data-status="done"] { opacity: 0.6; }
+    .cb-card-hdr { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+    .cb-card-badges { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+    .cb-card-date { font-size: 10px; color: var(--muted); white-space: nowrap; }
+    .cb-card-copy { font-size: 12px; line-height: 1.82; color: var(--mid); white-space: pre-wrap; font-weight: 300; margin-top: 8px; }
+    .cb-card-cta { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--border); font-size: 11px; font-weight: 500; color: var(--gold); font-style: italic; }
+    .cb-card-ftr { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); }
+    .cb-status-row { display: flex; align-items: center; gap: 6px; }
+    .cb-status-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .cb-status-dot[data-status="todo"]       { background: var(--muted); }
+    .cb-status-dot[data-status="inprogress"] { background: var(--gold); }
+    .cb-status-dot[data-status="done"]       { background: var(--green); }
+    .cb-status-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .cb-copy-btn { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; padding: 5px 13px; border-radius: 6px; border: 1px solid var(--border-2); background: var(--surface-2); color: var(--mid); cursor: pointer; transition: border-color 0.18s, color 0.18s; }
+    .cb-copy-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .cb-copy-btn.copied { border-color: var(--green); color: var(--green); }
+    @media (max-width: 960px) { .cb-panel-wrap { padding-left: 16px; padding-right: 16px; } }
   </style>
 </head>
 <body>
@@ -173,6 +204,17 @@
     </div>
   </div>
 </header>
+
+<!-- VIEW TABS -->
+<div class="view-tab-bar">
+  <div class="view-tab-bar-inner">
+    <button class="vtab active" data-view="calendar" type="button">Calendar</button>
+    <button class="vtab" data-view="copybank" type="button">Copy Bank</button>
+  </div>
+</div>
+
+<!-- CALENDAR VIEW -->
+<div id="view-calendar">
 
 <!-- FILTER BAR -->
 <div class="filter-bar">
@@ -219,6 +261,15 @@
 
 <!-- CALENDAR -->
 <div class="cal-wrap" id="cal-wrap"></div>
+
+</div><!-- /view-calendar -->
+
+<!-- COPY BANK VIEW -->
+<div id="copy-bank">
+  <div class="cb-panel-wrap">
+    <div id="cb-cards-list" class="cb-cards-list"></div>
+  </div>
+</div>
 
 <!-- MODAL -->
 <div class="modal-backdrop" id="modal-backdrop" role="dialog" aria-modal="true">
@@ -2385,7 +2436,7 @@ const POSTS = [
   { id:'YT-02',            date:'2026-06-17', platform:'YouTube',   pillar:'Education',        type:'Video',    topic:'Sync brief walkthrough',                                       persona:'Tunde', hook:'Let\'s walk through a real sync brief — what every field means and how to respond to it.' },
   { id:'STANDALONE-TW-02', date:'2026-06-17', platform:'Twitter/X', pillar:'Education',        type:'Tweet',    topic:'Most sync rejection emails aren\'t rejections',                persona:'Tunde', hook:'Most "no" emails from supervisors aren\'t rejections of your music.' },
   // ── JUN 18 (Thu)
-  { id:'IG-EDU-06',        date:'2026-06-18', platform:'Instagram', pillar:'Education',        type:'Carousel', topic:'Anatomy of a sync brief',                                      persona:'Tunde', hook:'The brief said: 90 seconds. Orchestral. Afrofusion influence. Hopeful. No vocals. One-stop only.' },
+  { id:'IG-EDU-06',        date:'2026-06-18', platform:'Instagram', pillar:'Behind the Scenes', type:'Carousel', topic:'Anatomy of a sync brief',                                      persona:'Tunde', hook:'The brief said: 90 seconds. Orchestral. Afrofusion influence. Hopeful. No vocals. One-stop only.' },
   // ── JUN 19 (Fri)
   { id:'IG-PROOF-03',      date:'2026-06-19', platform:'Instagram', pillar:'Proof',            type:'Single',   topic:'Composer spotlight — Lagos',                                   persona:'Tunde', hook:'Composer. Lagos-based. 7 years making music. Zero prior placements.' },
   // ── JUN 20 (Sat)
@@ -2745,6 +2796,7 @@ document.getElementById('modal-status').addEventListener('change', e => {
   e.target.dataset.status = s;
   saveState();
   renderCalendar();
+  refreshCbCard(activePostId);
 });
 
 // ═══════════════════════════════════════════════════════════
@@ -2774,10 +2826,94 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 });
 
 // ═══════════════════════════════════════════════════════════
+// COPY BANK TAB
+// ═══════════════════════════════════════════════════════════
+function renderCopyBank() {
+  const list = document.getElementById('cb-cards-list');
+  if (!list) return;
+  list.innerHTML = '';
+  POSTS.forEach(post => {
+    const copy = COPY[post.id];
+    if (!copy) return;
+    const status = state.statuses[post.id] || 'todo';
+    const pBadge    = PLATFORM_BADGE[post.platform] || 'badge-instagram';
+    const pillarCls = PILLAR_CLASS[post.pillar]     || 'pillar-education';
+    const statusLabel = status === 'todo' ? 'To Do' : status === 'inprogress' ? 'In Progress' : 'Done';
+    const card = document.createElement('div');
+    card.className = 'cb-card';
+    card.dataset.postId = post.id;
+    card.dataset.status = status;
+    card.innerHTML =
+      `<div class="cb-card-hdr">` +
+        `<div class="cb-card-badges">` +
+          `<span class="modal-post-id">${esc(post.id)}</span>` +
+          `<span class="platform-badge ${pBadge}">${esc(post.platform)}</span>` +
+          `<span class="pillar-chip ${pillarCls}">${esc(post.pillar)}</span>` +
+          `<span class="modal-type-tag">${esc(post.type)}</span>` +
+        `</div>` +
+        `<span class="cb-card-date">${post.date ? fmtDate(post.date) : ''}</span>` +
+      `</div>` +
+      `<div class="modal-topic" style="font-size:13px;margin-bottom:0">${esc(post.topic)}</div>` +
+      `<div class="cb-card-copy">${esc(copy.body)}</div>` +
+      (copy.cta ? `<div class="cb-card-cta">↳ CTA: ${esc(copy.cta)}</div>` : '') +
+      `<div class="cb-card-ftr">` +
+        `<div class="cb-status-row">` +
+          `<div class="cb-status-dot" data-status="${status}"></div>` +
+          `<span class="cb-status-label">${statusLabel}</span>` +
+        `</div>` +
+        `<button class="cb-copy-btn" data-post-id="${esc(post.id)}" type="button">Copy</button>` +
+      `</div>`;
+    list.appendChild(card);
+  });
+  list.querySelectorAll('.cb-copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const c = COPY[btn.dataset.postId];
+      if (!c) return;
+      const text = c.cta ? `${c.body}\n\n${c.cta}` : c.body;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+      }).catch(() => {});
+    });
+  });
+}
+
+function refreshCbCard(postId) {
+  const card = document.querySelector(`#cb-cards-list .cb-card[data-post-id="${postId}"]`);
+  if (!card) return;
+  const s = state.statuses[postId] || 'todo';
+  card.dataset.status = s;
+  const dot = card.querySelector('.cb-status-dot');
+  if (dot) dot.dataset.status = s;
+  const lbl = card.querySelector('.cb-status-label');
+  if (lbl) lbl.textContent = s === 'todo' ? 'To Do' : s === 'inprogress' ? 'In Progress' : 'Done';
+}
+
+function activateView(view) {
+  const calView = document.getElementById('view-calendar');
+  const cbView  = document.getElementById('copy-bank');
+  document.querySelectorAll('.vtab').forEach(t => t.classList.toggle('active', t.dataset.view === view));
+  if (view === 'copybank') {
+    calView.style.display = 'none';
+    cbView.style.display  = 'block';
+    renderCopyBank();
+  } else {
+    calView.style.display = '';
+    cbView.style.display  = 'none';
+  }
+}
+
+document.querySelectorAll('.vtab').forEach(btn => {
+  btn.addEventListener('click', () => activateView(btn.dataset.view));
+});
+
+// ═══════════════════════════════════════════════════════════
 // BOOT
 // ═══════════════════════════════════════════════════════════
 loadState();
 renderCalendar();
+if (window.location.hash === '#copy-bank') activateView('copybank');
 </script>
 </body>
 </html>
