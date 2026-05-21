@@ -63,7 +63,7 @@ If you're solving briefs where African music could fit, I can show you what we'd
 ```
 
 ### Alignment:
-- Pulls specific metrics from PLAN-kanban-5-fixes.md and content
+- Pulls specific metrics from verified program metrics and content
 - Uses Proof pillar tone: Aspirational · Credible
 - Includes supervisor quote that mirrors actual content
 - Focuses on workflow efficiency (key producer pain point)
