@@ -59,8 +59,21 @@
     .progress-track { background: var(--border); border-radius: 999px; height: 5px; overflow: hidden; }
     .progress-fill { background: var(--gold); height: 100%; border-radius: 999px; width: 0%; transition: width 0.35s ease; }
 
+    /* ── PLATFORM TAB BAR ── */
+    .plat-tab-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 32px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
+    .plat-tab-bar::-webkit-scrollbar { display: none; }
+    .plat-tab-bar-inner { max-width: 1440px; margin: 0 auto; display: flex; }
+    .plat-tab { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; padding: 0 20px; height: 44px; border: none; background: none; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; transition: color 0.18s, border-color 0.18s; white-space: nowrap; letter-spacing: 0.02em; }
+    .plat-tab:hover { color: var(--white); }
+    .plat-tab.active { color: var(--white); border-bottom-color: var(--white); }
+    .ptab-instagram.active { color: var(--purple); border-bottom-color: var(--purple); }
+    .ptab-twitter.active   { color: var(--teal);   border-bottom-color: var(--teal); }
+    .ptab-linkedin.active  { color: var(--gold);   border-bottom-color: var(--gold); }
+    .ptab-youtube.active   { color: var(--coral);  border-bottom-color: var(--coral); }
+    .ptab-blog.active      { color: var(--green);  border-bottom-color: var(--green); }
+
     /* ── FILTER BAR ── */
-    .filter-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 10px 32px; }
+    .filter-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 8px 32px; }
     .filter-bar-inner { max-width: 1440px; margin: 0 auto; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
     .filter-btn { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; padding: 5px 12px; border-radius: 8px; border: 1px solid var(--border-2); background: var(--surface-2); color: var(--mid); cursor: pointer; transition: border-color 0.15s, color 0.15s, background 0.15s; white-space: nowrap; }
     .filter-btn:hover { border-color: var(--muted); color: var(--white); }
@@ -190,21 +203,30 @@
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 3px; }
 
+    /* ── SUBVIEW BAR (Calendar / Kanban / List toggle) ── */
+    .subview-bar { background: var(--bg); border-bottom: 1px solid var(--border); padding: 0 32px; }
+    .subview-bar-inner { max-width: 1440px; margin: 0 auto; display: flex; align-items: center; gap: 4px; padding: 8px 0; }
+    .svtab { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; padding: 5px 14px; border-radius: 6px; border: 1px solid transparent; background: none; color: var(--muted); cursor: pointer; transition: color 0.15s, background 0.15s, border-color 0.15s; white-space: nowrap; letter-spacing: 0.03em; }
+    .svtab:hover { color: var(--white); background: var(--surface-2); }
+    .svtab.active { color: var(--white); background: var(--surface-2); border-color: var(--border-2); }
+
     /* ── KANBAN VIEW ── */
     .kanban-wrap { max-width: 1440px; margin: 0 auto; padding: 20px 32px 60px; display: flex; gap: 16px; align-items: flex-start; }
     .kanban-col { flex: 1; min-width: 0; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
-    .kanban-col-hdr { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid var(--border); }
-    .kcol-label { font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mid); }
-    .kcol-count { font-size: 11px; background: var(--surface-2); border: 1px solid var(--border-2); color: var(--muted); border-radius: 999px; padding: 1px 8px; }
+    .kanban-col-hdr { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid var(--border); }
+    .kcol-pill { display: inline-flex; align-items: center; padding: 4px 14px; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: 0.03em; }
+    .kcol-todo-pill     { background: rgba(192,192,208,0.10); color: var(--mid); }
+    .kcol-progress-pill { background: rgba(242,201,76,0.12);  color: var(--gold); }
+    .kcol-done-pill     { background: rgba(76,175,128,0.12);  color: var(--green); }
+    .kcol-count-plain   { font-size: 13px; font-weight: 500; color: var(--muted); }
     .kanban-cards { display: flex; flex-direction: column; gap: 8px; padding: 12px; min-height: 120px; }
-    .kanban-card { background: var(--surface-2); border: 1px solid var(--border); border-left: 3px solid transparent; border-radius: 7px; padding: 10px 12px; cursor: pointer; width: 100%; text-align: left; transition: border-color 0.15s, filter 0.15s; }
-    .kanban-card:hover { filter: brightness(1.15); }
-    .kanban-card[data-status="todo"]       { border-left-color: var(--muted); }
-    .kanban-card[data-status="inprogress"] { border-left-color: var(--gold); }
-    .kanban-card[data-status="done"]       { border-left-color: var(--green); opacity: 0.75; }
+    .kanban-card { background: var(--surface-2); border: 1px solid var(--border); border-radius: 7px; padding: 10px 12px; cursor: pointer; width: 100%; text-align: left; transition: border-color 0.15s, filter 0.15s; }
+    .kanban-card:hover { filter: brightness(1.15); border-color: var(--border-2); }
+    .kanban-card[data-status="done"] { opacity: 0.72; }
     .kanban-card-date  { font-size: 10px; color: var(--muted); margin-bottom: 5px; }
-    .kanban-card-title { font-size: 12px; color: var(--white); font-weight: 500; line-height: 1.35; margin-bottom: 6px; }
-    .kanban-card-meta  { display: flex; gap: 6px; flex-wrap: wrap; }
+    .kanban-card-title { font-size: 12px; color: var(--white); font-weight: 500; line-height: 1.35; margin-bottom: 8px; }
+    .kanban-card-chips { display: flex; gap: 5px; flex-wrap: wrap; }
+    .kcard-type-chip { font-size: 9px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; background: var(--surface); border: 1px solid var(--border-2); color: var(--muted); }
     @media (max-width: 768px) { .kanban-wrap { flex-direction: column; } }
 
     /* ── LIST VIEW ── */
@@ -229,7 +251,6 @@
     .vtab.active { color: var(--gold); border-bottom-color: var(--gold); }
 
     /* ── COPY BANK PANEL ── */
-    #copy-bank { display: none; }
     .cb-panel-wrap { max-width: 1440px; margin: 0 auto; padding: 24px 32px 60px; }
     .cb-cards-list { display: flex; flex-direction: column; gap: 12px; }
     .cb-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; transition: border-color 0.15s; }
@@ -294,26 +315,29 @@
   </div>
 </header>
 
-<!-- VIEW TABS -->
+<!-- MAIN VIEW TABS -->
 <div class="view-tab-bar">
   <div class="view-tab-bar-inner">
     <button class="vtab active" data-view="calendar"  type="button">Calendar</button>
-    <button class="vtab"        data-view="kanban"    type="button">Kanban</button>
-    <button class="vtab"        data-view="list"      type="button">List</button>
     <button class="vtab"        data-view="copybank"  type="button">Copy Bank</button>
   </div>
 </div>
 
-<!-- FILTER BAR (shared across all views) -->
+<!-- PLATFORM TAB BAR (visible for both views) -->
+<div class="plat-tab-bar" id="plat-tab-bar">
+  <div class="plat-tab-bar-inner">
+    <button class="plat-tab active"        data-filter="all"       data-group="platform" type="button">All</button>
+    <button class="plat-tab ptab-instagram" data-filter="Instagram" data-group="platform" type="button">Instagram</button>
+    <button class="plat-tab ptab-twitter"   data-filter="Twitter/X" data-group="platform" type="button">Twitter / X</button>
+    <button class="plat-tab ptab-linkedin"  data-filter="LinkedIn"  data-group="platform" type="button">LinkedIn</button>
+    <button class="plat-tab ptab-youtube"   data-filter="YouTube"   data-group="platform" type="button">YouTube</button>
+    <button class="plat-tab ptab-blog"      data-filter="Blog"      data-group="platform" type="button">Blog</button>
+  </div>
+</div>
+
+<!-- SECONDARY FILTER BAR (pillar + type) -->
 <div class="filter-bar">
   <div class="filter-bar-inner">
-    <button class="filter-btn active" data-filter="all"               data-group="platform" type="button">All</button>
-    <button class="filter-btn"        data-filter="Instagram"         data-group="platform" type="button">Instagram</button>
-    <button class="filter-btn"        data-filter="Twitter/X"         data-group="platform" type="button">Twitter / X</button>
-    <button class="filter-btn"        data-filter="LinkedIn"          data-group="platform" type="button">LinkedIn</button>
-    <button class="filter-btn"        data-filter="YouTube"           data-group="platform" type="button">YouTube</button>
-    <button class="filter-btn"        data-filter="Blog"              data-group="platform" type="button">Blog</button>
-    <div class="filter-divider"></div>
     <button class="filter-btn"        data-filter="Education"         data-group="pillar"   type="button">Education</button>
     <button class="filter-btn"        data-filter="Proof"             data-group="pillar"   type="button">Proof</button>
     <button class="filter-btn"        data-filter="Behind the Scenes" data-group="pillar"   type="button">BTS</button>
@@ -329,62 +353,80 @@
   </div>
 </div>
 
-<!-- CALENDAR VIEW -->
+<!-- CALENDAR MAIN VIEW (wraps calendar / kanban / list sub-views) -->
 <div id="view-calendar">
 
-<!-- MONTH NAV -->
-<div class="month-nav-wrap">
-  <button class="month-nav-btn" id="btn-prev">&#8249;</button>
-  <div class="month-title" id="month-title">June 2026</div>
-  <button class="month-nav-btn" id="btn-next">&#8250;</button>
-  <span class="month-post-count" id="month-post-count"></span>
-</div>
+  <!-- Sub-view toggle -->
+  <div class="subview-bar">
+    <div class="subview-bar-inner">
+      <button class="svtab active" data-subview="calendar" type="button">Calendar</button>
+      <button class="svtab"        data-subview="kanban"   type="button">Kanban</button>
+      <button class="svtab"        data-subview="list"     type="button">List</button>
+    </div>
+  </div>
 
-<!-- CALENDAR -->
-<div class="cal-wrap" id="cal-wrap"></div>
+  <!-- Calendar sub-view -->
+  <div id="subview-calendar">
+    <div class="month-nav-wrap">
+      <button class="month-nav-btn" id="btn-prev">&#8249;</button>
+      <div class="month-title" id="month-title">June 2026</div>
+      <button class="month-nav-btn" id="btn-next">&#8250;</button>
+      <span class="month-post-count" id="month-post-count"></span>
+    </div>
+    <div class="cal-wrap" id="cal-wrap"></div>
+  </div>
+
+  <!-- Kanban sub-view -->
+  <div id="subview-kanban" style="display:none">
+    <div class="kanban-wrap">
+      <div class="kanban-col" id="kcol-todo">
+        <div class="kanban-col-hdr">
+          <span class="kcol-pill kcol-todo-pill">To Do</span>
+          <span class="kcol-count-plain" id="kcount-todo">0</span>
+        </div>
+        <div class="kanban-cards" id="kcards-todo"></div>
+      </div>
+      <div class="kanban-col" id="kcol-inprogress">
+        <div class="kanban-col-hdr">
+          <span class="kcol-pill kcol-progress-pill">In Progress</span>
+          <span class="kcol-count-plain" id="kcount-inprogress">0</span>
+        </div>
+        <div class="kanban-cards" id="kcards-inprogress"></div>
+      </div>
+      <div class="kanban-col" id="kcol-done">
+        <div class="kanban-col-hdr">
+          <span class="kcol-pill kcol-done-pill">Done</span>
+          <span class="kcol-count-plain" id="kcount-done">0</span>
+        </div>
+        <div class="kanban-cards" id="kcards-done"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- List sub-view -->
+  <div id="subview-list" style="display:none">
+    <div class="list-wrap">
+      <table class="list-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>ID</th>
+            <th>Platform</th>
+            <th>Pillar</th>
+            <th>Type</th>
+            <th>Topic / Hook</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="list-body"></tbody>
+      </table>
+    </div>
+  </div>
 
 </div><!-- /view-calendar -->
 
-<!-- KANBAN VIEW -->
-<div id="view-kanban" style="display:none">
-  <div class="kanban-wrap">
-    <div class="kanban-col" id="kcol-todo">
-      <div class="kanban-col-hdr"><span class="kcol-label">To Do</span><span class="kcol-count" id="kcount-todo">0</span></div>
-      <div class="kanban-cards" id="kcards-todo"></div>
-    </div>
-    <div class="kanban-col" id="kcol-inprogress">
-      <div class="kanban-col-hdr"><span class="kcol-label">In Progress</span><span class="kcol-count" id="kcount-inprogress">0</span></div>
-      <div class="kanban-cards" id="kcards-inprogress"></div>
-    </div>
-    <div class="kanban-col" id="kcol-done">
-      <div class="kanban-col-hdr"><span class="kcol-label">Done</span><span class="kcol-count" id="kcount-done">0</span></div>
-      <div class="kanban-cards" id="kcards-done"></div>
-    </div>
-  </div>
-</div>
-
-<!-- LIST VIEW -->
-<div id="view-list" style="display:none">
-  <div class="list-wrap">
-    <table class="list-table">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>ID</th>
-          <th>Platform</th>
-          <th>Pillar</th>
-          <th>Type</th>
-          <th>Topic / Hook</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody id="list-body"></tbody>
-    </table>
-  </div>
-</div>
-
 <!-- COPY BANK VIEW -->
-<div id="copy-bank">
+<div id="copy-bank" style="display:none">
   <div class="cb-panel-wrap">
     <div id="cb-header-bar" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
       <span id="cb-count" style="font-size:12px;color:var(--muted);"></span>
@@ -1843,6 +1885,7 @@ let activePlatform = 'all';
 let activePillar   = 'all';
 let activeType     = 'all';
 let currentView    = 'calendar';
+let currentSubview = 'calendar';
 let activePostId   = null;
 let urlSaveTimer;
 
@@ -1894,9 +1937,9 @@ function isVisible(p) {
          (activeType     === 'all' || p.type     === activeType);
 }
 function refreshCurrentView() {
-  if      (currentView === 'kanban')   renderKanban();
-  else if (currentView === 'list')     renderList();
-  else if (currentView === 'copybank') renderCopyBank();
+  if      (currentView === 'copybank')               renderCopyBank();
+  else if (currentSubview === 'kanban')              renderKanban();
+  else if (currentSubview === 'list')                renderList();
   else                                 renderCalendar();
 }
 function fmtDate(iso) { const [y,m,d]=iso.split('-').map(Number); return `${MONTH_NAMES[m-1].slice(0,3)} ${d}, ${y}`; }
@@ -2122,15 +2165,20 @@ document.getElementById('btn-next').addEventListener('click', () => {
 // ═══════════════════════════════════════════════════════════
 // FILTERS
 // ═══════════════════════════════════════════════════════════
+document.querySelectorAll('.plat-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    activePlatform = btn.dataset.filter;
+    document.querySelectorAll('.plat-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    refreshCurrentView();
+  });
+});
+
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const group = btn.dataset.group;
     const val   = btn.dataset.filter;
-    if (group === 'platform') {
-      activePlatform = val;
-      document.querySelectorAll('.filter-btn[data-group="platform"]').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-    } else if (group === 'pillar') {
+    if (group === 'pillar') {
       activePillar = (activePillar === val) ? 'all' : val;
       document.querySelectorAll('.filter-btn[data-group="pillar"]').forEach(b => b.classList.remove('active'));
       if (activePillar !== 'all') btn.classList.add('active');
@@ -2164,9 +2212,10 @@ function renderKanban() {
     card.innerHTML =
       `<div class="kanban-card-date">${post.date ? fmtDate(post.date) : ''}</div>` +
       `<div class="kanban-card-title">${esc(post.topic)}</div>` +
-      `<div class="kanban-card-meta">` +
+      `<div class="kanban-card-chips">` +
         `<span class="platform-badge ${pBadge}">${esc(post.platform)}</span>` +
         `<span class="pillar-chip ${pillarCls}">${esc(post.pillar)}</span>` +
+        `<span class="kcard-type-chip">${esc(post.type)}</span>` +
       `</div>`;
     card.addEventListener('click', () => openModal(post.id));
     document.getElementById(`kcards-${status}`).appendChild(card);
@@ -2272,18 +2321,22 @@ function refreshCbCard(postId) {
   if (lbl) lbl.textContent = s === 'todo' ? 'To Do' : s === 'inprogress' ? 'In Progress' : 'Done';
 }
 
+function activateSubview(subview) {
+  currentSubview = subview;
+  ['calendar', 'kanban', 'list'].forEach(s => {
+    const el = document.getElementById(`subview-${s}`);
+    if (el) el.style.display = (s === subview) ? '' : 'none';
+  });
+  document.querySelectorAll('.svtab').forEach(t => t.classList.toggle('active', t.dataset.subview === subview));
+  refreshCurrentView();
+}
+
 function activateView(view) {
   currentView = view;
-  const viewMap = {
-    calendar: 'view-calendar',
-    kanban:   'view-kanban',
-    list:     'view-list',
-    copybank: 'copy-bank',
-  };
-  Object.entries(viewMap).forEach(([k, id]) => {
-    const el = document.getElementById(id);
-    if (el) el.style.display = (k === view) ? '' : 'none';
-  });
+  const calEl  = document.getElementById('view-calendar');
+  const cbEl   = document.getElementById('copy-bank');
+  if (calEl) calEl.style.display = (view === 'calendar') ? '' : 'none';
+  if (cbEl)  cbEl.style.display  = (view === 'copybank') ? '' : 'none';
   document.querySelectorAll('.vtab').forEach(t => t.classList.toggle('active', t.dataset.view === view));
   const monthNav = document.querySelector('.header-nav');
   if (monthNav) monthNav.style.display = view === 'copybank' ? 'flex' : 'none';
@@ -2292,6 +2345,10 @@ function activateView(view) {
 
 document.querySelectorAll('.vtab').forEach(btn => {
   btn.addEventListener('click', () => activateView(btn.dataset.view));
+});
+
+document.querySelectorAll('.svtab').forEach(btn => {
+  btn.addEventListener('click', () => activateSubview(btn.dataset.subview));
 });
 
 // ═══════════════════════════════════════════════════════════
