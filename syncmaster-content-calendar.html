@@ -229,6 +229,11 @@
     .list-row[data-status="done"]       td:first-child { border-left-color: var(--green); }
     .list-row[data-status="done"] td { opacity: 0.6; }
     .list-hook { color: var(--white); font-weight: 400; max-width: 360px; }
+    .list-th-sort { cursor: pointer; user-select: none; white-space: nowrap; }
+    .list-th-sort:hover { color: var(--white); }
+    .list-th-sort.sorted { color: var(--gold); }
+    .sort-icon { display: inline-block; margin-left: 4px; font-size: 9px; opacity: 0.5; vertical-align: middle; }
+    .list-th-sort.sorted .sort-icon { opacity: 1; }
 
     /* ── VIEW TABS ── */
     .view-tab-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 32px; }
@@ -238,6 +243,11 @@
     .vtab.active { color: var(--gold); border-bottom-color: var(--gold); }
 
     /* ── COPY BANK PANEL ── */
+    .cb-month-nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 32px; }
+    .cb-month-nav-inner { max-width: 1440px; margin: 0 auto; display: flex; }
+    .cb-month-tab { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; padding: 0 18px; height: 40px; display: inline-flex; align-items: center; color: var(--muted); text-decoration: none; border-bottom: 2px solid transparent; transition: color 0.18s, border-color 0.18s; white-space: nowrap; }
+    .cb-month-tab:hover { color: var(--white); }
+    .cb-month-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
     .cb-panel-wrap { max-width: 1440px; margin: 0 auto; padding: 24px 32px 60px; }
     .cb-cards-list { display: flex; flex-direction: column; gap: 12px; }
     .cb-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; transition: border-color 0.15s; }
@@ -399,11 +409,11 @@
           <tr>
             <th>Date</th>
             <th>ID</th>
-            <th>Platform</th>
-            <th>Pillar</th>
-            <th>Type</th>
+            <th class="list-th-sort" data-sort="platform">Platform <span class="sort-icon">↕</span></th>
+            <th class="list-th-sort" data-sort="pillar">Pillar <span class="sort-icon">↕</span></th>
+            <th class="list-th-sort" data-sort="type">Type <span class="sort-icon">↕</span></th>
             <th>Topic / Hook</th>
-            <th>Status</th>
+            <th class="list-th-sort" data-sort="status">Status <span class="sort-icon">↕</span></th>
           </tr>
         </thead>
         <tbody id="list-body"></tbody>
@@ -415,6 +425,13 @@
 
 <!-- COPY BANK VIEW -->
 <div id="copy-bank" style="display:none">
+  <div class="cb-month-nav">
+    <div class="cb-month-nav-inner">
+      <span class="cb-month-tab active">Month 1 — Jun 2026</span>
+      <a class="cb-month-tab" href="copy-bank-m2.html">Month 2 — Jul 2026</a>
+      <a class="cb-month-tab" href="copy-bank-m3.html">Month 3 — Aug 2026</a>
+    </div>
+  </div>
   <div class="cb-panel-wrap">
     <div id="cb-header-bar" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
       <span id="cb-count" style="font-size:12px;color:var(--muted);"></span>
@@ -1874,6 +1891,8 @@ let activePillar   = 'all';
 let activeType     = 'all';
 let currentView    = 'calendar';
 let currentSubview = 'calendar';
+let listSortKey    = null;
+let listSortDir    = 'asc';
 let activePostId   = null;
 let urlSaveTimer;
 
@@ -2210,6 +2229,21 @@ function renderList() {
   const tbody   = document.getElementById('list-body');
   tbody.innerHTML = '';
   const filtered = POSTS.filter(p => isVisible(p));
+  const STATUS_ORDER = { todo: 0, inprogress: 1, done: 2 };
+  if (listSortKey) {
+    filtered.sort((a, b) => {
+      if (listSortKey === 'status') {
+        const av = STATUS_ORDER[state.statuses[a.id] || 'todo'];
+        const bv = STATUS_ORDER[state.statuses[b.id] || 'todo'];
+        return listSortDir === 'asc' ? av - bv : bv - av;
+      }
+      const av = (a[listSortKey] || '').toLowerCase();
+      const bv = (b[listSortKey] || '').toLowerCase();
+      if (av < bv) return listSortDir === 'asc' ? -1 : 1;
+      if (av > bv) return listSortDir === 'asc' ?  1 : -1;
+      return 0;
+    });
+  }
   filtered.forEach(post => {
     const status    = state.statuses[post.id] || 'todo';
     const pBadge    = PLATFORM_BADGE[post.platform] || 'badge-instagram';
@@ -2228,7 +2262,21 @@ function renderList() {
     tr.addEventListener('click', () => openModal(post.id));
     tbody.appendChild(tr);
   });
+  document.querySelectorAll('.list-th-sort').forEach(th => {
+    const active = th.dataset.sort === listSortKey;
+    th.classList.toggle('sorted', active);
+    th.querySelector('.sort-icon').textContent = active ? (listSortDir === 'asc' ? '↑' : '↓') : '↕';
+  });
 }
+
+document.querySelector('#subview-list thead').addEventListener('click', e => {
+  const th = e.target.closest('.list-th-sort');
+  if (!th) return;
+  const key = th.dataset.sort;
+  listSortDir = (listSortKey === key && listSortDir === 'asc') ? 'desc' : 'asc';
+  listSortKey = key;
+  renderList();
+});
 
 // ═══════════════════════════════════════════════════════════
 // COPY BANK TAB
