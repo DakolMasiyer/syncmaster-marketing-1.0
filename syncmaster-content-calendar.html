@@ -229,11 +229,8 @@
     .list-row[data-status="done"]       td:first-child { border-left-color: var(--green); }
     .list-row[data-status="done"] td { opacity: 0.6; }
     .list-hook { color: var(--white); font-weight: 400; max-width: 360px; }
-    .list-th-sort { cursor: pointer; user-select: none; white-space: nowrap; }
-    .list-th-sort:hover { color: var(--white); }
-    .list-th-sort.sorted { color: var(--gold); }
-    .sort-icon { display: inline-block; margin-left: 4px; font-size: 9px; opacity: 0.5; vertical-align: middle; }
-    .list-th-sort.sorted .sort-icon { opacity: 1; }
+    .list-sort-bar { background: var(--bg); padding: 10px 32px; border-bottom: 1px solid var(--border); }
+    .list-sort-bar-inner { max-width: 1440px; margin: 0 auto; display: flex; gap: 8px; align-items: center; }
 
     /* ── VIEW TABS ── */
     .view-tab-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 32px; }
@@ -403,17 +400,33 @@
 
   <!-- List sub-view -->
   <div id="subview-list" style="display:none">
+    <div class="list-sort-bar">
+      <div class="list-sort-bar-inner">
+        <select class="filter-select" id="sel-sort-field">
+          <option value="">Sort: Default</option>
+          <option value="date">Date</option>
+          <option value="platform">Platform</option>
+          <option value="pillar">Pillar</option>
+          <option value="type">Type</option>
+          <option value="status">Status</option>
+        </select>
+        <select class="filter-select" id="sel-sort-dir">
+          <option value="asc">A → Z</option>
+          <option value="desc">Z → A</option>
+        </select>
+      </div>
+    </div>
     <div class="list-wrap">
       <table class="list-table">
         <thead>
           <tr>
-            <th class="list-th-sort" data-sort="date">Date <span class="sort-icon">↕</span></th>
+            <th>Date</th>
             <th>ID</th>
-            <th class="list-th-sort" data-sort="platform">Platform <span class="sort-icon">↕</span></th>
-            <th class="list-th-sort" data-sort="pillar">Pillar <span class="sort-icon">↕</span></th>
-            <th class="list-th-sort" data-sort="type">Type <span class="sort-icon">↕</span></th>
+            <th>Platform</th>
+            <th>Pillar</th>
+            <th>Type</th>
             <th>Topic / Hook</th>
-            <th class="list-th-sort" data-sort="status">Status <span class="sort-icon">↕</span></th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody id="list-body"></tbody>
@@ -2262,20 +2275,16 @@ function renderList() {
     tr.addEventListener('click', () => openModal(post.id));
     tbody.appendChild(tr);
   });
-  document.querySelectorAll('.list-th-sort').forEach(th => {
-    const active = th.dataset.sort === listSortKey;
-    th.classList.toggle('sorted', active);
-    th.querySelector('.sort-icon').textContent = active ? (listSortDir === 'asc' ? '↑' : '↓') : '↕';
-  });
 }
 
-document.querySelector('#subview-list thead').addEventListener('click', e => {
-  const th = e.target.closest('.list-th-sort');
-  if (!th) return;
-  const key = th.dataset.sort;
-  listSortDir = (listSortKey === key && listSortDir === 'asc') ? 'desc' : 'asc';
-  listSortKey = key;
+document.getElementById('sel-sort-field').addEventListener('change', e => {
+  listSortKey = e.target.value || null;
+  e.target.classList.toggle('active', !!listSortKey);
   renderList();
+});
+document.getElementById('sel-sort-dir').addEventListener('change', e => {
+  listSortDir = e.target.value;
+  if (listSortKey) renderList();
 });
 
 // ═══════════════════════════════════════════════════════════
