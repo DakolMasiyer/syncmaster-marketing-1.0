@@ -59,26 +59,13 @@
     .progress-track { background: var(--border); border-radius: 999px; height: 5px; overflow: hidden; }
     .progress-fill { background: var(--gold); height: 100%; border-radius: 999px; width: 0%; transition: width 0.35s ease; }
 
-    /* ── PLATFORM TAB BAR ── */
-    .plat-tab-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 32px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
-    .plat-tab-bar::-webkit-scrollbar { display: none; }
-    .plat-tab-bar-inner { max-width: 1440px; margin: 0 auto; display: flex; }
-    .plat-tab { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; padding: 0 20px; height: 44px; border: none; background: none; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; transition: color 0.18s, border-color 0.18s; white-space: nowrap; letter-spacing: 0.02em; }
-    .plat-tab:hover { color: var(--white); }
-    .plat-tab.active { color: var(--white); border-bottom-color: var(--white); }
-    .ptab-instagram.active { color: var(--purple); border-bottom-color: var(--purple); }
-    .ptab-twitter.active   { color: var(--teal);   border-bottom-color: var(--teal); }
-    .ptab-linkedin.active  { color: var(--gold);   border-bottom-color: var(--gold); }
-    .ptab-youtube.active   { color: var(--coral);  border-bottom-color: var(--coral); }
-    .ptab-blog.active      { color: var(--green);  border-bottom-color: var(--green); }
-
     /* ── FILTER BAR ── */
-    .filter-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 8px 32px; }
-    .filter-bar-inner { max-width: 1440px; margin: 0 auto; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-    .filter-btn { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; padding: 5px 12px; border-radius: 8px; border: 1px solid var(--border-2); background: var(--surface-2); color: var(--mid); cursor: pointer; transition: border-color 0.15s, color 0.15s, background 0.15s; white-space: nowrap; }
-    .filter-btn:hover { border-color: var(--muted); color: var(--white); }
-    .filter-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(242,201,76,0.08); }
-    .filter-divider { width: 1px; height: 18px; background: var(--border-2); margin: 0 4px; flex-shrink: 0; }
+    .filter-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 10px 32px; }
+    .filter-bar-inner { max-width: 1440px; margin: 0 auto; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .filter-select { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; padding: 7px 28px 7px 12px; border-radius: 8px; border: 1px solid var(--border-2); background: var(--surface-2); color: var(--mid); cursor: pointer; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23787890' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 9px center; transition: border-color 0.18s, color 0.18s; }
+    .filter-select:focus { outline: none; border-color: var(--gold); }
+    .filter-select:hover { border-color: var(--muted); color: var(--white); }
+    .filter-select.active { border-color: var(--gold); color: var(--gold); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23F2C94C' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
     .filter-count { font-size: 10px; color: var(--muted); margin-left: auto; }
 
     /* ── MONTH NAV ── */
@@ -323,32 +310,33 @@
   </div>
 </div>
 
-<!-- PLATFORM TAB BAR (visible for both views) -->
-<div class="plat-tab-bar" id="plat-tab-bar">
-  <div class="plat-tab-bar-inner">
-    <button class="plat-tab active"        data-filter="all"       data-group="platform" type="button">All</button>
-    <button class="plat-tab ptab-instagram" data-filter="Instagram" data-group="platform" type="button">Instagram</button>
-    <button class="plat-tab ptab-twitter"   data-filter="Twitter/X" data-group="platform" type="button">Twitter / X</button>
-    <button class="plat-tab ptab-linkedin"  data-filter="LinkedIn"  data-group="platform" type="button">LinkedIn</button>
-    <button class="plat-tab ptab-youtube"   data-filter="YouTube"   data-group="platform" type="button">YouTube</button>
-    <button class="plat-tab ptab-blog"      data-filter="Blog"      data-group="platform" type="button">Blog</button>
-  </div>
-</div>
-
-<!-- SECONDARY FILTER BAR (pillar + type) -->
+<!-- FILTER BAR -->
 <div class="filter-bar">
   <div class="filter-bar-inner">
-    <button class="filter-btn"        data-filter="Education"         data-group="pillar"   type="button">Education</button>
-    <button class="filter-btn"        data-filter="Proof"             data-group="pillar"   type="button">Proof</button>
-    <button class="filter-btn"        data-filter="Behind the Scenes" data-group="pillar"   type="button">BTS</button>
-    <button class="filter-btn"        data-filter="Culture"           data-group="pillar"   type="button">Culture</button>
-    <button class="filter-btn"        data-filter="Industry"          data-group="pillar"   type="button">Industry</button>
-    <div class="filter-divider"></div>
-    <button class="filter-btn"        data-filter="Carousel"          data-group="type"     type="button">Carousel</button>
-    <button class="filter-btn"        data-filter="Thread"            data-group="type"     type="button">Thread</button>
-    <button class="filter-btn"        data-filter="Single"            data-group="type"     type="button">Single</button>
-    <button class="filter-btn"        data-filter="Blog"              data-group="type"     type="button">Blog Post</button>
-    <button class="filter-btn"        data-filter="Video"             data-group="type"     type="button">Video</button>
+    <select class="filter-select" id="sel-platform">
+      <option value="all">Platform: All</option>
+      <option value="Instagram">Instagram</option>
+      <option value="Twitter/X">Twitter / X</option>
+      <option value="LinkedIn">LinkedIn</option>
+      <option value="YouTube">YouTube</option>
+      <option value="Blog">Blog</option>
+    </select>
+    <select class="filter-select" id="sel-pillar">
+      <option value="all">Pillar: All</option>
+      <option value="Education">Education</option>
+      <option value="Proof">Proof</option>
+      <option value="Behind the Scenes">BTS</option>
+      <option value="Culture">Culture</option>
+      <option value="Industry">Industry</option>
+    </select>
+    <select class="filter-select" id="sel-type">
+      <option value="all">Type: All</option>
+      <option value="Carousel">Carousel</option>
+      <option value="Thread">Thread</option>
+      <option value="Single">Single</option>
+      <option value="Blog">Blog Post</option>
+      <option value="Video">Video</option>
+    </select>
     <span class="filter-count" id="filter-count"></span>
   </div>
 </div>
@@ -2165,30 +2153,20 @@ document.getElementById('btn-next').addEventListener('click', () => {
 // ═══════════════════════════════════════════════════════════
 // FILTERS
 // ═══════════════════════════════════════════════════════════
-document.querySelectorAll('.plat-tab').forEach(btn => {
-  btn.addEventListener('click', () => {
-    activePlatform = btn.dataset.filter;
-    document.querySelectorAll('.plat-tab').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    refreshCurrentView();
-  });
+document.getElementById('sel-platform').addEventListener('change', e => {
+  activePlatform = e.target.value;
+  e.target.classList.toggle('active', activePlatform !== 'all');
+  refreshCurrentView();
 });
-
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const group = btn.dataset.group;
-    const val   = btn.dataset.filter;
-    if (group === 'pillar') {
-      activePillar = (activePillar === val) ? 'all' : val;
-      document.querySelectorAll('.filter-btn[data-group="pillar"]').forEach(b => b.classList.remove('active'));
-      if (activePillar !== 'all') btn.classList.add('active');
-    } else {
-      activeType = (activeType === val) ? 'all' : val;
-      document.querySelectorAll('.filter-btn[data-group="type"]').forEach(b => b.classList.remove('active'));
-      if (activeType !== 'all') btn.classList.add('active');
-    }
-    refreshCurrentView();
-  });
+document.getElementById('sel-pillar').addEventListener('change', e => {
+  activePillar = e.target.value;
+  e.target.classList.toggle('active', activePillar !== 'all');
+  refreshCurrentView();
+});
+document.getElementById('sel-type').addEventListener('change', e => {
+  activeType = e.target.value;
+  e.target.classList.toggle('active', activeType !== 'all');
+  refreshCurrentView();
 });
 
 // ═══════════════════════════════════════════════════════════
