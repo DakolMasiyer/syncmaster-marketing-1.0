@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SyncMaster — Brand Guide & Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navbar-h: 36px;
+      /* ── Backgrounds ── */
+      --bg:        #0C0C10;
+      --surface:   #131318;
+      --surface-2: #1A1A24;
+      /* ── Borders ── */
+      --border:    #252532;
+      --border-2:  #32324A;
+      /* ── Accents ── */
+      --gold:      #F2C94C;
+      --teal:      #38D1B5;
+      --coral:     #F26B5E;
+      --purple:    #9B72F2;
+      --green:     #4CAF80;
+      /* ── Text ── */
+      --white:     #F0F0F6;
+      --mid:       #C0C0D0;
+      --muted:     #787890;
+      /* ── Motion ── */
+      --ease:      cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; font-weight: 400; background: var(--bg); color: var(--white); min-height: 100vh; line-height: 1.6; padding-top: var(--navbar-h); }
+
+    /* ── SITE NAV ── */
+    #siteNav { position: fixed; top: 0; left: 0; right: 0; height: var(--navbar-h); z-index: 10001; display: flex; align-items: center; padding: 0 24px; background: var(--bg); border-bottom: 1px solid var(--border); }
+    .snav-brand { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 10px; letter-spacing: 0.18em; color: var(--muted); flex-shrink: 0; margin-right: 20px; }
+    .snav-divider { width: 1px; height: 16px; background: var(--border); margin-right: 20px; flex-shrink: 0; }
+    .snav-items { display: flex; align-items: center; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+    .snav-items::-webkit-scrollbar { display: none; }
+    .snav-item { position: relative; display: inline-flex; align-items: center; gap: 6px; padding: 0 12px; height: var(--navbar-h); font-size: 11px; font-weight: 400; letter-spacing: 0.05em; color: var(--muted); text-decoration: none; white-space: nowrap; transition: color 0.2s; }
+    a.snav-item:hover { color: var(--white); }
+    a.snav-item::after { content: ''; position: absolute; bottom: 0; left: 12px; right: 12px; height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 0.2s; }
+    a.snav-item.active { color: var(--white); }
+    a.snav-item.active::after { transform: scaleX(1); }
+    .snav-item.snav-soon { color: #3a3a4a; cursor: not-allowed; }
+    .snav-badge-nav { font-size: 8px; color: #3a3a4a; border: 1px solid #2a2a38; border-radius: 2px; padding: 1px 4px; }
+
+    /* ── PAGE NAV (sticky left anchors) ── */
+    .page-nav { position: fixed; left: 24px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 10px; z-index: 100; }
+    .page-nav a { width: 6px; height: 6px; border-radius: 50%; background: var(--border-2); transition: background 0.2s, transform 0.2s; display: block; }
+    .page-nav a:hover, .page-nav a.active { background: var(--gold); transform: scale(1.5); }
+    @media (max-width: 1100px) { .page-nav { display: none; } }
+
+    /* ── LAYOUT ── */
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 48px 0 80px; }
+    @media (max-width: 900px) { .wrap { padding: 0 24px; } }
+
+    /* ── HERO ── */
+    .hero { padding: 80px 0 64px; border-bottom: 1px solid var(--border); }
+    .hero-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .hero-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 64px); line-height: 1.05; letter-spacing: -0.02em; color: var(--white); margin-bottom: 16px; }
+    .hero-sub { font-size: 15px; color: var(--mid); font-weight: 300; max-width: 560px; line-height: 1.7; }
+    .hero-meta { display: flex; gap: 24px; margin-top: 32px; flex-wrap: wrap; }
+    .hero-meta-item { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+    .hero-meta-item span { color: var(--gold); margin-right: 6px; }
+
+    /* ── SECTION ── */
+    section { padding: 72px 0; border-bottom: 1px solid var(--border); }
+    section:last-child { border-bottom: none; }
+    .section-label { font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .section-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 26px; color: var(--white); margin-bottom: 8px; letter-spacing: -0.01em; }
+    .section-sub { font-size: 13px; color: var(--muted); max-width: 560px; line-height: 1.65; margin-bottom: 40px; }
+
+    /* ── CARDS ── */
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 640px) { .card-grid { grid-template-columns: 1fr; } }
+    .card-label { font-size: 9px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+    .card-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; color: var(--white); margin-bottom: 8px; }
+    .card-body { font-size: 12px; color: var(--mid); line-height: 1.72; font-weight: 300; }
+
+    /* ── BRAND STRATEGY ── */
+    .mission-block { background: var(--surface); border: 1px solid rgba(242,201,76,0.2); border-radius: 14px; padding: 32px; margin-bottom: 32px; }
+    .mission-quote { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 22px; color: var(--white); line-height: 1.35; letter-spacing: -0.01em; margin-bottom: 12px; }
+    .mission-quote em { color: var(--gold); font-style: normal; }
+    .mission-label { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+
+    .positioning-block { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 32px; }
+    .pos-row { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid var(--border); }
+    .pos-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .pos-key { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); width: 100px; flex-shrink: 0; padding-top: 2px; }
+    .pos-val { font-size: 13px; color: var(--mid); line-height: 1.6; }
+    .pos-val strong { color: var(--white); font-weight: 500; }
+
+    .is-isnot { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 32px; }
+    .is-col { background: var(--surface); padding: 20px 24px; }
+    .is-col-hdr { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 14px; }
+    .is-col.is { --hdr-color: var(--teal); }
+    .is-col.isnot { --hdr-color: var(--coral); }
+    .is-col-hdr { color: var(--hdr-color); }
+    .is-item { font-size: 12px; color: var(--mid); padding: 5px 0; border-bottom: 1px solid var(--border); display: flex; gap: 8px; align-items: baseline; line-height: 1.5; }
+    .is-item:last-child { border-bottom: none; }
+    .is-item::before { font-size: 9px; flex-shrink: 0; margin-top: 2px; }
+    .is-col.is .is-item::before { content: '✓'; color: var(--teal); }
+    .is-col.isnot .is-item::before { content: '✕'; color: var(--coral); }
+    @media (max-width: 580px) { .is-isnot { grid-template-columns: 1fr; } }
+
+    /* ── PERSONAS ── */
+    .persona-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    @media (max-width: 760px) { .persona-grid { grid-template-columns: 1fr; } }
+    .persona-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px; }
+    .persona-tag { font-size: 9px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; display: inline-block; margin-bottom: 14px; }
+    .persona-tag.primary   { background: rgba(242,201,76,0.12); color: var(--gold); }
+    .persona-tag.secondary { background: rgba(56,209,181,0.12); color: var(--teal); }
+    .persona-tag.tertiary  { background: rgba(242,107,94,0.12); color: var(--coral); }
+    .persona-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 17px; color: var(--white); margin-bottom: 4px; }
+    .persona-role { font-size: 11px; color: var(--muted); margin-bottom: 16px; }
+    .persona-row { font-size: 11px; color: var(--mid); padding: 6px 0; border-bottom: 1px solid var(--border); display: flex; flex-direction: column; gap: 2px; }
+    .persona-row:last-child { border-bottom: none; }
+    .persona-row-label { font-size: 9px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+
+    /* ── TONE OF VOICE ── */
+    .tov-principles { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
+    .tov-pill { display: flex; gap: 14px; align-items: flex-start; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; }
+    .tov-num { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; color: var(--gold); opacity: 0.5; flex-shrink: 0; width: 24px; line-height: 1; margin-top: 1px; }
+    .tov-content { flex: 1; }
+    .tov-title { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 3px; }
+    .tov-desc { font-size: 12px; color: var(--mid); font-weight: 300; line-height: 1.6; }
+
+    .do-dont { background: var(--surface); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+    .do-dont-hdr { display: grid; grid-template-columns: 1fr 1fr; }
+    .dd-hdr-cell { padding: 12px 20px; font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+    .dd-hdr-do   { color: var(--teal); border-right: 1px solid var(--border); }
+    .dd-hdr-dont { color: var(--coral); }
+    .dd-row { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
+    .dd-row:last-child { border-bottom: none; }
+    .dd-cell { padding: 11px 20px; font-size: 12px; color: var(--mid); line-height: 1.5; font-weight: 300; }
+    .dd-cell.do   { border-right: 1px solid var(--border); }
+    .dd-cell.do::before   { content: '✓ '; color: var(--teal); font-size: 10px; }
+    .dd-cell.dont::before { content: '✕ '; color: var(--coral); font-size: 10px; }
+
+    /* ── COLOUR PALETTE ── */
+    .colour-mood { font-size: 13px; color: var(--mid); font-weight: 300; line-height: 1.9; margin-bottom: 40px; letter-spacing: 0.02em; }
+    .colour-mood strong { color: var(--white); font-weight: 500; }
+    .swatch-group { margin-bottom: 32px; }
+    .swatch-group-label { font-size: 9px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .swatch-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .swatch { border-radius: 10px; overflow: hidden; flex: 1; min-width: 100px; border: 1px solid rgba(255,255,255,0.05); }
+    .swatch-block { height: 80px; }
+    .swatch-info { background: var(--surface); padding: 10px 12px; }
+    .swatch-name { font-size: 11px; font-weight: 500; color: var(--white); margin-bottom: 2px; }
+    .swatch-hex  { font-size: 10px; color: var(--muted); font-family: monospace; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .swatch-use  { font-size: 9px; color: var(--muted); line-height: 1.4; }
+
+    .token-table { width: 100%; border-collapse: collapse; margin-top: 32px; }
+    .token-table th { font-size: 9px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    .token-table td { font-size: 12px; color: var(--mid); padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .token-table tr:last-child td { border-bottom: none; }
+    .token-dot { width: 12px; height: 12px; border-radius: 3px; display: inline-block; vertical-align: middle; margin-right: 8px; }
+    .token-name { font-family: monospace; font-size: 11px; color: var(--teal); }
+    .token-hex  { font-family: monospace; font-size: 11px; color: var(--white); }
+
+    /* ── TYPOGRAPHY ── */
+    .type-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px; }
+    @media (max-width: 640px) { .type-pair { grid-template-columns: 1fr; } }
+    .font-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .font-tag { font-size: 9px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; display: inline-block; margin-bottom: 16px; }
+    .font-tag.display { background: rgba(242,201,76,0.12); color: var(--gold); }
+    .font-tag.body    { background: rgba(56,209,181,0.12); color: var(--teal); }
+    .font-name { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 4px; }
+    .font-class { font-size: 11px; color: var(--muted); margin-bottom: 16px; }
+    .font-specimen { font-size: 32px; line-height: 1.1; letter-spacing: -0.01em; color: var(--white); margin-bottom: 16px; }
+    .font-specimen.is-syne  { font-family: 'Syne', sans-serif; font-weight: 800; }
+    .font-specimen.is-dm    { font-family: 'DM Sans', sans-serif; font-weight: 400; }
+    .font-desc { font-size: 11px; color: var(--mid); line-height: 1.65; font-weight: 300; }
+
+    .type-scale { display: flex; flex-direction: column; gap: 0; }
+    .scale-row { display: flex; align-items: baseline; gap: 24px; padding: 14px 0; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .scale-row:last-child { border-bottom: none; }
+    .scale-meta { display: flex; gap: 16px; min-width: 260px; flex-shrink: 0; }
+    .scale-token { font-size: 10px; font-weight: 500; color: var(--muted); width: 110px; }
+    .scale-size  { font-family: monospace; font-size: 10px; color: var(--teal); width: 80px; }
+    .scale-wt    { font-family: monospace; font-size: 10px; color: var(--purple); width: 40px; }
+    .scale-use   { font-size: 10px; color: var(--muted); }
+    .scale-preview { flex: 1; min-width: 0; color: var(--white); font-family: 'Syne', sans-serif; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .scale-preview.dm { font-family: 'DM Sans', sans-serif; }
+
+    /* ── COMPONENTS ── */
+    .comp-group { margin-bottom: 48px; }
+    .comp-group-title { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+    .comp-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-start; margin-bottom: 16px; }
+    .comp-label { font-size: 10px; color: var(--muted); margin-top: 6px; }
+
+    /* live component demos */
+    .demo-platform-badge { font-size: 10px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+    .badge-instagram { background: rgba(155,114,242,0.14); color: var(--purple); }
+    .badge-twitter   { background: rgba(56,209,181,0.14);  color: var(--teal); }
+    .badge-linkedin  { background: rgba(242,201,76,0.14);  color: var(--gold); }
+    .badge-youtube   { background: rgba(242,107,94,0.14);  color: var(--coral); }
+    .badge-blog      { background: rgba(76,175,128,0.14);  color: var(--green); }
+
+    .demo-pillar-chip { font-size: 10px; font-weight: 500; letter-spacing: 0.04em; padding: 3px 8px; border-radius: 4px; white-space: nowrap; }
+    .pillar-education { background: rgba(56,209,181,0.10);  color: var(--teal); }
+    .pillar-proof     { background: rgba(242,201,76,0.10);  color: var(--gold); }
+    .pillar-bts       { background: rgba(242,107,94,0.10);  color: var(--coral); }
+    .pillar-culture   { background: rgba(155,114,242,0.10); color: var(--purple); }
+    .pillar-industry  { background: rgba(192,192,208,0.10); color: var(--mid); }
+
+    .demo-status-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+    .status-todo       { background: var(--muted); }
+    .status-inprogress { background: var(--gold); }
+    .status-done       { background: var(--green); }
+
+    .demo-phase-pill { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; }
+    .phase-active   { background: var(--gold); color: #1B1606; }
+    .phase-inactive { background: var(--surface-2); color: var(--muted); border: 1px solid var(--border-2); }
+
+    .demo-btn { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; padding: 6px 14px; border-radius: 6px; border: 1px solid var(--border-2); background: var(--surface-2); color: var(--mid); cursor: pointer; transition: border-color 0.18s, color 0.18s; }
+    .demo-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .demo-btn.primary { background: var(--gold); color: #1B1606; border-color: var(--gold); font-weight: 600; }
+
+    .demo-post-card { background: rgba(155,114,242,0.08); border-left: 2px solid var(--gold); border-radius: 5px; padding: 7px 9px; width: 160px; cursor: pointer; }
+    .demo-card-row1 { display: flex; align-items: center; gap: 4px; margin-bottom: 3px; }
+    .demo-card-plat { font-size: 7px; font-weight: 700; letter-spacing: 0.05em; padding: 1px 4px; border-radius: 3px; text-transform: uppercase; background: rgba(155,114,242,0.30); color: var(--purple); }
+    .demo-card-id   { font-size: 9px; font-weight: 500; color: var(--white); opacity: 0.8; }
+    .demo-card-hook { font-size: 11px; color: var(--mid); line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 4px; }
+    .demo-card-row3 { display: flex; align-items: center; justify-content: space-between; }
+    .demo-card-type { font-size: 7px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+    .demo-progress { background: var(--border); border-radius: 999px; height: 5px; overflow: hidden; width: 200px; }
+    .demo-progress-fill { background: var(--gold); height: 100%; border-radius: 999px; width: 34%; }
+
+    .demo-surface-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; width: 200px; transition: border-color 0.18s; cursor: pointer; }
+    .demo-surface-card:hover { border-color: var(--border-2); }
+
+    .comp-desc { font-size: 11px; color: var(--muted); line-height: 1.6; margin-bottom: 12px; }
+
+    .comp-table { width: 100%; border-collapse: collapse; }
+    .comp-table th { font-size: 9px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); background: var(--surface); }
+    .comp-table td { font-size: 12px; color: var(--mid); padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.5; }
+    .comp-table td:first-child { font-family: monospace; font-size: 11px; color: var(--teal); }
+    .comp-table tr:last-child td { border-bottom: none; }
+    .comp-table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+
+    /* ── CONTENT PILLARS ── */
+    .pillar-table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 32px; }
+    .pillar-table { width: 100%; border-collapse: collapse; }
+    .pillar-table th { font-size: 9px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+    .pillar-table td { font-size: 12px; color: var(--mid); padding: 12px 16px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.55; }
+    .pillar-table tr:last-child td { border-bottom: none; }
+    .pct-bar-wrap { display: flex; flex-direction: column; gap: 3px; }
+    .pct-row { display: flex; align-items: center; gap: 6px; }
+    .pct-label { font-size: 9px; color: var(--muted); width: 20px; }
+    .pct-track { background: var(--border); border-radius: 999px; height: 4px; flex: 1; overflow: hidden; }
+    .pct-fill  { height: 100%; border-radius: 999px; background: var(--gold); }
+
+    .template-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+    .template-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+    .template-type { font-size: 9px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .template-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; color: var(--white); margin-bottom: 8px; }
+    .template-steps { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .template-steps li { font-size: 11px; color: var(--mid); padding: 4px 0; border-bottom: 1px solid var(--border); display: flex; gap: 8px; align-items: baseline; }
+    .template-steps li:last-child { border-bottom: none; }
+    .step-num { font-size: 9px; color: var(--muted); flex-shrink: 0; width: 14px; }
+
+    /* ── SAAS HANDOFF ── */
+    .handoff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+    @media (max-width: 640px) { .handoff-grid { grid-template-columns: 1fr; } }
+    .handoff-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px; }
+    .handoff-card.carry { border-color: rgba(76,175,128,0.25); }
+    .handoff-card.adapt { border-color: rgba(242,201,76,0.2); }
+    .handoff-card.skip  { border-color: rgba(242,107,94,0.2); }
+    .handoff-hdr { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+    .handoff-icon { width: 20px; height: 20px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+    .handoff-icon.carry { background: rgba(76,175,128,0.15); color: var(--green); }
+    .handoff-icon.adapt { background: rgba(242,201,76,0.15); color: var(--gold); }
+    .handoff-icon.skip  { background: rgba(242,107,94,0.15); color: var(--coral); }
+    .handoff-title { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+    .handoff-title.carry { color: var(--green); }
+    .handoff-title.adapt { color: var(--gold); }
+    .handoff-title.skip  { color: var(--coral); }
+    .handoff-items { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .handoff-items li { font-size: 12px; color: var(--mid); padding: 5px 0; border-bottom: 1px solid var(--border); line-height: 1.4; }
+    .handoff-items li:last-child { border-bottom: none; }
+    .handoff-items code { font-family: monospace; font-size: 10px; background: var(--surface-2); padding: 1px 5px; border-radius: 3px; color: var(--teal); }
+
+    .token-export { background: var(--surface-2); border: 1px solid var(--border-2); border-radius: 10px; padding: 20px 24px; font-family: monospace; font-size: 11px; color: var(--mid); line-height: 1.9; overflow-x: auto; }
+    .token-export .comment { color: var(--muted); }
+    .token-export .var-name { color: var(--teal); }
+    .token-export .var-val  { color: var(--gold); }
+
+    /* ── UTILITY ── */
+    .divider { height: 1px; background: var(--border); margin: 32px 0; }
+    .tag { display: inline-block; font-size: 9px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 7px; border-radius: 4px; }
+    .tag-gold   { background: rgba(242,201,76,0.12); color: var(--gold); }
+    .tag-teal   { background: rgba(56,209,181,0.12); color: var(--teal); }
+    .tag-coral  { background: rgba(242,107,94,0.12); color: var(--coral); }
+    .tag-purple { background: rgba(155,114,242,0.12); color: var(--purple); }
+    .tag-green  { background: rgba(76,175,128,0.12); color: var(--green); }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+<!-- SITE NAV -->
+<nav id="siteNav" role="navigation" aria-label="Site navigation">
+  <div class="snav-brand">SYNCMASTER</div>
+  <div class="snav-divider" aria-hidden="true"></div>
+  <div class="snav-items">
+    <a href="index.html" class="snav-item">Strategy Deck</a>
+    <a href="content-pillars.html" class="snav-item">Content Pillars</a>
+    <a href="syncmaster-content-calendar.html" class="snav-item">Content Calendar</a>
+    <a href="syncmaster-content-calendar.html#copy-bank" class="snav-item">Copy Bank</a>
+    <a href="brand-guide.html" class="snav-item active">Brand Guide</a>
+  </div>
+</nav>
+
+<!-- PAGE NAV (dot anchors) -->
+<nav class="page-nav" aria-label="Page sections">
+  <a href="#brand-strategy" title="Brand Strategy"></a>
+  <a href="#personas" title="Personas"></a>
+  <a href="#tone-of-voice" title="Tone of Voice"></a>
+  <a href="#colour-palette" title="Colour Palette"></a>
+  <a href="#typography" title="Typography"></a>
+  <a href="#components" title="Components"></a>
+  <a href="#content-pillars" title="Content Pillars"></a>
+  <a href="#saas-handoff" title="SaaS Handoff"></a>
+</nav>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Brand Guide · Design System Reference</div>
+    <h1 class="hero-title">SyncMaster<br>Brand Guide</h1>
+    <p class="hero-sub">A single-source document covering brand strategy, tone of voice, colour, typography, components, and social content templates. Use this to align Claude web refinement, Claude design, and the SaaS build.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span>Version</span>1.0 — Marketing System Extract</div>
+      <div class="hero-meta-item"><span>Covers</span>Marketing OS · SaaS Design Handoff</div>
+      <div class="hero-meta-item"><span>Date</span>May 2026</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       1. BRAND STRATEGY
+  ══════════════════════════════════════════════════════ -->
+  <section id="brand-strategy">
+    <div class="section-label">01 · Brand Strategy</div>
+    <h2 class="section-title">Mission, Positioning & Model</h2>
+    <p class="section-sub">The foundational layer. Everything — copy, design, product — should be derivable from these statements.</p>
+
+    <div class="mission-block">
+      <div class="mission-label">Mission</div>
+      <div class="mission-quote" style="margin-top:10px;">"Connect <em>African composers</em> to global screens.<br>Curated, cleared, and ready."</div>
+    </div>
+
+    <div class="positioning-block">
+      <div class="pos-row">
+        <div class="pos-key">Category</div>
+        <div class="pos-val">Sync licensing infrastructure / African music placement agency</div>
+      </div>
+      <div class="pos-row">
+        <div class="pos-key">Frame</div>
+        <div class="pos-val"><strong>Not</strong> a music library. <strong>Not</strong> a label. An infrastructure company that makes African composers commercially viable in the global sync market.</div>
+      </div>
+      <div class="pos-row">
+        <div class="pos-key">Differentiation</div>
+        <div class="pos-val"><strong>Speed</strong> — 24–48h brief-to-delivery. <strong>Vetting</strong> — every composer rights-confirmed before a brief arrives. <strong>Focus</strong> — exclusively African composers, global ambition.</div>
+      </div>
+      <div class="pos-row">
+        <div class="pos-key">Model</div>
+        <div class="pos-val">15–20% commission on placement fees, charged to the producer. No placement = no fee.</div>
+      </div>
+      <div class="pos-row">
+        <div class="pos-key">Market</div>
+        <div class="pos-val">$500M+ global sync market annually. Africa-first — no direct competitor exists.</div>
+      </div>
+      <div class="pos-row">
+        <div class="pos-key">Vision</div>
+        <div class="pos-val">Phase 1: curated concierge. Phase 4: open-but-vetted marketplace when manual matching no longer scales.</div>
+      </div>
+    </div>
+
+    <div class="is-isnot">
+      <div class="is-col is">
+        <div class="is-col-hdr">SyncMaster IS</div>
+        <div class="is-item">Infrastructure platform bridging African composers and global sync licensing</div>
+        <div class="is-item">Rights-clearing, metadata-cleaning, submission-preparation service</div>
+        <div class="is-item">A curation engine matching composer catalogue to active production briefs</div>
+        <div class="is-item">One-stop clearance provider — single conversation, single deal</div>
+        <div class="is-item">Building in public — full transparency on process, numbers, failures</div>
+        <div class="is-item">A concierge in Phase 1; evolving to vetted marketplace at scale</div>
+      </div>
+      <div class="is-col isnot">
+        <div class="is-col-hdr">SyncMaster IS NOT</div>
+        <div class="is-item">A music library or discovery database</div>
+        <div class="is-item">A record label</div>
+        <div class="is-item">A cold-pitch or blind-submission platform</div>
+        <div class="is-item">A streaming or playlist placement service</div>
+        <div class="is-item">A general music industry tool</div>
+        <div class="is-item">An Africa-only product — the buyers are global</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       2. PERSONAS
+  ══════════════════════════════════════════════════════ -->
+  <section id="personas">
+    <div class="section-label">02 · Personas</div>
+    <h2 class="section-title">Who We're Talking To</h2>
+    <p class="section-sub">Two core audiences. One tertiary validation cohort. Every piece of content, copy, and UI should map to one of these.</p>
+
+    <div class="persona-grid">
+      <div class="persona-card">
+        <span class="persona-tag primary">Primary</span>
+        <div class="persona-name">Tunde</div>
+        <div class="persona-role">African Composer</div>
+        <div class="persona-row"><div class="persona-row-label">Location</div>Lagos · Abuja · Nairobi · Cape Town · Accra</div>
+        <div class="persona-row"><div class="persona-row-label">Age</div>22–30, independent, no representation</div>
+        <div class="persona-row"><div class="persona-row-label">Pain</div>Talent isn't the problem. Rights complexity, metadata gaps, zero access to production briefs.</div>
+        <div class="persona-row"><div class="persona-row-label">Goal</div>Turn catalogue into consistent secondary or primary income stream via sync</div>
+        <div class="persona-row"><div class="persona-row-label">Language</div>Practical, specific, numbers-driven. Responds to proof and education.</div>
+        <div class="persona-row"><div class="persona-row-label">Channels</div>Instagram · Twitter/X · YouTube · Targeted Lagos IG/FB ads</div>
+      </div>
+      <div class="persona-card">
+        <span class="persona-tag secondary">Secondary</span>
+        <div class="persona-name">Amara</div>
+        <div class="persona-role">Music Supervisor / Production Company</div>
+        <div class="persona-row"><div class="persona-row-label">Employers</div>Netflix · Prime · Apple TV+ · WPP · Publicis · Dentsu · Indie film</div>
+        <div class="persona-row"><div class="persona-row-label">Pain</div>Finding African music that's rights-clean, brief-matched, and delivered on time</div>
+        <div class="persona-row"><div class="persona-row-label">Goal</div>Reduce turnaround from brief to approved track. Access diverse, cleared African catalogue.</div>
+        <div class="persona-row"><div class="persona-row-label">Language</div>Efficiency, speed, rights certainty, professional delivery. No jargon.</div>
+        <div class="persona-row"><div class="persona-row-label">Channels</div>LinkedIn · Sync Summit · Midem · SXSW · Music supervisor communities</div>
+      </div>
+      <div class="persona-card">
+        <span class="persona-tag tertiary">Tertiary · Validation</span>
+        <div class="persona-name">Nollywood</div>
+        <div class="persona-role">Nigerian Film / TV Production</div>
+        <div class="persona-row"><div class="persona-row-label">Role</div>Early validation and proof-of-concept only. Not the end market.</div>
+        <div class="persona-row"><div class="persona-row-label">Pain</div>Finding one-stop cleared music without clearance complexity</div>
+        <div class="persona-row"><div class="persona-row-label">Goal</div>Proper sync licensing for theatrical and streaming releases</div>
+        <div class="persona-row"><div class="persona-row-label">Language</div>Direct, practical, peer-to-peer</div>
+        <div class="persona-row"><div class="persona-row-label">Channels</div>WhatsApp · Direct outreach via existing network</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       3. TONE OF VOICE
+  ══════════════════════════════════════════════════════ -->
+  <section id="tone-of-voice">
+    <div class="section-label">03 · Tone of Voice</div>
+    <h2 class="section-title">How We Sound</h2>
+    <p class="section-sub">Dark editorial. Confident without bravado. The music is world-class — the infrastructure is the message.</p>
+
+    <div class="tov-principles">
+      <div class="tov-pill">
+        <div class="tov-num">1</div>
+        <div class="tov-content">
+          <div class="tov-title">Direct and practical</div>
+          <div class="tov-desc">No fluff. No jargon for jargon's sake. If a sentence can be cut without losing meaning, cut it. Every line should earn its place.</div>
+        </div>
+      </div>
+      <div class="tov-pill">
+        <div class="tov-num">2</div>
+        <div class="tov-content">
+          <div class="tov-title">Specific over vague</div>
+          <div class="tov-desc">Numbers, timelines, named territories, actual fee ranges. "11 hours brief-to-delivery" not "fast turnaround." "Showmax production" not "major streaming placement."</div>
+        </div>
+      </div>
+      <div class="tov-pill">
+        <div class="tov-num">3</div>
+        <div class="tov-content">
+          <div class="tov-title">Building in public</div>
+          <div class="tov-desc">Show the process, the numbers, the failures alongside the wins. Running totals. Vetting rejections. Honest milestone posts. Transparency is the differentiator.</div>
+        </div>
+      </div>
+      <div class="tov-pill">
+        <div class="tov-num">4</div>
+        <div class="tov-content">
+          <div class="tov-title">Confident without bravado</div>
+          <div class="tov-desc">The music is already world-class. We don't need to oversell it. State facts, let proof do the work. Never hype what can be demonstrated.</div>
+        </div>
+      </div>
+      <div class="tov-pill">
+        <div class="tov-num">5</div>
+        <div class="tov-content">
+          <div class="tov-title">Never defensive about African music</div>
+          <div class="tov-desc">African music is the asset, not the underdog. "African music belongs on global screens" — not "African music deserves recognition." Position from strength, not from gap.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="do-dont">
+      <div class="do-dont-hdr">
+        <div class="dd-hdr-cell dd-hdr-do">DO</div>
+        <div class="dd-hdr-cell dd-hdr-dont">DON'T</div>
+      </div>
+      <div class="dd-row">
+        <div class="dd-cell do">Use exact numbers: "11 hours brief-to-delivery"</div>
+        <div class="dd-cell dont">Say "fast turnaround" or "quick response time"</div>
+      </div>
+      <div class="dd-row">
+        <div class="dd-cell do">Name the placement: "South African composer, Showmax production"</div>
+        <div class="dd-cell dont">Say "exciting new placement on a major streaming platform"</div>
+      </div>
+      <div class="dd-row">
+        <div class="dd-cell do">Show what got rejected in vetting and why</div>
+        <div class="dd-cell dont">Only post wins; hide the rejection rate</div>
+      </div>
+      <div class="dd-row">
+        <div class="dd-cell do">"African music belongs on global screens"</div>
+        <div class="dd-cell dont">"African music is underrepresented" or "deserves a chance"</div>
+      </div>
+      <div class="dd-row">
+        <div class="dd-cell do">Post pillar-tagged content on a planned schedule</div>
+        <div class="dd-cell dont">Post reactively when something happens</div>
+      </div>
+      <div class="dd-row">
+        <div class="dd-cell do">Lead with the composer's story and outcome</div>
+        <div class="dd-cell dont">Lead with what SyncMaster did or built</div>
+      </div>
+      <div class="dd-row">
+        <div class="dd-cell do">Use "sync licensing" with precision — master vs. sync, fee tiers, brief anatomy</div>
+        <div class="dd-cell dont">Say "music licensing" generically or conflate sync with streaming</div>
+      </div>
+      <div class="dd-row">
+        <div class="dd-cell do">Let proof accumulate publicly — running totals (31 applications, 9 vetted)</div>
+        <div class="dd-cell dont">Make forward-looking claims without evidence to back them</div>
+      </div>
+      <div class="dd-row">
+        <div class="dd-cell do">Write like a smart colleague sharing something relevant</div>
+        <div class="dd-cell dont">Write like a vendor pitching a product</div>
+      </div>
+      <div class="dd-row">
+        <div class="dd-cell do">Use specifics about the global side: Netflix, WPP, Dentsu, Guild of Music Supervisors</div>
+        <div class="dd-cell dont">Keep it vague: "global brands," "major platforms," "top agencies"</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       4. COLOUR PALETTE
+  ══════════════════════════════════════════════════════ -->
+  <section id="colour-palette">
+    <div class="section-label">04 · Colour Palette</div>
+    <h2 class="section-title">Colour Direction</h2>
+    <p class="section-sub">A dark void canvas with four editorial accents. The palette should feel like a high-end editorial magazine printed in the dark.</p>
+
+    <p class="colour-mood">
+      <strong>Deep void black</strong> — the canvas everything lives on.<br>
+      <strong>Warm editorial gold</strong> — the primary accent. Authority. Attention. Active states.<br>
+      <strong>Electric teal</strong> — secondary accent. Education. Progress. Clarity.<br>
+      <strong>Ember coral</strong> — warning and energy. Behind the Scenes. YouTube. High contrast.<br>
+      <strong>Soft violet</strong> — creative depth. Instagram. Culture. Night sky.<br>
+      <strong>Ghost white</strong> — primary text. Intentionally off-white to avoid harshness.<br>
+      <strong>Cool grey scale</strong> — three levels of de-emphasis from mid to muted.
+    </p>
+
+    <div class="swatch-group">
+      <div class="swatch-group-label">Canvas & Surfaces</div>
+      <div class="swatch-row">
+        <div class="swatch">
+          <div class="swatch-block" style="background:#0C0C10;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">BG — Void</div>
+            <div class="swatch-hex">#0C0C10</div>
+            <div class="swatch-use">Main page canvas</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#131318;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Surface</div>
+            <div class="swatch-hex">#131318</div>
+            <div class="swatch-use">Cards, panels, header</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#1A1A24;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Surface 2</div>
+            <div class="swatch-hex">#1A1A24</div>
+            <div class="swatch-use">Nested surfaces, inputs</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#252532;border:1px solid #333;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Border</div>
+            <div class="swatch-hex">#252532</div>
+            <div class="swatch-use">Default dividers</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#32324A;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Border 2</div>
+            <div class="swatch-hex">#32324A</div>
+            <div class="swatch-use">Emphasis borders, inputs</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swatch-group">
+      <div class="swatch-group-label">Accent — 4-Colour System</div>
+      <div class="swatch-row">
+        <div class="swatch">
+          <div class="swatch-block" style="background:#F2C94C;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Gold</div>
+            <div class="swatch-hex">#F2C94C</div>
+            <div class="swatch-use">Primary accent · CTAs · Active · LinkedIn</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#38D1B5;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Teal</div>
+            <div class="swatch-hex">#38D1B5</div>
+            <div class="swatch-use">Secondary · Education · Twitter/X</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#F26B5E;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Coral</div>
+            <div class="swatch-hex">#F26B5E</div>
+            <div class="swatch-use">Warning · Energy · YouTube · BTS</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#9B72F2;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Purple</div>
+            <div class="swatch-hex">#9B72F2</div>
+            <div class="swatch-use">Creative · Instagram · Culture</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#4CAF80;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Green</div>
+            <div class="swatch-hex">#4CAF80</div>
+            <div class="swatch-use">Success · Done status · Blog</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swatch-group">
+      <div class="swatch-group-label">Text Scale</div>
+      <div class="swatch-row">
+        <div class="swatch">
+          <div class="swatch-block" style="background:#F0F0F6;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">White</div>
+            <div class="swatch-hex">#F0F0F6</div>
+            <div class="swatch-use">Primary text · Headlines</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#C0C0D0;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Mid</div>
+            <div class="swatch-hex">#C0C0D0</div>
+            <div class="swatch-use">Body copy · Secondary text</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#787890;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Muted</div>
+            <div class="swatch-hex">#787890</div>
+            <div class="swatch-use">Labels · Meta · Inactive</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table class="token-table">
+      <thead>
+        <tr>
+          <th>Swatch</th>
+          <th>Token</th>
+          <th>Hex</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="token-dot" style="background:#0C0C10;border:1px solid #333;"></span></td><td class="token-name">--bg</td><td class="token-hex">#0C0C10</td><td>Main canvas background</td></tr>
+        <tr><td><span class="token-dot" style="background:#131318;"></span></td><td class="token-name">--surface</td><td class="token-hex">#131318</td><td>Cards, panels, sticky header</td></tr>
+        <tr><td><span class="token-dot" style="background:#1A1A24;"></span></td><td class="token-name">--surface-2</td><td class="token-hex">#1A1A24</td><td>Nested surfaces, form inputs</td></tr>
+        <tr><td><span class="token-dot" style="background:#252532;"></span></td><td class="token-name">--border</td><td class="token-hex">#252532</td><td>Default dividers and borders</td></tr>
+        <tr><td><span class="token-dot" style="background:#32324A;"></span></td><td class="token-name">--border-2</td><td class="token-hex">#32324A</td><td>Emphasis borders, focus states</td></tr>
+        <tr><td><span class="token-dot" style="background:#F2C94C;"></span></td><td class="token-name">--gold</td><td class="token-hex">#F2C94C</td><td>Primary accent, CTAs, active nav</td></tr>
+        <tr><td><span class="token-dot" style="background:#38D1B5;"></span></td><td class="token-name">--teal</td><td class="token-hex">#38D1B5</td><td>Secondary accent, education pillar</td></tr>
+        <tr><td><span class="token-dot" style="background:#F26B5E;"></span></td><td class="token-name">--coral</td><td class="token-hex">#F26B5E</td><td>Warning, energy, BTS pillar</td></tr>
+        <tr><td><span class="token-dot" style="background:#9B72F2;"></span></td><td class="token-name">--purple</td><td class="token-hex">#9B72F2</td><td>Creative, Instagram, culture pillar</td></tr>
+        <tr><td><span class="token-dot" style="background:#4CAF80;"></span></td><td class="token-name">--green</td><td class="token-hex">#4CAF80</td><td>Success, done status, blog platform</td></tr>
+        <tr><td><span class="token-dot" style="background:#F0F0F6;"></span></td><td class="token-name">--white</td><td class="token-hex">#F0F0F6</td><td>Primary text (off-white)</td></tr>
+        <tr><td><span class="token-dot" style="background:#C0C0D0;"></span></td><td class="token-name">--mid</td><td class="token-hex">#C0C0D0</td><td>Secondary text, body copy</td></tr>
+        <tr><td><span class="token-dot" style="background:#787890;"></span></td><td class="token-name">--muted</td><td class="token-hex">#787890</td><td>Labels, meta, inactive states</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       5. TYPOGRAPHY
+  ══════════════════════════════════════════════════════ -->
+  <section id="typography">
+    <div class="section-label">05 · Typography</div>
+    <h2 class="section-title">Type Direction</h2>
+    <p class="section-sub">Two fonts. One pairing logic: Syne commands attention, DM Sans maintains legibility and warmth at body sizes.</p>
+
+    <div class="type-pair">
+      <div class="font-card">
+        <span class="font-tag display">Display</span>
+        <div class="font-name">Syne</div>
+        <div class="font-class">Geometric Display Sans · Weights 700, 800</div>
+        <div class="font-specimen is-syne">African Music.<br>Global Screens.</div>
+        <div class="font-desc">Tight letter-spacing at large sizes. Angular geometry. Used for the brand wordmark, page titles, section headers, and anywhere authority or brand presence is needed. Never use at small sizes — it breaks below 14px.</div>
+      </div>
+      <div class="font-card">
+        <span class="font-tag body">Body</span>
+        <div class="font-name">DM Sans</div>
+        <div class="font-class">Humanist Geometric Sans · Weights 300, 400, 500</div>
+        <div class="font-specimen is-dm" style="font-size:22px;line-height:1.4;">Infrastructure for African composers. Briefs matched. Rights cleared. 48 hours.</div>
+        <div class="font-desc">High x-height. Warm at small sizes. Used for all body copy, UI labels, navigation, metadata, and anything under 16px. Weight 300 for long-form copy, 400 for default, 500 for emphasis labels.</div>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-bottom:16px;">Type Scale Specimen</div>
+    <div class="type-scale">
+      <div class="scale-row">
+        <div class="scale-meta">
+          <div class="scale-token">Display XL</div>
+          <div class="scale-size">clamp(48,6vw,88px)</div>
+          <div class="scale-wt">800</div>
+        </div>
+        <div class="scale-preview" style="font-size:clamp(36px,5vw,56px);font-weight:800;letter-spacing:-0.02em;">SyncMaster</div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-meta">
+          <div class="scale-token">Display L</div>
+          <div class="scale-size">clamp(32,4vw,56px)</div>
+          <div class="scale-wt">700</div>
+        </div>
+        <div class="scale-preview" style="font-size:clamp(26px,3.5vw,44px);font-weight:700;letter-spacing:-0.01em;">African Music. Global Screens.</div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-meta">
+          <div class="scale-token">Heading 1</div>
+          <div class="scale-size">36px</div>
+          <div class="scale-wt">700</div>
+        </div>
+        <div class="scale-preview" style="font-size:28px;font-weight:700;">Content Pillars Guide</div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-meta">
+          <div class="scale-token">Heading 2</div>
+          <div class="scale-size">26px</div>
+          <div class="scale-wt">700</div>
+        </div>
+        <div class="scale-preview" style="font-size:22px;font-weight:700;">Pillar 01 — Education</div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-meta">
+          <div class="scale-token">Heading 3</div>
+          <div class="scale-size">20px</div>
+          <div class="scale-wt">700</div>
+        </div>
+        <div class="scale-preview" style="font-size:18px;font-weight:700;">Sync Licensing 101</div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-meta">
+          <div class="scale-token">Body L</div>
+          <div class="scale-size">15px</div>
+          <div class="scale-wt">400</div>
+        </div>
+        <div class="scale-preview dm" style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:400;color:var(--mid);">Five recurring content themes that make SyncMaster's feed coherent.</div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-meta">
+          <div class="scale-token">Body M</div>
+          <div class="scale-size">13px</div>
+          <div class="scale-wt">400</div>
+        </div>
+        <div class="scale-preview dm" style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:400;color:var(--mid);">Every composer is vetted before a brief ever reaches them. One-stop cleared. 48-hour delivery.</div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-meta">
+          <div class="scale-token">Body S</div>
+          <div class="scale-size">12px</div>
+          <div class="scale-wt">300</div>
+        </div>
+        <div class="scale-preview dm" style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;color:var(--mid);">Most African composers accept the first offer. Not because it's fair — because there's no infrastructure telling them what fair looks like.</div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-meta">
+          <div class="scale-token">Label</div>
+          <div class="scale-size">11px</div>
+          <div class="scale-wt">500</div>
+        </div>
+        <div class="scale-preview dm" style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;color:var(--white);">Content Calendar · Copy Bank · Brand Guide</div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-meta">
+          <div class="scale-token">Caption</div>
+          <div class="scale-size">10px</div>
+          <div class="scale-wt">500</div>
+        </div>
+        <div class="scale-preview dm" style="font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);">Education · Proof · Behind the Scenes</div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-meta">
+          <div class="scale-token">Micro</div>
+          <div class="scale-size">8–9px</div>
+          <div class="scale-wt">600–700</div>
+        </div>
+        <div class="scale-preview dm" style="font-family:'DM Sans',sans-serif;font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">IG-EDU-01 · CAROUSEL · 2026-06-03</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       6. COMPONENTS
+  ══════════════════════════════════════════════════════ -->
+  <section id="components">
+    <div class="section-label">06 · Component Inventory</div>
+    <h2 class="section-title">UI Components</h2>
+    <p class="section-sub">40+ components catalogued across the marketing system. Priority order for the SaaS build is marked below.</p>
+
+    <!-- BADGES & CHIPS -->
+    <div class="comp-group">
+      <div class="comp-group-title">Badges & Chips</div>
+      <div class="comp-row">
+        <span class="demo-platform-badge badge-instagram">Instagram</span>
+        <span class="demo-platform-badge badge-twitter">Twitter/X</span>
+        <span class="demo-platform-badge badge-linkedin">LinkedIn</span>
+        <span class="demo-platform-badge badge-youtube">YouTube</span>
+        <span class="demo-platform-badge badge-blog">Blog</span>
+      </div>
+      <div class="comp-label" style="margin-bottom:12px;">Platform Badges — pill shape, colour per platform, 10px/500/uppercase</div>
+      <div class="comp-row">
+        <span class="demo-pillar-chip pillar-education">Education</span>
+        <span class="demo-pillar-chip pillar-proof">Proof</span>
+        <span class="demo-pillar-chip pillar-bts">Behind the Scenes</span>
+        <span class="demo-pillar-chip pillar-culture">Culture</span>
+        <span class="demo-pillar-chip pillar-industry">Industry</span>
+      </div>
+      <div class="comp-label" style="margin-bottom:12px;">Pillar Chips — rounded rect, 4px radius, each pillar-coloured</div>
+      <div class="comp-row" style="align-items:center;gap:16px;">
+        <div style="display:flex;align-items:center;gap:6px;"><span class="demo-status-dot status-todo"></span><span style="font-size:11px;color:var(--muted);">To Do</span></div>
+        <div style="display:flex;align-items:center;gap:6px;"><span class="demo-status-dot status-inprogress"></span><span style="font-size:11px;color:var(--gold);">In Progress</span></div>
+        <div style="display:flex;align-items:center;gap:6px;"><span class="demo-status-dot status-done"></span><span style="font-size:11px;color:var(--green);">Done</span></div>
+      </div>
+      <div class="comp-label">Status Dots — 7px circle, 3-state: muted / gold / green</div>
+    </div>
+
+    <!-- PHASE PILLS -->
+    <div class="comp-group">
+      <div class="comp-group-title">Phase Pills & Progress</div>
+      <div class="comp-row">
+        <span class="demo-phase-pill phase-active">① Active</span>
+        <span class="demo-phase-pill phase-inactive">② Upcoming</span>
+        <span class="demo-phase-pill phase-inactive">③ Future</span>
+      </div>
+      <div class="comp-label" style="margin-bottom:16px;">Phase Pills — gold fill for active (dark text), muted outline for inactive</div>
+      <div style="margin-bottom:6px;">
+        <div class="demo-progress"><div class="demo-progress-fill"></div></div>
+      </div>
+      <div class="comp-label">Progress Bar — 5px height, gold fill, rounded, transitions on width</div>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="comp-group">
+      <div class="comp-group-title">Buttons</div>
+      <div class="comp-row">
+        <button class="demo-btn">Secondary Action</button>
+        <button class="demo-btn primary">Primary Action</button>
+        <button class="demo-btn" style="border-color:rgba(76,175,128,0.4);color:var(--green);">Copied ✓</button>
+      </div>
+      <div class="comp-label">Buttons — 11px/500, 6px radius, surface-2 background. Primary: gold fill with dark text. States: hover shifts border+text to gold.</div>
+    </div>
+
+    <!-- POST CARD -->
+    <div class="comp-group">
+      <div class="comp-group-title">Post Card (Calendar)</div>
+      <div class="comp-row">
+        <div class="demo-post-card">
+          <div class="demo-card-row1">
+            <span class="demo-card-plat">IG</span>
+            <span class="demo-card-id">IG-EDU-01</span>
+          </div>
+          <div class="demo-card-hook">Most composers accept the first offer — because no one explained the infrastructure</div>
+          <div class="demo-card-row3">
+            <span class="demo-card-type">Carousel</span>
+            <span class="demo-status-dot status-inprogress"></span>
+          </div>
+        </div>
+        <div class="demo-post-card" style="border-left-color:var(--muted);background:rgba(56,209,181,0.07);">
+          <div class="demo-card-row1">
+            <span class="demo-card-plat" style="background:rgba(56,209,181,0.3);color:var(--teal);">TW</span>
+            <span class="demo-card-id">TW-EDU-01</span>
+          </div>
+          <div class="demo-card-hook">Three rights every African composer doesn't know they own</div>
+          <div class="demo-card-row3">
+            <span class="demo-card-type">Tweet</span>
+            <span class="demo-status-dot status-todo"></span>
+          </div>
+        </div>
+        <div class="demo-post-card" style="border-left-color:var(--green);background:rgba(76,175,128,0.07);opacity:0.7;">
+          <div class="demo-card-row1">
+            <span class="demo-card-plat" style="background:rgba(76,175,128,0.3);color:var(--green);">BLOG</span>
+            <span class="demo-card-id">BLOG-01</span>
+          </div>
+          <div class="demo-card-hook">Sync Licensing 101: The African Composer's Guide</div>
+          <div class="demo-card-row3">
+            <span class="demo-card-type">Blog</span>
+            <span class="demo-status-dot status-done"></span>
+          </div>
+        </div>
+      </div>
+      <div class="comp-label">Post Cards — coloured by platform, 2px left border for status colour, 5px radius. opacity 0.7 when done.</div>
+    </div>
+
+    <!-- SURFACE CARD -->
+    <div class="comp-group">
+      <div class="comp-group-title">Surface Card (Base Layout Unit)</div>
+      <div class="comp-row">
+        <div class="demo-surface-card">
+          <div style="font-size:10px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;">Placement #1</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:var(--white);margin-bottom:6px;">South African Composer</div>
+          <div style="font-size:11px;color:var(--mid);">Showmax production · July 2026</div>
+        </div>
+      </div>
+      <div class="comp-label">Surface Cards — var(--surface) background, 1px border, 10–14px radius. Hover: border shifts to border-2. Transition: 0.15–0.18s.</div>
+    </div>
+
+    <!-- FULL COMPONENT TABLE -->
+    <div class="section-label" style="margin-bottom:12px;">Full Inventory</div>
+    <div class="comp-table-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>Group</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>#siteNav</td><td>Navigation</td><td>Fixed 36px bar, horizontal-scroll items, gold underline active indicator</td></tr>
+          <tr><td>.view-tab-bar / .vtab</td><td>Navigation</td><td>Tab switcher, gold underline active, 13px/500</td></tr>
+          <tr><td>.dot (side nav)</td><td>Navigation</td><td>8px → 24px width on active, pill shape, gold glow</td></tr>
+          <tr><td>.post-card</td><td>Data Display</td><td>Platform colour, 2px left status border, 3-state status dot</td></tr>
+          <tr><td>.cb-card</td><td>Data Display</td><td>Full copy card — badges, copy body, CTA, status row, copy button</td></tr>
+          <tr><td>.metrics-strip / KPI block</td><td>Data Display</td><td>Running totals display — large number + label</td></tr>
+          <tr><td>.dist-bar</td><td>Data Display</td><td>Pillar distribution bar — 5 coloured segments + legend</td></tr>
+          <tr><td>.platform-badge</td><td>Badges</td><td>Pill, per-platform colour, 10px/500/uppercase</td></tr>
+          <tr><td>.pillar-chip</td><td>Badges</td><td>Rounded rect 4px, per-pillar colour, 10px/500</td></tr>
+          <tr><td>.demo-status-dot</td><td>Badges</td><td>7px circle, 3-state: muted/gold/green</td></tr>
+          <tr><td>.phase-pill</td><td>Badges</td><td>Active = gold fill dark text; inactive = surface-2 outline</td></tr>
+          <tr><td>.snav-badge</td><td>Badges</td><td>SOON badge — 8px, muted border, greyed</td></tr>
+          <tr><td>.fdd (filter dropdown)</td><td>Inputs</td><td>Trigger + panel + checkboxes + badge count — full Set-based state</td></tr>
+          <tr><td>.status-select</td><td>Inputs</td><td>Colour-shifting select: muted/gold/green per state</td></tr>
+          <tr><td>.cb-copy-btn</td><td>Inputs</td><td>Copy-to-clipboard with "Copied ✓" flash state</td></tr>
+          <tr><td>.modal-url-input</td><td>Inputs</td><td>URL input, gold border on focus</td></tr>
+          <tr><td>.modal-backdrop / .modal-panel</td><td>Overlays</td><td>Blur backdrop, slide-up panel, 90vh max, close button</td></tr>
+          <tr><td>.fdd-panel</td><td>Overlays</td><td>Dropdown panel — absolute, surface bg, 10px radius, box-shadow</td></tr>
+          <tr><td>.progress-bar</td><td>Feedback</td><td>5px gold fill, smooth width transition</td></tr>
+          <tr><td>Surface card</td><td>Layout</td><td>--surface bg, 1px border, 10–14px radius, hover border shift</td></tr>
+          <tr><td>Section divider</td><td>Layout</td><td>1px solid var(--border)</td></tr>
+          <tr><td>.cal-grid</td><td>Layout</td><td>7-column CSS Grid, auto-fit minmax(140px)</td></tr>
+          <tr><td>.card-grid</td><td>Layout</td><td>2-column responsive grid, 16px gap</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       7. CONTENT PILLARS & SOCIAL TEMPLATES
+  ══════════════════════════════════════════════════════ -->
+  <section id="content-pillars">
+    <div class="section-label">07 · Content Pillars & Templates</div>
+    <h2 class="section-title">Social Content System</h2>
+    <p class="section-sub">Five pillars, three months, 123 posts. The distribution shifts as proof accumulates — Education-heavy in Month 1, Proof-heavy by Month 3.</p>
+
+    <div class="pillar-table-wrap">
+      <table class="pillar-table">
+        <thead>
+          <tr>
+            <th>Pillar</th>
+            <th>M1 / M2 / M3</th>
+            <th>Best Platforms</th>
+            <th>Template Types</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="demo-pillar-chip pillar-education">Education</span></td>
+            <td>
+              <div class="pct-bar-wrap">
+                <div class="pct-row"><div class="pct-label">M1</div><div class="pct-track"><div class="pct-fill" style="width:35%"></div></div><div style="font-size:10px;color:var(--muted);width:28px;">35%</div></div>
+                <div class="pct-row"><div class="pct-label">M2</div><div class="pct-track"><div class="pct-fill" style="width:30%;background:var(--teal)"></div></div><div style="font-size:10px;color:var(--muted);width:28px;">30%</div></div>
+                <div class="pct-row"><div class="pct-label">M3</div><div class="pct-track"><div class="pct-fill" style="width:20%;background:var(--teal)"></div></div><div style="font-size:10px;color:var(--muted);width:28px;">20%</div></div>
+              </div>
+            </td>
+            <td>IG Carousel · LI Article · Blog</td>
+            <td style="color:var(--mid);">How-to carousel · Term explainer · Fee breakdown · Checklist · "What is sync" primer</td>
+          </tr>
+          <tr>
+            <td><span class="demo-pillar-chip pillar-proof">Proof</span></td>
+            <td>
+              <div class="pct-bar-wrap">
+                <div class="pct-row"><div class="pct-label">M1</div><div class="pct-track"><div class="pct-fill" style="width:25%"></div></div><div style="font-size:10px;color:var(--muted);width:28px;">25%</div></div>
+                <div class="pct-row"><div class="pct-label">M2</div><div class="pct-track"><div class="pct-fill" style="width:30%"></div></div><div style="font-size:10px;color:var(--muted);width:28px;">30%</div></div>
+                <div class="pct-row"><div class="pct-label">M3</div><div class="pct-track"><div class="pct-fill" style="width:35%"></div></div><div style="font-size:10px;color:var(--muted);width:28px;">35%</div></div>
+              </div>
+            </td>
+            <td>IG Single · TW Tweet · LI Post</td>
+            <td style="color:var(--mid);">Placement announcement · Running total update · Brief-to-delivery timeline · Before/after</td>
+          </tr>
+          <tr>
+            <td><span class="demo-pillar-chip pillar-bts">Behind the Scenes</span></td>
+            <td>
+              <div class="pct-bar-wrap">
+                <div class="pct-row"><div class="pct-label">M1</div><div class="pct-track"><div class="pct-fill" style="width:20%;background:var(--coral)"></div></div><div style="font-size:10px;color:var(--muted);width:28px;">20%</div></div>
+                <div class="pct-row"><div class="pct-label">M2</div><div class="pct-track"><div class="pct-fill" style="width:20%;background:var(--coral)"></div></div><div style="font-size:10px;color:var(--muted);width:28px;">20%</div></div>
+                <div class="pct-row"><div class="pct-label">M3</div><div class="pct-track"><div class="pct-fill" style="width:25%;background:var(--coral)"></div></div><div style="font-size:10px;color:var(--muted);width:28px;">25%</div></div>
+              </div>
+            </td>
+            <td>IG Single · TW Thread</td>
+            <td style="color:var(--mid);">Process reveal · Vetting walkthrough · Founder weekly update · Rejection story</td>
+          </tr>
+          <tr>
+            <td><span class="demo-pillar-chip pillar-culture">Culture</span></td>
+            <td>
+              <div class="pct-bar-wrap">
+                <div class="pct-row"><div class="pct-label">M1</div><div class="pct-track"><div class="pct-fill" style="width:15%;background:var(--purple)"></div></div><div style="font-size:10px;color:var(--muted);width:28px;">15%</div></div>
+                <div class="pct-row"><div class="pct-label">M2</div><div class="pct-track"><div class="pct-fill" style="width:15%;background:var(--purple)"></div></div><div style="font-size:10px;color:var(--muted);width:28px;">15%</div></div>
+                <div class="pct-row"><div class="pct-label">M3</div><div class="pct-track"><div class="pct-fill" style="width:15%;background:var(--purple)"></div></div><div style="font-size:10px;color:var(--muted);width:28px;">15%</div></div>
+              </div>
+            </td>
+            <td>IG Single · TW Tweet</td>
+            <td style="color:var(--mid);">African music statement · Cultural pride post · "Belongs on global screens" format</td>
+          </tr>
+          <tr>
+            <td><span class="demo-pillar-chip pillar-industry">Industry</span></td>
+            <td>
+              <div class="pct-bar-wrap">
+                <div class="pct-row"><div class="pct-label">M1</div><div class="pct-track"><div class="pct-fill" style="width:5%;background:var(--mid)"></div></div><div style="font-size:10px;color:var(--muted);width:28px;">5%</div></div>
+                <div class="pct-row"><div class="pct-label">M2</div><div class="pct-track"><div class="pct-fill" style="width:5%;background:var(--mid)"></div></div><div style="font-size:10px;color:var(--muted);width:28px;">5%</div></div>
+                <div class="pct-row"><div class="pct-label">M3</div><div class="pct-track"><div class="pct-fill" style="width:5%;background:var(--mid)"></div></div><div style="font-size:10px;color:var(--muted);width:28px;">5%</div></div>
+              </div>
+            </td>
+            <td>LI Article · TW Thread</td>
+            <td style="color:var(--mid);">Market data post · Supervisor landscape · Sync Summit commentary · Trend analysis</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-label" style="margin-bottom:16px;">Template Structures for Claude Design</div>
+    <div class="template-grid">
+      <div class="template-card">
+        <div class="template-type">Education · IG Carousel</div>
+        <div class="template-name">5–7 Slide Explainer</div>
+        <ol class="template-steps">
+          <li><span class="step-num">1</span>Hook slide — bold claim or provocative question</li>
+          <li><span class="step-num">2</span>Context — why this matters to Tunde specifically</li>
+          <li><span class="step-num">3–5</span>Core concept broken into numbered points</li>
+          <li><span class="step-num">6</span>Real example with specific numbers or name</li>
+          <li><span class="step-num">7</span>CTA — save this / share with a composer</li>
+        </ol>
+      </div>
+      <div class="template-card">
+        <div class="template-type">Proof · IG Single</div>
+        <div class="template-name">Placement Announcement</div>
+        <ol class="template-steps">
+          <li><span class="step-num">1</span>Composer location + background (one line)</li>
+          <li><span class="step-num">2</span>Production name and type (Showmax, NGO, film)</li>
+          <li><span class="step-num">3</span>Fee tier range — never exact, always a bracket</li>
+          <li><span class="step-num">4</span>Brief-to-delivery time</li>
+          <li><span class="step-num">5</span>One-line on what made this composer placement-ready</li>
+        </ol>
+      </div>
+      <div class="template-card">
+        <div class="template-type">BTS · IG Single</div>
+        <div class="template-name">Milestone Update</div>
+        <ol class="template-steps">
+          <li><span class="step-num">1</span>The number prominently (31 applications / 9 vetted)</li>
+          <li><span class="step-num">2</span>What changed this week or month</li>
+          <li><span class="step-num">3</span>One thing that didn't work + what we learned</li>
+          <li><span class="step-num">4</span>What's next (one specific next step)</li>
+        </ol>
+      </div>
+      <div class="template-card">
+        <div class="template-type">Education · LinkedIn</div>
+        <div class="template-name">Article Opener</div>
+        <ol class="template-steps">
+          <li><span class="step-num">1</span>First 3 lines must stand alone (preview cutoff)</li>
+          <li><span class="step-num">2</span>Open with a specific observation, not a question</li>
+          <li><span class="step-num">3</span>Numbered breakdown (5–8 points)</li>
+          <li><span class="step-num">4</span>Close with proof — real number or placement name</li>
+          <li><span class="step-num">5</span>One CTA: "Forward this to a composer in your network"</li>
+        </ol>
+      </div>
+      <div class="template-card">
+        <div class="template-type">BTS · Twitter/X</div>
+        <div class="template-name">Thread Opener</div>
+        <ol class="template-steps">
+          <li><span class="step-num">1</span>Hook tweet: specific number or bold statement alone</li>
+          <li><span class="step-num">2–7</span>Numbered breakdown — each tweet self-contained</li>
+          <li><span class="step-num">8</span>Proof tweet: placement or traction number</li>
+          <li><span class="step-num">9</span>Close: one ask, low friction</li>
+        </ol>
+      </div>
+      <div class="template-card">
+        <div class="template-type">Culture · IG Single</div>
+        <div class="template-name">African Music Statement</div>
+        <ol class="template-steps">
+          <li><span class="step-num">1</span>Bold single sentence — no hedging</li>
+          <li><span class="step-num">2</span>One or two lines of context maximum</li>
+          <li><span class="step-num">3</span>No CTA — let the statement land on its own</li>
+          <li><span class="step-num">—</span>Tone: proud. Declarative. Not defensive.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       8. SAAS HANDOFF
+  ══════════════════════════════════════════════════════ -->
+  <section id="saas-handoff">
+    <div class="section-label">08 · SaaS Build Handoff</div>
+    <h2 class="section-title">What to Carry Over</h2>
+    <p class="section-sub">When starting the SaaS build in a new environment, paste this section as context. The token set is production-ready — zero changes needed.</p>
+
+    <div class="handoff-grid">
+      <div class="handoff-card carry">
+        <div class="handoff-hdr">
+          <div class="handoff-icon carry">✓</div>
+          <div class="handoff-title carry">Carry As-Is</div>
+        </div>
+        <ul class="handoff-items">
+          <li>Complete CSS token set — all 13 colour variables</li>
+          <li>Font imports: <code>Syne</code> + <code>DM Sans</code> via Google Fonts</li>
+          <li>Easing token: <code>--ease: cubic-bezier(0.4,0,0.2,1)</code></li>
+          <li>Scrollbar styling (4px width, border-2 thumb)</li>
+          <li>Platform badge colour system (5 platforms)</li>
+          <li>Status colour system: <code>muted/gold/green</code></li>
+          <li>Border radius scale (4–14px + 999px pill)</li>
+          <li><code>#siteNav</code> component with active/hover states</li>
+          <li>Surface card base (bg, border, radius, hover)</li>
+          <li>Progress bar (5px, gold fill, transitions)</li>
+        </ul>
+      </div>
+      <div class="handoff-card adapt">
+        <div class="handoff-hdr">
+          <div class="handoff-icon adapt">~</div>
+          <div class="handoff-title adapt">Carry with Adaptation</div>
+        </div>
+        <ul class="handoff-items">
+          <li><code>.fdd</code> filter dropdown — same pattern, SaaS-specific filter data</li>
+          <li>Modal pattern — same structure, SaaS content fields</li>
+          <li>Card grid — same surface/border/hover, different data</li>
+          <li>Tab bar — same <code>.vtab</code> pattern, different view names</li>
+          <li>Phase pills — same visual, SaaS-relevant phase names</li>
+          <li>Copy-to-clipboard button — same states, different trigger</li>
+          <li>Status select — same colour-shifting pattern</li>
+        </ul>
+      </div>
+    </div>
+    <div class="handoff-card skip" style="margin-bottom:32px;">
+      <div class="handoff-hdr">
+        <div class="handoff-icon skip">✕</div>
+        <div class="handoff-title skip">Do Not Carry (Marketing-Specific)</div>
+      </div>
+      <ul class="handoff-items" style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+        <li><code>POSTS[]</code> data array</li>
+        <li><code>COPY{}</code> data object</li>
+        <li>Calendar grid layout (7-col)</li>
+        <li>Month nav (prev/next)</li>
+        <li>Content pillar chips as UI nav</li>
+        <li>Copy bank card layout</li>
+        <li><code>syncmaster_cal_v3</code> localStorage key</li>
+        <li>Month-specific page routes</li>
+      </ul>
+    </div>
+
+    <div class="section-label" style="margin-bottom:12px;">Token Export — Paste into SaaS :root</div>
+    <div class="token-export">
+<span class="comment">/* ── SyncMaster Design Tokens v1.0 ─────────────── */</span><br>
+<span class="comment">/* Source: syncmaster-marketing-1.0/brand-guide.html */</span><br>
+:root {<br>
+&nbsp;&nbsp;<span class="comment">/* Backgrounds */</span><br>
+&nbsp;&nbsp;<span class="var-name">--bg</span>:        <span class="var-val">#0C0C10</span>;<br>
+&nbsp;&nbsp;<span class="var-name">--surface</span>:   <span class="var-val">#131318</span>;<br>
+&nbsp;&nbsp;<span class="var-name">--surface-2</span>: <span class="var-val">#1A1A24</span>;<br>
+<br>
+&nbsp;&nbsp;<span class="comment">/* Borders */</span><br>
+&nbsp;&nbsp;<span class="var-name">--border</span>:    <span class="var-val">#252532</span>;<br>
+&nbsp;&nbsp;<span class="var-name">--border-2</span>:  <span class="var-val">#32324A</span>;<br>
+<br>
+&nbsp;&nbsp;<span class="comment">/* Accents */</span><br>
+&nbsp;&nbsp;<span class="var-name">--gold</span>:      <span class="var-val">#F2C94C</span>;  <span class="comment">/* primary CTA, active */</span><br>
+&nbsp;&nbsp;<span class="var-name">--teal</span>:      <span class="var-val">#38D1B5</span>;  <span class="comment">/* secondary, progress */</span><br>
+&nbsp;&nbsp;<span class="var-name">--coral</span>:     <span class="var-val">#F26B5E</span>;  <span class="comment">/* warning, energy */</span><br>
+&nbsp;&nbsp;<span class="var-name">--purple</span>:    <span class="var-val">#9B72F2</span>;  <span class="comment">/* creative, culture */</span><br>
+&nbsp;&nbsp;<span class="var-name">--green</span>:     <span class="var-val">#4CAF80</span>;  <span class="comment">/* success, done */</span><br>
+<br>
+&nbsp;&nbsp;<span class="comment">/* Text */</span><br>
+&nbsp;&nbsp;<span class="var-name">--white</span>:     <span class="var-val">#F0F0F6</span>;<br>
+&nbsp;&nbsp;<span class="var-name">--mid</span>:       <span class="var-val">#C0C0D0</span>;<br>
+&nbsp;&nbsp;<span class="var-name">--muted</span>:     <span class="var-val">#787890</span>;<br>
+<br>
+&nbsp;&nbsp;<span class="comment">/* Motion */</span><br>
+&nbsp;&nbsp;<span class="var-name">--ease</span>:      <span class="var-val">cubic-bezier(0.4, 0, 0.2, 1)</span>;<br>
+}
+    </div>
+
+    <div class="divider" style="margin-top:32px;"></div>
+    <div style="padding:24px 0;display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+      <div style="font-size:12px;color:var(--muted);">When starting the SaaS session, paste this into Claude web as context:</div>
+      <span class="tag tag-gold">Brand Guide: brand-guide.html</span>
+      <span class="tag tag-teal">Tokens: Section 4 + 8</span>
+      <span class="tag tag-purple">Components: Section 6</span>
+      <span class="tag tag-coral">Content: Section 7</span>
+    </div>
+  </section>
+
+</div><!-- /wrap -->
+
+<script>
+  // Dot nav active state on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const dots = document.querySelectorAll('.page-nav a');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        dots.forEach(d => d.classList.toggle('active', d.getAttribute('href') === '#' + id));
+      }
+    });
+  }, { threshold: 0.3 });
+  sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
