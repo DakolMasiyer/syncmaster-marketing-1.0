@@ -1,0 +1,33 @@
+<!doctype html>
+<html class="dark">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin:0; padding:0; background: var(--background); color: var(--foreground); }
+  body { padding: 24px; box-sizing: border-box; font-family: var(--font-sans); }
+  .row { display: flex; align-items: center; gap: 16px; }
+  .col { display: flex; flex-direction: column; gap: 12px; }
+  .swatch { width: 100%; height: 64px; border-radius: var(--radius-base); border: 1px solid var(--border); }
+  .swatch-lg { height: 96px; }
+  .meta { display:flex; justify-content:space-between; align-items:baseline; gap: 8px; }
+  .hex { font-family: var(--font-mono); font-size: 11px; color: var(--muted-foreground); letter-spacing: 0.04em; }
+  .name { font-size: 13px; font-weight: 700; letter-spacing: -0.04em; }
+  .role { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted-foreground); }
+  .grid-6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+  .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+</style>
+</head>
+<body>
+
+<div class="row" style="margin-bottom:8px"><div class="role">STATUS PALETTE — BANNERS · BADGES · SUBMISSION STATES</div></div>
+<div class="grid-4">
+  <div class="col"><div class="swatch" style="background:#22c55e"></div><div class="name">success</div><div class="hex">#22C55E</div></div>
+  <div class="col"><div class="swatch" style="background:#f59e0b"></div><div class="name">warning</div><div class="hex">#F59E0B</div></div>
+  <div class="col"><div class="swatch" style="background:#3b82f6"></div><div class="name">info</div><div class="hex">#3B82F6</div></div>
+  <div class="col"><div class="swatch" style="background:#ef4444"></div><div class="name">destructive</div><div class="hex">#EF4444</div></div>
+</div>
+</body></html>
