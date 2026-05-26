@@ -1,0 +1,1489 @@
+<!-- Figma-Import-Friendly: each <section> is a fully self-contained 1080×1350 frame -->
+<!-- Safe-Zone: inner 1080×1080 (135px top/bottom inset) -->
+<!-- Each slide's background is COMPUTED per-slide via calc(--idx) — no shared panorama image -->
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <title>SyncMaster — Behind the Scenes Carousel</title>
+  <link rel="icon" href="assets/logos/syncmaster-icon.png">
+  <link rel="stylesheet" href="colors_and_type.css">
+  <style>
+    /* ─────────────────────────────────────────────
+       Reset — no exterior chrome, no body bg margin
+       ───────────────────────────────────────────── */
+    html, body { margin: 0; padding: 0; background: #2a2a32; }
+    html { overflow-x: auto; overflow-y: auto; }
+    body {
+      font-family: var(--font-sans); color: var(--sm-fg-dark);
+      padding: 24px 0;
+      width: max-content;        /* expand to fit the full carousel */
+      min-width: 100vw;
+    }
+
+    /* Carousel — slides sit at exact 1080×1350, 2px seam-marker for dev preview only */
+    .carousel {
+      display: flex; gap: 2px;
+      background: rgba(255,255,255,0.06);
+      box-shadow: 0 60px 160px rgba(0,0,0,.6);
+      margin: 0 24px;            /* small breathing room L/R; scroll starts at slide 1 */
+    }
+
+    /* ─────────────────────────────────────────────
+       Slide skeleton
+       ───────────────────────────────────────────── */
+    .slide {
+      width: 1080px; height: 1350px;
+      flex-shrink: 0; position: relative; overflow: hidden;
+      background: var(--sm-ink);
+      isolation: isolate;
+    }
+    /* Bleed-clip — phones / browser windows live inside this wrapper
+       so Figma import treats them as children of the slide frame and
+       respects overflow clipping cleanly. */
+    .slide__bleed {
+      position: absolute; inset: 0; overflow: hidden;
+      pointer-events: none; z-index: 4;
+    }
+    .slide__bleed > * { pointer-events: auto; }
+    /* Safe-zone container — content lives in 1080×1080 inset */
+    .safe {
+      position: absolute;
+      top: 135px; left: 64px; right: 64px; bottom: 135px;
+      display: flex; flex-direction: column;
+      z-index: 5;
+    }
+
+    /* ─────────────────────────────────────────────
+       PER-SLIDE BACKGROUND — self-contained, but visually
+       continuous via calc() on --idx. Each slide computes its
+       OWN bloom centers, so Figma imports each slide as a clean
+       1080×1350 frame (no shared 5400px panorama image).
+       ───────────────────────────────────────────── */
+    .slide__bg {
+      position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      --bloom1-x: calc(600px  - var(--idx, 0) * 1080px);
+      --bloom2-x: calc(2800px - var(--idx, 0) * 1080px);
+      --bloom3-x: calc(5040px - var(--idx, 0) * 1080px);
+      background-color: var(--sm-ink);
+      background-image:
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0   0 0 0 0 0   0 0 0 0 0   0 0 0 0.20 0'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>"),
+        radial-gradient(900px 1200px at var(--bloom1-x) 360px, color-mix(in srgb, var(--sm-purple) 70%, transparent) 0%, transparent 60%),
+        radial-gradient(1100px 1300px at var(--bloom2-x) 720px, color-mix(in srgb, var(--sm-purple) 55%, transparent) 0%, transparent 65%),
+        radial-gradient(900px 1100px at var(--bloom3-x) 980px, color-mix(in srgb, var(--sm-purple) 65%, transparent) 0%, transparent 60%),
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(var(--sm-ink), var(--sm-ink));
+      background-size:
+        220px 220px,
+        100% 100%, 100% 100%, 100% 100%,
+        80px 80px, 80px 80px,
+        100% 100%;
+      background-repeat: repeat, no-repeat, no-repeat, no-repeat, repeat, repeat, no-repeat;
+      background-position:
+        calc(var(--idx) * 60px) calc(var(--idx) * 30px),
+        0 0, 0 0, 0 0,
+        0 0, 0 0,
+        0 0;
+    }
+
+    /* ─────────────────────────────────────────────
+       Acid-lime rail — threads through the carousel.
+       Lives inside slide__bg layer (z-index:1) so it's
+       behind content but on top of the panorama.
+       ───────────────────────────────────────────── */
+    .slide__rail {
+      position: absolute; left: 0; right: 0; top: 220px;
+      height: 1px; z-index: 1; pointer-events: none;
+      background: var(--sm-acid);
+      box-shadow: 0 0 24px color-mix(in srgb, var(--sm-acid) 50%, transparent);
+    }
+    /* Tick markers along the rail — one per slide */
+    .slide__tick {
+      position: absolute; top: 215px; z-index: 1;
+      width: 1px; height: 12px; background: var(--sm-acid);
+      pointer-events: none;
+    }
+
+    /* Eyebrow mono label */
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 18px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--sm-acid);
+      font-weight: 500;
+      margin: 0;
+      display: inline-flex; align-items: center; gap: 14px;
+    }
+    .eyebrow::before {
+      content: ""; width: 36px; height: 1px; background: var(--sm-acid);
+      box-shadow: 0 0 8px var(--sm-acid);
+    }
+    .eyebrow--right { flex-direction: row-reverse; }
+    .eyebrow--right::before { /* keep prefix bar on the visual left */
+      content: ""; width: 36px; height: 1px; background: var(--sm-acid);
+      box-shadow: 0 0 8px var(--sm-acid);
+    }
+
+    /* Display headings */
+    .display {
+      font-family: var(--font-sans);
+      font-weight: 900;
+      letter-spacing: var(--tracking-sync);
+      line-height: 0.96;
+      color: var(--sm-fg-dark);
+      margin: 0;
+      text-wrap: balance;
+    }
+    .display--xl  { font-size: 148px; line-height: 0.92; }
+    .display--lg  { font-size: 108px; line-height: 0.95; }
+    .display--md  { font-size: 80px;  line-height: 1.0; }
+    .display--sm  { font-size: 56px;  line-height: 1.05; }
+
+    .lede {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 26px;
+      line-height: 1.4;
+      letter-spacing: -0.015em;
+      color: color-mix(in srgb, var(--sm-fg-dark) 75%, transparent);
+      max-width: 760px;
+      margin: 0;
+    }
+
+    /* ─────────────────────────────────────────────
+       Footer — consistent across all slides
+       ───────────────────────────────────────────── */
+    .footer-row {
+      position: absolute; left: 64px; right: 64px; bottom: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      z-index: 6;
+    }
+    .footer-brand { display: flex; align-items: center; gap: 14px; }
+    .footer-mark {
+      width: 46px; height: 46px; border-radius: 9999px;
+      background: var(--sm-acid);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 24px color-mix(in srgb, var(--sm-acid) 35%, transparent);
+    }
+    .footer-mark__icon { width: 26px; height: 26px; display: block; }
+    .footer-text { display: flex; flex-direction: column; line-height: 1.1; gap: 3px; }
+    .footer-kicker {
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.28em;
+      text-transform: uppercase; color: color-mix(in srgb, var(--sm-fg-dark) 50%, transparent);
+      font-weight: 500;
+    }
+    .footer-name {
+      font-family: var(--font-sans); font-weight: 700; font-size: 17px;
+      letter-spacing: -0.02em; color: var(--sm-fg-dark);
+    }
+    .footer-pageno {
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.3em;
+      color: color-mix(in srgb, var(--sm-fg-dark) 50%, transparent);
+      text-transform: uppercase;
+    }
+    .footer-next {
+      width: 54px; height: 54px; border-radius: 9999px;
+      background: var(--sm-fg-dark); color: var(--sm-ink);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; font-weight: 700; line-height: 1;
+    }
+
+    /* ─────────────────────────────────────────────
+       Floating product micro-labels — scattered across panorama.
+       Decorative; reinforce the "inside the platform" vibe.
+       ───────────────────────────────────────────── */
+    .micro {
+      position: absolute; z-index: 2; pointer-events: none;
+      font-family: var(--font-mono);
+      font-size: 11px; letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: color-mix(in srgb, var(--sm-fg-dark) 28%, transparent);
+      font-weight: 500;
+    }
+    .micro--dot::before {
+      content: ""; display: inline-block; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--sm-acid); margin-right: 10px;
+      vertical-align: 2px; box-shadow: 0 0 6px var(--sm-acid);
+    }
+
+    /* SVG waveform decoration — sits low, drifts slide-to-slide via positioned absolute */
+    .deco-wave {
+      position: absolute; z-index: 1; pointer-events: none;
+      opacity: 0.18;
+    }
+
+    /* ─────────────────────────────────────────────
+       SHARED — Phone mockup (spans slide 1 + 2)
+       Each instance is positioned so the visual is
+       identical at the seam.
+       ───────────────────────────────────────────── */
+    .phone {
+      position: absolute;
+      width: 480px; height: 980px;
+      border-radius: 60px;
+      background: #0a0a14;
+      border: 8px solid #16162a;
+      box-shadow:
+        0 50px 100px rgba(0,0,0,.6),
+        0 0 0 1px rgba(255,255,255,.06),
+        inset 0 0 0 2px rgba(255,255,255,.04);
+      transform: rotate(-6deg);
+      transform-origin: center center;
+      overflow: hidden;
+      z-index: 4;
+    }
+    /* Notch */
+    .phone::before {
+      content: ""; position: absolute;
+      top: 18px; left: 50%; transform: translateX(-50%);
+      width: 130px; height: 28px; border-radius: 16px;
+      background: #000; z-index: 2;
+    }
+    .phone__inner {
+      position: absolute; inset: 0;
+      border-radius: 50px;
+      overflow: hidden;
+      background: var(--sm-ink);
+    }
+    /* Phone screen content — a faithful mobile dashboard mock */
+    .phone-screen {
+      position: absolute; inset: 0;
+      padding: 70px 22px 22px;
+      display: flex; flex-direction: column; gap: 16px;
+      background:
+        radial-gradient(400px 300px at 50% 0%, color-mix(in srgb, var(--sm-purple) 35%, transparent), transparent 70%),
+        var(--sm-ink);
+      color: var(--sm-fg-dark);
+    }
+    .ps-status {
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: var(--font-mono); font-size: 13px; font-weight: 600;
+      color: var(--sm-fg-dark); margin-bottom: 6px;
+    }
+    .ps-status__icons { display: flex; gap: 4px; align-items: center; }
+    .ps-greet {
+      font-family: var(--font-sans); font-weight: 900;
+      font-size: 26px; letter-spacing: -0.04em; line-height: 1.1;
+      color: var(--sm-fg-dark); margin: 8px 0 0;
+    }
+    .ps-greet small {
+      display: block; font-weight: 500; font-size: 13px;
+      color: color-mix(in srgb, var(--sm-fg-dark) 55%, transparent);
+      letter-spacing: -0.01em; margin-top: 4px;
+    }
+    .ps-hero {
+      margin-top: 8px;
+      background: var(--sm-purple);
+      border-radius: 22px;
+      padding: 22px;
+      position: relative; overflow: hidden;
+      box-shadow: var(--shadow-primary-glow);
+    }
+    .ps-hero::after {
+      content: ""; position: absolute;
+      top: -40px; right: -40px; width: 180px; height: 180px; border-radius: 50%;
+      background: rgba(255,255,255,.12); filter: blur(40px);
+    }
+    .ps-hero__title {
+      font-family: var(--font-sans); font-weight: 900;
+      font-size: 22px; letter-spacing: -0.04em; line-height: 1.1;
+      color: #fff; margin: 0;
+    }
+    .ps-hero__sub {
+      font-family: var(--font-sans); font-weight: 500; font-size: 12px;
+      color: rgba(255,255,255,.75); margin: 8px 0 14px;
+      letter-spacing: -0.015em; line-height: 1.35;
+    }
+    .ps-hero__cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #fff; color: var(--sm-purple);
+      font-family: var(--font-sans); font-weight: 900; font-size: 12px;
+      letter-spacing: -0.02em;
+      padding: 8px 14px; border-radius: 9999px;
+      position: relative; z-index: 1;
+    }
+    .ps-section-label {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: color-mix(in srgb, var(--sm-fg-dark) 50%, transparent);
+      margin: 12px 0 4px; font-weight: 500;
+    }
+    .ps-brief {
+      background: var(--sm-ink-raised);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      padding: 14px;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .ps-brief__row { display: flex; align-items: center; gap: 8px; }
+    .ps-badge {
+      font-family: var(--font-mono); font-size: 9px;
+      letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700;
+      padding: 3px 8px; border-radius: 4px;
+      background: var(--sm-acid); color: var(--sm-ink);
+    }
+    .ps-brief__date {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em;
+      color: color-mix(in srgb, var(--sm-fg-dark) 50%, transparent);
+      margin-left: auto;
+    }
+    .ps-brief__title {
+      font-family: var(--font-sans); font-weight: 700; font-size: 14px;
+      letter-spacing: -0.02em; color: var(--sm-fg-dark); line-height: 1.25;
+    }
+    .ps-brief__chips { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 2px; }
+    .ps-chip {
+      font-family: var(--font-mono); font-size: 9px; font-weight: 500;
+      padding: 2px 6px; border-radius: 3px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      color: color-mix(in srgb, var(--sm-fg-dark) 70%, transparent);
+      text-transform: uppercase; letter-spacing: 0.1em;
+    }
+    .ps-brief__budget {
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--sm-fg-dark); margin-top: 4px;
+      letter-spacing: 0.04em;
+    }
+    .ps-brief__budget span {
+      color: color-mix(in srgb, var(--sm-fg-dark) 50%, transparent);
+      letter-spacing: 0.18em; font-size: 9px; margin-right: 6px; text-transform: uppercase;
+    }
+
+    /* ─────────────────────────────────────────────
+       SHARED — Dashboard browser mock (spans slide 3 + 4)
+       Two identical instances at the seam.
+       ───────────────────────────────────────────── */
+    .browser {
+      position: absolute;
+      width: 1380px; height: 880px;
+      border-radius: 18px;
+      background: #0c0c18;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow:
+        0 60px 120px rgba(0,0,0,.7),
+        0 0 0 1px rgba(255,255,255,.04);
+      overflow: hidden;
+      z-index: 4;
+    }
+    .browser__chrome {
+      height: 42px; background: #16162a;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      display: flex; align-items: center; gap: 8px; padding: 0 14px;
+    }
+    .browser__dot {
+      width: 11px; height: 11px; border-radius: 50%;
+    }
+    .browser__url {
+      margin-left: 18px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 6px;
+      padding: 5px 14px;
+      font-family: var(--font-mono); font-size: 12px;
+      color: color-mix(in srgb, var(--sm-fg-dark) 70%, transparent);
+      letter-spacing: 0.02em;
+      min-width: 420px;
+    }
+    .browser__url b { color: var(--sm-fg-dark); font-weight: 600; }
+    .browser__body {
+      position: absolute; inset: 42px 0 0 0;
+      display: grid; grid-template-columns: 220px 1fr;
+      background: var(--sm-ink);
+    }
+    /* Sidebar */
+    .db-side {
+      background: var(--sm-ink);
+      border-right: 1px solid rgba(255,255,255,.06);
+      padding: 22px 14px;
+      display: flex; flex-direction: column; gap: 18px;
+    }
+    .db-side__logo {
+      display: flex; align-items: center; gap: 10px; padding: 4px 8px 18px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .db-side__logo-mark {
+      width: 28px; height: 28px; border-radius: 9999px;
+      background: var(--sm-acid);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .db-side__logo-text {
+      font-family: var(--font-sans); font-weight: 900;
+      font-size: 13px; letter-spacing: -0.04em; color: var(--sm-fg-dark);
+    }
+    .db-side__group { display: flex; flex-direction: column; gap: 2px; }
+    .db-side__label {
+      font-family: var(--font-mono); font-size: 9px;
+      letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500;
+      color: color-mix(in srgb, var(--sm-fg-dark) 38%, transparent);
+      padding: 0 8px 6px;
+    }
+    .db-side__item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 7px 8px; border-radius: 6px;
+      font-family: var(--font-sans); font-size: 12px; font-weight: 500;
+      color: color-mix(in srgb, var(--sm-fg-dark) 72%, transparent);
+      letter-spacing: -0.01em;
+    }
+    .db-side__item--active {
+      background: var(--sm-fg-dark); color: var(--sm-ink); font-weight: 700;
+    }
+    .db-side__icon { width: 13px; height: 13px; flex-shrink: 0; }
+
+    /* Main area */
+    .db-main {
+      padding: 24px 28px;
+      display: flex; flex-direction: column; gap: 20px;
+      overflow: hidden;
+    }
+    .db-header {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .db-header__crumb {
+      font-family: var(--font-sans); font-size: 12px; font-weight: 500;
+      color: color-mix(in srgb, var(--sm-fg-dark) 65%, transparent);
+    }
+    .db-header__avatar {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--sm-fg-dark); color: var(--sm-ink);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-sans); font-weight: 900; font-size: 11px;
+    }
+    .db-greet {
+      font-family: var(--font-sans); font-weight: 900;
+      font-size: 32px; letter-spacing: -0.068em; line-height: 1.1;
+      color: var(--sm-fg-dark); margin: 0;
+    }
+
+    .db-hero {
+      position: relative; overflow: hidden;
+      background: var(--sm-purple);
+      border-radius: 22px;
+      padding: 30px 34px;
+      color: #fff;
+      display: flex; justify-content: space-between; align-items: center; gap: 28px;
+      box-shadow: var(--shadow-primary-glow);
+    }
+    .db-hero::after {
+      content: ""; position: absolute;
+      top: -100px; right: -100px; width: 320px; height: 320px;
+      border-radius: 50%; background: rgba(255,255,255,.12); filter: blur(80px);
+    }
+    .db-hero::before {
+      content: ""; position: absolute;
+      bottom: -100px; left: -100px; width: 320px; height: 320px;
+      border-radius: 50%; background: rgba(0,0,0,.3); filter: blur(80px);
+    }
+    .db-hero__text { max-width: 460px; position: relative; z-index: 1; }
+    .db-hero__title {
+      font-family: var(--font-sans); font-weight: 900;
+      font-size: 30px; letter-spacing: -0.068em; line-height: 1.05;
+      margin: 0;
+    }
+    .db-hero__sub {
+      font-family: var(--font-sans); font-weight: 500; font-size: 13px;
+      color: rgba(255,255,255,.8); letter-spacing: -0.015em;
+      margin: 10px 0 16px; line-height: 1.4; max-width: 360px;
+    }
+    .db-hero__ctas { display: flex; gap: 10px; }
+    .db-hero__btn--solid {
+      background: #fff; color: var(--sm-purple);
+      padding: 10px 18px; border-radius: 12px;
+      font-family: var(--font-sans); font-weight: 900; font-size: 12px;
+      letter-spacing: -0.02em;
+      box-shadow: 0 8px 16px rgba(0,0,0,.2);
+    }
+    .db-hero__btn--ghost {
+      background: rgba(255,255,255,.06); color: #fff;
+      padding: 10px 18px; border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.2);
+      font-family: var(--font-sans); font-weight: 900; font-size: 12px;
+      letter-spacing: -0.02em;
+    }
+    .db-hero__preview {
+      position: relative; z-index: 1;
+      width: 320px; height: 200px; flex-shrink: 0;
+      border-radius: 18px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,.2);
+      background: rgba(255,255,255,.04);
+      backdrop-filter: blur(8px);
+      transform: rotate(3deg);
+      box-shadow: 0 20px 40px rgba(0,0,0,.4);
+    }
+    .db-hero__preview svg { width: 100%; height: 100%; display: block; }
+
+    /* Top Briefs row */
+    .db-briefs-head {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .db-briefs-head__title {
+      font-family: var(--font-sans); font-weight: 900;
+      font-size: 20px; letter-spacing: -0.068em; color: var(--sm-fg-dark);
+      margin: 0;
+    }
+    .db-briefs-head__sub {
+      font-family: var(--font-sans); font-size: 11px; font-weight: 500;
+      color: color-mix(in srgb, var(--sm-fg-dark) 60%, transparent);
+      letter-spacing: -0.01em; margin-top: 2px;
+    }
+    .db-briefs-head__viewall {
+      font-family: var(--font-sans); font-size: 12px; font-weight: 700;
+      color: var(--sm-purple); display: inline-flex; align-items: center; gap: 5px;
+    }
+    .db-briefs {
+      display: flex; gap: 14px; overflow: hidden;
+    }
+    .db-brief {
+      flex: 1; min-width: 0;
+      background: var(--sm-ink-raised);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 14px;
+      padding: 18px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .db-brief__top {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .db-brief__badge {
+      font-family: var(--font-mono); font-size: 9px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 3px 8px; border-radius: 4px;
+      background: var(--sm-purple); color: #fff;
+    }
+    .db-brief__date {
+      font-family: var(--font-mono); font-size: 10px;
+      color: color-mix(in srgb, var(--sm-fg-dark) 55%, transparent);
+    }
+    .db-brief__title {
+      font-family: var(--font-sans); font-weight: 700; font-size: 14px;
+      letter-spacing: -0.02em; color: var(--sm-fg-dark); line-height: 1.25;
+      min-height: 36px;
+    }
+    .db-brief__who {
+      display: flex; align-items: center; gap: 6px;
+      font-family: var(--font-sans); font-size: 11px; font-weight: 500;
+      color: color-mix(in srgb, var(--sm-fg-dark) 60%, transparent);
+    }
+    .db-brief__avatar {
+      width: 16px; height: 16px; border-radius: 50%;
+      background: color-mix(in srgb, var(--sm-purple) 60%, transparent);
+      color: #fff;
+      font-size: 9px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .db-brief__chips { display: flex; gap: 4px; flex-wrap: wrap; }
+    .db-brief__chip {
+      font-family: var(--font-sans); font-size: 10px; font-weight: 500;
+      padding: 3px 8px; border-radius: 9999px;
+      background: rgba(75,75,192,.12);
+      color: var(--sm-purple);
+      border: 1px solid rgba(75,75,192,.2);
+    }
+    .db-brief__foot {
+      padding-top: 10px; border-top: 1px solid rgba(255,255,255,.06);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .db-brief__budget-row {
+      display: flex; flex-direction: column;
+    }
+    .db-brief__budget-label {
+      font-family: var(--font-mono); font-size: 9px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: color-mix(in srgb, var(--sm-fg-dark) 50%, transparent);
+    }
+    .db-brief__budget-val {
+      font-family: var(--font-mono); font-size: 13px; font-weight: 600;
+      color: var(--sm-fg-dark);
+    }
+    .db-brief__arrow {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--sm-fg-dark); font-size: 14px;
+    }
+
+    /* ─────────────────────────────────────────────
+       Slide-specific positioning of phone (S1 + S2)
+       The phone is the SAME visual at the seam — anchored
+       so its center sits exactly at x=1080 (the seam).
+       ───────────────────────────────────────────── */
+    /* Slide 1: phone right-of-center, bleeds across seam */
+    #slide-1 .phone {
+      top: 240px;
+      left: 760px;  /* visible 760..1080 on slide 1 */
+    }
+    /* Slide 2: same phone instance — visually identical, anchored so it bleeds in from the left */
+    #slide-2 .phone {
+      top: 240px;
+      left: -320px;  /* visible 0..160 on slide 2 — picks up exactly where slide 1 ended */
+    }
+
+    /* ─────────────────────────────────────────────
+       Slide-specific positioning of browser (S3 + S4)
+       Browser center sits at the seam (x = end of slide 3).
+       ───────────────────────────────────────────── */
+    /* Slide 3: browser starts further right, bleeds across into slide 4 */
+    #slide-3 .browser {
+      top: 380px;
+      left: 460px;  /* visible 460..1080 (620px) on slide 3 */
+    }
+    /* Slide 4: continuation — anchored so the next 620..1380 portion sits on slide 4 */
+    #slide-4 .browser {
+      top: 380px;
+      left: -620px;  /* visible 0..760 on slide 4 — matches slide-3 bleed */
+    }
+
+    /* ─────────────────────────────────────────────
+       Detail callout — slide 4 right side
+       ───────────────────────────────────────────── */
+    .callout {
+      position: absolute;
+      right: 56px; top: 400px;
+      width: 440px;
+      background: var(--sm-ink-raised);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 14px;
+      padding: 26px;
+      box-shadow: 0 30px 60px rgba(0,0,0,.5);
+      display: flex; flex-direction: column; gap: 14px;
+      z-index: 5;
+    }
+    .callout__label {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--sm-acid); font-weight: 600;
+    }
+    .callout__title {
+      font-family: var(--font-sans); font-weight: 900;
+      font-size: 24px; letter-spacing: -0.04em; line-height: 1.1;
+      color: var(--sm-fg-dark); margin: 0;
+    }
+    .callout__row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .callout__row:first-of-type { border-top: 0; padding-top: 4px; }
+    .callout__row-name {
+      font-family: var(--font-sans); font-size: 13px; font-weight: 600;
+      color: var(--sm-fg-dark); min-width: 120px;
+      letter-spacing: -0.015em;
+    }
+    .callout__bar {
+      flex: 1; height: 6px; border-radius: 3px;
+      background: rgba(255,255,255,.06);
+      position: relative; overflow: hidden;
+    }
+    .callout__bar > i {
+      position: absolute; left: 0; top: 0; bottom: 0;
+      background: linear-gradient(90deg, var(--sm-purple), var(--sm-acid));
+      border-radius: 3px;
+    }
+    .callout__pct {
+      font-family: var(--font-mono); font-size: 12px; font-weight: 600;
+      color: var(--sm-fg-dark); min-width: 36px; text-align: right;
+    }
+
+    /* Pull-pointer — line from browser to callout */
+    .pointer-line {
+      position: absolute; z-index: 4; pointer-events: none;
+    }
+
+    /* ─────────────────────────────────────────────
+       Slide 5 — CTA
+       ───────────────────────────────────────────── */
+    .cta-block {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 0 64px;
+      z-index: 5;
+    }
+    .cta-mark {
+      width: 120px; height: 120px; border-radius: 9999px;
+      background: var(--sm-acid);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 80px color-mix(in srgb, var(--sm-acid) 50%, transparent);
+      margin-bottom: 40px;
+    }
+    .cta-mark svg { width: 64px; height: 64px; display: block; }
+    .cta-title {
+      font-family: var(--font-sans); font-weight: 900;
+      font-size: 104px; letter-spacing: -0.068em; line-height: 0.96;
+      color: var(--sm-fg-dark); margin: 0;
+      text-align: center;
+      text-wrap: balance;
+    }
+    .cta-sub {
+      font-family: var(--font-sans); font-weight: 500;
+      font-size: 24px; letter-spacing: -0.015em; line-height: 1.45;
+      color: color-mix(in srgb, var(--sm-fg-dark) 75%, transparent);
+      margin: 28px 0 48px; max-width: 680px; text-align: center;
+    }
+    .cta-button {
+      display: inline-flex; align-items: center; gap: 22px;
+      padding: 26px 44px;
+      border-radius: 9999px;
+      background: var(--sm-acid); color: var(--sm-ink);
+      font-family: var(--font-sans); font-weight: 900; font-size: 30px;
+      letter-spacing: -0.03em;
+      box-shadow: 0 0 60px color-mix(in srgb, var(--sm-acid) 45%, transparent);
+      text-decoration: none;
+    }
+    .cta-button__arrow {
+      width: 44px; height: 44px; border-radius: 9999px;
+      background: var(--sm-ink); color: var(--sm-acid);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 22px; font-weight: 700;
+    }
+
+    /* Decorative outlined ring for slide 5 — large frame around CTA */
+    .cta-ring {
+      position: absolute; left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      width: 880px; height: 880px;
+      border-radius: 50%;
+      border: 1px solid color-mix(in srgb, var(--sm-acid) 30%, transparent);
+      z-index: 2; pointer-events: none;
+    }
+    .cta-ring--inner {
+      width: 720px; height: 720px;
+      border-color: color-mix(in srgb, var(--sm-acid) 18%, transparent);
+    }
+  </style>
+</head>
+<body>
+
+<div class="carousel">
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SLIDE 1 · HOOK — phone bleeds right
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="slide-1" class="slide" style="--idx: 0;" data-screen-label="01 Hook">
+    <div class="slide__bg"></div>
+    <div class="slide__rail"></div>
+    <div class="slide__tick" style="left: 64px;"></div>
+    <div class="slide__tick" style="left: 540px;"></div>
+    <div class="slide__tick" style="left: 1016px;"></div>
+
+    <!-- Floating micro labels -->
+    <span class="micro micro--dot" style="top: 162px; left: 64px;">SyncMaster · Behind the build · Ep 04</span>
+    <span class="micro" style="top: 1180px; left: 64px;">⌘K  ·  Search briefs · Catalog · Composers</span>
+    <span class="micro" style="top: 1180px; right: 64px;">2026 / Q2 · Lagos · Cape Town · Nairobi</span>
+
+    <!-- Faint waveform decoration -->
+    <svg class="deco-wave" style="bottom: 220px; left: 40px; width: 760px; height: 80px;" viewBox="0 0 760 80" fill="none">
+      <path d="M0 40 Q 40 10, 80 40 T 160 40 T 240 40 T 320 40 T 400 40 T 480 40 T 560 40 T 640 40 T 720 40 T 760 40" stroke="var(--sm-acid)" stroke-width="1.2" />
+      <path d="M0 50 Q 30 20, 60 50 T 120 50 T 180 50 T 240 50 T 300 50 T 360 50 T 420 50 T 480 50 T 540 50 T 600 50 T 660 50 T 720 50 T 760 50" stroke="rgba(255,255,255,.35)" stroke-width="1" />
+    </svg>
+
+    <!-- Phone mockup — visual instance A (slide 1 half) -->
+    <div class="slide__bleed slide__bleed--phone">
+      <div class="phone">
+      <div class="phone__inner">
+        <div class="phone-screen">
+          <div class="ps-status">
+            <span>9:41</span>
+            <span class="ps-status__icons">●●● ▮</span>
+          </div>
+          <h3 class="ps-greet">Welcome, Tunde<small>2 new briefs match your roster</small></h3>
+
+          <div class="ps-hero">
+            <p class="ps-hero__title">Your sync operations, simplified.</p>
+            <p class="ps-hero__sub">Manage assets, track submissions, connect with supervisors.</p>
+            <span class="ps-hero__cta">Explore briefs →</span>
+          </div>
+
+          <p class="ps-section-label">Top briefs</p>
+          <div class="ps-brief">
+            <div class="ps-brief__row">
+              <span class="ps-badge">Active</span>
+              <span class="ps-brief__date">06 / 14 / 26</span>
+            </div>
+            <p class="ps-brief__title">Lagos crime thriller — main title cue</p>
+            <div class="ps-brief__chips">
+              <span class="ps-chip">Afrobeats</span>
+              <span class="ps-chip">Cinematic</span>
+              <span class="ps-chip">Tense</span>
+            </div>
+            <p class="ps-brief__budget"><span>Budget</span>$15,000 – $25,000</p>
+          </div>
+
+          <div class="ps-brief">
+            <div class="ps-brief__row">
+              <span class="ps-badge">Active</span>
+              <span class="ps-brief__date">06 / 22 / 26</span>
+            </div>
+            <p class="ps-brief__title">Streaming docu — Lagos club scene</p>
+            <div class="ps-brief__chips">
+              <span class="ps-chip">Amapiano</span>
+              <span class="ps-chip">Modern</span>
+            </div>
+            <p class="ps-brief__budget"><span>Budget</span>$8,000 – $14,000</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Headline content -->
+    <div class="safe">
+      <div style="margin-top: 120px;">
+        <p class="eyebrow">Behind the build · Ep 04</p>
+      </div>
+      <div style="margin-top: auto; margin-bottom: 200px; max-width: 660px;">
+        <h1 class="display display--lg" style="font-size: 116px; line-height: 0.95;">Inside<br>the platform.</h1>
+        <p class="lede" style="margin-top: 32px; max-width: 560px;">A look at how briefs become placements — curated, cleared, and delivered in 48 hours.</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-row">
+      <div class="footer-brand">
+        <div class="footer-mark"><svg class="footer-mark__icon" viewBox="0 0 24 24" fill="none"><path d="M8 8c2.5 0 4 1.5 4 4s1.5 4 4 4M16 8c-2.5 0-4 1.5-4 4s-1.5 4-4 4" stroke="#0f0f1a" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+        <div class="footer-text">
+          <span class="footer-kicker">SyncMaster · Operations</span>
+          <span class="footer-name">syncmaster.live</span>
+        </div>
+      </div>
+      <span class="footer-pageno">01 / 05</span>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SLIDE 2 · CONTEXT — phone bleeds in from left
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="slide-2" class="slide" style="--idx: 1;" data-screen-label="02 Context">
+    <div class="slide__bg"></div>
+    <div class="slide__rail"></div>
+    <div class="slide__tick" style="left: 64px;"></div>
+    <div class="slide__tick" style="left: 540px;"></div>
+    <div class="slide__tick" style="left: 1016px;"></div>
+
+    <span class="micro micro--dot" style="top: 162px; right: 64px;">02 · Why it matters</span>
+    <span class="micro" style="top: 1180px; left: 64px;">Status · 500 unvetted submissions / week · pre-SyncMaster</span>
+
+    <!-- Phone instance B — bleeds in from left, identical to A -->
+    <div class="slide__bleed slide__bleed--phone">
+      <div class="phone">
+      <div class="phone__inner">
+        <div class="phone-screen">
+          <div class="ps-status">
+            <span>9:41</span>
+            <span class="ps-status__icons">●●● ▮</span>
+          </div>
+          <h3 class="ps-greet">Welcome, Tunde<small>2 new briefs match your roster</small></h3>
+
+          <div class="ps-hero">
+            <p class="ps-hero__title">Your sync operations, simplified.</p>
+            <p class="ps-hero__sub">Manage assets, track submissions, connect with supervisors.</p>
+            <span class="ps-hero__cta">Explore briefs →</span>
+          </div>
+
+          <p class="ps-section-label">Top briefs</p>
+          <div class="ps-brief">
+            <div class="ps-brief__row">
+              <span class="ps-badge">Active</span>
+              <span class="ps-brief__date">06 / 14 / 26</span>
+            </div>
+            <p class="ps-brief__title">Lagos crime thriller — main title cue</p>
+            <div class="ps-brief__chips">
+              <span class="ps-chip">Afrobeats</span>
+              <span class="ps-chip">Cinematic</span>
+              <span class="ps-chip">Tense</span>
+            </div>
+            <p class="ps-brief__budget"><span>Budget</span>$15,000 – $25,000</p>
+          </div>
+
+          <div class="ps-brief">
+            <div class="ps-brief__row">
+              <span class="ps-badge">Active</span>
+              <span class="ps-brief__date">06 / 22 / 26</span>
+            </div>
+            <p class="ps-brief__title">Streaming docu — Lagos club scene</p>
+            <div class="ps-brief__chips">
+              <span class="ps-chip">Amapiano</span>
+              <span class="ps-chip">Modern</span>
+            </div>
+            <p class="ps-brief__budget"><span>Budget</span>$8,000 – $14,000</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Text content — right side, anchored TOP so it clears the AI snippet at bottom -->
+    <div class="safe" style="left: 420px;">
+      <div style="margin-top: 80px;">
+        <p class="eyebrow">Why we built this</p>
+      </div>
+      <div style="margin-top: 36px;">
+        <h2 class="display" style="font-size: 60px; line-height: 1.0;">Africa's best music<br>never reached<br>the right brief.</h2>
+        <p class="lede" style="margin-top: 24px; max-width: 480px; font-size: 22px;">Rights complexity. Metadata gaps. No access to global briefs.</p>
+      </div>
+    </div>
+
+    <!-- Inline UI snippet — small score-row, anchored bottom-right with vertical clearance from text -->
+    <div style="position: absolute; right: 56px; bottom: 200px; z-index: 5; width: 420px;
+                background: var(--sm-ink-raised); border: 1px solid rgba(255,255,255,.08);
+                border-radius: 12px; padding: 18px; box-shadow: 0 30px 60px rgba(0,0,0,.45);">
+      <p style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.25em;
+                text-transform: uppercase; color: var(--sm-acid); margin: 0 0 12px; font-weight: 600;">
+        AI Match · Sample
+      </p>
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+        <span style="font-family: var(--font-sans); font-size: 13px; font-weight: 600; color: var(--sm-fg-dark); min-width: 130px; letter-spacing: -0.01em;">Aisha Olatunde</span>
+        <div style="flex:1; height: 6px; border-radius: 3px; background: rgba(255,255,255,.06); position: relative; overflow: hidden;">
+          <span style="position:absolute; inset: 0 8% 0 0; background: linear-gradient(90deg, var(--sm-purple), var(--sm-acid)); border-radius: 3px;"></span>
+        </div>
+        <span style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--sm-fg-dark);">92</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+        <span style="font-family: var(--font-sans); font-size: 13px; font-weight: 600; color: var(--sm-fg-dark); min-width: 130px; letter-spacing: -0.01em;">Tope Adebayo</span>
+        <div style="flex:1; height: 6px; border-radius: 3px; background: rgba(255,255,255,.06); position: relative; overflow: hidden;">
+          <span style="position:absolute; inset: 0 12% 0 0; background: linear-gradient(90deg, var(--sm-purple), var(--sm-acid)); border-radius: 3px;"></span>
+        </div>
+        <span style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--sm-fg-dark);">88</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="font-family: var(--font-sans); font-size: 13px; font-weight: 600; color: var(--sm-fg-dark); min-width: 130px; letter-spacing: -0.01em;">Nomzamo Khoza</span>
+        <div style="flex:1; height: 6px; border-radius: 3px; background: rgba(255,255,255,.06); position: relative; overflow: hidden;">
+          <span style="position:absolute; inset: 0 24% 0 0; background: linear-gradient(90deg, var(--sm-purple), var(--sm-acid)); border-radius: 3px;"></span>
+        </div>
+        <span style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--sm-fg-dark);">76</span>
+      </div>
+    </div>
+
+    <div class="footer-row">
+      <div class="footer-brand">
+        <div class="footer-mark"><svg class="footer-mark__icon" viewBox="0 0 24 24" fill="none"><path d="M8 8c2.5 0 4 1.5 4 4s1.5 4 4 4M16 8c-2.5 0-4 1.5-4 4s-1.5 4-4 4" stroke="#0f0f1a" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+        <div class="footer-text">
+          <span class="footer-kicker">The Problem</span>
+          <span class="footer-name">Industry status quo</span>
+        </div>
+      </div>
+      <span class="footer-pageno">02 / 05</span>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SLIDE 3 · SHOWCASE A — dashboard browser starts right edge
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="slide-3" class="slide" style="--idx: 2;" data-screen-label="03 Showcase A">
+    <div class="slide__bg"></div>
+    <div class="slide__rail"></div>
+    <div class="slide__tick" style="left: 64px;"></div>
+    <div class="slide__tick" style="left: 540px;"></div>
+    <div class="slide__tick" style="left: 1016px;"></div>
+
+    <span class="micro micro--dot" style="top: 162px; left: 64px;">03 · The dashboard</span>
+    <span class="micro" style="top: 1180px; left: 64px;">Sidebar / Hero / Top Briefs / Tools — one workspace</span>
+
+    <!-- Browser instance A (slide 3 half) -->
+    <div class="slide__bleed slide__bleed--browser">
+      <div class="browser">
+      <div class="browser__chrome">
+        <span class="browser__dot" style="background:#ff5f57;"></span>
+        <span class="browser__dot" style="background:#febc2e;"></span>
+        <span class="browser__dot" style="background:#28c840;"></span>
+        <span class="browser__url"><b>syncmaster.live</b>/dashboard</span>
+      </div>
+      <div class="browser__body">
+        <!-- Sidebar -->
+        <aside class="db-side">
+          <div class="db-side__logo">
+            <div class="db-side__logo-mark"><svg class="db-side__icon" viewBox="0 0 24 24" fill="none" style="width:16px;height:16px;"><path d="M8 8c2.5 0 4 1.5 4 4s1.5 4 4 4M16 8c-2.5 0-4 1.5-4 4s-1.5 4-4 4" stroke="#0f0f1a" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+            <span class="db-side__logo-text">SYNCMASTER</span>
+          </div>
+          <div class="db-side__group">
+            <span class="db-side__label">Workspace</span>
+            <div class="db-side__item db-side__item--active">
+              <svg class="db-side__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              Dashboard
+            </div>
+            <div class="db-side__item">
+              <svg class="db-side__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+              Catalog
+            </div>
+            <div class="db-side__item">
+              <svg class="db-side__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l9 6 9-6M3 7v12h18V7"/></svg>
+              Briefs
+            </div>
+            <div class="db-side__item">
+              <svg class="db-side__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>
+              Placements
+            </div>
+          </div>
+          <div class="db-side__group">
+            <span class="db-side__label">Distribution</span>
+            <div class="db-side__item">
+              <svg class="db-side__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              Pages (EPK)
+            </div>
+            <div class="db-side__item">
+              <svg class="db-side__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg>
+              Campaigns
+            </div>
+            <div class="db-side__item">
+              <svg class="db-side__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49M7.76 16.24a6 6 0 0 1 0-8.49M19.07 4.93a10 10 0 0 1 0 14.14M4.93 19.07a10 10 0 0 1 0-14.14"/></svg>
+              Radio Directory
+            </div>
+          </div>
+          <div class="db-side__group">
+            <span class="db-side__label">Network</span>
+            <div class="db-side__item">
+              <svg class="db-side__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2M17 11l2 2 4-4"/></svg>
+              Composers
+            </div>
+            <div class="db-side__item">
+              <svg class="db-side__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 22V8h20v14M6 22V12M10 22V12M14 22V12M18 22V12"/></svg>
+              Producers
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main -->
+        <main class="db-main">
+          <div class="db-header">
+            <span class="db-header__crumb">Dashboard</span>
+            <div class="db-header__avatar">G</div>
+          </div>
+
+          <h1 class="db-greet">Welcome, Godliverse</h1>
+
+          <div class="db-hero">
+            <div class="db-hero__text">
+              <h2 class="db-hero__title">Your sync operations, simplified.</h2>
+              <p class="db-hero__sub">Manage your music assets, track submissions, and connect with supervisors from one central hub.</p>
+              <div class="db-hero__ctas">
+                <span class="db-hero__btn--solid">Explore Briefs</span>
+                <span class="db-hero__btn--ghost">View Catalog</span>
+              </div>
+            </div>
+            <div class="db-hero__preview">
+              <!-- tiny SVG illustration of mobile-in-tablet style sub-preview -->
+              <svg viewBox="0 0 320 200" fill="none">
+                <rect x="6" y="8" width="308" height="184" rx="16" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)"/>
+                <rect x="22" y="24" width="80" height="10" rx="3" fill="rgba(255,255,255,0.5)"/>
+                <rect x="22" y="40" width="180" height="6" rx="2" fill="rgba(255,255,255,0.25)"/>
+                <rect x="22" y="52" width="120" height="6" rx="2" fill="rgba(255,255,255,0.25)"/>
+                <rect x="22" y="74" width="120" height="22" rx="6" fill="#ffffff"/>
+                <rect x="22" y="110" width="92" height="60" rx="8" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)"/>
+                <rect x="124" y="110" width="92" height="60" rx="8" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)"/>
+                <rect x="226" y="110" width="76" height="60" rx="8" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="db-briefs-head">
+            <div>
+              <h3 class="db-briefs-head__title">Top Briefs</h3>
+              <p class="db-briefs-head__sub">Latest opportunities from producers</p>
+            </div>
+            <span class="db-briefs-head__viewall">View all →</span>
+          </div>
+
+          <div class="db-briefs">
+            <div class="db-brief">
+              <div class="db-brief__top">
+                <span class="db-brief__badge">Active</span>
+                <span class="db-brief__date">06 / 02 / 26</span>
+              </div>
+              <p class="db-brief__title">Energetic Afrobeat for Global Sports Brand</p>
+              <div class="db-brief__who"><span class="db-brief__avatar">S</span> Sophia · Forge Creative</div>
+              <div class="db-brief__chips">
+                <span class="db-brief__chip">Afrobeat</span>
+                <span class="db-brief__chip">Afropop</span>
+                <span class="db-brief__chip">Dance</span>
+              </div>
+              <div class="db-brief__foot">
+                <div class="db-brief__budget-row">
+                  <span class="db-brief__budget-label">Budget range</span>
+                  <span class="db-brief__budget-val">$8K – $20K</span>
+                </div>
+                <span class="db-brief__arrow">→</span>
+              </div>
+            </div>
+
+            <div class="db-brief">
+              <div class="db-brief__top">
+                <span class="db-brief__badge">Active</span>
+                <span class="db-brief__date">06 / 09 / 26</span>
+              </div>
+              <p class="db-brief__title">Chill Afro-Fusion for Luxury Lifestyle Ad</p>
+              <div class="db-brief__who"><span class="db-brief__avatar">S</span> Sophia · Forge Creative</div>
+              <div class="db-brief__chips">
+                <span class="db-brief__chip">Afro-Fusion</span>
+                <span class="db-brief__chip">R&amp;B</span>
+                <span class="db-brief__chip">Chillwave</span>
+              </div>
+              <div class="db-brief__foot">
+                <div class="db-brief__budget-row">
+                  <span class="db-brief__budget-label">Budget range</span>
+                  <span class="db-brief__budget-val">$5K – $12K</span>
+                </div>
+                <span class="db-brief__arrow">→</span>
+              </div>
+            </div>
+
+            <div class="db-brief">
+              <div class="db-brief__top">
+                <span class="db-brief__badge">Active</span>
+                <span class="db-brief__date">05 / 26 / 26</span>
+              </div>
+              <p class="db-brief__title">Dark Amapiano for Urban Thriller Film</p>
+              <div class="db-brief__who"><span class="db-brief__avatar">S</span> Sophia · Black River Pictures</div>
+              <div class="db-brief__chips">
+                <span class="db-brief__chip">Amapiano</span>
+                <span class="db-brief__chip">Electronic</span>
+                <span class="db-brief__chip">Cinematic</span>
+              </div>
+              <div class="db-brief__foot">
+                <div class="db-brief__budget-row">
+                  <span class="db-brief__budget-label">Budget range</span>
+                  <span class="db-brief__budget-val">$10K – $25K</span>
+                </div>
+                <span class="db-brief__arrow">→</span>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    </div>
+
+    <!-- Slide 3 left caption — narrow column, sits clear of browser at x=460 -->
+    <div class="safe">
+      <div style="margin-top: 120px;">
+        <p class="eyebrow">The dashboard</p>
+      </div>
+      <div style="margin-top: 40px; max-width: 380px;">
+        <h2 class="display" style="font-size: 52px; line-height: 1.02;">One workspace.<br>Briefs in.<br>Placements out.</h2>
+        <p class="lede" style="margin-top: 22px; font-size: 19px; max-width: 320px;">Built for supervisors and composers — the same source of truth.</p>
+      </div>
+    </div>
+
+    <div class="footer-row">
+      <div class="footer-brand">
+        <div class="footer-mark"><svg class="footer-mark__icon" viewBox="0 0 24 24" fill="none"><path d="M8 8c2.5 0 4 1.5 4 4s1.5 4 4 4M16 8c-2.5 0-4 1.5-4 4s-1.5 4-4 4" stroke="#0f0f1a" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+        <div class="footer-text">
+          <span class="footer-kicker">Inside the build</span>
+          <span class="footer-name">The dashboard</span>
+        </div>
+      </div>
+      <span class="footer-pageno">03 / 05</span>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SLIDE 4 · SHOWCASE B — dashboard continues from left, callout
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="slide-4" class="slide" style="--idx: 3;" data-screen-label="04 Showcase B">
+    <div class="slide__bg"></div>
+    <div class="slide__rail"></div>
+    <div class="slide__tick" style="left: 64px;"></div>
+    <div class="slide__tick" style="left: 540px;"></div>
+    <div class="slide__tick" style="left: 1016px;"></div>
+
+    <span class="micro micro--dot" style="top: 162px; right: 64px;">04 · Hand-curated · Rights-cleared</span>
+    <span class="micro" style="top: 1180px; right: 64px;">$148k placed · 42 composers · 37h turnaround · Q1 ’26</span>
+
+    <!-- Browser instance B — identical, anchored to bleed in from left -->
+    <div class="slide__bleed slide__bleed--browser">
+      <div class="browser">
+      <div class="browser__chrome">
+        <span class="browser__dot" style="background:#ff5f57;"></span>
+        <span class="browser__dot" style="background:#febc2e;"></span>
+        <span class="browser__dot" style="background:#28c840;"></span>
+        <span class="browser__url"><b>syncmaster.live</b>/dashboard</span>
+      </div>
+      <div class="browser__body">
+        <aside class="db-side">
+          <div class="db-side__logo">
+            <div class="db-side__logo-mark"><svg class="db-side__icon" viewBox="0 0 24 24" fill="none" style="width:16px;height:16px;"><path d="M8 8c2.5 0 4 1.5 4 4s1.5 4 4 4M16 8c-2.5 0-4 1.5-4 4s-1.5 4-4 4" stroke="#0f0f1a" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+            <span class="db-side__logo-text">SYNCMASTER</span>
+          </div>
+          <div class="db-side__group">
+            <span class="db-side__label">Workspace</span>
+            <div class="db-side__item db-side__item--active">
+              <svg class="db-side__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              Dashboard
+            </div>
+            <div class="db-side__item">
+              <svg class="db-side__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+              Catalog
+            </div>
+            <div class="db-side__item">
+              <svg class="db-side__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l9 6 9-6M3 7v12h18V7"/></svg>
+              Briefs
+            </div>
+            <div class="db-side__item">
+              <svg class="db-side__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>
+              Placements
+            </div>
+          </div>
+          <div class="db-side__group">
+            <span class="db-side__label">Distribution</span>
+            <div class="db-side__item">
+              <svg class="db-side__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              Pages (EPK)
+            </div>
+            <div class="db-side__item">
+              <svg class="db-side__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg>
+              Campaigns
+            </div>
+            <div class="db-side__item">
+              <svg class="db-side__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49M7.76 16.24a6 6 0 0 1 0-8.49M19.07 4.93a10 10 0 0 1 0 14.14M4.93 19.07a10 10 0 0 1 0-14.14"/></svg>
+              Radio Directory
+            </div>
+          </div>
+          <div class="db-side__group">
+            <span class="db-side__label">Network</span>
+            <div class="db-side__item">
+              <svg class="db-side__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2M17 11l2 2 4-4"/></svg>
+              Composers
+            </div>
+            <div class="db-side__item">
+              <svg class="db-side__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 22V8h20v14M6 22V12M10 22V12M14 22V12M18 22V12"/></svg>
+              Producers
+            </div>
+          </div>
+        </aside>
+
+        <main class="db-main">
+          <div class="db-header">
+            <span class="db-header__crumb">Dashboard</span>
+            <div class="db-header__avatar">G</div>
+          </div>
+
+          <h1 class="db-greet">Welcome, Godliverse</h1>
+
+          <div class="db-hero">
+            <div class="db-hero__text">
+              <h2 class="db-hero__title">Your sync operations, simplified.</h2>
+              <p class="db-hero__sub">Manage your music assets, track submissions, and connect with supervisors from one central hub.</p>
+              <div class="db-hero__ctas">
+                <span class="db-hero__btn--solid">Explore Briefs</span>
+                <span class="db-hero__btn--ghost">View Catalog</span>
+              </div>
+            </div>
+            <div class="db-hero__preview">
+              <svg viewBox="0 0 320 200" fill="none">
+                <rect x="6" y="8" width="308" height="184" rx="16" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)"/>
+                <rect x="22" y="24" width="80" height="10" rx="3" fill="rgba(255,255,255,0.5)"/>
+                <rect x="22" y="40" width="180" height="6" rx="2" fill="rgba(255,255,255,0.25)"/>
+                <rect x="22" y="52" width="120" height="6" rx="2" fill="rgba(255,255,255,0.25)"/>
+                <rect x="22" y="74" width="120" height="22" rx="6" fill="#ffffff"/>
+                <rect x="22" y="110" width="92" height="60" rx="8" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)"/>
+                <rect x="124" y="110" width="92" height="60" rx="8" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)"/>
+                <rect x="226" y="110" width="76" height="60" rx="8" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="db-briefs-head">
+            <div>
+              <h3 class="db-briefs-head__title">Top Briefs</h3>
+              <p class="db-briefs-head__sub">Latest opportunities from producers</p>
+            </div>
+            <span class="db-briefs-head__viewall">View all →</span>
+          </div>
+
+          <div class="db-briefs">
+            <div class="db-brief">
+              <div class="db-brief__top">
+                <span class="db-brief__badge">Active</span>
+                <span class="db-brief__date">06 / 02 / 26</span>
+              </div>
+              <p class="db-brief__title">Energetic Afrobeat for Global Sports Brand</p>
+              <div class="db-brief__who"><span class="db-brief__avatar">S</span> Sophia · Forge Creative</div>
+              <div class="db-brief__chips">
+                <span class="db-brief__chip">Afrobeat</span>
+                <span class="db-brief__chip">Afropop</span>
+                <span class="db-brief__chip">Dance</span>
+              </div>
+              <div class="db-brief__foot">
+                <div class="db-brief__budget-row">
+                  <span class="db-brief__budget-label">Budget range</span>
+                  <span class="db-brief__budget-val">$8K – $20K</span>
+                </div>
+                <span class="db-brief__arrow">→</span>
+              </div>
+            </div>
+
+            <div class="db-brief">
+              <div class="db-brief__top">
+                <span class="db-brief__badge">Active</span>
+                <span class="db-brief__date">06 / 09 / 26</span>
+              </div>
+              <p class="db-brief__title">Chill Afro-Fusion for Luxury Lifestyle Ad</p>
+              <div class="db-brief__who"><span class="db-brief__avatar">S</span> Sophia · Forge Creative</div>
+              <div class="db-brief__chips">
+                <span class="db-brief__chip">Afro-Fusion</span>
+                <span class="db-brief__chip">R&amp;B</span>
+                <span class="db-brief__chip">Chillwave</span>
+              </div>
+              <div class="db-brief__foot">
+                <div class="db-brief__budget-row">
+                  <span class="db-brief__budget-label">Budget range</span>
+                  <span class="db-brief__budget-val">$5K – $12K</span>
+                </div>
+                <span class="db-brief__arrow">→</span>
+              </div>
+            </div>
+
+            <div class="db-brief">
+              <div class="db-brief__top">
+                <span class="db-brief__badge">Active</span>
+                <span class="db-brief__date">05 / 26 / 26</span>
+              </div>
+              <p class="db-brief__title">Dark Amapiano for Urban Thriller Film</p>
+              <div class="db-brief__who"><span class="db-brief__avatar">S</span> Sophia · Black River Pictures</div>
+              <div class="db-brief__chips">
+                <span class="db-brief__chip">Amapiano</span>
+                <span class="db-brief__chip">Electronic</span>
+                <span class="db-brief__chip">Cinematic</span>
+              </div>
+              <div class="db-brief__foot">
+                <div class="db-brief__budget-row">
+                  <span class="db-brief__budget-label">Budget range</span>
+                  <span class="db-brief__budget-val">$10K – $25K</span>
+                </div>
+                <span class="db-brief__arrow">→</span>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    </div>
+
+    <!-- Detail callout — pulls AI Match scoring out of the dashboard -->
+    <div class="callout">
+      <span class="callout__label">AI Match · Live scoring</span>
+      <h3 class="callout__title">Hand-curated.<br>Rights-cleared.</h3>
+      <div class="callout__row">
+        <span class="callout__row-name">Aisha Olatunde</span>
+        <div class="callout__bar"><i style="right: 8%;"></i></div>
+        <span class="callout__pct">92</span>
+      </div>
+      <div class="callout__row">
+        <span class="callout__row-name">Tope Adebayo</span>
+        <div class="callout__bar"><i style="right: 12%;"></i></div>
+        <span class="callout__pct">88</span>
+      </div>
+      <div class="callout__row">
+        <span class="callout__row-name">Nomzamo Khoza</span>
+        <div class="callout__bar"><i style="right: 24%;"></i></div>
+        <span class="callout__pct">76</span>
+      </div>
+      <div class="callout__row">
+        <span class="callout__row-name">Kwame Mensah</span>
+        <div class="callout__bar"><i style="right: 33%;"></i></div>
+        <span class="callout__pct">67</span>
+      </div>
+    </div>
+
+    <!-- Pointer line from browser data into callout — enters callout from the left edge -->
+    <svg class="pointer-line" style="left: 540px; top: 600px; width: 80px; height: 60px;" viewBox="0 0 80 60" fill="none">
+      <path d="M0 50 Q 40 50, 70 20" stroke="var(--sm-acid)" stroke-width="1.2" stroke-dasharray="4 4"/>
+      <circle cx="0" cy="50" r="3" fill="var(--sm-acid)"/>
+      <circle cx="70" cy="20" r="3" fill="var(--sm-acid)"/>
+    </svg>
+
+    <div class="footer-row">
+      <div class="footer-brand">
+        <div class="footer-mark"><svg class="footer-mark__icon" viewBox="0 0 24 24" fill="none"><path d="M8 8c2.5 0 4 1.5 4 4s1.5 4 4 4M16 8c-2.5 0-4 1.5-4 4s-1.5 4-4 4" stroke="#0f0f1a" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+        <div class="footer-text">
+          <span class="footer-kicker">Inside the build</span>
+          <span class="footer-name">AI Match scoring</span>
+        </div>
+      </div>
+      <span class="footer-pageno">04 / 05</span>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SLIDE 5 · CTA — wordmark, acid CTA, ring frame
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="slide-5" class="slide" style="--idx: 4;" data-screen-label="05 CTA">
+    <div class="slide__bg"></div>
+    <div class="slide__rail"></div>
+    <div class="slide__tick" style="left: 64px;"></div>
+    <div class="slide__tick" style="left: 540px;"></div>
+    <div class="slide__tick" style="left: 1016px;"></div>
+
+    <div class="cta-ring"></div>
+    <div class="cta-ring cta-ring--inner"></div>
+
+    <span class="micro micro--dot" style="top: 162px; left: 64px;">05 · Apply this week</span>
+    <span class="micro" style="top: 1180px; left: 64px;">Briefs open every Tuesday · 48h shortlist</span>
+    <span class="micro" style="top: 1180px; right: 64px;">© SyncMaster · 2026 · Lagos / Cape Town / Nairobi</span>
+
+    <div class="cta-block">
+      <div class="cta-mark">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M8 8c2.5 0 4 1.5 4 4s1.5 4 4 4M16 8c-2.5 0-4 1.5-4 4s-1.5 4-4 4" stroke="#0f0f1a" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h2 class="cta-title">Apply to compose.<br>Post a brief.</h2>
+      <p class="cta-sub">Composers: apply once, get matched for life.<br>Supervisors: post a brief, get a shortlist in 48 hours.</p>
+      <a class="cta-button" href="#">
+        syncmaster.live
+        <span class="cta-button__arrow">→</span>
+      </a>
+    </div>
+
+    <div class="footer-row">
+      <div class="footer-brand">
+        <div class="footer-mark"><svg class="footer-mark__icon" viewBox="0 0 24 24" fill="none"><path d="M8 8c2.5 0 4 1.5 4 4s1.5 4 4 4M16 8c-2.5 0-4 1.5-4 4s-1.5 4-4 4" stroke="#0f0f1a" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+        <div class="footer-text">
+          <span class="footer-kicker">Apply</span>
+          <span class="footer-name">syncmaster.live</span>
+        </div>
+      </div>
+      <span class="footer-pageno">END · 05 / 05</span>
+    </div>
+  </section>
+
+</div><!-- /carousel -->
+
+</body>
+<template id="__bundler_thumbnail" data-bg-color="#0f0f1a">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <!-- Acid-lime mark (syncmaster icon glyph) on ink background -->
+    <rect width="1200" height="800" fill="#0f0f1a"/>
+    <!-- Soft purple bloom -->
+    <defs>
+      <radialGradient id="bloom" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#4b4bc0" stop-opacity="0.55"/>
+        <stop offset="100%" stop-color="#4b4bc0" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <ellipse cx="600" cy="400" rx="380" ry="320" fill="url(#bloom)"/>
+    <!-- Acid-lime ring -->
+    <circle cx="600" cy="400" r="170" fill="#c8ff00"/>
+    <!-- SyncMaster glyph: two interlocking arcs -->
+    <g stroke="#0f0f1a" stroke-width="22" stroke-linecap="round" fill="none">
+      <path d="M540 360c45 0 72 27 72 72s27 72 72 72"/>
+      <path d="M660 360c-45 0-72 27-72 72s-27 72-72 72"/>
+    </g>
+    <!-- Wordmark hint -->
+    <text x="600" y="650" text-anchor="middle"
+          font-family="DM Sans, Inter, system-ui, sans-serif"
+          font-size="56" font-weight="900" fill="#ededf2"
+          letter-spacing="-2">SYNCMASTER</text>
+    <text x="600" y="700" text-anchor="middle"
+          font-family="Geist Mono, ui-monospace, monospace"
+          font-size="22" font-weight="500" fill="#c8ff00"
+          letter-spacing="6">BEHIND THE BUILD</text>
+  </svg>
+</template>
+</html>

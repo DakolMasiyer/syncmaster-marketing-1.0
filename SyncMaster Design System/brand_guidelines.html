@@ -1,0 +1,929 @@
+<!-- Figma-Export-Ready: each <section id="…"> maps to a Figma page -->
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <title>SyncMaster — Brand Guidelines</title>
+  <meta name="viewport" content="width=1440">
+  <link rel="stylesheet" href="colors_and_type.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg-section-x: 96px;
+      --bg-section-y: 112px;
+      --bg-section-gap: 128px;
+      --bg-logo-h: 56px;
+      --bg-head-track: -0.068em;
+    }
+    html, body { margin: 0; padding: 0; background: var(--background); color: var(--foreground); }
+    body { font-family: var(--font-sans); font-weight: 500; }
+    section { width: 1440px; margin: 0 auto; padding-left: var(--bg-section-x); padding-right: var(--bg-section-x); padding-top: var(--bg-section-y); padding-bottom: var(--bg-section-y); box-sizing: border-box; }
+    section#cover { padding: 0; }
+    .page-spacer    { height: calc(var(--bg-section-gap) * 0.55); }
+    .page-spacer-lg { height: var(--bg-section-gap); }
+    .mono-tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted-foreground); font-weight: 500; }
+    .page-header { display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 32px; border-bottom: 1px solid var(--border); margin-bottom: 64px; }
+    .page-title { font-family: var(--font-heading); font-weight: 900; letter-spacing: var(--bg-head-track); font-size: 56px; line-height: 1.05; color: var(--foreground); margin: 0; }
+    .page-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sm-acid); }
+    h1, h2, h3, h4, h5, h6 { letter-spacing: var(--bg-head-track); }
+
+    /* Brand-logo header — sits above the cover */
+    .doc-header {
+      width: 1440px; margin: 0 auto; box-sizing: border-box;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 32px var(--bg-section-x);
+      border-bottom: 1px solid var(--border);
+      background: var(--sm-ink);
+    }
+    .doc-header__brand { display: flex; align-items: center; gap: 24px; }
+    .doc-header__brand img { height: var(--bg-logo-h); width: auto; display: block; }
+    .doc-header__rule { width: 1px; height: 28px; background: var(--border); }
+    .doc-header__meta { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted-foreground); }
+  </style>
+</head>
+<body class="bg-[var(--sm-ink)] text-[var(--sm-fg-dark)]">
+
+<!-- ─────────────────────────────────────────────
+     DOC HEADER · brand logo on dark canvas
+     ───────────────────────────────────────────── -->
+<header class="doc-header">
+  <div class="doc-header__brand">
+    <img src="assets/logos/syncmaster-icon.png" alt="SyncMaster — dark-theme brand lockup">
+    <div class="doc-header__rule"></div>
+    <span class="doc-header__meta">v1.0 · Brand Guidelines</span>
+  </div>
+  <span class="doc-header__meta">2026 · Confidential · Internal use</span>
+</header>
+
+<!-- ─────────────────────────────────────────────
+     SECTION 01 · COVER
+     ───────────────────────────────────────────── -->
+<section id="cover" class="relative w-[1440px] mx-auto" style="height: 900px;">
+  <div class="absolute inset-0 bg-[var(--sm-ink)]"></div>
+  <div class="absolute" style="top: -200px; right: -200px; width: 800px; height: 800px; background: var(--sm-purple); filter: blur(180px); opacity: .25; border-radius: 50%; pointer-events: none;"></div>
+  <div class="absolute" style="bottom: -180px; left: -180px; width: 700px; height: 700px; background: var(--sm-acid); filter: blur(180px); opacity: .12; border-radius: 50%; pointer-events: none;"></div>
+
+  <header class="relative flex items-center justify-between px-20 pt-20">
+    <span class="font-mono text-[11px] tracking-[0.3em] uppercase text-[var(--sm-acid)]">01 · Cover</span>
+    <span class="font-mono text-[11px] tracking-[0.3em] uppercase text-[var(--muted-foreground)]">2026 · Confidential</span>
+  </header>
+
+  <article class="relative px-20 flex flex-col justify-end" style="height: 720px; padding-bottom: 80px;">
+    <p class="font-mono text-[12px] tracking-[0.35em] uppercase text-[var(--sm-acid)] mb-10">Connecting African composers to global screens</p>
+    <h1 class="font-[var(--font-heading)] font-black text-[var(--sm-fg-dark)]" style="font-size: 200px; letter-spacing: -0.068em; line-height: 1.02; margin: 0;">
+      Sync<br>Master.
+    </h1>
+    <p class="mt-12 max-w-[680px]" style="font-size: 28px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.35; color: var(--muted-foreground);">
+      Connect African composers to global screens. Curated, cleared, and ready.
+    </p>
+
+    <div class="mt-14 flex items-center gap-8 pt-8 border-t border-[var(--border)]">
+      <div class="flex flex-col gap-1">
+        <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-[var(--muted-foreground)]">CATEGORY</span>
+        <span class="text-sm font-bold text-[var(--sm-fg-dark)]" style="letter-spacing: -0.02em;">Sync licensing infrastructure</span>
+      </div>
+      <div class="w-px h-10 bg-[var(--border)]"></div>
+      <div class="flex flex-col gap-1">
+        <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-[var(--muted-foreground)]">MODEL</span>
+        <span class="text-sm font-bold text-[var(--sm-fg-dark)]" style="letter-spacing: -0.02em;">15–20% commission on placement</span>
+      </div>
+      <div class="w-px h-10 bg-[var(--border)]"></div>
+      <div class="flex flex-col gap-1">
+        <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-[var(--muted-foreground)]">GUARANTEE</span>
+        <span class="text-sm font-bold text-[var(--sm-fg-dark)]" style="letter-spacing: -0.02em;">No placement = no fee</span>
+      </div>
+    </div>
+  </article>
+</section>
+
+<div class="page-spacer-lg"></div>
+
+<!-- ─────────────────────────────────────────────
+     SECTION 02 · BRAND STORY & MISSION
+     ───────────────────────────────────────────── -->
+<section id="brand-story">
+  <header class="page-header">
+    <div>
+      <p class="page-eyebrow">02 · Brand Story</p>
+      <h2 class="page-title mt-4">Brand Story &amp; Mission</h2>
+    </div>
+    <span class="mono-tag">Section 02 · 7 statements</span>
+  </header>
+
+  <div class="grid grid-cols-12 gap-8">
+    <article class="col-span-7 flex flex-col gap-10">
+      <div>
+        <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-[var(--sm-acid)] mb-4">MISSION</p>
+        <p class="font-[var(--font-heading)] font-black" style="font-size: 56px; letter-spacing: -0.068em; line-height: 1.05; color: var(--foreground); margin: 0;">
+          "Connect African composers to global screens. Curated, cleared, and ready."
+        </p>
+      </div>
+
+      <dl class="grid grid-cols-2 gap-x-10 gap-y-8 pt-8 border-t border-[var(--border)]">
+        <div>
+          <dt class="mono-tag mb-2">CATEGORY</dt>
+          <dd class="text-base font-medium text-[var(--foreground)]" style="letter-spacing: -0.02em; line-height: 1.5;">Sync licensing infrastructure / African music placement agency.</dd>
+        </div>
+        <div>
+          <dt class="mono-tag mb-2">BUSINESS MODEL</dt>
+          <dd class="text-base font-medium text-[var(--foreground)]" style="letter-spacing: -0.02em; line-height: 1.5;">15–20% commission on placement fees, charged to the producer.</dd>
+        </div>
+        <div>
+          <dt class="mono-tag mb-2">GUARANTEE</dt>
+          <dd class="text-base font-medium text-[var(--foreground)]" style="letter-spacing: -0.02em; line-height: 1.5;">No placement = no fee.</dd>
+        </div>
+        <div>
+          <dt class="mono-tag mb-2">TONE OF VOICE</dt>
+          <dd class="text-base font-medium text-[var(--foreground)]" style="letter-spacing: -0.02em; line-height: 1.5;">Dark editorial. Confident without bravado. Direct and practical. Specific over vague. Building in public. Never defensive about African music.</dd>
+        </div>
+      </dl>
+    </article>
+
+    <aside class="col-span-5 flex flex-col gap-5">
+      <p class="mono-tag mb-2">PERSONAS</p>
+      <article class="p-8 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] flex flex-col gap-3">
+        <div class="flex items-baseline justify-between">
+          <h3 class="m-0 text-2xl font-black" style="letter-spacing: -0.068em;">Tunde</h3>
+          <span class="px-2.5 py-1 rounded-full bg-[var(--sm-acid)] text-[var(--sm-ink)] font-mono text-[10px] font-black tracking-[0.2em]">PRIMARY</span>
+        </div>
+        <p class="m-0 text-sm font-bold text-[var(--muted-foreground)]" style="letter-spacing: -0.02em;">African Composer</p>
+        <p class="m-0 text-sm text-[var(--foreground)]" style="line-height: 1.55;"><span class="mono-tag mr-2">PAIN</span>Rights complexity, metadata gaps, no access to briefs.</p>
+        <p class="m-0 text-sm text-[var(--foreground)]" style="line-height: 1.55;"><span class="mono-tag mr-2">GOAL</span>Consistent income stream.</p>
+      </article>
+
+      <article class="p-8 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] flex flex-col gap-3">
+        <div class="flex items-baseline justify-between">
+          <h3 class="m-0 text-2xl font-black" style="letter-spacing: -0.068em;">Amara</h3>
+          <span class="px-2.5 py-1 rounded-full bg-[var(--muted)] text-[var(--muted-foreground)] font-mono text-[10px] font-black tracking-[0.2em]">SECONDARY</span>
+        </div>
+        <p class="m-0 text-sm font-bold text-[var(--muted-foreground)]" style="letter-spacing: -0.02em;">Music Supervisor</p>
+        <p class="m-0 text-sm text-[var(--foreground)]" style="line-height: 1.55;"><span class="mono-tag mr-2">PAIN</span>Finding rights-clean African music fast.</p>
+        <p class="m-0 text-sm text-[var(--foreground)]" style="line-height: 1.55;"><span class="mono-tag mr-2">GOAL</span>Reduce turnaround from brief to track.</p>
+      </article>
+
+      <article class="p-6 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] border-l-4 border-l-[var(--sm-purple)] flex flex-col gap-2">
+        <div class="flex items-baseline justify-between">
+          <h3 class="m-0 text-lg font-black" style="letter-spacing: -0.068em;">Nollywood</h3>
+          <span class="px-2.5 py-1 rounded-full bg-transparent border border-[var(--border)] text-[var(--muted-foreground)] font-mono text-[10px] font-black tracking-[0.2em]">TERTIARY</span>
+        </div>
+        <p class="m-0 text-sm text-[var(--foreground)]" style="line-height: 1.55;">Early validation.</p>
+      </article>
+    </aside>
+  </div>
+</section>
+
+<div class="page-spacer-lg"></div>
+
+<!-- ─────────────────────────────────────────────
+     SECTION 03 · LOGO USAGE
+     ───────────────────────────────────────────── -->
+<section id="logo-usage">
+  <header class="page-header">
+    <div>
+      <p class="page-eyebrow">03 · Identity</p>
+      <h2 class="page-title mt-4">Logo Usage</h2>
+    </div>
+    <span class="mono-tag">Three lockups · Three rules</span>
+  </header>
+
+  <div class="grid grid-cols-3 gap-6 mb-16">
+    <figure class="m-0 flex flex-col gap-4">
+      <div class="aspect-[4/3] rounded-[var(--radius-lg)] bg-[var(--sm-ink)] border border-[var(--border)] flex items-center justify-center p-12">
+        <img src="assets/logos/syncmaster-icon.png" alt="SyncMaster primary horizontal lockup" class="max-w-full max-h-full object-contain" style="filter: brightness(1.1);">
+      </div>
+      <figcaption class="flex flex-col gap-1">
+        <span class="mono-tag">PRIMARY · HORIZONTAL</span>
+        <span class="text-sm font-bold text-[var(--foreground)]" style="letter-spacing: -0.02em;">Default lockup. Use everywhere.</span>
+      </figcaption>
+    </figure>
+
+    <figure class="m-0 flex flex-col gap-4">
+      <div class="aspect-[4/3] rounded-[var(--radius-lg)] bg-[var(--sm-ink)] border border-[var(--border)] flex items-center justify-center p-12 flex-col gap-4">
+        <div class="w-20 h-20 rounded-full bg-[var(--sm-acid)] flex items-center justify-center">
+          <span class="font-mono text-3xl font-black text-[var(--sm-purple)]" style="letter-spacing: -0.1em;">S</span>
+        </div>
+        <span class="font-[var(--font-heading)] font-black text-[var(--sm-fg-dark)]" style="font-size: 24px; letter-spacing: -0.068em;">SYNCMASTER</span>
+      </div>
+      <figcaption class="flex flex-col gap-1">
+        <span class="mono-tag">STACKED</span>
+        <span class="text-sm font-bold text-[var(--foreground)]" style="letter-spacing: -0.02em;">Avatars, app launchers, narrow rails.</span>
+      </figcaption>
+    </figure>
+
+    <figure class="m-0 flex flex-col gap-4">
+      <div class="aspect-[4/3] rounded-[var(--radius-lg)] bg-[var(--sm-ink)] border border-[var(--border)] flex items-center justify-center p-12">
+        <div class="w-28 h-28 rounded-full bg-[var(--sm-acid)] flex items-center justify-center">
+          <span class="font-mono text-6xl font-black text-[var(--sm-purple)]" style="letter-spacing: -0.1em;">S</span>
+        </div>
+      </div>
+      <figcaption class="flex flex-col gap-1">
+        <span class="mono-tag">ICON · MARK ONLY</span>
+        <span class="text-sm font-bold text-[var(--foreground)]" style="letter-spacing: -0.02em;">Favicons, social avatars, profile pods.</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="grid grid-cols-2 gap-8">
+    <article class="p-8 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)]">
+      <p class="mono-tag mb-4" style="color: var(--status-green);">CLEAR SPACE · DO</p>
+      <ul class="m-0 p-0 list-none flex flex-col gap-3 text-sm" style="line-height: 1.55;">
+        <li class="flex gap-3"><span style="color: var(--status-green);">✓</span> Maintain clear space equal to the height of the mark on all sides.</li>
+        <li class="flex gap-3"><span style="color: var(--status-green);">✓</span> Use the acid-on-ink lockup on every dark surface.</li>
+        <li class="flex gap-3"><span style="color: var(--status-green);">✓</span> Use the purple wordmark only on pure white.</li>
+        <li class="flex gap-3"><span style="color: var(--status-green);">✓</span> Place the mark at full opacity. No tints, no overlays.</li>
+      </ul>
+    </article>
+    <article class="p-8 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)]">
+      <p class="mono-tag mb-4" style="color: var(--destructive);">DON'T</p>
+      <ul class="m-0 p-0 list-none flex flex-col gap-3 text-sm" style="line-height: 1.55;">
+        <li class="flex gap-3"><span style="color: var(--destructive);">✗</span> Don't recolour the acid lime or the purple.</li>
+        <li class="flex gap-3"><span style="color: var(--destructive);">✗</span> Don't stretch, rotate, or warp the mark.</li>
+        <li class="flex gap-3"><span style="color: var(--destructive);">✗</span> Don't place the mark on photography without a 60% scrim.</li>
+        <li class="flex gap-3"><span style="color: var(--destructive);">✗</span> Don't recreate letterforms — always use the artwork file.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<div class="page-spacer-lg"></div>
+
+<!-- ─────────────────────────────────────────────
+     SECTION 04 · COLOUR SYSTEM
+     ───────────────────────────────────────────── -->
+<section id="colour-system">
+  <header class="page-header">
+    <div>
+      <p class="page-eyebrow">04 · Colour System</p>
+      <h2 class="page-title mt-4">Colour</h2>
+    </div>
+    <span class="mono-tag">Two surfaces · One accent · Four signals</span>
+  </header>
+
+  <!-- Brand row -->
+  <div class="mb-12">
+    <p class="mono-tag mb-6">BRAND PRIMITIVES</p>
+    <div class="grid grid-cols-3 gap-6">
+      <div class="flex flex-col gap-3">
+        <div class="h-40 rounded-[var(--radius-base)] border border-[var(--border)]" style="background: var(--sm-purple);"></div>
+        <div class="flex justify-between items-baseline">
+          <span class="text-sm font-bold" style="letter-spacing: -0.04em;">SyncMaster Purple</span>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)] tracking-wider">#4B4BC0</span>
+        </div>
+        <p class="mono-tag">PRIMARY · BUTTONS · LINKS · FOCUS</p>
+      </div>
+      <div class="flex flex-col gap-3">
+        <div class="h-40 rounded-[var(--radius-base)] border border-[var(--border)]" style="background: var(--sm-acid);"></div>
+        <div class="flex justify-between items-baseline">
+          <span class="text-sm font-bold" style="letter-spacing: -0.04em;">Acid Lime</span>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)] tracking-wider">oklch(.88 .18 120)</span>
+        </div>
+        <p class="mono-tag">ACTIVE BADGE ONLY · NEVER PRIMARY</p>
+      </div>
+      <div class="flex flex-col gap-3">
+        <div class="h-40 rounded-[var(--radius-base)] border border-[var(--border)]" style="background: var(--sm-ink);"></div>
+        <div class="flex justify-between items-baseline">
+          <span class="text-sm font-bold" style="letter-spacing: -0.04em;">Ink (canvas)</span>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)] tracking-wider">#0F0F1A</span>
+        </div>
+        <p class="mono-tag">DARK BACKGROUND · DEFAULT</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Neutrals -->
+  <div class="mb-12 grid grid-cols-2 gap-12">
+    <div>
+      <p class="mono-tag mb-6">DARK NEUTRALS</p>
+      <div class="grid grid-cols-4 gap-3">
+        <div class="flex flex-col gap-2">
+          <div class="h-20 rounded-[var(--radius-base)]" style="background:#0f0f1a; border:1px solid var(--border);"></div>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)]">#0F0F1A</span>
+        </div>
+        <div class="flex flex-col gap-2">
+          <div class="h-20 rounded-[var(--radius-base)]" style="background:#16162a; border:1px solid var(--border);"></div>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)]">#16162A</span>
+        </div>
+        <div class="flex flex-col gap-2">
+          <div class="h-20 rounded-[var(--radius-base)]" style="background:#282828;"></div>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)]">#282828</span>
+        </div>
+        <div class="flex flex-col gap-2">
+          <div class="h-20 rounded-[var(--radius-base)]" style="background:#f9f9f9;"></div>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)]">#F9F9F9</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="mono-tag mb-6">LIGHT NEUTRALS</p>
+      <div class="grid grid-cols-4 gap-3">
+        <div class="flex flex-col gap-2">
+          <div class="h-20 rounded-[var(--radius-base)]" style="background:#ffffff; border:1px solid var(--border);"></div>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)]">#FFFFFF</span>
+        </div>
+        <div class="flex flex-col gap-2">
+          <div class="h-20 rounded-[var(--radius-base)]" style="background:#f5f5f5;"></div>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)]">#F5F5F5</span>
+        </div>
+        <div class="flex flex-col gap-2">
+          <div class="h-20 rounded-[var(--radius-base)]" style="background:#e5e5e5;"></div>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)]">#E5E5E5</span>
+        </div>
+        <div class="flex flex-col gap-2">
+          <div class="h-20 rounded-[var(--radius-base)]" style="background:#111111;"></div>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)]">#111111</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Status -->
+  <div>
+    <p class="mono-tag mb-6">STATUS SIGNALS</p>
+    <div class="grid grid-cols-4 gap-6">
+      <div class="flex flex-col gap-3">
+        <div class="h-24 rounded-[var(--radius-base)]" style="background: var(--status-green);"></div>
+        <div class="flex justify-between items-baseline">
+          <span class="text-sm font-bold" style="letter-spacing: -0.04em;">Success</span>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)]">#22C55E</span>
+        </div>
+      </div>
+      <div class="flex flex-col gap-3">
+        <div class="h-24 rounded-[var(--radius-base)]" style="background: var(--status-amber);"></div>
+        <div class="flex justify-between items-baseline">
+          <span class="text-sm font-bold" style="letter-spacing: -0.04em;">Warning</span>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)]">#F59E0B</span>
+        </div>
+      </div>
+      <div class="flex flex-col gap-3">
+        <div class="h-24 rounded-[var(--radius-base)]" style="background: var(--status-blue);"></div>
+        <div class="flex justify-between items-baseline">
+          <span class="text-sm font-bold" style="letter-spacing: -0.04em;">Info</span>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)]">#3B82F6</span>
+        </div>
+      </div>
+      <div class="flex flex-col gap-3">
+        <div class="h-24 rounded-[var(--radius-base)]" style="background: var(--destructive);"></div>
+        <div class="flex justify-between items-baseline">
+          <span class="text-sm font-bold" style="letter-spacing: -0.04em;">Destructive</span>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)]">#EF4444</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="page-spacer-lg"></div>
+
+<!-- ─────────────────────────────────────────────
+     SECTION 05 · TYPOGRAPHY
+     ───────────────────────────────────────────── -->
+<section id="typography">
+  <header class="page-header">
+    <div>
+      <p class="page-eyebrow">05 · Typography</p>
+      <h2 class="page-title mt-4">Type System</h2>
+    </div>
+    <span class="mono-tag">DM Sans · Geist Mono · 7 sizes</span>
+  </header>
+
+  <!-- Families -->
+  <div class="grid grid-cols-2 gap-8 mb-16">
+    <article class="p-8 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] flex flex-col gap-6">
+      <div class="flex items-baseline justify-between">
+        <p class="mono-tag">PRIMARY · SANS</p>
+        <p class="mono-tag">300 / 400 / 500 / 700 / 900</p>
+      </div>
+      <p class="m-0" style="font-family: var(--font-sans); font-size: 88px; font-weight: 900; letter-spacing: -0.068em; line-height: 1; color: var(--foreground);">DM Sans</p>
+      <p class="m-0 text-sm" style="color: var(--muted-foreground); line-height: 1.55; font-weight: 500;">
+        Used for all UI text, headings, body, marketing copy. Headings always weight 900, letter-spacing −0.068em, line-height 1.2. Body weight 500.
+      </p>
+      <div class="grid grid-cols-5 gap-3 pt-6 border-t border-[var(--border)] text-[var(--muted-foreground)]">
+        <div style="font-family: var(--font-sans); font-weight:300;">300</div>
+        <div style="font-family: var(--font-sans); font-weight:400;">400</div>
+        <div style="font-family: var(--font-sans); font-weight:500; color: var(--foreground);">500</div>
+        <div style="font-family: var(--font-sans); font-weight:700;">700</div>
+        <div style="font-family: var(--font-sans); font-weight:900; color: var(--foreground);">900</div>
+      </div>
+    </article>
+
+    <article class="p-8 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] flex flex-col gap-6">
+      <div class="flex items-baseline justify-between">
+        <p class="mono-tag">MONOSPACE</p>
+        <p class="mono-tag">400 / 500 / 600</p>
+      </div>
+      <p class="m-0" style="font-family: var(--font-mono); font-size: 64px; font-weight: 600; letter-spacing: -0.02em; line-height: 1; color: var(--foreground);">Geist Mono</p>
+      <p class="m-0 text-sm" style="color: var(--muted-foreground); line-height: 1.55; font-weight: 500;">
+        Used for labels, micro-metadata, BPM / money / duration data. Labels are 10–11px, ALL CAPS, letter-spacing 0.25em (.label) or 0.1em (.label-strong).
+      </p>
+      <div class="grid grid-cols-2 gap-3 pt-6 border-t border-[var(--border)] font-mono text-[var(--muted-foreground)]">
+        <div>$15,000 – $25,000</div>
+        <div>BPM 118 · Fm</div>
+      </div>
+    </article>
+  </div>
+
+  <!-- Type scale -->
+  <div class="mb-16">
+    <p class="mono-tag mb-6">TYPE SCALE · CSS TOKENS</p>
+    <div class="rounded-[var(--radius-lg)] border border-[var(--border)] overflow-hidden">
+      <div class="grid grid-cols-[140px_120px_120px_1fr] gap-6 px-6 py-3 border-b border-[var(--border)] bg-[var(--card)]">
+        <span class="mono-tag">TOKEN</span>
+        <span class="mono-tag">SIZE</span>
+        <span class="mono-tag">LINE-HEIGHT</span>
+        <span class="mono-tag">SPECIMEN</span>
+      </div>
+      <div class="grid grid-cols-[140px_120px_120px_1fr] gap-6 px-6 py-4 border-b border-[var(--border)] items-baseline">
+        <span class="font-mono text-xs text-[var(--foreground)]">--fz-7xl</span><span class="font-mono text-xs text-[var(--muted-foreground)]">64px</span><span class="font-mono text-xs text-[var(--muted-foreground)]">1.1</span>
+        <span style="font-size:64px; font-weight:900; letter-spacing:-0.068em; line-height:1.1;">Ag</span>
+      </div>
+      <div class="grid grid-cols-[140px_120px_120px_1fr] gap-6 px-6 py-4 border-b border-[var(--border)] items-baseline">
+        <span class="font-mono text-xs text-[var(--foreground)]">--fz-6xl</span><span class="font-mono text-xs text-[var(--muted-foreground)]">48px</span><span class="font-mono text-xs text-[var(--muted-foreground)]">1.2</span>
+        <span style="font-size:48px; font-weight:900; letter-spacing:-0.068em; line-height:1.2;">Ag</span>
+      </div>
+      <div class="grid grid-cols-[140px_120px_120px_1fr] gap-6 px-6 py-4 border-b border-[var(--border)] items-baseline">
+        <span class="font-mono text-xs text-[var(--foreground)]">--fz-5xl</span><span class="font-mono text-xs text-[var(--muted-foreground)]">36px</span><span class="font-mono text-xs text-[var(--muted-foreground)]">1.2</span>
+        <span style="font-size:36px; font-weight:900; letter-spacing:-0.068em; line-height:1.2;">Ag</span>
+      </div>
+      <div class="grid grid-cols-[140px_120px_120px_1fr] gap-6 px-6 py-4 border-b border-[var(--border)] items-baseline">
+        <span class="font-mono text-xs text-[var(--foreground)]">--fz-3xl</span><span class="font-mono text-xs text-[var(--muted-foreground)]">24px</span><span class="font-mono text-xs text-[var(--muted-foreground)]">1.2</span>
+        <span style="font-size:24px; font-weight:900; letter-spacing:-0.068em; line-height:1.2;">Ag</span>
+      </div>
+      <div class="grid grid-cols-[140px_120px_120px_1fr] gap-6 px-6 py-4 border-b border-[var(--border)] items-baseline">
+        <span class="font-mono text-xs text-[var(--foreground)]">--fz-xl</span><span class="font-mono text-xs text-[var(--muted-foreground)]">18px</span><span class="font-mono text-xs text-[var(--muted-foreground)]">1.45</span>
+        <span style="font-size:18px; font-weight:500;">The quick brown fox jumps over the lazy dog.</span>
+      </div>
+      <div class="grid grid-cols-[140px_120px_120px_1fr] gap-6 px-6 py-4 border-b border-[var(--border)] items-baseline">
+        <span class="font-mono text-xs text-[var(--foreground)]">--fz-base</span><span class="font-mono text-xs text-[var(--muted-foreground)]">14px</span><span class="font-mono text-xs text-[var(--muted-foreground)]">1.45</span>
+        <span style="font-size:14px; font-weight:500;">The quick brown fox jumps over the lazy dog.</span>
+      </div>
+      <div class="grid grid-cols-[140px_120px_120px_1fr] gap-6 px-6 py-4 items-baseline">
+        <span class="font-mono text-xs text-[var(--foreground)]">--fz-2xs</span><span class="font-mono text-xs text-[var(--muted-foreground)]">10px</span><span class="font-mono text-xs text-[var(--muted-foreground)]">1.45</span>
+        <span class="mono-tag">THE QUICK BROWN FOX</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sample hierarchy -->
+  <div>
+    <p class="mono-tag mb-6">HEADING HIERARCHY · IN CONTEXT</p>
+    <article class="p-10 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] flex flex-col gap-4">
+      <h1 class="m-0" style="font-size:64px; font-weight:900; letter-spacing:-0.068em; line-height:1.1;">Connect African composers to global screens.</h1>
+      <h2 class="m-0" style="font-size:36px; font-weight:900; letter-spacing:-0.068em; line-height:1.2;">Curated, cleared, and ready.</h2>
+      <h3 class="m-0" style="font-size:24px; font-weight:900; letter-spacing:-0.068em; line-height:1.2;">15–20% commission. No placement, no fee.</h3>
+      <p class="m-0 mt-2" style="font-size:18px; font-weight:500; color: var(--muted-foreground); line-height:1.6;">
+        Body lead — DM Sans 18 / weight 500 / muted-foreground. Reads at a measure of roughly 70 characters. Used directly under hero headlines and as scene-setting paragraphs at section openings.
+      </p>
+      <p class="m-0 text-sm" style="font-weight: 500; line-height: 1.6;">
+        Body default — DM Sans 14 / weight 500. The dense workhorse for product copy. The body weight is intentionally 500, not 400 — it reads more confident in dark mode.
+      </p>
+    </article>
+  </div>
+</section>
+
+<div class="page-spacer-lg"></div>
+
+<!-- ─────────────────────────────────────────────
+     SECTION 06 · TONE OF VOICE
+     ───────────────────────────────────────────── -->
+<section id="tone-voice">
+  <header class="page-header">
+    <div>
+      <p class="page-eyebrow">06 · Voice</p>
+      <h2 class="page-title mt-4">Tone of Voice</h2>
+    </div>
+    <span class="mono-tag">Five principles · From the brand context</span>
+  </header>
+
+  <div class="grid grid-cols-5 gap-5">
+    <article class="p-7 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] flex flex-col gap-5">
+      <span class="font-mono text-[10px] tracking-[0.3em] text-[var(--sm-acid)]">PRINCIPLE 01</span>
+      <h3 class="m-0" style="font-size: 28px; font-weight: 900; letter-spacing: -0.068em; line-height: 1.1;">Direct and practical.</h3>
+      <p class="m-0 text-sm" style="color: var(--muted-foreground); line-height: 1.55; font-weight: 500;">No marketing hedging. Lead with the verb. Cut the qualifier.</p>
+    </article>
+
+    <article class="p-7 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] flex flex-col gap-5">
+      <span class="font-mono text-[10px] tracking-[0.3em] text-[var(--sm-acid)]">PRINCIPLE 02</span>
+      <h3 class="m-0" style="font-size: 28px; font-weight: 900; letter-spacing: -0.068em; line-height: 1.1;">Specific over vague.</h3>
+      <p class="m-0 text-sm" style="color: var(--muted-foreground); line-height: 1.55; font-weight: 500;">3–5 matches, not 500. 24–48 hours, not "fast". Pair every claim with a number.</p>
+    </article>
+
+    <article class="p-7 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] flex flex-col gap-5">
+      <span class="font-mono text-[10px] tracking-[0.3em] text-[var(--sm-acid)]">PRINCIPLE 03</span>
+      <h3 class="m-0" style="font-size: 28px; font-weight: 900; letter-spacing: -0.068em; line-height: 1.1;">Dark editorial.</h3>
+      <p class="m-0 text-sm" style="color: var(--muted-foreground); line-height: 1.55; font-weight: 500;">Reads like a developer-tool product page about music. Operator's voice, not copywriter's.</p>
+    </article>
+
+    <article class="p-7 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] flex flex-col gap-5">
+      <span class="font-mono text-[10px] tracking-[0.3em] text-[var(--sm-acid)]">PRINCIPLE 04</span>
+      <h3 class="m-0" style="font-size: 28px; font-weight: 900; letter-spacing: -0.068em; line-height: 1.1;">Building in public.</h3>
+      <p class="m-0 text-sm" style="color: var(--muted-foreground); line-height: 1.55; font-weight: 500;">Show the data. Show the process. Show the roadmap. Confident without bravado.</p>
+    </article>
+
+    <article class="p-7 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] flex flex-col gap-5">
+      <span class="font-mono text-[10px] tracking-[0.3em] text-[var(--sm-acid)]">PRINCIPLE 05</span>
+      <h3 class="m-0" style="font-size: 28px; font-weight: 900; letter-spacing: -0.068em; line-height: 1.1;">Never defensive.</h3>
+      <p class="m-0 text-sm" style="color: var(--muted-foreground); line-height: 1.55; font-weight: 500;">Never defensive about African music. State the work. Let the catalogue speak.</p>
+    </article>
+  </div>
+
+  <!-- Do / Don't examples -->
+  <div class="grid grid-cols-2 gap-8 mt-14">
+    <article class="p-8 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] border-l-4" style="border-left-color: var(--status-green);">
+      <p class="mono-tag mb-4" style="color: var(--status-green);">DO · SAY THIS</p>
+      <ul class="m-0 p-0 list-none flex flex-col gap-3 text-sm" style="line-height: 1.55;">
+        <li class="flex gap-3"><span style="color: var(--status-green); font-weight:700;">→</span> "3–5 curated matches — not 500 unvetted submissions."</li>
+        <li class="flex gap-3"><span style="color: var(--status-green); font-weight:700;">→</span> "No placement = no fee."</li>
+        <li class="flex gap-3"><span style="color: var(--status-green); font-weight:700;">→</span> "Apply once. Lifetime access."</li>
+        <li class="flex gap-3"><span style="color: var(--status-green); font-weight:700;">→</span> "Curated, cleared, and ready."</li>
+      </ul>
+    </article>
+    <article class="p-8 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] border-l-4" style="border-left-color: var(--destructive);">
+      <p class="mono-tag mb-4" style="color: var(--destructive);">DON'T · AVOID</p>
+      <ul class="m-0 p-0 list-none flex flex-col gap-3 text-sm" style="line-height: 1.55;">
+        <li class="flex gap-3"><span style="color: var(--destructive); font-weight:700;">×</span> Revolutionise · unleash · transform · powerful · seamless.</li>
+        <li class="flex gap-3"><span style="color: var(--destructive); font-weight:700;">×</span> Exclamation points. We never shout.</li>
+        <li class="flex gap-3"><span style="color: var(--destructive); font-weight:700;">×</span> Emoji in product or marketing copy.</li>
+        <li class="flex gap-3"><span style="color: var(--destructive); font-weight:700;">×</span> Apologies or qualifiers around "African".</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<div class="page-spacer-lg"></div>
+
+<!-- ─────────────────────────────────────────────
+     SECTION 07 · IMAGERY
+     ───────────────────────────────────────────── -->
+<section id="imagery">
+  <header class="page-header">
+    <div>
+      <p class="page-eyebrow">07 · Imagery</p>
+      <h2 class="page-title mt-4">Imagery Direction</h2>
+    </div>
+    <span class="mono-tag">Two modes · Photography · Editorial layout</span>
+  </header>
+
+  <div class="grid grid-cols-2 gap-8">
+    <figure class="m-0 flex flex-col gap-4">
+      <div class="relative rounded-[var(--radius-lg)] overflow-hidden border border-[var(--border)]" style="aspect-ratio: 4/3; background: linear-gradient(135deg, #1a1a2e 0%, #16162a 50%, #0f0f1a 100%);">
+        <!-- composite mock: studio scene placeholder -->
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="text-center">
+            <div class="w-32 h-32 mx-auto rounded-full mb-6" style="background: radial-gradient(circle at 30% 30%, var(--sm-purple), transparent 70%); opacity: 0.6;"></div>
+            <span class="mono-tag" style="color: var(--sm-acid);">PHOTOGRAPHY · PLACEHOLDER</span>
+          </div>
+        </div>
+        <div class="absolute top-6 left-6 px-3 py-1.5 rounded-full bg-[var(--sm-acid)] text-[var(--sm-ink)] font-mono text-[10px] font-black tracking-[0.2em]">PORTRAIT</div>
+        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+          <div class="font-[var(--font-heading)] text-[var(--sm-fg-dark)]" style="font-size: 32px; font-weight: 900; letter-spacing: -0.068em; line-height: 1; max-width: 240px;">Tunde<br>at the desk.</div>
+          <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-[var(--muted-foreground)]">LAGOS · 04:12</span>
+        </div>
+      </div>
+      <figcaption class="flex flex-col gap-2 px-2">
+        <span class="mono-tag">DIRECTION · COMPOSER PORTRAITS</span>
+        <p class="m-0 text-sm font-medium" style="line-height: 1.55;">
+          Low-key studio portraits of composers at work. Practical lights — a screen, a desk lamp, the glow off a console. Ambient grain, no diffusion. Shot from chest up, eyes off-camera. <strong>Always credited.</strong> Always named.
+        </p>
+      </figcaption>
+    </figure>
+
+    <figure class="m-0 flex flex-col gap-4">
+      <div class="relative rounded-[var(--radius-lg)] overflow-hidden border border-[var(--border)]" style="aspect-ratio: 4/3; background: linear-gradient(180deg, var(--sm-purple) 0%, #2a2a80 100%);">
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="text-center">
+            <div class="w-40 h-2 mx-auto rounded-full" style="background: rgba(255,255,255,.3);"></div>
+            <div class="w-60 h-2 mx-auto rounded-full mt-3" style="background: rgba(255,255,255,.5);"></div>
+            <div class="w-32 h-2 mx-auto rounded-full mt-3" style="background: rgba(255,255,255,.7);"></div>
+            <div class="w-48 h-2 mx-auto rounded-full mt-3" style="background: rgba(255,255,255,.4);"></div>
+          </div>
+        </div>
+        <div class="absolute top-6 left-6 px-3 py-1.5 rounded-full bg-[var(--sm-acid)] text-[var(--sm-ink)] font-mono text-[10px] font-black tracking-[0.2em]">EDITORIAL</div>
+        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+          <div class="font-[var(--font-heading)] text-[var(--sm-fg-dark)]" style="font-size: 32px; font-weight: 900; letter-spacing: -0.068em; line-height: 1;">$48k<br>placed.</div>
+          <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-[var(--sm-fg-dark)]">JAN–APR 2026</span>
+        </div>
+      </div>
+      <figcaption class="flex flex-col gap-2 px-2">
+        <span class="mono-tag">DIRECTION · DATA-FIRST EDITORIAL</span>
+        <p class="m-0 text-sm font-medium" style="line-height: 1.55;">
+          Flat purple fields with a single bold figure. Numbers > illustration. Used in placement reports, monthly recaps, fundraising decks. Title set in <em>display</em> weight 300 → contrast against the slab body.
+        </p>
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="mt-10 grid grid-cols-3 gap-6">
+    <div class="p-6 rounded-[var(--radius-lg)] border border-[var(--border)]">
+      <span class="mono-tag mb-3 block">CRITERIA · COLOUR</span>
+      <p class="m-0 text-sm" style="line-height: 1.5;">Warm shadows or neutral cool. Never desaturated grey. Skin tones rendered honestly — no orange filter, no instagram lift.</p>
+    </div>
+    <div class="p-6 rounded-[var(--radius-lg)] border border-[var(--border)]">
+      <span class="mono-tag mb-3 block">CRITERIA · GRAIN</span>
+      <p class="m-0 text-sm" style="line-height: 1.5;">Subtle film grain at 5–8%. Adds editorial weight. Never digital noise. Never sharpened past the camera default.</p>
+    </div>
+    <div class="p-6 rounded-[var(--radius-lg)] border border-[var(--border)]">
+      <span class="mono-tag mb-3 block">CRITERIA · CROP</span>
+      <p class="m-0 text-sm" style="line-height: 1.5;">Tight crops with room above the head for type overlay. 4:5 portrait or 16:9 landscape. No square crops outside social media.</p>
+    </div>
+  </div>
+</section>
+
+<div class="page-spacer-lg"></div>
+
+<!-- ─────────────────────────────────────────────
+     SECTION 08 · ICONOGRAPHY
+     ───────────────────────────────────────────── -->
+<section id="iconography">
+  <header class="page-header">
+    <div>
+      <p class="page-eyebrow">08 · Iconography</p>
+      <h2 class="page-title mt-4">Iconography</h2>
+    </div>
+    <span class="mono-tag">Lucide · 1.5px stroke · radius var(--radius-base)</span>
+  </header>
+
+  <div class="grid grid-cols-12 gap-8 mb-16">
+    <div class="col-span-8">
+      <p class="mono-tag mb-6">CORE GLYPHS · PRODUCT SURFACE</p>
+      <div class="grid grid-cols-6 gap-3">
+        <!-- placeholders rendered as inline SVG so they survive Figma import -->
+        <div class="aspect-square rounded-[var(--radius-base)] border border-[var(--border)] flex items-center justify-center bg-[var(--card)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--foreground);"><rect width="7" height="9" x="3" y="3" rx="1"></rect><rect width="7" height="5" x="14" y="3" rx="1"></rect><rect width="7" height="9" x="14" y="12" rx="1"></rect><rect width="7" height="5" x="3" y="16" rx="1"></rect></svg>
+        </div>
+        <div class="aspect-square rounded-[var(--radius-base)] border border-[var(--border)] flex items-center justify-center bg-[var(--card)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--foreground);"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg>
+        </div>
+        <div class="aspect-square rounded-[var(--radius-base)] border border-[var(--border)] flex items-center justify-center bg-[var(--card)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--foreground);"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        </div>
+        <div class="aspect-square rounded-[var(--radius-base)] border border-[var(--border)] flex items-center justify-center bg-[var(--card)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--foreground);"><path d="M16 6h.01M2 18s1.5-2 6-2 7.99 2 11.99 2"/><circle cx="12" cy="8" r="4"/><path d="M19 8a2 2 0 0 0 0-4"/></svg>
+        </div>
+        <div class="aspect-square rounded-[var(--radius-base)] border border-[var(--border)] flex items-center justify-center bg-[var(--card)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--foreground);"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <div class="aspect-square rounded-[var(--radius-base)] border border-[var(--border)] flex items-center justify-center bg-[var(--card)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--foreground);"><path d="m22 8-4 4-4-4"/><path d="M16 4v8"/><path d="M2 12h6"/><path d="M2 6h12"/><path d="M2 18h12"/></svg>
+        </div>
+        <div class="aspect-square rounded-[var(--radius-base)] border border-[var(--border)] flex items-center justify-center bg-[var(--card)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--foreground);"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        </div>
+        <div class="aspect-square rounded-[var(--radius-base)] border border-[var(--border)] flex items-center justify-center bg-[var(--card)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--foreground);"><path d="M12 2v20"/><path d="M2 12c0-5 4-9 10-9s10 4 10 9"/><circle cx="12" cy="12" r="2"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+        </div>
+        <div class="aspect-square rounded-[var(--radius-base)] border border-[var(--border)] flex items-center justify-center bg-[var(--card)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--foreground);"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <div class="aspect-square rounded-[var(--radius-base)] border border-[var(--border)] flex items-center justify-center bg-[var(--card)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--foreground);"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </div>
+        <div class="aspect-square rounded-[var(--radius-base)] border border-[var(--border)] flex items-center justify-center bg-[var(--card)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--foreground);"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </div>
+        <div class="aspect-square rounded-[var(--radius-base)] border border-[var(--border)] flex items-center justify-center bg-[var(--card)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--foreground);"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+      </div>
+      <div class="mt-4 font-mono text-[11px] text-[var(--muted-foreground)]" style="line-height: 1.65;">
+        layout-dashboard · briefcase · trending-up · mic-2 · check-circle-2 · sliders · trending-up-line · radio · message-square · settings · search · play
+      </div>
+    </div>
+
+    <aside class="col-span-4 flex flex-col gap-5">
+      <article class="p-6 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)]">
+        <span class="mono-tag mb-3 block">STROKE</span>
+        <p class="m-0 text-2xl font-black" style="letter-spacing: -0.068em;">1.5px</p>
+        <p class="m-0 mt-2 text-sm" style="color: var(--muted-foreground); line-height: 1.55;">Lucide default. Never 1px (too thin in dark mode), never 2px (too heavy at small sizes).</p>
+      </article>
+      <article class="p-6 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)]">
+        <span class="mono-tag mb-3 block">SIZE</span>
+        <p class="m-0 text-2xl font-black" style="letter-spacing: -0.068em;">16 / 20 / 24</p>
+        <p class="m-0 mt-2 text-sm" style="color: var(--muted-foreground); line-height: 1.55;">16 inside buttons & inputs. 20 inline. 24 default for nav and feature blocks.</p>
+      </article>
+      <article class="p-6 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)]">
+        <span class="mono-tag mb-3 block">RADIUS</span>
+        <p class="m-0 text-2xl font-black" style="letter-spacing: -0.068em;">var(--radius-base)</p>
+        <p class="m-0 mt-2 text-sm" style="color: var(--muted-foreground); line-height: 1.55;">6px on icon backgrounds. Never circular except for status dots.</p>
+      </article>
+    </aside>
+  </div>
+</section>
+
+<div class="page-spacer-lg"></div>
+
+<!-- ─────────────────────────────────────────────
+     SECTION 09 · SOCIAL MEDIA
+     ───────────────────────────────────────────── -->
+<section id="social-media">
+  <header class="page-header">
+    <div>
+      <p class="page-eyebrow">09 · Social</p>
+      <h2 class="page-title mt-4">Social Media Templates</h2>
+    </div>
+    <span class="mono-tag">Instagram · LinkedIn · same tokens</span>
+  </header>
+
+  <div class="grid grid-cols-12 gap-8">
+    <!-- Instagram carousel -->
+    <div class="col-span-7 flex flex-col gap-4">
+      <span class="mono-tag">INSTAGRAM CAROUSEL · 1080 × 1350 (4:5)</span>
+      <div class="grid grid-cols-3 gap-3">
+        <!-- Slide 1 — title -->
+        <article class="rounded-[var(--radius-base)] border border-[var(--border)] overflow-hidden bg-[var(--sm-ink)] relative" style="aspect-ratio: 4/5;">
+          <div class="absolute" style="top: -60px; right: -60px; width: 240px; height: 240px; background: var(--sm-purple); filter: blur(80px); opacity: .4; border-radius: 50%;"></div>
+          <div class="absolute inset-0 p-5 flex flex-col justify-between">
+            <div class="flex items-center justify-between">
+              <div class="w-7 h-7 rounded-full bg-[var(--sm-acid)] flex items-center justify-center">
+                <span class="font-mono text-[10px] font-black text-[var(--sm-ink)]">S</span>
+              </div>
+              <span class="font-mono text-[8px] tracking-[0.2em] text-[var(--muted-foreground)]">01 / 04</span>
+            </div>
+            <div>
+              <p class="m-0 font-mono text-[8px] tracking-[0.3em] uppercase mb-3" style="color: var(--sm-acid);">PLACEMENT REPORT</p>
+              <h3 class="m-0" style="font-size: 28px; font-weight: 900; letter-spacing: -0.068em; line-height: 0.95; color: var(--sm-fg-dark);">7 cues<br>placed.<br>Q1 2026.</h3>
+            </div>
+          </div>
+        </article>
+        <!-- Slide 2 — stat -->
+        <article class="rounded-[var(--radius-base)] border border-[var(--border)] overflow-hidden flex flex-col justify-center items-center text-center" style="aspect-ratio: 4/5; background: var(--sm-purple);">
+          <p class="m-0 font-mono text-[8px] tracking-[0.3em] uppercase mb-4" style="color: rgba(255,255,255,.7);">TURNAROUND</p>
+          <p class="m-0" style="font-size: 64px; font-weight: 900; letter-spacing: -0.068em; line-height: 0.95; color: var(--sm-fg-dark);">37h</p>
+          <p class="m-0 mt-3 text-xs px-4" style="color: rgba(255,255,255,.85); line-height: 1.4; font-weight: 500;">Median brief → shortlist time, January–April.</p>
+        </article>
+        <!-- Slide 3 — quote / CTA -->
+        <article class="rounded-[var(--radius-base)] border border-[var(--border)] overflow-hidden bg-[var(--sm-fg-dark)] text-[var(--sm-fg-light)] relative" style="aspect-ratio: 4/5;">
+          <div class="absolute inset-0 p-5 flex flex-col justify-between">
+            <p class="m-0 font-mono text-[8px] tracking-[0.3em] uppercase" style="color: var(--sm-purple);">NEXT</p>
+            <div>
+              <p class="m-0" style="font-size: 18px; font-weight: 900; letter-spacing: -0.04em; line-height: 1.1;">Open briefs every Tuesday at syncmaster.live</p>
+              <div class="mt-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full" style="background: var(--sm-purple);">
+                <span class="font-mono text-[9px] font-bold uppercase tracking-[0.15em]" style="color: var(--sm-fg-dark);">Apply →</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- LinkedIn post -->
+    <div class="col-span-5 flex flex-col gap-4">
+      <span class="mono-tag">LINKEDIN POST · 1200 × 1200 (1:1)</span>
+      <article class="rounded-[var(--radius-base)] border border-[var(--border)] overflow-hidden bg-[var(--sm-ink)] relative" style="aspect-ratio: 1/1;">
+        <div class="absolute" style="bottom: -120px; right: -120px; width: 380px; height: 380px; background: var(--sm-acid); filter: blur(120px); opacity: .15; border-radius: 50%;"></div>
+
+        <div class="absolute inset-0 p-8 flex flex-col justify-between">
+          <header class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-[var(--sm-acid)] flex items-center justify-center">
+                <span class="font-mono text-base font-black text-[var(--sm-ink)]" style="letter-spacing: -0.1em;">S</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-sm font-black" style="letter-spacing: -0.04em;">SyncMaster</span>
+                <span class="text-[11px] font-medium" style="color: var(--muted-foreground);">Sync licensing infrastructure · Building in public</span>
+              </div>
+            </div>
+            <span class="px-2.5 py-1 rounded-full" style="background: var(--sm-acid); color: var(--sm-ink); font-family: var(--font-mono); font-size: 9px; font-weight: 900; letter-spacing: 0.2em;">HIRING</span>
+          </header>
+
+          <div class="flex flex-col gap-4">
+            <p class="m-0 font-mono text-[10px] tracking-[0.3em] uppercase" style="color: var(--sm-acid);">WHAT WE'RE BUILDING</p>
+            <h3 class="m-0" style="font-size: 36px; font-weight: 900; letter-spacing: -0.068em; line-height: 1.05;">Connect African composers to global screens.</h3>
+            <p class="m-0 text-sm" style="color: var(--muted-foreground); line-height: 1.55; font-weight: 500; max-width: 480px;">
+              Curated, cleared, ready. 15–20% commission to the producer. No placement, no fee.
+            </p>
+          </div>
+
+          <footer class="flex items-center justify-between pt-4 border-t border-[var(--border)]">
+            <div class="flex items-center gap-6">
+              <div>
+                <p class="m-0 font-mono text-[9px] tracking-[0.25em] uppercase" style="color: var(--muted-foreground);">PLACED</p>
+                <p class="m-0 text-base font-black" style="letter-spacing: -0.04em;">$148k</p>
+              </div>
+              <div>
+                <p class="m-0 font-mono text-[9px] tracking-[0.25em] uppercase" style="color: var(--muted-foreground);">ROSTER</p>
+                <p class="m-0 text-base font-black" style="letter-spacing: -0.04em;">42 composers</p>
+              </div>
+            </div>
+            <span class="font-mono text-[10px] tracking-[0.25em] uppercase" style="color: var(--muted-foreground);">syncmaster.live</span>
+          </footer>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- Token recap strip -->
+  <div class="mt-16 grid grid-cols-4 gap-5">
+    <div class="p-5 rounded-[var(--radius-lg)] border border-[var(--border)] flex items-center gap-4">
+      <div class="w-12 h-12 rounded-full" style="background: var(--sm-purple);"></div>
+      <div class="flex flex-col">
+        <span class="mono-tag">PRIMARY</span>
+        <span class="text-sm font-bold mt-1" style="letter-spacing: -0.02em;">Action surface</span>
+      </div>
+    </div>
+    <div class="p-5 rounded-[var(--radius-lg)] border border-[var(--border)] flex items-center gap-4">
+      <div class="w-12 h-12 rounded-full" style="background: var(--sm-acid);"></div>
+      <div class="flex flex-col">
+        <span class="mono-tag">ACCENT</span>
+        <span class="text-sm font-bold mt-1" style="letter-spacing: -0.02em;">Active state only</span>
+      </div>
+    </div>
+    <div class="p-5 rounded-[var(--radius-lg)] border border-[var(--border)] flex items-center gap-4">
+      <div class="w-12 h-12 rounded-[var(--radius-base)]" style="background: var(--sm-ink); border: 1px solid var(--border);"></div>
+      <div class="flex flex-col">
+        <span class="mono-tag">CANVAS</span>
+        <span class="text-sm font-bold mt-1" style="letter-spacing: -0.02em;">Editorial dark default</span>
+      </div>
+    </div>
+    <div class="p-5 rounded-[var(--radius-lg)] border border-[var(--border)] flex items-center gap-4">
+      <div class="flex flex-col items-center justify-center w-12 h-12 rounded-[var(--radius-base)] bg-[var(--card)] border border-[var(--border)]">
+        <span style="font-family: var(--font-sans); font-weight: 900; font-size: 18px; letter-spacing: -0.068em; line-height: 1;">Ag</span>
+      </div>
+      <div class="flex flex-col">
+        <span class="mono-tag">TYPE</span>
+        <span class="text-sm font-bold mt-1" style="letter-spacing: -0.02em;">DM Sans · Geist Mono</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────────
+     TWEAKS PANEL · React + Babel
+     ───────────────────────────────────────────── -->
+<div id="__tweaks_root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+
+<script type="text/babel">
+const BG_TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "sectionPaddingX": 96,
+  "sectionPaddingY": 112,
+  "sectionGap": 128,
+  "logoHeight": 56,
+  "headingTrack": -0.068,
+  "accentColor": "#4b4bc0"
+}/*EDITMODE-END*/;
+
+function applyTweaks(t) {
+  const r = document.documentElement.style;
+  r.setProperty('--bg-section-x', t.sectionPaddingX + 'px');
+  r.setProperty('--bg-section-y', t.sectionPaddingY + 'px');
+  r.setProperty('--bg-section-gap', t.sectionGap + 'px');
+  r.setProperty('--bg-logo-h', t.logoHeight + 'px');
+  r.setProperty('--bg-head-track', t.headingTrack + 'em');
+  r.setProperty('--sm-purple', t.accentColor);
+  r.setProperty('--primary', t.accentColor);
+  r.setProperty('--ring', t.accentColor);
+}
+
+function BrandGuidelinesTweaks() {
+  const [t, setTweak] = useTweaks(BG_TWEAK_DEFAULTS);
+  React.useEffect(() => { applyTweaks(t); }, [t]);
+
+  return (
+    <TweaksPanel title="Tweaks">
+      <TweakSection title="Spacing">
+        <TweakSlider label="Section padding · horizontal" value={t.sectionPaddingX}
+          min={48} max={200} step={4} unit="px"
+          onChange={(v) => setTweak('sectionPaddingX', v)} />
+        <TweakSlider label="Section padding · vertical" value={t.sectionPaddingY}
+          min={48} max={240} step={4} unit="px"
+          onChange={(v) => setTweak('sectionPaddingY', v)} />
+        <TweakSlider label="Space between sections" value={t.sectionGap}
+          min={32} max={240} step={4} unit="px"
+          onChange={(v) => setTweak('sectionGap', v)} />
+      </TweakSection>
+
+      <TweakSection title="Brand header">
+        <TweakSlider label="Logo height" value={t.logoHeight}
+          min={32} max={120} step={2} unit="px"
+          onChange={(v) => setTweak('logoHeight', v)} />
+      </TweakSection>
+
+      <TweakSection title="Type">
+        <TweakSlider label="Heading letter-spacing" value={t.headingTrack}
+          min={-0.1} max={0} step={0.002} unit="em"
+          onChange={(v) => setTweak('headingTrack', v)} />
+      </TweakSection>
+
+      <TweakSection title="Accent">
+        <TweakColor label="Primary brand" value={t.accentColor}
+          options={['#4b4bc0', '#6366f1', '#7c3aed', '#1f8a5b']}
+          onChange={(v) => setTweak('accentColor', v)} />
+      </TweakSection>
+    </TweaksPanel>
+  );
+}
+
+const waitForTweaks = setInterval(() => {
+  if (window.TweaksPanel && window.useTweaks) {
+    clearInterval(waitForTweaks);
+    ReactDOM.createRoot(document.getElementById('__tweaks_root')).render(<BrandGuidelinesTweaks />);
+  }
+}, 50);
+</script>
+
+</body>
+</html>
