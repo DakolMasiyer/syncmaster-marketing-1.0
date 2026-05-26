@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SyncMaster Carousel 01 — The Tunde Problem (Print)</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    html, body { margin: 0; padding: 0; background: #f0eee9; font-family: "Space Grotesk", system-ui, sans-serif; }
+    body { overflow: hidden; }
+    h1 { font-weight: var(--display-weight, 500) !important; }
+
+    /* ============================================================
+       PRINT STYLES — one artboard per page at 1080×1350 portrait
+       ============================================================ */
+    @page {
+      size: 1080px 1350px;
+      margin: 0;
+    }
+
+    @media print {
+      html, body {
+        background: #fff !important;
+        overflow: visible !important;
+        width: auto !important;
+        height: auto !important;
+      }
+
+      /* Force colors / backgrounds to print */
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      /* Neutralise the DesignCanvas viewport: drop transforms, scroll, sizing.
+         The canvas applies pan/zoom via transform on an inner wrapper — we
+         strip every transform under it so the artboards lay out at native
+         size in document flow. */
+      .design-canvas,
+      .design-canvas * {
+        transform: none !important;
+        animation: none !important;
+        transition: none !important;
+      }
+      .design-canvas {
+        position: static !important;
+        width: auto !important;
+        height: auto !important;
+        overflow: visible !important;
+        background: #fff !important;
+      }
+
+      /* Hide all canvas chrome — toolbar, zoom controls, section headers,
+         per-artboard label rows, drag grips, kebab/expand buttons. */
+      .dc-sectionhead,
+      .dc-header,
+      .dc-labelrow,
+      .dc-grip,
+      .dc-btns,
+      .dc-kebab,
+      .dc-expand,
+      .dc-menu,
+      [data-dc-toolbar],
+      .dc-toolbar,
+      /* Tweaks panel never prints */
+      [data-tweaks-panel],
+      .tweaks-panel {
+        display: none !important;
+      }
+
+      /* Sections: let them flow vertically without margin/padding tricks tied
+         to canvas zoom variables. */
+      [data-dc-section] {
+        margin: 0 !important;
+        padding: 0 !important;
+        position: static !important;
+      }
+      [data-dc-section] > div {
+        padding: 0 !important;
+      }
+
+      /* Each artboard becomes its own page. */
+      [data-dc-slot] {
+        display: block !important;
+        position: static !important;
+        width: 1080px !important;
+        height: 1350px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        page-break-before: always;
+        break-before: page;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+      /* First slot doesn't need a preceding page break. */
+      [data-dc-slot]:first-of-type {
+        page-break-before: avoid;
+        break-before: auto;
+      }
+
+      /* The card itself: exact slide dimensions, no shadows that bleed into
+         page edges, no clipping that hides absolutely-positioned chrome. */
+      .dc-card {
+        width: 1080px !important;
+        height: 1350px !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        overflow: hidden !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      /* Any inner flex container that was sized to canvas viewport. */
+      .design-canvas > div,
+      .design-canvas > div > div {
+        display: block !important;
+        width: auto !important;
+        height: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="chrome.jsx"></script>
+  <script type="text/babel" src="slides.jsx"></script>
+  <script type="text/babel" src="app.jsx"></script>
+
+  <script type="text/babel">
+    // Auto-print once everything is ready: fonts loaded, Babel transformed
+    // every JSX module, React has rendered all 9 artboards into the DOM,
+    // and a small safety delay so layout settles. Putting this in a
+    // type="text/babel" block guarantees it runs AFTER app.jsx has
+    // mounted, because Babel processes script tags in source order.
+    (async () => {
+      try {
+        if (document.fonts && document.fonts.ready) {
+          await document.fonts.ready;
+        }
+        // Wait for the design canvas to have rendered all 9 slots.
+        await new Promise((resolve) => {
+          const start = Date.now();
+          const tick = () => {
+            const slots = document.querySelectorAll('[data-dc-slot]');
+            if (slots.length >= 9 || Date.now() - start > 8000) resolve();
+            else requestAnimationFrame(tick);
+          };
+          tick();
+        });
+        await new Promise((r) => setTimeout(r, 500));
+        window.print();
+      } catch (e) {
+        console.error('auto-print failed', e);
+      }
+    })();
+  </script>
+</body>
+</html>

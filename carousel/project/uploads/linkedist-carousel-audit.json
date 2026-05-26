@@ -1,0 +1,361 @@
+{
+  "$schema": "https://design-tokens.org/format/v1",
+  "$meta": {
+    "title": "Linkedist Instagram Carousel — Reference Design Audit",
+    "subject": "@linkedist 4-slide case study carousel (Gamification, How Linkedist gamified content with Shield)",
+    "audit_date": "2026-05-11",
+    "audit_method": "Pixel sampling of native 1080x1350 source PNGs via PIL, colour cluster analysis, bounding-box measurement",
+    "audit_confidence": {
+      "colour": "very high — sampled directly from source pixels",
+      "spacing": "high — measured from element bounding boxes",
+      "typography": "medium — font family inferred from visual characteristics, sizes measured from bbox",
+      "imagery": "high — treatment and composition observed directly"
+    },
+    "canvas": {
+      "width_px": 1080,
+      "height_px": 1350,
+      "aspect_ratio": "4:5",
+      "platform": "Instagram feed carousel (portrait)",
+      "slide_count": 4
+    },
+    "deliberate_omissions": [
+      "Font families are best-guess from visual inspection; exact licensed fonts cannot be confirmed without metadata access",
+      "Line-height values are estimates within plausible typographic range",
+      "Photographic asset sourcing not catalogued (treatment described, source not identified)"
+    ]
+  },
+  "tokens": {
+    "primitive": {
+      "colour": {
+        "neutral": {
+          "white_pure": { "value": "#FFFFFF", "usage": "rare highlight only" },
+          "background_warm": { "value": "#F9F9F9", "usage": "primary slide background, every slide" },
+          "background_soft": { "value": "#F8F8F8", "usage": "anti-aliased neighbour to F9F9F9; treat as same token in design" },
+          "dot_grid": { "value": "#EAEAEA", "usage": "background dotted grid pattern, every slide", "optical_read": "reads as ~25-30% strength against F9F9F9" },
+          "text_primary": { "value": "#000000", "usage": "headlines, wordmark, body type on light backgrounds" },
+          "stroke_default": { "value": "#0A0A0A", "usage": "pill outlines, swipe-indicator border" }
+        },
+        "accent": {
+          "blue_signal": { "value": "#3661FE", "usage": "primary brand accent — result cards on slide 3, quote mark and emphasis text on slide 4" }
+        },
+        "highlight": {
+          "yellow_star": { "value": "#FFEE02", "usage": "decorative star icons inside CRT monitor screen, slide 1 only" }
+        },
+        "photographic": {
+          "greyscale_terrain": { "value": "monochrome ramp from #1A1A1A to #ADAAA3", "usage": "mountain/grass landscape photography on slides 1 and 3, CRT monitor housing on slide 1" },
+          "noise_texture_crt": { "value": "speckled greyscale around #B0B0B0 mean", "usage": "CRT screen static-noise effect, slide 1" }
+        }
+      },
+      "spacing": {
+        "0": "0px",
+        "1": "4px",
+        "2": "8px",
+        "3": "12px",
+        "4": "16px",
+        "5": "24px",
+        "6": "32px",
+        "7": "48px",
+        "8": "64px",
+        "9": "96px",
+        "10": "128px"
+      },
+      "radius": {
+        "none": "0px",
+        "card": "32px",
+        "card_lg": "40px",
+        "pill_full": "9999px"
+      },
+      "stroke": {
+        "hairline": "1.5px",
+        "pill": "2px"
+      }
+    },
+    "semantic": {
+      "surface": {
+        "page": "{primitive.colour.neutral.background_warm}",
+        "card_on_page": "{primitive.colour.neutral.white_pure}",
+        "card_accent": "{primitive.colour.accent.blue_signal}"
+      },
+      "text": {
+        "display_on_light": "{primitive.colour.neutral.text_primary}",
+        "body_on_light": "{primitive.colour.neutral.text_primary}",
+        "on_accent": "{primitive.colour.neutral.white_pure}",
+        "emphasis_inline": "{primitive.colour.accent.blue_signal}"
+      },
+      "border": {
+        "pill_outline": "{primitive.colour.neutral.stroke_default}"
+      }
+    }
+  },
+  "layout": {
+    "canvas_margin_safe": {
+      "top_px": 88,
+      "right_px": 80,
+      "bottom_px": 80,
+      "left_px": 80,
+      "note": "Wordmark sits at left edge x=95 and top y=91, measured from native 1080x1350"
+    },
+    "grid": {
+      "system": "implicit symmetric, no visible column rails",
+      "background_pattern": {
+        "type": "square dot grid",
+        "dot_diameter_px": 3,
+        "dot_colour": "{primitive.colour.neutral.dot_grid}",
+        "spacing_x_px": 35,
+        "spacing_y_px": 35,
+        "alignment": "edge-to-edge full bleed, dots continue beneath all foreground elements"
+      },
+      "content_areas": {
+        "header_band": { "y_range_px": "60-150", "height_px": 90, "contains": "wordmark left, swipe-pill right" },
+        "main_stage": { "y_range_px": "150-1200", "height_px": 1050, "contains": "title and primary visual" },
+        "footer_band": { "y_range_px": "1200-1290", "height_px": 90, "contains": "category-tag pill left, slide-counter pill right" }
+      }
+    }
+  },
+  "typography": {
+    "font_stack": {
+      "display": {
+        "candidates": ["Aeonik Bold", "TWK Everett Bold", "General Sans Bold", "Neue Haas Grotesk Display Bold"],
+        "best_free_substitute": "Inter Tight Bold (Google Fonts) or Space Grotesk Bold",
+        "characteristics": "geometric sans, true-circle 'o', single-storey 'a', mechanical proportions, generous x-height, very tight tracking"
+      },
+      "wordmark": {
+        "treatment": "all caps, letter-spaced ~80-100 tracking",
+        "weight": "Medium to Semibold",
+        "candidates": ["Aeonik Medium", "Söhne"],
+        "measured_height_px": 17,
+        "approx_size_px": 22
+      },
+      "ui_pill": {
+        "treatment": "all caps, letter-spaced",
+        "weight": "Medium",
+        "approx_size_px": 20
+      }
+    },
+    "scale": {
+      "display_xl": {
+        "usage": "slide 1 hook headline, slide 4 quote payoff",
+        "approx_size_px": 96,
+        "approx_line_height_px": 100,
+        "letter_spacing": "-0.02em",
+        "weight": 700,
+        "measured_bbox_height_px": 439,
+        "lines_observed": 4
+      },
+      "display_lg": {
+        "usage": "slide 2 'Actions taken:' and slide 3 'Results achieved:' section heads",
+        "approx_size_px": 92,
+        "approx_line_height_px": 100,
+        "letter_spacing": "-0.02em",
+        "weight": 700
+      },
+      "body_lg": {
+        "usage": "slide 2 card captions",
+        "approx_size_px": 36,
+        "approx_line_height_px": 44,
+        "letter_spacing": "-0.01em",
+        "weight": 600
+      },
+      "stat_xl": {
+        "usage": "slide 3 oversized number value inside blue cards (e.g. '30-90k', '1x/week to 2x/week', '11')",
+        "approx_size_px": 80,
+        "approx_line_height_px": 84,
+        "letter_spacing": "-0.02em",
+        "weight": 800
+      },
+      "stat_caption": {
+        "usage": "slide 3 supporting label text under stats",
+        "approx_size_px": 30,
+        "approx_line_height_px": 36,
+        "weight": 600
+      },
+      "podium_ghost_numeral": {
+        "usage": "slide 3 large 1, 2, 3 ghost numerals behind cards",
+        "approx_size_px": 280,
+        "weight": 700,
+        "opacity": 0.18,
+        "colour": "{primitive.colour.neutral.dot_grid}"
+      },
+      "ui_label": {
+        "usage": "category tag and slide counter pills, wordmark",
+        "approx_size_px": 22,
+        "letter_spacing": "+0.04em",
+        "case": "uppercase",
+        "weight": 500
+      }
+    }
+  },
+  "components": {
+    "header_wordmark": {
+      "type": "text",
+      "content_observed": "LINKEDIST",
+      "position": { "anchor": "top-left", "x_px": 95, "y_px": 91 },
+      "dimensions": { "width_px": 136, "height_px": 17 },
+      "style": "{typography.font_stack.wordmark}",
+      "colour": "{semantic.text.display_on_light}",
+      "appears_on_slides": [1, 2, 3, 4],
+      "note": "On slide 4 the wordmark is centred horizontally (x=472-607); on slides 1-3 it is left-aligned. Deliberate variation on the closing slide."
+    },
+    "swipe_indicator_pill": {
+      "type": "outlined pill with arrow icon",
+      "position": { "anchor": "top-right", "x_px": 917, "y_px": 79 },
+      "dimensions": { "width_px": 81, "height_px": 41 },
+      "border_radius": "{primitive.radius.pill_full}",
+      "stroke": { "width": "{primitive.stroke.pill}", "colour": "{semantic.border.pill_outline}" },
+      "fill": "transparent",
+      "icon": { "type": "right-arrow with tail", "stroke_width": "1.5px", "colour": "{primitive.colour.neutral.text_primary}" },
+      "appears_on_slides": [1, 2, 3],
+      "absent_on": [4],
+      "note": "Functions as a swipe-affordance cue; intentionally removed on final slide to signal carousel end"
+    },
+    "category_tag_pill": {
+      "type": "outlined pill with text",
+      "position": { "anchor": "bottom-left", "x_px": 93, "y_px": 1230 },
+      "dimensions": { "width_px": 191, "height_px": 41 },
+      "padding_inline_px": 24,
+      "padding_block_px": 10,
+      "border_radius": "{primitive.radius.pill_full}",
+      "stroke": { "width": "{primitive.stroke.pill}", "colour": "{semantic.border.pill_outline}" },
+      "fill": "transparent",
+      "content_observed": "GAMIFICATION",
+      "text_style": "{typography.scale.ui_label}",
+      "appears_on_slides": [1, 2, 3, 4]
+    },
+    "slide_counter_pill": {
+      "type": "outlined pill with text",
+      "position": { "anchor": "bottom-right", "x_px": 909, "y_px": 1230 },
+      "dimensions": { "width_px": 89, "height_px": 41 },
+      "padding_inline_px": 18,
+      "padding_block_px": 10,
+      "border_radius": "{primitive.radius.pill_full}",
+      "stroke": { "width": "{primitive.stroke.pill}", "colour": "{semantic.border.pill_outline}" },
+      "fill": "transparent",
+      "content_pattern": "NN/NN (slash format, leading zero)",
+      "content_observed": ["01/04", "02/04", "03/04", "04/04"],
+      "text_style": "{typography.scale.ui_label}",
+      "appears_on_slides": [1, 2, 3, 4]
+    },
+    "card_neutral_2up_2x2": {
+      "type": "rounded white card with image and caption",
+      "usage": "slide 2 actions grid",
+      "grid": "2 columns by 2 rows",
+      "card": {
+        "fill": "{semantic.surface.card_on_page}",
+        "border_radius": "{primitive.radius.card}",
+        "shadow": "subtle drop shadow, very low opacity, blur ~24px, y-offset ~4px",
+        "padding_px": 32,
+        "internal_spacing_image_to_caption_px": 24
+      },
+      "image_treatment": "object-fit contain, photographic or mocked UI vector, no border",
+      "caption": {
+        "alignment": "centre",
+        "style": "{typography.scale.body_lg}",
+        "max_lines": 3
+      }
+    },
+    "card_accent_stat_podium": {
+      "type": "rounded blue card displaying a single stat",
+      "usage": "slide 3 results podium",
+      "fill": "{semantic.surface.card_accent}",
+      "text_colour": "{semantic.text.on_accent}",
+      "border_radius": "{primitive.radius.card_lg}",
+      "padding_px": 32,
+      "alignment": "centre",
+      "arrangement": "3 cards on imagined podium with varied heights — centre card tallest (1st place), left card medium (2nd), right card shortest (3rd)",
+      "stat_value_style": "{typography.scale.stat_xl}",
+      "stat_caption_style": "{typography.scale.stat_caption}"
+    },
+    "podium_ghost_numerals": {
+      "type": "oversized background numerals",
+      "usage": "slide 3 only, behind blue stat cards",
+      "values": ["2", "1", "3"],
+      "arrangement": "horizontal row matching card podium positions",
+      "style": "{typography.scale.podium_ghost_numeral}",
+      "z_index": "behind cards, above dot grid"
+    },
+    "quote_payoff_block": {
+      "type": "centred display quote with leading quotation mark glyph",
+      "usage": "slide 4",
+      "quote_mark": {
+        "glyph": "closing double quote",
+        "colour": "{semantic.text.emphasis_inline}",
+        "size_px": 200,
+        "position": "centred above text, ~120px above first line of body"
+      },
+      "body": {
+        "alignment": "centre",
+        "style": "{typography.scale.display_xl}",
+        "inline_emphasis_colour": "{semantic.text.emphasis_inline}",
+        "emphasis_pattern": "final phrase (e.g. 'a little healthy competition') receives accent colour while preceding text remains black"
+      }
+    }
+  },
+  "imagery": {
+    "treatment_principles": {
+      "photographic_palette": "desaturated to pure greyscale, low-to-mid contrast, soft texture retained",
+      "subject_matter": "physical, tactile, organic forms (grass, mountains, weathered hardware) used as visual counterweight to the otherwise flat geometric design system",
+      "integration": "photographic elements are placed as full-bleed environmental layers (slide 1, 3) or as small product-mock thumbnails inside cards (slide 2)",
+      "noise_layer": "CRT-monitor interior on slide 1 carries an intentional analogue noise texture, signalling the slightly nostalgic / lo-fi tone of the gamification theme"
+    },
+    "assets_observed": {
+      "slide_1": {
+        "primary": "vintage beige CRT monitor with keyboard sitting on grass-textured greyscale mountain",
+        "inside_screen": "static noise + black shield logo + three yellow stars beneath logo",
+        "function": "metaphor — gamified content literalised as classic arcade-rating UI"
+      },
+      "slide_2": {
+        "primary": "four card thumbnails showing UI screenshots: (1) Olympics challenge cards, (2) laptop with dashboard, (3) content idea bank UI, (4) Slack app with logo overlay",
+        "function": "illustrates the four actions taken"
+      },
+      "slide_3": {
+        "primary": "greyscale mountain/grass terrain occupying lower third as a visual baseline beneath the podium of blue stat cards",
+        "function": "grounds the data podium in the established earthy visual language"
+      },
+      "slide_4": {
+        "primary": "no photographic asset — pure typographic close",
+        "function": "the payoff line stands alone; absence of imagery is itself a design choice signalling this is the conclusion"
+      }
+    }
+  },
+  "narrative_architecture": {
+    "carousel_arc": "Case-study quartet: hook then mechanism then outcome then insight",
+    "slide_1_role": {
+      "label": "Curiosity hook",
+      "device": "Provocative question paired with metaphorical hero visual",
+      "headline_pattern": "How [brand] [verb-ed] [outcome] with [partner/tool]?",
+      "swipe_motivation": "Reader wants the answer to the posed question"
+    },
+    "slide_2_role": {
+      "label": "Mechanism reveal",
+      "device": "Heading 'Actions taken:' plus 2x2 categorised grid of interventions",
+      "swipe_motivation": "Reader wants to see whether the actions worked"
+    },
+    "slide_3_role": {
+      "label": "Proof and outcome",
+      "device": "Heading 'Results achieved:' plus 3-card podium of headline numbers; accent colour finally introduced to mark the payoff zone",
+      "swipe_motivation": "Reader wants the takeaway and the one-line lesson"
+    },
+    "slide_4_role": {
+      "label": "Insight and payoff line",
+      "device": "Pure typographic quote, final emphasis in accent colour, no swipe indicator, centred wordmark",
+      "function": "Memorable, screenshot-ready closing thought; designed to be saved or shared"
+    },
+    "pacing_principle": "Information density rises through slides 1 to 3 then collapses to a single sentence on slide 4. Visual complexity follows the same arc: dense (1) then grid (2) then focal (3) then minimal (4)."
+  },
+  "system_signatures": {
+    "what_makes_this_visually_distinctive": [
+      "Dot-grid background as constant texture across every slide; unifies the system without competing for attention",
+      "Hard discipline of black plus warm off-white as the base, with a single saturated blue accent introduced only at the proof and payoff slides",
+      "Greyscale photographic world (mountains, vintage hardware) as a tactile counterweight to the otherwise flat vector design",
+      "Pill components (swipe cue, category, counter) as persistent system furniture, same shape and stroke weight, no variation",
+      "Display type is tight, geometric, and slightly oversized; type IS the design on slides 1 and 4",
+      "Accent colour is rationed; appearing in only 2 of 4 slides makes it feel earned rather than decorative"
+    ],
+    "ratios_to_replicate": {
+      "title_to_canvas": "headline occupies roughly 35-40% of canvas height on slide 1",
+      "card_to_canvas": "each 2x2 card occupies ~40% width and ~32% height of canvas on slide 2",
+      "podium_card_heights": "centre card ~120%, left card ~85%, right card ~75%; establishes hierarchy",
+      "negative_space": "approximately 55-60% of every slide is empty background; whitespace IS the content"
+    }
+  }
+}

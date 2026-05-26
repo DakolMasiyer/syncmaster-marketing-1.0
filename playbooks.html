@@ -1,0 +1,1388 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SyncMaster — Outreach Playbooks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0C0C10;
+    --surface: #131318;
+    --surface-2: #1A1A24;
+    --border: #252532;
+    --border-2: #32324A;
+    --gold: #F2C94C;
+    --teal: #38D1B5;
+    --coral: #F26B5E;
+    --purple: #9B72F2;
+    --white: #F0F0F6;
+    --mid: #C0C0D0;
+    --muted: #787890;
+    --green: #4CAF80;
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --t: 0.35s;
+    --navbar-h: 36px;
+    --topbar-h: 56px;
+    --bottombar-h: 44px;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { background: var(--bg); scroll-behavior: smooth; }
+  body {
+    color: var(--white);
+    background: var(--bg);
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  /* Grain */
+  .grain {
+    position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+    opacity: 0.035; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  /* ── Site Nav ── */
+  #siteNav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: var(--navbar-h); z-index: 10001;
+    display: flex; align-items: center;
+    padding: 0 24px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    font-family: "DM Sans", sans-serif;
+  }
+  .snav-brand {
+    font-family: "Syne", sans-serif; font-weight: 800; font-size: 10px;
+    letter-spacing: 0.18em; color: var(--muted);
+    flex-shrink: 0; margin-right: 20px; font-feature-settings: "ss01";
+  }
+  .snav-divider { width: 1px; height: 16px; background: var(--border); margin-right: 20px; flex-shrink: 0; }
+  .snav-items { display: flex; align-items: center; gap: 4px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
+  .snav-items::-webkit-scrollbar { display: none; }
+  .snav-item {
+    position: relative; display: inline-flex; align-items: center; gap: 6px;
+    padding: 0 12px; height: var(--navbar-h);
+    font-size: 11px; font-weight: 400; letter-spacing: 0.05em;
+    color: var(--muted); text-decoration: none; white-space: nowrap;
+    transition: color 0.2s var(--ease); cursor: pointer; user-select: none;
+  }
+  a.snav-item:hover { color: var(--white); }
+  a.snav-item::after {
+    content: ''; position: absolute; bottom: 0; left: 12px; right: 12px;
+    height: 2px; background: var(--gold);
+    transform: scaleX(0); transition: transform 0.2s var(--ease);
+  }
+  a.snav-item:hover::after { transform: scaleX(0.5); }
+  a.snav-item.active { color: var(--white); }
+  a.snav-item.active::after { transform: scaleX(1); }
+  .snav-item.snav-soon { color: #3a3a4a; cursor: not-allowed; }
+  .snav-badge {
+    font-size: 8px; font-weight: 500; letter-spacing: 0.12em;
+    color: #3a3a4a; border: 1px solid #2a2a38; border-radius: 2px;
+    padding: 1px 4px; line-height: 1.4;
+  }
+
+  /* ── Top Bar ── */
+  .topbar {
+    position: fixed; top: var(--navbar-h); left: 0; right: 0;
+    height: var(--topbar-h); z-index: 100;
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+    padding: 0 32px;
+    background: rgba(12,12,16,0.85);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .topbar-haze {
+    position: fixed; top: calc(var(--navbar-h) + var(--topbar-h));
+    left: 0; right: 0; height: 40px; pointer-events: none; z-index: 99;
+    background: linear-gradient(to bottom, rgba(12,12,16,0.6), transparent);
+  }
+  .tb-brand { font-family: "Syne", sans-serif; font-weight: 800; font-size: 13px; color: var(--gold); letter-spacing: 0.145em; justify-self: start; font-feature-settings: "ss01"; }
+  .tb-title { font-family: "DM Sans", sans-serif; font-weight: 300; font-size: 12px; color: var(--muted); letter-spacing: 0.04em; justify-self: center; }
+  .tb-layer { font-family: "Syne", sans-serif; font-weight: 700; font-size: 11px; color: var(--muted); letter-spacing: 0.125em; justify-self: end; font-feature-settings: "ss01"; }
+  .tb-layer span { margin: 0 4px; opacity: 0.7; }
+
+  /* ── Bottom Bar ── */
+  .bottombar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: var(--bottombar-h); z-index: 100;
+    display: flex; align-items: center; gap: 24px; padding: 0 32px;
+    background: rgba(12,12,16,0.85);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border);
+  }
+  .back-link {
+    font-family: "DM Sans", sans-serif; font-size: 11px; font-weight: 400;
+    color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--white); }
+  .back-link .arrow { color: var(--gold); }
+  .read-progress { flex: 1; height: 1px; background: var(--border); position: relative; overflow: hidden; }
+  .read-fill { position: absolute; inset: 0 auto 0 0; width: 0%; background: var(--gold); transition: width 0.1s linear; }
+
+  /* ── Main Layout ── */
+  main {
+    padding-top: calc(var(--navbar-h) + var(--topbar-h) + 56px);
+    padding-bottom: calc(var(--bottombar-h) + 56px);
+    max-width: 880px; margin: 0 auto;
+    padding-left: 40px; padding-right: 40px;
+  }
+
+  /* ── Hero ── */
+  .hero { margin-bottom: 64px; }
+  .hero-layer { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .hero-title { font-family: "Syne", sans-serif; font-weight: 800; font-size: clamp(32px, 5vw, 52px); letter-spacing: -0.02em; line-height: 1.05; color: var(--white); margin: 0 0 16px; }
+  .hero-sub { font-size: 15px; font-weight: 300; color: var(--mid); line-height: 1.6; max-width: 560px; margin: 0 0 40px; }
+
+  /* ── Funnel Map ── */
+  .funnel { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 0; }
+  .funnel-track { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
+  .funnel-track-label { font-family: "Syne", sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 16px; }
+  .funnel-track--composer .funnel-track-label { color: var(--gold); }
+  .funnel-track--producer .funnel-track-label { color: var(--teal); }
+  .funnel-steps { display: flex; flex-direction: column; gap: 2px; }
+  .funnel-step {
+    display: flex; align-items: center; gap: 12px;
+    padding: 8px 10px; border-radius: 5px;
+    font-size: 12px; color: var(--mid);
+    transition: background 0.15s;
+  }
+  .funnel-step:hover { background: var(--surface-2); }
+  .funnel-step a { color: inherit; text-decoration: none; display: flex; align-items: center; gap: 12px; width: 100%; }
+  .funnel-step a:hover { color: var(--white); }
+  .step-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .step-dot--gold   { background: var(--gold); }
+  .step-dot--coral  { background: var(--coral); }
+  .step-dot--teal   { background: var(--teal); }
+  .step-dot--purple { background: var(--purple); }
+  .step-dot--mid    { background: var(--mid); }
+  .step-arrow { color: var(--border-2); font-size: 10px; margin-left: auto; flex-shrink: 0; }
+
+  /* ── Divider ── */
+  .section-divider { height: 1px; background: var(--border); margin: 64px 0; }
+
+  /* ── Track Header ── */
+  .track-header { margin-bottom: 48px; }
+  .track-label { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 8px; }
+  .track-label--composer { color: var(--gold); }
+  .track-label--producer { color: var(--teal); }
+  .track-title { font-family: "Syne", sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -0.01em; color: var(--white); margin: 0 0 8px; }
+  .track-desc { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.6; }
+
+  /* ── Sequence Block ── */
+  .seq {
+    margin-bottom: 64px;
+    scroll-margin-top: calc(var(--navbar-h) + var(--topbar-h) + 24px);
+  }
+  .seq-header { margin-bottom: 20px; }
+  .seq-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+  .seq-num { font-family: "Syne", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.15em; color: var(--muted); font-feature-settings: "ss01"; }
+  .seq-name { font-family: "Syne", sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -0.01em; color: var(--white); margin: 0 0 12px; }
+  .seq-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .tag {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+    border-radius: 3px; padding: 3px 8px; line-height: 1.4;
+  }
+  .tag--persona { background: rgba(242,201,76,0.1); color: var(--gold); border: 1px solid rgba(242,201,76,0.2); }
+  .tag--channel { background: rgba(240,240,246,0.06); color: var(--mid); border: 1px solid var(--border-2); }
+  .tag--cadence { background: rgba(240,240,246,0.06); color: var(--mid); border: 1px solid var(--border-2); }
+  .trigger-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; font-weight: 400; color: var(--mid);
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 5px; padding: 6px 12px; margin-bottom: 16px;
+  }
+  .trigger-badge .trigger-icon { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* ── Metrics Row ── */
+  .metrics { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 24px; }
+  .metric { display: flex; flex-direction: column; gap: 3px; }
+  .metric-val { font-family: "Syne", sans-serif; font-weight: 800; font-size: 18px; letter-spacing: -0.01em; font-feature-settings: "ss01"; }
+  .metric-lbl { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* ── Timeline Strip ── */
+  .timeline { display: flex; align-items: flex-start; gap: 0; margin-bottom: 24px; }
+  .tl-step { display: flex; flex-direction: column; align-items: center; flex: 1; position: relative; }
+  .tl-step::before {
+    content: ''; position: absolute; top: 9px; left: calc(50% + 9px);
+    right: calc(-50% + 9px); height: 1px; background: var(--border);
+  }
+  .tl-step:last-child::before { display: none; }
+  .tl-dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid; flex-shrink: 0; margin-bottom: 8px; background: var(--bg); }
+  .tl-day { font-size: 10px; font-weight: 500; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 2px; }
+  .tl-label { font-size: 10px; color: var(--muted); text-align: center; max-width: 72px; line-height: 1.3; }
+
+  /* ── Message Cards ── */
+  .msg-cards { display: flex; flex-direction: column; gap: 8px; }
+  details.msg-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-left-width: 3px; border-radius: 6px;
+    transition: border-color 0.15s;
+  }
+  details.msg-card[open] { border-color: var(--border-2); }
+  details.msg-card summary {
+    list-style: none; cursor: pointer;
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 16px;
+    user-select: none;
+  }
+  details.msg-card summary::-webkit-details-marker { display: none; }
+  .msg-day { font-family: "Syne", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.14em; color: var(--muted); flex-shrink: 0; font-feature-settings: "ss01"; width: 36px; }
+  .msg-channel { font-size: 10px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; flex-shrink: 0; }
+  .ch-email    { background: rgba(242,201,76,0.1);  color: var(--gold);   border: 1px solid rgba(242,201,76,0.2); }
+  .ch-linkedin { background: rgba(56,209,181,0.1);  color: var(--teal);   border: 1px solid rgba(56,209,181,0.2); }
+  .msg-subject { font-size: 13px; font-weight: 500; color: var(--white); flex: 1; }
+  .msg-chevron { color: var(--muted); font-size: 12px; flex-shrink: 0; transition: transform 0.2s var(--ease); }
+  details.msg-card[open] .msg-chevron { transform: rotate(180deg); }
+
+  .msg-body { padding: 0 16px 16px; }
+  .msg-sublines { margin-bottom: 14px; }
+  .msg-sublines-label { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .msg-sublines-list { display: flex; flex-direction: column; gap: 5px; }
+  .msg-subline { font-size: 12px; color: var(--mid); background: var(--surface-2); border: 1px solid var(--border); border-radius: 4px; padding: 7px 10px; font-style: italic; }
+  .msg-copy-block { position: relative; }
+  .msg-copy-label { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .msg-text {
+    font-size: 12px; line-height: 1.82; color: var(--mid); white-space: pre-wrap;
+    font-weight: 300; background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 5px; padding: 14px 16px; margin-bottom: 10px;
+  }
+  .msg-footer { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .msg-note { font-size: 11px; color: var(--muted); font-weight: 300; font-style: italic; flex: 1; line-height: 1.5; }
+  .copy-btn {
+    font-family: "DM Sans", sans-serif; font-size: 11px; font-weight: 500;
+    padding: 5px 13px; border-radius: 6px;
+    border: 1px solid var(--border-2); background: var(--surface-2); color: var(--mid);
+    cursor: pointer; transition: border-color 0.18s, color 0.18s;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .copy-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .copy-btn.copied { border-color: var(--green); color: var(--green); }
+
+  /* ── Accent colours per sequence ── */
+  .seq--gold   .tl-dot    { border-color: var(--gold); }
+  .seq--gold   details.msg-card { border-left-color: var(--gold); }
+  .seq--gold   .metric-val { color: var(--gold); }
+  .seq--coral  .tl-dot    { border-color: var(--coral); }
+  .seq--coral  details.msg-card { border-left-color: var(--coral); }
+  .seq--coral  .metric-val { color: var(--coral); }
+  .seq--teal   .tl-dot    { border-color: var(--teal); }
+  .seq--teal   details.msg-card { border-left-color: var(--teal); }
+  .seq--teal   .metric-val { color: var(--teal); }
+  .seq--purple .tl-dot    { border-color: var(--purple); }
+  .seq--purple details.msg-card { border-left-color: var(--purple); }
+  .seq--purple .metric-val { color: var(--purple); }
+  .seq--mid    .tl-dot    { border-color: var(--mid); }
+  .seq--mid    details.msg-card { border-left-color: var(--mid); }
+  .seq--mid    .metric-val { color: var(--mid); }
+
+  /* ── Objection Tables ── */
+  .obj-section { margin-bottom: 48px; }
+  .obj-title { font-family: "Syne", sans-serif; font-weight: 800; font-size: 18px; letter-spacing: -0.01em; color: var(--white); margin: 0 0 4px; }
+  .obj-sub { font-size: 13px; color: var(--muted); margin-bottom: 18px; }
+  .obj-table { width: 100%; border-collapse: collapse; font-size: 12.5px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 32px; }
+  .obj-table th { text-align: left; font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 10px 14px; background: var(--surface); border-bottom: 1px solid var(--border); }
+  .obj-table td { padding: 12px 14px; color: var(--mid); border-bottom: 1px solid var(--border); line-height: 1.55; vertical-align: top; }
+  .obj-table tr:last-child td { border-bottom: none; }
+  .obj-table tr:hover td { background: var(--surface); }
+  .obj-table .obj-q { font-weight: 500; color: var(--white); font-style: italic; }
+  .obj-table .obj-proof { color: var(--gold); }
+
+  @media (max-width: 700px) {
+    main { padding-left: 20px; padding-right: 20px; }
+    .funnel { grid-template-columns: 1fr; }
+    .metrics { gap: 16px; }
+    .timeline { gap: 0; }
+    .tl-label { font-size: 9px; max-width: 56px; }
+    .obj-table { font-size: 11.5px; }
+    .obj-table th, .obj-table td { padding: 9px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<!-- Site Nav -->
+<nav id="siteNav" role="navigation" aria-label="Site navigation">
+  <div class="snav-brand">SYNCMASTER</div>
+  <div class="snav-divider" aria-hidden="true"></div>
+  <div class="snav-items">
+    <a href="/" class="snav-item" data-page="index">Strategy Deck</a>
+    <a href="/content-pillars.html" class="snav-item" data-page="content-pillars">Content Pillars</a>
+    <a href="/syncmaster-content-calendar.html" class="snav-item" data-page="content-calendar">Content Calendar</a>
+    <a href="/playbooks.html" class="snav-item active" data-page="playbooks">Playbooks</a>
+    <a href="/outreach-system.html" class="snav-item" data-page="outreach-system">Outreach System</a>
+    <span class="snav-item snav-soon">Measurement <span class="snav-badge">SOON</span></span>
+    <span class="snav-item snav-soon">Growth Loops <span class="snav-badge">SOON</span></span>
+  </div>
+</nav>
+
+<!-- Top Bar -->
+<header class="topbar" role="banner">
+  <div class="tb-brand">SYNCMASTER</div>
+  <div class="tb-title">Outreach Playbooks</div>
+  <div class="tb-layer">L2<span>/</span>5</div>
+</header>
+<div class="topbar-haze" aria-hidden="true"></div>
+
+<!-- Bottom Bar -->
+<footer class="bottombar" role="contentinfo">
+  <a href="/" class="back-link"><span class="arrow">←</span> Strategy Deck</a>
+  <div class="read-progress" aria-hidden="true">
+    <div class="read-fill" id="readFill"></div>
+  </div>
+</footer>
+
+<main>
+
+  <!-- ── HERO ──────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-layer">Layer 2 — Outreach System</div>
+    <h1 class="hero-title">Outreach Playbooks</h1>
+    <p class="hero-sub">Five sequences covering the full funnel for both personas — from first cold touch to active placement relationship. Each sequence has a defined trigger, cadence, and outcome. Use the funnel map to find the right sequence for where your contact is right now.</p>
+  </section>
+
+  <!-- Funnel Map -->
+  <div class="funnel" aria-label="Outreach funnel overview">
+    <div class="funnel-track funnel-track--composer">
+      <div class="funnel-track-label">Composer Track — Tunde</div>
+      <div class="funnel-steps">
+        <div class="funnel-step">
+          <a href="#seq-1">
+            <span class="step-dot step-dot--gold"></span>
+            Cold Outreach → Application
+            <span class="step-arrow">↓</span>
+          </a>
+        </div>
+        <div class="funnel-step">
+          <a href="#seq-2">
+            <span class="step-dot step-dot--coral"></span>
+            Accepted → Go-Live (Onboarding)
+            <span class="step-arrow">↓</span>
+          </a>
+        </div>
+        <div class="funnel-step">
+          <a href="#seq-3">
+            <span class="step-dot step-dot--teal"></span>
+            No Reply → Monthly Newsletter
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="funnel-track funnel-track--producer">
+      <div class="funnel-track-label">Producer Track — Amara</div>
+      <div class="funnel-steps">
+        <div class="funnel-step">
+          <a href="#seq-4">
+            <span class="step-dot step-dot--purple"></span>
+            Cold Outreach → Demo Booked
+            <span class="step-arrow">↓</span>
+          </a>
+        </div>
+        <div class="funnel-step">
+          <a href="#seq-5">
+            <span class="step-dot step-dot--mid"></span>
+            Demo Attended → First Brief
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ══ COMPOSER TRACK ══════════════════════════════════ -->
+  <div class="track-header">
+    <div class="track-label track-label--composer">Composer Track</div>
+    <h2 class="track-title">Reaching and onboarding Tunde</h2>
+    <p class="track-desc">African independent composer. Knows streaming. Doesn't know sync infrastructure. Pain: rights complexity, metadata gaps, no access to briefs. Responds to proof and specific numbers.</p>
+  </div>
+
+  <!-- Sequence 1 — Composer Cold Outreach -->
+  <section class="seq seq--gold" id="seq-1">
+    <div class="seq-header">
+      <div class="seq-meta">
+        <span class="seq-num">SEQUENCE 01</span>
+      </div>
+      <h3 class="seq-name">Composer Cold Outreach</h3>
+      <div class="seq-tags">
+        <span class="tag tag--persona">Tunde</span>
+        <span class="tag tag--channel">Email</span>
+        <span class="tag tag--cadence">Day 0 · 3 · 7</span>
+      </div>
+      <div class="trigger-badge">
+        <span class="trigger-icon">Trigger</span>
+        Initial contact — LinkedIn connection, email from scraping, event follow-up
+      </div>
+    </div>
+
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">45%</div><div class="metric-lbl">Open rate target</div></div>
+      <div class="metric"><div class="metric-val">8%</div><div class="metric-lbl">Reply rate target</div></div>
+      <div class="metric"><div class="metric-val">3%</div><div class="metric-lbl">Sequence conversion</div></div>
+    </div>
+
+    <div class="timeline" aria-label="Sequence timeline">
+      <div class="tl-step"><div class="tl-dot"></div><div class="tl-day">DAY 0</div><div class="tl-label">Education — The Opportunity</div></div>
+      <div class="tl-step"><div class="tl-dot"></div><div class="tl-day">DAY 3</div><div class="tl-label">Proof — Real Results</div></div>
+      <div class="tl-step"><div class="tl-dot"></div><div class="tl-day">DAY 7</div><div class="tl-label">Action — Sync-Ready Checklist</div></div>
+    </div>
+
+    <div class="msg-cards">
+
+      <details class="msg-card">
+        <summary>
+          <span class="msg-day">DAY 0</span>
+          <span class="msg-channel ch-email">Email</span>
+          <span class="msg-subject">The Sync Opportunity Most African Composers Miss</span>
+          <span class="msg-chevron">▾</span>
+        </summary>
+        <div class="msg-body">
+          <div class="msg-sublines">
+            <div class="msg-sublines-label">Subject Lines — A/B</div>
+            <div class="msg-sublines-list">
+              <div class="msg-subline">Nobody explained this in music school (but it's worth more)</div>
+              <div class="msg-subline">The sync licensing gap African composers are sitting on</div>
+              <div class="msg-subline">What Netflix scenes actually pay (and how to get there)</div>
+            </div>
+          </div>
+          <div class="msg-copy-block">
+            <div class="msg-copy-label">Body</div>
+            <div class="msg-text" id="s1e1-body">Hey [First Name],
+
+Nobody explained this in music school.
+
+Sync licensing — your music in film, TV, ads, and games — pays at a different scale than streaming.
+
+One Netflix scene: $5,000–$20,000.
+One global ad campaign: $10,000–$75,000.
+Upfront. Not per stream. You also earn performance royalties every time the content airs.
+
+The demand for African music in global productions is real and growing. Here's what actually determines whether a composer gets there:
+
+→ Rights documented — not just owned, but provable
+→ Metadata clean enough for a supervisor to find your track
+→ Stems packaged before a brief arrives
+→ A system that responds to a brief in under 24 hours
+
+Most African composers are producing work that would fit global briefs. What's missing isn't the music — it's the infrastructure.
+
+That's what sync-ready means. And that's what we built.
+
+If you want the full breakdown of how it works, reply and I'll send it over.
+
+[SIGN_OFF]
+SyncMaster</div>
+            <div class="msg-footer">
+              <div class="msg-note">Pillar: Education · Tone: Informative, accessible · Links to IG-EDU-01 carousel content</div>
+              <button class="copy-btn" data-target="s1e1-body">Copy</button>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="msg-card">
+        <summary>
+          <span class="msg-day">DAY 3</span>
+          <span class="msg-channel ch-email">Email</span>
+          <span class="msg-subject">Real Results from Composers Like You</span>
+          <span class="msg-chevron">▾</span>
+        </summary>
+        <div class="msg-body">
+          <div class="msg-sublines">
+            <div class="msg-sublines-label">Subject Lines — A/B</div>
+            <div class="msg-sublines-list">
+              <div class="msg-subline">A Lagos composer just earned more from one Netflix scene than 6 months of streaming</div>
+              <div class="msg-subline">How 9 African composers got placed in Month 2 (no label, no agent)</div>
+              <div class="msg-subline">The proof that sync licensing works for African composers</div>
+            </div>
+          </div>
+          <div class="msg-copy-block">
+            <div class="msg-copy-label">Body</div>
+            <div class="msg-text" id="s1e2-body">Hey [First Name],
+
+A Lagos-based composer just earned more from one placement than from six months of streaming royalties.
+
+This is market rate — not exceptional.
+
+Here's what sync placements actually pay:
+
+TV (major network, 30 seconds): $2,000–$8,000
+Feature film (indie): $5,000–$15,000+
+Global ad campaign: $10,000–$75,000+
+AAA video game: $5,000–$20,000+
+
+These are upfront licensing fees. Not royalties. Not splits. Not "exposure."
+
+You also earn performance royalties every time the content airs — on top of the placement fee.
+
+The market exists. African composers are winning briefs right now.
+
+What's missing is the infrastructure: rights confirmed, metadata clean, stems ready, a system that responds in under 24 hours.
+
+SyncMaster is that infrastructure. If you want to know whether your catalogue is ready, I can run a quick audit. Reply and I'll tell you what needs work.
+
+[SIGN_OFF]
+SyncMaster</div>
+            <div class="msg-footer">
+              <div class="msg-note">Pillar: Proof · Tone: Aspirational, credible · Sends only if no reply to Day 0</div>
+              <button class="copy-btn" data-target="s1e2-body">Copy</button>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="msg-card">
+        <summary>
+          <span class="msg-day">DAY 7</span>
+          <span class="msg-channel ch-email">Email</span>
+          <span class="msg-subject">Your Sync-Ready Checklist</span>
+          <span class="msg-chevron">▾</span>
+        </summary>
+        <div class="msg-body">
+          <div class="msg-sublines">
+            <div class="msg-sublines-label">Subject Lines — A/B</div>
+            <div class="msg-sublines-list">
+              <div class="msg-subline">6 things to fix before your next supervisor pitch</div>
+              <div class="msg-subline">The sync-ready checklist African composers actually need</div>
+              <div class="msg-subline">Are you sync-ready? Here's how to find out in 5 minutes</div>
+            </div>
+          </div>
+          <div class="msg-copy-block">
+            <div class="msg-copy-label">Body</div>
+            <div class="msg-text" id="s1e3-body">Hey [First Name],
+
+Before you pitch to a single music supervisor, run this audit on your own catalogue.
+
+Here are the 6 things every composer needs to fix first.
+
+1/ SAMPLE CLEARANCE
+Are all your samples cleared? If you're not 100% sure → they're not cleared.
+Uncleared samples disqualify a track immediately.
+
+2/ RIGHTS DOCUMENTATION
+Can you prove you own (or control) both master and publishing?
+Documentation = a signed agreement or a clear paper trail.
+"I own it" is not documentation.
+
+3/ FILE FORMAT
+Is every commercial track available as a WAV or AIFF? MP3 is not broadcast spec.
+If your only copy is on SoundCloud, you're not ready.
+
+4/ ISRC CODES
+Does every recording have an ISRC?
+Without it, royalties can't be routed to you.
+Free to get through your distributor or national music body.
+
+5/ STEMS
+Are stems available for every track in your pitch catalogue? Not eventually. Now.
+Supervisors will ask within 24 hours of shortlisting.
+
+6/ RESPONSE SYSTEM
+Can you respond to a brief in under 24 hours?
+Test it before you need it.
+The brief window closes whether you're ready or not.
+
+Fix these six things. Then apply.
+
+[P.S. We're accepting applications now. Reply with "ready" if you'd like us to review your catalogue against this list — I'll send you the link.]</div>
+            <div class="msg-footer">
+              <div class="msg-note">Pillar: Education + Proof · Sends only if no reply to Day 3 · No reply after this → add to monthly newsletter</div>
+              <button class="copy-btn" data-target="s1e3-body">Copy</button>
+            </div>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Sequence 2 — Composer Onboarding -->
+  <section class="seq seq--coral" id="seq-2">
+    <div class="seq-header">
+      <div class="seq-meta">
+        <span class="seq-num">SEQUENCE 02</span>
+      </div>
+      <h3 class="seq-name">Composer Onboarding</h3>
+      <div class="seq-tags">
+        <span class="tag tag--persona">Tunde</span>
+        <span class="tag tag--channel">Email</span>
+        <span class="tag tag--cadence">Day 0 · 2 · 5 · 10</span>
+      </div>
+      <div class="trigger-badge">
+        <span class="trigger-icon">Trigger</span>
+        Application reviewed and accepted — exits to active catalogue on Day 10
+      </div>
+    </div>
+
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">80%</div><div class="metric-lbl">Day 0→2 completion</div></div>
+      <div class="metric"><div class="metric-val">&lt;12d</div><div class="metric-lbl">Target go-live</div></div>
+      <div class="metric"><div class="metric-val">70%</div><div class="metric-lbl">Stem submission by Day 7</div></div>
+    </div>
+
+    <div class="timeline" aria-label="Onboarding timeline">
+      <div class="tl-step"><div class="tl-dot"></div><div class="tl-day">DAY 0</div><div class="tl-label">Welcome + Submit 3 Tracks</div></div>
+      <div class="tl-step"><div class="tl-dot"></div><div class="tl-day">DAY 2</div><div class="tl-label">Metadata & ISRC</div></div>
+      <div class="tl-step"><div class="tl-dot"></div><div class="tl-day">DAY 5</div><div class="tl-label">Stems & Rights Docs</div></div>
+      <div class="tl-step"><div class="tl-dot"></div><div class="tl-day">DAY 10</div><div class="tl-label">You're Live</div></div>
+    </div>
+
+    <div class="msg-cards">
+
+      <details class="msg-card">
+        <summary>
+          <span class="msg-day">DAY 0</span>
+          <span class="msg-channel ch-email">Email</span>
+          <span class="msg-subject">You're in — here's what happens next</span>
+          <span class="msg-chevron">▾</span>
+        </summary>
+        <div class="msg-body">
+          <div class="msg-sublines">
+            <div class="msg-sublines-label">Subject Lines — A/B</div>
+            <div class="msg-sublines-list">
+              <div class="msg-subline">You're in — here's what happens next</div>
+              <div class="msg-subline">Application accepted. 10 days to your first brief.</div>
+              <div class="msg-subline">SyncMaster: your catalogue goes live in 10 days</div>
+            </div>
+          </div>
+          <div class="msg-copy-block">
+            <div class="msg-copy-label">Body</div>
+            <div class="msg-text" id="s2e1-body">Hey [First Name],
+
+Your application has been reviewed. You're in.
+
+Here's what the next 10 days look like:
+
+Day 0–2:   Metadata and ISRC check
+Day 2–5:   File format and stems confirmation
+Day 5–10:  Rights documentation and catalogue activation
+Day 10+:   You're live — briefs start matching to your catalogue
+
+Before we go further — a straight answer to the question most composers ask first:
+
+"How long until I get a brief?"
+
+On average, composers in our system receive their first brief match within 3–5 weeks of going live. Some faster. It depends on catalogue depth, genre fit with active briefs, and how quickly we get through onboarding.
+
+The onboarding window is the part you control.
+
+First step — reply to this email with 3 tracks you want in your initial pitch catalogue. One should represent your strongest commercial work. One should show range. One can be whatever you think supervisors haven't heard from African composers yet.
+
+We'll start the metadata review from there.
+
+Welcome to SyncMaster.</div>
+            <div class="msg-footer">
+              <div class="msg-note">Pillar: Behind the Scenes · First action is low-barrier — reply with 3 tracks · Answers "how long" objection proactively</div>
+              <button class="copy-btn" data-target="s2e1-body">Copy</button>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="msg-card">
+        <summary>
+          <span class="msg-day">DAY 2</span>
+          <span class="msg-channel ch-email">Email</span>
+          <span class="msg-subject">Metadata check — here's what to fix</span>
+          <span class="msg-chevron">▾</span>
+        </summary>
+        <div class="msg-body">
+          <div class="msg-sublines">
+            <div class="msg-sublines-label">Subject Lines — A/B</div>
+            <div class="msg-sublines-list">
+              <div class="msg-subline">Metadata check — here's what we found and what to fix</div>
+              <div class="msg-subline">3 metadata issues that block placements (and how to fix them this week)</div>
+            </div>
+          </div>
+          <div class="msg-copy-block">
+            <div class="msg-copy-label">Body</div>
+            <div class="msg-text" id="s2e2-body">Hey [First Name],
+
+We've looked at your tracks. Here's the honest assessment.
+
+Metadata is the part most composers skip. It's also what determines whether a supervisor ever finds your music — and whether royalties reach you when they do.
+
+The 4 fields that matter most for sync placements:
+
+1/ TITLE & COMPOSER CREDITS
+Exactly as they appear on your publishing registration.
+Even one character difference creates a rights dispute.
+Check it against your PRO registration now.
+
+2/ ISRC CODES
+Every commercial recording needs one.
+Your distributor issues them for free — DistroKid, TuneCore, CD Baby all do this automatically.
+If you're self-distributing, your national music body can assign them.
+
+3/ BPM, KEY, MOOD TAGS
+Supervisors search by feel before they search by genre.
+"Hopeful, organic, 90 BPM" gets a brief match.
+"Afrobeats" alone does not.
+Add at least 3 mood tags and 2 instrumentation tags per track.
+
+4/ DURATION
+Every track needs a full-length version and a 30-second edit.
+Most briefs specify duration. One version = half the briefs automatically.
+
+Reply with your current metadata spreadsheet (or we'll send you our template).
+We'll flag any gaps and help you fix them before the file submission step.
+
+The ISRC and credits check is the one thing that can delay your go-live — so let's confirm it this week.</div>
+            <div class="msg-footer">
+              <div class="msg-note">Pillar: Education · Sends after track submission or 48h timer · Addresses "I don't have time to fix metadata" objection</div>
+              <button class="copy-btn" data-target="s2e2-body">Copy</button>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="msg-card">
+        <summary>
+          <span class="msg-day">DAY 5</span>
+          <span class="msg-channel ch-email">Email</span>
+          <span class="msg-subject">One step from live — stems and rights confirmation</span>
+          <span class="msg-chevron">▾</span>
+        </summary>
+        <div class="msg-body">
+          <div class="msg-sublines">
+            <div class="msg-sublines-label">Subject Lines — A/B</div>
+            <div class="msg-sublines-list">
+              <div class="msg-subline">Stems and rights — the two things every supervisor checks first</div>
+              <div class="msg-subline">One step from live — stems and rights confirmation</div>
+            </div>
+          </div>
+          <div class="msg-copy-block">
+            <div class="msg-copy-label">Body</div>
+            <div class="msg-text" id="s2e3-body">Hey [First Name],
+
+Two things left before you're live. Both are things supervisors check in the first 10 minutes of reviewing a submission.
+
+─────────────────────
+STEMS
+─────────────────────
+
+What we need per track:
+→ Full mix (WAV, 24-bit, 44.1kHz minimum)
+→ Instrumental (no vocals)
+→ Stems: at minimum — drums, bass, melodic elements, full without drums
+
+A brief comes in on Monday. We shortlist your track Tuesday. Supervisor wants stems by Wednesday for picture lock Thursday. If you don't have stems ready, your track is replaced — regardless of how good it is. We've lost placements to this exact scenario.
+
+─────────────────────
+RIGHTS DOCUMENTATION
+─────────────────────
+
+What we need confirmed:
+→ You own (or fully control) both master recording and publishing rights
+→ No uncleared samples in the pitch catalogue
+→ Co-writers: written agreement assigning sync licensing rights to you
+
+"I own it" is not documentation — a supervisor's legal team needs a paper trail.
+
+If anything is unclear: flag it now. We'd rather delay your go-live by a week than have a rights issue surface mid-negotiation. Supervisors who hit a rights problem with a source don't come back.
+
+Reply with your stems upload link and rights confirmation. We'll do a final check and confirm your go-live date.</div>
+            <div class="msg-footer">
+              <div class="msg-note">Pillar: Education + BTS · Do NOT auto-send Day 10 if rights issue found — pause and resolve manually first</div>
+              <button class="copy-btn" data-target="s2e3-body">Copy</button>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="msg-card">
+        <summary>
+          <span class="msg-day">DAY 10</span>
+          <span class="msg-channel ch-email">Email</span>
+          <span class="msg-subject">You're live — here's how brief matching works</span>
+          <span class="msg-chevron">▾</span>
+        </summary>
+        <div class="msg-body">
+          <div class="msg-sublines">
+            <div class="msg-sublines-label">Subject Lines — A/B</div>
+            <div class="msg-sublines-list">
+              <div class="msg-subline">You're live — here's how brief matching works</div>
+              <div class="msg-subline">Catalogue active. First match could come this week.</div>
+            </div>
+          </div>
+          <div class="msg-copy-block">
+            <div class="msg-copy-label">Body</div>
+            <div class="msg-text" id="s2e4-body">Hey [First Name],
+
+You're live.
+
+Your catalogue is active in our brief-matching system as of today.
+
+Here's exactly what happens when a brief comes in:
+
+Monday 9am: Brief arrives.
+Monday 9–11am: Catalogue search, 5 tracks shortlisted.
+Monday 11am: You receive a WhatsApp message: "Brief available. Can you confirm track [X] is available for one-stop licensing?" Response window: 4 hours.
+
+This is the moment where composers stay in the brief or fall out. A 4-hour window is not a suggestion. Supervisors move to the next option without explanation.
+
+Tuesday: Rights confirmation requested. 3-hour turnaround. Documents sent.
+Wednesday: Placement confirmed or track not selected. Either way, you get a full debrief.
+
+Total: 31 hours from brief to delivery. Rights work: 5 hours.
+
+What to expect in the next 30 days:
+→ First brief match: typically 3–5 weeks from go-live
+→ Every composer in Month 2 who completed this onboarding received at least one brief match within 6 weeks
+
+Keep your stems folder ready. Keep phone notifications on. If your catalogue grows, send us new tracks — you're not limited to the 3 from onboarding.
+
+Good to have you in.</div>
+            <div class="msg-footer">
+              <div class="msg-note">Pillar: Proof + BTS · Only send when go-live is confirmed — not on a timer if onboarding is incomplete · Mirrors IG-M2-BTS-02 brief-response breakdown</div>
+              <button class="copy-btn" data-target="s2e4-body">Copy</button>
+            </div>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Sequence 3 — Monthly Newsletter -->
+  <section class="seq seq--teal" id="seq-3">
+    <div class="seq-header">
+      <div class="seq-meta">
+        <span class="seq-num">SEQUENCE 03</span>
+      </div>
+      <h3 class="seq-name">Monthly Newsletter</h3>
+      <div class="seq-tags">
+        <span class="tag tag--persona">Tunde — Cold/Warm List</span>
+        <span class="tag tag--channel">Email</span>
+        <span class="tag tag--cadence">Monthly · 1st of month</span>
+      </div>
+      <div class="trigger-badge">
+        <span class="trigger-icon">Trigger</span>
+        No application after cold sequence Email 3 — ongoing until application or unsubscribe
+      </div>
+    </div>
+
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">42%</div><div class="metric-lbl">Open rate target (A)</div></div>
+      <div class="metric"><div class="metric-val">8%</div><div class="metric-lbl">Click rate target</div></div>
+      <div class="metric"><div class="metric-val">4%</div><div class="metric-lbl">Application conversion</div></div>
+    </div>
+
+    <div class="timeline" aria-label="Newsletter cadence">
+      <div class="tl-step"><div class="tl-dot"></div><div class="tl-day">MONTH 1+</div><div class="tl-label">Version A — Standard</div></div>
+      <div class="tl-step"><div class="tl-dot"></div><div class="tl-day">MONTH 3+</div><div class="tl-label">Version B1 — Re-engage</div></div>
+      <div class="tl-step"><div class="tl-dot"></div><div class="tl-day">+30 DAYS</div><div class="tl-label">Version B2 — Last Touch</div></div>
+    </div>
+
+    <div class="msg-cards">
+
+      <details class="msg-card">
+        <summary>
+          <span class="msg-day">V.A</span>
+          <span class="msg-channel ch-email">Email</span>
+          <span class="msg-subject">[MONTH]: [ONE_LINE_PROOF_HOOK]</span>
+          <span class="msg-chevron">▾</span>
+        </summary>
+        <div class="msg-body">
+          <div class="msg-sublines">
+            <div class="msg-sublines-label">Subject Line Examples</div>
+            <div class="msg-sublines-list">
+              <div class="msg-subline">Jul: 2 placements confirmed</div>
+              <div class="msg-subline">Aug: fastest placement yet — 11 hours</div>
+              <div class="msg-subline">Sep: 3 new markets, 1 brief waiting</div>
+            </div>
+          </div>
+          <div class="msg-copy-block">
+            <div class="msg-copy-label">Template — fill tokens before sending</div>
+            <div class="msg-text" id="s3e1-body">[MONTH] update.
+
+[PLACEMENT_STORY — 100 words max]
+[COMPOSER_FIRST_NAME] had [CATALOGUE_STATE_BEFORE]. He went through onboarding in [DAYS] days. [WEEKS] weeks later, his track was shortlisted for [BRIEF_DESCRIPTION]. It placed. [PLACEMENT_FEE_RANGE or "Upfront fee, plus performance royalties every time the content airs."]
+
+What he fixed before he was eligible:
+· [ISRC/metadata/stems fix 1]
+· [Rights documentation fix]
+· [Response system setup]
+
+This month's tip:
+[EDUCATION_TIP — one actionable step, under 30 minutes to implement. Drawn from that month's Education pillar posts in the copy bank.]
+
+Applications for [NEXT_MONTH] are open.
+→ [APPLICATION_LINK]
+
+SyncMaster
+
+---
+You're getting this because you asked about sync licensing.
+Unsubscribe · Update preferences</div>
+            <div class="msg-footer">
+              <div class="msg-note">Content source: pull proof story + education tip directly from copy-bank-m2/m3 posts — no fresh copy needed. Monthly prep: under 30 min.</div>
+              <button class="copy-btn" data-target="s3e1-body">Copy Template</button>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="msg-card">
+        <summary>
+          <span class="msg-day">V.B1</span>
+          <span class="msg-channel ch-email">Email</span>
+          <span class="msg-subject">still interested in sync?</span>
+          <span class="msg-chevron">▾</span>
+        </summary>
+        <div class="msg-body">
+          <div class="msg-copy-block">
+            <div class="msg-copy-label">Re-engagement — 90+ days, no open/click in 60 days</div>
+            <div class="msg-text" id="s3e2-body">You signed up a few months ago. We haven't heard from you since.
+
+That's fine — timing matters in this. But we want to make sure we're sending you something worth opening.
+
+Here's what's happened since you signed up:
+
+→ [N] composers vetted and active in the catalogue
+→ [N] placements confirmed across Months [X]–[Y]
+→ Fastest brief-to-delivery: [N] hours
+→ [N] music supervisors reached out via content alone
+
+If sync is still on your radar: applications for [NEXT_MONTH] are open.
+→ [APPLICATION_LINK]
+
+If the timing isn't right, no problem — unsubscribe below and we'll remove you cleanly. No hard feelings, no follow-up.
+
+SyncMaster
+
+---
+Unsubscribe · Update preferences</div>
+            <div class="msg-footer">
+              <div class="msg-note">Replaces the standard monthly for this segment. Send once — if no response send B2 in 30 days.</div>
+              <button class="copy-btn" data-target="s3e2-body">Copy</button>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="msg-card">
+        <summary>
+          <span class="msg-day">V.B2</span>
+          <span class="msg-channel ch-email">Email</span>
+          <span class="msg-subject">last one from us</span>
+          <span class="msg-chevron">▾</span>
+        </summary>
+        <div class="msg-body">
+          <div class="msg-copy-block">
+            <div class="msg-copy-label">Last touch — 30 days after B1, no open/click</div>
+            <div class="msg-text" id="s3e3-body">This is the last email we'll send unless you want to stay on the list.
+
+If sync licensing is still something you're working toward:
+→ [APPLICATION_LINK]
+
+If not, unsubscribe below. We'll remove you immediately.
+
+SyncMaster
+
+---
+Unsubscribe · Update preferences</div>
+            <div class="msg-footer">
+              <div class="msg-note">After B2 with no action: suppress from automated sends. Tag "dormant — manual only." Re-activate only if they engage with organic content.</div>
+              <button class="copy-btn" data-target="s3e3-body">Copy</button>
+            </div>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ══ PRODUCER TRACK ════════════════════════════════════ -->
+  <div class="track-header">
+    <div class="track-label track-label--producer">Producer Track</div>
+    <h2 class="track-title">Reaching and converting Amara</h2>
+    <p class="track-desc">Music supervisor / creative producer. Actively looking for African music but frustrated by clearance complexity. Pain: rights admin takes 40% of workflow. Responds to efficiency, speed, rights certainty.</p>
+  </div>
+
+  <!-- Sequence 4 — Producer Cold Outreach -->
+  <section class="seq seq--purple" id="seq-4">
+    <div class="seq-header">
+      <div class="seq-meta">
+        <span class="seq-num">SEQUENCE 04</span>
+      </div>
+      <h3 class="seq-name">Producer Cold Outreach</h3>
+      <div class="seq-tags">
+        <span class="tag tag--persona">Amara</span>
+        <span class="tag tag--channel">LinkedIn</span>
+        <span class="tag tag--cadence">Day 0 · 3 · 7</span>
+      </div>
+      <div class="trigger-badge">
+        <span class="trigger-icon">Trigger</span>
+        LinkedIn connection request accepted — from search, event, content engagement, or referral
+      </div>
+    </div>
+
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">35%</div><div class="metric-lbl">Connection accept rate</div></div>
+      <div class="metric"><div class="metric-val">25%</div><div class="metric-lbl">Message 1 reply rate</div></div>
+      <div class="metric"><div class="metric-val">8%</div><div class="metric-lbl">Demo booked rate</div></div>
+    </div>
+
+    <div class="timeline" aria-label="Sequence timeline">
+      <div class="tl-step"><div class="tl-dot"></div><div class="tl-day">DAY 0</div><div class="tl-label">Industry — Workflow Pain</div></div>
+      <div class="tl-step"><div class="tl-dot"></div><div class="tl-day">DAY 3</div><div class="tl-label">Proof — Month 2 Metrics</div></div>
+      <div class="tl-step"><div class="tl-dot"></div><div class="tl-day">DAY 7</div><div class="tl-label">BTS — Brief Walkthrough</div></div>
+    </div>
+
+    <div class="msg-cards">
+
+      <details class="msg-card">
+        <summary>
+          <span class="msg-day">DAY 0</span>
+          <span class="msg-channel ch-linkedin">LinkedIn</span>
+          <span class="msg-subject">The Sync Problem You're Actually Trying to Solve</span>
+          <span class="msg-chevron">▾</span>
+        </summary>
+        <div class="msg-body">
+          <div class="msg-copy-block">
+            <div class="msg-copy-label">Message</div>
+            <div class="msg-text" id="s4e1-body">Hi [First Name],
+
+Came across your work on [specific project/show/brand] — wanted to reach out.
+
+Quick question: when you're briefing for African music, what's the biggest frustration you hit?
+
+For most supervisors I talk to, it's not finding the music — it's the 40% of workflow time spent on rights administration instead of creative selection.
+
+We built SyncMaster to flip that: less time on clearance, more time on creative selection.
+
+Worth 15 minutes to see how it works in practice?</div>
+            <div class="msg-footer">
+              <div class="msg-note">Personalise opener with a specific project. Lead with their workflow pain, not your product. One low-friction ask.</div>
+              <button class="copy-btn" data-target="s4e1-body">Copy</button>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="msg-card">
+        <summary>
+          <span class="msg-day">DAY 3</span>
+          <span class="msg-channel ch-linkedin">LinkedIn</span>
+          <span class="msg-subject">What Supervisors Are Actually Seeing</span>
+          <span class="msg-chevron">▾</span>
+        </summary>
+        <div class="msg-body">
+          <div class="msg-copy-block">
+            <div class="msg-copy-label">Message — sends if no reply to Day 0</div>
+            <div class="msg-text" id="s4e2-body">Hi [First Name],
+
+A few numbers from this month that are relevant to what I mentioned:
+
+Brief-to-delivery: 31 hours (down from 42)
+Rights confirmation: 5 hours (down from 9)
+Rights issues in placements: 0
+
+One supervisor's note after their first brief: "We returned 5 curated options in 31 hours. The producer has never moved this fast."
+
+The difference isn't the music — it's having the rights work done before the brief arrives.
+
+If you're solving briefs where African music could fit, I can show you what we'd send back.</div>
+            <div class="msg-footer">
+              <div class="msg-note">Pillar: Proof · Pulls Month 2 metrics · Soft CTA for demo — not a hard close</div>
+              <button class="copy-btn" data-target="s4e2-body">Copy</button>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="msg-card">
+        <summary>
+          <span class="msg-day">DAY 7</span>
+          <span class="msg-channel ch-linkedin">LinkedIn</span>
+          <span class="msg-subject">How We Match Your Brief in 24 Hours</span>
+          <span class="msg-chevron">▾</span>
+        </summary>
+        <div class="msg-body">
+          <div class="msg-copy-block">
+            <div class="msg-copy-label">Message — sends if no reply to Day 3</div>
+            <div class="msg-text" id="s4e3-body">Hi [First Name],
+
+Curious how we actually work with supervisors like you? Here's our brief-to-placement window:
+
+Monday 9am: Brief arrives — "45-sec open. Global NGO campaign. Hopeful, organic, African. One-stop. Delivery: 48 hours."
+Monday 9–11am: Catalogue search, 5 tracks shortlisted with stems.
+Monday 11am–2pm: Tracks delivered with rights confirmation docs.
+Tuesday: Supervisor responds — one track shortlisted for picture review.
+Tuesday 2–5pm: Rights confirmation requested, 3-hour turnaround, documents sent.
+Wednesday: Placement confirmed. Licence terms in negotiation.
+
+Total: 31 hours from brief to delivery. Rights work: 5 hours. Creative selection time: 26 hours.
+
+We operate in 24 hours because every composer is vetted, every track tagged, every stem ready, every rights document filed.
+
+If you have a brief coming up where African music could work, I'd love to run it through our system and show you what we'd send back.</div>
+            <div class="msg-footer">
+              <div class="msg-note">Pillar: BTS · Mirrors IG-M2-BTS-02 content · No reply after this → quarterly manual re-engagement via proof posts</div>
+              <button class="copy-btn" data-target="s4e3-body">Copy</button>
+            </div>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Sequence 5 — Producer Post-Demo -->
+  <section class="seq seq--mid" id="seq-5">
+    <div class="seq-header">
+      <div class="seq-meta">
+        <span class="seq-num">SEQUENCE 05</span>
+      </div>
+      <h3 class="seq-name">Producer Post-Demo</h3>
+      <div class="seq-tags">
+        <span class="tag tag--persona">Amara</span>
+        <span class="tag tag--channel">LinkedIn + Email</span>
+        <span class="tag tag--cadence">Day 1 · 5</span>
+      </div>
+      <div class="trigger-badge">
+        <span class="trigger-icon">Trigger</span>
+        Demo attended — Amara booked and showed up to the 15-minute walkthrough
+      </div>
+    </div>
+
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">35%</div><div class="metric-lbl">Touch 1 reply rate</div></div>
+      <div class="metric"><div class="metric-val">15%</div><div class="metric-lbl">Brief received rate</div></div>
+      <div class="metric"><div class="metric-val">25%</div><div class="metric-lbl">Demo → active supervisor (30d)</div></div>
+    </div>
+
+    <div class="timeline" aria-label="Post-demo timeline">
+      <div class="tl-step"><div class="tl-dot"></div><div class="tl-day">DAY 1</div><div class="tl-label">LinkedIn — Demo Recap</div></div>
+      <div class="tl-step"><div class="tl-dot"></div><div class="tl-day">DAY 5</div><div class="tl-label">Email — First Brief Invitation</div></div>
+    </div>
+
+    <div class="msg-cards">
+
+      <details class="msg-card">
+        <summary>
+          <span class="msg-day">DAY 1</span>
+          <span class="msg-channel ch-linkedin">LinkedIn</span>
+          <span class="msg-subject">The part that usually surprises people</span>
+          <span class="msg-chevron">▾</span>
+        </summary>
+        <div class="msg-body">
+          <div class="msg-copy-block">
+            <div class="msg-copy-label">Message — within 24h of demo</div>
+            <div class="msg-text" id="s5e1-body">Hi [First Name],
+
+Good to walk you through it today.
+
+The part most supervisors find surprising isn't the turnaround — it's the rights step. 5 hours to confirm rights on a shortlisted track sounds fast until you've watched it happen. Every composer enters the catalogue with documentation already filed. The brief doesn't trigger the rights work. It was done in advance.
+
+The question I usually get at this point: "What if none of your catalogue fits my brief?"
+
+Honest answer: sometimes it won't. We have depth in Afrofusion, cinematic, contemporary orchestral, and organic acoustic — thinner in electronic and hip-hop. If you tell me the brief type, I'll tell you before you send it whether we're the right call.
+
+Do you have something coming up where African music could work?</div>
+            <div class="msg-footer">
+              <div class="msg-note">Opens on what SHE experienced, not "great meeting." Proactively names catalogue gaps — builds trust. One-word reply possible: "Yes, actually."</div>
+              <button class="copy-btn" data-target="s5e1-body">Copy</button>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="msg-card">
+        <summary>
+          <span class="msg-day">DAY 5</span>
+          <span class="msg-channel ch-email">Email</span>
+          <span class="msg-subject">a brief from this week</span>
+          <span class="msg-chevron">▾</span>
+        </summary>
+        <div class="msg-body">
+          <div class="msg-sublines">
+            <div class="msg-sublines-label">Subject Lines — A/B</div>
+            <div class="msg-sublines-list">
+              <div class="msg-subline">a brief from this week</div>
+              <div class="msg-subline">31 hours, start to finish</div>
+              <div class="msg-subline">what we sent back</div>
+            </div>
+          </div>
+          <div class="msg-copy-block">
+            <div class="msg-copy-label">Body — sends if no reply to Day 1</div>
+            <div class="msg-text" id="s5e2-body">Hi [First Name],
+
+More context on how the process works — useful after what you saw today.
+
+Brief came in Monday morning: 45-second open. Global NGO campaign. Hopeful, organic, contemporary African. One-stop. Delivery window: 48 hours.
+
+Monday 11am: 5 tracks delivered to the supervisor. Rights confirmation docs included.
+Tuesday: one track shortlisted for picture lock review.
+Tuesday afternoon: rights confirmation requested. 3-hour turnaround.
+Wednesday: placement confirmed.
+
+31 hours from brief to delivery. 5 hours of that was rights work. The other 26 was creative selection — which is where the supervisor's time should go.
+
+The brief didn't need to be African-specific. It asked for "contemporary" and "organic." African music was the answer because it was the best fit — not because the category was predetermined.
+
+If you have a brief where that kind of fit is possible, I'd like to show you what we'd send back. Reply with the brief details — even rough ones — and I'll put together a sample response so you can see the format before committing to anything.</div>
+            <div class="msg-footer">
+              <div class="msg-note">Different angle from Day 1 — stands alone if she didn't read it. "Even rough ones" removes the friction of needing a fully formed brief. No reply after this → quarterly manual re-engagement.</div>
+              <button class="copy-btn" data-target="s5e2-body">Copy</button>
+            </div>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ── OBJECTION QUICK REFERENCE ───────────────────────── -->
+  <section id="objections">
+    <div class="hero-layer" style="margin-bottom:12px;">Quick Reference</div>
+    <h2 class="hero-title" style="font-size:clamp(24px,3vw,36px);margin-bottom:8px;">Objection Handling</h2>
+    <p class="hero-sub" style="margin-bottom:40px;">Top objections for each persona with response framework. Use during outreach and demo conversations.</p>
+
+    <div class="obj-section">
+      <div class="obj-title">Composer Objections — Tunde</div>
+      <p class="obj-sub">Validate → Reframe → Proof → Question → Low-commitment next step</p>
+      <table class="obj-table">
+        <thead><tr><th>Objection</th><th>Why they say it</th><th>Proof point</th><th>Follow-up question</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="obj-q">"I don't understand rights — it's too complicated"</td>
+            <td>Fear of making mistakes that block placements</td>
+            <td class="obj-proof">"We've helped 9 composers clear rights in Month 2 — none had prior sync experience"</td>
+            <td>"What part of rights feels most confusing — ownership, samples, or publishing?"</td>
+          </tr>
+          <tr>
+            <td class="obj-q">"I don't have time to fix my metadata/stems"</td>
+            <td>Perceived as admin that takes away from creating</td>
+            <td class="obj-proof">"Composers who complete metadata/stems see 3× more brief matches"</td>
+            <td>"If fixing your metadata led to a $10,000 placement, how much time would that be worth?"</td>
+          </tr>
+          <tr>
+            <td class="obj-q">"Why should I trust you with my music?"</td>
+            <td>Fear of exploitation or losing rights</td>
+            <td class="obj-proof">"All 9 vetted composers in Month 2 retained 100% of their rights and masters"</td>
+            <td>"What would need to happen for you to feel confident sharing your music with us?"</td>
+          </tr>
+          <tr>
+            <td class="obj-q">"Is there really money in this for African composers?"</td>
+            <td>Scepticism based on historical exclusion from sync market</td>
+            <td class="obj-proof">"Lagos composer earned more from one Netflix scene than 6 months of streaming"</td>
+            <td>"Have you ever received a placement offer but didn't know how to respond?"</td>
+          </tr>
+          <tr>
+            <td class="obj-q">"I tried before and got nowhere"</td>
+            <td>Past frustration with lack of responses</td>
+            <td class="obj-proof">"Average brief-to-delivery is 31 hours in Month 2 — was 42 in Month 1"</td>
+            <td>"What happened the last time you submitted music for a sync opportunity?"</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="obj-section">
+      <div class="obj-title">Producer Objections — Amara</div>
+      <p class="obj-sub">Same framework. Efficiency, rights certainty, and quality are the three levers.</p>
+      <table class="obj-table">
+        <thead><tr><th>Objection</th><th>Why they say it</th><th>Proof point</th><th>Follow-up question</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="obj-q">"I don't have time to vet new sources"</td>
+            <td>Overwhelmed with submissions, wary of additional workflow</td>
+            <td class="obj-proof">"Supervisors using SyncMaster spend 5 hours on rights confirmation (was 9)"</td>
+            <td>"How much time do you currently spend clearing rights per brief?"</td>
+          </tr>
+          <tr>
+            <td class="obj-q">"How do I know the rights are clean?"</td>
+            <td>Fear of legal issues or production delays</td>
+            <td class="obj-proof">"Zero rights issues in Month 2 placements — documentation provided upfront"</td>
+            <td>"What would need to happen for you to trust a new source's rights claims?"</td>
+          </tr>
+          <tr>
+            <td class="obj-q">"What if the composer disappears after I pick a track?"</td>
+            <td>Risk of production delays if composer becomes unresponsive</td>
+            <td class="obj-proof">"Average composer response time is under 24 hours in our system"</td>
+            <td>"What's the longest you've waited for a composer to respond after shortlisting?"</td>
+          </tr>
+          <tr>
+            <td class="obj-q">"Is the quality actually there for my brief?"</td>
+            <td>Concern that "African music" means limited genres or quality</td>
+            <td class="obj-proof">"We've matched briefs for orchestral Afrofusion, hopeful organic, and cinematic tense"</td>
+            <td>"What specific qualities are you looking for in your current brief?"</td>
+          </tr>
+          <tr>
+            <td class="obj-q">"I already have go-to sources — why switch?"</td>
+            <td>Satisfaction with existing workflow, resistance to change</td>
+            <td class="obj-proof">"Supervisors in 3 new markets reached out via content in Month 2 — not outbound"</td>
+            <td>"What's one brief type or music style that's hard to find in your current sources?"</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <p style="font-size:12px;color:var(--muted);margin-top:8px;">SyncMaster Outreach Playbooks v1.0 — Layer 2 of 5 &nbsp;·&nbsp; Next: Measurement →</p>
+
+</main>
+
+<script>
+/* Site nav active page */
+(() => {
+  const path = location.pathname.replace(/\/$/, '') || '/';
+  document.querySelectorAll('#siteNav a.snav-item').forEach(a => {
+    if (a.dataset.page === 'playbooks') { a.classList.add('active'); return; }
+    a.classList.remove('active');
+    const href = a.getAttribute('href').replace(/\/$/, '') || '/';
+    if (path === href) a.classList.add('active');
+  });
+})();
+
+/* Read progress */
+(() => {
+  const fill = document.getElementById('readFill');
+  if (!fill) return;
+  function update() {
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    fill.style.width = (docH > 0 ? (window.scrollY / docH) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
+/* Copy buttons */
+document.querySelectorAll('.copy-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = document.getElementById(btn.dataset.target);
+    if (!target) return;
+    navigator.clipboard.writeText(target.textContent.trim()).then(() => {
+      btn.textContent = 'Copied';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    });
+  });
+});
+</script>
+</body>
+</html>
