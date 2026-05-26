@@ -1,0 +1,35 @@
+<!doctype html>
+<html class="dark">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin:0; padding:0; background: var(--background); color: var(--foreground); }
+  body { padding: 24px; box-sizing: border-box; font-family: var(--font-sans); }
+  .row { display:flex; align-items:center; gap:16px; }
+  .col { display:flex; flex-direction:column; gap:6px; }
+  .role { font-family: var(--font-mono); font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color: var(--muted-foreground); }
+  .mono-meta { font-family: var(--font-mono); font-size:11px; color: var(--muted-foreground); }
+</style>
+</head><body>
+
+<div class="role" style="margin-bottom:14px">BUTTONS — ROUNDED-FULL · DM SANS · WEIGHT 500</div>
+<div style="display:flex; flex-direction:column; gap:14px;">
+  <div style="display:flex; gap:12px; align-items:center;">
+    <button style="all:unset; cursor:pointer; height:36px; padding:0 18px; border-radius:9999px; background:#fff; color:#000; font-weight:500; font-size:14px;">Primary on dark</button>
+    <button style="all:unset; cursor:pointer; height:36px; padding:0 18px; border-radius:9999px; background:#4b4bc0; color:#fff; font-weight:500; font-size:14px;">Primary on light</button>
+    <button style="all:unset; cursor:pointer; height:36px; padding:0 18px; border-radius:9999px; background:transparent; color:var(--foreground); border:1px solid var(--input); font-weight:500; font-size:14px;">Outline</button>
+  </div>
+  <div style="display:flex; gap:12px; align-items:center;">
+    <button style="all:unset; cursor:pointer; height:36px; padding:0 18px; border-radius:9999px; background:var(--secondary); color:var(--secondary-foreground); font-weight:500; font-size:14px;">Secondary</button>
+    <button style="all:unset; cursor:pointer; height:36px; padding:0 18px; border-radius:9999px; color:var(--foreground); font-weight:500; font-size:14px;">Ghost</button>
+    <button style="all:unset; cursor:pointer; height:36px; padding:0 18px; border-radius:9999px; background:rgba(239,68,68,.12); color:#ef4444; font-weight:500; font-size:14px;">Destructive</button>
+  </div>
+  <div style="display:flex; gap:10px; align-items:center;">
+    <button style="all:unset; cursor:pointer; height:24px; padding:0 12px; border-radius:9999px; background:#fff; color:#000; font-weight:500; font-size:12px;">xs</button>
+    <button style="all:unset; cursor:pointer; height:28px; padding:0 14px; border-radius:9999px; background:#fff; color:#000; font-weight:500; font-size:13px;">sm</button>
+    <button style="all:unset; cursor:pointer; height:32px; padding:0 16px; border-radius:9999px; background:#fff; color:#000; font-weight:500; font-size:14px;">default</button>
+    <button style="all:unset; cursor:pointer; height:36px; padding:0 20px; border-radius:9999px; background:#fff; color:#000; font-weight:500; font-size:14px;">lg</button>
+  </div>
+</div>
+</body></html>

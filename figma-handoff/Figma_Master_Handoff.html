@@ -1,0 +1,471 @@
+<!-- Figma-Ready: SyncMaster Figma Handoff Portal. Use html.to.design to import assets. -->
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <title>SyncMaster — Figma Handoff Portal</title>
+  <meta name="viewport" content="width=1440">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap");
+/* ============================================================
+   SYNCMASTER — colors & type tokens
+   ----------------------------------------------------------------
+   Mirror of the production Phase E2 design system. Dark mode is the
+   editorial default; light mode is also supplied. Apply `.dark`
+   on <html> or <body> to opt into dark mode.
+   ============================================================ */
+
+/* DM Sans (300, 400, 500, 700, 900) + Geist Mono (400, 500, 600) */
+
+
+:root {
+  /* ──────────── Brand primitives ──────────── */
+  --sm-purple:        #4b4bc0;   /* Primary brand */
+  --sm-purple-700:    #3a3a99;
+  --sm-purple-200:    #d2d2ed;
+  --sm-acid:          oklch(0.88 0.18 120); /* Active-badge highlight */
+  --sm-ink:           #0f0f1a;   /* Dark canvas */
+  --sm-ink-raised:    #16162a;   /* Card on dark */
+  --sm-paper:         #ffffff;
+  --sm-fg-dark:       #f9f9f9;
+  --sm-fg-light:      #111111;
+
+  /* ──────────── Semantic — light mode (default) ──────────── */
+  --background:           #ffffff;
+  --foreground:           #111111;
+  --card:                 #ffffff;
+  --card-foreground:      #111111;
+  --popover:              #ffffff;
+  --popover-foreground:   #111111;
+  --primary:              #4b4bc0;
+  --primary-foreground:   #ffffff;
+  --secondary:            #f5f5f5;
+  --secondary-foreground: #4b4bc0;
+  --muted:                #f5f5f5;
+  --muted-foreground:     #666666;
+  --accent:               #f5f5f5;
+  --accent-foreground:    #4b4bc0;
+  --destructive:          #ef4444;
+  --border:               #e5e5e5;
+  --input:                #e5e5e5;
+  --ring:                 #4b4bc0;
+
+  /* Status primitives — non-themed */
+  --status-green:  #22c55e;
+  --status-amber:  #f59e0b;
+  --status-blue:   #3b82f6;
+  --status-red:    #ef4444;
+
+  /* Sidebar — light mode shows purple navigation rail */
+  --sidebar:                       #4b4bc0;
+  --sidebar-foreground:            #ffffff;
+  --sidebar-primary:               #ffffff;
+  --sidebar-primary-foreground:    #4b4bc0;
+  --sidebar-accent:                rgba(255,255,255,0.10);
+  --sidebar-accent-foreground:     #ffffff;
+  --sidebar-border:                rgba(255,255,255,0.10);
+
+  /* ──────────── Radii (base 6px / 0.375rem) ──────────── */
+  --radius:        0.375rem;        /* 6px — base */
+  --radius-xs:     2px;
+  --radius-sm:     4px;
+  --radius-base:   6px;
+  --radius-md:     8px;
+  --radius-lg:     12px;
+  --radius-xl:     16px;
+  --radius-2xl:    20px;
+  --radius-3xl:    32px;            /* Used for dashboard hero / tool cards */
+  --radius-pill:   9999px;
+
+  /* ──────────── Spacing (4px unit) ──────────── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* ──────────── Elevation ──────────── */
+  --shadow-xs:        0 1px 2px rgba(0,0,0,0.20);
+  --shadow-sm:        0 2px 4px rgba(0,0,0,0.10);
+  --shadow-elev-1:    0 2px 8px  rgba(0,0,0,0.30);
+  --shadow-elev-2:    0 8px 24px rgba(0,0,0,0.40);
+  --shadow-elev-3:    0 12px 32px rgba(0,0,0,0.60);
+  --shadow-acid-glow: 0 0 20px rgba(217,249,157,0.30);
+  --shadow-primary-glow: 0 20px 40px -8px rgba(75,75,192,0.20);
+
+  /* ──────────── Typography — families ──────────── */
+  --font-sans:    "DM Sans", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "DM Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono:    "Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* ──────────── Typography — type scale ──────────── */
+  --fz-2xs: 10px;   /* labels, micro-metadata */
+  --fz-xs:  12px;
+  --fz-sm:  13px;
+  --fz-base:14px;   /* product body */
+  --fz-lg:  16px;
+  --fz-xl:  18px;
+  --fz-2xl: 20px;
+  --fz-3xl: 24px;
+  --fz-4xl: 28px;
+  --fz-5xl: 36px;
+  --fz-6xl: 48px;
+  --fz-7xl: 64px;
+  --fz-display: 96px;
+
+  --lh-tight:  1.1;
+  --lh-snug:   1.2;
+  --lh-normal: 1.45;
+  --lh-relaxed:1.6;
+
+  /* SyncMaster signature tracking: headings use -0.068em */
+  --tracking-sync:     -0.068em;
+  --tracking-display:  -0.04em;
+  --tracking-tight:    -0.02em;
+  --tracking-label:    0.25em;   /* mono micro-labels */
+}
+
+/* ──────────────────────────────────────────────
+   DARK MODE — the editorial default
+   ────────────────────────────────────────────── */
+.dark, [data-theme="dark"] {
+  --background:           #0f0f1a;
+  --foreground:           #f9f9f9;
+  --card:                 #16162a;
+  --card-foreground:      #f9f9f9;
+  --popover:              #16162a;
+  --popover-foreground:   #f9f9f9;
+  --primary:              #4b4bc0;
+  --primary-foreground:   #ffffff;
+  --secondary:            #1e1e1e;
+  --secondary-foreground: #f9f9f9;
+  --muted:                #282828;
+  --muted-foreground:     #94a3b8;
+  --accent:               #282828;
+  --accent-foreground:    #f9f9f9;
+  --destructive:          #ef4444;
+  --border:               rgba(255,255,255,0.08);
+  --input:                rgba(255,255,255,0.16);
+  --ring:                 #4b4bc0;
+
+  --sidebar:                       #0f0f1a;
+  --sidebar-foreground:            #f9f9f9;
+  --sidebar-primary:               #4b4bc0;
+  --sidebar-primary-foreground:    #ffffff;
+  --sidebar-accent:                rgba(255,255,255,0.04);
+  --sidebar-accent-foreground:     #f9f9f9;
+  --sidebar-border:                rgba(255,255,255,0.08);
+}
+
+/* ──────────────────────────────────────────────
+   BASE — type weights & defaults
+   ────────────────────────────────────────────── */
+html, body {
+  font-family: var(--font-sans);
+  font-size: var(--fz-base);
+  line-height: var(--lh-normal);
+  background: var(--background);
+  color: var(--foreground);
+  font-feature-settings: "rlig" 1, "calt" 1;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection { background: color-mix(in srgb, var(--primary) 20%, transparent); }
+
+/* ──────────────────────────────────────────────
+   SEMANTIC TYPE — headings & body
+   All headings use BLACK weight (900) + -0.068em tracking + 1.2 lh.
+   ────────────────────────────────────────────── */
+h1, .h1 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(36px, 5.5vw, 72px);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-sync);
+  color: var(--foreground);
+}
+h2, .h2 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(28px, 3.5vw, 48px);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-sync);
+  color: var(--foreground);
+}
+h3, .h3 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: var(--fz-3xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-sync);
+  color: var(--foreground);
+}
+h4, .h4 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: var(--fz-xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-sync);
+  color: var(--foreground);
+}
+h5, .h5 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: var(--fz-lg);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-sync);
+}
+h6, .h6 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: var(--fz-sm);
+  letter-spacing: var(--tracking-sync);
+  text-transform: uppercase;
+}
+
+p, .body {
+  font-family: var(--font-sans);
+  font-size: var(--fz-base);
+  font-weight: 500;
+  line-height: var(--lh-normal);
+  color: var(--foreground);
+}
+
+.lead {
+  font-size: clamp(18px, 1.4vw, 22px);
+  font-weight: 500;
+  letter-spacing: var(--tracking-tight);
+  color: var(--muted-foreground);
+  line-height: var(--lh-relaxed);
+}
+
+/* Editorial display — used for brief titles, lockups */
+.display {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+/* All-caps mono label. Sizing tokens: .label (10px) / .label-strong (11px) */
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--fz-2xs);
+  letter-spacing: var(--tracking-label);
+  color: var(--muted-foreground);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.label-strong {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--foreground);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Tabular numerals for data, money, BPM, durations */
+.mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum";
+}
+
+/* Hairline rules — the editorial separator */
+.hairline         { border-top: 1px solid var(--border); }
+.hairline-strong  { border-top: 1px solid var(--input); }
+
+.muted, .dim      { color: var(--muted-foreground); }
+.accent-text      { color: var(--primary); }
+.acid-text        { color: var(--sm-acid); }
+.tracking-sync    { letter-spacing: var(--tracking-sync); }
+
+/* Code / inline mono */
+code, .code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  padding: 2px 5px;
+  border-radius: var(--radius-sm);
+  background: var(--muted);
+  color: var(--foreground);
+}
+
+    
+    html, body { margin: 0; padding: 0; background: var(--sm-ink); color: var(--sm-fg-dark); font-family: var(--font-sans); }
+    .portal-container { width: 1440px; margin: 0 auto; padding: 64px 96px; box-sizing: border-box; }
+    
+    .portal-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-bottom: 32px; border-bottom: 1px solid var(--border); margin-bottom: 64px;
+    }
+    .portal-title { font-size: 56px; font-weight: 900; letter-spacing: -0.068em; line-height: 1.05; margin: 0; }
+    .portal-subtitle { font-size: 18px; color: var(--muted-foreground); font-weight: 500; margin-top: 12px; }
+    
+    .grid-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-bottom: 64px; }
+    .handoff-card {
+      background: var(--sm-ink-raised); border: 1px solid var(--border); border-radius: 24px;
+      padding: 32px; display: flex; flex-direction: column; gap: 24px;
+      text-decoration: none; color: inherit; transition: all 300ms cubic-bezier(.4,0,.2,1);
+    }
+    .handoff-card:hover {
+      border-color: rgba(75,75,192,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    .handoff-card__icon {
+      width: 48px; height: 48px; border-radius: 12px; background: rgba(75,75,192,0.1);
+      color: var(--primary); display: flex; items-center; justify-content: center;
+      display: flex; align-items: center;
+    }
+    .handoff-card__title { font-size: 24px; font-weight: 900; letter-spacing: -0.04em; margin: 0; }
+    .handoff-card__desc { font-size: 14px; color: var(--muted-foreground); line-height: 1.5; font-weight: 500; margin: 0; }
+    .handoff-card__meta {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--sm-acid); font-weight: 700; margin-top: auto;
+    }
+    
+    .instruction-block {
+      background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 24px;
+      padding: 40px; margin-bottom: 64px;
+    }
+    .instruction-title { font-size: 28px; font-weight: 900; letter-spacing: -0.04em; margin: 0 0 24px; }
+    .instruction-list { display: flex; flex-direction: column; gap: 16px; margin: 0; padding: 0; list-style: none; }
+    .instruction-item { display: flex; gap: 16px; font-size: 15px; line-height: 1.6; font-weight: 500; }
+    .instruction-num {
+      font-family: var(--font-mono); font-size: 12px; font-weight: 900;
+      color: var(--sm-acid); width: 24px; height: 24px; border-radius: 6px;
+      background: rgba(201,232,52,0.1); display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    
+    .footer-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 32px; border-top: 1px solid var(--border);
+      font-family: var(--font-mono); font-size: 11px; color: var(--muted-foreground);
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+<div class="portal-container">
+  <header class="portal-header">
+    <div>
+      <h1 class="portal-title">SyncMaster</h1>
+      <p class="portal-subtitle">Figma Handoff Spec &amp; Pre-rendered Assets</p>
+    </div>
+    <span class="mono-tag" style="font-size: 11px; letter-spacing: 0.25em;">V1.0 · FIGMA COMPILATION</span>
+  </header>
+
+  <div class="grid-cards">
+    <!-- Card 1 -->
+    <a href="bts_carousel_figma_ready.html" class="handoff-card">
+      <div class="handoff-card__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg>
+      </div>
+      <div>
+        <h3 class="handoff-card__title">BTS Instagram Carousel</h3>
+        <p class="handoff-card__desc" style="margin-top: 8px;">Behind-the-scenes slides optimized for instagram sharing. 5 frames horizontally aligned.</p>
+      </div>
+      <div class="handoff-card__meta">5 frames · 1080×1350px</div>
+    </a>
+
+    <!-- Card 2 -->
+    <a href="carousel_templates_figma_ready.html" class="handoff-card">
+      <div class="handoff-card__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-10 9 10 9 10-9-10-9Z"/><path d="m2 17 10 9 10-9"/><path d="m2 12 10 9 10-9"/></svg>
+      </div>
+      <div>
+        <h3 class="handoff-card__title">Carousel Templates</h3>
+        <p class="handoff-card__desc" style="margin-top: 8px;">5 fully inlined and static Instagram carousel template slides showing positioning and brand taglines.</p>
+      </div>
+      <div class="handoff-card__meta">5 frames · 5400×1350px</div>
+    </a>
+
+    <!-- Card 3 -->
+    <a href="design_system_figma_ready.html" class="handoff-card">
+      <div class="handoff-card__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18M3 9h18M9 15h12M3 15h6"/></svg>
+      </div>
+      <div>
+        <h3 class="handoff-card__title">Design System Spec</h3>
+        <p class="handoff-card__desc" style="margin-top: 8px;">Pre-rendered design tokens, buttons, inputs, badges, alerts, score bars, and navigation cards.</p>
+      </div>
+      <div class="handoff-card__meta">8 sections · 1440px wide</div>
+    </a>
+
+    <!-- Card 4 -->
+    <a href="brand_guidelines_figma_ready.html" class="handoff-card">
+      <div class="handoff-card__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
+      </div>
+      <div>
+        <h3 class="handoff-card__title">Brand Guidelines</h3>
+        <p class="handoff-card__desc" style="margin-top: 8px;">Static spec sheets outlining Brand story, identity lockups, typography, voice guidelines, and iconography.</p>
+      </div>
+      <div class="handoff-card__meta">8 pages · 1440px wide</div>
+    </a>
+
+    <!-- Card 5 -->
+    <a href="ui_kits_figma_ready.html" class="handoff-card" style="grid-column: span 2;">
+      <div class="handoff-card__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="10" rx="1"/><rect width="7" height="5" x="3" y="14" rx="1"/></svg>
+      </div>
+      <div>
+        <h3 class="handoff-card__title">UI Kits Handoff Spec</h3>
+        <p class="handoff-card__desc" style="margin-top: 8px;">A side-by-side spec grid containing all 7 marketing and product interface views: Landing page, Composer application, Supervisor briefs, Admin dashboard home, briefs list, details panel, and track catalog.</p>
+      </div>
+      <div class="handoff-card__meta">7 viewports · side-by-side grid</div>
+    </a>
+  </div>
+
+  <section class="instruction-block">
+    <h2 class="instruction-title">Figma Import Instructions</h2>
+    <ul class="instruction-list">
+      <li class="instruction-item">
+        <span class="instruction-num">1</span>
+        <div>
+          <strong>Open Handoff portal or target file in your web browser.</strong><br>
+          We recommend using Google Chrome. Right-click any of the cards above to open the compiled HTML specification page.
+        </div>
+      </li>
+      <li class="instruction-item">
+        <span class="instruction-num">2</span>
+        <div>
+          <strong>Run the html.to.design plugin in Figma.</strong><br>
+          In Figma, open a new or existing design file, search for the plugin <code>html.to.design</code>, and open it.
+        </div>
+      </li>
+      <li class="instruction-item">
+        <span class="instruction-num">3</span>
+        <div>
+          <strong>Input the local URL or drag the HTML file.</strong><br>
+          Copy the browser's URL (e.g. <code>file:///C:/Users/.../figma-handoff/ui_kits_figma_ready.html</code>) and paste it into the plugin's URL field, or upload the HTML file directly. Set the viewport width matching the target metadata (e.g., 1440px for UI Kits and Design System, 1080px for carousels).
+        </div>
+      </li>
+      <li class="instruction-item">
+        <span class="instruction-num">4</span>
+        <div>
+          <strong>Import and customize!</strong><br>
+          Click <strong>Import</strong>. The plugin translates all HTML elements, fonts, colors, and layout nodes into fully-editable, pixel-perfect Figma layers automatically.
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <footer class="footer-bar">
+    <span>SYNCMASTER FIGMA HANDOFF SPEC v1.0</span>
+    <span>CONFIDENTIAL · INTERNAL DESIGN &amp; DEVELOPMENT USE</span>
+  </footer>
+</div>
+
+</body>
+</html>

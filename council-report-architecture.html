@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Council Report: Skills Architecture</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #fafafa; }
+        .container { background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        h1 { color: #111; font-size: 28px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h2 { color: #222; font-size: 20px; margin-top: 30px; }
+        .question-box { background: #f8f9fa; border-left: 4px solid #5252E0; padding: 15px 20px; margin: 20px 0; border-radius: 0 4px 4px 0; font-size: 15px; }
+        .verdict-section { background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 25px; margin-top: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+        .verdict-title { font-weight: 700; color: #5252E0; text-transform: uppercase; font-size: 13px; letter-spacing: 0.05em; margin-bottom: 15px; }
+        .highlight-box { background: #f0fdf4; border: 1px solid #bbf7d0; padding: 15px; border-radius: 6px; margin: 20px 0; }
+        .highlight-title { font-weight: 600; color: #166534; margin-bottom: 8px; }
+        .conflict-box { background: #fff7ed; border: 1px solid #fed7aa; padding: 15px; border-radius: 6px; margin: 20px 0; }
+        .conflict-title { font-weight: 600; color: #9a3412; margin-bottom: 8px; }
+        .action-box { background: #eff6ff; border: 1px solid #bfdbfe; padding: 15px; border-radius: 6px; margin: 20px 0; }
+        .action-title { font-weight: 600; color: #1e40af; margin-bottom: 8px; }
+        details { margin: 15px 0; padding: 15px; border: 1px solid #eaeaea; border-radius: 6px; background: #fff; }
+        summary { font-weight: 600; cursor: pointer; color: #444; }
+        .advisor-content { padding-top: 15px; font-size: 14px; color: #555; }
+        footer { margin-top: 50px; text-align: center; font-size: 13px; color: #888; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>LLM Council Verdict: Skills Architecture</h1>
+        
+        <div class="question-box">
+            <strong>The Question:</strong> What is the optimal architecture for managing 70+ diverse skills across multiple disparate projects to minimize token usage while maximizing agent capability? Are there any risks to moving to a project-specific architecture, and how should the transition be executed?
+        </div>
+
+        <div class="verdict-section">
+            <div class="verdict-title">Chairman's Synthesis</div>
+            
+            <div class="highlight-box">
+                <div class="highlight-title">Where the Council Agrees: De-Globalize Immediately</div>
+                <p>Scoping is non-negotiable. The core issue is the global monolithic architecture. Injecting bioinformatics tools into a marketing task exhausts the context window and degrades performance. The heavy specialized tools (especially the `science` plugin) must be immediately removed from the global folder and installed locally at the project level.</p>
+            </div>
+
+            <div class="conflict-box">
+                <div class="conflict-title">Where the Council Clashes: Routing Rules</div>
+                <p>The original proposal suggested deleting manual routing rules entirely and trusting the agent to pick the right tool natively. The council heavily debated this. The consensus reached is that relying purely on "guessing" will cause hallucinations when an agent has multiple similar tools locally (like `copywriting` and `copy-editing`). <strong>Verdict: Keep explicit routing rules, but move them from the global file to local project files.</strong></p>
+            </div>
+
+            <div class="highlight-box" style="background: #fdf2f8; border-color: #fbcfe8;">
+                <div class="highlight-title" style="color: #9d174d;">Blind Spots Caught</div>
+                <p>The peer reviewers caught that merely deleting the text routing rules in the global config won't actually stop the skills from loading if the plugin folders still live in the global directory. The physical folders must be moved. They also rejected building a "Dynamic Skill Index" as massive over-engineering.</p>
+            </div>
+
+            <div class="action-box">
+                <div class="action-title">The Recommendation</div>
+                <p>Adopt a <strong>Project-Scoped Hybrid Architecture</strong>. Do not trust pure semantic matching. Group your tools by domain, install them locally in their respective projects, and migrate the manual routing rules into the local project instructions (e.g., `GEMINI.md` or `AGENTS.md`).</p>
+            </div>
+
+            <div class="action-box" style="background: #111; border-color: #000; color: #fff;">
+                <div class="action-title" style="color: #C9E834;">The One Thing to Do First</div>
+                <p>Physically cut the <code>science</code> folder from <code>C:\Users\infon\.gemini\config\plugins</code> and paste it into the local plugin directory of whatever project actually requires it.</p>
+            </div>
+        </div>
+
+        <h2>Full Advisor Responses</h2>
+        <details>
+            <summary>The Contrarian</summary>
+            <div class="advisor-content">Trusting the agent’s "natural semantic matching" to pick from 70+ tools without explicit routing rules is a recipe for disaster. You are trading context window exhaustion for persistent hallucination and tool misfiring... The real solution isn't deleting your routing logic; it's dynamically injecting it via a metadata router.</div>
+        </details>
+        <details>
+            <summary>The First Principles Thinker</summary>
+            <div class="advisor-content">The fundamental issue isn't how to manage 70+ skills; it's why you are trying to manage 70+ skills in a single context window in the first place... Scoping is non-negotiable. Execute the transition by wiping the global config, establishing strict project boundaries, and installing plugins exclusively at the local level.</div>
+        </details>
+        <details>
+            <summary>The Executor</summary>
+            <div class="advisor-content">This proposed solution is 100% doable and the only practical way forward. Nuke the Global File. Segregate the Heavy Lifters. Strip Global to the Bone. The fix is trivial: just copy the skill folder into the new project's local directory.</div>
+        </details>
+        <details>
+            <summary>The Outsider</summary>
+            <div class="advisor-content">Why on earth is a marketing project loading bioinformatics tools? Put the science tools in the science folder. Put the marketing tools in the marketing folder. However, deleting explicit routing rules is a mistake... Keep the manual routing rules ("If X, use Y"), but put them inside the project-specific instructions, not the global file.</div>
+        </details>
+        <details>
+            <summary>The Expansionist</summary>
+            <div class="advisor-content">By decoupling skills from the global prompt and trusting semantic matching, you are unlocking a modular, infinite-capacity agent ecosystem... Build a master "Skill Index" tool—a lightweight directory. (Note: Reviewers heavily rejected this as over-engineered).</div>
+        </details>
+
+        <footer>
+            Generated by LLM Council • 2026-05-21
+        </footer>
+    </div>
+</body>
+</html>

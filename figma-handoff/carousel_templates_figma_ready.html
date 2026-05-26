@@ -1,0 +1,707 @@
+<!-- Figma-Export-Ready: each <section> → 1080×1350 Figma frame with auto-layout -->
+<!-- Safe-Zone: inner 1080×1080 for square crop -->
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <title>SyncMaster — Instagram Carousel</title>
+  <style>
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap");
+/* ============================================================
+   SYNCMASTER — colors & type tokens
+   ----------------------------------------------------------------
+   Mirror of the production Phase E2 design system. Dark mode is the
+   editorial default; light mode is also supplied. Apply `.dark`
+   on <html> or <body> to opt into dark mode.
+   ============================================================ */
+
+/* DM Sans (300, 400, 500, 700, 900) + Geist Mono (400, 500, 600) */
+
+
+:root {
+  /* ──────────── Brand primitives ──────────── */
+  --sm-purple:        #4b4bc0;   /* Primary brand */
+  --sm-purple-700:    #3a3a99;
+  --sm-purple-200:    #d2d2ed;
+  --sm-acid:          oklch(0.88 0.18 120); /* Active-badge highlight */
+  --sm-ink:           #0f0f1a;   /* Dark canvas */
+  --sm-ink-raised:    #16162a;   /* Card on dark */
+  --sm-paper:         #ffffff;
+  --sm-fg-dark:       #f9f9f9;
+  --sm-fg-light:      #111111;
+
+  /* ──────────── Semantic — light mode (default) ──────────── */
+  --background:           #ffffff;
+  --foreground:           #111111;
+  --card:                 #ffffff;
+  --card-foreground:      #111111;
+  --popover:              #ffffff;
+  --popover-foreground:   #111111;
+  --primary:              #4b4bc0;
+  --primary-foreground:   #ffffff;
+  --secondary:            #f5f5f5;
+  --secondary-foreground: #4b4bc0;
+  --muted:                #f5f5f5;
+  --muted-foreground:     #666666;
+  --accent:               #f5f5f5;
+  --accent-foreground:    #4b4bc0;
+  --destructive:          #ef4444;
+  --border:               #e5e5e5;
+  --input:                #e5e5e5;
+  --ring:                 #4b4bc0;
+
+  /* Status primitives — non-themed */
+  --status-green:  #22c55e;
+  --status-amber:  #f59e0b;
+  --status-blue:   #3b82f6;
+  --status-red:    #ef4444;
+
+  /* Sidebar — light mode shows purple navigation rail */
+  --sidebar:                       #4b4bc0;
+  --sidebar-foreground:            #ffffff;
+  --sidebar-primary:               #ffffff;
+  --sidebar-primary-foreground:    #4b4bc0;
+  --sidebar-accent:                rgba(255,255,255,0.10);
+  --sidebar-accent-foreground:     #ffffff;
+  --sidebar-border:                rgba(255,255,255,0.10);
+
+  /* ──────────── Radii (base 6px / 0.375rem) ──────────── */
+  --radius:        0.375rem;        /* 6px — base */
+  --radius-xs:     2px;
+  --radius-sm:     4px;
+  --radius-base:   6px;
+  --radius-md:     8px;
+  --radius-lg:     12px;
+  --radius-xl:     16px;
+  --radius-2xl:    20px;
+  --radius-3xl:    32px;            /* Used for dashboard hero / tool cards */
+  --radius-pill:   9999px;
+
+  /* ──────────── Spacing (4px unit) ──────────── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* ──────────── Elevation ──────────── */
+  --shadow-xs:        0 1px 2px rgba(0,0,0,0.20);
+  --shadow-sm:        0 2px 4px rgba(0,0,0,0.10);
+  --shadow-elev-1:    0 2px 8px  rgba(0,0,0,0.30);
+  --shadow-elev-2:    0 8px 24px rgba(0,0,0,0.40);
+  --shadow-elev-3:    0 12px 32px rgba(0,0,0,0.60);
+  --shadow-acid-glow: 0 0 20px rgba(217,249,157,0.30);
+  --shadow-primary-glow: 0 20px 40px -8px rgba(75,75,192,0.20);
+
+  /* ──────────── Typography — families ──────────── */
+  --font-sans:    "DM Sans", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "DM Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono:    "Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* ──────────── Typography — type scale ──────────── */
+  --fz-2xs: 10px;   /* labels, micro-metadata */
+  --fz-xs:  12px;
+  --fz-sm:  13px;
+  --fz-base:14px;   /* product body */
+  --fz-lg:  16px;
+  --fz-xl:  18px;
+  --fz-2xl: 20px;
+  --fz-3xl: 24px;
+  --fz-4xl: 28px;
+  --fz-5xl: 36px;
+  --fz-6xl: 48px;
+  --fz-7xl: 64px;
+  --fz-display: 96px;
+
+  --lh-tight:  1.1;
+  --lh-snug:   1.2;
+  --lh-normal: 1.45;
+  --lh-relaxed:1.6;
+
+  /* SyncMaster signature tracking: headings use -0.068em */
+  --tracking-sync:     -0.068em;
+  --tracking-display:  -0.04em;
+  --tracking-tight:    -0.02em;
+  --tracking-label:    0.25em;   /* mono micro-labels */
+}
+
+/* ──────────────────────────────────────────────
+   DARK MODE — the editorial default
+   ────────────────────────────────────────────── */
+.dark, [data-theme="dark"] {
+  --background:           #0f0f1a;
+  --foreground:           #f9f9f9;
+  --card:                 #16162a;
+  --card-foreground:      #f9f9f9;
+  --popover:              #16162a;
+  --popover-foreground:   #f9f9f9;
+  --primary:              #4b4bc0;
+  --primary-foreground:   #ffffff;
+  --secondary:            #1e1e1e;
+  --secondary-foreground: #f9f9f9;
+  --muted:                #282828;
+  --muted-foreground:     #94a3b8;
+  --accent:               #282828;
+  --accent-foreground:    #f9f9f9;
+  --destructive:          #ef4444;
+  --border:               rgba(255,255,255,0.08);
+  --input:                rgba(255,255,255,0.16);
+  --ring:                 #4b4bc0;
+
+  --sidebar:                       #0f0f1a;
+  --sidebar-foreground:            #f9f9f9;
+  --sidebar-primary:               #4b4bc0;
+  --sidebar-primary-foreground:    #ffffff;
+  --sidebar-accent:                rgba(255,255,255,0.04);
+  --sidebar-accent-foreground:     #f9f9f9;
+  --sidebar-border:                rgba(255,255,255,0.08);
+}
+
+/* ──────────────────────────────────────────────
+   BASE — type weights & defaults
+   ────────────────────────────────────────────── */
+html, body {
+  font-family: var(--font-sans);
+  font-size: var(--fz-base);
+  line-height: var(--lh-normal);
+  background: var(--background);
+  color: var(--foreground);
+  font-feature-settings: "rlig" 1, "calt" 1;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection { background: color-mix(in srgb, var(--primary) 20%, transparent); }
+
+/* ──────────────────────────────────────────────
+   SEMANTIC TYPE — headings & body
+   All headings use BLACK weight (900) + -0.068em tracking + 1.2 lh.
+   ────────────────────────────────────────────── */
+h1, .h1 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(36px, 5.5vw, 72px);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-sync);
+  color: var(--foreground);
+}
+h2, .h2 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(28px, 3.5vw, 48px);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-sync);
+  color: var(--foreground);
+}
+h3, .h3 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: var(--fz-3xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-sync);
+  color: var(--foreground);
+}
+h4, .h4 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: var(--fz-xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-sync);
+  color: var(--foreground);
+}
+h5, .h5 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: var(--fz-lg);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-sync);
+}
+h6, .h6 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: var(--fz-sm);
+  letter-spacing: var(--tracking-sync);
+  text-transform: uppercase;
+}
+
+p, .body {
+  font-family: var(--font-sans);
+  font-size: var(--fz-base);
+  font-weight: 500;
+  line-height: var(--lh-normal);
+  color: var(--foreground);
+}
+
+.lead {
+  font-size: clamp(18px, 1.4vw, 22px);
+  font-weight: 500;
+  letter-spacing: var(--tracking-tight);
+  color: var(--muted-foreground);
+  line-height: var(--lh-relaxed);
+}
+
+/* Editorial display — used for brief titles, lockups */
+.display {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+/* All-caps mono label. Sizing tokens: .label (10px) / .label-strong (11px) */
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--fz-2xs);
+  letter-spacing: var(--tracking-label);
+  color: var(--muted-foreground);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.label-strong {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--foreground);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Tabular numerals for data, money, BPM, durations */
+.mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum";
+}
+
+/* Hairline rules — the editorial separator */
+.hairline         { border-top: 1px solid var(--border); }
+.hairline-strong  { border-top: 1px solid var(--input); }
+
+.muted, .dim      { color: var(--muted-foreground); }
+.accent-text      { color: var(--primary); }
+.acid-text        { color: var(--sm-acid); }
+.tracking-sync    { letter-spacing: var(--tracking-sync); }
+
+/* Code / inline mono */
+code, .code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  padding: 2px 5px;
+  border-radius: var(--radius-sm);
+  background: var(--muted);
+  color: var(--foreground);
+}
+
+</style>
+  <style>
+    /* ─────────────────────────────────────────────
+       Browser-preview chrome — slice guides + safe-zone
+       (invisible in production / Figma; subtle in dev)
+       ───────────────────────────────────────────── */
+    html, body { margin: 0; padding: 0; background: #000; }
+    body { font-family: var(--font-sans); color: var(--sm-fg-dark); padding: 40px 0; }
+    .preview-shell { width: max-content; margin: 0 auto; box-shadow: 0 40px 120px rgba(0,0,0,.6); }
+    .slice-guide {
+      position: absolute; top: 0; bottom: 0; width: 1px;
+      background: rgba(255,255,255,0.15);
+      pointer-events: none; z-index: 90;
+    }
+    .safe-zone-marker {
+      position: absolute; left: 0; right: 0; height: 1px;
+      background: transparent;
+      border-top: 1px dashed rgba(255,255,255,0.08);
+      pointer-events: none; z-index: 91;
+    }
+    .slide-no {
+      position: absolute; top: 20px; left: 24px; z-index: 92;
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.3em; color: rgba(255,255,255,.35);
+      text-transform: uppercase;
+    }
+
+    /* ─────────────────────────────────────────────
+       Slide chrome — all five share the same skeleton
+       ───────────────────────────────────────────── */
+    .slide {
+      width: 1080px; height: 1350px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      overflow: hidden; position: relative;
+      flex-shrink: 0;
+    }
+    .slide__spacer { width: 1080px; height: 135px; flex-shrink: 0; }
+    .safe {
+      width: 1080px; height: 1080px;
+      display: flex; flex-direction: column;
+      justify-content: center;
+      padding: 64px; gap: 24px;
+      box-sizing: border-box;
+      position: relative; z-index: 5;
+    }
+
+    /* Spanning gradient + tiled grain — bg flows across the full 5400px canvas.
+       Each slide carries the entire 5400-wide gradient as its bg-image and offsets it
+       by its index, so the gradient *appears* to flow continuously through the carousel. */
+    .slide__bg {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background-color: var(--sm-ink);
+      background-image:
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0   0 0 0 0 0   0 0 0 0 0   0 0 0 0.22 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>"),
+        radial-gradient(900px 1400px at 50% 50%, color-mix(in srgb, var(--sm-purple) 80%, transparent) 0%, transparent 70%),
+        linear-gradient(90deg, var(--sm-ink) 0%, var(--sm-ink) 18%, color-mix(in srgb, var(--sm-purple) 65%, var(--sm-ink)) 50%, color-mix(in srgb, var(--sm-purple) 30%, var(--sm-ink)) 78%, var(--sm-ink) 100%);
+      background-size: 240px 240px, 5400px 1350px, 5400px 1350px;
+      background-repeat: repeat, no-repeat, no-repeat;
+    }
+    /* Each slide offsets the spanning bg by its index */
+    #slide-1 .slide__bg { background-position: 0 0,    calc(0px - 1080px * 0) 50%, calc(0px - 1080px * 0) 0; }
+    #slide-2 .slide__bg { background-position: 80px 0, calc(0px - 1080px * 1) 50%, calc(0px - 1080px * 1) 0; }
+    #slide-3 .slide__bg { background-position: 0 80px, calc(0px - 1080px * 2) 50%, calc(0px - 1080px * 2) 0; }
+    #slide-4 .slide__bg { background-position: 80px 80px, calc(0px - 1080px * 3) 50%, calc(0px - 1080px * 3) 0; }
+    #slide-5 .slide__bg { background-position: 0 0,    calc(0px - 1080px * 4) 50%, calc(0px - 1080px * 4) 0; }
+
+    /* Crossing acid-lime accent line — locked baseline at y=300 inside safe zone (≈y=435 from top of slide).
+       It bleeds left-to-right across slides 1→3, then exits. */
+    .accent-line {
+      position: absolute; left: 0; right: 0;
+      top: 320px; /* locked baseline across all slides */
+      height: 2px; z-index: 2;
+      background: var(--sm-acid);
+      box-shadow: var(--shadow-acid-glow);
+    }
+    /* Slide 1: line enters from far left, runs ¾ across */
+    #slide-1 .accent-line { left: -40px; right: auto; width: 760px; }
+    /* Slide 2: continues full width */
+    #slide-2 .accent-line { left: 0; right: 0; }
+    /* Slide 3: continues, exits ¾ in */
+    #slide-3 .accent-line { left: 0; right: auto; width: 820px; }
+    /* Slides 4 & 5: no line — the accent has done its job */
+    #slide-4 .accent-line, #slide-5 .accent-line { display: none; }
+
+    /* Crossing outlined circle — bridges slide 3 (right edge) into slide 4 (left edge).
+       Each slide draws its half of a virtual 900px circle straddling their seam. */
+    .bridge-circle {
+      position: absolute; width: 900px; height: 900px;
+      border: 2px solid color-mix(in srgb, var(--sm-acid) 70%, transparent);
+      border-radius: 50%;
+      top: 50%; transform: translateY(-50%);
+      z-index: 2; pointer-events: none;
+    }
+    #slide-3 .bridge-circle { right: -450px; }
+    #slide-4 .bridge-circle { left:  -450px; }
+    #slide-1 .bridge-circle, #slide-2 .bridge-circle, #slide-5 .bridge-circle { display: none; }
+
+    /* Ghost numeral — outlined giant digit on content slides */
+    .ghost-numeral {
+      position: absolute;
+      left: -40px; bottom: -120px;
+      font-family: var(--font-sans);
+      font-weight: 900;
+      font-size: 1100px;
+      line-height: 1;
+      letter-spacing: -0.08em;
+      color: transparent;
+      -webkit-text-stroke: 2px color-mix(in srgb, var(--sm-fg-dark) 6%, transparent);
+      text-stroke: 2px color-mix(in srgb, var(--sm-fg-dark) 6%, transparent);
+      pointer-events: none; z-index: 3; user-select: none;
+    }
+
+    /* Eyebrow label — Geist Mono, .label sizing, locked baseline */
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 22px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--sm-acid);
+      font-weight: 500;
+      margin: 0;
+    }
+
+    /* Display headline — DM Sans 900, tracking-sync */
+    .display {
+      font-family: var(--font-sans);
+      font-weight: 900;
+      letter-spacing: var(--tracking-sync);
+      line-height: 1;
+      color: var(--sm-fg-dark);
+      margin: 0;
+    }
+    .display--xl  { font-size: 160px; line-height: 0.95; }
+    .display--lg  { font-size: 110px; line-height: 1; }
+    .display--md  { font-size: 88px;  line-height: 1.02; }
+    .display--sm  { font-size: 64px;  line-height: 1.05; }
+
+    /* Supporting paragraph */
+    .lede {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 1.35;
+      letter-spacing: -0.015em;
+      color: color-mix(in srgb, var(--sm-fg-dark) 80%, transparent);
+      max-width: 800px;
+      margin: 0;
+    }
+
+    /* Footer pattern — same on every slide. Locked at the bottom of the safe zone. */
+    .footer-row {
+      position: absolute; left: 64px; right: 64px; bottom: 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      z-index: 6;
+    }
+    .footer-brand { display: flex; align-items: center; gap: 16px; }
+    .footer-mark {
+      width: 56px; height: 56px; border-radius: 9999px;
+      background: var(--sm-acid);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: var(--shadow-acid-glow);
+    }
+    .footer-mark span {
+      font-family: var(--font-sans); font-weight: 900; font-size: 28px;
+      letter-spacing: -0.08em; color: var(--sm-ink); line-height: 1;
+    }
+    .footer-text { display: flex; flex-direction: column; }
+    .footer-kicker { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.25em; text-transform: uppercase; color: color-mix(in srgb, var(--sm-fg-dark) 50%, transparent); font-weight: 500; }
+    .footer-name { font-family: var(--font-sans); font-weight: 700; font-size: 18px; letter-spacing: -0.02em; color: var(--sm-fg-dark); }
+    .footer-next {
+      width: 64px; height: 64px; border-radius: 9999px;
+      background: var(--sm-fg-dark); color: var(--sm-ink);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; font-weight: 700; line-height: 1;
+    }
+    .footer-pageno {
+      font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.3em;
+      color: color-mix(in srgb, var(--sm-fg-dark) 50%, transparent);
+      text-transform: uppercase;
+    }
+
+    /* Stats grid for the proof slide */
+    .proof-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px;
+      margin-top: 32px;
+    }
+    .proof-stat {
+      display: flex; flex-direction: column; gap: 12px;
+      padding-top: 24px;
+      border-top: 1px solid color-mix(in srgb, var(--sm-fg-dark) 20%, transparent);
+    }
+    .proof-stat__big { font-family: var(--font-sans); font-weight: 900; font-size: 88px; letter-spacing: -0.068em; line-height: 1; color: var(--sm-fg-dark); }
+    .proof-stat__label { font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: color-mix(in srgb, var(--sm-fg-dark) 60%, transparent); font-weight: 500; }
+
+    /* CTA button — slide 5 */
+    .cta-button {
+      display: inline-flex; align-items: center; gap: 20px;
+      align-self: flex-start;
+      padding: 28px 44px;
+      border-radius: var(--radius-base);
+      background: var(--sm-acid); color: var(--sm-ink);
+      font-family: var(--font-sans); font-weight: 900; font-size: 32px; letter-spacing: -0.04em;
+      box-shadow: var(--shadow-acid-glow);
+      border: none;
+    }
+    .cta-button__arrow {
+      width: 44px; height: 44px; border-radius: 9999px;
+      background: var(--sm-ink); color: var(--sm-acid);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 24px; font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+<div class="preview-shell" style="position: relative;">
+
+<!-- Slice guides — one per seam, dev-only -->
+<div class="slice-guide" style="left: 1080px;"></div>
+<div class="slice-guide" style="left: 2160px;"></div>
+<div class="slice-guide" style="left: 3240px;"></div>
+<div class="slice-guide" style="left: 4320px;"></div>
+
+<!-- Safe-zone markers — top + bottom rule for dev preview -->
+<div class="safe-zone-marker" style="top: 135px;"></div>
+<div class="safe-zone-marker" style="top: 1215px;"></div>
+
+<!-- ─────────────────────────────────────────────
+     CAROUSEL · horizontal auto-layout, gap 0
+     5 slides × 1080×1350px
+     ───────────────────────────────────────────── -->
+<div id="carousel" style="display:flex; flex-direction:row; gap:0;">
+
+  <!-- ═════════════════════════════════════════════
+       SLIDE 1 · HOOK
+       sm-ink bleed · acid-lime line enters from left
+       ═════════════════════════════════════════════ -->
+  <section id="slide-1" class="slide">
+    <span class="slide-no">01 / 05</span>
+    <div class="slide__bg"></div>
+    <div class="accent-line"></div>
+
+    <div class="slide__spacer"></div>
+    <div class="safe" style="justify-content: flex-end; padding-bottom: 160px;">
+      <p class="eyebrow">SyncMaster · Brief 042</p>
+      <h1 class="display display--xl">Your music.<br>Placed worldwide.</h1>
+      <p class="lede">African composers. Global screens. Curated, cleared, and ready.</p>
+    </div>
+    <div class="slide__spacer"></div>
+
+    <div class="footer-row">
+      <div class="footer-brand">
+        <div class="footer-mark"><span>S</span></div>
+        <div class="footer-text">
+          <span class="footer-kicker">Written by</span>
+          <span class="footer-name">SyncMaster Operations</span>
+        </div>
+      </div>
+      <span class="footer-pageno">01 / 05</span>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════
+       SLIDE 2 · PROBLEM
+       accent continues · purple gradient begins
+       ═════════════════════════════════════════════ -->
+  <section id="slide-2" class="slide">
+    <span class="slide-no">02 / 05</span>
+    <div class="slide__bg"></div>
+    <div class="accent-line"></div>
+    <div class="ghost-numeral">1</div>
+
+    <div class="slide__spacer"></div>
+    <div class="safe" style="justify-content: flex-end; padding-bottom: 160px;">
+      <p class="eyebrow">The problem</p>
+      <h2 class="display display--xl">500</h2>
+      <p class="lede">Unvetted submissions per brief. African composers stuck behind directories built for the West. Music supervisors drowning in noise.</p>
+    </div>
+    <div class="slide__spacer"></div>
+
+    <div class="footer-row">
+      <div class="footer-brand">
+        <div class="footer-mark"><span>S</span></div>
+        <div class="footer-text">
+          <span class="footer-kicker">The problem</span>
+          <span class="footer-name">Industry status quo</span>
+        </div>
+      </div>
+      <div class="footer-next">›</div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════
+       SLIDE 3 · SOLUTION
+       gradient continues · crossing circle bridges to slide 4
+       ═════════════════════════════════════════════ -->
+  <section id="slide-3" class="slide">
+    <span class="slide-no">03 / 05</span>
+    <div class="slide__bg"></div>
+    <div class="accent-line"></div>
+    <div class="bridge-circle"></div>
+    <div class="ghost-numeral">2</div>
+
+    <div class="slide__spacer"></div>
+    <div class="safe" style="justify-content: flex-end; padding-bottom: 160px;">
+      <p class="eyebrow">The SyncMaster way</p>
+      <h2 class="display display--xl">3–5</h2>
+      <p class="lede">Hand-curated matches per brief. Manually vetted composers. Rights-cleared catalogue. Delivered in 24–48 hours.</p>
+    </div>
+    <div class="slide__spacer"></div>
+
+    <div class="footer-row">
+      <div class="footer-brand">
+        <div class="footer-mark"><span>S</span></div>
+        <div class="footer-text">
+          <span class="footer-kicker">The solution</span>
+          <span class="footer-name">Curated. Cleared. Ready.</span>
+        </div>
+      </div>
+      <div class="footer-next">›</div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════
+       SLIDE 4 · PROOF
+       gradient peaks · circle continues from slide 3
+       ═════════════════════════════════════════════ -->
+  <section id="slide-4" class="slide">
+    <span class="slide-no">04 / 05</span>
+    <div class="slide__bg"></div>
+    <div class="bridge-circle"></div>
+    <div class="ghost-numeral">3</div>
+
+    <div class="slide__spacer"></div>
+    <div class="safe" style="justify-content: center;">
+      <p class="eyebrow">Proof · Q1 2026</p>
+      <h2 class="display display--md">The work, in numbers.</h2>
+      <div class="proof-grid">
+        <div class="proof-stat">
+          <span class="proof-stat__label">PLACED</span>
+          <span class="proof-stat__big">$148k</span>
+        </div>
+        <div class="proof-stat">
+          <span class="proof-stat__label">ROSTER</span>
+          <span class="proof-stat__big">42</span>
+        </div>
+        <div class="proof-stat">
+          <span class="proof-stat__label">TURNAROUND</span>
+          <span class="proof-stat__big">37h</span>
+        </div>
+      </div>
+    </div>
+    <div class="slide__spacer"></div>
+
+    <div class="footer-row">
+      <div class="footer-brand">
+        <div class="footer-mark"><span>S</span></div>
+        <div class="footer-text">
+          <span class="footer-kicker">Proof</span>
+          <span class="footer-name">Building in public</span>
+        </div>
+      </div>
+      <div class="footer-next">›</div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════
+       SLIDE 5 · CTA
+       gradient resolves to ink · acid-lime button
+       ═════════════════════════════════════════════ -->
+  <section id="slide-5" class="slide">
+    <span class="slide-no">05 / 05</span>
+    <div class="slide__bg"></div>
+
+    <div class="slide__spacer"></div>
+    <div class="safe" style="justify-content: center;">
+      <p class="eyebrow">Apply this week</p>
+      <h2 class="display display--lg">Open briefs<br>every Tuesday.</h2>
+      <p class="lede">Composers: apply once, get matched for life. Supervisors: post a brief, get a shortlist in 48h.</p>
+      <div style="margin-top: 32px;">
+        <a class="cta-button" href="#">
+          Apply now
+          <span class="cta-button__arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="slide__spacer"></div>
+
+    <div class="footer-row">
+      <div class="footer-brand">
+        <div class="footer-mark"><span>S</span></div>
+        <div class="footer-text">
+          <span class="footer-kicker">Apply</span>
+          <span class="footer-name">syncmaster.live</span>
+        </div>
+      </div>
+      <span class="footer-pageno">END · 05 / 05</span>
+    </div>
+  </section>
+
+</div><!-- /carousel -->
+
+</div><!-- /preview-shell -->
+
+</body>
+</html>

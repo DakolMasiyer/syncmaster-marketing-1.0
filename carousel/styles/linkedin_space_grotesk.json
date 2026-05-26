@@ -1,0 +1,45 @@
+{
+  "name": "LinkedIn Space Grotesk",
+  "brand": {
+    "purple": "#5252E0",
+    "lime": "#C9E834",
+    "dark": "#0A0A20",
+    "white": "#FFFFFF",
+    "ink": "#0D0D18"
+  },
+  "typography": {
+    "font_family": "Space Grotesk",
+    "line_height": 1.224,
+    "letter_spacing": -0.068,
+    "scale": {
+      "display-2xl": { "size": 98, "weight": 600 },
+      "display-xl": { "size": 96, "weight": 600 },
+      "display-lg": { "size": 84, "weight": 600 },
+      "display-md": { "size": 64, "weight": 700 },
+      "sub-display": { "size": 46, "weight": 500 },
+      "heading-lg": { "size": 44, "weight": 600 },
+      "heading-md": { "size": 40, "weight": 700 },
+      "heading-sm": { "size": 38, "weight": 500 },
+      "body-xl": { "size": 36, "weight": 600 },
+      "body-lg": { "size": 34, "weight": 400 },
+      "body-md": { "size": 30, "weight": 600 },
+      "body-sm": { "size": 26, "weight": 400 },
+      "label-lg": { "size": 25, "weight": 400 },
+      "label-md": { "size": 22, "weight": 500 },
+      "label-sm": { "size": 18, "weight": 400 },
+      "wordmark": { "size": 22, "weight": 600, "tracking": 0.10, "uppercase": true },
+      "eyebrow": { "size": 22, "weight": 500, "tracking": 0.18, "uppercase": true },
+      "pill": { "size": 22, "weight": 500, "tracking": 0.04, "uppercase": true }
+    }
+  },
+  "spacing": {
+    "chrome-edge": 79,
+    "wordmark-top": 91,
+    "slide-pad-x": 95,
+    "stage-pad-y": 150
+  },
+  "dimensions": {
+    "width": 1080,
+    "height": 1350
+  }
+}

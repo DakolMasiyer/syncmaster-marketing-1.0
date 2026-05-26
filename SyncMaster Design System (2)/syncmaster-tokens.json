@@ -1,0 +1,226 @@
+{
+  "brand": {
+    "purple": { "value": "#4b4bc0", "type": "color", "description": "Primary brand — SyncMaster Purple" },
+    "purple-700": { "value": "#3a3a99", "type": "color" },
+    "purple-200": { "value": "#d2d2ed", "type": "color" },
+    "acid": { "value": "#c8e60d", "type": "color", "description": "Active-badge highlight. oklch(0.88 0.18 120) ≈ this hex." },
+    "ink": { "value": "#0f0f1a", "type": "color", "description": "Dark canvas" },
+    "ink-raised": { "value": "#16162a", "type": "color", "description": "Card on dark" },
+    "paper": { "value": "#ffffff", "type": "color" },
+    "fg-dark": { "value": "#f9f9f9", "type": "color" },
+    "fg-light": { "value": "#111111", "type": "color" }
+  },
+  "status": {
+    "green": { "value": "#22c55e", "type": "color" },
+    "amber": { "value": "#f59e0b", "type": "color" },
+    "blue": { "value": "#3b82f6", "type": "color" },
+    "red": { "value": "#ef4444", "type": "color" }
+  },
+  "semantic": {
+    "light": {
+      "background": { "value": "#ffffff", "type": "color" },
+      "foreground": { "value": "#111111", "type": "color" },
+      "card": { "value": "#ffffff", "type": "color" },
+      "card-foreground": { "value": "#111111", "type": "color" },
+      "primary": { "value": "{brand.purple}", "type": "color" },
+      "primary-foreground": { "value": "#ffffff", "type": "color" },
+      "secondary": { "value": "#f5f5f5", "type": "color" },
+      "secondary-foreground": { "value": "{brand.purple}", "type": "color" },
+      "muted": { "value": "#f5f5f5", "type": "color" },
+      "muted-foreground": { "value": "#666666", "type": "color" },
+      "accent": { "value": "#f5f5f5", "type": "color" },
+      "accent-foreground": { "value": "{brand.purple}", "type": "color" },
+      "destructive": { "value": "{status.red}", "type": "color" },
+      "border": { "value": "#e5e5e5", "type": "color" },
+      "input": { "value": "#e5e5e5", "type": "color" },
+      "ring": { "value": "{brand.purple}", "type": "color" },
+      "sidebar": { "value": "{brand.purple}", "type": "color" },
+      "sidebar-foreground": { "value": "#ffffff", "type": "color" },
+      "sidebar-primary": { "value": "#ffffff", "type": "color" },
+      "sidebar-primary-foreground": { "value": "{brand.purple}", "type": "color" }
+    },
+    "dark": {
+      "background": { "value": "{brand.ink}", "type": "color" },
+      "foreground": { "value": "{brand.fg-dark}", "type": "color" },
+      "card": { "value": "{brand.ink-raised}", "type": "color" },
+      "card-foreground": { "value": "{brand.fg-dark}", "type": "color" },
+      "primary": { "value": "{brand.purple}", "type": "color" },
+      "primary-foreground": { "value": "#ffffff", "type": "color" },
+      "secondary": { "value": "#1e1e1e", "type": "color" },
+      "secondary-foreground": { "value": "{brand.fg-dark}", "type": "color" },
+      "muted": { "value": "#282828", "type": "color" },
+      "muted-foreground": { "value": "#94a3b8", "type": "color" },
+      "accent": { "value": "#282828", "type": "color" },
+      "accent-foreground": { "value": "{brand.fg-dark}", "type": "color" },
+      "destructive": { "value": "{status.red}", "type": "color" },
+      "border": { "value": "rgba(255,255,255,0.08)", "type": "color" },
+      "input": { "value": "rgba(255,255,255,0.16)", "type": "color" },
+      "ring": { "value": "{brand.purple}", "type": "color" },
+      "sidebar": { "value": "{brand.ink}", "type": "color" },
+      "sidebar-foreground": { "value": "{brand.fg-dark}", "type": "color" },
+      "sidebar-primary": { "value": "{brand.purple}", "type": "color" },
+      "sidebar-primary-foreground": { "value": "#ffffff", "type": "color" }
+    }
+  },
+  "spacing": {
+    "1": { "value": "4", "type": "spacing" },
+    "2": { "value": "8", "type": "spacing" },
+    "3": { "value": "12", "type": "spacing" },
+    "4": { "value": "16", "type": "spacing" },
+    "5": { "value": "20", "type": "spacing" },
+    "6": { "value": "24", "type": "spacing" },
+    "8": { "value": "32", "type": "spacing" },
+    "10": { "value": "40", "type": "spacing" },
+    "12": { "value": "48", "type": "spacing" },
+    "16": { "value": "64", "type": "spacing" },
+    "20": { "value": "80", "type": "spacing" }
+  },
+  "borderRadius": {
+    "xs": { "value": "2", "type": "borderRadius" },
+    "sm": { "value": "4", "type": "borderRadius" },
+    "base": { "value": "6", "type": "borderRadius" },
+    "md": { "value": "8", "type": "borderRadius" },
+    "lg": { "value": "12", "type": "borderRadius" },
+    "xl": { "value": "16", "type": "borderRadius" },
+    "2xl": { "value": "20", "type": "borderRadius" },
+    "3xl": { "value": "32", "type": "borderRadius" },
+    "pill": { "value": "9999", "type": "borderRadius" }
+  },
+  "boxShadow": {
+    "xs": { "value": "0 1px 2px rgba(0,0,0,0.20)", "type": "boxShadow" },
+    "sm": { "value": "0 2px 4px rgba(0,0,0,0.10)", "type": "boxShadow" },
+    "elev-1": { "value": "0 2px 8px rgba(0,0,0,0.30)", "type": "boxShadow" },
+    "elev-2": { "value": "0 8px 24px rgba(0,0,0,0.40)", "type": "boxShadow" },
+    "elev-3": { "value": "0 12px 32px rgba(0,0,0,0.60)", "type": "boxShadow" },
+    "acid-glow": { "value": "0 0 20px rgba(217,249,157,0.30)", "type": "boxShadow" },
+    "primary-glow": { "value": "0 20px 40px -8px rgba(75,75,192,0.20)", "type": "boxShadow" }
+  },
+  "typography": {
+    "h1": {
+      "value": {
+        "fontFamily": "DM Sans",
+        "fontWeight": "900",
+        "fontSize": "64",
+        "lineHeight": "1.1",
+        "letterSpacing": "-0.068em"
+      },
+      "type": "typography",
+      "description": "Primary heading — signature SyncMaster treatment"
+    },
+    "h2": {
+      "value": {
+        "fontFamily": "DM Sans",
+        "fontWeight": "900",
+        "fontSize": "48",
+        "lineHeight": "1.2",
+        "letterSpacing": "-0.068em"
+      },
+      "type": "typography"
+    },
+    "h3": {
+      "value": {
+        "fontFamily": "DM Sans",
+        "fontWeight": "900",
+        "fontSize": "24",
+        "lineHeight": "1.2",
+        "letterSpacing": "-0.068em"
+      },
+      "type": "typography"
+    },
+    "h4": {
+      "value": {
+        "fontFamily": "DM Sans",
+        "fontWeight": "900",
+        "fontSize": "18",
+        "lineHeight": "1.2",
+        "letterSpacing": "-0.068em"
+      },
+      "type": "typography"
+    },
+    "h5": {
+      "value": {
+        "fontFamily": "DM Sans",
+        "fontWeight": "900",
+        "fontSize": "16",
+        "lineHeight": "1.2",
+        "letterSpacing": "-0.068em"
+      },
+      "type": "typography"
+    },
+    "h6": {
+      "value": {
+        "fontFamily": "DM Sans",
+        "fontWeight": "900",
+        "fontSize": "13",
+        "lineHeight": "1.2",
+        "letterSpacing": "-0.068em",
+        "textCase": "uppercase"
+      },
+      "type": "typography"
+    },
+    "body": {
+      "value": {
+        "fontFamily": "DM Sans",
+        "fontWeight": "500",
+        "fontSize": "14",
+        "lineHeight": "1.45"
+      },
+      "type": "typography",
+      "description": "Product body — intentionally 500 weight, not 400"
+    },
+    "lead": {
+      "value": {
+        "fontFamily": "DM Sans",
+        "fontWeight": "500",
+        "fontSize": "20",
+        "lineHeight": "1.6",
+        "letterSpacing": "-0.02em"
+      },
+      "type": "typography"
+    },
+    "display": {
+      "value": {
+        "fontFamily": "DM Sans",
+        "fontWeight": "300",
+        "fontSize": "96",
+        "lineHeight": "0.95",
+        "letterSpacing": "-0.04em"
+      },
+      "type": "typography",
+      "description": "Editorial display — brief titles, lockups. Light + airy."
+    },
+    "label": {
+      "value": {
+        "fontFamily": "Geist Mono",
+        "fontWeight": "500",
+        "fontSize": "10",
+        "lineHeight": "1.2",
+        "letterSpacing": "0.25em",
+        "textCase": "uppercase"
+      },
+      "type": "typography",
+      "description": "All-caps mono micro-label"
+    },
+    "label-strong": {
+      "value": {
+        "fontFamily": "Geist Mono",
+        "fontWeight": "600",
+        "fontSize": "11",
+        "lineHeight": "1.2",
+        "letterSpacing": "0.1em",
+        "textCase": "uppercase"
+      },
+      "type": "typography"
+    },
+    "mono": {
+      "value": {
+        "fontFamily": "Geist Mono",
+        "fontWeight": "400",
+        "fontSize": "14",
+        "lineHeight": "1.45"
+      },
+      "type": "typography",
+      "description": "Tabular numerals — BPM, money, durations"
+    }
+  }
+}

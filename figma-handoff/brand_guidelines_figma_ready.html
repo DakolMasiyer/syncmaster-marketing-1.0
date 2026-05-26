@@ -1,0 +1,1266 @@
+<!-- Figma-Ready: SyncMaster Brand Guidelines v1.0. No JS required. -->
+<!DOCTYPE html>
+<html lang="en" class="dark"><head>
+  <meta charset="utf-8">
+  <title>SyncMaster — Brand Guidelines</title>
+  <meta name="viewport" content="width=1440">
+  <style>
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap");
+/* ============================================================
+   SYNCMASTER — colors & type tokens
+   ----------------------------------------------------------------
+   Mirror of the production Phase E2 design system. Dark mode is the
+   editorial default; light mode is also supplied. Apply `.dark`
+   on <html> or <body> to opt into dark mode.
+   ============================================================ */
+
+/* DM Sans (300, 400, 500, 700, 900) + Geist Mono (400, 500, 600) */
+
+
+:root {
+  /* ──────────── Brand primitives ──────────── */
+  --sm-purple:        #4b4bc0;   /* Primary brand */
+  --sm-purple-700:    #3a3a99;
+  --sm-purple-200:    #d2d2ed;
+  --sm-acid:          oklch(0.88 0.18 120); /* Active-badge highlight */
+  --sm-ink:           #0f0f1a;   /* Dark canvas */
+  --sm-ink-raised:    #16162a;   /* Card on dark */
+  --sm-paper:         #ffffff;
+  --sm-fg-dark:       #f9f9f9;
+  --sm-fg-light:      #111111;
+
+  /* ──────────── Semantic — light mode (default) ──────────── */
+  --background:           #ffffff;
+  --foreground:           #111111;
+  --card:                 #ffffff;
+  --card-foreground:      #111111;
+  --popover:              #ffffff;
+  --popover-foreground:   #111111;
+  --primary:              #4b4bc0;
+  --primary-foreground:   #ffffff;
+  --secondary:            #f5f5f5;
+  --secondary-foreground: #4b4bc0;
+  --muted:                #f5f5f5;
+  --muted-foreground:     #666666;
+  --accent:               #f5f5f5;
+  --accent-foreground:    #4b4bc0;
+  --destructive:          #ef4444;
+  --border:               #e5e5e5;
+  --input:                #e5e5e5;
+  --ring:                 #4b4bc0;
+
+  /* Status primitives — non-themed */
+  --status-green:  #22c55e;
+  --status-amber:  #f59e0b;
+  --status-blue:   #3b82f6;
+  --status-red:    #ef4444;
+
+  /* Sidebar — light mode shows purple navigation rail */
+  --sidebar:                       #4b4bc0;
+  --sidebar-foreground:            #ffffff;
+  --sidebar-primary:               #ffffff;
+  --sidebar-primary-foreground:    #4b4bc0;
+  --sidebar-accent:                rgba(255,255,255,0.10);
+  --sidebar-accent-foreground:     #ffffff;
+  --sidebar-border:                rgba(255,255,255,0.10);
+
+  /* ──────────── Radii (base 6px / 0.375rem) ──────────── */
+  --radius:        0.375rem;        /* 6px — base */
+  --radius-xs:     2px;
+  --radius-sm:     4px;
+  --radius-base:   6px;
+  --radius-md:     8px;
+  --radius-lg:     12px;
+  --radius-xl:     16px;
+  --radius-2xl:    20px;
+  --radius-3xl:    32px;            /* Used for dashboard hero / tool cards */
+  --radius-pill:   9999px;
+
+  /* ──────────── Spacing (4px unit) ──────────── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* ──────────── Elevation ──────────── */
+  --shadow-xs:        0 1px 2px rgba(0,0,0,0.20);
+  --shadow-sm:        0 2px 4px rgba(0,0,0,0.10);
+  --shadow-elev-1:    0 2px 8px  rgba(0,0,0,0.30);
+  --shadow-elev-2:    0 8px 24px rgba(0,0,0,0.40);
+  --shadow-elev-3:    0 12px 32px rgba(0,0,0,0.60);
+  --shadow-acid-glow: 0 0 20px rgba(217,249,157,0.30);
+  --shadow-primary-glow: 0 20px 40px -8px rgba(75,75,192,0.20);
+
+  /* ──────────── Typography — families ──────────── */
+  --font-sans:    "DM Sans", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "DM Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono:    "Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* ──────────── Typography — type scale ──────────── */
+  --fz-2xs: 10px;   /* labels, micro-metadata */
+  --fz-xs:  12px;
+  --fz-sm:  13px;
+  --fz-base:14px;   /* product body */
+  --fz-lg:  16px;
+  --fz-xl:  18px;
+  --fz-2xl: 20px;
+  --fz-3xl: 24px;
+  --fz-4xl: 28px;
+  --fz-5xl: 36px;
+  --fz-6xl: 48px;
+  --fz-7xl: 64px;
+  --fz-display: 96px;
+
+  --lh-tight:  1.1;
+  --lh-snug:   1.2;
+  --lh-normal: 1.45;
+  --lh-relaxed:1.6;
+
+  /* SyncMaster signature tracking: headings use -0.068em */
+  --tracking-sync:     -0.068em;
+  --tracking-display:  -0.04em;
+  --tracking-tight:    -0.02em;
+  --tracking-label:    0.25em;   /* mono micro-labels */
+}
+
+/* ──────────────────────────────────────────────
+   DARK MODE — the editorial default
+   ────────────────────────────────────────────── */
+.dark, [data-theme="dark"] {
+  --background:           #0f0f1a;
+  --foreground:           #f9f9f9;
+  --card:                 #16162a;
+  --card-foreground:      #f9f9f9;
+  --popover:              #16162a;
+  --popover-foreground:   #f9f9f9;
+  --primary:              #4b4bc0;
+  --primary-foreground:   #ffffff;
+  --secondary:            #1e1e1e;
+  --secondary-foreground: #f9f9f9;
+  --muted:                #282828;
+  --muted-foreground:     #94a3b8;
+  --accent:               #282828;
+  --accent-foreground:    #f9f9f9;
+  --destructive:          #ef4444;
+  --border:               rgba(255,255,255,0.08);
+  --input:                rgba(255,255,255,0.16);
+  --ring:                 #4b4bc0;
+
+  --sidebar:                       #0f0f1a;
+  --sidebar-foreground:            #f9f9f9;
+  --sidebar-primary:               #4b4bc0;
+  --sidebar-primary-foreground:    #ffffff;
+  --sidebar-accent:                rgba(255,255,255,0.04);
+  --sidebar-accent-foreground:     #f9f9f9;
+  --sidebar-border:                rgba(255,255,255,0.08);
+}
+
+/* ──────────────────────────────────────────────
+   BASE — type weights & defaults
+   ────────────────────────────────────────────── */
+html, body {
+  font-family: var(--font-sans);
+  font-size: var(--fz-base);
+  line-height: var(--lh-normal);
+  background: var(--background);
+  color: var(--foreground);
+  font-feature-settings: "rlig" 1, "calt" 1;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection { background: color-mix(in srgb, var(--primary) 20%, transparent); }
+
+/* ──────────────────────────────────────────────
+   SEMANTIC TYPE — headings & body
+   All headings use BLACK weight (900) + -0.068em tracking + 1.2 lh.
+   ────────────────────────────────────────────── */
+h1, .h1 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(36px, 5.5vw, 72px);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-sync);
+  color: var(--foreground);
+}
+h2, .h2 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(28px, 3.5vw, 48px);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-sync);
+  color: var(--foreground);
+}
+h3, .h3 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: var(--fz-3xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-sync);
+  color: var(--foreground);
+}
+h4, .h4 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: var(--fz-xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-sync);
+  color: var(--foreground);
+}
+h5, .h5 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: var(--fz-lg);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-sync);
+}
+h6, .h6 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: var(--fz-sm);
+  letter-spacing: var(--tracking-sync);
+  text-transform: uppercase;
+}
+
+p, .body {
+  font-family: var(--font-sans);
+  font-size: var(--fz-base);
+  font-weight: 500;
+  line-height: var(--lh-normal);
+  color: var(--foreground);
+}
+
+.lead {
+  font-size: clamp(18px, 1.4vw, 22px);
+  font-weight: 500;
+  letter-spacing: var(--tracking-tight);
+  color: var(--muted-foreground);
+  line-height: var(--lh-relaxed);
+}
+
+/* Editorial display — used for brief titles, lockups */
+.display {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+/* All-caps mono label. Sizing tokens: .label (10px) / .label-strong (11px) */
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--fz-2xs);
+  letter-spacing: var(--tracking-label);
+  color: var(--muted-foreground);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.label-strong {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--foreground);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Tabular numerals for data, money, BPM, durations */
+.mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum";
+}
+
+/* Hairline rules — the editorial separator */
+.hairline         { border-top: 1px solid var(--border); }
+.hairline-strong  { border-top: 1px solid var(--input); }
+
+.muted, .dim      { color: var(--muted-foreground); }
+.accent-text      { color: var(--primary); }
+.acid-text        { color: var(--sm-acid); }
+.tracking-sync    { letter-spacing: var(--tracking-sync); }
+
+/* Code / inline mono */
+code, .code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  padding: 2px 5px;
+  border-radius: var(--radius-sm);
+  background: var(--muted);
+  color: var(--foreground);
+}
+
+</style>
+  
+  <style>
+    :root {
+      --bg-section-x: 96px;
+      --bg-section-y: 112px;
+      --bg-section-gap: 128px;
+      --bg-logo-h: 56px;
+      --bg-head-track: -0.068em;
+    }
+    html, body { margin: 0; padding: 0; background: var(--background); color: var(--foreground); }
+    body { font-family: var(--font-sans); font-weight: 500; }
+    section { width: 1440px; margin: 0 auto; padding-left: var(--bg-section-x); padding-right: var(--bg-section-x); padding-top: var(--bg-section-y); padding-bottom: var(--bg-section-y); box-sizing: border-box; }
+    section#cover { padding: 0; }
+    .page-spacer    { height: calc(var(--bg-section-gap) * 0.55); }
+    .page-spacer-lg { height: var(--bg-section-gap); }
+    .mono-tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted-foreground); font-weight: 500; }
+    .page-header { display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 32px; border-bottom: 1px solid var(--border); margin-bottom: 64px; }
+    .page-title { font-family: var(--font-heading); font-weight: 900; letter-spacing: var(--bg-head-track); font-size: 56px; line-height: 1.05; color: var(--foreground); margin: 0; }
+    .page-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sm-acid); }
+    h1, h2, h3, h4, h5, h6 { letter-spacing: var(--bg-head-track); }
+
+    /* Brand-logo header — sits above the cover */
+    .doc-header {
+      width: 1440px; margin: 0 auto; box-sizing: border-box;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 32px var(--bg-section-x);
+      border-bottom: 1px solid var(--border);
+      background: var(--sm-ink);
+    }
+    .doc-header__brand { display: flex; align-items: center; gap: 24px; }
+    .doc-header__brand img { height: var(--bg-logo-h); width: auto; display: block; }
+    .doc-header__rule { width: 1px; height: 28px; background: var(--border); }
+    .doc-header__meta { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted-foreground); }
+  </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.bottom-6{bottom:1.5rem}.left-6{left:1.5rem}.right-6{right:1.5rem}.top-6{top:1.5rem}.col-span-4{grid-column:span 4 / span 4}.col-span-5{grid-column:span 5 / span 5}.col-span-7{grid-column:span 7 / span 7}.col-span-8{grid-column:span 8 / span 8}.m-0{margin:0px}.mx-auto{margin-left:auto;margin-right:auto}.mb-10{margin-bottom:2.5rem}.mb-12{margin-bottom:3rem}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mr-2{margin-right:0.5rem}.mt-10{margin-top:2.5rem}.mt-12{margin-top:3rem}.mt-14{margin-top:3.5rem}.mt-2{margin-top:0.5rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.mt-1{margin-top:0.25rem}.mt-16{margin-top:4rem}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.aspect-\[4\/3\]{aspect-ratio:4/3}.aspect-square{aspect-ratio:1 / 1}.h-10{height:2.5rem}.h-2{height:0.5rem}.h-20{height:5rem}.h-24{height:6rem}.h-28{height:7rem}.h-32{height:8rem}.h-40{height:10rem}.h-7{height:1.75rem}.h-12{height:3rem}.max-h-full{max-height:100%}.w-20{width:5rem}.w-28{width:7rem}.w-32{width:8rem}.w-40{width:10rem}.w-48{width:12rem}.w-60{width:15rem}.w-7{width:1.75rem}.w-\[1440px\]{width:1440px}.w-px{width:1px}.w-10{width:2.5rem}.w-12{width:3rem}.max-w-\[680px\]{max-width:680px}.max-w-full{max-width:100%}.list-none{list-style-type:none}.grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.grid-cols-5{grid-template-columns:repeat(5, minmax(0, 1fr))}.grid-cols-6{grid-template-columns:repeat(6, minmax(0, 1fr))}.grid-cols-\[140px_120px_120px_1fr\]{grid-template-columns:140px 120px 120px 1fr}.flex-col{flex-direction:column}.items-end{align-items:flex-end}.items-center{align-items:center}.items-baseline{align-items:baseline}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-10{gap:2.5rem}.gap-12{gap:3rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-5{gap:1.25rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.gap-1\.5{gap:0.375rem}.gap-x-10{column-gap:2.5rem}.gap-y-8{row-gap:2rem}.overflow-hidden{overflow:hidden}.rounded-\[var\(--radius-base\)\]{border-radius:var(--radius-base)}.rounded-\[var\(--radius-lg\)\]{border-radius:var(--radius-lg)}.rounded-full{border-radius:9999px}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-l-4{border-left-width:4px}.border-t{border-top-width:1px}.border-\[var\(--border\)\]{border-color:var(--border)}.border-l-\[var\(--sm-purple\)\]{border-left-color:var(--sm-purple)}.bg-\[var\(--border\)\]{background-color:var(--border)}.bg-\[var\(--card\)\]{background-color:var(--card)}.bg-\[var\(--muted\)\]{background-color:var(--muted)}.bg-\[var\(--sm-acid\)\]{background-color:var(--sm-acid)}.bg-\[var\(--sm-ink\)\]{background-color:var(--sm-ink)}.bg-transparent{background-color:transparent}.bg-\[var\(--sm-fg-dark\)\]{background-color:var(--sm-fg-dark)}.object-contain{object-fit:contain}.p-0{padding:0px}.p-10{padding:2.5rem}.p-12{padding:3rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-7{padding:1.75rem}.p-8{padding:2rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-20{padding-left:5rem;padding-right:5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-4{padding-left:1rem;padding-right:1rem}.pt-20{padding-top:5rem}.pt-6{padding-top:1.5rem}.pt-8{padding-top:2rem}.pt-4{padding-top:1rem}.text-center{text-align:center}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-6xl{font-size:3.75rem;line-height:1}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[12px\]{font-size:12px}.text-\[8px\]{font-size:8px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xs{font-size:0.75rem;line-height:1rem}.text-\[9px\]{font-size:9px}.font-\[var\(--font-heading\)\]{font-weight:var(--font-heading)}.font-black{font-weight:900}.font-bold{font-weight:700}.font-medium{font-weight:500}.uppercase{text-transform:uppercase}.tracking-\[0\.25em\]{letter-spacing:0.25em}.tracking-\[0\.2em\]{letter-spacing:0.2em}.tracking-\[0\.35em\]{letter-spacing:0.35em}.tracking-\[0\.3em\]{letter-spacing:0.3em}.tracking-wider{letter-spacing:0.05em}.tracking-\[0\.15em\]{letter-spacing:0.15em}.text-\[var\(--foreground\)\]{color:var(--foreground)}.text-\[var\(--muted-foreground\)\]{color:var(--muted-foreground)}.text-\[var\(--sm-acid\)\]{color:var(--sm-acid)}.text-\[var\(--sm-fg-dark\)\]{color:var(--sm-fg-dark)}.text-\[var\(--sm-ink\)\]{color:var(--sm-ink)}.text-\[var\(--sm-purple\)\]{color:var(--sm-purple)}.text-\[var\(--sm-fg-light\)\]{color:var(--sm-fg-light)}</style><script>"use strict";
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiZmlsZTovLy9DOi9Vc2Vycy9pbmZvbi9Eb3dubG9hZHMvU3luY01hc3Rlcl9EUzNfRXh0cmFjdC90d2Vha3MtcGFuZWwuanN4Il0sInNvdXJjZXNDb250ZW50IjpbIiJdLCJtYXBwaW5ncyI6IiIsImlnbm9yZUxpc3QiOltdfQ==</script><script>"use strict";
+
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+var BG_TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "sectionPaddingX": 96,
+  "sectionPaddingY": 112,
+  "sectionGap": 128,
+  "logoHeight": 56,
+  "headingTrack": -0.068,
+  "accentColor": "#4b4bc0"
+} /*EDITMODE-END*/;
+function applyTweaks(t) {
+  var r = document.documentElement.style;
+  r.setProperty('--bg-section-x', t.sectionPaddingX + 'px');
+  r.setProperty('--bg-section-y', t.sectionPaddingY + 'px');
+  r.setProperty('--bg-section-gap', t.sectionGap + 'px');
+  r.setProperty('--bg-logo-h', t.logoHeight + 'px');
+  r.setProperty('--bg-head-track', t.headingTrack + 'em');
+  r.setProperty('--sm-purple', t.accentColor);
+  r.setProperty('--primary', t.accentColor);
+  r.setProperty('--ring', t.accentColor);
+}
+function BrandGuidelinesTweaks() {
+  var _useTweaks = useTweaks(BG_TWEAK_DEFAULTS),
+    _useTweaks2 = _slicedToArray(_useTweaks, 2),
+    t = _useTweaks2[0],
+    setTweak = _useTweaks2[1];
+  React.useEffect(function () {
+    applyTweaks(t);
+  }, [t]);
+  return /*#__PURE__*/React.createElement(TweaksPanel, {
+    title: "Tweaks"
+  }, /*#__PURE__*/React.createElement(TweakSection, {
+    title: "Spacing"
+  }, /*#__PURE__*/React.createElement(TweakSlider, {
+    label: "Section padding \xB7 horizontal",
+    value: t.sectionPaddingX,
+    min: 48,
+    max: 200,
+    step: 4,
+    unit: "px",
+    onChange: function onChange(v) {
+      return setTweak('sectionPaddingX', v);
+    }
+  }), /*#__PURE__*/React.createElement(TweakSlider, {
+    label: "Section padding \xB7 vertical",
+    value: t.sectionPaddingY,
+    min: 48,
+    max: 240,
+    step: 4,
+    unit: "px",
+    onChange: function onChange(v) {
+      return setTweak('sectionPaddingY', v);
+    }
+  }), /*#__PURE__*/React.createElement(TweakSlider, {
+    label: "Space between sections",
+    value: t.sectionGap,
+    min: 32,
+    max: 240,
+    step: 4,
+    unit: "px",
+    onChange: function onChange(v) {
+      return setTweak('sectionGap', v);
+    }
+  })), /*#__PURE__*/React.createElement(TweakSection, {
+    title: "Brand header"
+  }, /*#__PURE__*/React.createElement(TweakSlider, {
+    label: "Logo height",
+    value: t.logoHeight,
+    min: 32,
+    max: 120,
+    step: 2,
+    unit: "px",
+    onChange: function onChange(v) {
+      return setTweak('logoHeight', v);
+    }
+  })), /*#__PURE__*/React.createElement(TweakSection, {
+    title: "Type"
+  }, /*#__PURE__*/React.createElement(TweakSlider, {
+    label: "Heading letter-spacing",
+    value: t.headingTrack,
+    min: -0.1,
+    max: 0,
+    step: 0.002,
+    unit: "em",
+    onChange: function onChange(v) {
+      return setTweak('headingTrack', v);
+    }
+  })), /*#__PURE__*/React.createElement(TweakSection, {
+    title: "Accent"
+  }, /*#__PURE__*/React.createElement(TweakColor, {
+    label: "Primary brand",
+    value: t.accentColor,
+    options: ['#4b4bc0', '#6366f1', '#7c3aed', '#1f8a5b'],
+    onChange: function onChange(v) {
+      return setTweak('accentColor', v);
+    }
+  })));
+}
+var waitForTweaks = setInterval(function () {
+  if (window.TweaksPanel && window.useTweaks) {
+    clearInterval(waitForTweaks);
+    ReactDOM.createRoot(document.getElementById('__tweaks_root')).render(/*#__PURE__*/React.createElement(BrandGuidelinesTweaks, null));
+  }
+}, 50);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJCR19UV0VBS19ERUZBVUxUUyIsImFwcGx5VHdlYWtzIiwidCIsInIiLCJkb2N1bWVudCIsImRvY3VtZW50RWxlbWVudCIsInN0eWxlIiwic2V0UHJvcGVydHkiLCJzZWN0aW9uUGFkZGluZ1giLCJzZWN0aW9uUGFkZGluZ1kiLCJzZWN0aW9uR2FwIiwibG9nb0hlaWdodCIsImhlYWRpbmdUcmFjayIsImFjY2VudENvbG9yIiwiQnJhbmRHdWlkZWxpbmVzVHdlYWtzIiwiX3VzZVR3ZWFrcyIsInVzZVR3ZWFrcyIsIl91c2VUd2Vha3MyIiwiX3NsaWNlZFRvQXJyYXkiLCJzZXRUd2VhayIsIlJlYWN0IiwidXNlRWZmZWN0IiwiY3JlYXRlRWxlbWVudCIsIlR3ZWFrc1BhbmVsIiwidGl0bGUiLCJUd2Vha1NlY3Rpb24iLCJUd2Vha1NsaWRlciIsImxhYmVsIiwidmFsdWUiLCJtaW4iLCJtYXgiLCJzdGVwIiwidW5pdCIsIm9uQ2hhbmdlIiwidiIsIlR3ZWFrQ29sb3IiLCJvcHRpb25zIiwid2FpdEZvclR3ZWFrcyIsInNldEludGVydmFsIiwid2luZG93IiwiY2xlYXJJbnRlcnZhbCIsIlJlYWN0RE9NIiwiY3JlYXRlUm9vdCIsImdldEVsZW1lbnRCeUlkIiwicmVuZGVyIl0sInNvdXJjZXMiOlsiSW5saW5lIEJhYmVsIHNjcmlwdCJdLCJzb3VyY2VzQ29udGVudCI6WyJcbmNvbnN0IEJHX1RXRUFLX0RFRkFVTFRTID0gLypFRElUTU9ERS1CRUdJTiove1xuICBcInNlY3Rpb25QYWRkaW5nWFwiOiA5NixcbiAgXCJzZWN0aW9uUGFkZGluZ1lcIjogMTEyLFxuICBcInNlY3Rpb25HYXBcIjogMTI4LFxuICBcImxvZ29IZWlnaHRcIjogNTYsXG4gIFwiaGVhZGluZ1RyYWNrXCI6IC0wLjA2OCxcbiAgXCJhY2NlbnRDb2xvclwiOiBcIiM0YjRiYzBcIlxufS8qRURJVE1PREUtRU5EKi87XG5cbmZ1bmN0aW9uIGFwcGx5VHdlYWtzKHQpIHtcbiAgY29uc3QgciA9IGRvY3VtZW50LmRvY3VtZW50RWxlbWVudC5zdHlsZTtcbiAgci5zZXRQcm9wZXJ0eSgnLS1iZy1zZWN0aW9uLXgnLCB0LnNlY3Rpb25QYWRkaW5nWCArICdweCcpO1xuICByLnNldFByb3BlcnR5KCctLWJnLXNlY3Rpb24teScsIHQuc2VjdGlvblBhZGRpbmdZICsgJ3B4Jyk7XG4gIHIuc2V0UHJvcGVydHkoJy0tYmctc2VjdGlvbi1nYXAnLCB0LnNlY3Rpb25HYXAgKyAncHgnKTtcbiAgci5zZXRQcm9wZXJ0eSgnLS1iZy1sb2dvLWgnLCB0LmxvZ29IZWlnaHQgKyAncHgnKTtcbiAgci5zZXRQcm9wZXJ0eSgnLS1iZy1oZWFkLXRyYWNrJywgdC5oZWFkaW5nVHJhY2sgKyAnZW0nKTtcbiAgci5zZXRQcm9wZXJ0eSgnLS1zbS1wdXJwbGUnLCB0LmFjY2VudENvbG9yKTtcbiAgci5zZXRQcm9wZXJ0eSgnLS1wcmltYXJ5JywgdC5hY2NlbnRDb2xvcik7XG4gIHIuc2V0UHJvcGVydHkoJy0tcmluZycsIHQuYWNjZW50Q29sb3IpO1xufVxuXG5mdW5jdGlvbiBCcmFuZEd1aWRlbGluZXNUd2Vha3MoKSB7XG4gIGNvbnN0IFt0LCBzZXRUd2Vha10gPSB1c2VUd2Vha3MoQkdfVFdFQUtfREVGQVVMVFMpO1xuICBSZWFjdC51c2VFZmZlY3QoKCkgPT4geyBhcHBseVR3ZWFrcyh0KTsgfSwgW3RdKTtcblxuICByZXR1cm4gKFxuICAgIDxUd2Vha3NQYW5lbCB0aXRsZT1cIlR3ZWFrc1wiPlxuICAgICAgPFR3ZWFrU2VjdGlvbiB0aXRsZT1cIlNwYWNpbmdcIj5cbiAgICAgICAgPFR3ZWFrU2xpZGVyIGxhYmVsPVwiU2VjdGlvbiBwYWRkaW5nIMK3IGhvcml6b250YWxcIiB2YWx1ZT17dC5zZWN0aW9uUGFkZGluZ1h9XG4gICAgICAgICAgbWluPXs0OH0gbWF4PXsyMDB9IHN0ZXA9ezR9IHVuaXQ9XCJweFwiXG4gICAgICAgICAgb25DaGFuZ2U9eyh2KSA9PiBzZXRUd2Vhaygnc2VjdGlvblBhZGRpbmdYJywgdil9IC8+XG4gICAgICAgIDxUd2Vha1NsaWRlciBsYWJlbD1cIlNlY3Rpb24gcGFkZGluZyDCtyB2ZXJ0aWNhbFwiIHZhbHVlPXt0LnNlY3Rpb25QYWRkaW5nWX1cbiAgICAgICAgICBtaW49ezQ4fSBtYXg9ezI0MH0gc3RlcD17NH0gdW5pdD1cInB4XCJcbiAgICAgICAgICBvbkNoYW5nZT17KHYpID0+IHNldFR3ZWFrKCdzZWN0aW9uUGFkZGluZ1knLCB2KX0gLz5cbiAgICAgICAgPFR3ZWFrU2xpZGVyIGxhYmVsPVwiU3BhY2UgYmV0d2VlbiBzZWN0aW9uc1wiIHZhbHVlPXt0LnNlY3Rpb25HYXB9XG4gICAgICAgICAgbWluPXszMn0gbWF4PXsyNDB9IHN0ZXA9ezR9IHVuaXQ9XCJweFwiXG4gICAgICAgICAgb25DaGFuZ2U9eyh2KSA9PiBzZXRUd2Vhaygnc2VjdGlvbkdhcCcsIHYpfSAvPlxuICAgICAgPC9Ud2Vha1NlY3Rpb24+XG5cbiAgICAgIDxUd2Vha1NlY3Rpb24gdGl0bGU9XCJCcmFuZCBoZWFkZXJcIj5cbiAgICAgICAgPFR3ZWFrU2xpZGVyIGxhYmVsPVwiTG9nbyBoZWlnaHRcIiB2YWx1ZT17dC5sb2dvSGVpZ2h0fVxuICAgICAgICAgIG1pbj17MzJ9IG1heD17MTIwfSBzdGVwPXsyfSB1bml0PVwicHhcIlxuICAgICAgICAgIG9uQ2hhbmdlPXsodikgPT4gc2V0VHdlYWsoJ2xvZ29IZWlnaHQnLCB2KX0gLz5cbiAgICAgIDwvVHdlYWtTZWN0aW9uPlxuXG4gICAgICA8VHdlYWtTZWN0aW9uIHRpdGxlPVwiVHlwZVwiPlxuICAgICAgICA8VHdlYWtTbGlkZXIgbGFiZWw9XCJIZWFkaW5nIGxldHRlci1zcGFjaW5nXCIgdmFsdWU9e3QuaGVhZGluZ1RyYWNrfVxuICAgICAgICAgIG1pbj17LTAuMX0gbWF4PXswfSBzdGVwPXswLjAwMn0gdW5pdD1cImVtXCJcbiAgICAgICAgICBvbkNoYW5nZT17KHYpID0+IHNldFR3ZWFrKCdoZWFkaW5nVHJhY2snLCB2KX0gLz5cbiAgICAgIDwvVHdlYWtTZWN0aW9uPlxuXG4gICAgICA8VHdlYWtTZWN0aW9uIHRpdGxlPVwiQWNjZW50XCI+XG4gICAgICAgIDxUd2Vha0NvbG9yIGxhYmVsPVwiUHJpbWFyeSBicmFuZFwiIHZhbHVlPXt0LmFjY2VudENvbG9yfVxuICAgICAgICAgIG9wdGlvbnM9e1snIzRiNGJjMCcsICcjNjM2NmYxJywgJyM3YzNhZWQnLCAnIzFmOGE1YiddfVxuICAgICAgICAgIG9uQ2hhbmdlPXsodikgPT4gc2V0VHdlYWsoJ2FjY2VudENvbG9yJywgdil9IC8+XG4gICAgICA8L1R3ZWFrU2VjdGlvbj5cbiAgICA8L1R3ZWFrc1BhbmVsPlxuICApO1xufVxuXG5jb25zdCB3YWl0Rm9yVHdlYWtzID0gc2V0SW50ZXJ2YWwoKCkgPT4ge1xuICBpZiAod2luZG93LlR3ZWFrc1BhbmVsICYmIHdpbmRvdy51c2VUd2Vha3MpIHtcbiAgICBjbGVhckludGVydmFsKHdhaXRGb3JUd2Vha3MpO1xuICAgIFJlYWN0RE9NLmNyZWF0ZVJvb3QoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ19fdHdlYWtzX3Jvb3QnKSkucmVuZGVyKDxCcmFuZEd1aWRlbGluZXNUd2Vha3MgLz4pO1xuICB9XG59LCA1MCk7XG4iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7O0FBQ0EsSUFBTUEsaUJBQWlCLEdBQUcsa0JBQWtCO0VBQzFDLGlCQUFpQixFQUFFLEVBQUU7RUFDckIsaUJBQWlCLEVBQUUsR0FBRztFQUN0QixZQUFZLEVBQUUsR0FBRztFQUNqQixZQUFZLEVBQUUsRUFBRTtFQUNoQixjQUFjLEVBQUUsQ0FBQyxLQUFLO0VBQ3RCLGFBQWEsRUFBRTtBQUNqQixDQUFDO0FBRUQsU0FBU0MsV0FBV0EsQ0FBQ0MsQ0FBQyxFQUFFO0VBQ3RCLElBQU1DLENBQUMsR0FBR0MsUUFBUSxDQUFDQyxlQUFlLENBQUNDLEtBQUs7RUFDeENILENBQUMsQ0FBQ0ksV0FBVyxDQUFDLGdCQUFnQixFQUFFTCxDQUFDLENBQUNNLGVBQWUsR0FBRyxJQUFJLENBQUM7RUFDekRMLENB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</script></head>
+<body class="bg-[var(--sm-ink)] text-[var(--sm-fg-dark)]">
+
+<!-- ─────────────────────────────────────────────
+     DOC HEADER · brand logo on dark canvas
+     ───────────────────────────────────────────── -->
+<header class="doc-header">
+  <div class="doc-header__brand">
+    <img src="assets/logos/syncmaster-icon.png" alt="SyncMaster — dark-theme brand lockup">
+    <div class="doc-header__rule"></div>
+    <span class="doc-header__meta">v1.0 · Brand Guidelines</span>
+  </div>
+  <span class="doc-header__meta">2026 · Confidential · Internal use</span>
+</header>
+
+<!-- ─────────────────────────────────────────────
+     SECTION 01 · COVER
+     ───────────────────────────────────────────── -->
+<section id="cover" class="relative w-[1440px] mx-auto" style="height: 900px;">
+  <div class="absolute inset-0 bg-[var(--sm-ink)]"></div>
+  <div class="absolute" style="top: -200px; right: -200px; width: 800px; height: 800px; background: var(--sm-purple); filter: blur(180px); opacity: .25; border-radius: 50%; pointer-events: none;"></div>
+  <div class="absolute" style="bottom: -180px; left: -180px; width: 700px; height: 700px; background: var(--sm-acid); filter: blur(180px); opacity: .12; border-radius: 50%; pointer-events: none;"></div>
+
+  <header class="relative flex items-center justify-between px-20 pt-20">
+    <span class="font-mono text-[11px] tracking-[0.3em] uppercase text-[var(--sm-acid)]">01 · Cover</span>
+    <span class="font-mono text-[11px] tracking-[0.3em] uppercase text-[var(--muted-foreground)]">2026 · Confidential</span>
+  </header>
+
+  <article class="relative px-20 flex flex-col justify-end" style="height: 720px; padding-bottom: 80px;">
+    <p class="font-mono text-[12px] tracking-[0.35em] uppercase text-[var(--sm-acid)] mb-10">Connecting African composers to global screens</p>
+    <h1 class="font-[var(--font-heading)] font-black text-[var(--sm-fg-dark)]" style="font-size: 200px; letter-spacing: -0.068em; line-height: 1.02; margin: 0;">
+      Sync<br>Master.
+    </h1>
+    <p class="mt-12 max-w-[680px]" style="font-size: 28px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.35; color: var(--muted-foreground);">
+      Connect African composers to global screens. Curated, cleared, and ready.
+    </p>
+
+    <div class="mt-14 flex items-center gap-8 pt-8 border-t border-[var(--border)]">
+      <div class="flex flex-col gap-1">
+        <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-[var(--muted-foreground)]">CATEGORY</span>
+        <span class="text-sm font-bold text-[var(--sm-fg-dark)]" style="letter-spacing: -0.02em;">Sync licensing infrastructure</span>
+      </div>
+      <div class="w-px h-10 bg-[var(--border)]"></div>
+      <div class="flex flex-col gap-1">
+        <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-[var(--muted-foreground)]">MODEL</span>
+        <span class="text-sm font-bold text-[var(--sm-fg-dark)]" style="letter-spacing: -0.02em;">15–20% commission on placement</span>
+      </div>
+      <div class="w-px h-10 bg-[var(--border)]"></div>
+      <div class="flex flex-col gap-1">
+        <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-[var(--muted-foreground)]">GUARANTEE</span>
+        <span class="text-sm font-bold text-[var(--sm-fg-dark)]" style="letter-spacing: -0.02em;">No placement = no fee</span>
+      </div>
+    </div>
+  </article>
+</section>
+
+<div class="page-spacer-lg"></div>
+
+<!-- ─────────────────────────────────────────────
+     SECTION 02 · BRAND STORY & MISSION
+     ───────────────────────────────────────────── -->
+<section id="brand-story">
+  <header class="page-header">
+    <div>
+      <p class="page-eyebrow">02 · Brand Story</p>
+      <h2 class="page-title mt-4">Brand Story &amp; Mission</h2>
+    </div>
+    <span class="mono-tag">Section 02 · 7 statements</span>
+  </header>
+
+  <div class="grid grid-cols-12 gap-8">
+    <article class="col-span-7 flex flex-col gap-10">
+      <div>
+        <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-[var(--sm-acid)] mb-4">MISSION</p>
+        <p class="font-[var(--font-heading)] font-black" style="font-size: 56px; letter-spacing: -0.068em; line-height: 1.05; color: var(--foreground); margin: 0;">
+          "Connect African composers to global screens. Curated, cleared, and ready."
+        </p>
+      </div>
+
+      <dl class="grid grid-cols-2 gap-x-10 gap-y-8 pt-8 border-t border-[var(--border)]">
+        <div>
+          <dt class="mono-tag mb-2">CATEGORY</dt>
+          <dd class="text-base font-medium text-[var(--foreground)]" style="letter-spacing: -0.02em; line-height: 1.5;">Sync licensing infrastructure / African music placement agency.</dd>
+        </div>
+        <div>
+          <dt class="mono-tag mb-2">BUSINESS MODEL</dt>
+          <dd class="text-base font-medium text-[var(--foreground)]" style="letter-spacing: -0.02em; line-height: 1.5;">15–20% commission on placement fees, charged to the producer.</dd>
+        </div>
+        <div>
+          <dt class="mono-tag mb-2">GUARANTEE</dt>
+          <dd class="text-base font-medium text-[var(--foreground)]" style="letter-spacing: -0.02em; line-height: 1.5;">No placement = no fee.</dd>
+        </div>
+        <div>
+          <dt class="mono-tag mb-2">TONE OF VOICE</dt>
+          <dd class="text-base font-medium text-[var(--foreground)]" style="letter-spacing: -0.02em; line-height: 1.5;">Dark editorial. Confident without bravado. Direct and practical. Specific over vague. Building in public. Never defensive about African music.</dd>
+        </div>
+      </dl>
+    </article>
+
+    <aside class="col-span-5 flex flex-col gap-5">
+      <p class="mono-tag mb-2">PERSONAS</p>
+      <article class="p-8 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] flex flex-col gap-3">
+        <div class="flex items-baseline justify-between">
+          <h3 class="m-0 text-2xl font-black" style="letter-spacing: -0.068em;">Tunde</h3>
+          <span class="px-2.5 py-1 rounded-full bg-[var(--sm-acid)] text-[var(--sm-ink)] font-mono text-[10px] font-black tracking-[0.2em]">PRIMARY</span>
+        </div>
+        <p class="m-0 text-sm font-bold text-[var(--muted-foreground)]" style="letter-spacing: -0.02em;">African Composer</p>
+        <p class="m-0 text-sm text-[var(--foreground)]" style="line-height: 1.55;"><span class="mono-tag mr-2">PAIN</span>Rights complexity, metadata gaps, no access to briefs.</p>
+        <p class="m-0 text-sm text-[var(--foreground)]" style="line-height: 1.55;"><span class="mono-tag mr-2">GOAL</span>Consistent income stream.</p>
+      </article>
+
+      <article class="p-8 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] flex flex-col gap-3">
+        <div class="flex items-baseline justify-between">
+          <h3 class="m-0 text-2xl font-black" style="letter-spacing: -0.068em;">Amara</h3>
+          <span class="px-2.5 py-1 rounded-full bg-[var(--muted)] text-[var(--muted-foreground)] font-mono text-[10px] font-black tracking-[0.2em]">SECONDARY</span>
+        </div>
+        <p class="m-0 text-sm font-bold text-[var(--muted-foreground)]" style="letter-spacing: -0.02em;">Music Supervisor</p>
+        <p class="m-0 text-sm text-[var(--foreground)]" style="line-height: 1.55;"><span class="mono-tag mr-2">PAIN</span>Finding rights-clean African music fast.</p>
+        <p class="m-0 text-sm text-[var(--foreground)]" style="line-height: 1.55;"><span class="mono-tag mr-2">GOAL</span>Reduce turnaround from brief to track.</p>
+      </article>
+
+      <article class="p-6 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] border-l-4 border-l-[var(--sm-purple)] flex flex-col gap-2">
+        <div class="flex items-baseline justify-between">
+          <h3 class="m-0 text-lg font-black" style="letter-spacing: -0.068em;">Nollywood</h3>
+          <span class="px-2.5 py-1 rounded-full bg-transparent border border-[var(--border)] text-[var(--muted-foreground)] font-mono text-[10px] font-black tracking-[0.2em]">TERTIARY</span>
+        </div>
+        <p class="m-0 text-sm text-[var(--foreground)]" style="line-height: 1.55;">Early validation.</p>
+      </article>
+    </aside>
+  </div>
+</section>
+
+<div class="page-spacer-lg"></div>
+
+<!-- ─────────────────────────────────────────────
+     SECTION 03 · LOGO USAGE
+     ───────────────────────────────────────────── -->
+<section id="logo-usage">
+  <header class="page-header">
+    <div>
+      <p class="page-eyebrow">03 · Identity</p>
+      <h2 class="page-title mt-4">Logo Usage</h2>
+    </div>
+    <span class="mono-tag">Three lockups · Three rules</span>
+  </header>
+
+  <div class="grid grid-cols-3 gap-6 mb-16">
+    <figure class="m-0 flex flex-col gap-4">
+      <div class="aspect-[4/3] rounded-[var(--radius-lg)] bg-[var(--sm-ink)] border border-[var(--border)] flex items-center justify-center p-12">
+        <img src="assets/logos/syncmaster-icon.png" alt="SyncMaster primary horizontal lockup" class="max-w-full max-h-full object-contain" style="filter: brightness(1.1);">
+      </div>
+      <figcaption class="flex flex-col gap-1">
+        <span class="mono-tag">PRIMARY · HORIZONTAL</span>
+        <span class="text-sm font-bold text-[var(--foreground)]" style="letter-spacing: -0.02em;">Default lockup. Use everywhere.</span>
+      </figcaption>
+    </figure>
+
+    <figure class="m-0 flex flex-col gap-4">
+      <div class="aspect-[4/3] rounded-[var(--radius-lg)] bg-[var(--sm-ink)] border border-[var(--border)] flex items-center justify-center p-12 flex-col gap-4">
+        <div class="w-20 h-20 rounded-full bg-[var(--sm-acid)] flex items-center justify-center">
+          <span class="font-mono text-3xl font-black text-[var(--sm-purple)]" style="letter-spacing: -0.1em;">S</span>
+        </div>
+        <span class="font-[var(--font-heading)] font-black text-[var(--sm-fg-dark)]" style="font-size: 24px; letter-spacing: -0.068em;">SYNCMASTER</span>
+      </div>
+      <figcaption class="flex flex-col gap-1">
+        <span class="mono-tag">STACKED</span>
+        <span class="text-sm font-bold text-[var(--foreground)]" style="letter-spacing: -0.02em;">Avatars, app launchers, narrow rails.</span>
+      </figcaption>
+    </figure>
+
+    <figure class="m-0 flex flex-col gap-4">
+      <div class="aspect-[4/3] rounded-[var(--radius-lg)] bg-[var(--sm-ink)] border border-[var(--border)] flex items-center justify-center p-12">
+        <div class="w-28 h-28 rounded-full bg-[var(--sm-acid)] flex items-center justify-center">
+          <span class="font-mono text-6xl font-black text-[var(--sm-purple)]" style="letter-spacing: -0.1em;">S</span>
+        </div>
+      </div>
+      <figcaption class="flex flex-col gap-1">
+        <span class="mono-tag">ICON · MARK ONLY</span>
+        <span class="text-sm font-bold text-[var(--foreground)]" style="letter-spacing: -0.02em;">Favicons, social avatars, profile pods.</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="grid grid-cols-2 gap-8">
+    <article class="p-8 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)]">
+      <p class="mono-tag mb-4" style="color: var(--status-green);">CLEAR SPACE · DO</p>
+      <ul class="m-0 p-0 list-none flex flex-col gap-3 text-sm" style="line-height: 1.55;">
+        <li class="flex gap-3"><span style="color: var(--status-green);">✓</span> Maintain clear space equal to the height of the mark on all sides.</li>
+        <li class="flex gap-3"><span style="color: var(--status-green);">✓</span> Use the acid-on-ink lockup on every dark surface.</li>
+        <li class="flex gap-3"><span style="color: var(--status-green);">✓</span> Use the purple wordmark only on pure white.</li>
+        <li class="flex gap-3"><span style="color: var(--status-green);">✓</span> Place the mark at full opacity. No tints, no overlays.</li>
+      </ul>
+    </article>
+    <article class="p-8 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--card)]">
+      <p class="mono-tag mb-4" style="color: var(--destructive);">DON'T</p>
+      <ul class="m-0 p-0 list-none flex flex-col gap-3 text-sm" style="line-height: 1.55;">
+        <li class="flex gap-3"><span style="color: var(--destructive);">✗</span> Don't recolour the acid lime or the purple.</li>
+        <li class="flex gap-3"><span style="color: var(--destructive);">✗</span> Don't stretch, rotate, or warp the mark.</li>
+        <li class="flex gap-3"><span style="color: var(--destructive);">✗</span> Don't place the mark on photography without a 60% scrim.</li>
+        <li class="flex gap-3"><span style="color: var(--destructive);">✗</span> Don't recreate letterforms — always use the artwork file.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<div class="page-spacer-lg"></div>
+
+<!-- ─────────────────────────────────────────────
+     SECTION 04 · COLOUR SYSTEM
+     ───────────────────────────────────────────── -->
+<section id="colour-system">
+  <header class="page-header">
+    <div>
+      <p class="page-eyebrow">04 · Colour System</p>
+      <h2 class="page-title mt-4">Colour</h2>
+    </div>
+    <span class="mono-tag">Two surfaces · One accent · Four signals</span>
+  </header>
+
+  <!-- Brand row -->
+  <div class="mb-12">
+    <p class="mono-tag mb-6">BRAND PRIMITIVES</p>
+    <div class="grid grid-cols-3 gap-6">
+      <div class="flex flex-col gap-3">
+        <div class="h-40 rounded-[var(--radius-base)] border border-[var(--border)]" style="background: var(--sm-purple);"></div>
+        <div class="flex justify-between items-baseline">
+          <span class="text-sm font-bold" style="letter-spacing: -0.04em;">SyncMaster Purple</span>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)] tracking-wider">#4B4BC0</span>
+        </div>
+        <p class="mono-tag">PRIMARY · BUTTONS · LINKS · FOCUS</p>
+      </div>
+      <div class="flex flex-col gap-3">
+        <div class="h-40 rounded-[var(--radius-base)] border border-[var(--border)]" style="background: var(--sm-acid);"></div>
+        <div class="flex justify-between items-baseline">
+          <span class="text-sm font-bold" style="letter-spacing: -0.04em;">Acid Lime</span>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)] tracking-wider">oklch(.88 .18 120)</span>
+        </div>
+        <p class="mono-tag">ACTIVE BADGE ONLY · NEVER PRIMARY</p>
+      </div>
+      <div class="flex flex-col gap-3">
+        <div class="h-40 rounded-[var(--radius-base)] border border-[var(--border)]" style="background: var(--sm-ink);"></div>
+        <div class="flex justify-between items-baseline">
+          <span class="text-sm font-bold" style="letter-spacing: -0.04em;">Ink (canvas)</span>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)] tracking-wider">#0F0F1A</span>
+        </div>
+        <p class="mono-tag">DARK BACKGROUND · DEFAULT</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Neutrals -->
+  <div class="mb-12 grid grid-cols-2 gap-12">
+    <div>
+      <p class="mono-tag mb-6">DARK NEUTRALS</p>
+      <div class="grid grid-cols-4 gap-3">
+        <div class="flex flex-col gap-2">
+          <div class="h-20 rounded-[var(--radius-base)]" style="background:#0f0f1a; border:1px solid var(--border);"></div>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)]">#0F0F1A</span>
+        </div>
+        <div class="flex flex-col gap-2">
+          <div class="h-20 rounded-[var(--radius-base)]" style="background:#16162a; border:1px solid var(--border);"></div>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)]">#16162A</span>
+        </div>
+        <div class="flex flex-col gap-2">
+          <div class="h-20 rounded-[var(--radius-base)]" style="background:#282828;"></div>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)]">#282828</span>
+        </div>
+        <div class="flex flex-col gap-2">
+          <div class="h-20 rounded-[var(--radius-base)]" style="background:#f9f9f9;"></div>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)]">#F9F9F9</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="mono-tag mb-6">LIGHT NEUTRALS</p>
+      <div class="grid grid-cols-4 gap-3">
+        <div class="flex flex-col gap-2">
+          <div class="h-20 rounded-[var(--radius-base)]" style="background:#ffffff; border:1px solid var(--border);"></div>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)]">#FFFFFF</span>
+        </div>
+        <div class="flex flex-col gap-2">
+          <div class="h-20 rounded-[var(--radius-base)]" style="background:#f5f5f5;"></div>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)]">#F5F5F5</span>
+        </div>
+        <div class="flex flex-col gap-2">
+          <div class="h-20 rounded-[var(--radius-base)]" style="background:#e5e5e5;"></div>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)]">#E5E5E5</span>
+        </div>
+        <div class="flex flex-col gap-2">
+          <div class="h-20 rounded-[var(--radius-base)]" style="background:#111111;"></div>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)]">#111111</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Status -->
+  <div>
+    <p class="mono-tag mb-6">STATUS SIGNALS</p>
+    <div class="grid grid-cols-4 gap-6">
+      <div class="flex flex-col gap-3">
+        <div class="h-24 rounded-[var(--radius-base)]" style="background: var(--status-green);"></div>
+        <div class="flex justify-between items-baseline">
+          <span class="text-sm font-bold" style="letter-spacing: -0.04em;">Success</span>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)]">#22C55E</span>
+        </div>
+      </div>
+      <div class="flex flex-col gap-3">
+        <div class="h-24 rounded-[var(--radius-base)]" style="background: var(--status-amber);"></div>
+        <div class="flex justify-between items-baseline">
+          <span class="text-sm font-bold" style="letter-spacing: -0.04em;">Warning</span>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)]">#F59E0B</span>
+        </div>
+      </div>
+      <div class="flex flex-col gap-3">
+        <div class="h-24 rounded-[var(--radius-base)]" style="background: var(--status-blue);"></div>
+        <div class="flex justify-between items-baseline">
+          <span class="text-sm font-bold" style="letter-spacing: -0.04em;">Info</span>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)]">#3B82F6</span>
+        </div>
+      </div>
+      <div class="flex flex-col gap-3">
+        <div class="h-24 rounded-[var(--radius-base)]" style="background: var(--destructive);"></div>
+        <div class="flex justify-between items-baseline">
+          <span class="text-sm font-bold" style="letter-spacing: -0.04em;">Destructive</span>
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)]">#EF4444</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="page-spacer-lg"></div>
+
+<!-- ─────────────────────────────────────────────
+     SECTION 05 · TYPOGRAPHY
+     ───────────────────────────────────────────── -->
+<section id="typography">
+  <header class="page-header">
+    <div>
+      <p class="page-eyebrow">05 · Typography</p>
+      <h2 class="page-title mt-4">Type System</h2>
+    </div>
+    <span class="mono-tag">DM Sans · Geist Mono · 7 sizes</span>
+  </header>
+
+  <!-- Families -->
+  <div class="grid grid-cols-2 gap-8 mb-16">
+    <article class="p-8 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] flex flex-col gap-6">
+      <div class="flex items-baseline justify-between">
+        <p class="mono-tag">PRIMARY · SANS</p>
+        <p class="mono-tag">300 / 400 / 500 / 700 / 900</p>
+      </div>
+      <p class="m-0" style="font-family: var(--font-sans); font-size: 88px; font-weight: 900; letter-spacing: -0.068em; line-height: 1; color: var(--foreground);">DM Sans</p>
+      <p class="m-0 text-sm" style="color: var(--muted-foreground); line-height: 1.55; font-weight: 500;">
+        Used for all UI text, headings, body, marketing copy. Headings always weight 900, letter-spacing −0.068em, line-height 1.2. Body weight 500.
+      </p>
+      <div class="grid grid-cols-5 gap-3 pt-6 border-t border-[var(--border)] text-[var(--muted-foreground)]">
+        <div style="font-family: var(--font-sans); font-weight:300;">300</div>
+        <div style="font-family: var(--font-sans); font-weight:400;">400</div>
+        <div style="font-family: var(--font-sans); font-weight:500; color: var(--foreground);">500</div>
+        <div style="font-family: var(--font-sans); font-weight:700;">700</div>
+        <div style="font-family: var(--font-sans); font-weight:900; color: var(--foreground);">900</div>
+      </div>
+    </article>
+
+    <article class="p-8 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] flex flex-col gap-6">
+      <div class="flex items-baseline justify-between">
+        <p class="mono-tag">MONOSPACE</p>
+        <p class="mono-tag">400 / 500 / 600</p>
+      </div>
+      <p class="m-0" style="font-family: var(--font-mono); font-size: 64px; font-weight: 600; letter-spacing: -0.02em; line-height: 1; color: var(--foreground);">Geist Mono</p>
+      <p class="m-0 text-sm" style="color: var(--muted-foreground); line-height: 1.55; font-weight: 500;">
+        Used for labels, micro-metadata, BPM / money / duration data. Labels are 10–11px, ALL CAPS, letter-spacing 0.25em (.label) or 0.1em (.label-strong).
+      </p>
+      <div class="grid grid-cols-2 gap-3 pt-6 border-t border-[var(--border)] font-mono text-[var(--muted-foreground)]">
+        <div>$15,000 – $25,000</div>
+        <div>BPM 118 · Fm</div>
+      </div>
+    </article>
+  </div>
+
+  <!-- Type scale -->
+  <div class="mb-16">
+    <p class="mono-tag mb-6">TYPE SCALE · CSS TOKENS</p>
+    <div class="rounded-[var(--radius-lg)] border border-[var(--border)] overflow-hidden">
+      <div class="grid grid-cols-[140px_120px_120px_1fr] gap-6 px-6 py-3 border-b border-[var(--border)] bg-[var(--card)]">
+        <span class="mono-tag">TOKEN</span>
+        <span class="mono-tag">SIZE</span>
+        <span class="mono-tag">LINE-HEIGHT</span>
+        <span class="mono-tag">SPECIMEN</span>
+      </div>
+      <div class="grid grid-cols-[140px_120px_120px_1fr] gap-6 px-6 py-4 border-b border-[var(--border)] items-baseline">
+        <span class="font-mono text-xs text-[var(--foreground)]">--fz-7xl</span><span class="font-mono text-xs text-[var(--muted-foreground)]">64px</span><span class="font-mono text-xs text-[var(--muted-foreground)]">1.1</span>
+        <span style="font-size:64px; font-weight:900; letter-spacing:-0.068em; line-height:1.1;">Ag</span>
+      </div>
+      <div class="grid grid-cols-[140px_120px_120px_1fr] gap-6 px-6 py-4 border-b border-[var(--border)] items-baseline">
+        <span class="font-mono text-xs text-[var(--foreground)]">--fz-6xl</span><span class="font-mono text-xs text-[var(--muted-foreground)]">48px</span><span class="font-mono text-xs text-[var(--muted-foreground)]">1.2</span>
+        <span style="font-size:48px; font-weight:900; letter-spacing:-0.068em; line-height:1.2;">Ag</span>
+      </div>
+      <div class="grid grid-cols-[140px_120px_120px_1fr] gap-6 px-6 py-4 border-b border-[var(--border)] items-baseline">
+        <span class="font-mono text-xs text-[var(--foreground)]">--fz-5xl</span><span class="font-mono text-xs text-[var(--muted-foreground)]">36px</span><span class="font-mono text-xs text-[var(--muted-foreground)]">1.2</span>
+        <span style="font-size:36px; font-weight:900; letter-spacing:-0.068em; line-height:1.2;">Ag</span>
+      </div>
+      <div class="grid grid-cols-[140px_120px_120px_1fr] gap-6 px-6 py-4 border-b border-[var(--border)] items-baseline">
+        <span class="font-mono text-xs text-[var(--foreground)]">--fz-3xl</span><span class="font-mono text-xs text-[var(--muted-foreground)]">24px</span><span class="font-mono text-xs text-[var(--muted-foreground)]">1.2</span>
+        <span style="font-size:24px; font-weight:900; letter-spacing:-0.068em; line-height:1.2;">Ag</span>
+      </div>
+      <div class="grid grid-cols-[140px_120px_120px_1fr] gap-6 px-6 py-4 border-b border-[var(--border)] items-baseline">
+        <span class="font-mono text-xs text-[var(--foreground)]">--fz-xl</span><span class="font-mono text-xs text-[var(--muted-foreground)]">18px</span><span class="font-mono text-xs text-[var(--muted-foreground)]">1.45</span>
+        <span style="font-size:18px; font-weight:500;">The quick brown fox jumps over the lazy dog.</span>
+      </div>
+      <div class="grid grid-cols-[140px_120px_120px_1fr] gap-6 px-6 py-4 border-b border-[var(--border)] items-baseline">
+        <span class="font-mono text-xs text-[var(--foreground)]">--fz-base</span><span class="font-mono text-xs text-[var(--muted-foreground)]">14px</span><span class="font-mono text-xs text-[var(--muted-foreground)]">1.45</span>
+        <span style="font-size:14px; font-weight:500;">The quick brown fox jumps over the lazy dog.</span>
+      </div>
+      <div class="grid grid-cols-[140px_120px_120px_1fr] gap-6 px-6 py-4 items-baseline">
+        <span class="font-mono text-xs text-[var(--foreground)]">--fz-2xs</span><span class="font-mono text-xs text-[var(--muted-foreground)]">10px</span><span class="font-mono text-xs text-[var(--muted-foreground)]">1.45</span>
+        <span class="mono-tag">THE QUICK BROWN FOX</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sample hierarchy -->
+  <div>
+    <p class="mono-tag mb-6">HEADING HIERARCHY · IN CONTEXT</p>
+    <article class="p-10 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] flex flex-col gap-4">
+      <h1 class="m-0" style="font-size:64px; font-weight:900; letter-spacing:-0.068em; line-height:1.1;">Connect African composers to global screens.</h1>
+      <h2 class="m-0" style="font-size:36px; font-weight:900; letter-spacing:-0.068em; line-height:1.2;">Curated, cleared, and ready.</h2>
+      <h3 class="m-0" style="font-size:24px; font-weight:900; letter-spacing:-0.068em; line-height:1.2;">15–20% commission. No placement, no fee.</h3>
+      <p class="m-0 mt-2" style="font-size:18px; font-weight:500; color: var(--muted-foreground); line-height:1.6;">
+        Body lead — DM Sans 18 / weight 500 / muted-foreground. Reads at a measure of roughly 70 characters. Used directly under hero headlines and as scene-setting paragraphs at section openings.
+      </p>
+      <p class="m-0 text-sm" style="font-weight: 500; line-height: 1.6;">
+        Body default — DM Sans 14 / weight 500. The dense workhorse for product copy. The body weight is intentionally 500, not 400 — it reads more confident in dark mode.
+      </p>
+    </article>
+  </div>
+</section>
+
+<div class="page-spacer-lg"></div>
+
+<!-- ─────────────────────────────────────────────
+     SECTION 06 · TONE OF VOICE
+     ───────────────────────────────────────────── -->
+<section id="tone-voice">
+  <header class="page-header">
+    <div>
+      <p class="page-eyebrow">06 · Voice</p>
+      <h2 class="page-title mt-4">Tone of Voice</h2>
+    </div>
+    <span class="mono-tag">Five principles · From the brand context</span>
+  </header>
+
+  <div class="grid grid-cols-5 gap-5">
+    <article class="p-7 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] flex flex-col gap-5">
+      <span class="font-mono text-[10px] tracking-[0.3em] text-[var(--sm-acid)]">PRINCIPLE 01</span>
+      <h3 class="m-0" style="font-size: 28px; font-weight: 900; letter-spacing: -0.068em; line-height: 1.1;">Direct and practical.</h3>
+      <p class="m-0 text-sm" style="color: var(--muted-foreground); line-height: 1.55; font-weight: 500;">No marketing hedging. Lead with the verb. Cut the qualifier.</p>
+    </article>
+
+    <article class="p-7 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] flex flex-col gap-5">
+      <span class="font-mono text-[10px] tracking-[0.3em] text-[var(--sm-acid)]">PRINCIPLE 02</span>
+      <h3 class="m-0" style="font-size: 28px; font-weight: 900; letter-spacing: -0.068em; line-height: 1.1;">Specific over vague.</h3>
+      <p class="m-0 text-sm" style="color: var(--muted-foreground); line-height: 1.55; font-weight: 500;">3–5 matches, not 500. 24–48 hours, not "fast". Pair every claim with a number.</p>
+    </article>
+
+    <article class="p-7 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] flex flex-col gap-5">
+      <span class="font-mono text-[10px] tracking-[0.3em] text-[var(--sm-acid)]">PRINCIPLE 03</span>
+      <h3 class="m-0" style="font-size: 28px; font-weight: 900; letter-spacing: -0.068em; line-height: 1.1;">Dark editorial.</h3>
+      <p class="m-0 text-sm" style="color: var(--muted-foreground); line-height: 1.55; font-weight: 500;">Reads like a developer-tool product page about music. Operator's voice, not copywriter's.</p>
+    </article>
+
+    <article class="p-7 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] flex flex-col gap-5">
+      <span class="font-mono text-[10px] tracking-[0.3em] text-[var(--sm-acid)]">PRINCIPLE 04</span>
+      <h3 class="m-0" style="font-size: 28px; font-weight: 900; letter-spacing: -0.068em; line-height: 1.1;">Building in public.</h3>
+      <p class="m-0 text-sm" style="color: var(--muted-foreground); line-height: 1.55; font-weight: 500;">Show the data. Show the process. Show the roadmap. Confident without bravado.</p>
+    </article>
+
+    <article class="p-7 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] flex flex-col gap-5">
+      <span class="font-mono text-[10px] tracking-[0.3em] text-[var(--sm-acid)]">PRINCIPLE 05</span>
+      <h3 class="m-0" style="font-size: 28px; font-weight: 900; letter-spacing: -0.068em; line-height: 1.1;">Never defensive.</h3>
+      <p class="m-0 text-sm" style="color: var(--muted-foreground); line-height: 1.55; font-weight: 500;">Never defensive about African music. State the work. Let the catalogue speak.</p>
+    </article>
+  </div>
+
+  <!-- Do / Don't examples -->
+  <div class="grid grid-cols-2 gap-8 mt-14">
+    <article class="p-8 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] border-l-4" style="border-left-color: var(--status-green);">
+      <p class="mono-tag mb-4" style="color: var(--status-green);">DO · SAY THIS</p>
+      <ul class="m-0 p-0 list-none flex flex-col gap-3 text-sm" style="line-height: 1.55;">
+        <li class="flex gap-3"><span style="color: var(--status-green); font-weight:700;">→</span> "3–5 curated matches — not 500 unvetted submissions."</li>
+        <li class="flex gap-3"><span style="color: var(--status-green); font-weight:700;">→</span> "No placement = no fee."</li>
+        <li class="flex gap-3"><span style="color: var(--status-green); font-weight:700;">→</span> "Apply once. Lifetime access."</li>
+        <li class="flex gap-3"><span style="color: var(--status-green); font-weight:700;">→</span> "Curated, cleared, and ready."</li>
+      </ul>
+    </article>
+    <article class="p-8 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)] border-l-4" style="border-left-color: var(--destructive);">
+      <p class="mono-tag mb-4" style="color: var(--destructive);">DON'T · AVOID</p>
+      <ul class="m-0 p-0 list-none flex flex-col gap-3 text-sm" style="line-height: 1.55;">
+        <li class="flex gap-3"><span style="color: var(--destructive); font-weight:700;">×</span> Revolutionise · unleash · transform · powerful · seamless.</li>
+        <li class="flex gap-3"><span style="color: var(--destructive); font-weight:700;">×</span> Exclamation points. We never shout.</li>
+        <li class="flex gap-3"><span style="color: var(--destructive); font-weight:700;">×</span> Emoji in product or marketing copy.</li>
+        <li class="flex gap-3"><span style="color: var(--destructive); font-weight:700;">×</span> Apologies or qualifiers around "African".</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<div class="page-spacer-lg"></div>
+
+<!-- ─────────────────────────────────────────────
+     SECTION 07 · IMAGERY
+     ───────────────────────────────────────────── -->
+<section id="imagery">
+  <header class="page-header">
+    <div>
+      <p class="page-eyebrow">07 · Imagery</p>
+      <h2 class="page-title mt-4">Imagery Direction</h2>
+    </div>
+    <span class="mono-tag">Two modes · Photography · Editorial layout</span>
+  </header>
+
+  <div class="grid grid-cols-2 gap-8">
+    <figure class="m-0 flex flex-col gap-4">
+      <div class="relative rounded-[var(--radius-lg)] overflow-hidden border border-[var(--border)]" style="aspect-ratio: 4/3; background: linear-gradient(135deg, #1a1a2e 0%, #16162a 50%, #0f0f1a 100%);">
+        <!-- composite mock: studio scene placeholder -->
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="text-center">
+            <div class="w-32 h-32 mx-auto rounded-full mb-6" style="background: radial-gradient(circle at 30% 30%, var(--sm-purple), transparent 70%); opacity: 0.6;"></div>
+            <span class="mono-tag" style="color: var(--sm-acid);">PHOTOGRAPHY · PLACEHOLDER</span>
+          </div>
+        </div>
+        <div class="absolute top-6 left-6 px-3 py-1.5 rounded-full bg-[var(--sm-acid)] text-[var(--sm-ink)] font-mono text-[10px] font-black tracking-[0.2em]">PORTRAIT</div>
+        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+          <div class="font-[var(--font-heading)] text-[var(--sm-fg-dark)]" style="font-size: 32px; font-weight: 900; letter-spacing: -0.068em; line-height: 1; max-width: 240px;">Tunde<br>at the desk.</div>
+          <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-[var(--muted-foreground)]">LAGOS · 04:12</span>
+        </div>
+      </div>
+      <figcaption class="flex flex-col gap-2 px-2">
+        <span class="mono-tag">DIRECTION · COMPOSER PORTRAITS</span>
+        <p class="m-0 text-sm font-medium" style="line-height: 1.55;">
+          Low-key studio portraits of composers at work. Practical lights — a screen, a desk lamp, the glow off a console. Ambient grain, no diffusion. Shot from chest up, eyes off-camera. <strong>Always credited.</strong> Always named.
+        </p>
+      </figcaption>
+    </figure>
+
+    <figure class="m-0 flex flex-col gap-4">
+      <div class="relative rounded-[var(--radius-lg)] overflow-hidden border border-[var(--border)]" style="aspect-ratio: 4/3; background: linear-gradient(180deg, var(--sm-purple) 0%, #2a2a80 100%);">
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="text-center">
+            <div class="w-40 h-2 mx-auto rounded-full" style="background: rgba(255,255,255,.3);"></div>
+            <div class="w-60 h-2 mx-auto rounded-full mt-3" style="background: rgba(255,255,255,.5);"></div>
+            <div class="w-32 h-2 mx-auto rounded-full mt-3" style="background: rgba(255,255,255,.7);"></div>
+            <div class="w-48 h-2 mx-auto rounded-full mt-3" style="background: rgba(255,255,255,.4);"></div>
+          </div>
+        </div>
+        <div class="absolute top-6 left-6 px-3 py-1.5 rounded-full bg-[var(--sm-acid)] text-[var(--sm-ink)] font-mono text-[10px] font-black tracking-[0.2em]">EDITORIAL</div>
+        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+          <div class="font-[var(--font-heading)] text-[var(--sm-fg-dark)]" style="font-size: 32px; font-weight: 900; letter-spacing: -0.068em; line-height: 1;">$48k<br>placed.</div>
+          <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-[var(--sm-fg-dark)]">JAN–APR 2026</span>
+        </div>
+      </div>
+      <figcaption class="flex flex-col gap-2 px-2">
+        <span class="mono-tag">DIRECTION · DATA-FIRST EDITORIAL</span>
+        <p class="m-0 text-sm font-medium" style="line-height: 1.55;">
+          Flat purple fields with a single bold figure. Numbers &gt; illustration. Used in placement reports, monthly recaps, fundraising decks. Title set in <em>display</em> weight 300 → contrast against the slab body.
+        </p>
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="mt-10 grid grid-cols-3 gap-6">
+    <div class="p-6 rounded-[var(--radius-lg)] border border-[var(--border)]">
+      <span class="mono-tag mb-3 block">CRITERIA · COLOUR</span>
+      <p class="m-0 text-sm" style="line-height: 1.5;">Warm shadows or neutral cool. Never desaturated grey. Skin tones rendered honestly — no orange filter, no instagram lift.</p>
+    </div>
+    <div class="p-6 rounded-[var(--radius-lg)] border border-[var(--border)]">
+      <span class="mono-tag mb-3 block">CRITERIA · GRAIN</span>
+      <p class="m-0 text-sm" style="line-height: 1.5;">Subtle film grain at 5–8%. Adds editorial weight. Never digital noise. Never sharpened past the camera default.</p>
+    </div>
+    <div class="p-6 rounded-[var(--radius-lg)] border border-[var(--border)]">
+      <span class="mono-tag mb-3 block">CRITERIA · CROP</span>
+      <p class="m-0 text-sm" style="line-height: 1.5;">Tight crops with room above the head for type overlay. 4:5 portrait or 16:9 landscape. No square crops outside social media.</p>
+    </div>
+  </div>
+</section>
+
+<div class="page-spacer-lg"></div>
+
+<!-- ─────────────────────────────────────────────
+     SECTION 08 · ICONOGRAPHY
+     ───────────────────────────────────────────── -->
+<section id="iconography">
+  <header class="page-header">
+    <div>
+      <p class="page-eyebrow">08 · Iconography</p>
+      <h2 class="page-title mt-4">Iconography</h2>
+    </div>
+    <span class="mono-tag">Lucide · 1.5px stroke · radius var(--radius-base)</span>
+  </header>
+
+  <div class="grid grid-cols-12 gap-8 mb-16">
+    <div class="col-span-8">
+      <p class="mono-tag mb-6">CORE GLYPHS · PRODUCT SURFACE</p>
+      <div class="grid grid-cols-6 gap-3">
+        <!-- placeholders rendered as inline SVG so they survive Figma import -->
+        <div class="aspect-square rounded-[var(--radius-base)] border border-[var(--border)] flex items-center justify-center bg-[var(--card)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--foreground);"><rect width="7" height="9" x="3" y="3" rx="1"></rect><rect width="7" height="5" x="14" y="3" rx="1"></rect><rect width="7" height="9" x="14" y="12" rx="1"></rect><rect width="7" height="5" x="3" y="16" rx="1"></rect></svg>
+        </div>
+        <div class="aspect-square rounded-[var(--radius-base)] border border-[var(--border)] flex items-center justify-center bg-[var(--card)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--foreground);"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path><rect width="20" height="14" x="2" y="6" rx="2"></rect></svg>
+        </div>
+        <div class="aspect-square rounded-[var(--radius-base)] border border-[var(--border)] flex items-center justify-center bg-[var(--card)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--foreground);"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+        </div>
+        <div class="aspect-square rounded-[var(--radius-base)] border border-[var(--border)] flex items-center justify-center bg-[var(--card)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--foreground);"><path d="M16 6h.01M2 18s1.5-2 6-2 7.99 2 11.99 2"></path><circle cx="12" cy="8" r="4"></circle><path d="M19 8a2 2 0 0 0 0-4"></path></svg>
+        </div>
+        <div class="aspect-square rounded-[var(--radius-base)] border border-[var(--border)] flex items-center justify-center bg-[var(--card)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--foreground);"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
+        </div>
+        <div class="aspect-square rounded-[var(--radius-base)] border border-[var(--border)] flex items-center justify-center bg-[var(--card)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--foreground);"><path d="m22 8-4 4-4-4"></path><path d="M16 4v8"></path><path d="M2 12h6"></path><path d="M2 6h12"></path><path d="M2 18h12"></path></svg>
+        </div>
+        <div class="aspect-square rounded-[var(--radius-base)] border border-[var(--border)] flex items-center justify-center bg-[var(--card)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--foreground);"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+        </div>
+        <div class="aspect-square rounded-[var(--radius-base)] border border-[var(--border)] flex items-center justify-center bg-[var(--card)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--foreground);"><path d="M12 2v20"></path><path d="M2 12c0-5 4-9 10-9s10 4 10 9"></path><circle cx="12" cy="12" r="2"></circle><path d="M4.93 4.93a10 10 0 0 0 0 14.14"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
+        </div>
+        <div class="aspect-square rounded-[var(--radius-base)] border border-[var(--border)] flex items-center justify-center bg-[var(--card)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--foreground);"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+        </div>
+        <div class="aspect-square rounded-[var(--radius-base)] border border-[var(--border)] flex items-center justify-center bg-[var(--card)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--foreground);"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        </div>
+        <div class="aspect-square rounded-[var(--radius-base)] border border-[var(--border)] flex items-center justify-center bg-[var(--card)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--foreground);"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+        </div>
+        <div class="aspect-square rounded-[var(--radius-base)] border border-[var(--border)] flex items-center justify-center bg-[var(--card)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--foreground);"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        </div>
+      </div>
+      <div class="mt-4 font-mono text-[11px] text-[var(--muted-foreground)]" style="line-height: 1.65;">
+        layout-dashboard · briefcase · trending-up · mic-2 · check-circle-2 · sliders · trending-up-line · radio · message-square · settings · search · play
+      </div>
+    </div>
+
+    <aside class="col-span-4 flex flex-col gap-5">
+      <article class="p-6 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)]">
+        <span class="mono-tag mb-3 block">STROKE</span>
+        <p class="m-0 text-2xl font-black" style="letter-spacing: -0.068em;">1.5px</p>
+        <p class="m-0 mt-2 text-sm" style="color: var(--muted-foreground); line-height: 1.55;">Lucide default. Never 1px (too thin in dark mode), never 2px (too heavy at small sizes).</p>
+      </article>
+      <article class="p-6 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)]">
+        <span class="mono-tag mb-3 block">SIZE</span>
+        <p class="m-0 text-2xl font-black" style="letter-spacing: -0.068em;">16 / 20 / 24</p>
+        <p class="m-0 mt-2 text-sm" style="color: var(--muted-foreground); line-height: 1.55;">16 inside buttons &amp; inputs. 20 inline. 24 default for nav and feature blocks.</p>
+      </article>
+      <article class="p-6 rounded-[var(--radius-lg)] bg-[var(--card)] border border-[var(--border)]">
+        <span class="mono-tag mb-3 block">RADIUS</span>
+        <p class="m-0 text-2xl font-black" style="letter-spacing: -0.068em;">var(--radius-base)</p>
+        <p class="m-0 mt-2 text-sm" style="color: var(--muted-foreground); line-height: 1.55;">6px on icon backgrounds. Never circular except for status dots.</p>
+      </article>
+    </aside>
+  </div>
+</section>
+
+<div class="page-spacer-lg"></div>
+
+<!-- ─────────────────────────────────────────────
+     SECTION 09 · SOCIAL MEDIA
+     ───────────────────────────────────────────── -->
+<section id="social-media">
+  <header class="page-header">
+    <div>
+      <p class="page-eyebrow">09 · Social</p>
+      <h2 class="page-title mt-4">Social Media Templates</h2>
+    </div>
+    <span class="mono-tag">Instagram · LinkedIn · same tokens</span>
+  </header>
+
+  <div class="grid grid-cols-12 gap-8">
+    <!-- Instagram carousel -->
+    <div class="col-span-7 flex flex-col gap-4">
+      <span class="mono-tag">INSTAGRAM CAROUSEL · 1080 × 1350 (4:5)</span>
+      <div class="grid grid-cols-3 gap-3">
+        <!-- Slide 1 — title -->
+        <article class="rounded-[var(--radius-base)] border border-[var(--border)] overflow-hidden bg-[var(--sm-ink)] relative" style="aspect-ratio: 4/5;">
+          <div class="absolute" style="top: -60px; right: -60px; width: 240px; height: 240px; background: var(--sm-purple); filter: blur(80px); opacity: .4; border-radius: 50%;"></div>
+          <div class="absolute inset-0 p-5 flex flex-col justify-between">
+            <div class="flex items-center justify-between">
+              <div class="w-7 h-7 rounded-full bg-[var(--sm-acid)] flex items-center justify-center">
+                <span class="font-mono text-[10px] font-black text-[var(--sm-ink)]">S</span>
+              </div>
+              <span class="font-mono text-[8px] tracking-[0.2em] text-[var(--muted-foreground)]">01 / 04</span>
+            </div>
+            <div>
+              <p class="m-0 font-mono text-[8px] tracking-[0.3em] uppercase mb-3" style="color: var(--sm-acid);">PLACEMENT REPORT</p>
+              <h3 class="m-0" style="font-size: 28px; font-weight: 900; letter-spacing: -0.068em; line-height: 0.95; color: var(--sm-fg-dark);">7 cues<br>placed.<br>Q1 2026.</h3>
+            </div>
+          </div>
+        </article>
+        <!-- Slide 2 — stat -->
+        <article class="rounded-[var(--radius-base)] border border-[var(--border)] overflow-hidden flex flex-col justify-center items-center text-center" style="aspect-ratio: 4/5; background: var(--sm-purple);">
+          <p class="m-0 font-mono text-[8px] tracking-[0.3em] uppercase mb-4" style="color: rgba(255,255,255,.7);">TURNAROUND</p>
+          <p class="m-0" style="font-size: 64px; font-weight: 900; letter-spacing: -0.068em; line-height: 0.95; color: var(--sm-fg-dark);">37h</p>
+          <p class="m-0 mt-3 text-xs px-4" style="color: rgba(255,255,255,.85); line-height: 1.4; font-weight: 500;">Median brief → shortlist time, January–April.</p>
+        </article>
+        <!-- Slide 3 — quote / CTA -->
+        <article class="rounded-[var(--radius-base)] border border-[var(--border)] overflow-hidden bg-[var(--sm-fg-dark)] text-[var(--sm-fg-light)] relative" style="aspect-ratio: 4/5;">
+          <div class="absolute inset-0 p-5 flex flex-col justify-between">
+            <p class="m-0 font-mono text-[8px] tracking-[0.3em] uppercase" style="color: var(--sm-purple);">NEXT</p>
+            <div>
+              <p class="m-0" style="font-size: 18px; font-weight: 900; letter-spacing: -0.04em; line-height: 1.1;">Open briefs every Tuesday at syncmaster.live</p>
+              <div class="mt-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full" style="background: var(--sm-purple);">
+                <span class="font-mono text-[9px] font-bold uppercase tracking-[0.15em]" style="color: var(--sm-fg-dark);">Apply →</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- LinkedIn post -->
+    <div class="col-span-5 flex flex-col gap-4">
+      <span class="mono-tag">LINKEDIN POST · 1200 × 1200 (1:1)</span>
+      <article class="rounded-[var(--radius-base)] border border-[var(--border)] overflow-hidden bg-[var(--sm-ink)] relative" style="aspect-ratio: 1/1;">
+        <div class="absolute" style="bottom: -120px; right: -120px; width: 380px; height: 380px; background: var(--sm-acid); filter: blur(120px); opacity: .15; border-radius: 50%;"></div>
+
+        <div class="absolute inset-0 p-8 flex flex-col justify-between">
+          <header class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-[var(--sm-acid)] flex items-center justify-center">
+                <span class="font-mono text-base font-black text-[var(--sm-ink)]" style="letter-spacing: -0.1em;">S</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-sm font-black" style="letter-spacing: -0.04em;">SyncMaster</span>
+                <span class="text-[11px] font-medium" style="color: var(--muted-foreground);">Sync licensing infrastructure · Building in public</span>
+              </div>
+            </div>
+            <span class="px-2.5 py-1 rounded-full" style="background: var(--sm-acid); color: var(--sm-ink); font-family: var(--font-mono); font-size: 9px; font-weight: 900; letter-spacing: 0.2em;">HIRING</span>
+          </header>
+
+          <div class="flex flex-col gap-4">
+            <p class="m-0 font-mono text-[10px] tracking-[0.3em] uppercase" style="color: var(--sm-acid);">WHAT WE'RE BUILDING</p>
+            <h3 class="m-0" style="font-size: 36px; font-weight: 900; letter-spacing: -0.068em; line-height: 1.05;">Connect African composers to global screens.</h3>
+            <p class="m-0 text-sm" style="color: var(--muted-foreground); line-height: 1.55; font-weight: 500; max-width: 480px;">
+              Curated, cleared, ready. 15–20% commission to the producer. No placement, no fee.
+            </p>
+          </div>
+
+          <footer class="flex items-center justify-between pt-4 border-t border-[var(--border)]">
+            <div class="flex items-center gap-6">
+              <div>
+                <p class="m-0 font-mono text-[9px] tracking-[0.25em] uppercase" style="color: var(--muted-foreground);">PLACED</p>
+                <p class="m-0 text-base font-black" style="letter-spacing: -0.04em;">$148k</p>
+              </div>
+              <div>
+                <p class="m-0 font-mono text-[9px] tracking-[0.25em] uppercase" style="color: var(--muted-foreground);">ROSTER</p>
+                <p class="m-0 text-base font-black" style="letter-spacing: -0.04em;">42 composers</p>
+              </div>
+            </div>
+            <span class="font-mono text-[10px] tracking-[0.25em] uppercase" style="color: var(--muted-foreground);">syncmaster.live</span>
+          </footer>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- Token recap strip -->
+  <div class="mt-16 grid grid-cols-4 gap-5">
+    <div class="p-5 rounded-[var(--radius-lg)] border border-[var(--border)] flex items-center gap-4">
+      <div class="w-12 h-12 rounded-full" style="background: var(--sm-purple);"></div>
+      <div class="flex flex-col">
+        <span class="mono-tag">PRIMARY</span>
+        <span class="text-sm font-bold mt-1" style="letter-spacing: -0.02em;">Action surface</span>
+      </div>
+    </div>
+    <div class="p-5 rounded-[var(--radius-lg)] border border-[var(--border)] flex items-center gap-4">
+      <div class="w-12 h-12 rounded-full" style="background: var(--sm-acid);"></div>
+      <div class="flex flex-col">
+        <span class="mono-tag">ACCENT</span>
+        <span class="text-sm font-bold mt-1" style="letter-spacing: -0.02em;">Active state only</span>
+      </div>
+    </div>
+    <div class="p-5 rounded-[var(--radius-lg)] border border-[var(--border)] flex items-center gap-4">
+      <div class="w-12 h-12 rounded-[var(--radius-base)]" style="background: var(--sm-ink); border: 1px solid var(--border);"></div>
+      <div class="flex flex-col">
+        <span class="mono-tag">CANVAS</span>
+        <span class="text-sm font-bold mt-1" style="letter-spacing: -0.02em;">Editorial dark default</span>
+      </div>
+    </div>
+    <div class="p-5 rounded-[var(--radius-lg)] border border-[var(--border)] flex items-center gap-4">
+      <div class="flex flex-col items-center justify-center w-12 h-12 rounded-[var(--radius-base)] bg-[var(--card)] border border-[var(--border)]">
+        <span style="font-family: var(--font-sans); font-weight: 900; font-size: 18px; letter-spacing: -0.068em; line-height: 1;">Ag</span>
+      </div>
+      <div class="flex flex-col">
+        <span class="mono-tag">TYPE</span>
+        <span class="text-sm font-bold mt-1" style="letter-spacing: -0.02em;">DM Sans · Geist Mono</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────────
+     TWEAKS PANEL · React + Babel
+     ───────────────────────────────────────────── -->
+<div id="__tweaks_root"></div>
+
+
+
+
+
+
+
+
+
+
+</body></html>

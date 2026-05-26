@@ -1,0 +1,31 @@
+<!doctype html>
+<html class="dark">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin:0; padding:0; background: var(--background); color: var(--foreground); }
+  body { padding: 24px; box-sizing: border-box; font-family: var(--font-sans); }
+  .row { display:flex; align-items:center; gap:16px; }
+  .col { display:flex; flex-direction:column; gap:6px; }
+  .role { font-family: var(--font-mono); font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color: var(--muted-foreground); }
+  .mono-meta { font-family: var(--font-mono); font-size:11px; color: var(--muted-foreground); }
+</style>
+</head><body>
+
+<div class="role" style="margin-bottom:14px">BADGES — STATUS · GENRE · METADATA</div>
+<div style="display:flex; flex-direction:column; gap:14px;">
+  <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+    <span style="display:inline-flex; align-items:center; padding:4px 12px; border-radius:9999px; background:oklch(0.88 0.18 120); color:#000; font-size:10px; font-weight:900; letter-spacing:0.2em; text-transform:uppercase; box-shadow:0 0 20px rgba(217,249,157,.3);">ACTIVE</span>
+    <span style="display:inline-flex; align-items:center; padding:4px 12px; border-radius:9999px; background:var(--muted); color:var(--muted-foreground); font-size:10px; font-weight:900; letter-spacing:0.2em; text-transform:uppercase;">DRAFT</span>
+    <span style="display:inline-flex; align-items:center; padding:4px 12px; border-radius:9999px; background:var(--accent); color:var(--accent-foreground); font-size:10px; font-weight:900; letter-spacing:0.2em; text-transform:uppercase; border:1px solid var(--border);">MATCHED</span>
+    <span style="display:inline-flex; align-items:center; padding:4px 12px; border-radius:9999px; background:var(--card); color:var(--muted-foreground); font-size:10px; font-weight:900; letter-spacing:0.2em; text-transform:uppercase; border:1px solid var(--border);">CLOSED</span>
+  </div>
+  <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+    <span style="display:inline-flex; padding:6px 10px; border-radius:6px; background:rgba(255,255,255,.04); border:1px solid var(--border); color:#4b4bc0; font-size:11px; font-weight:700;">Afrobeats</span>
+    <span style="display:inline-flex; padding:6px 10px; border-radius:6px; background:rgba(255,255,255,.04); border:1px solid var(--border); color:#4b4bc0; font-size:11px; font-weight:700;">Amapiano</span>
+    <span style="display:inline-flex; padding:6px 10px; border-radius:6px; background:rgba(255,255,255,.04); border:1px solid var(--border); color:#4b4bc0; font-size:11px; font-weight:700;">Highlife</span>
+    <span style="display:inline-flex; padding:6px 10px; border-radius:6px; background:rgba(255,255,255,.04); border:1px solid var(--border); color:#4b4bc0; font-size:11px; font-weight:700;">Soukous</span>
+  </div>
+</div>
+</body></html>

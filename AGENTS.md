@@ -59,6 +59,8 @@ playbook-*.md                         persona or channel-specific playbooks
 persona-cards.md                      persona reference
 objection-handling-guide.md           sales objections reference
 SESSION-PROGRESS.md                   latest workspace progress notes
+figma-handoff/                        static Figma-ready HTML/CSS handoff package
+figma-handoff/Figma_Master_Handoff.html master handoff portal
 ```
 
 ## Content Quality Bar
