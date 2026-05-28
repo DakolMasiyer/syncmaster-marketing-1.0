@@ -1,0 +1,69 @@
+{
+  "post_id": "IG-M3-WRAP",
+  "type": "Single",
+  "platform": "Instagram",
+  "pillar": "Behind the Scenes",
+  "persona": "Both",
+  "date": "2026-08-31",
+  "topic": "Month 3 complete. Scale starts now.",
+  "eyebrow": "Behind the Build",
+  "headline": "Month 3. Done.",
+  "subtext": "3 confirmed placements.",
+  "cta": "Apply at syncmaster.io",
+  "footer_name": "syncmaster.live",
+  "caption_hook": "Month 3. Done.\n3 confirmed placements. ↓",
+  "caption_hook_len": 40,
+  "hashtags": [
+    "#SyncMaster",
+    "#AfricanComposers",
+    "#Month3",
+    "#BuildingInPublic"
+  ],
+  "caption_full": "Month 3. Done.\n3 confirmed placements. ↓\n\nApply at syncmaster.io\n\n#SyncMaster #AfricanComposers #Month3 #BuildingInPublic",
+  "visual_direction": "Candid platform screenshot or studio setting. Real, unposed. Text overlay left column.",
+  "product_data": {
+    "screen_type": "brief_card",
+    "requires_screenshot": false,
+    "persona_name": "Tunde",
+    "brief_card": {
+      "id": "brief_card_v3",
+      "platform_label": "Sports / Ad",
+      "platform_badge_color": "#4b4bc0",
+      "status": "Active",
+      "deadline": "07 / 02 / 26",
+      "title": "Energetic Afrobeat for global sports brand",
+      "genre_tags": [
+        "Afrobeat",
+        "Afropop",
+        "Dance"
+      ],
+      "budget": "$10,000 – $20,000",
+      "client": "Priya · Momentum Agency",
+      "notes": "High energy. 45-second cut. Client: major athletic brand. Broad license."
+    },
+    "composer_match": {
+      "id": "composer_match_v3",
+      "label": "AI Match · Sample",
+      "items": [
+        {
+          "name": "Adaeze Okonkwo",
+          "location": "Lagos",
+          "score": 89,
+          "bar_pct": "89%"
+        },
+        {
+          "name": "Sipho Ndlovu",
+          "location": "Durban",
+          "score": 85,
+          "bar_pct": "85%"
+        },
+        {
+          "name": "Ama Owusu",
+          "location": "Accra",
+          "score": 79,
+          "bar_pct": "79%"
+        }
+      ]
+    }
+  }
+}

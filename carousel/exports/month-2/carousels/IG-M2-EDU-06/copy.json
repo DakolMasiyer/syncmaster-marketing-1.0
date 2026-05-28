@@ -1,0 +1,142 @@
+{
+  "post_id": "IG-M2-EDU-06",
+  "type": "Carousel",
+  "platform": "Instagram",
+  "pillar": "Education",
+  "persona": "Tunde",
+  "date": "2026-07-16",
+  "topic": "Metadata deep dive — every tag that matters",
+  "hook": "A supervisor searched 3,000 tracks for \"90-second hopeful African instrumental.\"",
+  "cta": "",
+  "hashtags": [
+    "#MusicMetadata",
+    "#SyncReady",
+    "#AfricanComposers",
+    "#SyncMaster"
+  ],
+  "slide_count": 9,
+  "slides": [
+    {
+      "role": "hook",
+      "eyebrow": "Education · Metadata deep dive — every tag that matters",
+      "headline": "A supervisor searched 3,000 tracks for \"90-second hopeful African instrumental.\"",
+      "lede": "",
+      "footer_kicker": "Written by",
+      "footer_name": "syncmaster.live",
+      "slide": 1,
+      "footer_pageno": "01 / 09"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Education · 1/10",
+      "headline": "Here's what you need to know:",
+      "lede": "Your track existed. · She never found it. · Here's why metadata is the invisible infrastructure. ↓",
+      "list_items": [
+        "Your track existed.",
+        "She never found it.",
+        "Here's why metadata is the invisible infrastructure. ↓"
+      ],
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 2,
+      "footer_pageno": "02 / 09"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Education · 4/10",
+      "headline": "Here's what you need to know:",
+      "lede": "WHAT NEEDS TO LIVE IN THE FILE (embedded metadata): · Title: exact, consistent across every platform · Artist/Composer: your name as it appears on your PRO registration · ISRC: your 12-character unique recording identifier",
+      "list_items": [
+        "WHAT NEEDS TO LIVE IN THE FILE (embedded metadata):",
+        "Title: exact, consistent across every platform",
+        "Artist/Composer: your name as it appears on your PRO registration",
+        "ISRC: your 12-character unique recording identifier",
+        "BPM: to the decimal if possible (147.5 is more useful than \"fast\")",
+        "Key: standard notation — Cm, Gmaj, F#min",
+        "Genre: specific — \"Afrofusion\" is searchable; \"African\" is not",
+        "Mood: industry vocabulary — cinematic, tense, hopeful, driving, sparse, melancholic",
+        "Year: year of recording, not release"
+      ],
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 3,
+      "footer_pageno": "03 / 09"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Education · 5/10",
+      "headline": "Here's what you need to know:",
+      "lede": "WHAT NEEDS TO LIVE IN YOUR CATALOGUE SYSTEM: · Duration: exact, to the second · Instrumentation: list every prominent instrument · Vocal vs. instrumental flag",
+      "list_items": [
+        "WHAT NEEDS TO LIVE IN YOUR CATALOGUE SYSTEM:",
+        "Duration: exact, to the second",
+        "Instrumentation: list every prominent instrument",
+        "Vocal vs. instrumental flag",
+        "One-stop status: confirmed yes/no with documentation",
+        "Stems availability: what exists and how fast you can deliver",
+        "PRO affiliation"
+      ],
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 4,
+      "footer_pageno": "04 / 09"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Education · 6/10",
+      "headline": "Here's what you need to know:",
+      "lede": "WHAT NEEDS TO LIVE IN YOUR PITCH: · Rights summary: one-stop or split, documented and ready to send · Response time commitment: stated and real · Direct licensing contact",
+      "list_items": [
+        "WHAT NEEDS TO LIVE IN YOUR PITCH:",
+        "Rights summary: one-stop or split, documented and ready to send",
+        "Response time commitment: stated and real",
+        "Direct licensing contact"
+      ],
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 5,
+      "footer_pageno": "05 / 09"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 7/10",
+      "headline": "Metadata doesn't make your music better.\nIt makes your music findable.",
+      "lede": "",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 6,
+      "footer_pageno": "06 / 09"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 8/10",
+      "headline": "In every sync database and brief-matching tool — metadata is how your track",
+      "lede": "surfaces.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 7,
+      "footer_pageno": "07 / 09"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 9/10",
+      "headline": "Without it, you're invisible.",
+      "lede": "Your music exists. The brief exists. They never meet.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 8,
+      "footer_pageno": "08 / 09"
+    },
+    {
+      "role": "cta",
+      "eyebrow": "Apply this week",
+      "headline": "Open briefs. Every Tuesday.",
+      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Apply now",
+      "footer_kicker": "Apply",
+      "footer_name": "syncmaster.live",
+      "slide": 9,
+      "footer_pageno": "09 / 09"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "post_id": "IG-EDU-07",
+  "type": "Carousel",
+  "platform": "Instagram",
+  "pillar": "Education",
+  "persona": "Tunde",
+  "date": "2026-06-23",
+  "topic": "5 reasons African music gets rejected in sync",
+  "hook": "It's not your sound.",
+  "cta": "",
+  "hashtags": [
+    "#SyncReady",
+    "#AfricanComposers",
+    "#SyncMaster",
+    "#SyncLicensing",
+    "#MusicBusiness"
+  ],
+  "slide_count": 10,
+  "slides": [
+    {
+      "role": "hook",
+      "eyebrow": "Education · 5 reasons African music gets rejected in sync",
+      "headline": "It's not your sound.",
+      "lede": "",
+      "footer_kicker": "Written by",
+      "footer_name": "syncmaster.live",
+      "slide": 1,
+      "footer_pageno": "01 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 1/9",
+      "headline": "Here are the actual reasons African composers get passed over in sync licensing — none of them have anything to do with talent.",
+      "lede": "↓",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 2,
+      "footer_pageno": "02 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 2/9",
+      "headline": "REASON 1: UNCLEARED SAMPLES\nEven a small sample that isn't cleared makes the track legally untouchable.",
+      "lede": "Productions carry full liability for anything they broadcast.\nThey won't risk it, no matter how good the track is.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 3,
+      "footer_pageno": "03 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 3/9",
+      "headline": "REASON 2: SPLIT RIGHTS\nLabel owns your master.",
+      "lede": "You own publishing.\nTwo separate negotiations for one placement.\nMost supervisors have 20 other options. They move on.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 4,
+      "footer_pageno": "04 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 4/9",
+      "headline": "REASON 3: NO METADATA\nNo BPM tag.",
+      "lede": "No ISRC. No mood categorisation.\nYour track doesn't show up in a search.\nYou're invisible even when you're technically \"in the library.\"",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 5,
+      "footer_pageno": "05 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 5/9",
+      "headline": "REASON 4: WRONG FILE FORMAT\nMP3 files.",
+      "lede": "SoundCloud links. Google Drive folders.\nSupervisors need lossless files, properly named, ready immediately.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 6,
+      "footer_pageno": "06 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 6/9",
+      "headline": "REASON 5: SLOW RESPONSE\nA brief is live for 24–48 hours.",
+      "lede": "If you respond in 3 days, the slot is filled.\nThis is not a relationship business at that stage. It's a logistics business.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 7,
+      "footer_pageno": "07 / 10"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Education · 7/9",
+      "headline": "Here's what you need to know:",
+      "lede": "Why none of this is about your sound · The sample clearance issue and what to do about it · Rights splits — how to protect yourself before signing anything · The metadata checklist for every file in your catalogue",
+      "list_items": [
+        "Why none of this is about your sound",
+        "The sample clearance issue and what to do about it",
+        "Rights splits — how to protect yourself before signing anything",
+        "The metadata checklist for every file in your catalogue",
+        "File format requirements for professional submissions",
+        "Building a 24-hour response system that actually works"
+      ],
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 8,
+      "footer_pageno": "08 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 8/9",
+      "headline": "Save this. Fix what you can. Then apply.",
+      "lede": "",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 9,
+      "footer_pageno": "09 / 10"
+    },
+    {
+      "role": "cta",
+      "eyebrow": "Apply this week",
+      "headline": "Open briefs. Every Tuesday.",
+      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Apply now",
+      "footer_kicker": "Apply",
+      "footer_name": "syncmaster.live",
+      "slide": 10,
+      "footer_pageno": "10 / 10"
+    }
+  ]
+}

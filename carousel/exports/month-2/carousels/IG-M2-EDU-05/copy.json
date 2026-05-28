@@ -1,0 +1,131 @@
+{
+  "post_id": "IG-M2-EDU-05",
+  "type": "Carousel",
+  "platform": "Instagram",
+  "pillar": "Education",
+  "persona": "Tunde",
+  "date": "2026-07-14",
+  "topic": "PRO registration: which societies African composers should join",
+  "hook": "Every time a licensed placement airs anywhere in the world, royalties generate.",
+  "cta": "",
+  "hashtags": [
+    "#PRO",
+    "#MusicRights",
+    "#AfricanComposers",
+    "#SyncMaster"
+  ],
+  "slide_count": 10,
+  "slides": [
+    {
+      "role": "hook",
+      "eyebrow": "Education · PRO registration: which societies African composers should join",
+      "headline": "Every time a licensed placement airs anywhere in the world, royalties generate.",
+      "lede": "",
+      "footer_kicker": "Written by",
+      "footer_name": "syncmaster.live",
+      "slide": 1,
+      "footer_pageno": "01 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 2/13",
+      "headline": "Without PRO registration, they go uncollected — permanently.",
+      "lede": "Those royalties have to go somewhere. · Here's the definitive breakdown for African composers. ↓",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 2,
+      "footer_pageno": "02 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 4/13",
+      "headline": "NIGERIA 🇳🇬\nCOSON — primary collection society for compositions\nAlso register",
+      "lede": "with: PRS for Music (UK), ASCAP or BMI (US)",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 3,
+      "footer_pageno": "03 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 5/13",
+      "headline": "SOUTH AFRICA 🇿🇦\nSAMRO — compositions and publishing royalties\nCAPASSO —",
+      "lede": "neighbouring rights (master recordings)",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 4,
+      "footer_pageno": "04 / 10"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Education · 6/13",
+      "headline": "Here's what you need to know:",
+      "lede": "KENYA 🇰🇪\nMCSK — Music Copyright Society of Kenya · GHANA 🇬🇭\nGHAMRO — Ghana Music Rights Organisation",
+      "list_items": [
+        "KENYA 🇰🇪\nMCSK — Music Copyright Society of Kenya",
+        "GHANA 🇬🇭\nGHAMRO — Ghana Music Rights Organisation"
+      ],
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 5,
+      "footer_pageno": "05 / 10"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Education · 8/13",
+      "headline": "Here's what you need to know:",
+      "lede": "FOR INTERNATIONAL SYNC SPECIFICALLY:\nEvery African composer with sync ambitions should also register: · PRS for Music (UK) — captures European royalties · ASCAP or BMI (US) — North American collection · SOCAN (Canada)",
+      "list_items": [
+        "FOR INTERNATIONAL SYNC SPECIFICALLY:\nEvery African composer with sync ambitions should also register:",
+        "PRS for Music (UK) — captures European royalties",
+        "ASCAP or BMI (US) — North American collection",
+        "SOCAN (Canada)"
+      ],
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 6,
+      "footer_pageno": "06 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 9/13",
+      "headline": "You register with your home society — they collect internationally through",
+      "lede": "reciprocal agreements.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 7,
+      "footer_pageno": "07 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 10/13",
+      "headline": "THE KEY RULE:\nRegister before your first placement.",
+      "lede": "Not after.\nRetroactive collection is almost impossible.\nRoyalties from a placement that aired before you registered: gone.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 8,
+      "footer_pageno": "08 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 11/13",
+      "headline": "One track. Multiple airings. Royalties every time the content plays.",
+      "lede": "Register this week.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 9,
+      "footer_pageno": "09 / 10"
+    },
+    {
+      "role": "cta",
+      "eyebrow": "Apply this week",
+      "headline": "Open briefs. Every Tuesday.",
+      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Apply now",
+      "footer_kicker": "Apply",
+      "footer_name": "syncmaster.live",
+      "slide": 10,
+      "footer_pageno": "10 / 10"
+    }
+  ]
+}

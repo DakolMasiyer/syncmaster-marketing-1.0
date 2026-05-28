@@ -1,0 +1,134 @@
+{
+  "post_id": "IG-BTS-01",
+  "type": "Carousel",
+  "platform": "Instagram",
+  "pillar": "Behind the Scenes",
+  "persona": "Both",
+  "date": "2026-06-10",
+  "topic": "How vetting works",
+  "hook": "20 applications. 6 vetted.",
+  "cta": "",
+  "hashtags": [
+    "#SyncReady",
+    "#AfricanComposers",
+    "#SyncMaster",
+    "#MusicBusiness",
+    "#BehindTheScenes"
+  ],
+  "slide_count": 10,
+  "slides": [
+    {
+      "role": "hook",
+      "eyebrow": "Behind the Scenes · How vetting works",
+      "headline": "20 applications. 6 vetted.",
+      "lede": "",
+      "footer_kicker": "Written by",
+      "footer_name": "syncmaster.live",
+      "slide": 1,
+      "footer_pageno": "01 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Behind the Scenes · 1/10",
+      "headline": "Here's the exact checklist we use — and why we turned down 14 genuinely talented composers.",
+      "lede": "↓",
+      "footer_kicker": "Behind the Scenes",
+      "footer_name": "syncmaster.live",
+      "slide": 2,
+      "footer_pageno": "02 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Behind the Scenes · 2/10",
+      "headline": "The vetting process isn't about picking the \"best\" music.",
+      "lede": "It's about picking music that's ready.",
+      "footer_kicker": "Behind the Scenes",
+      "footer_name": "syncmaster.live",
+      "slide": 3,
+      "footer_pageno": "03 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Behind the Scenes · 3/10",
+      "headline": "Because our credibility with music supervisors depends on what we pitch to them.",
+      "lede": "THE 6-POINT CHECKLIST:",
+      "footer_kicker": "Behind the Scenes",
+      "footer_name": "syncmaster.live",
+      "slide": 4,
+      "footer_pageno": "04 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Behind the Scenes · 5/10",
+      "headline": "✓ Original compositions only (zero uncleared samples)\n✓ Clear rights chain",
+      "lede": "(master + publishing confirmed, documented)\n✓ Lossless files available (WAV or AIFF, not MP3)\n✓ ISRC codes assigned to every recording\n✓ Stems available on request\n✓ Sub-24-hour response time (tested in the process)",
+      "footer_kicker": "Behind the Scenes",
+      "footer_name": "syncmaster.live",
+      "slide": 5,
+      "footer_pageno": "05 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Behind the Scenes · 6/10",
+      "headline": "Of 20 applications in Month 1: 6 passed all six criteria.",
+      "lede": "",
+      "footer_kicker": "Behind the Scenes",
+      "footer_name": "syncmaster.live",
+      "slide": 6,
+      "footer_pageno": "06 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Behind the Scenes · 7/10",
+      "headline": "The 14 who didn't?",
+      "lede": "We gave each one specific written feedback.\nMost gaps are fixable. They can reapply when they're ready.",
+      "footer_kicker": "Behind the Scenes",
+      "footer_name": "syncmaster.live",
+      "slide": 7,
+      "footer_pageno": "07 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Behind the Scenes · 8/10",
+      "headline": "Quality over volume.",
+      "lede": "Every time.\nBecause supervisors need to trust what we send them.",
+      "footer_kicker": "Behind the Scenes",
+      "footer_name": "syncmaster.live",
+      "slide": 8,
+      "footer_pageno": "08 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Behind the Scenes · 9/10",
+      "headline": "Apply when you're ready: link in bio.",
+      "lede": "",
+      "footer_kicker": "Behind the Scenes",
+      "footer_name": "syncmaster.live",
+      "slide": 9,
+      "footer_pageno": "09 / 10"
+    },
+    {
+      "role": "cta",
+      "eyebrow": "Apply this week",
+      "headline": "Open briefs. Every Tuesday.",
+      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Work with us",
+      "footer_kicker": "Apply",
+      "footer_name": "syncmaster.live",
+      "slide": 10,
+      "footer_pageno": "10 / 10"
+    }
+  ],
+  "product_data": {
+    "screen_type": "checklist",
+    "requires_screenshot": false,
+    "checklist_items": [
+      "Original compositions only (zero uncleared samples)",
+      "Clear rights chain (master + publishing confirmed, documented)",
+      "Lossless files available (WAV or AIFF, not MP3)",
+      "ISRC codes assigned to every recording",
+      "Stems available on request",
+      "Sub-24-hour response time (tested in the process)"
+    ]
+  }
+}

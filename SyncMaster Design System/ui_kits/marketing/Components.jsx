@@ -25,7 +25,7 @@ function MarketingNav({ active = 'home', onNavigate }) {
         height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
         <a onClick={() => onNavigate && onNavigate('home')} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
-          <img src="../../assets/logos/syncmaster-wordmark.png" style={{ width: 160, height: 40, objectFit: 'contain' }} />
+          <img src="../../assets/logos/Primary Horizontal Logo.svg" style={{ width: 160, height: 40, objectFit: 'contain' }} />
         </a>
         <div style={{ display: 'flex', alignItems: 'center', gap: 40 }}>
           {link('features', 'Features')}
@@ -220,7 +220,7 @@ function Footer() {
         justifyContent: 'space-between', alignItems: 'center', gap: 40,
       }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-          <img src="../../assets/logos/syncmaster-wordmark.png" style={{ width: 128, height: 32, objectFit: 'contain' }} />
+          <img src="../../assets/logos/Primary Horizontal Logo.svg" style={{ width: 128, height: 32, objectFit: 'contain' }} />
           <p style={{ margin: 0, fontSize: 13, color: '#666', fontWeight: 500 }}>© 2026 SyncMaster Operations. All rights reserved.</p>
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 32, fontSize: 13, fontWeight: 700, color: '#666' }}>

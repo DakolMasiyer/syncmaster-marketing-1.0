@@ -1,0 +1,40 @@
+{
+  "post_id": "IG-EDU-04",
+  "type": "Single",
+  "platform": "Instagram",
+  "pillar": "Education",
+  "persona": "Tunde",
+  "date": "2026-06-11",
+  "topic": "What a music supervisor actually does",
+  "eyebrow": "Education · Sync 101",
+  "headline": "You're not pitching to a label A&R.",
+  "subtext": "A music supervisor has a completely different job — and most composers approach them the wrong way, every single time.",
+  "cta": "Apply at syncmaster.io",
+  "footer_name": "syncmaster.live",
+  "caption_hook": "You're not pitching to a label A&R. ↓",
+  "caption_hook_len": 37,
+  "hashtags": [
+    "#SyncMaster",
+    "#AfricanComposers",
+    "#SyncLicensing",
+    "#MusicSupervisor",
+    "#SyncReady"
+  ],
+  "caption_full": "You're not pitching to a label A&R. ↓\n\nA music supervisor has a completely different job — and most composers approach them the wrong way, every single time.\n\nApply at syncmaster.io\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicSupervisor #SyncReady",
+  "visual_direction": "Dark editorial — ink background, DM Sans headline, lime accent. Clean, no clutter.",
+  "product_data": {
+    "screen_type": "checklist",
+    "requires_screenshot": false,
+    "checklist_items": [
+      "One-stop, cleared tracks",
+      "WAV files (not MP3, not SoundCloud links)",
+      "Proper metadata embedded in the file",
+      "Stems available on request",
+      "Your reply in under 24 hours",
+      "Your backstory",
+      "A streaming link",
+      "A 4-paragraph email about your journey",
+      "Your follower count"
+    ]
+  }
+}

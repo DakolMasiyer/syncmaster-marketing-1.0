@@ -1,0 +1,148 @@
+{
+  "post_id": "IG-M2-EDU-04",
+  "type": "Carousel",
+  "platform": "Instagram",
+  "pillar": "Education",
+  "persona": "Tunde",
+  "date": "2026-07-09",
+  "topic": "What \"one-stop\" really means — and how to get there",
+  "hook": "\"One-stop\" is the most valuable status in sync licensing.",
+  "cta": "",
+  "hashtags": [
+    "#OneClearance",
+    "#SyncLicensing",
+    "#AfricanComposers",
+    "#SyncMaster"
+  ],
+  "slide_count": 10,
+  "slides": [
+    {
+      "role": "hook",
+      "eyebrow": "Education · What \"one-stop\" really means — and how to get there",
+      "headline": "\"One-stop\" is the most valuable status in sync licensing.",
+      "lede": "",
+      "footer_kicker": "Written by",
+      "footer_name": "syncmaster.live",
+      "slide": 1,
+      "footer_pageno": "01 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 1/11",
+      "headline": "Most composers know the term.",
+      "lede": "Almost none fully understand how to get there — especially once a label is involved. · Here's the clear explanation. ↓ · ONE-STOP = you grant both licences from a single conversation.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 2,
+      "footer_pageno": "02 / 10"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Education · 4/11",
+      "headline": "Here's what you need to know:",
+      "lede": "LICENCE 1: The sync licence · Controls: use of your composition in visual media · Held by: the publisher — which is you, if you self-publish",
+      "list_items": [
+        "LICENCE 1: The sync licence",
+        "Controls: use of your composition in visual media",
+        "Held by: the publisher — which is you, if you self-publish"
+      ],
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 3,
+      "footer_pageno": "03 / 10"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Education · 5/11",
+      "headline": "Here's what you need to know:",
+      "lede": "LICENCE 2: The master licence · Controls: the specific recording · Held by: whoever owns the master — often a label, unless you recorded independently",
+      "list_items": [
+        "LICENCE 2: The master licence",
+        "Controls: the specific recording",
+        "Held by: whoever owns the master — often a label, unless you recorded independently"
+      ],
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 4,
+      "footer_pageno": "04 / 10"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Education · 6/11",
+      "headline": "Here's what you need to know:",
+      "lede": "If you control both · one-stop.\nIf a label controls the master · the supervisor has to negotiate with two parties, on two timelines, with two chances for the deal to fall apart.",
+      "list_items": [
+        "If you control both",
+        "one-stop.\nIf a label controls the master",
+        "the supervisor has to negotiate with two parties, on two timelines, with two chances for the deal to fall apart."
+      ],
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 5,
+      "footer_pageno": "05 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 7/11",
+      "headline": "Supervisors strongly prefer one-stop.",
+      "lede": "When time is short (it always is), they go there first.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 6,
+      "footer_pageno": "06 / 10"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Education · 8/11",
+      "headline": "Here's what you need to know:",
+      "lede": "IF YOUR LABEL HOLDS YOUR MASTERS: · Check your deal: do you have sync approval rights? Even partial co-approval? · Negotiate co-approval on new work before signing · Build one-stop status into your next deal explicitly",
+      "list_items": [
+        "IF YOUR LABEL HOLDS YOUR MASTERS:",
+        "Check your deal: do you have sync approval rights? Even partial co-approval?",
+        "Negotiate co-approval on new work before signing",
+        "Build one-stop status into your next deal explicitly"
+      ],
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 7,
+      "footer_pageno": "07 / 10"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Education · 9/11",
+      "headline": "Here's what you need to know:",
+      "lede": "IF YOU'RE FULLY INDEPENDENT: · Distribute through a platform that doesn't claim master rights (most don't — but check) · Self-publish: register directly with your PRO · Document every track's rights status from day one",
+      "list_items": [
+        "IF YOU'RE FULLY INDEPENDENT:",
+        "Distribute through a platform that doesn't claim master rights (most don't — but check)",
+        "Self-publish: register directly with your PRO",
+        "Document every track's rights status from day one"
+      ],
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 8,
+      "footer_pageno": "08 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 10/11",
+      "headline": "The path to one-stop is mostly paperwork.",
+      "lede": "It's the most commercial thing you can do for your catalogue right now.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 9,
+      "footer_pageno": "09 / 10"
+    },
+    {
+      "role": "cta",
+      "eyebrow": "Apply this week",
+      "headline": "Open briefs. Every Tuesday.",
+      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Apply now",
+      "footer_kicker": "Apply",
+      "footer_name": "syncmaster.live",
+      "slide": 10,
+      "footer_pageno": "10 / 10"
+    }
+  ]
+}

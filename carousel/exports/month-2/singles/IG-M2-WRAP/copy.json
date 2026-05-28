@@ -1,0 +1,69 @@
+{
+  "post_id": "IG-M2-WRAP",
+  "type": "Single",
+  "platform": "Instagram",
+  "pillar": "Behind the Scenes",
+  "persona": "Both",
+  "date": "2026-07-31",
+  "topic": "Month 2 complete. Month 3 incoming.",
+  "eyebrow": "Behind the Build",
+  "headline": "Month 2. Complete.",
+  "subtext": "61 days.",
+  "cta": "Apply at syncmaster.io",
+  "footer_name": "syncmaster.live",
+  "caption_hook": "Month 2. Complete.\n61 days. ↓",
+  "caption_hook_len": 29,
+  "hashtags": [
+    "#SyncMaster",
+    "#AfricanComposers",
+    "#SyncLicensing",
+    "#BuildingInPublic"
+  ],
+  "caption_full": "Month 2. Complete.\n61 days. ↓\n\nApply at syncmaster.io\n\n#SyncMaster #AfricanComposers #SyncLicensing #BuildingInPublic",
+  "visual_direction": "Candid platform screenshot or studio setting. Real, unposed. Text overlay left column.",
+  "product_data": {
+    "screen_type": "brief_card",
+    "requires_screenshot": false,
+    "persona_name": "Tunde",
+    "brief_card": {
+      "id": "brief_card_v1",
+      "platform_label": "Netflix",
+      "platform_badge_color": "#e50914",
+      "status": "Active",
+      "deadline": "06 / 14 / 26",
+      "title": "Lagos crime thriller — main title cue",
+      "genre_tags": [
+        "Afrobeats",
+        "Cinematic",
+        "Tense"
+      ],
+      "budget": "$15,000 – $25,000",
+      "client": "Sophia · Forge Creative",
+      "notes": "60–90 seconds. Orchestral-Afrobeats hybrid. One-stop cleared only."
+    },
+    "composer_match": {
+      "id": "composer_match_v1",
+      "label": "AI Match · Sample",
+      "items": [
+        {
+          "name": "Aisha Olatunde",
+          "location": "Lagos",
+          "score": 92,
+          "bar_pct": "92%"
+        },
+        {
+          "name": "Tope Adebayo",
+          "location": "Abuja",
+          "score": 88,
+          "bar_pct": "88%"
+        },
+        {
+          "name": "Nomzamo Khoza",
+          "location": "Cape Town",
+          "score": 76,
+          "bar_pct": "76%"
+        }
+      ]
+    }
+  }
+}

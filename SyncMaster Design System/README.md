@@ -11,8 +11,9 @@ This folder is the canonical design system: typography, color, components, voice
 | Source | Path | Notes |
 |---|---|---|
 | Production codebase | `Syncmaster-Live/` (mounted) | Next.js 16 App Router. Tokens in `app/globals.css`, scale in `tailwind.config.ts`. |
-| Logo (icon) | `uploads/Syncdark.png` → `assets/logos/syncmaster-icon.png` | Acid-lime circle with purple "S" mark. |
-| Logo (wordmark) | `uploads/syncmasterwhite.png` → `assets/logos/syncmaster-wordmark.png` | Full lockup, purple type on white. |
+| Logo (icon) | `uploads/Syncdark.png` → `assets/logos/Icon . Mark only.png` | Acid-lime circle with purple "S" mark. |
+| Logo (wordmark, light bg) | `uploads/syncmasterwhite.png` → `assets/logos/Primary Horizontal Logo.png` | Full lockup, purple type on white/light backgrounds. |
+| Logo (wordmark, dark bg) | — → `assets/logos/Primary Horizontal Logo - p.png` | Full lockup, white type on dark/purple backgrounds. |
 | Reference URL | `https://syncmaster-live.vercel.app` | Production deploy referenced in `app/layout.tsx`. |
 
 ---
@@ -25,7 +26,7 @@ SKILL.md                        Agent Skill manifest (Claude Code-compatible)
 colors_and_type.css             All design tokens — color, type, radii, spacing, shadow
 fonts/                          (Linked from Google Fonts — see Type Substitutions below)
 assets/
-  logos/                          syncmaster-icon, syncmaster-wordmark
+  logos/                          Icon . Mark only, Primary Horizontal Logo, Primary Horizontal Logo - p, Stacked Logo - p, Stacked Logo - w
   platforms/                      Netflix, Hulu, Prime Video, Disney, HBO, Paramount, EA, NBA2K
   screens/                        dashboard-preview, dashboard-banner, syncscreen
 preview/                        Cards that populate the Design System tab
@@ -194,8 +195,9 @@ const ICONS_CDN = "https://unpkg.com/lucide@latest";
 **Unicode characters as glyphs.** Em-dash (`—`), en-dash (`–`), and the bullet `·` are used liberally as punctuation/separators. The brief detail uses `•` between metadata, and `·` between producer name and company.
 
 **Brand mark.**
-- `assets/logos/syncmaster-icon.png` — acid-lime circle with stylised purple "S/∞" knot. Use at small sizes, favicons, monograms.
-- `assets/logos/syncmaster-wordmark.png` — full horizontal lockup. Use in nav and footer.
+- `assets/logos/Icon . Mark only.png` (also `.svg`) — acid-lime circle with stylised purple "S/∞" knot. Use at small sizes, favicons, monograms. Works on any background.
+- `assets/logos/Primary Horizontal Logo.png` (also `.svg`) — full horizontal lockup, purple wordmark. Use in nav and footer on light/white backgrounds.
+- `assets/logos/Primary Horizontal Logo - p.png` (also `.svg`) — full horizontal lockup, white wordmark. Use in nav and footer on dark (#0f0f1a, #16162a) or purple (#4b4bc0) backgrounds.
 
 **Platform logos** (`assets/platforms/`) — Netflix, Hulu, Prime Video, Disney, HBO, Paramount, EA, NBA 2K. Real third-party trademarks; only shown as the "discover opportunities across" strip on the marketing hero, always in `grayscale` with `opacity-60`.
 

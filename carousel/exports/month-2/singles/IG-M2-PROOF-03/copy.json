@@ -1,0 +1,54 @@
+{
+  "post_id": "IG-M2-PROOF-03",
+  "type": "Single",
+  "platform": "Instagram",
+  "pillar": "Proof",
+  "persona": "Amara",
+  "date": "2026-07-17",
+  "topic": "Month 2 placement update — the numbers",
+  "eyebrow": "Proof · Supervisor View",
+  "headline": "Month 2, Week 3.",
+  "subtext": "Here's where the numbers stand.",
+  "cta": "Apply at syncmaster.io",
+  "footer_name": "syncmaster.live",
+  "caption_hook": "Month 2, Week 3.\nHere's where the numbers stand. ↓",
+  "caption_hook_len": 50,
+  "hashtags": [
+    "#SyncMaster",
+    "#AfricanComposers",
+    "#SyncLicensing",
+    "#BuildingInPublic"
+  ],
+  "caption_full": "Month 2, Week 3.\nHere's where the numbers stand. ↓\n\nApply at syncmaster.io\n\n#SyncMaster #AfricanComposers #SyncLicensing #BuildingInPublic",
+  "visual_direction": "Stat-forward layout — large number dominant. Dark or purple bg with lime highlight.",
+  "product_data": {
+    "screen_type": "stats_dashboard",
+    "requires_screenshot": false,
+    "stats": [
+      {
+        "label": "Applications received",
+        "value": "31"
+      },
+      {
+        "label": "Composers vetted",
+        "value": "9"
+      },
+      {
+        "label": "Briefs received",
+        "value": "5"
+      },
+      {
+        "label": "Tracks pitched",
+        "value": "18"
+      },
+      {
+        "label": "Placements confirmed",
+        "value": "2"
+      },
+      {
+        "label": "Fastest turnaround",
+        "value": "11 hours"
+      }
+    ]
+  }
+}

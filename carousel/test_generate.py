@@ -50,7 +50,7 @@ content = {
 }
 
 def main():
-    base_path = r"c:\Users\infon\Documents\Claude Code\Projects\syncmaster-marketing-1.0\carousel"
+    base_path = os.path.dirname(os.path.abspath(__file__))
     theme_path = os.path.join(base_path, "styles", "linkedin_space_grotesk.json")
     output_dir = os.path.join(base_path, "exports")
     output_path = os.path.join(output_dir, "IG-EDU-01-test.pptx")

@@ -1,0 +1,125 @@
+{
+  "post_id": "IG-M2-EDU-07",
+  "type": "Carousel",
+  "platform": "Instagram",
+  "pillar": "Education",
+  "persona": "Tunde",
+  "date": "2026-07-21",
+  "topic": "The composer audit: 6 things to fix before you pitch",
+  "hook": "Before you send your next sync pitch, run this audit.",
+  "cta": "",
+  "hashtags": [
+    "#SyncAudit",
+    "#AfricanComposers",
+    "#SyncMaster",
+    "#MusicBusiness"
+  ],
+  "slide_count": 10,
+  "slides": [
+    {
+      "role": "hook",
+      "eyebrow": "Education · The composer audit: 6 things to fix before you pitch",
+      "headline": "Before you send your next sync pitch, run this audit.",
+      "lede": "",
+      "footer_kicker": "Written by",
+      "footer_name": "syncmaster.live",
+      "slide": 1,
+      "footer_pageno": "01 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 1/12",
+      "headline": "Most composers who fail at the brief stage don't fail on music quality.",
+      "lede": "They fail on one of these 6 things. ↓",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 2,
+      "footer_pageno": "02 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 3/12",
+      "headline": "1/ RIGHTS CHAIN DOCUMENTATION\nCan you confirm in writing who owns the master and who controls publishing?",
+      "lede": "Not \"probably me.\" Confirmed and documented.\nIf not: fix this before anything else.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 3,
+      "footer_pageno": "03 / 10"
+    },
+    {
+      "role": "stat",
+      "eyebrow": "Education · 4/12",
+      "stat_number": "2",
+      "lede": "One uncleared sample in your best track = that track is unplaceable.\nIf you're unsure: assume it's not cleared.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 4,
+      "footer_pageno": "04 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 5/12",
+      "headline": "3/ FILE QUALITY\nDo you have broadcast-spec WAV files for every track you're pitching?",
+      "lede": "Not 320k MP3. Not a Spotify link.\nReady to send today.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 5,
+      "footer_pageno": "05 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 6/12",
+      "headline": "4/ STEMS\nWhen a supervisor asks \"can I get stems?\" — do you have them?",
+      "lede": "Not \"I'll re-export from the session.\"\nOrganised, named, cloud-accessible within 10 minutes.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 6,
+      "footer_pageno": "06 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 7/12",
+      "headline": "5/ METADATA\nIs your ISRC embedded in the file?",
+      "lede": "Are BPM, key, and mood tags complete?\nIs your PRO registration current and reflected in the metadata?",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 7,
+      "footer_pageno": "07 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 8/12",
+      "headline": "6/ RESPONSE TIME\nCan you respond to a brief within 24 hours?",
+      "lede": "Not \"I'll check when I see it.\"\nAn active notification. A clear process. A fast reply. · Supervisors give the placement to whoever responds first with the right track.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 8,
+      "footer_pageno": "08 / 10"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Education · 10/12",
+      "headline": "Here's what you need to know:",
+      "lede": "Not the best track. The right track, first. · Audit now. Fix the gaps before the brief lands.",
+      "list_items": [
+        "Not the best track. The right track, first.",
+        "Audit now. Fix the gaps before the brief lands."
+      ],
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 9,
+      "footer_pageno": "09 / 10"
+    },
+    {
+      "role": "cta",
+      "eyebrow": "Apply this week",
+      "headline": "Open briefs. Every Tuesday.",
+      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Apply now",
+      "footer_kicker": "Apply",
+      "footer_name": "syncmaster.live",
+      "slide": 10,
+      "footer_pageno": "10 / 10"
+    }
+  ]
+}

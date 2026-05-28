@@ -1,0 +1,89 @@
+{
+  "brief_cards": [
+    {
+      "id": "brief_card_v1",
+      "platform_label": "Netflix",
+      "platform_badge_color": "#e50914",
+      "status": "Active",
+      "deadline": "06 / 14 / 26",
+      "title": "Lagos crime thriller — main title cue",
+      "genre_tags": ["Afrobeats", "Cinematic", "Tense"],
+      "budget": "$15,000 – $25,000",
+      "client": "Sophia · Forge Creative",
+      "notes": "60–90 seconds. Orchestral-Afrobeats hybrid. One-stop cleared only."
+    },
+    {
+      "id": "brief_card_v2",
+      "platform_label": "Streaming",
+      "platform_badge_color": "#1db954",
+      "status": "Active",
+      "deadline": "06 / 22 / 26",
+      "title": "Afro-fusion for luxury lifestyle ad — global campaign",
+      "genre_tags": ["Afro-Fusion", "R&B", "Chillwave"],
+      "budget": "$8,000 – $14,000",
+      "client": "Marcus · Black River Pictures",
+      "notes": "30-second hero spot + 15-second cut. Must be stems-ready."
+    },
+    {
+      "id": "brief_card_v3",
+      "platform_label": "Sports / Ad",
+      "platform_badge_color": "#4b4bc0",
+      "status": "Active",
+      "deadline": "07 / 02 / 26",
+      "title": "Energetic Afrobeat for global sports brand",
+      "genre_tags": ["Afrobeat", "Afropop", "Dance"],
+      "budget": "$10,000 – $20,000",
+      "client": "Priya · Momentum Agency",
+      "notes": "High energy. 45-second cut. Client: major athletic brand. Broad license."
+    }
+  ],
+  "composer_matches": [
+    {
+      "id": "composer_match_v1",
+      "label": "AI Match · Sample",
+      "items": [
+        {"name": "Aisha Olatunde", "location": "Lagos", "score": 92, "bar_pct": "92%"},
+        {"name": "Tope Adebayo",   "location": "Abuja", "score": 88, "bar_pct": "88%"},
+        {"name": "Nomzamo Khoza",  "location": "Cape Town", "score": 76, "bar_pct": "76%"}
+      ]
+    },
+    {
+      "id": "composer_match_v2",
+      "label": "AI Match · Sample",
+      "items": [
+        {"name": "Femi Okafor",    "location": "Lagos",   "score": 96, "bar_pct": "96%"},
+        {"name": "Zanele Dube",    "location": "Joburg",  "score": 91, "bar_pct": "91%"},
+        {"name": "Kelechi Nwosu",  "location": "Enugu",   "score": 84, "bar_pct": "84%"}
+      ]
+    },
+    {
+      "id": "composer_match_v3",
+      "label": "AI Match · Sample",
+      "items": [
+        {"name": "Adaeze Okonkwo", "location": "Lagos",   "score": 89, "bar_pct": "89%"},
+        {"name": "Sipho Ndlovu",   "location": "Durban",  "score": 85, "bar_pct": "85%"},
+        {"name": "Ama Owusu",      "location": "Accra",   "score": 79, "bar_pct": "79%"}
+      ]
+    }
+  ],
+  "dashboard_states": [
+    {
+      "id": "dashboard_composer_v1",
+      "persona": "composer",
+      "greeting": "Welcome, Tunde",
+      "greeting_sub": "2 new briefs match your roster",
+      "hero_title": "Your sync operations, simplified.",
+      "hero_sub": "Manage assets, track submissions, connect with supervisors.",
+      "hero_cta": "Explore briefs →"
+    },
+    {
+      "id": "dashboard_supervisor_v1",
+      "persona": "supervisor",
+      "greeting": "Welcome, Amara",
+      "greeting_sub": "3 submissions awaiting your review",
+      "hero_title": "Brief-matched. Rights-cleared. Delivered in 48h.",
+      "hero_sub": "Post a brief, receive 3–5 curated African tracks. No clearance admin.",
+      "hero_cta": "Post a brief →"
+    }
+  ]
+}

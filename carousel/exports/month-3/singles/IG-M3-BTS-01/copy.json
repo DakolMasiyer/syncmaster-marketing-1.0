@@ -1,0 +1,68 @@
+{
+  "post_id": "IG-M3-BTS-01",
+  "type": "Single",
+  "platform": "Instagram",
+  "pillar": "Behind the Scenes",
+  "persona": "Both",
+  "date": "2026-08-07",
+  "topic": "Month 3 Week 1 — inside the operation",
+  "eyebrow": "Behind the Build",
+  "headline": "Month 3, Week 1.",
+  "subtext": "Here's what the operation looks like right now.",
+  "cta": "Apply at syncmaster.io",
+  "footer_name": "syncmaster.live",
+  "caption_hook": "Month 3, Week 1.\nHere's what the operation looks like right now. ↓",
+  "caption_hook_len": 66,
+  "hashtags": [
+    "#SyncMaster",
+    "#AfricanComposers",
+    "#BehindTheScenes"
+  ],
+  "caption_full": "Month 3, Week 1.\nHere's what the operation looks like right now. ↓\n\nApply at syncmaster.io\n\n#SyncMaster #AfricanComposers #BehindTheScenes",
+  "visual_direction": "Candid platform screenshot or studio setting. Real, unposed. Text overlay left column.",
+  "product_data": {
+    "screen_type": "brief_card",
+    "requires_screenshot": false,
+    "persona_name": "Tunde",
+    "brief_card": {
+      "id": "brief_card_v1",
+      "platform_label": "Netflix",
+      "platform_badge_color": "#e50914",
+      "status": "Active",
+      "deadline": "06 / 14 / 26",
+      "title": "Lagos crime thriller — main title cue",
+      "genre_tags": [
+        "Afrobeats",
+        "Cinematic",
+        "Tense"
+      ],
+      "budget": "$15,000 – $25,000",
+      "client": "Sophia · Forge Creative",
+      "notes": "60–90 seconds. Orchestral-Afrobeats hybrid. One-stop cleared only."
+    },
+    "composer_match": {
+      "id": "composer_match_v1",
+      "label": "AI Match · Sample",
+      "items": [
+        {
+          "name": "Aisha Olatunde",
+          "location": "Lagos",
+          "score": 92,
+          "bar_pct": "92%"
+        },
+        {
+          "name": "Tope Adebayo",
+          "location": "Abuja",
+          "score": 88,
+          "bar_pct": "88%"
+        },
+        {
+          "name": "Nomzamo Khoza",
+          "location": "Cape Town",
+          "score": 76,
+          "bar_pct": "76%"
+        }
+      ]
+    }
+  }
+}

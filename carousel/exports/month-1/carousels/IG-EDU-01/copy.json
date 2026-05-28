@@ -1,0 +1,121 @@
+{
+  "post_id": "IG-EDU-01",
+  "type": "Carousel",
+  "platform": "Instagram",
+  "pillar": "Education",
+  "persona": "Tunde",
+  "date": "2026-06-02",
+  "topic": "What is sync licensing?",
+  "hook": "Nobody explained this in music school.",
+  "cta": "",
+  "hashtags": [
+    "#SyncLicensing",
+    "#AfricanComposers",
+    "#MusicBusiness",
+    "#FilmMusic",
+    "#SyncMaster"
+  ],
+  "slide_count": 8,
+  "slides": [
+    {
+      "role": "hook",
+      "eyebrow": "Education · What is sync licensing?",
+      "headline": "Nobody explained this in music school.",
+      "lede": "And it's worth more than anything they did teach you. ↓",
+      "footer_kicker": "Written by",
+      "footer_name": "syncmaster.live",
+      "slide": 1,
+      "footer_pageno": "01 / 08"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 1/7",
+      "headline": "Sync licensing = your music in film, TV, ads & games.",
+      "lede": "",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 2,
+      "footer_pageno": "02 / 08"
+    },
+    {
+      "role": "proof",
+      "eyebrow": "Education · 2/7",
+      "headline": "The work, in numbers.",
+      "stats": [
+        {
+          "label": "One Netflix scene",
+          "value": "$5,000–$20,000"
+        },
+        {
+          "label": "One global ad campaign",
+          "value": "$10,000–$75,000"
+        }
+      ],
+      "footer_kicker": "Proof",
+      "footer_name": "syncmaster.live",
+      "slide": 3,
+      "footer_pageno": "03 / 08"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 3/7",
+      "headline": "Here's the full breakdown — swipe through all 8 slides:",
+      "lede": "",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 4,
+      "footer_pageno": "04 / 08"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Education · 4/7",
+      "headline": "Here's what you need to know:",
+      "lede": "What sync licensing actually is · Who's involved and what they each do · What placements actually pay (with real numbers) · The two licences in every single deal",
+      "list_items": [
+        "What sync licensing actually is",
+        "Who's involved and what they each do",
+        "What placements actually pay (with real numbers)",
+        "The two licences in every single deal",
+        "What music supervisors actually look for",
+        "What \"sync-ready\" means for your catalogue",
+        "The African opportunity right now",
+        "How to get started"
+      ],
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 5,
+      "footer_pageno": "05 / 08"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 5/7",
+      "headline": "This is the foundation. Everything else builds on it.",
+      "lede": "",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 6,
+      "footer_pageno": "06 / 08"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 6/7",
+      "headline": "Save this. Share it with a composer who needs to know.",
+      "lede": "",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 7,
+      "footer_pageno": "07 / 08"
+    },
+    {
+      "role": "cta",
+      "eyebrow": "Apply this week",
+      "headline": "Open briefs. Every Tuesday.",
+      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Apply now",
+      "footer_kicker": "Apply",
+      "footer_name": "syncmaster.live",
+      "slide": 8,
+      "footer_pageno": "08 / 08"
+    }
+  ]
+}

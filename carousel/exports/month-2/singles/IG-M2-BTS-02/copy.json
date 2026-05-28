@@ -1,0 +1,69 @@
+{
+  "post_id": "IG-M2-BTS-02",
+  "type": "Single",
+  "platform": "Instagram",
+  "pillar": "Behind the Scenes",
+  "persona": "Both",
+  "date": "2026-07-19",
+  "topic": "What a brief-response week looks like inside SyncMaster",
+  "eyebrow": "Behind the Build",
+  "headline": "This is what a brief-response week looks like inside SyncMaster.",
+  "subtext": "No glamour.",
+  "cta": "Apply at syncmaster.io",
+  "footer_name": "syncmaster.live",
+  "caption_hook": "This is what a brief-response week looks like inside SyncMaster. ↓",
+  "caption_hook_len": 66,
+  "hashtags": [
+    "#SyncMaster",
+    "#AfricanComposers",
+    "#SyncLicensing",
+    "#BehindTheScenes"
+  ],
+  "caption_full": "This is what a brief-response week looks like inside SyncMaster. ↓\n\nNo glamour.\n\nApply at syncmaster.io\n\n#SyncMaster #AfricanComposers #SyncLicensing #BehindTheScenes",
+  "visual_direction": "Candid platform screenshot or studio setting. Real, unposed. Text overlay left column.",
+  "product_data": {
+    "screen_type": "brief_card",
+    "requires_screenshot": false,
+    "persona_name": "Tunde",
+    "brief_card": {
+      "id": "brief_card_v2",
+      "platform_label": "Streaming",
+      "platform_badge_color": "#1db954",
+      "status": "Active",
+      "deadline": "06 / 22 / 26",
+      "title": "Afro-fusion for luxury lifestyle ad — global campaign",
+      "genre_tags": [
+        "Afro-Fusion",
+        "R&B",
+        "Chillwave"
+      ],
+      "budget": "$8,000 – $14,000",
+      "client": "Marcus · Black River Pictures",
+      "notes": "30-second hero spot + 15-second cut. Must be stems-ready."
+    },
+    "composer_match": {
+      "id": "composer_match_v2",
+      "label": "AI Match · Sample",
+      "items": [
+        {
+          "name": "Femi Okafor",
+          "location": "Lagos",
+          "score": 96,
+          "bar_pct": "96%"
+        },
+        {
+          "name": "Zanele Dube",
+          "location": "Joburg",
+          "score": 91,
+          "bar_pct": "91%"
+        },
+        {
+          "name": "Kelechi Nwosu",
+          "location": "Enugu",
+          "score": 84,
+          "bar_pct": "84%"
+        }
+      ]
+    }
+  }
+}

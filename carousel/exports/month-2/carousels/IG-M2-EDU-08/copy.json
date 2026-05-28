@@ -1,0 +1,148 @@
+{
+  "post_id": "IG-M2-EDU-08",
+  "type": "Carousel",
+  "platform": "Instagram",
+  "pillar": "Education",
+  "persona": "Tunde",
+  "date": "2026-07-23",
+  "topic": "What great stems look like — the technical spec",
+  "hook": "Your track got shortlisted.",
+  "cta": "",
+  "hashtags": [
+    "#Stems",
+    "#SyncReady",
+    "#AfricanComposers",
+    "#SyncMaster"
+  ],
+  "slide_count": 10,
+  "slides": [
+    {
+      "role": "hook",
+      "eyebrow": "Education · What great stems look like — the technical spec",
+      "headline": "Your track got shortlisted.",
+      "lede": "",
+      "footer_kicker": "Written by",
+      "footer_name": "syncmaster.live",
+      "slide": 1,
+      "footer_pageno": "01 / 10"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Education · 1/11",
+      "headline": "Here's what you need to know:",
+      "lede": "The supervisor likes it. The picture edit is locked. · Then they ask: \"Can I get stems?\"",
+      "list_items": [
+        "The supervisor likes it. The picture edit is locked.",
+        "Then they ask: \"Can I get stems?\""
+      ],
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 2,
+      "footer_pageno": "02 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 3/11",
+      "headline": "What happens in the next 2 hours determines whether you get the deal.",
+      "lede": "Here's what professional stems look like. ↓",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 3,
+      "footer_pageno": "03 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 5/11",
+      "headline": "WHAT STEMS ACTUALLY ARE:\nSeparate audio exports of each main element in your track.",
+      "lede": "Not a \"no drums\" version. Not a \"no music\" version.\nIndividual layers that can be mixed independently.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 4,
+      "footer_pageno": "04 / 10"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Education · 6/11",
+      "headline": "Here's what you need to know:",
+      "lede": "THE STANDARD STEM CATEGORIES: · Full mix (the complete, mastered track) · Drums and percussion (isolated) · Bass (isolated)",
+      "list_items": [
+        "THE STANDARD STEM CATEGORIES:",
+        "Full mix (the complete, mastered track)",
+        "Drums and percussion (isolated)",
+        "Bass (isolated)",
+        "Harmony / chords (keys, guitar, pads)",
+        "Melody / lead (primary melodic element)",
+        "Atmosphere / FX (pads, risers, ambience)",
+        "Vocals (if applicable — main and backing separate)"
+      ],
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 5,
+      "footer_pageno": "05 / 10"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Education · 7/11",
+      "headline": "Here's what you need to know:",
+      "lede": "THE TECHNICAL SPEC: · Format: 24-bit WAV, 48kHz (broadcast standard) · Length: same as full mix, to the exact sample · Peak level: –6dBFS maximum",
+      "list_items": [
+        "THE TECHNICAL SPEC:",
+        "Format: 24-bit WAV, 48kHz (broadcast standard)",
+        "Length: same as full mix, to the exact sample",
+        "Peak level: –6dBFS maximum",
+        "Naming convention: Artist_Title_Stem-Name.wav"
+      ],
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 6,
+      "footer_pageno": "06 / 10"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Education · 8/11",
+      "headline": "Here's what you need to know:",
+      "lede": "THE DELIVERY STANDARD: · Packaged in a single named folder · Shared via Google Drive or Dropbox (link ready to send) · Delivered in under 2 hours. Ideally under 30 minutes.",
+      "list_items": [
+        "THE DELIVERY STANDARD:",
+        "Packaged in a single named folder",
+        "Shared via Google Drive or Dropbox (link ready to send)",
+        "Delivered in under 2 hours. Ideally under 30 minutes."
+      ],
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 7,
+      "footer_pageno": "07 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 9/11",
+      "headline": "When a director wants to drop out percussion for a quiet scene, they need your drums stem.",
+      "lede": "When an editor needs to extend a section, they need your loops.\nIf you can't deliver stems cleanly and fast, another composer gets the placement.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 8,
+      "footer_pageno": "08 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 10/11",
+      "headline": "Build your stem library as you produce.\nNot after the brief arrives.",
+      "lede": "",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 9,
+      "footer_pageno": "09 / 10"
+    },
+    {
+      "role": "cta",
+      "eyebrow": "Apply this week",
+      "headline": "Open briefs. Every Tuesday.",
+      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Apply now",
+      "footer_kicker": "Apply",
+      "footer_name": "syncmaster.live",
+      "slide": 10,
+      "footer_pageno": "10 / 10"
+    }
+  ]
+}

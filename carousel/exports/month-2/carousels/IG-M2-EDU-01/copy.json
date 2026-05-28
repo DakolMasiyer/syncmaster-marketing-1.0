@@ -1,0 +1,122 @@
+{
+  "post_id": "IG-M2-EDU-01",
+  "type": "Carousel",
+  "platform": "Instagram",
+  "pillar": "Education",
+  "persona": "Tunde",
+  "date": "2026-07-01",
+  "topic": "Sync deal checklist — what to negotiate",
+  "hook": "You got the offer.",
+  "cta": "",
+  "hashtags": [
+    "#SyncDeal",
+    "#AfricanComposers",
+    "#SyncLicensing",
+    "#MusicBusiness",
+    "#SyncMaster"
+  ],
+  "slide_count": 10,
+  "slides": [
+    {
+      "role": "hook",
+      "eyebrow": "Education · Sync deal checklist — what to negotiate",
+      "headline": "You got the offer.",
+      "lede": "",
+      "footer_kicker": "Written by",
+      "footer_name": "syncmaster.live",
+      "slide": 1,
+      "footer_pageno": "01 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 2/11",
+      "headline": "Here's why that's the most expensive reaction in sync. ↓",
+      "lede": "Your first instinct is to say yes immediately.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 2,
+      "footer_pageno": "02 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 3/11",
+      "headline": "When a placement offer lands, you have exactly one negotiation window.",
+      "lede": "Before you sign, here's what experienced composers always check:",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 3,
+      "footer_pageno": "03 / 10"
+    },
+    {
+      "role": "stat",
+      "eyebrow": "Education · 4/11",
+      "stat_number": "20–40%",
+      "lede": "For branded content: fees typically run 20–40% higher than the first offer.\nFor streaming originals: push for the stated upper range.\nAsk once. Clearly. Most supervisors expect it.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 4,
+      "footer_pageno": "04 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 5/11",
+      "headline": "EXCLUSIVITY PERIOD\n\"Exclusive\" locks your track for a window — no other placements during that time.",
+      "lede": "Six months: acceptable.\nTwo years: 3× the standard rate.\nNegotiate the window before you negotiate the fee.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 5,
+      "footer_pageno": "05 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 6/11",
+      "headline": "TERRITORY\nUK-only and global use are fundamentally different deals.",
+      "lede": "A global campaign should cost 3–5× a regional one.\nIf the territory isn't defined in the offer: define it before you respond.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 6,
+      "footer_pageno": "06 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 7/11",
+      "headline": "TERM LENGTH\nOne-off vs.",
+      "lede": "rolling vs. in-perpetuity are three different contracts.\nIn-perpetuity means they can use your track forever.\nThat has a price significantly above the standard placement fee.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 7,
+      "footer_pageno": "07 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 8/11",
+      "headline": "PERFORMANCE ROYALTIES\nThese are separate from your upfront fee.",
+      "lede": "Every time the content airs anywhere, royalties generate through your PRO.\nNon-negotiable prerequisite: register before any placement is signed.\nYou cannot collect these retroactively.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 8,
+      "footer_pageno": "08 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 9/11",
+      "headline": "The sync fee is the headline number.",
+      "lede": "Performance royalties are the compounding income beneath it. · Know both before you sign anything.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 9,
+      "footer_pageno": "09 / 10"
+    },
+    {
+      "role": "cta",
+      "eyebrow": "Apply this week",
+      "headline": "Open briefs. Every Tuesday.",
+      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Apply now",
+      "footer_kicker": "Apply",
+      "footer_name": "syncmaster.live",
+      "slide": 10,
+      "footer_pageno": "10 / 10"
+    }
+  ]
+}

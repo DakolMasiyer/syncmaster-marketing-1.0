@@ -1,0 +1,175 @@
+{
+  "post_id": "IG-EDU-06",
+  "type": "Carousel",
+  "platform": "Instagram",
+  "pillar": "Behind the Scenes",
+  "persona": "Tunde",
+  "date": "2026-06-18",
+  "topic": "Anatomy of a sync brief",
+  "hook": "The brief said:",
+  "cta": "",
+  "hashtags": [
+    "#SyncBrief",
+    "#MusicSupervisor",
+    "#SyncLicensing",
+    "#AfricanComposers",
+    "#SyncMaster"
+  ],
+  "slide_count": 10,
+  "slides": [
+    {
+      "role": "hook",
+      "eyebrow": "Behind the Scenes · Anatomy of a sync brief",
+      "headline": "The brief said:",
+      "lede": "",
+      "footer_kicker": "Written by",
+      "footer_name": "syncmaster.live",
+      "slide": 1,
+      "footer_pageno": "01 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Behind the Scenes · 1/11",
+      "headline": "\"90 seconds.",
+      "lede": "Orchestral. Afrofusion influence. Hopeful. No vocals. One-stop only.\" · Every word in a sync brief is a specification. Not a suggestion. ↓",
+      "footer_kicker": "Behind the Scenes",
+      "footer_name": "syncmaster.live",
+      "slide": 2,
+      "footer_pageno": "02 / 10"
+    },
+    {
+      "role": "proof",
+      "eyebrow": "Behind the Scenes · 3/11",
+      "headline": "The work, in numbers.",
+      "stats": [],
+      "footer_kicker": "Proof",
+      "footer_name": "syncmaster.live",
+      "slide": 3,
+      "footer_pageno": "03 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Behind the Scenes · 4/11",
+      "headline": "🎻 ORCHESTRAL\nReal strings or a convincing orchestral arrangement.",
+      "lede": "Bedroom synth pads don't make the shortlist here.",
+      "footer_kicker": "Behind the Scenes",
+      "footer_name": "syncmaster.live",
+      "slide": 4,
+      "footer_pageno": "04 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Behind the Scenes · 5/11",
+      "headline": "🌍 AFROFUSION INFLUENCE\nThe tonal and rhythmic language of African music — not pastiche, not performed.",
+      "lede": "Authentic.",
+      "footer_kicker": "Behind the Scenes",
+      "footer_name": "syncmaster.live",
+      "slide": 5,
+      "footer_pageno": "05 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Behind the Scenes · 6/11",
+      "headline": "😌 HOPEFUL\nNot happy.",
+      "lede": "Not triumphant. Hopeful is quieter, more complex. The distinction matters enormously to the picture edit.",
+      "footer_kicker": "Behind the Scenes",
+      "footer_name": "syncmaster.live",
+      "slide": 6,
+      "footer_pageno": "06 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Behind the Scenes · 7/11",
+      "headline": "🚫 NO VOCALS\nNot even background vocals.",
+      "lede": "Not even a hum. Fully instrumental or the track is out.",
+      "footer_kicker": "Behind the Scenes",
+      "footer_name": "syncmaster.live",
+      "slide": 7,
+      "footer_pageno": "07 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Behind the Scenes · 8/11",
+      "headline": "✅ ONE-STOP ONLY\nYou control both master and publishing.",
+      "lede": "If you need a label involved, the track is disqualified.",
+      "footer_kicker": "Behind the Scenes",
+      "footer_name": "syncmaster.live",
+      "slide": 8,
+      "footer_pageno": "08 / 10"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Behind the Scenes · 9/11",
+      "headline": "Here's what you need to know:",
+      "lede": "Where sync briefs come from and who writes them · Why duration is always absolute · How to read instrumentation and influence language · Mood vocabulary — the most misread field in any brief · Save this for when your first brief arrives.",
+      "list_items": [
+        "Where sync briefs come from and who writes them",
+        "Why duration is always absolute",
+        "How to read instrumentation and influence language",
+        "Mood vocabulary — the most misread field in any brief",
+        "Why \"no vocals\" is never negotiable",
+        "How to know if you qualify for one-stop before applying"
+      ],
+      "footer_kicker": "Behind the Scenes",
+      "footer_name": "syncmaster.live",
+      "slide": 9,
+      "footer_pageno": "09 / 10"
+    },
+    {
+      "role": "cta",
+      "eyebrow": "Apply this week",
+      "headline": "Open briefs. Every Tuesday.",
+      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Apply now",
+      "footer_kicker": "Apply",
+      "footer_name": "syncmaster.live",
+      "slide": 10,
+      "footer_pageno": "10 / 10"
+    }
+  ],
+  "product_data": {
+    "screen_type": "brief_card",
+    "requires_screenshot": false,
+    "persona_name": "Tunde",
+    "brief_card": {
+      "id": "brief_card_v2",
+      "platform_label": "Streaming",
+      "platform_badge_color": "#1db954",
+      "status": "Active",
+      "deadline": "06 / 22 / 26",
+      "title": "Afro-fusion for luxury lifestyle ad — global campaign",
+      "genre_tags": [
+        "Afro-Fusion",
+        "R&B",
+        "Chillwave"
+      ],
+      "budget": "$8,000 – $14,000",
+      "client": "Marcus · Black River Pictures",
+      "notes": "30-second hero spot + 15-second cut. Must be stems-ready."
+    },
+    "composer_match": {
+      "id": "composer_match_v2",
+      "label": "AI Match · Sample",
+      "items": [
+        {
+          "name": "Femi Okafor",
+          "location": "Lagos",
+          "score": 96,
+          "bar_pct": "96%"
+        },
+        {
+          "name": "Zanele Dube",
+          "location": "Joburg",
+          "score": 91,
+          "bar_pct": "91%"
+        },
+        {
+          "name": "Kelechi Nwosu",
+          "location": "Enugu",
+          "score": 84,
+          "bar_pct": "84%"
+        }
+      ]
+    }
+  }
+}

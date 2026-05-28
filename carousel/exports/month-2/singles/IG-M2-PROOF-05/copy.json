@@ -1,0 +1,54 @@
+{
+  "post_id": "IG-M2-PROOF-05",
+  "type": "Single",
+  "platform": "Instagram",
+  "pillar": "Proof",
+  "persona": "Amara",
+  "date": "2026-07-30",
+  "topic": "Month 2 placement summary",
+  "eyebrow": "Proof · Supervisor View",
+  "headline": "Month 2. Done.",
+  "subtext": "Here's the complete picture.",
+  "cta": "Apply at syncmaster.io",
+  "footer_name": "syncmaster.live",
+  "caption_hook": "Month 2. Done.\nHere's the complete picture. ↓",
+  "caption_hook_len": 45,
+  "hashtags": [
+    "#SyncMaster",
+    "#AfricanComposers",
+    "#BuildingInPublic",
+    "#SyncPlacement"
+  ],
+  "caption_full": "Month 2. Done.\nHere's the complete picture. ↓\n\nApply at syncmaster.io\n\n#SyncMaster #AfricanComposers #BuildingInPublic #SyncPlacement",
+  "visual_direction": "Stat-forward layout — large number dominant. Dark or purple bg with lime highlight.",
+  "product_data": {
+    "screen_type": "stats_dashboard",
+    "requires_screenshot": false,
+    "stats": [
+      {
+        "label": "Placements confirmed",
+        "value": "1"
+      },
+      {
+        "label": "Briefs received",
+        "value": "3"
+      },
+      {
+        "label": "Tracks pitched",
+        "value": "14"
+      },
+      {
+        "label": "Average turnaround (brief to delivery)",
+        "value": "22 hours"
+      },
+      {
+        "label": "New applications received",
+        "value": "11"
+      },
+      {
+        "label": "New composers vetted",
+        "value": "3"
+      }
+    ]
+  }
+}

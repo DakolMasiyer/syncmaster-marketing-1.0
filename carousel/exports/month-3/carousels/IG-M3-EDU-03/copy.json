@@ -1,0 +1,121 @@
+{
+  "post_id": "IG-M3-EDU-03",
+  "type": "Carousel",
+  "platform": "Instagram",
+  "pillar": "Education",
+  "persona": "Tunde",
+  "date": "2026-08-09",
+  "topic": "What music supervisors actually want — from 9 real briefs",
+  "hook": "We've handled 9 briefs in 90 days.",
+  "cta": "",
+  "hashtags": [
+    "#SyncMaster",
+    "#MusicSupervisor",
+    "#AfricanComposers",
+    "#SyncLicensing"
+  ],
+  "slide_count": 10,
+  "slides": [
+    {
+      "role": "hook",
+      "eyebrow": "Education · What music supervisors actually want — from 9 real briefs",
+      "headline": "We've handled 9 briefs in 90 days.",
+      "lede": "",
+      "footer_kicker": "Written by",
+      "footer_name": "syncmaster.live",
+      "slide": 1,
+      "footer_pageno": "01 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 1/25",
+      "headline": "Here's what every music supervisor actually wanted — from their words, not ours.",
+      "lede": "↓ · Here's what you need to know: — — — · WHAT THEY SAY THEY WANT",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 2,
+      "footer_pageno": "02 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 4/25",
+      "headline": "\"Rights-cleared tracks with stems.\"\n\"Quick turnaround.\"\n\"African sounds for",
+      "lede": "diverse casting.\"\n\"Real African music, not fusion.\" · Here's what you need to know: Every brief. Every time. · — — — · WHAT THEY ACTUALLY MEAN",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 3,
+      "footer_pageno": "03 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 8/25",
+      "headline": "\"Rights-cleared\" means one-stop.",
+      "lede": "One conversation. One deal. No separate master/sync clearance.\nIf you can't confirm one-stop, you're off the shortlist before the brief goes out.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 4,
+      "footer_pageno": "04 / 10"
+    },
+    {
+      "role": "proof",
+      "eyebrow": "Education · 9/25",
+      "headline": "The work, in numbers.",
+      "stats": [],
+      "footer_kicker": "Proof",
+      "footer_name": "syncmaster.live",
+      "slide": 5,
+      "footer_pageno": "05 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 10/25",
+      "headline": "\"African sounds\" means specific, not continental.",
+      "lede": "Afrobeats is not the same as Highlife.\nAmapiano is not the same as South African jazz.\nSupervisors doing their homework know the difference. Assume they do. · Here's what you need to know: — — — · WHAT THEY NEVER SAY BUT ALWAYS NEED · Stems in the delivery.\nNot \"available on request.\" In the initial folder. · Complete metadata. If your track arrives without BPM, key, and mood tags, it adds friction.\nFriction means a different track gets selected.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 6,
+      "footer_pageno": "06 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 15/25",
+      "headline": "A clear fee position.",
+      "lede": "\"What's your rate?\" answered before it's asked.\nSupervisors who have to chase a fee quote move on. · Here's what you need to know: — — — · WHAT THEY REMEMBER · Music quality gets you the shortlist. Documentation quality gets you the placement.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 7,
+      "footer_pageno": "07 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 19/25",
+      "headline": "Three months of briefs confirmed this:\nNo rejected submission was rejected because of music quality.",
+      "lede": "Every rejection was documentation, rights, or turnaround. · Here's what you need to know: — — — · HOW TO SPEAK THEIR LANGUAGE",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 8,
+      "footer_pageno": "08 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 22/25",
+      "headline": "Submit — don't pitch.",
+      "lede": "One email: WAV master + stems + metadata card + rate card + rights confirmation. · Not five messages. Not \"I'll send the stems tomorrow.\" · The supervisors who came back for Month 2 briefs came back because the first submission required zero follow-up.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 9,
+      "footer_pageno": "09 / 10"
+    },
+    {
+      "role": "cta",
+      "eyebrow": "Apply this week",
+      "headline": "Open briefs. Every Tuesday.",
+      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Apply now",
+      "footer_kicker": "Apply",
+      "footer_name": "syncmaster.live",
+      "slide": 10,
+      "footer_pageno": "10 / 10"
+    }
+  ]
+}

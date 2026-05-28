@@ -47,7 +47,7 @@ When in doubt: marketing is white + big + airy, product is dark + dense + monosp
 - No emoji.
 - No gradients except subtle 120px-blur glow accents.
 - No rounded-left-border-accent card pattern. (Banners use it; cards don't.)
-- No purple-on-purple sidebar without using `assets/logos/syncmaster-icon.png` (the wordmark file is purple-on-transparent and disappears on purple).
+- No purple-on-purple sidebar without using `assets/logos/Icon . Mark only.png` (or `.svg`). On dark/purple backgrounds always use `Primary Horizontal Logo - p` (white wordmark) — the purple wordmark variant disappears on purple.
 - No new heading colours — headings stay on `--foreground`.
 - No serif fonts. Mono only for data / labels.
 

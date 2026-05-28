@@ -1,36 +1,242 @@
-# SyncMaster Marketing 1.0 — Session Progress & Handoff
+# SyncMaster Marketing 1.0 — Session Handoff
+**Date:** 2026-05-28  
+**Session goal:** Build a complete batch content automation pipeline — scrape copy bank + content calendar, route every post by type, output structured copy files ready for Figma and scheduling.
 
-**Date:** 2026-05-21
-**Goal:** Batch-generate Instagram carousels and single posts from the content calendar.
+---
 
-## What Has Been Completed So Far
-1. **Tool Setup:** The `llm-council` skill was installed successfully (both globally and in `.agents/skills/llm-council/`).
-2. **Data Extraction:** We successfully pulled the full Instagram content inventory from `syncmaster-content-calendar.html`.
-    - **Total Posts:** 52
-    - **Month 1 (June):** 11 Carousels, 7 Singles
-    - **Month 2 (July):** 8 Carousels, 9 Singles
-    - **Month 3 (August):** 4 Carousels, 13 Singles
-3. **Implementation Plan:** Created `implementation_plan.md` in the agent artifacts, outlining the batch generation strategy.
+## What Was Built This Session
 
-## Current User Directives (CRITICAL CONTEXT FOR NEXT LLM)
-- **Scope:** Execute **Month 1 only** first.
-- **Immediate Next Step:** Test the generation pipeline with **exactly 1 carousel** to review the output before scaling.
-- **Design/Style:** Use the **Space Grotesk / LinkedIn style** for now (do not switch to the new SyncMaster DM Sans brand tokens yet).
-- **LLM Council:** We were going to run the council to decide on the production pipeline, but the user explicitly chose to use the existing Python PPTX system for now.
-- **Skill Architecture:** The user is removing global manual skill routing rules and trimming globally installed skills to save context limits. Trust natural skill selection instead of explicit routing.
+### New files created
 
-## Analysis of the Current Carousel Generator
-We analyzed the tools in the `/carousel/` directory to see if they are ready for the task:
+| File | Purpose |
+|---|---|
+| `carousel/batch_run.py` | Main CLI entry point — filters and routes all 122 posts |
+| `carousel/scripts/calendar_connector.py` | **Rewritten** — parses all 122 posts, all types, all 3 copy banks, pathlib (no hardcoded paths) |
+| `carousel/scripts/copy_extractor.py` | Extracts `body`, `hook`, `cta` per post ID across all copy banks |
+| `carousel/generators/carousel_copy.py` | Carousel copy → slide-by-slide JSON, Figma-layer-aligned |
+| `carousel/generators/single_copy.py` | Single post copy → JSON with Instagram caption fields |
+| `carousel/generators/thread_copy.py` | Thread/tweet body → numbered `.md` |
+| `carousel/generators/text_copy.py` | Article/blog/video → YAML-frontmatter `.md` |
+| `carousel/generators/product_data.py` | Detects and extracts product/screen data from copy |
+| `carousel/product_fixtures.json` | Realistic brief card, composer match, dashboard fixtures (3 variants each) |
+| `carousel/screenshot_runner.py` | Playwright screenshot tool — template render or live URL capture |
 
-1. `engine_v3.py`: This is a functioning PPTX generator using `python-pptx`. It supports custom dimensions (1080x1350), applies text styles from a JSON theme, and has basic smart placement logic for `opener`, `stat`, and `standard` slides. **It is fully capable of generating the PPTX files.**
-2. `styles/syncmaster.json`: This file currently defines `DM Sans` as the font family. **Important:** Since the user requested Space Grotesk/LinkedIn style, the next agent must ensure the engine uses the correct theme JSON that specifies Space Grotesk (or modify the current one/create a copy).
-3. `copy_mapper.py`: This script contains fallback logic to split raw text into the structured JSON format required by `engine_v3.py`. It works for basic formatting but might need LLM assistance to accurately map complex carousel copy into punchy slides.
+### All 122 posts already generated
 
-## Next Steps for the Next LLM / Agent
-To get a full build running, pick up exactly here:
+Output lives in `carousel/exports/`:
 
-1. **Setup the Test Case:** Extract the copy for post **`IG-EDU-01` (What is sync licensing?)** from `syncmaster-content-calendar.html`.
-2. **Prepare the Theme:** Verify or create a theme JSON file in `/carousel/styles/` that explicitly uses the Space Grotesk / LinkedIn styling as requested by the user.
-3. **Generate the Structure:** Use `copy_mapper.py` (or prompt an LLM directly) to convert the `IG-EDU-01` copy into the `engine_v3.py` JSON slide schema.
-4. **Run the Test:** Create a quick runner script (`test_generate.py`) that feeds the structure into `AestheticEngine` and outputs `exports/IG-EDU-01-test.pptx`.
-5. **Review:** Have the user review the generated PPTX. If approved, scale the script to loop through all 11 Month 1 carousels.
+```
+exports/
+  month-1/   carousels/ singles/ threads/ tweets/ articles/ blogs/ videos/
+  month-2/   carousels/ singles/ threads/ tweets/ articles/ blogs/ videos/
+  month-3/   carousels/ singles/ threads/ tweets/ articles/ blogs/ videos/
+  manifest.json   ← index of all 122 posts with metadata
+```
+
+---
+
+## How to Run
+
+```bash
+# All 122 posts
+python3 carousel/batch_run.py
+
+# Filter by month, type, platform, pillar, or single ID
+python3 carousel/batch_run.py --month 1 --type Carousel
+python3 carousel/batch_run.py --month 1 --type Single --platform Instagram
+python3 carousel/batch_run.py --id IG-EDU-01
+
+# Preview without writing files
+python3 carousel/batch_run.py --month 1 --dry-run
+
+# Screenshot: render HTML templates to PNGs
+python3 carousel/screenshot_runner.py --template carousel_light
+python3 carousel/screenshot_runner.py --template bts_light
+
+# Screenshot: capture live platform (Syncmaster-Live must be running on localhost:3000)
+# First set product_data.requires_screenshot=true + product_data.url in copy.json
+python3 carousel/screenshot_runner.py --manifest
+python3 carousel/screenshot_runner.py --id IG-M2-BTS-02
+```
+
+---
+
+## Key Decisions Made This Session
+
+- **No PPTX** — the pipeline generates structured copy JSON/markdown only. Figma handles the visual output.
+- **Figma publishing deferred** — no Figma templates set up yet. When ready, the Figma publisher reads `product_data` from each `copy.json` and populates text layers via `figma-mcp-go`.
+- **Purpose taxonomy deferred** — user decided to add a `purpose` field (Product / Education / Proof / Culture / Announcement) to the calendar later. The `--purpose` filter is not yet wired into `batch_run.py`.
+- **MCP already wired** — `.mcp.json` has `figma-mcp-go` configured. Figma Desktop must be open for those tools to work.
+- **Syncmaster-Live is at** `/Users/dakolmasiyer/Projects/Syncmaster-Live` — Next.js app, `npm run dev` starts on `localhost:3000`. Routes: `/dashboard`, `/brand`, `/composers`, `/supervisors`.
+
+---
+
+## What Each copy.json Contains
+
+### Carousel (`carousels/{id}/copy.json`)
+
+```json
+{
+  "post_id": "IG-EDU-01",
+  "platform": "Instagram",
+  "pillar": "Education",
+  "hashtags": ["#SyncLicensing", "#AfricanComposers", ...],
+  "slide_count": 8,
+  "slides": [
+    {
+      "slide": 1, "role": "hook",
+      "eyebrow": "Education · What is sync licensing?",
+      "headline": "Nobody explained this in music school.",
+      "lede": "And it's worth more than anything they did teach you. ↓",
+      "footer_kicker": "Written by", "footer_name": "syncmaster.live",
+      "footer_pageno": "01 / 08"
+    },
+    { "slide": 3, "role": "proof",
+      "headline": "The work, in numbers.",
+      "stats": [{"label": "One Netflix scene", "value": "$5,000–$20,000"}, ...]
+    },
+    { "slide": 8, "role": "cta",
+      "headline": "Open briefs. Every Tuesday.",
+      "cta_text": "Apply now"
+    }
+  ],
+  "product_data": {              // only on BTS / checklist / stats posts
+    "screen_type": "checklist",  // checklist | stats_dashboard | brief_card | screenshot
+    "checklist_items": ["Original compositions only", ...],
+    "requires_screenshot": false
+  }
+}
+```
+
+**Slide roles:** `hook` | `body` | `stat` | `proof` | `list` | `cta`  
+**Every slide has:** `eyebrow`, `headline`, `lede`, `footer_kicker`, `footer_name`, `footer_pageno`  
+**Stat slides add:** `stat_number`  
+**Proof slides add:** `stats[{label, value}]` (up to 3 — matches Figma proof grid)  
+**List slides add:** `list_items[]`  
+**CTA slides add:** `cta_text`
+
+### Single post (`singles/{id}/copy.json`)
+
+```json
+{
+  "eyebrow": "Proof · Results",
+  "headline": "No label.",                  // Figma display layer
+  "subtext": "A South African composer...", // Figma secondary layer
+  "cta": "Apply at syncmaster.io",
+  "footer_name": "syncmaster.live",
+  "caption_hook": "No label.\nA South African composer submitted to SyncMaster's vetting programme in Month 1. ↓",
+  "caption_hook_len": 92,                   // must be ≤ 125
+  "hashtags": ["#SyncMaster", "#AfricanComposers", ...],  // 3–5 prioritised
+  "caption_full": "...",                    // ready-to-paste Instagram caption
+  "visual_direction": "Stat-forward layout..."
+}
+```
+
+### Thread/Tweet (`threads/{id}/copy.md` or `tweets/{id}/copy.md`)
+Numbered `TWEET 1/N … TWEET N/N` markdown. Flags tweets over 280 chars with ⚠.
+
+### Article/Blog/Video (`articles/`, `blogs/`, `videos/`)
+YAML frontmatter + `## Hook / ## Body / ## CTA` sections.
+
+---
+
+## Product Data — Three Screen Types
+
+| `screen_type` | Posts | Data source |
+|---|---|---|
+| `checklist` | IG-BTS-01, IG-EDU-04, IG-EDU-05 | Auto-extracted ✓/✗ lines from copy |
+| `stats_dashboard` | IG-BTS-02 + 3 others | Auto-extracted 📬✅📋 emoji-stat lines |
+| `brief_card` | 22 BTS posts | `product_fixtures.json` (3 variants, deterministic per post ID) |
+| `screenshot` | Any post needing live platform | Set `requires_screenshot: true` + `url` manually, then run `screenshot_runner.py` |
+
+---
+
+## Fixes Applied This Session
+
+### Fix 1 — Instagram 10-slide cap
+All 23 carousels are now ≤ 10 slides. Three-pass consolidation in `carousel_copy.py`:
+1. Batch consecutive thin body slides (< 55 char headline, no lede) into a list slide
+2. Fold lone thin slides into neighbour's `lede`
+3. Force-fold shortest remaining middle slide (last resort)
+
+Previously: IG-EDU-08 = 15 slides, IG-EDU-05 = 14, IG-PROOF-04 = 13. All now at exactly 10.
+
+### Fix 2 — Instagram 125-char caption hook
+Every single post now has `caption_hook` (≤ 125 chars). Very short headlines (< 40 chars) are padded with the first sentence of `subtext`. Hooks without an engagement signal get `↓` appended. `hashtags` field filtered to 3–5 brand-first tags.
+
+### Fix 3 — Hashtag slides removed
+Hashtag-only paragraphs are no longer slides. They're extracted to a top-level `hashtags: []` field on each carousel post.
+
+---
+
+## What's Left To Do (Next Session)
+
+### High priority — will break real posts if ignored
+
+1. **LinkedIn CTA placement**  
+   LinkedIn's algorithm penalises external links in the post body. Article `.md` files currently include `syncmaster.io` in the body. Fix: move CTA link to a `first_comment` field that gets posted as the first comment, not in the post body. Affects all `LI-*` Article and `STANDALONE-LI-*` posts.
+
+2. **Caption hook on carousels**  
+   Singles have `caption_hook` + `caption_full`. Carousels don't — but Instagram carousels also have a text caption below the image deck. Add `caption_hook` and `caption_full` to carousel output using the same logic as singles. The hook copy should come from the first slide's `headline`.
+
+3. **Purpose taxonomy**  
+   The user wants to tag each post with a `purpose` field: `Product | Education | Proof | Culture | Announcement`. Currently each post has a `pillar` field (same taxonomy, different labels). Two options: (a) auto-map `pillar → purpose` in a config, or (b) inject a `purpose:` field directly into the calendar HTML's POSTS array. User chose option (b) in planning but deferred execution. When done, wire `--purpose` filter into `batch_run.py`.
+
+### Medium priority — quality improvements
+
+4. **Video script format**  
+   Video posts use the same `text_copy.py` as articles and blogs. A YouTube script needs different structure: scene markers, B-roll direction, speaking pace notes. Create `generators/video_script.py` and re-route `Video` type posts there.
+
+5. **Single post aspect ratio**  
+   `visual_direction` doesn't specify Instagram format: 1:1 (1080×1080), 4:5 (1080×1350), or 16:9 (1080×608). Add an `aspect_ratio` field to single posts. Default: 4:5 for feed posts. Stories would be 9:16.
+
+6. **Live metrics hook**  
+   Operational numbers in Month 2 and 3 copy banks are estimates written in advance. By the time August content goes out, real numbers from Month 1–2 will be known. Create `carousel/metrics.json` with a single source of truth for live stats (placements, roster count, turnaround time). BTS posts should reference these values rather than hardcoding.
+
+7. **Cross-post continuity check**  
+   Several posts reference previous content ("In our last carousel…", "Part 2 of…"). When batch-scheduling, these callbacks can orphan if the referenced post wasn't published. Add a `references` field to posts that call back, and a `batch_run.py --validate` mode that checks for broken references in a given month's sequence.
+
+### Lower priority — future automation
+
+8. **Figma publisher**  
+   Once Figma carousel templates exist, build `carousel/figma_publisher.py` that:
+   - Reads `copy.json` from a target directory
+   - Uses `figma-mcp-go` tools: `clone_node` to duplicate template, `set_text` to populate each layer
+   - Requires Figma Desktop open
+   - MCP config already in `.mcp.json`
+
+9. **Scheduling integration**  
+   Connect `manifest.json` to a scheduling tool (Buffer / Later). Each post's `date` field is already in `YYYY-MM-DD` format. A `schedule_export.py` script could read the manifest and output a Buffer-compatible CSV.
+
+10. **Screenshot runner — live platform testing**  
+    Run `Syncmaster-Live` locally (`npm run dev` in `/Users/dakolmasiyer/Projects/Syncmaster-Live`), then set `product_data.url: "http://localhost:3000/dashboard"` on any BTS post and run `screenshot_runner.py --id POST_ID` to capture a real platform screenshot.
+
+---
+
+## Constraints to Keep In Mind
+
+| Constraint | Status |
+|---|---|
+| Instagram: max 10 slides | ✅ Fixed |
+| Instagram: 125-char caption hook | ✅ Fixed |
+| Instagram: 3–5 hashtags (not 30) | ✅ Fixed |
+| LinkedIn: no external links in body | ❌ Not fixed |
+| Copy freshness: Month 3 stats are estimates | ❌ Not fixed |
+| Cross-post continuity | ❌ Not fixed |
+| Video scripts need scene markers | ❌ Not fixed |
+| Single posts need aspect ratio guidance | ❌ Not fixed |
+
+---
+
+## Source of Truth Files
+
+| File | Role |
+|---|---|
+| `.agents/product-marketing.md` | ICP, positioning, voice, personas — read before writing any copy |
+| `syncmaster-content-calendar.html` | 122-post master calendar (POSTS JS array) |
+| `copy-bank-m1.html` | Month 1 copy (43 entries, const COPY = {...}) |
+| `copy-bank-m2.html` | Month 2 copy (39 entries) |
+| `copy-bank-m3.html` | Month 3 copy (40 entries) |
+| `carousel/DESIGN_SYSTEM.md` | Full token reference for carousel design |
+| `carousel/exports/manifest.json` | Index of all 122 generated files |
+| `product_fixtures.json` | Platform UI fixture data for BTS posts |

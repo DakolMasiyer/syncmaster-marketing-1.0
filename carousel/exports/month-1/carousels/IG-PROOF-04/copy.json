@@ -1,0 +1,147 @@
+{
+  "post_id": "IG-PROOF-04",
+  "type": "Carousel",
+  "platform": "Instagram",
+  "pillar": "Proof",
+  "persona": "Both",
+  "date": "2026-06-20",
+  "topic": "The vetting milestone — detailed feedback",
+  "hook": "20 applications. 6 vetted.",
+  "cta": "",
+  "hashtags": [
+    "#SyncReady",
+    "#AfricanComposers",
+    "#SyncMaster",
+    "#MusicBusiness",
+    "#MusicRights"
+  ],
+  "slide_count": 10,
+  "slides": [
+    {
+      "role": "hook",
+      "eyebrow": "Proof · The vetting milestone — detailed feedback",
+      "headline": "20 applications. 6 vetted.",
+      "lede": "",
+      "footer_kicker": "Written by",
+      "footer_name": "syncmaster.live",
+      "slide": 1,
+      "footer_pageno": "01 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Proof · 1/12",
+      "headline": "Here's the detailed feedback we gave the 14 who didn't make it — because rejection without explanation is useless.",
+      "lede": "↓ · All 20 composers were genuinely talented.",
+      "footer_kicker": "Proof",
+      "footer_name": "syncmaster.live",
+      "slide": 2,
+      "footer_pageno": "02 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Proof · 3/12",
+      "headline": "The 14 we didn't accept were rejected for readiness, not music.",
+      "lede": "THE BREAKDOWN:",
+      "footer_kicker": "Proof",
+      "footer_name": "syncmaster.live",
+      "slide": 3,
+      "footer_pageno": "03 / 10"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Proof · 5/12",
+      "headline": "Here's what you need to know:",
+      "lede": "9/14 had rights issues · Labels holding masters with no clear route to clearance · Uncleared samples embedded in commercial-quality work · Publishing registered with the wrong entity",
+      "list_items": [
+        "9/14 had rights issues",
+        "Labels holding masters with no clear route to clearance",
+        "Uncleared samples embedded in commercial-quality work",
+        "Publishing registered with the wrong entity"
+      ],
+      "footer_kicker": "Proof",
+      "footer_name": "syncmaster.live",
+      "slide": 4,
+      "footer_pageno": "04 / 10"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Proof · 6/12",
+      "headline": "Here's what you need to know:",
+      "lede": "8/14 had metadata problems · No ISRC codes assigned · No BPM, key, or mood data · Files with no embedded information",
+      "list_items": [
+        "8/14 had metadata problems",
+        "No ISRC codes assigned",
+        "No BPM, key, or mood data",
+        "Files with no embedded information"
+      ],
+      "footer_kicker": "Proof",
+      "footer_name": "syncmaster.live",
+      "slide": 5,
+      "footer_pageno": "05 / 10"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Proof · 7/12",
+      "headline": "Here's what you need to know:",
+      "lede": "6/14 had file issues · Only MP3 available · No stems exported or accessible · Files not named to any standard",
+      "list_items": [
+        "6/14 had file issues",
+        "Only MP3 available",
+        "No stems exported or accessible",
+        "Files not named to any standard"
+      ],
+      "footer_kicker": "Proof",
+      "footer_name": "syncmaster.live",
+      "slide": 6,
+      "footer_pageno": "06 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Proof · 8/12",
+      "headline": "2/14 had response issues\n→ 3+ day reply time in the response-time test scenario",
+      "lede": "Most of these overlap. Most are fixable.",
+      "footer_kicker": "Proof",
+      "footer_name": "syncmaster.live",
+      "slide": 7,
+      "footer_pageno": "07 / 10"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Proof · 10/12",
+      "headline": "Here's what you need to know:",
+      "lede": "What each rejection reason actually means · How to fix rights issues (and what takes longest) · The metadata checklist you need on every file · File format requirements for sync",
+      "list_items": [
+        "What each rejection reason actually means",
+        "How to fix rights issues (and what takes longest)",
+        "The metadata checklist you need on every file",
+        "File format requirements for sync",
+        "How to build a faster response culture"
+      ],
+      "footer_kicker": "Proof",
+      "footer_name": "syncmaster.live",
+      "slide": 8,
+      "footer_pageno": "08 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Proof · 11/12",
+      "headline": "Come back when you've fixed it. The application stays open.",
+      "lede": "",
+      "footer_kicker": "Proof",
+      "footer_name": "syncmaster.live",
+      "slide": 9,
+      "footer_pageno": "09 / 10"
+    },
+    {
+      "role": "cta",
+      "eyebrow": "Apply this week",
+      "headline": "Open briefs. Every Tuesday.",
+      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Work with us",
+      "footer_kicker": "Apply",
+      "footer_name": "syncmaster.live",
+      "slide": 10,
+      "footer_pageno": "10 / 10"
+    }
+  ]
+}

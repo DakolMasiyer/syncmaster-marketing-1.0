@@ -1,0 +1,146 @@
+{
+  "post_id": "IG-EDU-05",
+  "type": "Carousel",
+  "platform": "Instagram",
+  "pillar": "Education",
+  "persona": "Tunde",
+  "date": "2026-06-16",
+  "topic": "Why your SoundCloud link isn\\",
+  "hook": "Sending a SoundCloud link to a music supervisor is like sending a screenshot of your CV to a hiring manager.",
+  "cta": "",
+  "hashtags": [
+    "#SyncReady",
+    "#AfricanComposers",
+    "#SyncMaster",
+    "#SyncLicensing",
+    "#MusicBusiness"
+  ],
+  "slide_count": 10,
+  "slides": [
+    {
+      "role": "hook",
+      "eyebrow": "Education · Why your SoundCloud link isn\\",
+      "headline": "Sending a SoundCloud link to a music supervisor is like sending a screenshot of",
+      "lede": "your CV to a hiring manager.",
+      "footer_kicker": "Written by",
+      "footer_name": "syncmaster.live",
+      "slide": 1,
+      "footer_pageno": "01 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 2/13",
+      "headline": "Here's what a supervisor actually needs to move your track forward:",
+      "lede": "It tells them you exist. That's all. ↓",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 2,
+      "footer_pageno": "02 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 3/13",
+      "headline": "✓ High-quality WAV or AIFF\nNot a stream.",
+      "lede": "Not a download link. A file, ready immediately.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 3,
+      "footer_pageno": "03 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 4/13",
+      "headline": "✓ Proper file naming\nFormat:",
+      "lede": "ArtistName_TrackTitle_BPM_Key.wav\n\"finalfinalv3_mixdown.wav\" doesn't cut it.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 4,
+      "footer_pageno": "04 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 5/13",
+      "headline": "✓ Embedded metadata\nTitle, composer, ISRC, mood, genre, BPM — inside the file,",
+      "lede": "not in an email.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 5,
+      "footer_pageno": "05 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 6/13",
+      "headline": "✓ Rights status confirmed\nOne-stop or clearly defined split, documented before",
+      "lede": "you pitch. · ✓ Stems available\nNot now. But ready when they ask.",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 6,
+      "footer_pageno": "06 / 10"
+    },
+    {
+      "role": "body",
+      "eyebrow": "Education · 8/13",
+      "headline": "✓ Response within 24 hours\nIf you respond in 3 days, the slot is filled.",
+      "lede": "",
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 7,
+      "footer_pageno": "07 / 10"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Education · 9/13",
+      "headline": "Here's what you need to know:",
+      "lede": "SoundCloud tells a supervisor: · A track exists · You have a profile · That's not enough to move a placement forward.",
+      "list_items": [
+        "SoundCloud tells a supervisor:",
+        "A track exists",
+        "You have a profile"
+      ],
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 8,
+      "footer_pageno": "08 / 10"
+    },
+    {
+      "role": "list",
+      "eyebrow": "Education · 11/13",
+      "headline": "Here's what you need to know:",
+      "lede": "Why streaming links fail supervisors every time · The file format issue — and what broadcast spec actually means · What proper metadata looks like inside a file · How to handle the rights conversation before it becomes a problem · Save this before your next outreach.",
+      "list_items": [
+        "Why streaming links fail supervisors every time",
+        "The file format issue — and what broadcast spec actually means",
+        "What proper metadata looks like inside a file",
+        "How to handle the rights conversation before it becomes a problem",
+        "What a professional submission package looks like"
+      ],
+      "footer_kicker": "Education",
+      "footer_name": "syncmaster.live",
+      "slide": 9,
+      "footer_pageno": "09 / 10"
+    },
+    {
+      "role": "cta",
+      "eyebrow": "Apply this week",
+      "headline": "Open briefs. Every Tuesday.",
+      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Apply now",
+      "footer_kicker": "Apply",
+      "footer_name": "syncmaster.live",
+      "slide": 10,
+      "footer_pageno": "10 / 10"
+    }
+  ],
+  "product_data": {
+    "screen_type": "checklist",
+    "requires_screenshot": false,
+    "checklist_items": [
+      "High-quality WAV or AIFF",
+      "Proper file naming",
+      "Embedded metadata",
+      "Rights status confirmed",
+      "Stems available",
+      "Response within 24 hours"
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "post_id": "IG-M3-BTS-04",
+  "type": "Single",
+  "platform": "Instagram",
+  "pillar": "Behind the Scenes",
+  "persona": "Both",
+  "date": "2026-08-27",
+  "topic": "Scaling to 14 composers — what the operation looks like",
+  "eyebrow": "Behind the Build",
+  "headline": "What 12 active composers looks like operationally:",
+  "subtext": "94 tracks in the active pool.",
+  "cta": "Apply at syncmaster.io",
+  "footer_name": "syncmaster.live",
+  "caption_hook": "What 12 active composers looks like operationally: ↓",
+  "caption_hook_len": 52,
+  "hashtags": [
+    "#SyncMaster",
+    "#BehindTheScenes",
+    "#Scaling"
+  ],
+  "caption_full": "What 12 active composers looks like operationally: ↓\n\n94 tracks in the active pool.\n\nApply at syncmaster.io\n\n#SyncMaster #BehindTheScenes #Scaling",
+  "visual_direction": "Candid platform screenshot or studio setting. Real, unposed. Text overlay left column.",
+  "product_data": {
+    "screen_type": "brief_card",
+    "requires_screenshot": false,
+    "persona_name": "Tunde",
+    "brief_card": {
+      "id": "brief_card_v2",
+      "platform_label": "Streaming",
+      "platform_badge_color": "#1db954",
+      "status": "Active",
+      "deadline": "06 / 22 / 26",
+      "title": "Afro-fusion for luxury lifestyle ad — global campaign",
+      "genre_tags": [
+        "Afro-Fusion",
+        "R&B",
+        "Chillwave"
+      ],
+      "budget": "$8,000 – $14,000",
+      "client": "Marcus · Black River Pictures",
+      "notes": "30-second hero spot + 15-second cut. Must be stems-ready."
+    },
+    "composer_match": {
+      "id": "composer_match_v2",
+      "label": "AI Match · Sample",
+      "items": [
+        {
+          "name": "Femi Okafor",
+          "location": "Lagos",
+          "score": 96,
+          "bar_pct": "96%"
+        },
+        {
+          "name": "Zanele Dube",
+          "location": "Joburg",
+          "score": 91,
+          "bar_pct": "91%"
+        },
+        {
+          "name": "Kelechi Nwosu",
+          "location": "Enugu",
+          "score": 84,
+          "bar_pct": "84%"
+        }
+      ]
+    }
+  }
+}

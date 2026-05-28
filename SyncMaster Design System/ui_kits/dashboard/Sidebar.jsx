@@ -85,7 +85,7 @@ function Sidebar({ active, onNavigate }) {
     }}>
       <div style={{ height: 80, padding: '0 32px', display: 'flex', alignItems: 'center' }}>
         {/* Syncdark.png — designed for dark/purple backgrounds; white text + acid icon */}
-        <img src="../../assets/logos/syncmaster-icon.png" style={{height: 44, width: 'auto', opacity: .95 }} />
+        <img src="../../assets/logos/Icon . Mark only.svg" style={{height: 44, width: 'auto', opacity: .95 }} />
       </div>
 
       <nav style={{ flex: 1, padding: 16, paddingTop: 24, display: 'flex', flexDirection: 'column', gap: 0, overflowY: 'hidden' }}>
