@@ -3,43 +3,66 @@ video_script.py
 ---------------
 Generator for YouTube / Reels Video type posts.
 
-Unlike text_copy.py (which outputs a flat article), this generator:
-  - Detects timestamp sections (e.g. "INTRO (0:00–0:45):")
-  - Parses each section into scene blocks with narration, B-roll directions,
-    and pacing cues
-  - Outputs a markdown script with a structured scene table at the top
+This version handles both structured scripts with explicit section headers and
+plain prose bodies with paragraphs, bullets, and timestamp blocks.
 
 Output: {out_dir}/copy.md
 """
 import re
-import json
-from pathlib import Path
 
-# Detect standard video section headers.
-# Matches: "INTRO (0:00–0:45):" or "SECTION 1 — TITLE (0:45–3:00):"
 SECTION_RE = re.compile(
-    r"^([A-Z][A-Z 0-9/&'\"–-]{1,60}?)\s*"   # section title (caps)
-    r"(?:\([^)]*\))?"                          # optional (timestamp)
+    r"^([A-Z][A-Z 0-9/&'\"–-]{1,60}?)\s*"
+    r"(?:\(([^)]*)\))?"
     r"\s*[:\—–]",
     re.MULTILINE,
 )
 
-TIMESTAMP_RE = re.compile(r"\((\d+:\d+[–\-]\d+:\d+)\)")
+TIMERANGE_RE = re.compile(r"(\d+:\d{2}\s*[–-]\s*\d+:\d{2})")
+TIMEPOINT_RE = re.compile(r"^\d+:\d{2}\s*[–—]\s*.+$")
 
-# Detect B-roll cues: lines starting with a direction marker
 BROLL_SIGNALS = (
-    "b-roll:", "b roll:", "visual:", "cut to:", "show:", "shot:", "overlay:",
-    "→ publish", "→ cross-post", "→ reels",
+    "b-roll:",
+    "b roll:",
+    "visual:",
+    "cut to:",
+    "show:",
+    "shot:",
+    "overlay:",
 )
 
-# Pacing signals are lines that describe delivery/tone rather than narration
 PACING_SIGNALS = (
-    "tone:", "pace:", "speaking pace:", "energy:", "delivery:",
+    "tone:",
+    "pace:",
+    "speaking pace:",
+    "energy:",
+    "delivery:",
+)
+
+CTA_SIGNALS = (
+    "subscribe",
+    "apply",
+    "publish",
+    "watch",
+    "follow",
+    "learn more",
+    "link in bio",
 )
 
 
-def _classify_line(line: str):
-    """Return 'broll', 'pacing', or 'narration' for a given line."""
+def _clean_text(text):
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def _clean_title(title, fallback):
+    title = _clean_text(title or "")
+    fallback = _clean_text(fallback or "")
+    candidate = title or fallback or "Video"
+    # Strip common parser debris from malformed topic strings.
+    candidate = candidate.replace("\\", "").strip(" -:;")
+    return candidate or "Video"
+
+
+def _classify_line(line):
     lo = line.strip().lower()
     if any(lo.startswith(s) for s in BROLL_SIGNALS):
         return "broll"
@@ -48,43 +71,48 @@ def _classify_line(line: str):
     return "narration"
 
 
-def _parse_sections(body: str):
-    """
-    Split body into a list of scene dicts:
-        {title, timestamp, narration, broll, pacing}
-    Falls back to paragraph splitting if no timestamp headers are found.
-    """
-    # Find all section header positions
-    boundaries = [(m.start(), m.group(0)) for m in SECTION_RE.finditer(body)]
+def _split_blocks(body):
+    return [block.strip() for block in body.split("\n\n") if block.strip()]
 
+
+def _bullet_lines(text):
+    lines = []
+    for raw in text.splitlines():
+        stripped = raw.strip()
+        if not stripped:
+            continue
+        if stripped.startswith("→") or stripped.startswith("-") or stripped.startswith("•"):
+            lines.append(stripped.lstrip("→-• ").strip())
+    return lines
+
+
+def _is_cta_block(text):
+    lo = text.lower()
+    return any(sig in lo for sig in CTA_SIGNALS)
+
+
+def _make_scene(title, timestamp, narration, broll=None, pacing=None):
+    return {
+        "title": title,
+        "timestamp": timestamp or "",
+        "narration": narration or [],
+        "broll": broll or [],
+        "pacing": pacing or [],
+    }
+
+
+def _parse_structured_sections(body):
+    boundaries = [(m.start(), m.group(0), m.group(1), m.group(2) or "") for m in SECTION_RE.finditer(body)]
     if not boundaries:
-        # No structured headers — treat each paragraph as a scene
-        paragraphs = [p.strip() for p in body.split("\n\n") if p.strip()]
-        scenes = []
-        for i, para in enumerate(paragraphs):
-            scenes.append({
-                "title": f"Scene {i + 1}",
-                "timestamp": "",
-                "narration": [para],
-                "broll": [],
-                "pacing": [],
-            })
-        return scenes
-
-    # Build text slices between headers
-    slices = []
-    for idx, (pos, header) in enumerate(boundaries):
-        end = boundaries[idx + 1][0] if idx + 1 < len(boundaries) else len(body)
-        slices.append((header.strip().rstrip(":—–").strip(), body[pos:end]))
+        return []
 
     scenes = []
-    for title, chunk in slices:
-        ts_match = TIMESTAMP_RE.search(chunk)
-        timestamp = ts_match.group(1) if ts_match else ""
-
-        narration, broll, pacing = [], [], []
+    for idx, (pos, header, raw_title, raw_ts) in enumerate(boundaries):
+        end = boundaries[idx + 1][0] if idx + 1 < len(boundaries) else len(body)
+        chunk = body[pos:end].strip()
         lines = chunk.splitlines()
-        # Skip the header line itself
+        narration, broll, pacing = [], [], []
+
         for line in lines[1:]:
             stripped = line.strip()
             if not stripped:
@@ -97,29 +125,113 @@ def _parse_sections(body: str):
             else:
                 narration.append(stripped)
 
-        scenes.append({
-            "title": title,
-            "timestamp": timestamp,
-            "narration": narration,
-            "broll": broll,
-            "pacing": pacing,
-        })
+        timestamp = _clean_text(raw_ts)
+        if timestamp:
+            m = TIMERANGE_RE.search(timestamp)
+            timestamp = m.group(1).replace(" ", "") if m else timestamp
+
+        scenes.append(_make_scene(_clean_text(raw_title), timestamp, narration, broll=broll, pacing=pacing))
 
     return scenes
+
+
+def _parse_plain_body(body):
+    blocks = _split_blocks(body)
+    scenes = []
+
+    for idx, block in enumerate(blocks):
+        first_line = block.splitlines()[0].strip() if block.splitlines() else block.strip()
+        lower = block.lower()
+
+        if idx == 0:
+            title = "Hook"
+        elif lower.startswith("timestamps:") or TIMEPOINT_RE.match(first_line):
+            title = "Timeline"
+        elif _is_cta_block(block):
+            title = "CTA"
+        elif first_line.startswith("→"):
+            title = "Key Points"
+        else:
+            title = f"Scene {idx + 1}"
+
+        broll = []
+        pacing = []
+        narration = []
+
+        if title == "Timeline":
+            narration.append(block)
+        else:
+            for line in block.splitlines():
+                stripped = line.strip()
+                if not stripped:
+                    continue
+                kind = _classify_line(stripped)
+                if kind == "broll":
+                    broll.append(stripped)
+                elif kind == "pacing":
+                    pacing.append(stripped)
+                else:
+                    narration.append(stripped)
+
+        scenes.append(_make_scene(title, "", narration, broll=broll, pacing=pacing))
+
+    return scenes
+
+
+def _parse_sections(body):
+    """
+    Split body into scene dicts:
+        {title, timestamp, narration, broll, pacing}
+
+    Prefer explicit section headers when present; otherwise fall back to
+    paragraph-driven scenes.
+    """
+    structured = _parse_structured_sections(body)
+    if structured:
+        return structured
+    return _parse_plain_body(body)
+
+
+def _sanitize_title(post, copy_data):
+    topic = post.get("topic", "")
+    hook = copy_data.get("hook", "")
+    candidate = _clean_title(topic, hook)
+    if not candidate or candidate == "Video":
+        candidate = _clean_title(hook, post.get("id", "Video"))
+    return candidate
+
+
+def _summary_from_scene(scene):
+    if scene["narration"]:
+        raw = scene["narration"][0]
+        if scene["title"] == "Timeline":
+            timepoints = []
+            for line in scene["narration"][0].splitlines():
+                stripped = line.strip()
+                if TIMEPOINT_RE.match(stripped):
+                    timepoints.append(stripped)
+            if timepoints:
+                return " · ".join(timepoints[:3])
+        raw = raw.replace("Timestamps:", "").strip()
+        raw = raw.split("→", 1)[0].strip() if raw.startswith("→") else raw
+        return _clean_text(raw)[:90]
+    if scene["broll"]:
+        return _clean_text(scene["broll"][0])[:90]
+    return ""
 
 
 def _format_script(post, scenes, copy_data):
     """Render the full markdown script."""
     pid = post["id"]
-    topic = post.get("topic", pid)
+    topic = _sanitize_title(post, copy_data)
     platform = post.get("platform", "YouTube")
     pillar = post.get("pillar", "")
     persona = post.get("persona", "")
     date = post.get("date", "")
     purpose = post.get("purpose", "")
 
-    hook = copy_data.get("hook", "")
-    cta = copy_data.get("cta", "")
+    hook = _clean_text(copy_data.get("hook", ""))
+    cta = _clean_text(copy_data.get("cta", ""))
 
     lines = [
         "---",
@@ -141,18 +253,15 @@ def _format_script(post, scenes, copy_data):
     ]
 
     for i, scene in enumerate(scenes, 1):
-        summary = scene["narration"][0][:60].rstrip() + "…" if scene["narration"] else ""
+        summary = _summary_from_scene(scene)
         ts = scene["timestamp"] or "—"
-        title = scene["title"]
-        lines.append(f"| {i} | {title} | {ts} | {summary} |")
+        lines.append(f"| {i} | {scene['title']} | {ts} | {summary} |")
 
     lines.append("")
 
-    # Hook quote if present
     if hook:
         lines.extend(["---", "", "## Hook (Opening Line)", "", f"> {hook}", ""])
 
-    # Detailed scenes
     lines.extend(["---", "", "## Script", ""])
     for i, scene in enumerate(scenes, 1):
         ts = f" `{scene['timestamp']}`" if scene["timestamp"] else ""
@@ -178,7 +287,6 @@ def _format_script(post, scenes, copy_data):
                 lines.append(n)
                 lines.append("")
 
-    # CTA
     if cta:
         lines.extend(["---", "", "## CTA", "", cta, ""])
 

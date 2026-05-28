@@ -354,6 +354,15 @@ def generate(post, copy_data, out_dir):
     }
 
     if product_data:
+        # screen_type options for product_data:
+        # "screenshot"      — Playwright live site screenshot (requires localhost:3000)
+        # "brief_card"      — product_fixtures.json rendered as HTML → PNG
+        # "stats_dashboard" — metrics.json rendered as dashboard → PNG
+        # "checklist"       — checklist_items[] rendered as HTML → PNG
+        # "unsplash"        — fetch portrait photo from Unsplash API by keyword
+        #                     optional: "unsplash_keyword" overrides auto-extracted keyword
+        #                     falls back to asset_fetcher.get_keyword_for_slide() if omitted
+        # null / omitted    — solid brand colour fill (#5252E0 or #0A0A20), no image
         output["product_data"] = product_data
 
     out_dir.mkdir(parents=True, exist_ok=True)

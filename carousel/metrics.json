@@ -1,0 +1,38 @@
+{
+  "current": "2026-08",
+  "snapshots": {
+    "2026-06": {
+      "applications_received": 20,
+      "composers_vetted": 6,
+      "briefs_handled": 3,
+      "tracks_pitched": 11,
+      "placements_confirmed": 1,
+      "fastest_turnaround_hours": 48,
+      "average_turnaround_hours": 31,
+      "rejected_applications": 14,
+      "content_pieces": 42
+    },
+    "2026-07": {
+      "applications_received": 31,
+      "composers_active": 9,
+      "briefs_handled": 5,
+      "tracks_in_pool": 61,
+      "placements_confirmed": 2,
+      "fastest_turnaround_hours": 11,
+      "average_turnaround_hours": 22,
+      "new_applications": 11,
+      "new_composers_vetted": 3
+    },
+    "2026-08": {
+      "applications_received": 47,
+      "composers_active": 12,
+      "briefs_handled": 9,
+      "tracks_submitted": 31,
+      "tracks_in_pool": 94,
+      "placements_confirmed": 3,
+      "median_response_hours": 18,
+      "fastest_turnaround_hours": 11,
+      "in_negotiation": 1
+    }
+  }
+}

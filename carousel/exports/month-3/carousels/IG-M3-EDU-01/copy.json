@@ -3,17 +3,21 @@
   "type": "Carousel",
   "platform": "Instagram",
   "pillar": "Education",
+  "purpose": "Education",
   "persona": "Tunde",
   "date": "2026-08-02",
   "topic": "International markets — what UK, US, and EU actually want",
   "hook": "Your music can work in London. New York. Paris.",
-  "cta": "",
+  "cta": "→ Full metadata: ISRC, BPM, key, mood, instrumentation, placement type\n→ Stems available on request within 24 hours\n→ Split sheet signed by all writers before any submission\n→ Rights confirmed one-stop before any brief arrives",
   "hashtags": [
     "#AfricanComposers",
     "#SyncLicensing",
     "#InternationalSync",
     "#SyncMaster"
   ],
+  "caption_hook": "Your music can work in London. New York. Paris. ↓",
+  "caption_hook_len": 49,
+  "caption_full": "Your music can work in London. New York. Paris. ↓\n\nBut what \"works\" means is different in each market.\n\nFull metadata: ISRC, BPM, key, mood, instrumentation, →\n\n#SyncMaster #AfricanComposers #SyncLicensing #InternationalSync",
   "slide_count": 10,
   "slides": [
     {

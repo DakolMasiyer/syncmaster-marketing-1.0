@@ -25,6 +25,8 @@ We didn't scramble. We searched. Because the catalogue was already built.
 
 The 48-hour delivery was only possible because the work happened before the brief arrived — composers vetted in advance, tracks tagged by mood and instrumentation, rights confirmed for every track in the system.
 
+→ Full breakdown at syncmaster.io/blog
+
 ## CTA
 
 → Full breakdown at syncmaster.io/blog

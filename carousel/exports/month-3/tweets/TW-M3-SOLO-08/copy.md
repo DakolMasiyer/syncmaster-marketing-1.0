@@ -24,3 +24,7 @@ Three things the sync market is showing after 90 days of briefs:
 Infrastructure, not talent, is the bottleneck.
 
 #SyncMarket #AfricanComposers #SyncMaster
+
+---
+**CTA:**
+3/ Repeat briefs come from supervisors who had zero follow-up work after the first submission.

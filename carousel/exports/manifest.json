@@ -5,1098 +5,1421 @@
       "type": "Blog",
       "platform": "Blog",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 1,
       "date": "2026-06-01",
-      "path": "exports/month-1/blogs/BLOG-01/copy.md"
+      "path": "exports/month-1/blogs/BLOG-01/copy.md",
+      "references": []
     },
     {
       "post_id": "LI-EDU-01",
       "type": "Article",
       "platform": "LinkedIn",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 1,
       "date": "2026-06-01",
-      "path": "exports/month-1/articles/LI-EDU-01/copy.md"
+      "path": "exports/month-1/articles/LI-EDU-01/copy.md",
+      "references": []
     },
     {
       "post_id": "THREAD-01",
       "type": "Thread",
       "platform": "Twitter/X",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 1,
       "date": "2026-06-01",
-      "path": "exports/month-1/threads/THREAD-01/copy.md"
+      "path": "exports/month-1/threads/THREAD-01/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-EDU-01",
       "type": "Carousel",
       "platform": "Instagram",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 1,
       "date": "2026-06-02",
-      "path": "exports/month-1/carousels/IG-EDU-01/copy.json"
+      "path": "exports/month-1/carousels/IG-EDU-01/copy.json",
+      "references": []
     },
     {
       "post_id": "THREAD-02",
       "type": "Thread",
       "platform": "Twitter/X",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 1,
       "date": "2026-06-03",
-      "path": "exports/month-1/threads/THREAD-02/copy.md"
+      "path": "exports/month-1/threads/THREAD-02/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-EDU-02",
       "type": "Carousel",
       "platform": "Instagram",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 1,
       "date": "2026-06-04",
-      "path": "exports/month-1/carousels/IG-EDU-02/copy.json"
+      "path": "exports/month-1/carousels/IG-EDU-02/copy.json",
+      "references": []
     },
     {
       "post_id": "IG-PROOF-01",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 1,
       "date": "2026-06-05",
-      "path": "exports/month-1/singles/IG-PROOF-01/copy.json"
+      "path": "exports/month-1/singles/IG-PROOF-01/copy.json",
+      "references": []
     },
     {
       "post_id": "STANDALONE-IG-01",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Culture",
+      "purpose": "Culture",
       "month": 1,
       "date": "2026-06-06",
-      "path": "exports/month-1/singles/STANDALONE-IG-01/copy.json"
+      "path": "exports/month-1/singles/STANDALONE-IG-01/copy.json",
+      "references": []
     },
     {
       "post_id": "YT-01",
       "type": "Video",
       "platform": "YouTube",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": 1,
       "date": "2026-06-07",
-      "path": "exports/month-1/videos/YT-01/copy.md"
+      "path": "exports/month-1/videos/YT-01/copy.md",
+      "references": []
     },
     {
       "post_id": "BLOG-02",
       "type": "Blog",
       "platform": "Blog",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 1,
       "date": "2026-06-08",
-      "path": "exports/month-1/blogs/BLOG-02/copy.md"
+      "path": "exports/month-1/blogs/BLOG-02/copy.md",
+      "references": []
     },
     {
       "post_id": "LI-PROOF-01",
       "type": "Article",
       "platform": "LinkedIn",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 1,
       "date": "2026-06-08",
-      "path": "exports/month-1/articles/LI-PROOF-01/copy.md"
+      "path": "exports/month-1/articles/LI-PROOF-01/copy.md",
+      "references": []
     },
     {
       "post_id": "THREAD-03",
       "type": "Thread",
       "platform": "Twitter/X",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 1,
       "date": "2026-06-08",
-      "path": "exports/month-1/threads/THREAD-03/copy.md"
+      "path": "exports/month-1/threads/THREAD-03/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-EDU-03",
       "type": "Carousel",
       "platform": "Instagram",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 1,
       "date": "2026-06-09",
-      "path": "exports/month-1/carousels/IG-EDU-03/copy.json"
+      "path": "exports/month-1/carousels/IG-EDU-03/copy.json",
+      "references": []
     },
     {
       "post_id": "IG-BTS-01",
       "type": "Carousel",
       "platform": "Instagram",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": 1,
       "date": "2026-06-10",
-      "path": "exports/month-1/carousels/IG-BTS-01/copy.json"
+      "path": "exports/month-1/carousels/IG-BTS-01/copy.json",
+      "references": []
     },
     {
       "post_id": "THREAD-04",
       "type": "Thread",
       "platform": "Twitter/X",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 1,
       "date": "2026-06-10",
-      "path": "exports/month-1/threads/THREAD-04/copy.md"
+      "path": "exports/month-1/threads/THREAD-04/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-EDU-04",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 1,
       "date": "2026-06-11",
-      "path": "exports/month-1/singles/IG-EDU-04/copy.json"
+      "path": "exports/month-1/singles/IG-EDU-04/copy.json",
+      "references": []
     },
     {
       "post_id": "IG-PROOF-02",
       "type": "Carousel",
       "platform": "Instagram",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 1,
       "date": "2026-06-12",
-      "path": "exports/month-1/carousels/IG-PROOF-02/copy.json"
+      "path": "exports/month-1/carousels/IG-PROOF-02/copy.json",
+      "references": []
     },
     {
       "post_id": "STANDALONE-TW-01",
       "type": "Tweet",
       "platform": "Twitter/X",
       "pillar": "Culture",
+      "purpose": "Culture",
       "month": 1,
       "date": "2026-06-13",
-      "path": "exports/month-1/tweets/STANDALONE-TW-01/copy.md"
+      "path": "exports/month-1/tweets/STANDALONE-TW-01/copy.md",
+      "references": []
     },
     {
       "post_id": "STANDALONE-IG-02",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 1,
       "date": "2026-06-14",
-      "path": "exports/month-1/singles/STANDALONE-IG-02/copy.json"
+      "path": "exports/month-1/singles/STANDALONE-IG-02/copy.json",
+      "references": []
     },
     {
       "post_id": "BLOG-03",
       "type": "Blog",
       "platform": "Blog",
       "pillar": "Culture",
+      "purpose": "Culture",
       "month": 1,
       "date": "2026-06-15",
-      "path": "exports/month-1/blogs/BLOG-03/copy.md"
+      "path": "exports/month-1/blogs/BLOG-03/copy.md",
+      "references": []
     },
     {
       "post_id": "LI-CULTURE-01",
       "type": "Article",
       "platform": "LinkedIn",
       "pillar": "Culture",
+      "purpose": "Culture",
       "month": 1,
       "date": "2026-06-15",
-      "path": "exports/month-1/articles/LI-CULTURE-01/copy.md"
+      "path": "exports/month-1/articles/LI-CULTURE-01/copy.md",
+      "references": []
     },
     {
       "post_id": "THREAD-05",
       "type": "Thread",
       "platform": "Twitter/X",
       "pillar": "Culture",
+      "purpose": "Culture",
       "month": 1,
       "date": "2026-06-15",
-      "path": "exports/month-1/threads/THREAD-05/copy.md"
+      "path": "exports/month-1/threads/THREAD-05/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-EDU-05",
       "type": "Carousel",
       "platform": "Instagram",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 1,
       "date": "2026-06-16",
-      "path": "exports/month-1/carousels/IG-EDU-05/copy.json"
+      "path": "exports/month-1/carousels/IG-EDU-05/copy.json",
+      "references": []
     },
     {
       "post_id": "YT-02",
       "type": "Video",
       "platform": "YouTube",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 1,
       "date": "2026-06-17",
-      "path": "exports/month-1/videos/YT-02/copy.md"
+      "path": "exports/month-1/videos/YT-02/copy.md",
+      "references": []
     },
     {
       "post_id": "STANDALONE-TW-02",
       "type": "Tweet",
       "platform": "Twitter/X",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 1,
       "date": "2026-06-17",
-      "path": "exports/month-1/tweets/STANDALONE-TW-02/copy.md"
+      "path": "exports/month-1/tweets/STANDALONE-TW-02/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-EDU-06",
       "type": "Carousel",
       "platform": "Instagram",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": 1,
       "date": "2026-06-18",
-      "path": "exports/month-1/carousels/IG-EDU-06/copy.json"
+      "path": "exports/month-1/carousels/IG-EDU-06/copy.json",
+      "references": []
     },
     {
       "post_id": "IG-PROOF-03",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 1,
       "date": "2026-06-19",
-      "path": "exports/month-1/singles/IG-PROOF-03/copy.json"
+      "path": "exports/month-1/singles/IG-PROOF-03/copy.json",
+      "references": []
     },
     {
       "post_id": "IG-PROOF-04",
       "type": "Carousel",
       "platform": "Instagram",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 1,
       "date": "2026-06-20",
-      "path": "exports/month-1/carousels/IG-PROOF-04/copy.json"
+      "path": "exports/month-1/carousels/IG-PROOF-04/copy.json",
+      "references": []
     },
     {
       "post_id": "STANDALONE-TW-03",
       "type": "Tweet",
       "platform": "Twitter/X",
       "pillar": "Industry",
+      "purpose": "Announcement",
       "month": 1,
       "date": "2026-06-21",
-      "path": "exports/month-1/tweets/STANDALONE-TW-03/copy.md"
+      "path": "exports/month-1/tweets/STANDALONE-TW-03/copy.md",
+      "references": []
     },
     {
       "post_id": "BLOG-04",
       "type": "Blog",
       "platform": "Blog",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": 1,
       "date": "2026-06-22",
-      "path": "exports/month-1/blogs/BLOG-04/copy.md"
+      "path": "exports/month-1/blogs/BLOG-04/copy.md",
+      "references": []
     },
     {
       "post_id": "LI-INDUSTRY-01",
       "type": "Article",
       "platform": "LinkedIn",
       "pillar": "Industry",
+      "purpose": "Announcement",
       "month": 1,
       "date": "2026-06-22",
-      "path": "exports/month-1/articles/LI-INDUSTRY-01/copy.md"
+      "path": "exports/month-1/articles/LI-INDUSTRY-01/copy.md",
+      "references": []
     },
     {
       "post_id": "THREAD-06",
       "type": "Thread",
       "platform": "Twitter/X",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 1,
       "date": "2026-06-22",
-      "path": "exports/month-1/threads/THREAD-06/copy.md"
+      "path": "exports/month-1/threads/THREAD-06/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-EDU-07",
       "type": "Carousel",
       "platform": "Instagram",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 1,
       "date": "2026-06-23",
-      "path": "exports/month-1/carousels/IG-EDU-07/copy.json"
+      "path": "exports/month-1/carousels/IG-EDU-07/copy.json",
+      "references": []
     },
     {
       "post_id": "STANDALONE-TW-04",
       "type": "Tweet",
       "platform": "Twitter/X",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 1,
       "date": "2026-06-24",
-      "path": "exports/month-1/tweets/STANDALONE-TW-04/copy.md"
+      "path": "exports/month-1/tweets/STANDALONE-TW-04/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-EDU-08",
       "type": "Carousel",
       "platform": "Instagram",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 1,
       "date": "2026-06-25",
-      "path": "exports/month-1/carousels/IG-EDU-08/copy.json"
+      "path": "exports/month-1/carousels/IG-EDU-08/copy.json",
+      "references": []
     },
     {
       "post_id": "IG-PROOF-05",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 1,
       "date": "2026-06-26",
-      "path": "exports/month-1/singles/IG-PROOF-05/copy.json"
+      "path": "exports/month-1/singles/IG-PROOF-05/copy.json",
+      "references": []
     },
     {
       "post_id": "IG-BTS-02",
       "type": "Carousel",
       "platform": "Instagram",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": 1,
       "date": "2026-06-27",
-      "path": "exports/month-1/carousels/IG-BTS-02/copy.json"
+      "path": "exports/month-1/carousels/IG-BTS-02/copy.json",
+      "references": []
     },
     {
       "post_id": "YT-03",
       "type": "Video",
       "platform": "YouTube",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 1,
       "date": "2026-06-28",
-      "path": "exports/month-1/videos/YT-03/copy.md"
+      "path": "exports/month-1/videos/YT-03/copy.md",
+      "references": []
     },
     {
       "post_id": "BLOG-05",
       "type": "Blog",
       "platform": "Blog",
       "pillar": "Industry",
+      "purpose": "Announcement",
       "month": 1,
       "date": "2026-06-29",
-      "path": "exports/month-1/blogs/BLOG-05/copy.md"
+      "path": "exports/month-1/blogs/BLOG-05/copy.md",
+      "references": []
     },
     {
       "post_id": "STANDALONE-LI-01",
       "type": "Article",
       "platform": "LinkedIn",
       "pillar": "Industry",
+      "purpose": "Announcement",
       "month": 1,
       "date": "2026-06-29",
-      "path": "exports/month-1/articles/STANDALONE-LI-01/copy.md"
+      "path": "exports/month-1/articles/STANDALONE-LI-01/copy.md",
+      "references": []
     },
     {
       "post_id": "STANDALONE-TW-05",
       "type": "Tweet",
       "platform": "Twitter/X",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": 1,
       "date": "2026-06-29",
-      "path": "exports/month-1/tweets/STANDALONE-TW-05/copy.md"
+      "path": "exports/month-1/tweets/STANDALONE-TW-05/copy.md",
+      "references": []
     },
     {
       "post_id": "STANDALONE-IG-03",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": 1,
       "date": "2026-06-30",
-      "path": "exports/month-1/singles/STANDALONE-IG-03/copy.json"
+      "path": "exports/month-1/singles/STANDALONE-IG-03/copy.json",
+      "references": []
     },
     {
       "post_id": "MILESTONE-CPG",
       "type": "Article",
       "platform": "Blog",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": null,
       "date": "2026-05-31",
-      "path": "exports/month-unknown/articles/MILESTONE-CPG/copy.md"
+      "path": "exports/month-unknown/articles/MILESTONE-CPG/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-M2-EDU-01",
       "type": "Carousel",
       "platform": "Instagram",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 2,
       "date": "2026-07-01",
-      "path": "exports/month-2/carousels/IG-M2-EDU-01/copy.json"
+      "path": "exports/month-2/carousels/IG-M2-EDU-01/copy.json",
+      "references": []
     },
     {
       "post_id": "IG-M2-EDU-02",
       "type": "Carousel",
       "platform": "Instagram",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 2,
       "date": "2026-07-02",
-      "path": "exports/month-2/carousels/IG-M2-EDU-02/copy.json"
+      "path": "exports/month-2/carousels/IG-M2-EDU-02/copy.json",
+      "references": []
     },
     {
       "post_id": "TW-M2-SOLO-01",
       "type": "Tweet",
       "platform": "Twitter/X",
       "pillar": "Industry",
+      "purpose": "Announcement",
       "month": 2,
       "date": "2026-07-03",
-      "path": "exports/month-2/tweets/TW-M2-SOLO-01/copy.md"
+      "path": "exports/month-2/tweets/TW-M2-SOLO-01/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-M2-PROOF-01",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 2,
       "date": "2026-07-04",
-      "path": "exports/month-2/singles/IG-M2-PROOF-01/copy.json"
+      "path": "exports/month-2/singles/IG-M2-PROOF-01/copy.json",
+      "references": []
     },
     {
       "post_id": "YT-M2-01",
       "type": "Video",
       "platform": "YouTube",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 2,
       "date": "2026-07-05",
-      "path": "exports/month-2/videos/YT-M2-01/copy.md"
+      "path": "exports/month-2/videos/YT-M2-01/copy.md",
+      "references": []
     },
     {
       "post_id": "BLOG-M2-01",
       "type": "Blog",
       "platform": "Blog",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 2,
       "date": "2026-07-06",
-      "path": "exports/month-2/blogs/BLOG-M2-01/copy.md"
+      "path": "exports/month-2/blogs/BLOG-M2-01/copy.md",
+      "references": []
     },
     {
       "post_id": "LI-M2-01",
       "type": "Article",
       "platform": "LinkedIn",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 2,
       "date": "2026-07-06",
-      "path": "exports/month-2/articles/LI-M2-01/copy.md"
+      "path": "exports/month-2/articles/LI-M2-01/copy.md",
+      "references": []
     },
     {
       "post_id": "TW-M2-01",
       "type": "Thread",
       "platform": "Twitter/X",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 2,
       "date": "2026-07-06",
-      "path": "exports/month-2/threads/TW-M2-01/copy.md"
+      "path": "exports/month-2/threads/TW-M2-01/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-M2-EDU-03",
       "type": "Carousel",
       "platform": "Instagram",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 2,
       "date": "2026-07-07",
-      "path": "exports/month-2/carousels/IG-M2-EDU-03/copy.json"
+      "path": "exports/month-2/carousels/IG-M2-EDU-03/copy.json",
+      "references": []
     },
     {
       "post_id": "TW-M2-SOLO-02",
       "type": "Tweet",
       "platform": "Twitter/X",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 2,
       "date": "2026-07-08",
-      "path": "exports/month-2/tweets/TW-M2-SOLO-02/copy.md"
+      "path": "exports/month-2/tweets/TW-M2-SOLO-02/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-M2-EDU-04",
       "type": "Carousel",
       "platform": "Instagram",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 2,
       "date": "2026-07-09",
-      "path": "exports/month-2/carousels/IG-M2-EDU-04/copy.json"
+      "path": "exports/month-2/carousels/IG-M2-EDU-04/copy.json",
+      "references": []
     },
     {
       "post_id": "IG-M2-PROOF-02",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 2,
       "date": "2026-07-10",
-      "path": "exports/month-2/singles/IG-M2-PROOF-02/copy.json"
+      "path": "exports/month-2/singles/IG-M2-PROOF-02/copy.json",
+      "references": []
     },
     {
       "post_id": "TW-M2-SOLO-03",
       "type": "Tweet",
       "platform": "Twitter/X",
       "pillar": "Culture",
+      "purpose": "Culture",
       "month": 2,
       "date": "2026-07-11",
-      "path": "exports/month-2/tweets/TW-M2-SOLO-03/copy.md"
+      "path": "exports/month-2/tweets/TW-M2-SOLO-03/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-M2-BTS-01",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": 2,
       "date": "2026-07-12",
-      "path": "exports/month-2/singles/IG-M2-BTS-01/copy.json"
+      "path": "exports/month-2/singles/IG-M2-BTS-01/copy.json",
+      "references": []
     },
     {
       "post_id": "BLOG-M2-02",
       "type": "Blog",
       "platform": "Blog",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 2,
       "date": "2026-07-13",
-      "path": "exports/month-2/blogs/BLOG-M2-02/copy.md"
+      "path": "exports/month-2/blogs/BLOG-M2-02/copy.md",
+      "references": []
     },
     {
       "post_id": "LI-M2-02",
       "type": "Article",
       "platform": "LinkedIn",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 2,
       "date": "2026-07-13",
-      "path": "exports/month-2/articles/LI-M2-02/copy.md"
+      "path": "exports/month-2/articles/LI-M2-02/copy.md",
+      "references": []
     },
     {
       "post_id": "TW-M2-02",
       "type": "Thread",
       "platform": "Twitter/X",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 2,
       "date": "2026-07-13",
-      "path": "exports/month-2/threads/TW-M2-02/copy.md"
+      "path": "exports/month-2/threads/TW-M2-02/copy.md",
+      "references": [
+        {
+          "post_id": "THREAD-01",
+          "reason": "Month 2 update builds on the Month 1 education thread."
+        },
+        {
+          "post_id": "LI-PROOF-01",
+          "reason": "Month 2 update references the first turnaround story."
+        }
+      ]
     },
     {
       "post_id": "IG-M2-EDU-05",
       "type": "Carousel",
       "platform": "Instagram",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 2,
       "date": "2026-07-14",
-      "path": "exports/month-2/carousels/IG-M2-EDU-05/copy.json"
+      "path": "exports/month-2/carousels/IG-M2-EDU-05/copy.json",
+      "references": []
     },
     {
       "post_id": "TW-M2-SOLO-04",
       "type": "Tweet",
       "platform": "Twitter/X",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 2,
       "date": "2026-07-15",
-      "path": "exports/month-2/tweets/TW-M2-SOLO-04/copy.md"
+      "path": "exports/month-2/tweets/TW-M2-SOLO-04/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-M2-EDU-06",
       "type": "Carousel",
       "platform": "Instagram",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 2,
       "date": "2026-07-16",
-      "path": "exports/month-2/carousels/IG-M2-EDU-06/copy.json"
+      "path": "exports/month-2/carousels/IG-M2-EDU-06/copy.json",
+      "references": []
     },
     {
       "post_id": "IG-M2-PROOF-03",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 2,
       "date": "2026-07-17",
-      "path": "exports/month-2/singles/IG-M2-PROOF-03/copy.json"
+      "path": "exports/month-2/singles/IG-M2-PROOF-03/copy.json",
+      "references": []
     },
     {
       "post_id": "TW-M2-SOLO-05",
       "type": "Tweet",
       "platform": "Twitter/X",
       "pillar": "Industry",
+      "purpose": "Announcement",
       "month": 2,
       "date": "2026-07-18",
-      "path": "exports/month-2/tweets/TW-M2-SOLO-05/copy.md"
+      "path": "exports/month-2/tweets/TW-M2-SOLO-05/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-M2-BTS-02",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": 2,
       "date": "2026-07-19",
-      "path": "exports/month-2/singles/IG-M2-BTS-02/copy.json"
+      "path": "exports/month-2/singles/IG-M2-BTS-02/copy.json",
+      "references": []
     },
     {
       "post_id": "BLOG-M2-03",
       "type": "Blog",
       "platform": "Blog",
       "pillar": "Culture",
+      "purpose": "Culture",
       "month": 2,
       "date": "2026-07-20",
-      "path": "exports/month-2/blogs/BLOG-M2-03/copy.md"
+      "path": "exports/month-2/blogs/BLOG-M2-03/copy.md",
+      "references": []
     },
     {
       "post_id": "LI-M2-03",
       "type": "Article",
       "platform": "LinkedIn",
       "pillar": "Culture",
+      "purpose": "Culture",
       "month": 2,
       "date": "2026-07-20",
-      "path": "exports/month-2/articles/LI-M2-03/copy.md"
+      "path": "exports/month-2/articles/LI-M2-03/copy.md",
+      "references": []
     },
     {
       "post_id": "TW-M2-03",
       "type": "Thread",
       "platform": "Twitter/X",
       "pillar": "Culture",
+      "purpose": "Culture",
       "month": 2,
       "date": "2026-07-20",
-      "path": "exports/month-2/threads/TW-M2-03/copy.md"
+      "path": "exports/month-2/threads/TW-M2-03/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-M2-EDU-07",
       "type": "Carousel",
       "platform": "Instagram",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 2,
       "date": "2026-07-21",
-      "path": "exports/month-2/carousels/IG-M2-EDU-07/copy.json"
+      "path": "exports/month-2/carousels/IG-M2-EDU-07/copy.json",
+      "references": []
     },
     {
       "post_id": "TW-M2-SOLO-06",
       "type": "Tweet",
       "platform": "Twitter/X",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 2,
       "date": "2026-07-22",
-      "path": "exports/month-2/tweets/TW-M2-SOLO-06/copy.md"
+      "path": "exports/month-2/tweets/TW-M2-SOLO-06/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-M2-EDU-08",
       "type": "Carousel",
       "platform": "Instagram",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 2,
       "date": "2026-07-23",
-      "path": "exports/month-2/carousels/IG-M2-EDU-08/copy.json"
+      "path": "exports/month-2/carousels/IG-M2-EDU-08/copy.json",
+      "references": []
     },
     {
       "post_id": "IG-M2-PROOF-04",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 2,
       "date": "2026-07-24",
-      "path": "exports/month-2/singles/IG-M2-PROOF-04/copy.json"
+      "path": "exports/month-2/singles/IG-M2-PROOF-04/copy.json",
+      "references": []
     },
     {
       "post_id": "TW-M2-SOLO-07",
       "type": "Tweet",
       "platform": "Twitter/X",
       "pillar": "Culture",
+      "purpose": "Culture",
       "month": 2,
       "date": "2026-07-25",
-      "path": "exports/month-2/tweets/TW-M2-SOLO-07/copy.md"
+      "path": "exports/month-2/tweets/TW-M2-SOLO-07/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-M2-BTS-03",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": 2,
       "date": "2026-07-26",
-      "path": "exports/month-2/singles/IG-M2-BTS-03/copy.json"
+      "path": "exports/month-2/singles/IG-M2-BTS-03/copy.json",
+      "references": []
     },
     {
       "post_id": "BLOG-M2-04",
       "type": "Blog",
       "platform": "Blog",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": 2,
       "date": "2026-07-27",
-      "path": "exports/month-2/blogs/BLOG-M2-04/copy.md"
+      "path": "exports/month-2/blogs/BLOG-M2-04/copy.md",
+      "references": []
     },
     {
       "post_id": "LI-M2-04",
       "type": "Article",
       "platform": "LinkedIn",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": 2,
       "date": "2026-07-27",
-      "path": "exports/month-2/articles/LI-M2-04/copy.md"
+      "path": "exports/month-2/articles/LI-M2-04/copy.md",
+      "references": [
+        {
+          "post_id": "LI-M2-02",
+          "reason": "Operational update expands on the earlier Month 2 market update."
+        }
+      ]
     },
     {
       "post_id": "TW-M2-04",
       "type": "Thread",
       "platform": "Twitter/X",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": 2,
       "date": "2026-07-27",
-      "path": "exports/month-2/threads/TW-M2-04/copy.md"
+      "path": "exports/month-2/threads/TW-M2-04/copy.md",
+      "references": [
+        {
+          "post_id": "TW-M2-02",
+          "reason": "Mid-month recap follows the earlier Month 2 update."
+        },
+        {
+          "post_id": "BLOG-M2-02",
+          "reason": "Mid-month recap extends the Month 2 proof narrative."
+        }
+      ]
     },
     {
       "post_id": "YT-M2-02",
       "type": "Video",
       "platform": "YouTube",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 2,
       "date": "2026-07-28",
-      "path": "exports/month-2/videos/YT-M2-02/copy.md"
+      "path": "exports/month-2/videos/YT-M2-02/copy.md",
+      "references": []
     },
     {
       "post_id": "TW-M2-SOLO-08",
       "type": "Tweet",
       "platform": "Twitter/X",
       "pillar": "Industry",
+      "purpose": "Announcement",
       "month": 2,
       "date": "2026-07-29",
-      "path": "exports/month-2/tweets/TW-M2-SOLO-08/copy.md"
+      "path": "exports/month-2/tweets/TW-M2-SOLO-08/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-M2-PROOF-05",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 2,
       "date": "2026-07-30",
-      "path": "exports/month-2/singles/IG-M2-PROOF-05/copy.json"
+      "path": "exports/month-2/singles/IG-M2-PROOF-05/copy.json",
+      "references": []
     },
     {
       "post_id": "IG-M2-WRAP",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": 2,
       "date": "2026-07-31",
-      "path": "exports/month-2/singles/IG-M2-WRAP/copy.json"
+      "path": "exports/month-2/singles/IG-M2-WRAP/copy.json",
+      "references": []
     },
     {
       "post_id": "IG-M3-PROOF-01",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 3,
       "date": "2026-08-01",
-      "path": "exports/month-3/singles/IG-M3-PROOF-01/copy.json"
+      "path": "exports/month-3/singles/IG-M3-PROOF-01/copy.json",
+      "references": [
+        {
+          "post_id": "IG-M2-WRAP",
+          "reason": "Month 3 opening proof post follows the Month 2 wrap."
+        }
+      ]
     },
     {
       "post_id": "IG-M3-EDU-01",
       "type": "Carousel",
       "platform": "Instagram",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 3,
       "date": "2026-08-02",
-      "path": "exports/month-3/carousels/IG-M3-EDU-01/copy.json"
+      "path": "exports/month-3/carousels/IG-M3-EDU-01/copy.json",
+      "references": []
     },
     {
       "post_id": "BLOG-M3-01",
       "type": "Blog",
       "platform": "Blog",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": 3,
       "date": "2026-08-03",
-      "path": "exports/month-3/blogs/BLOG-M3-01/copy.md"
+      "path": "exports/month-3/blogs/BLOG-M3-01/copy.md",
+      "references": []
     },
     {
       "post_id": "LI-M3-01",
       "type": "Article",
       "platform": "LinkedIn",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": 3,
       "date": "2026-08-03",
-      "path": "exports/month-3/articles/LI-M3-01/copy.md"
+      "path": "exports/month-3/articles/LI-M3-01/copy.md",
+      "references": []
     },
     {
       "post_id": "TW-M3-01",
       "type": "Thread",
       "platform": "Twitter/X",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": 3,
       "date": "2026-08-03",
-      "path": "exports/month-3/threads/TW-M3-01/copy.md"
+      "path": "exports/month-3/threads/TW-M3-01/copy.md",
+      "references": [
+        {
+          "post_id": "TW-M2-04",
+          "reason": "90-day numbers thread depends on the Month 2 midpoint context."
+        },
+        {
+          "post_id": "TW-M2-02",
+          "reason": "90-day numbers thread depends on the earlier Month 2 update."
+        }
+      ]
     },
     {
       "post_id": "IG-M3-EDU-02",
       "type": "Carousel",
       "platform": "Instagram",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 3,
       "date": "2026-08-04",
-      "path": "exports/month-3/carousels/IG-M3-EDU-02/copy.json"
+      "path": "exports/month-3/carousels/IG-M3-EDU-02/copy.json",
+      "references": []
     },
     {
       "post_id": "TW-M3-SOLO-01",
       "type": "Tweet",
       "platform": "Twitter/X",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 3,
       "date": "2026-08-05",
-      "path": "exports/month-3/tweets/TW-M3-SOLO-01/copy.md"
+      "path": "exports/month-3/tweets/TW-M3-SOLO-01/copy.md",
+      "references": []
     },
     {
       "post_id": "YT-M3-01",
       "type": "Video",
       "platform": "YouTube",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 3,
       "date": "2026-08-06",
-      "path": "exports/month-3/videos/YT-M3-01/copy.md"
+      "path": "exports/month-3/videos/YT-M3-01/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-M3-BTS-01",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": 3,
       "date": "2026-08-07",
-      "path": "exports/month-3/singles/IG-M3-BTS-01/copy.json"
+      "path": "exports/month-3/singles/IG-M3-BTS-01/copy.json",
+      "references": []
     },
     {
       "post_id": "TW-M3-SOLO-02",
       "type": "Tweet",
       "platform": "Twitter/X",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 3,
       "date": "2026-08-08",
-      "path": "exports/month-3/tweets/TW-M3-SOLO-02/copy.md"
+      "path": "exports/month-3/tweets/TW-M3-SOLO-02/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-M3-EDU-03",
       "type": "Carousel",
       "platform": "Instagram",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 3,
       "date": "2026-08-09",
-      "path": "exports/month-3/carousels/IG-M3-EDU-03/copy.json"
+      "path": "exports/month-3/carousels/IG-M3-EDU-03/copy.json",
+      "references": []
     },
     {
       "post_id": "BLOG-M3-02",
       "type": "Blog",
       "platform": "Blog",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 3,
       "date": "2026-08-10",
-      "path": "exports/month-3/blogs/BLOG-M3-02/copy.md"
+      "path": "exports/month-3/blogs/BLOG-M3-02/copy.md",
+      "references": []
     },
     {
       "post_id": "LI-M3-02",
       "type": "Article",
       "platform": "LinkedIn",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 3,
       "date": "2026-08-10",
-      "path": "exports/month-3/articles/LI-M3-02/copy.md"
+      "path": "exports/month-3/articles/LI-M3-02/copy.md",
+      "references": []
     },
     {
       "post_id": "TW-M3-02",
       "type": "Thread",
       "platform": "Twitter/X",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 3,
       "date": "2026-08-10",
-      "path": "exports/month-3/threads/TW-M3-02/copy.md"
+      "path": "exports/month-3/threads/TW-M3-02/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-M3-PROOF-02",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 3,
       "date": "2026-08-11",
-      "path": "exports/month-3/singles/IG-M3-PROOF-02/copy.json"
+      "path": "exports/month-3/singles/IG-M3-PROOF-02/copy.json",
+      "references": []
     },
     {
       "post_id": "TW-M3-SOLO-03",
       "type": "Tweet",
       "platform": "Twitter/X",
       "pillar": "Culture",
+      "purpose": "Culture",
       "month": 3,
       "date": "2026-08-12",
-      "path": "exports/month-3/tweets/TW-M3-SOLO-03/copy.md"
+      "path": "exports/month-3/tweets/TW-M3-SOLO-03/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-M3-CULTURE-01",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Culture",
+      "purpose": "Culture",
       "month": 3,
       "date": "2026-08-13",
-      "path": "exports/month-3/singles/IG-M3-CULTURE-01/copy.json"
+      "path": "exports/month-3/singles/IG-M3-CULTURE-01/copy.json",
+      "references": []
     },
     {
       "post_id": "IG-M3-BTS-02",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": 3,
       "date": "2026-08-14",
-      "path": "exports/month-3/singles/IG-M3-BTS-02/copy.json"
+      "path": "exports/month-3/singles/IG-M3-BTS-02/copy.json",
+      "references": []
     },
     {
       "post_id": "TW-M3-SOLO-04",
       "type": "Tweet",
       "platform": "Twitter/X",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": 3,
       "date": "2026-08-15",
-      "path": "exports/month-3/tweets/TW-M3-SOLO-04/copy.md"
+      "path": "exports/month-3/tweets/TW-M3-SOLO-04/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-M3-EDU-04",
       "type": "Carousel",
       "platform": "Instagram",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 3,
       "date": "2026-08-16",
-      "path": "exports/month-3/carousels/IG-M3-EDU-04/copy.json"
+      "path": "exports/month-3/carousels/IG-M3-EDU-04/copy.json",
+      "references": []
     },
     {
       "post_id": "BLOG-M3-03",
       "type": "Blog",
       "platform": "Blog",
       "pillar": "Culture",
+      "purpose": "Culture",
       "month": 3,
       "date": "2026-08-17",
-      "path": "exports/month-3/blogs/BLOG-M3-03/copy.md"
+      "path": "exports/month-3/blogs/BLOG-M3-03/copy.md",
+      "references": []
     },
     {
       "post_id": "LI-M3-03",
       "type": "Article",
       "platform": "LinkedIn",
       "pillar": "Culture",
+      "purpose": "Culture",
       "month": 3,
       "date": "2026-08-17",
-      "path": "exports/month-3/articles/LI-M3-03/copy.md"
+      "path": "exports/month-3/articles/LI-M3-03/copy.md",
+      "references": []
     },
     {
       "post_id": "TW-M3-03",
       "type": "Thread",
       "platform": "Twitter/X",
       "pillar": "Culture",
+      "purpose": "Culture",
       "month": 3,
       "date": "2026-08-17",
-      "path": "exports/month-3/threads/TW-M3-03/copy.md"
+      "path": "exports/month-3/threads/TW-M3-03/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-M3-PROOF-03",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 3,
       "date": "2026-08-18",
-      "path": "exports/month-3/singles/IG-M3-PROOF-03/copy.json"
+      "path": "exports/month-3/singles/IG-M3-PROOF-03/copy.json",
+      "references": []
     },
     {
       "post_id": "TW-M3-SOLO-05",
       "type": "Tweet",
       "platform": "Twitter/X",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 3,
       "date": "2026-08-19",
-      "path": "exports/month-3/tweets/TW-M3-SOLO-05/copy.md"
+      "path": "exports/month-3/tweets/TW-M3-SOLO-05/copy.md",
+      "references": [
+        {
+          "post_id": "TW-M3-01",
+          "reason": "Running numbers tweet depends on the main Month 3 metrics thread."
+        }
+      ]
     },
     {
       "post_id": "IG-M3-BTS-03",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": 3,
       "date": "2026-08-20",
-      "path": "exports/month-3/singles/IG-M3-BTS-03/copy.json"
+      "path": "exports/month-3/singles/IG-M3-BTS-03/copy.json",
+      "references": []
     },
     {
       "post_id": "IG-M3-PROOF-04",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 3,
       "date": "2026-08-21",
-      "path": "exports/month-3/singles/IG-M3-PROOF-04/copy.json"
+      "path": "exports/month-3/singles/IG-M3-PROOF-04/copy.json",
+      "references": []
     },
     {
       "post_id": "TW-M3-SOLO-06",
       "type": "Tweet",
       "platform": "Twitter/X",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 3,
       "date": "2026-08-22",
-      "path": "exports/month-3/tweets/TW-M3-SOLO-06/copy.md"
+      "path": "exports/month-3/tweets/TW-M3-SOLO-06/copy.md",
+      "references": [
+        {
+          "post_id": "TW-M3-01",
+          "reason": "Cumulative numbers tweet depends on the main Month 3 metrics thread."
+        }
+      ]
     },
     {
       "post_id": "IG-M3-CULTURE-02",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Culture",
+      "purpose": "Culture",
       "month": 3,
       "date": "2026-08-23",
-      "path": "exports/month-3/singles/IG-M3-CULTURE-02/copy.json"
+      "path": "exports/month-3/singles/IG-M3-CULTURE-02/copy.json",
+      "references": []
     },
     {
       "post_id": "BLOG-M3-04",
       "type": "Blog",
       "platform": "Blog",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 3,
       "date": "2026-08-24",
-      "path": "exports/month-3/blogs/BLOG-M3-04/copy.md"
+      "path": "exports/month-3/blogs/BLOG-M3-04/copy.md",
+      "references": [
+        {
+          "post_id": "BLOG-M3-01",
+          "reason": "Month 3 wrap blog follows the 90-day proof baseline."
+        },
+        {
+          "post_id": "TW-M3-04",
+          "reason": "Month 3 wrap blog mirrors the final thread recap."
+        }
+      ]
     },
     {
       "post_id": "LI-M3-04",
       "type": "Article",
       "platform": "LinkedIn",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 3,
       "date": "2026-08-24",
-      "path": "exports/month-3/articles/LI-M3-04/copy.md"
+      "path": "exports/month-3/articles/LI-M3-04/copy.md",
+      "references": [
+        {
+          "post_id": "LI-M3-01",
+          "reason": "Month 3 LinkedIn wrap extends the 90-day infrastructure post."
+        },
+        {
+          "post_id": "TW-M3-01",
+          "reason": "Month 3 LinkedIn wrap uses the same 90-day metrics story."
+        }
+      ]
     },
     {
       "post_id": "TW-M3-04",
       "type": "Thread",
       "platform": "Twitter/X",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 3,
       "date": "2026-08-24",
-      "path": "exports/month-3/threads/TW-M3-04/copy.md"
+      "path": "exports/month-3/threads/TW-M3-04/copy.md",
+      "references": [
+        {
+          "post_id": "TW-M3-01",
+          "reason": "Month 3 wrap closes the 90-day numbers story."
+        }
+      ]
     },
     {
       "post_id": "IG-M3-PROOF-05",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 3,
       "date": "2026-08-25",
-      "path": "exports/month-3/singles/IG-M3-PROOF-05/copy.json"
+      "path": "exports/month-3/singles/IG-M3-PROOF-05/copy.json",
+      "references": []
     },
     {
       "post_id": "TW-M3-SOLO-07",
       "type": "Tweet",
       "platform": "Twitter/X",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 3,
       "date": "2026-08-26",
-      "path": "exports/month-3/tweets/TW-M3-SOLO-07/copy.md"
+      "path": "exports/month-3/tweets/TW-M3-SOLO-07/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-M3-BTS-04",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": 3,
       "date": "2026-08-27",
-      "path": "exports/month-3/singles/IG-M3-BTS-04/copy.json"
+      "path": "exports/month-3/singles/IG-M3-BTS-04/copy.json",
+      "references": []
     },
     {
       "post_id": "YT-M3-02",
       "type": "Video",
       "platform": "YouTube",
       "pillar": "Education",
+      "purpose": "Education",
       "month": 3,
       "date": "2026-08-28",
-      "path": "exports/month-3/videos/YT-M3-02/copy.md"
+      "path": "exports/month-3/videos/YT-M3-02/copy.md",
+      "references": []
     },
     {
       "post_id": "TW-M3-SOLO-08",
       "type": "Tweet",
       "platform": "Twitter/X",
       "pillar": "Industry",
+      "purpose": "Announcement",
       "month": 3,
       "date": "2026-08-29",
-      "path": "exports/month-3/tweets/TW-M3-SOLO-08/copy.md"
+      "path": "exports/month-3/tweets/TW-M3-SOLO-08/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-M3-PROOF-06",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Proof",
+      "purpose": "Proof",
       "month": 3,
       "date": "2026-08-30",
-      "path": "exports/month-3/singles/IG-M3-PROOF-06/copy.json"
+      "path": "exports/month-3/singles/IG-M3-PROOF-06/copy.json",
+      "references": []
     },
     {
       "post_id": "TW-M3-SOLO-09",
       "type": "Tweet",
       "platform": "Twitter/X",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": 3,
       "date": "2026-08-30",
-      "path": "exports/month-3/tweets/TW-M3-SOLO-09/copy.md"
+      "path": "exports/month-3/tweets/TW-M3-SOLO-09/copy.md",
+      "references": []
     },
     {
       "post_id": "IG-M3-WRAP",
       "type": "Single",
       "platform": "Instagram",
       "pillar": "Behind the Scenes",
+      "purpose": "Product",
       "month": 3,
       "date": "2026-08-31",
-      "path": "exports/month-3/singles/IG-M3-WRAP/copy.json"
+      "path": "exports/month-3/singles/IG-M3-WRAP/copy.json",
+      "references": [
+        {
+          "post_id": "IG-M3-PROOF-01",
+          "reason": "Month 3 wrap closes the month-opening proof post."
+        },
+        {
+          "post_id": "TW-M3-04",
+          "reason": "Month 3 wrap echoes the final Month 3 thread recap."
+        }
+      ]
     }
   ],
   "total": 122

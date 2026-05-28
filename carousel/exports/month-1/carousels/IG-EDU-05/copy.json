@@ -3,11 +3,12 @@
   "type": "Carousel",
   "platform": "Instagram",
   "pillar": "Education",
+  "purpose": "Education",
   "persona": "Tunde",
   "date": "2026-06-16",
-  "topic": "Why your SoundCloud link isn\\",
+  "topic": "Why your SoundCloud link isn't enough",
   "hook": "Sending a SoundCloud link to a music supervisor is like sending a screenshot of your CV to a hiring manager.",
-  "cta": "",
+  "cta": "Save this. Build the package. Then reach out.",
   "hashtags": [
     "#SyncReady",
     "#AfricanComposers",
@@ -15,11 +16,14 @@
     "#SyncLicensing",
     "#MusicBusiness"
   ],
+  "caption_hook": "Sending a SoundCloud link to a music supervisor is like sending a screenshot of ↓",
+  "caption_hook_len": 81,
+  "caption_full": "Sending a SoundCloud link to a music supervisor is like sending a screenshot of ↓\n\nIt tells them you exist.\n\nSave this. Build the package. Then reach out.\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicBusiness #SyncReady",
   "slide_count": 10,
   "slides": [
     {
       "role": "hook",
-      "eyebrow": "Education · Why your SoundCloud link isn\\",
+      "eyebrow": "Education · Why your SoundCloud link isn't enough",
       "headline": "Sending a SoundCloud link to a music supervisor is like sending a screenshot of",
       "lede": "your CV to a hiring manager.",
       "footer_kicker": "Written by",

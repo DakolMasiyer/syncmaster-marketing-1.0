@@ -3,11 +3,12 @@
   "type": "Carousel",
   "platform": "Instagram",
   "pillar": "Education",
+  "purpose": "Education",
   "persona": "Tunde",
   "date": "2026-06-23",
   "topic": "5 reasons African music gets rejected in sync",
   "hook": "It's not your sound.",
-  "cta": "",
+  "cta": "Save this. Fix what you can. Then come find us.",
   "hashtags": [
     "#SyncReady",
     "#AfricanComposers",
@@ -15,6 +16,9 @@
     "#SyncLicensing",
     "#MusicBusiness"
   ],
+  "caption_hook": "It's not your sound. ↓",
+  "caption_hook_len": 22,
+  "caption_full": "It's not your sound. ↓\n\nHere are the actual reasons African composers get passed over in sync licensing — none of them have anything to do with talent.\n\nSave this. Fix what you can. Then come find us.\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicBusiness #SyncReady",
   "slide_count": 10,
   "slides": [
     {

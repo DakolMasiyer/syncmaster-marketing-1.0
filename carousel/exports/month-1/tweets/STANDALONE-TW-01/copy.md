@@ -1,4 +1,4 @@
-# STANDALONE-TW-01 — Why African sounds dominate but composers don\
+# STANDALONE-TW-01 — Why African sounds dominate but composers don't get paid
 **Platform:** Twitter/X | **Pillar:** Culture | **Persona:** Both | **Date:** 2026-06-13
 
 ---

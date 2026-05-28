@@ -23,6 +23,8 @@ What we planned. What actually happened. What we built, what we broke, and what 
 
 And one very clear lesson: the infrastructure gap is both wider and more fixable than we expected.
 
+→ Full retrospective at syncmaster.io/blog
+
 ## CTA
 
 → Full retrospective at syncmaster.io/blog

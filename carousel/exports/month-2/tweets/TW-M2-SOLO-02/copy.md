@@ -24,3 +24,9 @@ Three documents every sync-ready composer needs before pitching:
 Supervisors rarely ask for all three upfront.
 
 The ones who do remember which composers had them ready instantly.
+
+---
+**CTA:**
+1/ A one-page catalogue sheet (tracks, BPM, mood, one-stop status)
+2/ A rights confirmation letter (master + publishing ownership, confirmed in writing)
+3/ A stems delivery confirmation (what stems you have, how fast you can deliver)

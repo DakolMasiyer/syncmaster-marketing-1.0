@@ -25,6 +25,8 @@ So why are African composers still fighting for access to sync licensing — the
 
 This article looks at the demand side, the infrastructure gap, and what's being built to close it.
 
+→ Read the full piece at syncmaster.io/blog
+
 ## CTA
 
 → Read the full piece at syncmaster.io/blog

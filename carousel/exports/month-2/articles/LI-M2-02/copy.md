@@ -5,6 +5,7 @@ platform: LinkedIn
 pillar: Proof
 persona: Amara
 date: 2026-07-13
+first_comment: "Applications open at syncmaster.io. Supervisors, DMs are open."
 ---
 
 # What Month 2 is teaching us about the sync market

@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+
+# Environment
+.env
+
+# Unsplash temp downloads
+carousel/exports/tmp/*.jpg
+carousel/exports/tmp/*.png
+
+# macOS
+.DS_Store
+
+# Node
+node_modules/
+
+# Generated PPTX
+*.pptx
+*.zip

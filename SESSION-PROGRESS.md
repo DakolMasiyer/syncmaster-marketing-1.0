@@ -19,6 +19,7 @@
 | `carousel/generators/text_copy.py` | Article/blog/video → YAML-frontmatter `.md` |
 | `carousel/generators/product_data.py` | Detects and extracts product/screen data from copy |
 | `carousel/product_fixtures.json` | Realistic brief card, composer match, dashboard fixtures (3 variants each) |
+| `carousel/metrics.json` | Single source of truth for month-specific live metrics (applications, briefs, placements, turnaround) |
 | `carousel/screenshot_runner.py` | Playwright screenshot tool — template render or live URL capture |
 
 ### All 122 posts already generated
@@ -30,7 +31,7 @@ exports/
   month-1/   carousels/ singles/ threads/ tweets/ articles/ blogs/ videos/
   month-2/   carousels/ singles/ threads/ tweets/ articles/ blogs/ videos/
   month-3/   carousels/ singles/ threads/ tweets/ articles/ blogs/ videos/
-  manifest.json   ← index of all 122 posts with metadata
+  manifest.json   ← index of all 122 posts with metadata and continuity references
 ```
 
 ---
@@ -66,6 +67,7 @@ python3 carousel/screenshot_runner.py --id IG-M2-BTS-02
 - **No PPTX** — the pipeline generates structured copy JSON/markdown only. Figma handles the visual output.
 - **Figma publishing deferred** — no Figma templates set up yet. When ready, the Figma publisher reads `product_data` from each `copy.json` and populates text layers via `figma-mcp-go`.
 - **Purpose taxonomy deferred** — user decided to add a `purpose` field (Product / Education / Proof / Culture / Announcement) to the calendar later. The `--purpose` filter is not yet wired into `batch_run.py`.
+- **LinkedIn CTA cleanup deferred** — CTA relocation to `first_comment` is useful, but the user wants to leave that tuning for later and move on to the next phase first.
 - **MCP already wired** — `.mcp.json` has `figma-mcp-go` configured. Figma Desktop must be open for those tools to work.
 - **Syncmaster-Live is at** `/Users/dakolmasiyer/Projects/Syncmaster-Live` — Next.js app, `npm run dev` starts on `localhost:3000`. Routes: `/dashboard`, `/brand`, `/composers`, `/supervisors`.
 
@@ -174,7 +176,7 @@ Hashtag-only paragraphs are no longer slides. They're extracted to a top-level `
 ### High priority — will break real posts if ignored
 
 1. **LinkedIn CTA placement**  
-   LinkedIn's algorithm penalises external links in the post body. Article `.md` files currently include `syncmaster.io` in the body. Fix: move CTA link to a `first_comment` field that gets posted as the first comment, not in the post body. Affects all `LI-*` Article and `STANDALONE-LI-*` posts.
+   Deferred for later per user request. LinkedIn's algorithm penalises external links in the post body. When resumed, move CTA link to a `first_comment` field that gets posted as the first comment, not in the post body. Affects all `LI-*` Article and `STANDALONE-LI-*` posts.
 
 2. **Caption hook on carousels**  
    Singles have `caption_hook` + `caption_full`. Carousels don't — but Instagram carousels also have a text caption below the image deck. Add `caption_hook` and `caption_full` to carousel output using the same logic as singles. The hook copy should come from the first slide's `headline`.
@@ -191,10 +193,10 @@ Hashtag-only paragraphs are no longer slides. They're extracted to a top-level `
    `visual_direction` doesn't specify Instagram format: 1:1 (1080×1080), 4:5 (1080×1350), or 16:9 (1080×608). Add an `aspect_ratio` field to single posts. Default: 4:5 for feed posts. Stories would be 9:16.
 
 6. **Live metrics hook**  
-   Operational numbers in Month 2 and 3 copy banks are estimates written in advance. By the time August content goes out, real numbers from Month 1–2 will be known. Create `carousel/metrics.json` with a single source of truth for live stats (placements, roster count, turnaround time). BTS posts should reference these values rather than hardcoding.
+   Completed. `carousel/metrics.json` now serves as the single source of truth for month-specific live stats, and the generators normalize body copy from that file before extracting hooks / captions.
 
 7. **Cross-post continuity check**  
-   Several posts reference previous content ("In our last carousel…", "Part 2 of…"). When batch-scheduling, these callbacks can orphan if the referenced post wasn't published. Add a `references` field to posts that call back, and a `batch_run.py --validate` mode that checks for broken references in a given month's sequence.
+   Completed. `batch_run.py --validate` now checks explicit continuity references, and the generated manifest carries `references` metadata for callback posts.
 
 ### Lower priority — future automation
 
@@ -213,6 +215,17 @@ Hashtag-only paragraphs are no longer slides. They're extracted to a top-level `
 
 ---
 
+## Next Phase
+
+- Review the generated copy outputs already on disk, starting with `carousel/exports/month-1/`, then compare Month 2 and Month 3 for pattern quality.
+- Keep the current automation pipeline as the baseline.
+- Tackle the remaining automation work in this order:
+  - Figma publisher
+  - scheduling export integration
+  - content QA sweep for generated copy artifacts
+
+---
+
 ## Constraints to Keep In Mind
 
 | Constraint | Status |
@@ -222,9 +235,9 @@ Hashtag-only paragraphs are no longer slides. They're extracted to a top-level `
 | Instagram: 3–5 hashtags (not 30) | ✅ Fixed |
 | LinkedIn: no external links in body | ❌ Not fixed |
 | Copy freshness: Month 3 stats are estimates | ❌ Not fixed |
-| Cross-post continuity | ❌ Not fixed |
-| Video scripts need scene markers | ❌ Not fixed |
-| Single posts need aspect ratio guidance | ❌ Not fixed |
+| Cross-post continuity | ✅ Validated |
+| Video scripts need scene markers | ✅ Fixed |
+| Single posts need aspect ratio guidance | ✅ Same 1080×1350 feed format as carousels |
 
 ---
 
@@ -238,5 +251,50 @@ Hashtag-only paragraphs are no longer slides. They're extracted to a top-level `
 | `copy-bank-m2.html` | Month 2 copy (39 entries) |
 | `copy-bank-m3.html` | Month 3 copy (40 entries) |
 | `carousel/DESIGN_SYSTEM.md` | Full token reference for carousel design |
-| `carousel/exports/manifest.json` | Index of all 122 generated files |
+| `carousel/exports/manifest.json` | Index of all 122 generated files, including continuity references |
 | `product_fixtures.json` | Platform UI fixture data for BTS posts |
+
+---
+
+## Resume Notes
+
+### Current State
+
+- The batch automation pipeline is built and working for all 122 posts.
+- `batch_run.py` can generate by type, month, platform, pillar, purpose, or single ID.
+- Continuity validation is implemented with `batch_run.py --validate`.
+- Live metrics now come from `carousel/metrics.json`.
+- Video script generation has been cleaned up and regenerated.
+
+### What Is Already In Place
+
+- Generated outputs live under `carousel/exports/month-1/`, `month-2/`, and `month-3/`.
+- The manifest includes continuity references.
+- Carousel and single outputs already have caption hooks and full captions.
+- Thread, blog, article, tweet, and video exports are all generated.
+
+### Figma Publisher Direction
+
+- User clarified there is an existing Figma page named `template` in the live design system file.
+- Publisher should not recreate the whole layout from scratch.
+- Publisher should use the existing node structure and create pages per week.
+- Generated posts should be placed into the weekly pages.
+- Next inspection target:
+  - live Figma file: `SyncMaster-Design-System---Brand-Guidelines`
+  - template node: `node-id=8-551`
+  - local HTML references:
+    - `SyncMaster Design System/Behind the Scenes Carousel (Figma-Ready)_light (1).html`
+    - `SyncMaster Design System/carousel_templates_light (1).html`
+
+### Remaining Work
+
+1. Inspect the local HTML templates against the live Figma template structure.
+2. Build the Figma publisher to batch-create weekly pages and populate posts into the template nodes.
+3. Build scheduling export integration.
+4. Finish the final content QA sweep on generated artifacts.
+
+### Carry-Forward Summary
+
+- The automation is meant to be trigger-driven, so the copy bank + calendar can be regenerated without manual rewriting.
+- The next meaningful build step is the Figma publisher, not copy generation.
+- The user wants weekly page creation in Figma, not a one-page-per-post redesign.

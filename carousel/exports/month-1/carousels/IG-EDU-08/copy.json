@@ -3,11 +3,12 @@
   "type": "Carousel",
   "platform": "Instagram",
   "pillar": "Education",
+  "purpose": "Education",
   "persona": "Tunde",
   "date": "2026-06-25",
   "topic": "ISRC codes explained",
   "hook": "Your track has no ISRC code?",
-  "cta": "",
+  "cta": "Do your tracks have ISRCs? DM us if you need help.",
   "hashtags": [
     "#ISRC",
     "#MusicRights",
@@ -15,6 +16,9 @@
     "#AfricanComposers",
     "#SyncMaster"
   ],
+  "caption_hook": "Your track has no ISRC code?\nThat's the first thing we fix at SyncMaster. ↓",
+  "caption_hook_len": 75,
+  "caption_full": "Your track has no ISRC code?\nThat's the first thing we fix at SyncMaster. ↓\n\nDo your tracks have ISRCs? DM us if you need help.\n\n#SyncMaster #AfricanComposers #SyncReady #ISRC #MusicRights",
   "slide_count": 10,
   "slides": [
     {

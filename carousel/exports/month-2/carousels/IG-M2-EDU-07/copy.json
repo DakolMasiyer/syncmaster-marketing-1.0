@@ -3,17 +3,21 @@
   "type": "Carousel",
   "platform": "Instagram",
   "pillar": "Education",
+  "purpose": "Education",
   "persona": "Tunde",
   "date": "2026-07-21",
   "topic": "The composer audit: 6 things to fix before you pitch",
   "hook": "Before you send your next sync pitch, run this audit.",
-  "cta": "",
+  "cta": "Run this today. Fix the gaps before the brief lands.",
   "hashtags": [
     "#SyncAudit",
     "#AfricanComposers",
     "#SyncMaster",
     "#MusicBusiness"
   ],
+  "caption_hook": "Before you send your next sync pitch, run this audit. ↓",
+  "caption_hook_len": 55,
+  "caption_full": "Before you send your next sync pitch, run this audit. ↓\n\nMost composers who fail at the brief stage don't fail on music quality.\n\nRun this today. Fix the gaps before the brief lands.\n\n#SyncMaster #AfricanComposers #MusicBusiness #SyncAudit",
   "slide_count": 10,
   "slides": [
     {

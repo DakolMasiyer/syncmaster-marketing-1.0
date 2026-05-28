@@ -9,7 +9,7 @@ Month 2 numbers:
 ---
 ### TWEET
 
-📋 3 briefs handled
+📋 5 briefs handled
 🤝 1 placement confirmed
 ✅ 9 composers in the active catalogue
 🎵 61 one-stop tracks

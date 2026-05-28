@@ -7,7 +7,7 @@ persona: Both
 date: 2026-07-27
 ---
 
-# Month 2 mid-point: what we\
+# Month 2 mid-point: what we've built and what's coming
 
 ## Hook
 
@@ -24,6 +24,8 @@ Month 1 was proving the concept. Month 2 is proving the model can compound. The 
 The most significant shift this week: first inbound brief request. A supervisor reached out directly — no outreach from our side. Building in public is generating inbound credibility faster than direct pitching.
 
 Month 3 focus: scale the catalogue, build simultaneous brief capacity, expand into UK production market.
+
+→ Full mid-point breakdown at syncmaster.io/blog
 
 ## CTA
 

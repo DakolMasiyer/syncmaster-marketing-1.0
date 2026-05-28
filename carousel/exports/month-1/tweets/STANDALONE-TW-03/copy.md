@@ -1,4 +1,4 @@
-# STANDALONE-TW-03 — The $500M sync market and Africa\
+# STANDALONE-TW-03 — The $500M sync market and Africa's missing share
 **Platform:** Twitter/X | **Pillar:** Industry | **Persona:** Amara | **Date:** 2026-06-21
 
 ---

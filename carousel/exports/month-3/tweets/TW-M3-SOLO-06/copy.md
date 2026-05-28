@@ -27,3 +27,13 @@ Now we scale it.
 ### TWEET
 
 #SyncMaster #AfricanComposers #Proof
+
+---
+**CTA:**
+→ 47 applications
+→ 12 active composers
+→ 9 briefs handled
+→ 31 tracks submitted
+→ 3 confirmed placements
+→ 1 in negotiation
+→ 3 supervisor relationships active

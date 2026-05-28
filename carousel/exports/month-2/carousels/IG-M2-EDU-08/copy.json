@@ -3,17 +3,21 @@
   "type": "Carousel",
   "platform": "Instagram",
   "pillar": "Education",
+  "purpose": "Education",
   "persona": "Tunde",
   "date": "2026-07-23",
   "topic": "What great stems look like — the technical spec",
   "hook": "Your track got shortlisted.",
-  "cta": "",
+  "cta": "Missing stems for any pitched track? Rebuild them this week.",
   "hashtags": [
     "#Stems",
     "#SyncReady",
     "#AfricanComposers",
     "#SyncMaster"
   ],
+  "caption_hook": "Your track got shortlisted.\nThe supervisor likes it. ↓",
+  "caption_hook_len": 54,
+  "caption_full": "Your track got shortlisted.\nThe supervisor likes it. ↓\n\nMissing stems for any pitched track? Rebuild them this week.\n\n#SyncMaster #AfricanComposers #SyncReady #Stems",
   "slide_count": 10,
   "slides": [
     {

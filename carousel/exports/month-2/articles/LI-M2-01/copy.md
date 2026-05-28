@@ -5,6 +5,7 @@ platform: LinkedIn
 pillar: Education
 persona: Amara
 date: 2026-07-06
+first_comment: "If you have a deal on the table right now — DMs are open."
 ---
 
 # What composers get wrong about sync deal terms
@@ -37,7 +38,5 @@ Separate from the upfront sync fee and often larger over time. Every airing gene
 What's typically not negotiable: delivery spec (broadcast-spec WAV), payment timeline (net 30 or 60), and credit attribution.
 
 The goal is to be professional and informed — not adversarial. Most supervisors respect a composer who knows their worth.
-
-If you have a deal on the table right now — DMs are open.
 
 #SyncLicensing #AfricanComposers #MusicBusiness #SyncMaster

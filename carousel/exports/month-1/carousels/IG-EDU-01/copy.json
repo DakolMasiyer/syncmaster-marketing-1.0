@@ -3,11 +3,12 @@
   "type": "Carousel",
   "platform": "Instagram",
   "pillar": "Education",
+  "purpose": "Education",
   "persona": "Tunde",
   "date": "2026-06-02",
   "topic": "What is sync licensing?",
   "hook": "Nobody explained this in music school.",
-  "cta": "",
+  "cta": "Save this post. It's the starting point for everything.",
   "hashtags": [
     "#SyncLicensing",
     "#AfricanComposers",
@@ -15,6 +16,9 @@
     "#FilmMusic",
     "#SyncMaster"
   ],
+  "caption_hook": "Nobody explained this in music school.\nSync licensing = your music in film, TV, ads & games. ↓",
+  "caption_hook_len": 94,
+  "caption_full": "Nobody explained this in music school.\nSync licensing = your music in film, TV, ads & games. ↓\n\nSave this post. It's the starting point for everything.\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicBusiness #FilmMusic",
   "slide_count": 8,
   "slides": [
     {

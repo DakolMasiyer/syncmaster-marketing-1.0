@@ -3,11 +3,12 @@
   "type": "Carousel",
   "platform": "Instagram",
   "pillar": "Education",
+  "purpose": "Education",
   "persona": "Tunde",
   "date": "2026-06-04",
   "topic": "What does a sync placement actually pay?",
   "hook": "A South African composer just earned more from one Showmax documentary than from 6 months of streaming royalties.",
-  "cta": "",
+  "cta": "Save this. Then ask yourself: is your music sync-ready?",
   "hashtags": [
     "#SyncLicensing",
     "#AfricanComposers",
@@ -15,6 +16,9 @@
     "#SyncMaster",
     "#StreamingVsSync"
   ],
+  "caption_hook": "A South African composer just earned more from one Showmax documentary than ↓",
+  "caption_hook_len": 77,
+  "caption_full": "A South African composer just earned more from one Showmax documentary than ↓\n\nThis is not exceptional.\n\nSave this. Then ask yourself: is your music sync-ready?\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicBusiness #StreamingVsSync",
   "slide_count": 10,
   "slides": [
     {

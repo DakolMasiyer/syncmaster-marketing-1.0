@@ -3,11 +3,12 @@
   "type": "Carousel",
   "platform": "Instagram",
   "pillar": "Proof",
+  "purpose": "Proof",
   "persona": "Both",
   "date": "2026-06-20",
   "topic": "The vetting milestone — detailed feedback",
   "hook": "20 applications. 6 vetted.",
-  "cta": "",
+  "cta": "Come back when you've fixed it. Application stays open.",
   "hashtags": [
     "#SyncReady",
     "#AfricanComposers",
@@ -15,6 +16,9 @@
     "#MusicBusiness",
     "#MusicRights"
   ],
+  "caption_hook": "20 applications. 6 vetted. ↓",
+  "caption_hook_len": 28,
+  "caption_full": "20 applications. 6 vetted. ↓\n\nHere's the detailed feedback we gave the 14 who didn't make it — because rejection without explanation is useless.\n\nCome back when you've fixed it. Application stays open.\n\n#SyncMaster #AfricanComposers #MusicBusiness #SyncReady #MusicRights",
   "slide_count": 10,
   "slides": [
     {

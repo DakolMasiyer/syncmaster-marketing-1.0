@@ -3,13 +3,14 @@
   "type": "Single",
   "platform": "Instagram",
   "pillar": "Proof",
+  "purpose": "Proof",
   "persona": "Both",
   "date": "2026-06-26",
   "topic": "Placement announcement",
   "eyebrow": "Proof · Results",
   "headline": "PLACEMENT CONFIRMED.",
   "subtext": "African music.",
-  "cta": "Apply at syncmaster.io",
+  "cta": "Applications open. Link in bio.",
   "footer_name": "syncmaster.live",
   "caption_hook": "PLACEMENT CONFIRMED.\nAfrican music. ↓",
   "caption_hook_len": 37,
@@ -20,6 +21,6 @@
     "#SyncPlacement",
     "#IndependentComposer"
   ],
-  "caption_full": "PLACEMENT CONFIRMED.\nAfrican music. ↓\n\nApply at syncmaster.io\n\n#SyncMaster #AfricanComposers #SyncLicensing #SyncPlacement #IndependentComposer",
+  "caption_full": "PLACEMENT CONFIRMED.\nAfrican music. ↓\n\nApplications open. Link in bio.\n\n#SyncMaster #AfricanComposers #SyncLicensing #SyncPlacement #IndependentComposer",
   "visual_direction": "Stat-forward layout — large number dominant. Dark or purple bg with lime highlight."
 }

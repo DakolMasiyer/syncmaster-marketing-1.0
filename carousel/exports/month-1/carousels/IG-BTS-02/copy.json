@@ -3,11 +3,12 @@
   "type": "Carousel",
   "platform": "Instagram",
   "pillar": "Behind the Scenes",
+  "purpose": "Product",
   "persona": "Both",
   "date": "2026-06-27",
   "topic": "Month 1 in numbers",
   "hook": "One month in.",
-  "cta": "",
+  "cta": "Follow along. Month 2 starts Monday.",
   "hashtags": [
     "#SyncMaster",
     "#BuildingInPublic",
@@ -15,6 +16,9 @@
     "#SyncLicensing",
     "#MusicBusiness"
   ],
+  "caption_hook": "One month in.\nHere's everything we built, the numbers behind it, and what Month 2 looks like. ↓",
+  "caption_hook_len": 95,
+  "caption_full": "One month in.\nHere's everything we built, the numbers behind it, and what Month 2 looks like. ↓\n\nFollow along. Month 2 starts Monday.\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicBusiness #BuildingInPublic",
   "slide_count": 9,
   "slides": [
     {

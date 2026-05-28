@@ -5,9 +5,10 @@ platform: LinkedIn
 pillar: Education
 persona: Amara
 date: 2026-06-01
+first_comment: "If you work in sync or supervision — I'd love to connect."
 ---
 
-# The global sync market and Africa\
+# The global sync market and Africa's access gap
 
 ## Hook
 

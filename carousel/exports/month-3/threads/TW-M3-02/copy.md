@@ -1,4 +1,4 @@
-# TW-M3-02 — Three placements. 90 days. Here\
+# TW-M3-02 — Three placements. 90 days. Here's the exact breakdown.
 **Platform:** Twitter/X | **Pillar:** Proof | **Persona:** Both | **Date:** 2026-08-10
 
 ---

@@ -26,3 +26,13 @@ The infrastructure is working.
 ### TWEET
 
 #SyncMaster #AfricanComposers
+
+---
+**CTA:**
+Running numbers:
+→ 47 applications total
+→ 12 composers active
+→ 9 briefs handled
+→ 3 confirmed placements
+→ 1 in negotiation
+→ Fastest turnaround this month: 9 hours

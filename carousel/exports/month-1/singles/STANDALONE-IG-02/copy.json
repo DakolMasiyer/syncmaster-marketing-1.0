@@ -3,13 +3,14 @@
   "type": "Single",
   "platform": "Instagram",
   "pillar": "Education",
+  "purpose": "Education",
   "persona": "Tunde",
   "date": "2026-06-14",
   "topic": "Quick sync tip: always deliver stems",
   "eyebrow": "Education · Sync 101",
   "headline": "Stems close deals.",
   "subtext": "Music supervisors will often shortlist your track — then ask for stems before confirming the placement.",
-  "cta": "Apply at syncmaster.io",
+  "cta": "Always export your stems. Always.",
   "footer_name": "syncmaster.live",
   "caption_hook": "Stems close deals.\nMusic supervisors will often shortlist your track — then ask for stems before confirming the placement. ↓",
   "caption_hook_len": 124,
@@ -20,6 +21,6 @@
     "#MusicProducer",
     "#FilmMusic"
   ],
-  "caption_full": "Stems close deals.\nMusic supervisors will often shortlist your track — then ask for stems before confirming the placement. ↓\n\nApply at syncmaster.io\n\n#SyncMaster #AfricanComposers #SyncReady #MusicProducer #FilmMusic",
+  "caption_full": "Stems close deals.\nMusic supervisors will often shortlist your track — then ask for stems before confirming the placement. ↓\n\nAlways export your stems. Always.\n\n#SyncMaster #AfricanComposers #SyncReady #MusicProducer #FilmMusic",
   "visual_direction": "Dark editorial — ink background, DM Sans headline, lime accent. Clean, no clutter."
 }

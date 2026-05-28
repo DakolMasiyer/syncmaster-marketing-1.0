@@ -5,6 +5,7 @@ platform: LinkedIn
 pillar: Proof
 persona: Amara
 date: 2026-06-08
+first_comment: "Working on a brief? DMs are open."
 ---
 
 # 48-hour curation turnaround story

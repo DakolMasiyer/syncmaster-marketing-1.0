@@ -3,17 +3,21 @@
   "type": "Carousel",
   "platform": "Instagram",
   "pillar": "Education",
+  "purpose": "Education",
   "persona": "Tunde",
   "date": "2026-07-09",
   "topic": "What \"one-stop\" really means — and how to get there",
   "hook": "\"One-stop\" is the most valuable status in sync licensing.",
-  "cta": "",
+  "cta": "DM us if you're unsure about your rights status.",
   "hashtags": [
     "#OneClearance",
     "#SyncLicensing",
     "#AfricanComposers",
     "#SyncMaster"
   ],
+  "caption_hook": "\"One-stop\" is the most valuable status in sync licensing. ↓",
+  "caption_hook_len": 59,
+  "caption_full": "\"One-stop\" is the most valuable status in sync licensing. ↓\n\nMost composers know the term.\n\nDM us if you're unsure about your rights status.\n\n#SyncMaster #AfricanComposers #SyncLicensing #OneClearance",
   "slide_count": 10,
   "slides": [
     {

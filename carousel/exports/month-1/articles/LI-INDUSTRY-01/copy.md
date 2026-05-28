@@ -5,9 +5,10 @@ platform: LinkedIn
 pillar: Industry
 persona: Amara
 date: 2026-06-22
+first_comment: "What do you see from your position in the industry?"
 ---
 
-# Why global music supervisors are missing Africa\
+# Why global music supervisors are missing Africa's best composers
 
 ## Hook
 
@@ -39,7 +40,5 @@ What we're building at SyncMaster:
 Month 1: 6 vetted composers. 3 briefs. 1 confirmed placement.
 
 The market exists. The music exists. The bridge is being built.
-
-What do you see from your position in the industry?
 
 #SyncLicensing #AfricanMusic #MusicIndustry #MusicRights #SyncMaster #Afrobeats

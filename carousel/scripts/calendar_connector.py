@@ -9,6 +9,15 @@ COPY_BANK_PATHS = sorted(BASE_DIR.glob("copy-bank-m*.html"))
 MONTH_MAP = {"06": 1, "07": 2, "08": 3}
 
 
+def _unescape_js_string(value):
+    """Unescape the limited string forms used in the calendar HTML."""
+    return (
+        value.replace("\\'", "'")
+        .replace('\\"', '"')
+        .replace("\\\\", "\\")
+    )
+
+
 def _parse_calendar():
     """Parse all posts from the POSTS array in the calendar HTML."""
     text = CALENDAR_PATH.read_text(encoding="utf-8")
@@ -19,8 +28,8 @@ def _parse_calendar():
     posts = []
     for obj in re.finditer(r"\{([^{}]+)\}", match.group(1), re.DOTALL):
         fields = {}
-        for m in re.finditer(r"(\w+):\s*'([^']*)'", obj.group(1)):
-            fields[m.group(1)] = m.group(2)
+        for m in re.finditer(r"(\w+):\s*'((?:\\'|[^'])*)'", obj.group(1)):
+            fields[m.group(1)] = _unescape_js_string(m.group(2))
         if "id" in fields and "type" in fields:
             # Derive month from date field (format: YYYY-MM-DD)
             date_str = fields.get("date", "")

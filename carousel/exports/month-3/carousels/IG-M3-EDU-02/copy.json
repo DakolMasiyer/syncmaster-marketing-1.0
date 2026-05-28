@@ -3,17 +3,21 @@
   "type": "Carousel",
   "platform": "Instagram",
   "pillar": "Education",
+  "purpose": "Education",
   "persona": "Tunde",
   "date": "2026-08-04",
   "topic": "Advanced catalogue strategy — what separates good from great",
   "hook": "Month 1 you learned what sync is.",
-  "cta": "",
+  "cta": "No brief gets fulfilled without these:\n→ WAV masters at 24-bit / 48kHz minimum\n→ ISRC registered\n→ Stems labelled by instrument group (not by track number)\n→ BPM and key confirmed\n→ Mood and instrumentation tags completed",
   "hashtags": [
     "#SyncLicensing",
     "#AfricanComposers",
     "#CatalogueStrategy",
     "#SyncMaster"
   ],
+  "caption_hook": "Month 1 you learned what sync is.\nMonth 2 you learned what sync pays. ↓",
+  "caption_hook_len": 71,
+  "caption_full": "Month 1 you learned what sync is.\nMonth 2 you learned what sync pays. ↓\n\nMonth 3 question: what separates a catalogue that gets briefs from one that doesn't?\n\nNo brief gets fulfilled without these:\nWAV masters at →\n\n#SyncMaster #AfricanComposers #SyncLicensing #CatalogueStrategy",
   "slide_count": 10,
   "slides": [
     {

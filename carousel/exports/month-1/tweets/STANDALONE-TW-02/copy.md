@@ -1,4 +1,4 @@
-# STANDALONE-TW-02 — Most sync rejection emails aren\
+# STANDALONE-TW-02 — Most sync rejection emails aren't rejections
 **Platform:** Twitter/X | **Pillar:** Education | **Persona:** Tunde | **Date:** 2026-06-17
 
 ---

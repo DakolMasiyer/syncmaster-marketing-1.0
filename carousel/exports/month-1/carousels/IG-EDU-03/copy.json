@@ -3,11 +3,12 @@
   "type": "Carousel",
   "platform": "Instagram",
   "pillar": "Education",
+  "purpose": "Education",
   "persona": "Tunde",
   "date": "2026-06-09",
   "topic": "Master vs sync licence",
   "hook": "Two licences. One placement. Most composers only know about one.",
-  "cta": "",
+  "cta": "Save this before your next deal conversation.",
   "hashtags": [
     "#MusicRights",
     "#SyncLicensing",
@@ -15,6 +16,9 @@
     "#SyncMaster",
     "#IndependentArtist"
   ],
+  "caption_hook": "Two licences. One placement. Most composers only know about one. ↓",
+  "caption_hook_len": 66,
+  "caption_full": "Two licences. One placement. Most composers only know about one. ↓\n\nIf you've ever wondered why sync deals feel complicated — every placement requires two separate legal permissions.\n\nSave this before your next deal conversation.\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicRights #IndependentArtist",
   "slide_count": 10,
   "slides": [
     {

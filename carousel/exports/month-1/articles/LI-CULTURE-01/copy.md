@@ -5,9 +5,10 @@ platform: LinkedIn
 pillar: Culture
 persona: Amara
 date: 2026-06-15
+first_comment: "What are you seeing from your corner of the industry?"
 ---
 
-# Africa\
+# Africa's sonic identity in global production
 
 ## Hook
 
@@ -34,7 +35,5 @@ Because the system wasn't built with them in mind:
 → No infrastructure for discovering, vetting, and connecting African composers at scale
 
 Africa's sonic identity is shaping global culture. The composers creating it deserve to be compensated for that influence.
-
-What are you seeing from your corner of the industry?
 
 #SyncLicensing #AfricanMusic #MusicSupervision #GlobalMusic #Afrobeats #SyncMaster

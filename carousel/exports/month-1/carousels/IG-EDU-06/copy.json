@@ -3,11 +3,12 @@
   "type": "Carousel",
   "platform": "Instagram",
   "pillar": "Behind the Scenes",
+  "purpose": "Product",
   "persona": "Tunde",
   "date": "2026-06-18",
   "topic": "Anatomy of a sync brief",
   "hook": "The brief said:",
-  "cta": "",
+  "cta": "Save this for when your first brief arrives.",
   "hashtags": [
     "#SyncBrief",
     "#MusicSupervisor",
@@ -15,6 +16,9 @@
     "#AfricanComposers",
     "#SyncMaster"
   ],
+  "caption_hook": "The brief said:\n\"90 seconds. ↓",
+  "caption_hook_len": 30,
+  "caption_full": "The brief said:\n\"90 seconds. ↓\n\nSave this for when your first brief arrives.\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicSupervisor #SyncBrief",
   "slide_count": 10,
   "slides": [
     {

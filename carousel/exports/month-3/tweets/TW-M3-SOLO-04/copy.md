@@ -27,3 +27,9 @@ Relationships in sync are built on reliability, not pitches.
 ### TWEET
 
 #SyncMaster #MusicSupervisor #AfricanComposers
+
+---
+**CTA:**
+→ Submissions arriving complete, no follow-up required
+→ Rights confirmed before the brief, not during
+→ Turnaround of 24 hours or less, consistently

@@ -7,7 +7,7 @@ persona: Both
 date: 2026-08-24
 ---
 
-# Month 3 Complete: What We Proved and What\
+# Month 3 Complete: What We Proved and What's Next
 
 ## Hook
 
@@ -27,3 +27,7 @@ Structure:
 
 Tone: honest, specific, reflective. A report, not a celebration.
 Length: 1,000–1,200 words.
+
+## CTA
+
+→ Publish at syncmaster.io/blog

@@ -7,7 +7,7 @@ persona: Both
 date: 2026-07-20
 ---
 
-# The African composer\
+# The African composer's playbook for international sync
 
 ## Hook
 
@@ -24,6 +24,8 @@ But what made us able to respond to them was built before the briefs arrived: a 
 This is the playbook for African composers who want to reach international sync markets — not in theory, but in the next 90 days.
 
 The practical steps: rights documentation, file preparation, metadata standards, PRO registration, and building a response infrastructure that works at brief speed.
+
+→ Full playbook at syncmaster.io/blog
 
 ## CTA
 

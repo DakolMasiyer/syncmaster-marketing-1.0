@@ -7,7 +7,7 @@ persona: Tunde
 date: 2026-06-01
 ---
 
-# Sync Licensing 101: The African Composer\
+# Sync Licensing 101: The African Composer's Guide
 
 ## Hook
 
@@ -29,6 +29,8 @@ The global sync market generates over $500M annually. African composers represen
 
 This article covers: what sync licensing is, who the players are, what placements pay, what rights you need, and how to position your catalogue for this market.
 
+→ Read the full guide at syncmaster.io/blog
+
 ## CTA
 
-→ Read the full guide at syncmaster.io/blog
+Save this link. Forward it to every composer in your network who needs to know.

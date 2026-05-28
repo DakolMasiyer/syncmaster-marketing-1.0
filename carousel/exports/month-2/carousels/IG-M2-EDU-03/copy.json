@@ -3,17 +3,21 @@
   "type": "Carousel",
   "platform": "Instagram",
   "pillar": "Education",
+  "purpose": "Education",
   "persona": "Tunde",
   "date": "2026-07-07",
   "topic": "How to build a sync-ready catalogue from scratch",
   "hook": "Building a sync-ready catalogue isn't a weekend project.",
-  "cta": "",
+  "cta": "Start this process now. Don't wait for a brief.",
   "hashtags": [
     "#SyncReady",
     "#AfricanComposers",
     "#SyncMaster",
     "#MusicBusiness"
   ],
+  "caption_hook": "Building a sync-ready catalogue isn't a weekend project. ↓",
+  "caption_hook_len": 58,
+  "caption_full": "Building a sync-ready catalogue isn't a weekend project. ↓\n\nBut it's not complicated.\n\nStart this process now. Don't wait for a brief.\n\n#SyncMaster #AfricanComposers #MusicBusiness #SyncReady",
   "slide_count": 10,
   "slides": [
     {

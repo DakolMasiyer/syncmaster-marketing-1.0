@@ -5,6 +5,7 @@ platform: LinkedIn
 pillar: Culture
 persona: Amara
 date: 2026-07-20
+first_comment: "Applications open at syncmaster.io."
 ---
 
 # Why African music is becoming the default sound of global campaigns

@@ -3,17 +3,21 @@
   "type": "Carousel",
   "platform": "Instagram",
   "pillar": "Education",
+  "purpose": "Education",
   "persona": "Tunde",
   "date": "2026-07-16",
   "topic": "Metadata deep dive — every tag that matters",
   "hook": "A supervisor searched 3,000 tracks for \"90-second hopeful African instrumental.\"",
-  "cta": "",
+  "cta": "Is your metadata complete? DM us to check.",
   "hashtags": [
     "#MusicMetadata",
     "#SyncReady",
     "#AfricanComposers",
     "#SyncMaster"
   ],
+  "caption_hook": "A supervisor searched 3,000 tracks for \"90-second hopeful African instrumental.\" ↓",
+  "caption_hook_len": 82,
+  "caption_full": "A supervisor searched 3,000 tracks for \"90-second hopeful African instrumental.\" ↓\n\nYour track existed.\n\nIs your metadata complete? DM us to check.\n\n#SyncMaster #AfricanComposers #SyncReady #min #MusicMetadata",
   "slide_count": 9,
   "slides": [
     {

@@ -7,7 +7,7 @@ persona: Both
 date: 2026-08-10
 ---
 
-# Three Placements in 90 Days: A Composer\
+# Three Placements in 90 Days: A Composer's Route Through SyncMaster
 
 ## Hook
 
@@ -29,3 +29,7 @@ Structure:
 Tone: specific, narrative, honest. This is a story, not a press release.
 Names: composites for privacy, but details should feel real and grounded.
 Length: 1,000–1,200 words.
+
+## CTA
+
+→ Publish at syncmaster.io/blog

@@ -25,6 +25,8 @@ The five variables: upfront fee, exclusivity period, territory, term length, per
 
 None of these require a lawyer on the first conversation. They require knowing what's standard, what's movable, and what you're worth.
 
+→ Full negotiation guide at syncmaster.io/blog
+
 ## CTA
 
 → Full negotiation guide at syncmaster.io/blog

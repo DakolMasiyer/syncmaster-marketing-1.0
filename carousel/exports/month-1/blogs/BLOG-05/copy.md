@@ -23,6 +23,8 @@ But the numbers aren't the story. The patterns are.
 
 The infrastructure gap is both wider and more fixable than we expected. The demand from music supervisors is more explicit than anticipated. And the talent — the actual music being made by African composers — is ready for the global market right now.
 
+→ Full retrospective at syncmaster.io/blog
+
 ## CTA
 
 → Full retrospective at syncmaster.io/blog

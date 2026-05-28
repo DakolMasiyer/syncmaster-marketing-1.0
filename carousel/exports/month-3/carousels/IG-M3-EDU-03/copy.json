@@ -3,17 +3,21 @@
   "type": "Carousel",
   "platform": "Instagram",
   "pillar": "Education",
+  "purpose": "Education",
   "persona": "Tunde",
   "date": "2026-08-09",
   "topic": "What music supervisors actually want — from 9 real briefs",
   "hook": "We've handled 9 briefs in 90 days.",
-  "cta": "",
+  "cta": "The supervisors who came back for Month 2 briefs came back because the first submission required zero follow-up.",
   "hashtags": [
     "#SyncMaster",
     "#MusicSupervisor",
     "#AfricanComposers",
     "#SyncLicensing"
   ],
+  "caption_hook": "We've handled 9 briefs in 90 days.\nHere's what every music supervisor actually wanted — from their words, not ours. ↓",
+  "caption_hook_len": 117,
+  "caption_full": "We've handled 9 briefs in 90 days.\nHere's what every music supervisor actually wanted — from their words, not ours. ↓\n\nThe supervisors who came back for Month 2 briefs came back →\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicSupervisor",
   "slide_count": 10,
   "slides": [
     {

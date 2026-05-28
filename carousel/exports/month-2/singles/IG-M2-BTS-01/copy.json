@@ -3,13 +3,14 @@
   "type": "Single",
   "platform": "Instagram",
   "pillar": "Behind the Scenes",
+  "purpose": "Product",
   "persona": "Both",
   "date": "2026-07-12",
   "topic": "Week 2 of Month 2 — behind the scenes",
   "eyebrow": "Behind the Build",
   "headline": "Week 2 of Month 2.",
   "subtext": "Here's what the inside of SyncMaster looks like right now.",
-  "cta": "Apply at syncmaster.io",
+  "cta": "Follow for weekly updates.",
   "footer_name": "syncmaster.live",
   "caption_hook": "Week 2 of Month 2.\nHere's what the inside of SyncMaster looks like right now. ↓",
   "caption_hook_len": 79,
@@ -19,7 +20,7 @@
     "#BuildingInPublic",
     "#BehindTheScenes"
   ],
-  "caption_full": "Week 2 of Month 2.\nHere's what the inside of SyncMaster looks like right now. ↓\n\nApply at syncmaster.io\n\n#SyncMaster #AfricanComposers #BuildingInPublic #BehindTheScenes",
+  "caption_full": "Week 2 of Month 2.\nHere's what the inside of SyncMaster looks like right now. ↓\n\nFollow for weekly updates.\n\n#SyncMaster #AfricanComposers #BuildingInPublic #BehindTheScenes",
   "visual_direction": "Candid platform screenshot or studio setting. Real, unposed. Text overlay left column.",
   "product_data": {
     "screen_type": "stats_dashboard",
@@ -27,7 +28,7 @@
     "stats": [
       {
         "label": "Fastest turnaround",
-        "value": "11 hours (brief to full delivery)"
+        "value": "11 hours"
       }
     ]
   }

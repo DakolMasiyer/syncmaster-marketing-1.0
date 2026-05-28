@@ -3,11 +3,12 @@
   "type": "Carousel",
   "platform": "Instagram",
   "pillar": "Behind the Scenes",
+  "purpose": "Product",
   "persona": "Both",
   "date": "2026-06-10",
   "topic": "How vetting works",
   "hook": "20 applications. 6 vetted.",
-  "cta": "",
+  "cta": "Apply when you're ready. Link in bio.",
   "hashtags": [
     "#SyncReady",
     "#AfricanComposers",
@@ -15,6 +16,9 @@
     "#MusicBusiness",
     "#BehindTheScenes"
   ],
+  "caption_hook": "20 applications. 6 vetted.\nHere's the exact checklist we use — and why we turned down 14 genuinely talented composers. ↓",
+  "caption_hook_len": 120,
+  "caption_full": "20 applications. 6 vetted.\nHere's the exact checklist we use — and why we turned down 14 genuinely talented composers. ↓\n\nApply when you're ready. Link in bio.\n\n#SyncMaster #AfricanComposers #MusicBusiness #SyncReady #BehindTheScenes",
   "slide_count": 10,
   "slides": [
     {

@@ -3,17 +3,21 @@
   "type": "Carousel",
   "platform": "Instagram",
   "pillar": "Education",
+  "purpose": "Education",
   "persona": "Tunde",
   "date": "2026-07-02",
   "topic": "Publishing rights: what composers give up without knowing",
   "hook": "A composer we spoke to in Month 2 had three confirmed placements.",
-  "cta": "",
+  "cta": "Save this before your next deal. DM us if you have an offer on the table.",
   "hashtags": [
     "#MusicPublishing",
     "#AfricanComposers",
     "#SyncLicensing",
     "#SyncMaster"
   ],
+  "caption_hook": "A composer we spoke to in Month 2 had three confirmed placements. ↓",
+  "caption_hook_len": 67,
+  "caption_full": "A composer we spoke to in Month 2 had three confirmed placements. ↓\n\nMusic already aired.\n\nSave this before your next deal. DM us if you have an offer →\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicPublishing",
   "slide_count": 10,
   "slides": [
     {

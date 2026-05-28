@@ -3,11 +3,12 @@
   "type": "Carousel",
   "platform": "Instagram",
   "pillar": "Proof",
+  "purpose": "Proof",
   "persona": "Amara",
   "date": "2026-06-12",
   "topic": "48-hour curation turnaround",
   "hook": "A production company sent us a brief on Monday morning.",
-  "cta": "",
+  "cta": "Got a brief? DM us.",
   "hashtags": [
     "#SyncLicensing",
     "#AfricanMusic",
@@ -15,6 +16,9 @@
     "#MusicSupervisor",
     "#AfricanComposers"
   ],
+  "caption_hook": "A production company sent us a brief on Monday morning. ↓",
+  "caption_hook_len": 57,
+  "caption_full": "A production company sent us a brief on Monday morning. ↓\n\nBy Wednesday afternoon, they had 5 cleared, brief-matched tracks.\n\nGot a brief? DM us.\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicSupervisor #AfricanMusic",
   "slide_count": 10,
   "slides": [
     {

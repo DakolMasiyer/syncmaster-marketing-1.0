@@ -5,9 +5,10 @@ platform: LinkedIn
 pillar: Behind the Scenes
 persona: Amara
 date: 2026-07-27
+first_comment: "Applications open at syncmaster.io."
 ---
 
-# Building SyncMaster Month 2: what\
+# Building SyncMaster Month 2: what's changed
 
 ## Hook
 

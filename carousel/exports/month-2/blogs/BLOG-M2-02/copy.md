@@ -27,6 +27,8 @@ The 48-hour brief window is real. Supervisors told us this in Month 1. Month 2 i
 
 The lesson for composers: your infrastructure has to be ready before the brief arrives. You cannot build it during the window.
 
+→ Full Month 2 update at syncmaster.io/blog
+
 ## CTA
 
 → Full Month 2 update at syncmaster.io/blog

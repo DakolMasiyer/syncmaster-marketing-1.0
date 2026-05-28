@@ -3,17 +3,21 @@
   "type": "Carousel",
   "platform": "Instagram",
   "pillar": "Education",
+  "purpose": "Education",
   "persona": "Tunde",
   "date": "2026-07-14",
   "topic": "PRO registration: which societies African composers should join",
   "hook": "Every time a licensed placement airs anywhere in the world, royalties generate.",
-  "cta": "",
+  "cta": "Not registered yet? DM us — we'll point you in the right direction.",
   "hashtags": [
     "#PRO",
     "#MusicRights",
     "#AfricanComposers",
     "#SyncMaster"
   ],
+  "caption_hook": "Every time a licensed placement airs anywhere in the world, royalties generate. ↓",
+  "caption_hook_len": 81,
+  "caption_full": "Every time a licensed placement airs anywhere in the world, royalties generate. ↓\n\nThose royalties have to go somewhere.\n\nNot registered yet? DM us — we'll point you in the right →\n\n#SyncMaster #AfricanComposers #PRO #MusicRights",
   "slide_count": 10,
   "slides": [
     {

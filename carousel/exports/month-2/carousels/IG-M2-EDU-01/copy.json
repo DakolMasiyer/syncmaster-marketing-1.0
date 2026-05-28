@@ -3,11 +3,12 @@
   "type": "Carousel",
   "platform": "Instagram",
   "pillar": "Education",
+  "purpose": "Education",
   "persona": "Tunde",
   "date": "2026-07-01",
   "topic": "Sync deal checklist — what to negotiate",
   "hook": "You got the offer.",
-  "cta": "",
+  "cta": "Save this before your next deal conversation.",
   "hashtags": [
     "#SyncDeal",
     "#AfricanComposers",
@@ -15,6 +16,9 @@
     "#MusicBusiness",
     "#SyncMaster"
   ],
+  "caption_hook": "You got the offer.\nYour first instinct is to say yes immediately. ↓",
+  "caption_hook_len": 67,
+  "caption_full": "You got the offer.\nYour first instinct is to say yes immediately. ↓\n\nSave this before your next deal conversation.\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicBusiness #SyncDeal",
   "slide_count": 10,
   "slides": [
     {

@@ -21,6 +21,7 @@ sys.path.insert(0, str(CAROUSEL_DIR))
 
 from scripts.calendar_connector import get_posts
 from scripts.copy_extractor import extract
+from scripts.continuity import attach_references, validate as validate_continuity, summarize_issues
 from generators import carousel_copy, single_copy, thread_copy, text_copy, video_script
 
 EXPORTS_DIR = CAROUSEL_DIR / "exports"
@@ -59,6 +60,7 @@ def output_dir(post):
 
 def run(posts, dry_run=False):
     results = {"generated": [], "skipped": [], "errors": []}
+    posts = attach_references(posts)
 
     for post in posts:
         pid = post["id"]
@@ -95,6 +97,7 @@ def run(posts, dry_run=False):
                 "month": post.get("month"),
                 "date": post.get("date"),
                 "path": str(rel),
+                "references": post.get("references", []),
             })
         except Exception as e:
             print(f"  [err]  {pid} — {e}")
@@ -123,6 +126,27 @@ def write_manifest(results):
     print(f"\nManifest updated: {manifest_path.relative_to(CAROUSEL_DIR)} ({manifest['total']} total entries)")
 
 
+def run_validation(posts, filters=None):
+    """Validate continuity references before generation/scheduling."""
+    all_posts = get_posts()
+    annotated = attach_references(posts)
+    issues = validate_continuity(annotated, all_posts)
+
+    print(f"\nVALIDATING — {len(posts)} posts")
+    if filters:
+        print(f"Filters: {filters}")
+    print()
+
+    if issues:
+        print(summarize_issues(issues))
+        print(f"\nValidation failed: {len(issues)} issue(s) found.")
+        return 1
+
+    print(summarize_issues(issues))
+    print("\nValidation passed.")
+    return 0
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="SyncMaster batch content generator",
@@ -135,6 +159,7 @@ def main():
     parser.add_argument("--purpose", help="Purpose: Product, Education, Proof, Culture, Announcement")
     parser.add_argument("--id", dest="post_id", help="Generate a single specific post by ID")
     parser.add_argument("--dry-run", action="store_true", help="Show what would be generated without writing files")
+    parser.add_argument("--validate", action="store_true", help="Validate continuity references without generating files")
     args = parser.parse_args()
 
     # Build filter kwargs
@@ -163,6 +188,10 @@ def main():
     if not posts:
         print("No posts matched the given filters.")
         sys.exit(0)
+
+    if args.validate:
+        exit_code = run_validation(posts, filters if filters else None)
+        sys.exit(exit_code)
 
     mode = "DRY RUN" if args.dry_run else "GENERATING"
     print(f"\n{mode} — {len(posts)} posts\n")
