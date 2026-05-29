@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>SyncMaster · Single Post · Dark</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,900&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+
+/* ── Reset ──────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ── Tokens ─────────────────────────────────────────── */
+:root {
+  --dark:        #0A0A20;
+  --dark-mid:    #13132e;
+  --purple:      #5252E0;
+  --lime:        #C9E834;
+  --white:       #f9f9f9;
+  --white-70:    rgba(249,249,249,0.70);
+  --white-50:    rgba(249,249,249,0.50);
+  --white-30:    rgba(249,249,249,0.30);
+  --white-08:    rgba(249,249,249,0.08);
+  --white-04:    rgba(249,249,249,0.04);
+  --lime-10:     rgba(201,232,52,0.10);
+  --pad:         56px;
+  --canvas-w:    1080px;
+  --canvas-h:    1350px;
+}
+
+/* ── Canvas ─────────────────────────────────────────── */
+html, body {
+  width: var(--canvas-w);
+  height: var(--canvas-h);
+  overflow: hidden;
+  background: var(--dark);
+}
+
+.frame {
+  position: relative;
+  width: var(--canvas-w);
+  height: var(--canvas-h);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 820px 640px at 62% 28%, #1c1450 0%, transparent 70%),
+    radial-gradient(ellipse 400px 300px at 8% 88%, #0e0e30 0%, transparent 60%),
+    var(--dark);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Noise grain overlay ────────────────────────────── */
+.frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Ghost type — stat/first-word backdrop ───────────── */
+.ghost {
+  position: absolute;
+  top: -40px;
+  left: -24px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 900;
+  font-size: 640px;
+  line-height: 1;
+  letter-spacing: -0.068em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(249,249,249,0.055);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+/* ── Decorative corner mark ─────────────────────────── */
+.corner-mark {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 160px;
+  height: 160px;
+  border-bottom-left-radius: 160px;
+  background: var(--lime-10);
+  z-index: 1;
+}
+
+/* ── Geo chrome — top bar ───────────────────────────── */
+.geo-chrome {
+  position: absolute;
+  top: 38px;
+  left: var(--pad);
+  right: var(--pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+.geo-text {
+  font-family: 'Geist Mono', monospace;
+  font-weight: 400;
+  font-size: 13.5px;
+  letter-spacing: 0.12em;
+  color: var(--white-50);
+  text-transform: uppercase;
+}
+
+.geo-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--lime);
+  flex-shrink: 0;
+}
+
+/* ── Lime horizontal rule ───────────────────────────── */
+.rule {
+  position: absolute;
+  top: 80px;
+  left: var(--pad);
+  right: var(--pad);
+  height: 1.5px;
+  background: linear-gradient(to right, var(--lime) 0%, var(--lime) 35%, transparent 100%);
+  z-index: 2;
+}
+
+/* ── Main content block ─────────────────────────────── */
+.content {
+  position: absolute;
+  top: 110px;
+  left: var(--pad);
+  right: var(--pad);
+  bottom: 110px;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+/* Eyebrow */
+.eyebrow-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.eyebrow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--lime);
+  flex-shrink: 0;
+}
+
+.eyebrow {
+  font-family: 'Geist Mono', monospace;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.22em;
+  color: var(--lime);
+  text-transform: uppercase;
+}
+
+/* Headline */
+.headline {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 900;
+  font-size: 154px;
+  line-height: 0.93;
+  letter-spacing: -0.068em;
+  color: var(--white);
+  margin-top: 28px;
+  flex-shrink: 0;
+}
+
+/* Subtext */
+.subtext {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 27px;
+  line-height: 1.42;
+  letter-spacing: -0.018em;
+  color: var(--white-70);
+  margin-top: 36px;
+  max-width: 800px;
+  flex-shrink: 0;
+}
+
+/* Spacer */
+.spacer { flex: 1; min-height: 32px; }
+
+/* CTA */
+.cta-wrap {
+  margin-bottom: 52px;
+}
+
+.cta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--lime);
+  color: var(--dark);
+  padding: 15px 26px 15px 28px;
+  border-radius: 100px;
+  font-family: 'Geist Mono', monospace;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.cta-arrow-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cta-arrow {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--lime);
+  line-height: 1;
+  margin-top: 1px;
+}
+
+/* ── Waveform ────────────────────────────────────────── */
+.waveform {
+  position: absolute;
+  bottom: 118px;
+  left: var(--pad);
+  right: var(--pad);
+  height: 52px;
+  z-index: 2;
+}
+
+/* ── Footer ─────────────────────────────────────────── */
+.footer {
+  position: absolute;
+  bottom: 40px;
+  left: var(--pad);
+  right: var(--pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.logo-mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--lime);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  color: var(--dark);
+  letter-spacing: -0.05em;
+  flex-shrink: 0;
+}
+
+.footer-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.footer-domain {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.footer-tag {
+  font-family: 'Geist Mono', monospace;
+  font-weight: 400;
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  color: var(--white-50);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.footer-right {
+  font-family: 'Geist Mono', monospace;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--white-30);
+  text-transform: uppercase;
+}
+
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <!-- Grain overlay (::before pseudo) -->
+
+  <!-- Ghost type — stat/headline fragment bleeds from top-left -->
+  <div class="ghost">{{ghost}}</div>
+
+  <!-- Decorative corner softener -->
+  <div class="corner-mark"></div>
+
+  <!-- Top chrome — geographic signal -->
+  <div class="geo-chrome">
+    <span class="geo-text">2026 · Q2 · Lagos · Cape Town · Nairobi</span>
+    <span class="geo-dot"></span>
+  </div>
+
+  <!-- Lime rule — fades right -->
+  <div class="rule"></div>
+
+  <!-- Main content -->
+  <div class="content">
+
+    <!-- Eyebrow -->
+    <div class="eyebrow-row">
+      <span class="eyebrow-dot"></span>
+      <span class="eyebrow">{{eyebrow}}</span>
+    </div>
+
+    <!-- Headline — DM Sans Black, tight tracking -->
+    <div class="headline">{{headline}}</div>
+
+    <!-- Subtext — supporting context -->
+    <div class="subtext">{{subtext}}</div>
+
+    <div class="spacer"></div>
+
+    <!-- CTA pill -->
+    <div class="cta-wrap">
+      <div class="cta-pill">
+        {{cta}}
+        <div class="cta-arrow-circle">
+          <span class="cta-arrow">→</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Waveform — brand audio signature -->
+  <svg class="waveform" viewBox="0 0 968 52" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <polyline
+      stroke="#C9E834" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+      points="0,26 18,24 36,28 54,20 72,32 90,22 108,29 126,16 144,34 162,23 180,28 198,18 216,35 234,22 252,30 270,15 288,34 306,25 324,29 342,17 360,33 378,23 396,30 414,16 432,32 450,24 468,29 486,17 504,33 522,23 540,28 558,18 576,34 594,22 612,30 630,17 648,33 666,25 684,30 702,16 720,33 738,24 756,29 774,18 792,32 810,23 828,29 846,17 864,33 882,24 900,28 918,20 936,31 952,24 968,26"/>
+    <polyline
+      stroke="rgba(249,249,249,0.22)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      points="0,30 18,27 36,33 54,24 72,37 90,26 108,34 126,20 144,39 162,27 180,33 198,22 216,40 234,26 252,35 270,19 288,39 306,29 324,34 342,21 360,38 378,27 396,35 414,20 432,37 450,28 468,34 486,21 504,38 522,27 540,33 558,22 576,39 594,26 612,35 630,21 648,38 666,29 684,35 702,20 720,38 738,28 756,34 774,22 792,37 810,27 828,34 846,21 864,38 882,28 900,33 918,24 936,36 952,28 968,30"/>
+  </svg>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="logo-group">
+      <div class="logo-mark">S</div>
+      <div class="footer-meta">
+        <span class="footer-domain">{{footer_name}}</span>
+        <span class="footer-tag">Sync Licensing Infrastructure</span>
+      </div>
+    </div>
+    <span class="footer-right">Single · {{pillar}}</span>
+  </div>
+
+</div>
+</body>
+</html>

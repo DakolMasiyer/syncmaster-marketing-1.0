@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>SyncMaster · Single Post · Light</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,900&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+
+/* ── Reset ──────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ── Tokens — Light Mode ────────────────────────────── */
+:root {
+  --bg:          #f4f4f0;
+  --bg-warm:     #eeede8;
+  --ink:         #0D0D18;
+  --ink-70:      rgba(13,13,24,0.70);
+  --ink-50:      rgba(13,13,24,0.50);
+  --ink-35:      rgba(13,13,24,0.35);
+  --ink-08:      rgba(13,13,24,0.08);
+  --purple:      #5252E0;
+  --purple-10:   rgba(82,82,224,0.10);
+  --purple-60:   rgba(82,82,224,0.60);
+  --lime:        #C9E834;
+  --pad:         56px;
+  --canvas-w:    1080px;
+  --canvas-h:    1350px;
+}
+
+/* ── Canvas ─────────────────────────────────────────── */
+html, body {
+  width: var(--canvas-w);
+  height: var(--canvas-h);
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.frame {
+  position: relative;
+  width: var(--canvas-w);
+  height: var(--canvas-h);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 700px 500px at 75% 22%, #e8e8f8 0%, transparent 65%),
+    radial-gradient(ellipse 500px 400px at 10% 90%, #f0efea 0%, transparent 60%),
+    var(--bg);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Ghost type — ink at very low opacity ───────────── */
+.ghost {
+  position: absolute;
+  top: -40px;
+  left: -24px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 900;
+  font-size: 640px;
+  line-height: 1;
+  letter-spacing: -0.068em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(13,13,24,0.045);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+/* ── Purple accent block — top-right corner ─────────── */
+.corner-accent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 140px 140px 0;
+  border-color: transparent var(--purple) transparent transparent;
+  z-index: 2;
+}
+
+/* ── Geo chrome ─────────────────────────────────────── */
+.geo-chrome {
+  position: absolute;
+  top: 38px;
+  left: var(--pad);
+  right: var(--pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 3;
+}
+
+.geo-text {
+  font-family: 'Geist Mono', monospace;
+  font-weight: 400;
+  font-size: 13.5px;
+  letter-spacing: 0.12em;
+  color: var(--ink-50);
+  text-transform: uppercase;
+}
+
+.geo-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--purple);
+  flex-shrink: 0;
+}
+
+/* ── Purple horizontal rule ─────────────────────────── */
+.rule {
+  position: absolute;
+  top: 80px;
+  left: var(--pad);
+  right: var(--pad);
+  height: 2px;
+  background: linear-gradient(to right, var(--purple) 0%, var(--purple) 40%, transparent 100%);
+  z-index: 3;
+}
+
+/* ── Main content block ─────────────────────────────── */
+.content {
+  position: absolute;
+  top: 110px;
+  left: var(--pad);
+  right: var(--pad);
+  bottom: 110px;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+}
+
+/* Eyebrow */
+.eyebrow-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.eyebrow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--purple);
+  flex-shrink: 0;
+}
+
+.eyebrow {
+  font-family: 'Geist Mono', monospace;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.22em;
+  color: var(--purple);
+  text-transform: uppercase;
+}
+
+/* Headline */
+.headline {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 900;
+  font-size: 154px;
+  line-height: 0.93;
+  letter-spacing: -0.068em;
+  color: var(--ink);
+  margin-top: 28px;
+  flex-shrink: 0;
+}
+
+/* Subtext */
+.subtext {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 27px;
+  line-height: 1.42;
+  letter-spacing: -0.018em;
+  color: var(--ink-70);
+  margin-top: 36px;
+  max-width: 800px;
+  flex-shrink: 0;
+}
+
+/* Spacer */
+.spacer { flex: 1; min-height: 32px; }
+
+/* CTA */
+.cta-wrap {
+  margin-bottom: 52px;
+}
+
+.cta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--purple);
+  color: #ffffff;
+  padding: 15px 26px 15px 28px;
+  border-radius: 100px;
+  font-family: 'Geist Mono', monospace;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.cta-arrow-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cta-arrow {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--purple);
+  line-height: 1;
+  margin-top: 1px;
+}
+
+/* ── Waveform ────────────────────────────────────────── */
+.waveform {
+  position: absolute;
+  bottom: 118px;
+  left: var(--pad);
+  right: var(--pad);
+  height: 52px;
+  z-index: 3;
+}
+
+/* ── Footer ─────────────────────────────────────────── */
+.footer {
+  position: absolute;
+  bottom: 40px;
+  left: var(--pad);
+  right: var(--pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 3;
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.logo-mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  color: #ffffff;
+  letter-spacing: -0.05em;
+  flex-shrink: 0;
+}
+
+.footer-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.footer-domain {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.footer-tag {
+  font-family: 'Geist Mono', monospace;
+  font-weight: 400;
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  color: var(--ink-50);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.footer-right {
+  font-family: 'Geist Mono', monospace;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--ink-35);
+  text-transform: uppercase;
+}
+
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <!-- Ghost type -->
+  <div class="ghost">{{ghost}}</div>
+
+  <!-- Corner triangle accent — purple -->
+  <div class="corner-accent"></div>
+
+  <!-- Geo chrome -->
+  <div class="geo-chrome">
+    <span class="geo-text">2026 · Q2 · Lagos · Cape Town · Nairobi</span>
+    <span class="geo-dot"></span>
+  </div>
+
+  <!-- Purple rule — fades right -->
+  <div class="rule"></div>
+
+  <!-- Main content -->
+  <div class="content">
+
+    <div class="eyebrow-row">
+      <span class="eyebrow-dot"></span>
+      <span class="eyebrow">{{eyebrow}}</span>
+    </div>
+
+    <div class="headline">{{headline}}</div>
+
+    <div class="subtext">{{subtext}}</div>
+
+    <div class="spacer"></div>
+
+    <div class="cta-wrap">
+      <div class="cta-pill">
+        {{cta}}
+        <div class="cta-arrow-circle">
+          <span class="cta-arrow">→</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Waveform — purple + ink ghost -->
+  <svg class="waveform" viewBox="0 0 968 52" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <polyline
+      stroke="#5252E0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+      points="0,26 18,24 36,28 54,20 72,32 90,22 108,29 126,16 144,34 162,23 180,28 198,18 216,35 234,22 252,30 270,15 288,34 306,25 324,29 342,17 360,33 378,23 396,30 414,16 432,32 450,24 468,29 486,17 504,33 522,23 540,28 558,18 576,34 594,22 612,30 630,17 648,33 666,25 684,30 702,16 720,33 738,24 756,29 774,18 792,32 810,23 828,29 846,17 864,33 882,24 900,28 918,20 936,31 952,24 968,26"/>
+    <polyline
+      stroke="rgba(13,13,24,0.18)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      points="0,30 18,27 36,33 54,24 72,37 90,26 108,34 126,20 144,39 162,27 180,33 198,22 216,40 234,26 252,35 270,19 288,39 306,29 324,34 342,21 360,38 378,27 396,35 414,20 432,37 450,28 468,34 486,21 504,38 522,27 540,33 558,22 576,39 594,26 612,35 630,21 648,38 666,29 684,35 702,20 720,38 738,28 756,34 774,22 792,37 810,27 828,34 846,21 864,38 882,28 900,33 918,24 936,36 952,28 968,30"/>
+  </svg>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="logo-group">
+      <div class="logo-mark">S</div>
+      <div class="footer-meta">
+        <span class="footer-domain">{{footer_name}}</span>
+        <span class="footer-tag">Sync Licensing Infrastructure</span>
+      </div>
+    </div>
+    <span class="footer-right">Single · {{pillar}}</span>
+  </div>
+
+</div>
+</body>
+</html>

@@ -26,16 +26,18 @@ except ImportError:
 TMP_DIR = Path(__file__).parent / "exports" / "tmp"
 
 # ── Template node IDs ─────────────────────────────────────────────────────────
-DARK_TEMPLATE   = "53:2"    # Overlay AL — dark bg, BTS + odd-position posts
-LIGHT_TEMPLATE  = "144:63"  # Editorial — light bg, even-position posts (stat-heavy)
+DARK_TEMPLATE   = "196:2855" # Carousel Template Dark
+LIGHT_TEMPLATE  = "144:63"   # Carousel Template Light 
+SINGLE_DARK     = "198:3022" # Single Post · Dark Clean
+SINGLE_LIGHT    = "198:3023" # Single Post · Light Editorial
 
 # ── Section IDs within each template (role → node to clone) ──────────────────
 DARK_SECTIONS = {
-    "hook":      "52:870",   # Slide 1 · HOOK
-    "body":      "52:973",   # Slide 2 · CONTEXT  (reused for all body/list slides)
-    "showcase":  "52:1073",  # Slide 3 · SHOWCASE A
-    "proof":     "52:1270",  # Slide 4 · SHOWCASE B / proof / stat
-    "cta":       "52:1490",  # Slide 5 · CTA
+    "hook":      "194:2639", # SLIDE 1 · HOOK
+    "body":      "194:2667", # SLIDE 2 · CONTEXT (body/list)
+    "showcase":  "194:2696", # SLIDE 3 · SHOWCASE
+    "proof":     "194:2724", # SLIDE 4 · PROOF
+    "cta":       "194:2766", # SLIDE 5 · CTA
 }
 
 LIGHT_SECTIONS = {
@@ -49,45 +51,56 @@ LIGHT_SECTIONS = {
 # ── Text layer lookup: section_id → {semantic_key: layer_name_in_figma} ───────
 # After cloning, scan_text_nodes on the clone and match by these name values.
 DARK_LAYER_NAMES = {
-    "52:870": {
-        "top_chrome":    "top_chrome",
-        "eyebrow":       "eyebrow",
+    "194:2639": { # HOOK
+        "eyebrow":       "top_eyebrow",
         "headline":      "headline",
         "body":          "body",
         "footer_label":  "footer_label",
-        "footer_domain": "footer_domain",
         "counter":       "counter",
+        "geo":           "geo_chrome"
     },
-    "52:973": {
-        "eyebrow":        "eyebrow",
-        "headline":       "headline",
-        "body":           "body",
-        "footer_label":   "footer_label",
-        "footer_sublabel":"footer_sublabel",
-        "counter":        "counter",
+    "194:2667": { # CONTEXT / BODY
+        "eyebrow":       "section_eyebrow",
+        "headline":      "stat_number",
+        "body":          "body",
+        "footer_label":  "footer_label",
+        "footer_sub":    "footer_sublabel",
+        "counter":       "counter",
+        "geo":           "geo_chrome"
     },
-    "52:1073": {
-        "eyebrow":        "eyebrow",
-        "headline":       "headline",
-        "body":           "body",
-        "footer_label":   "footer_label",
-        "footer_sublabel":"footer_sublabel",
-        "counter":        "counter",
+    "194:2696": { # SHOWCASE
+        "eyebrow":       "section_eyebrow",
+        "headline":      "stat_number",
+        "body":          "body",
+        "footer_label":  "footer_label",
+        "footer_sub":    "footer_sublabel",
+        "counter":       "counter",
+        "geo":           "geo_chrome"
     },
-    "52:1270": {
-        "headline":       "headline",
-        "footer_label":   "footer_label",
-        "footer_sublabel":"footer_sublabel",
-        "counter":        "counter",
+    "194:2724": { # PROOF
+        "eyebrow":       "section_eyebrow",
+        "headline":      "headline",
+        "stat_placed_label":     "stat_placed_label",
+        "stat_placed_value":     "stat_placed_value",
+        "stat_roster_label":     "stat_roster_label",
+        "stat_roster_value":     "stat_roster_value",
+        "stat_turnaround_label": "stat_turnaround_label",
+        "stat_turnaround_value": "stat_turnaround_value",
+        "footer_label":  "footer_label",
+        "footer_sub":    "footer_sublabel",
+        "counter":       "counter",
+        "geo":           "geo_chrome"
     },
-    "52:1490": {
-        "headline":       "headline",
-        "body":           "body",
-        "cta_text":       "cta_text",
-        "footer_label":   "footer_label",
-        "footer_domain":  "footer_domain",
-        "counter":        "counter",
-    },
+    "194:2766": { # CTA
+        "eyebrow":       "section_eyebrow",
+        "headline":      "headline",
+        "body":          "body",
+        "cta_text":      "cta_text",
+        "footer_label":  "footer_label",
+        "footer_sub":    "footer_domain",
+        "counter":       "counter",
+        "geo":           "geo_chrome"
+    }
 }
 
 LIGHT_LAYER_NAMES = {
@@ -141,6 +154,29 @@ LIGHT_LAYER_NAMES = {
         "counter_main":    "counter",
         "counter_small":   "counter_small",
     },
+}
+
+SINGLE_LAYER_NAMES = {
+    "198:3022": { # Single Dark
+        "eyebrow":       "eyebrow",
+        "headline":      "headline",
+        "body":          "body",
+        "cta_text":      "cta_text",
+        "footer_tag":    "footer_tag",
+        "footer_domain": "footer_domain",
+        "footer_right":  "footer_right",
+        "geo":           "geo_chrome"
+    },
+    "198:3023": { # Single Light
+        "eyebrow":       "eyebrow",
+        "headline":      "headline",
+        "body":          "body",
+        "cta_text":      "cta_text",
+        "footer_domain": "footer_domain",
+        "footer_tag":    "footer_tag",
+        "footer_right":  "footer_right",
+        "geo":           "geo_chrome"
+    }
 }
 
 # ── Helpers ───────────────────────────────────────────────────────────────────

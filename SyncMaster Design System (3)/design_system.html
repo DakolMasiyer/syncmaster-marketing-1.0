@@ -1,0 +1,748 @@
+<!-- Figma-Export-Ready: each <section id="…"> → Figma page -->
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <title>SyncMaster — Design System Spec</title>
+  <meta name="viewport" content="width=1440">
+  <link rel="stylesheet" href="colors_and_type.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html, body { margin: 0; padding: 0; background: var(--background); color: var(--foreground); }
+    body { font-family: var(--font-sans); font-weight: 500; }
+    .canvas { width: 1440px; margin: 0 auto; display: grid; grid-template-columns: 220px 1fr; gap: 48px; padding: 32px 64px; box-sizing: border-box; }
+    section { scroll-margin-top: 32px; padding: 96px 0; border-top: 1px solid var(--border); }
+    section:first-of-type { border-top: none; padding-top: 0; }
+    .mono-tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted-foreground); font-weight: 500; }
+    .page-header { display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 48px; }
+    .eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sm-acid); }
+    h1, h2, h3, h4, h5, h6 { letter-spacing: -0.068em; }
+    .swatch { aspect-ratio: 4/3; border-radius: var(--radius-base); border: 1px solid var(--border); }
+    .group:hover .group-hover\:scale-105 { transform: scale(1.05); }
+    .doc-header { width: 1440px; margin: 0 auto; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 32px 64px; border-bottom: 1px solid var(--border); background: var(--sm-ink); }
+    .doc-header img { height: 44px; width: auto; display: block; }
+  </style>
+</head>
+<body class="bg-[var(--sm-ink)] text-[var(--sm-fg-dark)]">
+
+<!-- DOC HEADER -->
+<header class="doc-header">
+  <div class="flex items-center gap-6">
+    <img src="assets/logos/syncmaster-icon.png" alt="SyncMaster">
+    <div class="w-px h-7 bg-[var(--border)]"></div>
+    <span class="mono-tag" style="font-size: 11px;">Design System Spec · v1.0</span>
+  </div>
+  <span class="mono-tag" style="font-size: 11px;">Figma handoff · 8 component pages</span>
+</header>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+<script type="text/babel">
+const { useState, useEffect, useMemo } = React;
+
+// ─────────────────────────────────────────────
+// Helpers
+// ─────────────────────────────────────────────
+function SectionHeader({ eyebrow, title, meta }) {
+  return (
+    <header className="page-header">
+      <div>
+        <p className="eyebrow">{eyebrow}</p>
+        <h2 className="m-0 mt-3" style={{ fontSize: 48, fontWeight: 900, lineHeight: 1.05 }}>{title}</h2>
+      </div>
+      {meta && <span className="mono-tag">{meta}</span>}
+    </header>
+  );
+}
+
+function VarLabel({ name, value }) {
+  return (
+    <div className="flex items-baseline justify-between gap-3 text-[11px] font-mono text-[var(--muted-foreground)]">
+      <span className="text-[var(--foreground)] font-medium">{name}</span>
+      {value && <span>{value}</span>}
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────
+// SIDEBAR NAV
+// ─────────────────────────────────────────────
+const NAV = [
+  ['tokens',       'Tokens'],
+  ['buttons',      'Buttons'],
+  ['badges',       'Badges'],
+  ['inputs',       'Inputs'],
+  ['cards',        'Cards'],
+  ['banners',      'Banners'],
+  ['scorebar',     'Score bar'],
+  ['sidebar-nav',  'Sidebar nav'],
+];
+
+function SpecSidebar({ active, onJump }) {
+  return (
+    <aside className="sticky top-8 self-start flex flex-col gap-1" style={{ height: 'fit-content' }}>
+      <div className="mono-tag mb-4">8 SECTIONS</div>
+      {NAV.map(([id, label], i) => (
+        <a key={id} href={`#${id}`} onClick={(e) => { e.preventDefault(); onJump(id); }}
+           className="group flex items-center gap-3 px-3 py-2 rounded-[var(--radius-base)] cursor-pointer transition-colors"
+           style={{
+             background: active === id ? 'var(--sidebar-accent)' : 'transparent',
+             color: active === id ? 'var(--sm-fg-dark)' : 'var(--muted-foreground)',
+             borderLeft: `2px solid ${active === id ? 'var(--primary)' : 'transparent'}`,
+             fontWeight: active === id ? 700 : 500,
+           }}>
+          <span className="font-mono text-[10px] tracking-widest">0{i+1}</span>
+          <span className="text-[13px]" style={{ letterSpacing: '-0.02em' }}>{label}</span>
+        </a>
+      ))}
+      <div className="mt-6 p-4 rounded-[var(--radius-base)] border border-[var(--border)] bg-[var(--card)]">
+        <p className="mono-tag mb-2">RULE</p>
+        <p className="text-[12px] m-0" style={{ lineHeight: 1.5, color: 'var(--muted-foreground)' }}>
+          <span className="text-[var(--foreground)] font-bold">6px corners.</span> <span className="text-[var(--foreground)] font-bold">--shadow-xs</span> for elevation. Subtle borders over heavy shadows.
+        </p>
+      </div>
+    </aside>
+  );
+}
+
+// ─────────────────────────────────────────────
+// TOKENS
+// ─────────────────────────────────────────────
+const BRAND_TOKENS = [
+  ['--sm-purple',     '#4B4BC0',           'Primary brand surface'],
+  ['--sm-acid',       'oklch(.88 .18 120)','Active badge accent only'],
+  ['--sm-ink',        '#0F0F1A',           'Dark canvas'],
+  ['--sm-ink-raised', '#16162A',           'Dark card / popover'],
+  ['--sm-paper',      '#FFFFFF',           'Light canvas'],
+  ['--sm-fg-dark',    '#F9F9F9',           'Foreground on dark'],
+  ['--sm-fg-light',   '#111111',           'Foreground on light'],
+];
+
+const STATUS_TOKENS = [
+  ['--status-green', '#22C55E', 'Success'],
+  ['--status-amber', '#F59E0B', 'Warning'],
+  ['--status-blue',  '#3B82F6', 'Info'],
+  ['--status-red',   '#EF4444', 'Destructive'],
+];
+
+const TYPE_SCALE = [
+  ['--fz-2xs',     '10px'],
+  ['--fz-xs',      '12px'],
+  ['--fz-sm',      '13px'],
+  ['--fz-base',    '14px'],
+  ['--fz-lg',      '16px'],
+  ['--fz-xl',      '18px'],
+  ['--fz-2xl',     '20px'],
+  ['--fz-3xl',     '24px'],
+  ['--fz-4xl',     '28px'],
+  ['--fz-5xl',     '36px'],
+  ['--fz-6xl',     '48px'],
+  ['--fz-7xl',     '64px'],
+  ['--fz-display', '96px'],
+];
+
+const RADII = [
+  ['--radius-xs',   '2px'],
+  ['--radius-sm',   '4px'],
+  ['--radius-base', '6px'],
+  ['--radius-md',   '8px'],
+  ['--radius-lg',   '12px'],
+  ['--radius-xl',   '16px'],
+  ['--radius-2xl',  '20px'],
+  ['--radius-3xl',  '32px'],
+  ['--radius-pill', '9999px'],
+];
+
+const SHADOWS = [
+  ['--shadow-xs',         'Hairline lift on resting cards'],
+  ['--shadow-sm',         'Hover lift'],
+  ['--shadow-acid-glow',  'Active state accent glow'],
+];
+
+const SPACING = [1,2,3,4,5,6,8,10,12,16,20];
+
+function TokensSection() {
+  return (
+    <section id="tokens">
+      <SectionHeader eyebrow="01 · Tokens" title="Design Tokens" meta="Brand · Status · Type · Radii · Shadows · Spacing" />
+
+      {/* Brand */}
+      <div className="mb-16">
+        <p className="mono-tag mb-6">BRAND PRIMITIVES</p>
+        <div className="grid grid-cols-4 gap-5">
+          {BRAND_TOKENS.map(([name, hex, role]) => (
+            <article key={name} className="flex flex-col gap-3">
+              <div className="swatch" style={{ background: `var(${name})` }}></div>
+              <VarLabel name={name} value={hex} />
+              <p className="m-0 text-[12px]" style={{ color: 'var(--muted-foreground)', lineHeight: 1.4 }}>{role}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      {/* Status */}
+      <div className="mb-16">
+        <p className="mono-tag mb-6">STATUS COLOURS</p>
+        <div className="grid grid-cols-4 gap-5">
+          {STATUS_TOKENS.map(([name, hex, role]) => (
+            <article key={name} className="flex flex-col gap-3">
+              <div className="swatch" style={{ background: `var(${name})` }}></div>
+              <VarLabel name={name} value={hex} />
+              <p className="m-0 text-[12px]" style={{ color: 'var(--muted-foreground)' }}>{role}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      {/* Type scale */}
+      <div className="mb-16">
+        <p className="mono-tag mb-6">TYPE SCALE — LIVE SPECIMEN</p>
+        <div className="rounded-[var(--radius-base)] border border-[var(--border)] overflow-hidden">
+          <div className="grid grid-cols-[160px_100px_1fr] gap-6 px-6 py-3 bg-[var(--card)] border-b border-[var(--border)]">
+            <span className="mono-tag">TOKEN</span>
+            <span className="mono-tag">SIZE</span>
+            <span className="mono-tag">SPECIMEN</span>
+          </div>
+          {TYPE_SCALE.map(([token, size], i) => (
+            <div key={token} className="grid grid-cols-[160px_100px_1fr] gap-6 px-6 py-3 items-baseline"
+                 style={{ borderBottom: i < TYPE_SCALE.length - 1 ? '1px solid var(--border)' : 'none' }}>
+              <span className="font-mono text-[11px] text-[var(--foreground)]">{token}</span>
+              <span className="font-mono text-[11px] text-[var(--muted-foreground)]">{size}</span>
+              <span style={{ fontSize: `var(${token})`, fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1.1, overflow: 'hidden' }}>Ag — the quick brown fox</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Radii */}
+      <div className="mb-16">
+        <p className="mono-tag mb-6">RADII</p>
+        <div className="grid grid-cols-9 gap-3">
+          {RADII.map(([name, value]) => (
+            <article key={name} className="flex flex-col items-center gap-2">
+              <div style={{
+                width: '100%', aspectRatio: '1', background: 'var(--primary)',
+                borderRadius: `var(${name})`,
+              }}></div>
+              <div className="text-center">
+                <div className="font-mono text-[10px] text-[var(--foreground)]" style={{ fontWeight: 600 }}>{name.replace('--radius-','')}</div>
+                <div className="font-mono text-[10px] text-[var(--muted-foreground)]">{value}</div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      {/* Shadows */}
+      <div className="mb-16">
+        <p className="mono-tag mb-6">SHADOWS</p>
+        <div className="grid grid-cols-3 gap-5">
+          {SHADOWS.map(([name, role]) => (
+            <article key={name} className="p-8 rounded-[var(--radius-base)] bg-[var(--card)] border border-[var(--border)]"
+                     style={{ boxShadow: `var(${name})` }}>
+              <p className="m-0 font-mono text-[11px] font-bold mb-2" style={{ color: 'var(--foreground)' }}>{name}</p>
+              <p className="m-0 text-[12px]" style={{ color: 'var(--muted-foreground)' }}>{role}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      {/* Spacing */}
+      <div>
+        <p className="mono-tag mb-6">SPACING — 4PX UNIT</p>
+        <div className="flex flex-col gap-2">
+          {SPACING.map(n => (
+            <div key={n} className="grid grid-cols-[100px_80px_1fr] gap-4 items-center">
+              <span className="font-mono text-[11px] text-[var(--foreground)]" style={{ fontWeight: 600 }}>--space-{n}</span>
+              <span className="font-mono text-[11px] text-[var(--muted-foreground)]">{n*4}px</span>
+              <div style={{ height: 8, width: `var(--space-${n})`, background: 'var(--primary)', borderRadius: 2 }}></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────
+// BUTTONS
+// ─────────────────────────────────────────────
+function ButtonsSection() {
+  const [pressed, setPressed] = useState(null);
+  const Btn = ({ variant, size = 'md', children, id }) => {
+    const sizeMap = {
+      sm: 'h-7 px-3 text-[13px]',
+      md: 'h-8 px-4 text-[14px]',
+      lg: 'h-10 px-6 text-[15px]',
+    };
+    const variantMap = {
+      primary: 'bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90',
+      outline: 'border border-[var(--primary)] text-[var(--primary)] bg-transparent hover:bg-[var(--accent)]',
+      ghost:   'bg-transparent text-[var(--primary)] hover:bg-[var(--accent)]',
+    };
+    const isDown = pressed === id;
+    return (
+      <button onMouseDown={() => setPressed(id)} onMouseUp={() => setPressed(null)} onMouseLeave={() => setPressed(null)}
+              className={`inline-flex items-center gap-2 rounded-[var(--radius-base)] font-medium transition-all cursor-pointer ${sizeMap[size]} ${variantMap[variant]}`}
+              style={{ transform: isDown ? 'translateY(1px)' : 'none', letterSpacing: '-0.01em' }}>
+        {children}
+      </button>
+    );
+  };
+  const Cell = ({ children, label }) => (
+    <div className="flex flex-col gap-3 p-6 rounded-[var(--radius-base)] border border-[var(--border)] bg-[var(--card)]" style={{ boxShadow: 'var(--shadow-xs)' }}>
+      <p className="mono-tag m-0">{label}</p>
+      <div className="flex flex-wrap items-center gap-3">{children}</div>
+    </div>
+  );
+
+  return (
+    <section id="buttons">
+      <SectionHeader eyebrow="02 · Buttons" title="Buttons" meta="3 variants · 3 sizes · hover + press states" />
+      <div className="grid grid-cols-1 gap-5">
+        <Cell label="PRIMARY · bg-[var(--primary)] text-[var(--primary-foreground)]">
+          <Btn id="p-sm" variant="primary" size="sm">Apply now</Btn>
+          <Btn id="p-md" variant="primary" size="md">Apply now</Btn>
+          <Btn id="p-lg" variant="primary" size="lg">Apply now</Btn>
+          <Btn id="p-icon" variant="primary" size="md"><i data-lucide="arrow-right" style={{width:14, height:14}}></i>With icon</Btn>
+        </Cell>
+        <Cell label="OUTLINE · border border-[var(--primary)] text-[var(--primary)]">
+          <Btn id="o-sm" variant="outline" size="sm">Cancel</Btn>
+          <Btn id="o-md" variant="outline" size="md">Cancel</Btn>
+          <Btn id="o-lg" variant="outline" size="lg">Cancel</Btn>
+        </Cell>
+        <Cell label="GHOST · bg-transparent text-[var(--primary)]">
+          <Btn id="g-sm" variant="ghost" size="sm">Learn more</Btn>
+          <Btn id="g-md" variant="ghost" size="md">Learn more</Btn>
+          <Btn id="g-lg" variant="ghost" size="lg">Learn more</Btn>
+        </Cell>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────
+// BADGES
+// ─────────────────────────────────────────────
+function BadgesSection() {
+  const Badge = ({ variant, children }) => {
+    const map = {
+      default: 'bg-[var(--muted)] text-[var(--muted-foreground)]',
+      success: 'bg-[var(--status-green)] text-white',
+      error:   'bg-[var(--status-red)] text-white',
+    };
+    return (
+      <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[var(--radius-pill)] font-mono text-[10px] font-bold tracking-[0.18em] uppercase ${map[variant]}`}>
+        {children}
+      </span>
+    );
+  };
+  return (
+    <section id="badges">
+      <SectionHeader eyebrow="03 · Badges" title="Badges" meta="Status pills · pill radius · mono caps" />
+      <div className="grid grid-cols-3 gap-5">
+        <article className="p-8 rounded-[var(--radius-base)] border border-[var(--border)] bg-[var(--card)] flex flex-col gap-4" style={{ boxShadow: 'var(--shadow-xs)' }}>
+          <p className="mono-tag m-0">DEFAULT · bg-[var(--muted)]</p>
+          <div className="flex flex-wrap gap-2">
+            <Badge variant="default">Draft</Badge>
+            <Badge variant="default">Closed</Badge>
+            <Badge variant="default">Archived</Badge>
+          </div>
+        </article>
+        <article className="p-8 rounded-[var(--radius-base)] border border-[var(--border)] bg-[var(--card)] flex flex-col gap-4" style={{ boxShadow: 'var(--shadow-xs)' }}>
+          <p className="mono-tag m-0">SUCCESS · bg-[var(--status-green)]</p>
+          <div className="flex flex-wrap gap-2">
+            <Badge variant="success">Placed</Badge>
+            <Badge variant="success">Paid</Badge>
+            <Badge variant="success">Confirmed</Badge>
+          </div>
+        </article>
+        <article className="p-8 rounded-[var(--radius-base)] border border-[var(--border)] bg-[var(--card)] flex flex-col gap-4" style={{ boxShadow: 'var(--shadow-xs)' }}>
+          <p className="mono-tag m-0">ERROR · bg-[var(--status-red)]</p>
+          <div className="flex flex-wrap gap-2">
+            <Badge variant="error">Failed</Badge>
+            <Badge variant="error">Rejected</Badge>
+            <Badge variant="error">Expired</Badge>
+          </div>
+        </article>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────
+// INPUTS
+// ─────────────────────────────────────────────
+function InputsSection() {
+  const [v1, setV1] = useState('');
+  const [v2, setV2] = useState('Aisha Olatunde');
+  const [v3, setV3] = useState('not-an-email');
+  const [focus, setFocus] = useState(null);
+  const Field = ({ label, value, onChange, id, error, hint, type = 'text' }) => (
+    <div className="flex flex-col gap-2">
+      <label htmlFor={id} className="mono-tag m-0">{label}</label>
+      <input id={id} type={type} value={value} onChange={(e) => onChange(e.target.value)}
+             onFocus={() => setFocus(id)} onBlur={() => setFocus(null)}
+             placeholder="Type here…"
+             className="rounded-[var(--radius-sm)] px-3 py-2 text-[14px] outline-none transition-shadow"
+             style={{
+               background: 'transparent',
+               border: `1px solid ${error ? 'var(--destructive)' : focus === id ? 'var(--primary)' : 'var(--input)'}`,
+               boxShadow: focus === id ? '0 0 0 3px color-mix(in srgb, var(--primary) 25%, transparent)' : 'none',
+               color: 'var(--foreground)',
+               fontFamily: 'var(--font-sans)',
+               fontWeight: 500,
+             }}/>
+      {hint && <span className="text-[11px]" style={{ color: error ? 'var(--destructive)' : 'var(--muted-foreground)' }}>{hint}</span>}
+    </div>
+  );
+  return (
+    <section id="inputs">
+      <SectionHeader eyebrow="04 · Inputs" title="Text Inputs" meta="border-[var(--input)] · radius-sm · focus ring" />
+      <div className="grid grid-cols-3 gap-6">
+        <Field id="f1" label="REST · NO INPUT" value={v1} onChange={setV1} />
+        <Field id="f2" label="FILLED · FOCUSED" value={v2} onChange={setV2} hint="Click to focus this field" />
+        <Field id="f3" label="ERROR STATE" value={v3} onChange={setV3} error hint="Must be a valid email address" type="email" />
+      </div>
+      <div className="mt-8 p-6 rounded-[var(--radius-base)] border border-[var(--border)] bg-[var(--card)] flex flex-col gap-3" style={{ boxShadow: 'var(--shadow-xs)' }}>
+        <p className="mono-tag m-0">MARKUP</p>
+        <pre className="m-0 text-[11px] overflow-x-auto" style={{ fontFamily: 'var(--font-mono)', color: 'var(--muted-foreground)' }}>
+{`<input class="border border-[var(--input)] rounded-[var(--radius-sm)] px-3 py-2" />`}
+        </pre>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────
+// CARDS
+// ─────────────────────────────────────────────
+function CardsSection() {
+  const [liked, setLiked] = useState(false);
+  return (
+    <section id="cards">
+      <SectionHeader eyebrow="05 · Cards" title="Brief & Track Cards" meta="radius-base · shadow-xs · subtle border" />
+      <div className="grid grid-cols-2 gap-6">
+        {/* Brief card */}
+        <article className="rounded-[var(--radius-base)] border border-[var(--border)] bg-[var(--card)] overflow-hidden flex flex-col" style={{ boxShadow: 'var(--shadow-xs)' }}>
+          <header className="px-5 py-4 flex items-center justify-between border-b border-[var(--border)]">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[var(--radius-pill)] font-mono text-[10px] font-bold tracking-[0.18em]"
+                  style={{ background: 'var(--sm-acid)', color: 'var(--sm-ink)', boxShadow: 'var(--shadow-acid-glow)' }}>
+              ACTIVE
+            </span>
+            <span className="font-mono text-[11px]" style={{ color: 'var(--muted-foreground)' }}>JUN 14, 2026</span>
+          </header>
+          <div className="px-5 py-5 flex flex-col gap-4">
+            <h3 className="m-0" style={{ fontSize: 18, fontWeight: 900, lineHeight: 1.25 }}>Lagos crime thriller — main title cue</h3>
+            <p className="m-0 text-[13px]" style={{ color: 'var(--muted-foreground)', lineHeight: 1.5 }}>
+              Modern Afrobeats foundation, low menace, no resolution. Roughly 90 seconds.
+            </p>
+            <div className="flex gap-1.5 flex-wrap">
+              {['Afrobeats','Cinematic','Tense'].map(g => (
+                <span key={g} className="px-2 py-1 rounded-[var(--radius-sm)] text-[11px] font-bold"
+                      style={{ border: '1px solid var(--border)', background: 'rgba(255,255,255,0.03)', color: 'var(--primary)' }}>{g}</span>
+              ))}
+            </div>
+          </div>
+          <footer className="px-5 py-4 flex items-center justify-between border-t border-[var(--border)] bg-[var(--background)]">
+            <div>
+              <div className="mono-tag" style={{ fontSize: 9 }}>BUDGET</div>
+              <div className="font-mono text-[14px] font-bold mt-1" style={{ color: 'var(--foreground)' }}>$15,000 – $25,000</div>
+            </div>
+            <div className="flex gap-2">
+              <button onClick={() => setLiked(v => !v)}
+                      className="inline-flex items-center gap-1.5 h-8 px-3 rounded-[var(--radius-base)] text-[13px] font-medium transition-colors cursor-pointer"
+                      style={{ background: liked ? 'var(--accent)' : 'transparent', color: liked ? 'var(--primary)' : 'var(--muted-foreground)', border: '1px solid var(--border)' }}>
+                <i data-lucide={liked ? 'heart' : 'heart'} style={{ width: 14, height: 14, fill: liked ? 'var(--primary)' : 'transparent' }}></i>
+                {liked ? 'Saved' : 'Save'}
+              </button>
+              <button className="inline-flex items-center gap-1.5 h-8 px-4 rounded-[var(--radius-base)] text-[13px] font-medium cursor-pointer"
+                      style={{ background: 'var(--primary)', color: 'var(--primary-foreground)' }}>
+                Apply <i data-lucide="arrow-right" style={{ width: 12, height: 12 }}></i>
+              </button>
+            </div>
+          </footer>
+        </article>
+
+        {/* Track card */}
+        <article className="rounded-[var(--radius-base)] border border-[var(--border)] bg-[var(--card)] overflow-hidden flex flex-col" style={{ boxShadow: 'var(--shadow-xs)' }}>
+          <header className="px-5 py-4 flex items-center gap-3 border-b border-[var(--border)]">
+            <div className="w-10 h-10 rounded-[var(--radius-base)] flex items-center justify-center" style={{ background: 'linear-gradient(135deg, var(--sm-purple), #a855f7)' }}>
+              <i data-lucide="music-2" style={{ width: 16, height: 16, color: '#fff' }}></i>
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="text-[14px] font-bold truncate" style={{ letterSpacing: '-0.02em' }}>Lagos at Midnight</div>
+              <div className="font-mono text-[11px]" style={{ color: 'var(--muted-foreground)' }}>Aisha Olatunde · 3:24</div>
+            </div>
+            <button className="w-8 h-8 rounded-[var(--radius-pill)] flex items-center justify-center cursor-pointer" style={{ background: 'var(--primary)', color: 'var(--primary-foreground)' }}>
+              <i data-lucide="play" style={{ width: 12, height: 12, fill: 'currentColor' }}></i>
+            </button>
+          </header>
+          <div className="px-5 py-5 flex flex-col gap-4">
+            <div className="grid grid-cols-3 gap-3">
+              <div><div className="mono-tag" style={{ fontSize: 9 }}>BPM</div><div className="font-mono text-[16px] font-bold mt-1">118</div></div>
+              <div><div className="mono-tag" style={{ fontSize: 9 }}>KEY</div><div className="font-mono text-[16px] font-bold mt-1">F♯m</div></div>
+              <div><div className="mono-tag" style={{ fontSize: 9 }}>GENRE</div><div className="text-[13px] font-bold mt-1" style={{ color: 'var(--primary)', letterSpacing: '-0.02em' }}>Afrobeats</div></div>
+            </div>
+            {/* mini waveform */}
+            <div className="flex items-center gap-[2px] h-8">
+              {Array.from({length: 60}, (_, i) => {
+                const h = 0.2 + Math.abs(Math.sin(i*0.4)) * 0.8;
+                const filled = i < 18;
+                return <div key={i} style={{ width: 3, height: `${h*100}%`, background: filled ? 'var(--primary)' : 'rgba(255,255,255,.35)' }}></div>;
+              })}
+            </div>
+          </div>
+          <footer className="px-5 py-4 flex items-center justify-between border-t border-[var(--border)] bg-[var(--background)]">
+            <span className="font-mono text-[11px]" style={{ color: 'var(--muted-foreground)' }}>AI MATCH · <span style={{ color: 'var(--primary)', fontWeight: 700 }}>92%</span></span>
+            <div className="flex gap-2">
+              <button className="h-8 px-3 rounded-[var(--radius-base)] text-[13px] font-medium cursor-pointer" style={{ background: 'transparent', border: '1px solid var(--border)', color: 'var(--muted-foreground)' }}>Add to playlist</button>
+              <button className="h-8 px-4 rounded-[var(--radius-base)] text-[13px] font-medium cursor-pointer" style={{ background: 'var(--primary)', color: 'var(--primary-foreground)' }}>Submit</button>
+            </div>
+          </footer>
+        </article>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────
+// BANNERS
+// ─────────────────────────────────────────────
+function BannersSection() {
+  const [dismissed, setDismissed] = useState({});
+  const Banner = ({ id, variant = 'default', icon, title, children }) => {
+    if (dismissed[id]) return (
+      <button onClick={() => setDismissed(d => ({ ...d, [id]: false }))}
+              className="text-[12px] underline" style={{ color: 'var(--muted-foreground)' }}>
+        Show {id} again
+      </button>
+    );
+    const colorMap = {
+      default: 'var(--primary)',
+      success: 'var(--status-green)',
+      warning: 'var(--status-amber)',
+      error:   'var(--destructive)',
+    };
+    const bgMap = {
+      default: 'var(--accent)',
+      success: 'color-mix(in srgb, var(--status-green) 10%, transparent)',
+      warning: 'color-mix(in srgb, var(--status-amber) 10%, transparent)',
+      error:   'color-mix(in srgb, var(--destructive) 10%, transparent)',
+    };
+    return (
+      <div className="rounded-[var(--radius-base)] flex items-start gap-3 px-4 py-3"
+           style={{
+             background: bgMap[variant],
+             borderLeft: `2px solid ${colorMap[variant]}`,
+             border: '1px solid var(--border)',
+             borderLeftWidth: 2,
+             borderLeftColor: colorMap[variant],
+           }}>
+        <i data-lucide={icon} style={{ width: 16, height: 16, color: colorMap[variant], marginTop: 2, flexShrink: 0 }}></i>
+        <div className="flex-1">
+          <div className="text-[13px] font-bold" style={{ letterSpacing: '-0.02em' }}>{title}</div>
+          <div className="text-[12px] mt-1" style={{ color: 'var(--muted-foreground)', lineHeight: 1.5 }}>{children}</div>
+        </div>
+        <button onClick={() => setDismissed(d => ({ ...d, [id]: true }))}
+                className="cursor-pointer" style={{ color: 'var(--muted-foreground)' }}>
+          <i data-lucide="x" style={{ width: 14, height: 14 }}></i>
+        </button>
+      </div>
+    );
+  };
+  return (
+    <section id="banners">
+      <SectionHeader eyebrow="06 · Banners" title="Alert Banners" meta="2px left border · accent tint · dismissable" />
+      <div className="flex flex-col gap-4">
+        <Banner id="b-default" variant="default" icon="info" title="Review queue · 3 briefs awaiting review">
+          Briefs in draft do not appear on composer dashboards until activated.
+        </Banner>
+        <Banner id="b-success" variant="success" icon="check-circle-2" title="Placement confirmed · $24,000 paid out">
+          Tunde Olatunde's track was placed in Black River Pictures' "Smoke & Coffee" closing credits.
+        </Banner>
+        <Banner id="b-warning" variant="warning" icon="alert-triangle" title="Deadline approaching · 4 briefs close in 48h">
+          Composers haven't been notified yet — push the outreach manually or wait for the cron.
+        </Banner>
+        <Banner id="b-error" variant="error" icon="alert-octagon" title="Upload failed · file exceeds 200MB">
+          Compress the WAV to 192kbps MP3 before retrying. Lossless masters are uploaded separately.
+        </Banner>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────
+// SCORE BAR
+// ─────────────────────────────────────────────
+function ScoreBarSection() {
+  const [scores, setScores] = useState([92, 78, 56, 34]);
+  useEffect(() => {
+    const t = setTimeout(() => setScores([88, 71, 64, 41]), 800);
+    return () => clearTimeout(t);
+  }, []);
+  const ScoreBar = ({ score, label }) => {
+    const color = score >= 85 ? 'var(--primary)' : score >= 70 ? 'var(--foreground)' : 'var(--muted-foreground)';
+    return (
+      <div className="grid grid-cols-[140px_1fr_60px] gap-4 items-center">
+        <div className="text-[13px] font-bold" style={{ letterSpacing: '-0.02em' }}>{label}</div>
+        <div className="h-1.5 rounded-[var(--radius-pill)] overflow-hidden" style={{ background: 'var(--muted)' }}>
+          <div style={{
+            height: '100%', width: `${score}%`, background: 'var(--primary)',
+            boxShadow: score >= 85 ? '0 0 8px var(--primary)' : 'none',
+            transition: 'width 1200ms cubic-bezier(0.4, 0, 0.2, 1)',
+          }}></div>
+        </div>
+        <div className="font-mono text-[12px] text-right" style={{ fontWeight: 700, color }}>{score}%</div>
+      </div>
+    );
+  };
+  const composers = ['Aisha Olatunde','Tope Adebayo','Nomzamo Khoza','Kwame Mensah'];
+  return (
+    <section id="scorebar">
+      <SectionHeader eyebrow="07 · Score bar" title="AI Match Score Bar" meta="track muted · fill primary · animated" />
+      <div className="p-6 rounded-[var(--radius-base)] border border-[var(--border)] bg-[var(--card)] flex flex-col gap-4" style={{ boxShadow: 'var(--shadow-xs)' }}>
+        <p className="mono-tag m-0">SUGGESTED COMPOSERS · BRIEF #42</p>
+        {composers.map((c, i) => <ScoreBar key={c} score={scores[i]} label={c} />)}
+      </div>
+      <div className="mt-8 grid grid-cols-3 gap-5">
+        <article className="p-5 rounded-[var(--radius-base)] border border-[var(--border)] bg-[var(--card)]">
+          <p className="mono-tag m-0 mb-2">TRACK</p>
+          <code className="text-[11px]" style={{ color: 'var(--muted-foreground)' }}>bg-[var(--muted)]</code>
+        </article>
+        <article className="p-5 rounded-[var(--radius-base)] border border-[var(--border)] bg-[var(--card)]">
+          <p className="mono-tag m-0 mb-2">FILL</p>
+          <code className="text-[11px]" style={{ color: 'var(--muted-foreground)' }}>bg-[var(--primary)]</code>
+        </article>
+        <article className="p-5 rounded-[var(--radius-base)] border border-[var(--border)] bg-[var(--card)]">
+          <p className="mono-tag m-0 mb-2">EASING</p>
+          <code className="text-[11px]" style={{ color: 'var(--muted-foreground)' }}>1200ms · ease-in-out</code>
+        </article>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────
+// SIDEBAR NAV
+// ─────────────────────────────────────────────
+function SidebarNavSection() {
+  const ITEMS = [
+    { label: 'Dashboard',  icon: 'layout-dashboard' },
+    { label: 'Catalog',    icon: 'layers' },
+    { label: 'Briefs',     icon: 'briefcase' },
+    { label: 'Placements', icon: 'trending-up' },
+    { label: 'Composers',  icon: 'users' },
+    { label: 'Settings',   icon: 'settings' },
+  ];
+  const [active, setActive] = useState('Briefs');
+  return (
+    <section id="sidebar-nav">
+      <SectionHeader eyebrow="08 · Sidebar nav" title="Sidebar Navigation" meta="left-border active · sidebar-accent fill" />
+      <div className="grid grid-cols-[260px_1fr] gap-6 items-start">
+        <aside className="rounded-[var(--radius-base)] overflow-hidden border border-[var(--border)] bg-[var(--sidebar)] p-3 flex flex-col gap-1">
+          {ITEMS.map(it => {
+            const isActive = active === it.label;
+            return (
+              <button key={it.label} onClick={() => setActive(it.label)}
+                      className="flex items-center gap-3 px-3 py-2 rounded-[var(--radius-base)] text-[13px] font-medium text-left cursor-pointer transition-colors"
+                      style={{
+                        background: isActive ? 'var(--sidebar-accent)' : 'transparent',
+                        color: isActive ? 'var(--sidebar-accent-foreground)' : 'var(--sidebar-foreground)',
+                        borderLeft: `2px solid ${isActive ? 'var(--primary)' : 'transparent'}`,
+                        fontWeight: isActive ? 700 : 500,
+                        letterSpacing: '-0.02em',
+                      }}>
+                <i data-lucide={it.icon} style={{ width: 14, height: 14, flexShrink: 0 }}></i>
+                {it.label}
+              </button>
+            );
+          })}
+        </aside>
+        <div className="flex flex-col gap-3">
+          <div className="p-5 rounded-[var(--radius-base)] border border-[var(--border)] bg-[var(--card)]">
+            <p className="mono-tag m-0 mb-3">ACTIVE STATE</p>
+            <code className="text-[11px] block leading-relaxed" style={{ color: 'var(--muted-foreground)' }}>
+              border-l-2 border-l-[var(--primary)]<br/>
+              bg-[var(--sidebar-accent)]<br/>
+              text-[var(--sidebar-accent-foreground)]<br/>
+              font-weight: 700
+            </code>
+          </div>
+          <div className="p-5 rounded-[var(--radius-base)] border border-[var(--border)] bg-[var(--card)]">
+            <p className="mono-tag m-0 mb-3">INACTIVE STATE</p>
+            <code className="text-[11px] block leading-relaxed" style={{ color: 'var(--muted-foreground)' }}>
+              border-l-2 border-l-transparent<br/>
+              bg-transparent<br/>
+              text-[var(--sidebar-foreground)]<br/>
+              font-weight: 500
+            </code>
+          </div>
+          <div className="p-4 rounded-[var(--radius-base)] border border-[var(--border)] bg-[var(--background)] flex items-center gap-3">
+            <i data-lucide="mouse-pointer-click" style={{ width: 14, height: 14, color: 'var(--sm-acid)' }}></i>
+            <span className="text-[12px]" style={{ color: 'var(--muted-foreground)' }}>Click any item in the sidebar — currently <strong style={{ color: 'var(--foreground)' }}>{active}</strong>.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────
+// APP
+// ─────────────────────────────────────────────
+function App() {
+  const [active, setActive] = useState('tokens');
+
+  useEffect(() => {
+    const opts = { rootMargin: '-30% 0px -60% 0px' };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); });
+    }, opts);
+    NAV.forEach(([id]) => {
+      const el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+    return () => io.disconnect();
+  }, []);
+
+  // refresh lucide whenever the page paints
+  useEffect(() => {
+    const id = setInterval(() => window.lucide && window.lucide.createIcons(), 400);
+    return () => clearInterval(id);
+  }, []);
+
+  const jump = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - 24;
+    window.scrollTo({ top, behavior: 'smooth' });
+  };
+
+  return (
+    <div className="canvas">
+      <SpecSidebar active={active} onJump={jump} />
+      <main>
+        <TokensSection />
+        <ButtonsSection />
+        <BadgesSection />
+        <InputsSection />
+        <CardsSection />
+        <BannersSection />
+        <ScoreBarSection />
+        <SidebarNavSection />
+      </main>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+</body>
+</html>

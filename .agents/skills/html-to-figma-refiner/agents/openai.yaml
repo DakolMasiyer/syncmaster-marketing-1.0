@@ -1,0 +1,4 @@
+interface:
+  display_name: "HTML to Figma Refiner"
+  short_description: "Refine HTML/CSS for Figma handoff"
+  default_prompt: "Use $html-to-figma-refiner to refine this HTML/CSS artifact for clean Figma handoff."
