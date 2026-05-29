@@ -12,6 +12,7 @@ Usage:
 """
 
 import json
+import re
 import argparse
 import warnings
 from pathlib import Path
@@ -28,8 +29,24 @@ TMP_DIR = Path(__file__).parent / "exports" / "tmp"
 # ── Template node IDs ─────────────────────────────────────────────────────────
 DARK_TEMPLATE   = "196:2855" # Carousel Template Dark
 LIGHT_TEMPLATE  = "144:63"   # Carousel Template Light 
-SINGLE_DARK     = "198:3022" # Single Post · Dark Clean
-SINGLE_LIGHT    = "198:3023" # Single Post · Light Editorial
+SINGLE_DARK     = "238:3472" # Single · 01 · Stat Hero · Dark  (primary dark)
+SINGLE_LIGHT    = "238:3505" # Single · 02 · Declaration · Light (primary light)
+
+# All 6 imported single-post layouts — route by post layout_hint or use defaults above
+SINGLE_TEMPLATES = {
+    "dark": {
+        "stat":    "238:3472",  # 01 · Stat Hero
+        "split":   "238:3535",  # 03 · Split
+        "badge":   "238:3601",  # 05 · Badge
+        "default": "238:3472",
+    },
+    "light": {
+        "declaration": "238:3505",  # 02 · Declaration
+        "stack":       "238:3569",  # 04 · Dense Stack
+        "minimal":     "238:3631",  # 06 · Minimal
+        "default":     "238:3505",
+    },
+}
 
 # ── Section IDs within each template (role → node to clone) ──────────────────
 DARK_SECTIONS = {
@@ -157,17 +174,75 @@ LIGHT_LAYER_NAMES = {
 }
 
 SINGLE_LAYER_NAMES = {
-    "198:3022": { # Single Dark
+    # ── Imported singles (238:xxxx) — layer names set via MCP rename ──────────
+    "238:3472": {  # Single · 01 · Stat Hero · Dark
         "eyebrow":       "eyebrow",
         "headline":      "headline",
         "body":          "body",
-        "cta_text":      "cta_text",
-        "footer_tag":    "footer_tag",
-        "footer_domain": "footer_domain",
-        "footer_right":  "footer_right",
-        "geo":           "geo_chrome"
+        "cta_text":      "cta",
+        "footer_domain": "brand__domain",
+        "footer_tag":    "brand__sub",
+        "pillar":        "pillar",
+        "geo":           "geo",
     },
-    "198:3023": { # Single Light
+    "238:3505": {  # Single · 02 · Declaration · Light
+        "eyebrow":       "eyebrow",
+        "headline":      "headline",
+        "body":          "body",
+        "cta_text":      "cta",
+        "footer_domain": "brand__domain",
+        "footer_tag":    "brand__sub",
+        "pillar":        "pillar",
+        "geo":           "geo",
+    },
+    "238:3535": {  # Single · 03 · Split · Dark
+        "eyebrow":       "eyebrow",
+        "headline":      "headline",
+        "body":          "body",
+        "cta_text":      "cta",
+        "footer_domain": "brand__domain",
+        "footer_tag":    "brand__sub",
+        "pillar":        "pillar",
+        "geo":           "geo",
+    },
+    "238:3569": {  # Single · 04 · Dense Stack · Light
+        "eyebrow":       "eyebrow",
+        "headline":      "headline",
+        "body":          "body",
+        "cta_text":      "cta",
+        "footer_domain": "brand__domain",
+        "footer_tag":    "brand__sub",
+        "pillar":        "pillar",
+        "geo":           "geo",
+    },
+    "238:3601": {  # Single · 05 · Badge · Dark (no CTA pill, no pillar)
+        "eyebrow":       "eyebrow",
+        "headline":      "headline",
+        "body":          "body",
+        "footer_domain": "brand__domain",
+        "footer_tag":    "brand__sub",
+        "geo":           "geo",
+    },
+    "238:3631": {  # Single · 06 · Minimal · Light (no body, no CTA pill)
+        "eyebrow":       "eyebrow",
+        "headline":      "headline",
+        "footer_domain": "brand__domain",
+        "footer_tag":    "brand__sub",
+        "pillar":        "pillar",
+        "geo":           "geo",
+    },
+    # ── Legacy templates (kept for backward compat) ───────────────────────────
+    "198:3022": {  # Single Post · Dark Clean (old)
+        "eyebrow":       "eyebrow",
+        "headline":      "headline",
+        "body":          "body",
+        "cta_text":      "cta_text",
+        "footer_tag":    "footer_tag",
+        "footer_domain": "footer_domain",
+        "footer_right":  "footer_right",
+        "geo":           "geo_chrome",
+    },
+    "198:3023": {  # Single Post · Light Editorial (old)
         "eyebrow":       "eyebrow",
         "headline":      "headline",
         "body":          "body",
@@ -175,8 +250,8 @@ SINGLE_LAYER_NAMES = {
         "footer_domain": "footer_domain",
         "footer_tag":    "footer_tag",
         "footer_right":  "footer_right",
-        "geo":           "geo_chrome"
-    }
+        "geo":           "geo_chrome",
+    },
 }
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -208,6 +283,91 @@ def assign_templates(posts: list) -> list:
             post["figma_template"] = "dark" if toggle % 2 == 0 else "light"
             toggle += 1
     return posts
+
+
+# ── Compiled signal patterns ──────────────────────────────────────────────────
+_RE_STAT     = re.compile(r'\b\d+(?:[,\.]\d+)*\s*(?:placement|brief|match|hour|h\b|k\b|%|\+)', re.I)
+_RE_NUMBER   = re.compile(r'\b\d+\b')
+# Progress: requires week/day + number, or "N days in/left/of" — NOT bare "Month N"
+_RE_PROGRESS = re.compile(r'\bweek\s+\d|\bday\s+\d|\b\d+\s+days?\s+(?:in|left|of)\b|\b\d+\s+weeks?\b', re.I)
+_RE_CONTRAST = re.compile(r'\bno\s+\w|\bnot\s+\w|\bzero\s+\w|\bwithout\s+\w|\bvs\.?\s|\bbut\s', re.I)
+_RE_ACHIEVE  = re.compile(r'placed?|placement|confirmed|shipped|launched|delivered', re.I)
+_RE_COMPLETE = re.compile(r'\bcomplete\b|\bdone\b|\bfinished\b|\bsummary\b|\btotal\b|\btally\b', re.I)
+_RE_SEQUENCE = re.compile(r'\bonce\b|\bthen\b|\bstep\b|\bhow\s+to\b|\bfirst\b|\bapply\b|\bget\s+vetted\b', re.I)
+_RE_DECLARE  = re.compile(r'^(the\s|your\s|african\s|we\s|our\s|music\s)', re.I)
+
+
+def select_single_template(post: dict, copy_data: dict) -> str:
+    """
+    Choose the best of the 8 single-post templates based on:
+      - figma_template (dark / light) set by assign_templates
+      - pillar (Education, Proof, Culture, Behind the Scenes, Industry)
+      - hook text signals: stat numbers, contrast, achievement, declaration, steps
+    """
+    theme  = post.get("figma_template", "dark")
+    pillar = post.get("pillar", "").lower()
+    hook   = post.get("hook", "") or copy_data.get("headline", "")
+    words  = len(hook.split())
+
+    # ── DARK template pool: Stat Hero · Split · Badge · Dark Clean ────────────
+    if theme == "dark":
+        # BTS milestone completions ("Month 2 complete.", short) → Badge first
+        if "behind the scenes" in pillar and _RE_COMPLETE.search(hook) and words <= 6:
+            return "238:3601"   # Single · 05 · Badge · Dark
+
+        # BTS narrative → Split (time-context left col + narrative right col)
+        if "behind the scenes" in pillar:
+            return "238:3535"   # Single · 03 · Split · Dark
+
+        # Completion / summary posts → Badge (milestone callout)
+        if _RE_COMPLETE.search(hook) and words <= 12:
+            return "238:3601"   # Single · 05 · Badge · Dark
+
+        # Progress / timeline hooks with week/day marker → Split
+        # "Week 2 of Month 2", "Day 1. Placement confirmed Day 67"
+        if _RE_PROGRESS.search(hook):
+            return "238:3535"   # Single · 03 · Split · Dark
+
+        # Explicit numeric stat with unit (placements, briefs, hours, %) → Stat Hero
+        if _RE_STAT.search(hook):
+            return "238:3472"   # Single · 01 · Stat Hero · Dark
+
+        # Proof pillar with any number and no contrast → Stat Hero
+        # "14 composers. 90 days.", "Two placements in two months."
+        if "proof" in pillar and _RE_NUMBER.search(hook) and not _RE_CONTRAST.search(hook):
+            return "238:3472"   # Single · 01 · Stat Hero · Dark
+
+        # Contrast / problem framing ("No label. Not X. Zero Y.") → Split
+        if _RE_CONTRAST.search(hook):
+            return "238:3535"   # Single · 03 · Split · Dark
+
+        # Fallback dark
+        return "198:3022"       # Single Post · Dark Clean
+
+    # ── LIGHT template pool: Declaration · Dense Stack · Minimal · Light Edit ─
+    else:
+        # Culture pillar or bold declarative sentence → Declaration
+        if "culture" in pillar or _RE_DECLARE.match(hook):
+            return "238:3505"   # Single · 02 · Declaration · Light
+
+        # Achievement / placement announcement on light slot → Declaration
+        if _RE_ACHIEVE.search(hook):
+            return "238:3505"   # Single · 02 · Declaration · Light
+
+        # Education pillar or step / sequence hook → Dense Stack
+        if "education" in pillar or _RE_SEQUENCE.search(hook):
+            return "238:3569"   # Single · 04 · Dense Stack · Light
+
+        # Proof pillar summary / totals on light slot → Minimal (clean number frame)
+        if "proof" in pillar and _RE_COMPLETE.search(hook):
+            return "238:3631"   # Single · 06 · Minimal · Light
+
+        # Industry pillar or very short punchy hook (≤ 7 words) → Minimal
+        if "industry" in pillar or words <= 7:
+            return "238:3631"   # Single · 06 · Minimal · Light
+
+        # Fallback light
+        return "198:3023"       # Single Post · Light Editorial
 
 
 def section_for_role(role: str, template: str, is_last: bool) -> str:
@@ -422,19 +582,32 @@ def build_publish_plan(month=1, post_id=None):
             })
             x_offset += slide_width
 
-        # Singles: one HOOK slide
+        # Singles: one frame cloned from the smart-selected single post template
         if ptype == "Single":
-            sec_id = DARK_SECTIONS["hook"] if template == "dark" else LIGHT_SECTIONS["hook"]
-            text_ops = [
-                {"find_by_name": (DARK_LAYER_NAMES if template == "dark" else LIGHT_LAYER_NAMES)[sec_id].get("headline", ""), "set_text": copy_data.get("headline", "")},
-                {"find_by_name": (DARK_LAYER_NAMES if template == "dark" else LIGHT_LAYER_NAMES)[sec_id].get("body", ""), "set_text": copy_data.get("subtext", "")},
-                {"find_by_name": (DARK_LAYER_NAMES if template == "dark" else LIGHT_LAYER_NAMES)[sec_id].get("eyebrow", ""), "set_text": copy_data.get("eyebrow", "")},
-            ]
+            tmpl_id  = select_single_template(post, copy_data)
+            layer_map = SINGLE_LAYER_NAMES.get(tmpl_id, {})
+
+            text_ops = []
+            def _sop(key, val):
+                lname = layer_map.get(key, "")
+                if lname and val:
+                    text_ops.append({"find_by_name": lname, "set_text": str(val).strip()})
+
+            _sop("eyebrow",       copy_data.get("eyebrow") or post.get("pillar", ""))
+            _sop("headline",      copy_data.get("headline") or post.get("hook", ""))
+            _sop("body",          copy_data.get("subtext") or copy_data.get("body", ""))
+            _sop("cta_text",      copy_data.get("cta_text", ""))
+            _sop("footer_domain", copy_data.get("footer_name", "syncmaster.live"))
+            _sop("footer_tag",    copy_data.get("footer_tag", "Sync Licensing Infrastructure"))
+            _sop("pillar",        copy_data.get("pillar") or post.get("pillar", ""))
+            _sop("geo",           "2026 · Q2 · Lagos · Cape Town · Nairobi")
+
             text_ops = [o for o in text_ops if o["find_by_name"] and o["set_text"]]
             slide_ops.append({
                 "slide_num": 1,
                 "role": "hook",
-                "section_template_id": sec_id,
+                "section_template_id": tmpl_id,
+                "layout": tmpl_id,
                 "clone_x": 0,
                 "text_ops": text_ops,
                 "screenshot_op": screenshot_op_for(copy_data, 0),

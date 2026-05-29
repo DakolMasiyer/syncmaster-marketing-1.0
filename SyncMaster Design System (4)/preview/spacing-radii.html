@@ -1,0 +1,55 @@
+<!doctype html>
+<html class="dark">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin:0; padding:0; background: var(--background); color: var(--foreground); }
+  body { padding: 24px; box-sizing: border-box; font-family: var(--font-sans); }
+  .row { display:flex; align-items:center; gap:16px; }
+  .col { display:flex; flex-direction:column; gap:6px; }
+  .role { font-family: var(--font-mono); font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color: var(--muted-foreground); }
+  .mono-meta { font-family: var(--font-mono); font-size:11px; color: var(--muted-foreground); }
+</style>
+</head><body>
+
+<div class="role" style="margin-bottom:14px">RADII — BASE 6PX · SCALE 2 / 4 / 6 / 8 / 12 / 16 / 32</div>
+<div style="display:grid; grid-template-columns:repeat(7,1fr); gap:12px;">
+  
+    <div style="display:flex; flex-direction:column; gap:6px; align-items:flex-start;">
+      <div style="width:100%; height:60px; background:var(--primary); border-radius:2px;"></div>
+      <div style="font-size:11px; font-weight:700; letter-spacing:-0.02em;">xs</div>
+      <div class="mono-meta">2px</div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:6px; align-items:flex-start;">
+      <div style="width:100%; height:60px; background:var(--primary); border-radius:4px;"></div>
+      <div style="font-size:11px; font-weight:700; letter-spacing:-0.02em;">sm</div>
+      <div class="mono-meta">4px</div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:6px; align-items:flex-start;">
+      <div style="width:100%; height:60px; background:var(--primary); border-radius:6px;"></div>
+      <div style="font-size:11px; font-weight:700; letter-spacing:-0.02em;">base</div>
+      <div class="mono-meta">6px</div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:6px; align-items:flex-start;">
+      <div style="width:100%; height:60px; background:var(--primary); border-radius:8px;"></div>
+      <div style="font-size:11px; font-weight:700; letter-spacing:-0.02em;">md</div>
+      <div class="mono-meta">8px</div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:6px; align-items:flex-start;">
+      <div style="width:100%; height:60px; background:var(--primary); border-radius:12px;"></div>
+      <div style="font-size:11px; font-weight:700; letter-spacing:-0.02em;">lg</div>
+      <div class="mono-meta">12px</div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:6px; align-items:flex-start;">
+      <div style="width:100%; height:60px; background:var(--primary); border-radius:16px;"></div>
+      <div style="font-size:11px; font-weight:700; letter-spacing:-0.02em;">xl</div>
+      <div class="mono-meta">16px</div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:6px; align-items:flex-start;">
+      <div style="width:100%; height:60px; background:var(--primary); border-radius:32px;"></div>
+      <div style="font-size:11px; font-weight:700; letter-spacing:-0.02em;">3xl</div>
+      <div class="mono-meta">32px</div>
+    </div>
+</div>
+</body></html>

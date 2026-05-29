@@ -1,0 +1,38 @@
+<!doctype html>
+<html class="dark">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin:0; padding:0; background: var(--background); color: var(--foreground); }
+  body { padding: 24px; box-sizing: border-box; font-family: var(--font-sans); }
+  .row { display:flex; align-items:center; gap:16px; }
+  .col { display:flex; flex-direction:column; gap:6px; }
+  .role { font-family: var(--font-mono); font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color: var(--muted-foreground); }
+  .mono-meta { font-family: var(--font-mono); font-size:11px; color: var(--muted-foreground); }
+</style>
+</head><body>
+
+<div class="role" style="margin-bottom:14px">ICONOGRAPHY — LUCIDE · 1.5PX STROKE · 20PX DEFAULT</div>
+<div id="iconRow" style="display:flex; gap:18px; align-items:center; color:var(--foreground); flex-wrap:wrap;">
+  <i data-lucide="layout-dashboard"></i>
+  <i data-lucide="layers"></i>
+  <i data-lucide="briefcase"></i>
+  <i data-lucide="trending-up"></i>
+  <i data-lucide="users"></i>
+  <i data-lucide="music-2"></i>
+  <i data-lucide="mic-2"></i>
+  <i data-lucide="film"></i>
+  <i data-lucide="radio"></i>
+  <i data-lucide="sparkles"></i>
+  <i data-lucide="mail"></i>
+  <i data-lucide="settings"></i>
+  <i data-lucide="search"></i>
+  <i data-lucide="arrow-right"></i>
+  <i data-lucide="play"></i>
+  <i data-lucide="check-circle-2"></i>
+</div>
+<div style="font-family:var(--font-mono); font-size:11px; color:var(--muted-foreground); margin-top:14px;">layout-dashboard · layers · briefcase · trending-up · users · music-2 · mic-2 · film · radio · sparkles · mail · settings · search · arrow-right · play · check-circle-2</div>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<script>lucide.createIcons({attrs:{'stroke-width':1.5, width:24, height:24}});</script>
+</body></html>

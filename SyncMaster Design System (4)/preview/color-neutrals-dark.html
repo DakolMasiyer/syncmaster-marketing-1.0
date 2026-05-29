@@ -1,0 +1,34 @@
+<!doctype html>
+<html class="dark">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin:0; padding:0; background: var(--background); color: var(--foreground); }
+  body { padding: 24px; box-sizing: border-box; font-family: var(--font-sans); }
+  .row { display: flex; align-items: center; gap: 16px; }
+  .col { display: flex; flex-direction: column; gap: 12px; }
+  .swatch { width: 100%; height: 64px; border-radius: var(--radius-base); border: 1px solid var(--border); }
+  .swatch-lg { height: 96px; }
+  .meta { display:flex; justify-content:space-between; align-items:baseline; gap: 8px; }
+  .hex { font-family: var(--font-mono); font-size: 11px; color: var(--muted-foreground); letter-spacing: 0.04em; }
+  .name { font-size: 13px; font-weight: 700; letter-spacing: -0.04em; }
+  .role { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted-foreground); }
+  .grid-6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+  .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+</style>
+</head>
+<body>
+
+<div class="row" style="margin-bottom:8px"><div class="role">DARK MODE NEUTRALS — EDITORIAL DEFAULT</div></div>
+<div class="grid-5">
+  <div class="col"><div class="swatch" style="background:#0f0f1a"></div><div class="name">background</div><div class="hex">#0F0F1A</div></div>
+  <div class="col"><div class="swatch" style="background:#16162a"></div><div class="name">card</div><div class="hex">#16162A</div></div>
+  <div class="col"><div class="swatch" style="background:#282828"></div><div class="name">muted</div><div class="hex">#282828</div></div>
+  <div class="col"><div class="swatch" style="background:#94a3b8"></div><div class="name">muted-fg</div><div class="hex">#94A3B8</div></div>
+  <div class="col"><div class="swatch" style="background:#f9f9f9"></div><div class="name">foreground</div><div class="hex">#F9F9F9</div></div>
+</div>
+</body></html>

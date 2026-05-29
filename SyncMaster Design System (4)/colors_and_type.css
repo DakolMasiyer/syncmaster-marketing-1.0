@@ -1,0 +1,290 @@
+/* ============================================================
+   SYNCMASTER — colors & type tokens
+   ----------------------------------------------------------------
+   Mirror of the production Phase E2 design system. Dark mode is the
+   editorial default; light mode is also supplied. Apply `.dark`
+   on <html> or <body> to opt into dark mode.
+   ============================================================ */
+
+/* DM Sans (300, 400, 500, 700, 900) + Geist Mono (400, 500, 600) */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap");
+
+:root {
+  /* ──────────── Brand primitives ──────────── */
+  --sm-purple:        #4b4bc0;   /* Primary brand */
+  --sm-purple-700:    #3a3a99;
+  --sm-purple-200:    #d2d2ed;
+  --sm-acid:          oklch(0.88 0.18 120); /* Active-badge highlight */
+  --sm-ink:           #0f0f1a;   /* Dark canvas */
+  --sm-ink-raised:    #16162a;   /* Card on dark */
+  --sm-paper:         #ffffff;
+  --sm-fg-dark:       #f9f9f9;
+  --sm-fg-light:      #111111;
+
+  /* ──────────── Semantic — light mode (default) ──────────── */
+  --background:           #ffffff;
+  --foreground:           #111111;
+  --card:                 #ffffff;
+  --card-foreground:      #111111;
+  --popover:              #ffffff;
+  --popover-foreground:   #111111;
+  --primary:              #4b4bc0;
+  --primary-foreground:   #ffffff;
+  --secondary:            #f5f5f5;
+  --secondary-foreground: #4b4bc0;
+  --muted:                #f5f5f5;
+  --muted-foreground:     #666666;
+  --accent:               #f5f5f5;
+  --accent-foreground:    #4b4bc0;
+  --destructive:          #ef4444;
+  --border:               #e5e5e5;
+  --input:                #e5e5e5;
+  --ring:                 #4b4bc0;
+
+  /* Status primitives — non-themed */
+  --status-green:  #22c55e;
+  --status-amber:  #f59e0b;
+  --status-blue:   #3b82f6;
+  --status-red:    #ef4444;
+
+  /* Sidebar — light mode shows purple navigation rail */
+  --sidebar:                       #4b4bc0;
+  --sidebar-foreground:            #ffffff;
+  --sidebar-primary:               #ffffff;
+  --sidebar-primary-foreground:    #4b4bc0;
+  --sidebar-accent:                rgba(255,255,255,0.10);
+  --sidebar-accent-foreground:     #ffffff;
+  --sidebar-border:                rgba(255,255,255,0.10);
+
+  /* ──────────── Radii (base 6px / 0.375rem) ──────────── */
+  --radius:        0.375rem;        /* 6px — base */
+  --radius-xs:     2px;
+  --radius-sm:     4px;
+  --radius-base:   6px;
+  --radius-md:     8px;
+  --radius-lg:     12px;
+  --radius-xl:     16px;
+  --radius-2xl:    20px;
+  --radius-3xl:    32px;            /* Used for dashboard hero / tool cards */
+  --radius-pill:   9999px;
+
+  /* ──────────── Spacing (4px unit) ──────────── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* ──────────── Elevation ──────────── */
+  --shadow-xs:        0 1px 2px rgba(0,0,0,0.20);
+  --shadow-sm:        0 2px 4px rgba(0,0,0,0.10);
+  --shadow-elev-1:    0 2px 8px  rgba(0,0,0,0.30);
+  --shadow-elev-2:    0 8px 24px rgba(0,0,0,0.40);
+  --shadow-elev-3:    0 12px 32px rgba(0,0,0,0.60);
+  --shadow-acid-glow: 0 0 20px rgba(217,249,157,0.30);
+  --shadow-primary-glow: 0 20px 40px -8px rgba(75,75,192,0.20);
+
+  /* ──────────── Typography — families ──────────── */
+  --font-sans:    "DM Sans", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "DM Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono:    "Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* ──────────── Typography — type scale ──────────── */
+  --fz-2xs: 10px;   /* labels, micro-metadata */
+  --fz-xs:  12px;
+  --fz-sm:  13px;
+  --fz-base:14px;   /* product body */
+  --fz-lg:  16px;
+  --fz-xl:  18px;
+  --fz-2xl: 20px;
+  --fz-3xl: 24px;
+  --fz-4xl: 28px;
+  --fz-5xl: 36px;
+  --fz-6xl: 48px;
+  --fz-7xl: 64px;
+  --fz-display: 96px;
+
+  --lh-tight:  1.1;
+  --lh-snug:   1.2;
+  --lh-normal: 1.45;
+  --lh-relaxed:1.6;
+
+  /* SyncMaster signature tracking: headings use -0.068em */
+  --tracking-sync:     -0.068em;
+  --tracking-display:  -0.04em;
+  --tracking-tight:    -0.02em;
+  --tracking-label:    0.25em;   /* mono micro-labels */
+}
+
+/* ──────────────────────────────────────────────
+   DARK MODE — the editorial default
+   ────────────────────────────────────────────── */
+.dark, [data-theme="dark"] {
+  --background:           #0f0f1a;
+  --foreground:           #f9f9f9;
+  --card:                 #16162a;
+  --card-foreground:      #f9f9f9;
+  --popover:              #16162a;
+  --popover-foreground:   #f9f9f9;
+  --primary:              #4b4bc0;
+  --primary-foreground:   #ffffff;
+  --secondary:            #1e1e1e;
+  --secondary-foreground: #f9f9f9;
+  --muted:                #282828;
+  --muted-foreground:     #94a3b8;
+  --accent:               #282828;
+  --accent-foreground:    #f9f9f9;
+  --destructive:          #ef4444;
+  --border:               rgba(255,255,255,0.08);
+  --input:                rgba(255,255,255,0.16);
+  --ring:                 #4b4bc0;
+
+  --sidebar:                       #0f0f1a;
+  --sidebar-foreground:            #f9f9f9;
+  --sidebar-primary:               #4b4bc0;
+  --sidebar-primary-foreground:    #ffffff;
+  --sidebar-accent:                rgba(255,255,255,0.04);
+  --sidebar-accent-foreground:     #f9f9f9;
+  --sidebar-border:                rgba(255,255,255,0.08);
+}
+
+/* ──────────────────────────────────────────────
+   BASE — type weights & defaults
+   ────────────────────────────────────────────── */
+html, body {
+  font-family: var(--font-sans);
+  font-size: var(--fz-base);
+  line-height: var(--lh-normal);
+  background: var(--background);
+  color: var(--foreground);
+  font-feature-settings: "rlig" 1, "calt" 1;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection { background: color-mix(in srgb, var(--primary) 20%, transparent); }
+
+/* ──────────────────────────────────────────────
+   SEMANTIC TYPE — headings & body
+   All headings use BLACK weight (900) + -0.068em tracking + 1.2 lh.
+   ────────────────────────────────────────────── */
+h1, .h1 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(36px, 5.5vw, 72px);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-sync);
+  color: var(--foreground);
+}
+h2, .h2 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(28px, 3.5vw, 48px);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-sync);
+  color: var(--foreground);
+}
+h3, .h3 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: var(--fz-3xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-sync);
+  color: var(--foreground);
+}
+h4, .h4 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: var(--fz-xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-sync);
+  color: var(--foreground);
+}
+h5, .h5 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: var(--fz-lg);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-sync);
+}
+h6, .h6 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: var(--fz-sm);
+  letter-spacing: var(--tracking-sync);
+  text-transform: uppercase;
+}
+
+p, .body {
+  font-family: var(--font-sans);
+  font-size: var(--fz-base);
+  font-weight: 500;
+  line-height: var(--lh-normal);
+  color: var(--foreground);
+}
+
+.lead {
+  font-size: clamp(18px, 1.4vw, 22px);
+  font-weight: 500;
+  letter-spacing: var(--tracking-tight);
+  color: var(--muted-foreground);
+  line-height: var(--lh-relaxed);
+}
+
+/* Editorial display — used for brief titles, lockups */
+.display {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+/* All-caps mono label. Sizing tokens: .label (10px) / .label-strong (11px) */
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--fz-2xs);
+  letter-spacing: var(--tracking-label);
+  color: var(--muted-foreground);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.label-strong {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--foreground);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Tabular numerals for data, money, BPM, durations */
+.mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum";
+}
+
+/* Hairline rules — the editorial separator */
+.hairline         { border-top: 1px solid var(--border); }
+.hairline-strong  { border-top: 1px solid var(--input); }
+
+.muted, .dim      { color: var(--muted-foreground); }
+.accent-text      { color: var(--primary); }
+.acid-text        { color: var(--sm-acid); }
+.tracking-sync    { letter-spacing: var(--tracking-sync); }
+
+/* Code / inline mono */
+code, .code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  padding: 2px 5px;
+  border-radius: var(--radius-sm);
+  background: var(--muted);
+  color: var(--foreground);
+}

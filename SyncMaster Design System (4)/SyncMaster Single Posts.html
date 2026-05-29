@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SyncMaster — Single Post Styles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,800&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     SyncMaster — single-post viewer
+     Canonical source: uploads/figma-export/singles.html + styles.css
+     Tokens mirror colors_and_type.css (DM Sans 900 / Geist Mono).
+     ============================================================ */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --shell:        #14141c;   /* neutral letterbox */
+    --shell-2:      #1c1c26;
+    --chrome-fg:    #e7e7ea;
+    --chrome-dim:   #84848f;
+    --chrome-line:  rgba(255,255,255,0.10);
+    --sm-purple:    #4b4bc0;
+    --sm-lime:      #c8e60d;
+  }
+
+  html, body { height: 100%; }
+  body {
+    background: var(--shell);
+    color: var(--chrome-fg);
+    font-family: "DM Sans", system-ui, sans-serif;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─────────── Viewer chrome ─────────── */
+  .viewer { height: 100vh; display: flex; flex-direction: column; }
+
+  .tabbar {
+    flex: 0 0 auto;
+    display: flex; align-items: stretch; gap: 0;
+    border-bottom: 1px solid var(--chrome-line);
+    background: rgba(10,10,18,0.55);
+    backdrop-filter: blur(12px);
+    overflow-x: auto;
+  }
+  .tab {
+    all: unset; cursor: pointer;
+    flex: 1 1 0; min-width: 132px;
+    padding: 13px 18px 12px;
+    display: flex; flex-direction: column; gap: 3px;
+    border-right: 1px solid var(--chrome-line);
+    transition: background .18s ease;
+  }
+  .tab:last-child { border-right: none; }
+  .tab:hover { background: rgba(255,255,255,0.04); }
+  .tab__no {
+    font-family: "Geist Mono", monospace; font-size: 11px;
+    letter-spacing: 0.22em; color: var(--chrome-dim);
+  }
+  .tab__name {
+    font-family: "Geist Mono", monospace; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.13em; color: var(--chrome-dim);
+    text-transform: uppercase; white-space: nowrap;
+    transition: color .18s ease;
+  }
+  .tab.is-active { background: rgba(255,255,255,0.05); }
+  .tab.is-active .tab__no { color: var(--sm-lime); }
+  .tab.is-active .tab__name { color: var(--chrome-fg); }
+  .tab__bar {
+    height: 2px; margin-top: 6px; border-radius: 2px;
+    background: transparent; transition: background .18s ease;
+  }
+  .tab.is-active .tab__bar { background: var(--sm-lime); }
+
+  /* ─────────── Stage + scaling ─────────── */
+  .stage {
+    flex: 1 1 auto; position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    background:
+      radial-gradient(1200px 800px at 50% 0%, var(--shell-2), var(--shell) 70%);
+  }
+  .canvas-wrap {
+    width: 1080px; height: 1350px; flex: 0 0 auto;
+    transform-origin: center center;
+    box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+    border-radius: 2px; overflow: hidden;
+    position: relative;
+  }
+
+  /* ─────────── Nav arrows + counter ─────────── */
+  .nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 56px; height: 56px; border-radius: 9999px;
+    background: rgba(20,20,28,0.72); color: var(--chrome-fg);
+    border: 1px solid var(--chrome-line);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 20; backdrop-filter: blur(8px);
+    transition: background .15s ease, transform .15s ease;
+  }
+  .nav svg { width: 22px; height: 22px; }
+  .nav:hover { background: rgba(40,40,52,0.92); }
+  .nav:active { transform: translateY(-50%) scale(0.94); }
+  .nav--prev { left: 24px; }
+  .nav--next { right: 24px; }
+  .counter {
+    position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+    font-family: "Geist Mono", monospace; font-size: 12px; letter-spacing: 0.28em;
+    color: var(--chrome-dim); z-index: 20; user-select: none;
+  }
+  .counter b { color: var(--chrome-fg); font-weight: 600; }
+
+  /* ════════════════════════════════════════════════════════════
+     POST — shared frame (1080×1350)
+     ════════════════════════════════════════════════════════════ */
+  .post {
+    position: absolute; inset: 0; display: none;
+    width: 1080px; height: 1350px; overflow: hidden;
+    font-family: "DM Sans", sans-serif;
+  }
+  .post.is-active { display: block; }
+
+  /* Theme tokens */
+  .theme-dark {
+    --bg: #0a0a20; --fg: #f9f9f9;
+    --eyebrow: #d9f99d; --dot: #c9e834;
+    --accent: #c9e834; --accent-ink: #0a0a20;
+    --muted: rgba(249,249,249,0.56);
+    --faint: rgba(249,249,249,0.34);
+    --hair: rgba(249,249,249,0.14);
+    --ghost: rgba(249,249,249,0.045);
+    --wave1: #d9f99d; --wave2: rgba(255,255,255,0.35);
+    --mark-bg: #c9e84c; --mark-s: #0f151a; --mark-stroke: #c9e84c;
+    --glow: rgba(64,46,182,0.85);
+    background: var(--bg);
+  }
+  .theme-light {
+    --bg: #f4f4f0; --fg: #0d0d18;
+    --eyebrow: #5252e0; --dot: #5252e0;
+    --accent: #5252e0; --accent-ink: #ffffff;
+    --muted: rgba(17,17,17,0.52);
+    --faint: rgba(17,17,17,0.32);
+    --hair: rgba(17,17,17,0.14);
+    --ghost: rgba(75,75,192,0.06);
+    --wave1: #5252e0; --wave2: rgba(17,17,17,0.25);
+    --mark-bg: #4b4bc0; --mark-s: #ffffff; --mark-stroke: #4b4bc0;
+    --glow: rgba(214,209,249,0.9);
+    background: var(--bg);
+  }
+
+  /* grain + glow + corner bloom */
+  .post__grain {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0   0 0 0 0 0   0 0 0 0 0   0 0 0 0.20 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>");
+    background-size: 240px 240px;
+  }
+  .theme-light .post__grain { opacity: 0.5; }
+  .post__glow {
+    position: absolute; z-index: 0; pointer-events: none;
+    width: 1500px; height: 1100px; border-radius: 50%;
+    filter: blur(40px);
+    background: radial-gradient(closest-side, var(--glow), transparent 72%);
+  }
+  .post__bloom {
+    position: absolute; z-index: 0; pointer-events: none;
+    width: 460px; height: 460px; border-radius: 50%;
+    background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 32%, transparent), transparent 70%);
+  }
+
+  /* giant ghost wordmark */
+  .ghostmark {
+    position: absolute; z-index: 1; pointer-events: none; user-select: none;
+    font-family: "DM Sans", sans-serif; font-weight: 800;
+    font-size: 640px; line-height: 1; letter-spacing: -0.06em;
+    color: var(--ghost); white-space: nowrap;
+  }
+
+  /* top chrome: small wordmark + geo line */
+  .chrome-top {
+    position: absolute; top: 64px; left: 64px; right: 64px; z-index: 6;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .wordmark {
+    font-family: "DM Sans", sans-serif; font-weight: 800; font-size: 30px;
+    letter-spacing: -0.05em; color: var(--fg); line-height: 1;
+    display: flex; align-items: center; gap: 9px;
+  }
+  .wordmark::after {
+    content: ""; width: 9px; height: 9px; border-radius: 50%;
+    background: var(--accent); margin-top: 4px;
+  }
+  .geo {
+    font-family: "Geist Mono", monospace; font-size: 20px; font-weight: 400;
+    letter-spacing: 0.04em; color: var(--faint); text-align: right;
+  }
+
+  /* footer chrome: S-mark + domain + pillar */
+  .chrome-foot {
+    position: absolute; bottom: 56px; left: 64px; right: 64px; z-index: 6;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .brand { display: flex; align-items: center; gap: 22px; }
+  .smark {
+    width: 72px; height: 72px; border-radius: 9999px; flex: 0 0 auto;
+    background: var(--mark-bg);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 40px color-mix(in srgb, var(--accent) 22%, transparent);
+  }
+  .smark svg { width: 34px; height: 30px; display: block; }
+  .brand__txt { display: flex; flex-direction: column; gap: 2px; }
+  .brand__domain { font-family: "DM Sans", sans-serif; font-weight: 700; font-size: 30px; letter-spacing: -0.02em; color: var(--fg); line-height: 1.05; }
+  .brand__sub { font-family: "Geist Mono", monospace; font-size: 19px; letter-spacing: 0.02em; color: var(--faint); }
+  .pillar { font-family: "Geist Mono", monospace; font-size: 22px; letter-spacing: 0.06em; color: var(--faint); }
+
+  /* eyebrow */
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 14px;
+    font-family: "Geist Mono", monospace; font-weight: 500; font-size: 24px;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--eyebrow);
+  }
+  .eyebrow::before {
+    content: ""; width: 16px; height: 16px; border-radius: 50%;
+    background: var(--dot); flex: 0 0 auto;
+  }
+  .eyebrow--plain::before { display: none; }
+
+  /* headline + body */
+  .display { font-family: "DM Sans", sans-serif; font-weight: 800; letter-spacing: -0.045em; line-height: 0.94; color: var(--fg); }
+  .body {
+    font-family: "DM Sans", sans-serif; font-weight: 500; font-size: 34px;
+    line-height: 1.36; letter-spacing: -0.01em; color: var(--muted);
+    text-wrap: pretty;
+  }
+
+  /* CTA pill */
+  .cta {
+    display: inline-flex; align-items: center; gap: 14px;
+    padding: 26px 44px; border-radius: 9999px;
+    background: var(--accent); color: var(--accent-ink);
+    font-family: "Geist Mono", monospace; font-weight: 700; font-size: 26px;
+    letter-spacing: 0.02em; white-space: nowrap;
+    box-shadow: 0 0 36px color-mix(in srgb, var(--accent) 24%, transparent);
+  }
+
+  /* waveform */
+  .wave { display: block; width: 100%; height: auto; overflow: visible; }
+  .wave .w1 { stroke: var(--wave1); fill: none; }
+  .wave .w2 { stroke: var(--wave2); fill: none; }
+
+  /* content slab common */
+  .slab { position: absolute; z-index: 5; }
+
+  /* ── Post 1 · STAT HERO ── */
+  .p1-stat { position: absolute; z-index: 5; left: 56px; right: 56px; top: 300px; }
+  .p1-eyebrow { position: absolute; z-index: 6; left: 64px; top: 230px; }
+  .p1-num {
+    font-family: "DM Sans", sans-serif; font-weight: 800; letter-spacing: -0.06em;
+    line-height: 0.8; color: var(--fg); font-size: 560px; display: block;
+  }
+  .p1-num .dash { color: var(--accent); }
+  .p1-cap {
+    font-family: "Geist Mono", monospace; font-size: 28px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--faint); margin-top: 8px;
+  }
+  .p1-body { position: absolute; z-index: 5; left: 64px; right: 360px; top: 1000px; }
+  .p1-cta { position: absolute; z-index: 6; right: 64px; top: 1010px; }
+  .p1-wave { position: absolute; z-index: 2; left: 64px; right: 64px; top: 905px; opacity: 0.5; }
+
+  /* ── Post 2 · DECLARATION ── */
+  .p2-eyebrow { position: absolute; z-index: 6; left: 64px; top: 250px; }
+  .p2-head {
+    position: absolute; z-index: 5; left: 56px; top: 330px; right: -120px;
+    font-size: 300px; line-height: 0.86;
+  }
+  .p2-head .it { font-style: italic; font-weight: 800; color: var(--accent); }
+  .p2-body { position: absolute; z-index: 5; left: 64px; bottom: 250px; max-width: 720px; }
+  .p2-cta { position: absolute; z-index: 6; left: 64px; bottom: 150px; }
+  .p2-wave { position: absolute; z-index: 2; right: -40px; top: 250px; width: 300px; opacity: 0.6; transform: rotate(90deg); transform-origin: top right; }
+
+  /* ── Post 3 · SPLIT ── */
+  .p3-rule { position: absolute; z-index: 4; left: 380px; top: 210px; bottom: 230px; width: 2px; background: var(--hair); }
+  .p3-left { position: absolute; z-index: 5; left: 64px; top: 230px; width: 290px; display: flex; flex-direction: column; gap: 26px; }
+  .p3-left .lbl { font-family: "Geist Mono", monospace; font-size: 22px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); }
+  .p3-left .lbl b { color: var(--eyebrow); font-weight: 500; }
+  .p3-right { position: absolute; z-index: 5; left: 440px; right: 64px; top: 300px; }
+  .p3-head { font-size: 168px; line-height: 0.92; }
+  .p3-head .accent { color: var(--accent); }
+  .p3-body { margin-top: 48px; }
+  .p3-cta { margin-top: 64px; }
+  .p3-wave { position: absolute; z-index: 2; left: 440px; right: 64px; top: 1050px; opacity: 0.5; }
+
+  /* ── Post 4 · DENSE STACK ── */
+  .p4 { position: absolute; z-index: 5; left: 64px; right: 64px; top: 250px; }
+  .p4 .eyebrow { margin-bottom: 44px; }
+  .stack-line { font-family: "DM Sans", sans-serif; font-weight: 800; letter-spacing: -0.05em; line-height: 0.96; color: var(--fg); display: block; }
+  .stack-line.xl { font-size: 178px; }
+  .stack-line.lg { font-size: 120px; }
+  .stack-line.md { font-size: 96px; color: var(--muted); font-weight: 700; }
+  .stack-line .accent { color: var(--accent); }
+  .p4-break { margin: 36px 0; opacity: 0.7; }
+  .p4-body { margin-top: 52px; max-width: 760px; }
+  .p4-cta { margin-top: 56px; }
+
+  /* ── Post 5 · BADGE ── */
+  .p5-wrap { position: absolute; inset: 0; z-index: 5; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; }
+  .p5-ring {
+    position: absolute; z-index: 4; top: 470px; left: 50%; transform: translateX(-50%);
+    width: 720px; height: 720px; border-radius: 50%;
+    border: 2px solid color-mix(in srgb, var(--accent) 60%, transparent);
+  }
+  .p5-ring.r2 { width: 880px; height: 880px; border-color: var(--hair); }
+  .p5-badge {
+    position: absolute; z-index: 5; top: 520px; left: 50%; transform: translateX(-50%);
+    width: 620px; height: 620px; border-radius: 50%;
+    background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 16%, transparent), transparent 78%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+  }
+  .p5-badge .num { font-family: "DM Sans", sans-serif; font-weight: 800; font-size: 230px; letter-spacing: -0.05em; line-height: 0.85; color: var(--fg); }
+  .p5-badge .num .accent { color: var(--accent); }
+  .p5-badge .lbl { font-family: "Geist Mono", monospace; font-size: 26px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faint); }
+  .p5-eyebrow { position: absolute; z-index: 6; left: 50%; transform: translateX(-50%); top: 320px; }
+  .p5-body { position: absolute; z-index: 6; left: 140px; right: 140px; top: 1130px; text-align: center; }
+  .p5-wave { position: absolute; z-index: 3; left: 230px; right: 230px; top: 822px; opacity: 0.85; }
+  .p5 .chrome-foot { justify-content: center; }
+  .p5 .pillar { display: none; }
+
+  /* ── Post 6 · MINIMAL ── */
+  .p6 { position: absolute; z-index: 5; left: 64px; right: 64px; top: 430px; }
+  .p6 .eyebrow { margin-bottom: 60px; }
+  .p6-head { font-size: 176px; line-height: 0.94; max-width: 880px; }
+  .p6-rule { height: 8px; width: 200px; background: var(--sm-lime); margin: 88px 0 40px; border-radius: 2px; }
+  .theme-light .p6-rule { box-shadow: 0 0 24px rgba(200,230,13,0.5); }
+  .p6-domain { font-family: "Geist Mono", monospace; font-size: 32px; letter-spacing: 0.04em; color: var(--fg); font-weight: 500; }
+  .p6-wave { position: absolute; z-index: 2; left: 64px; width: 360px; top: 250px; opacity: 0.5; }
+
+  @media (max-width: 560px) {
+    .tab { min-width: 110px; }
+    .nav { width: 46px; height: 46px; }
+    .nav--prev { left: 10px; } .nav--next { right: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="viewer">
+  <nav class="tabbar" id="tabbar" aria-label="Post styles"></nav>
+
+  <div class="stage" id="stage">
+    <div class="canvas-wrap" id="canvasWrap">
+
+      <!-- ════════ POST 1 · STAT HERO (dark) ════════ -->
+      <article class="post p1 theme-dark is-active" data-screen-label="01 · Stat Hero">
+        <div class="post__grain"></div>
+        <div class="post__glow" style="top: -380px; right: -360px;"></div>
+        <div class="post__bloom" style="top: -160px; right: -120px;"></div>
+        <div class="ghostmark" style="bottom: -150px; left: -80px;">sync</div>
+
+        <div class="chrome-top">
+          <span class="wordmark">sync</span>
+          <span class="geo">2026 · Q2 · Lagos · Cape Town · Nairobi</span>
+        </div>
+
+        <!-- {{eyebrow}} -->
+        <span class="eyebrow p1-eyebrow">The SyncMaster way</span>
+        <!-- {{stat}} + {{stat_caption}} -->
+        <div class="p1-stat">
+          <span class="p1-num">3<span class="dash">–</span>5</span>
+          <div class="p1-cap">curated matches per brief</div>
+        </div>
+
+        <div class="p1-wave wave-slot"></div>
+
+        <!-- {{subtext}} -->
+        <p class="body p1-body">Not 500 unvetted submissions. Hand-vetted African composers, rights cleared, delivered in 24–48 hours.</p>
+        <!-- {{cta}} -->
+        <a class="cta p1-cta" href="#">See how matching works <span>→</span></a>
+
+        <div class="chrome-foot">
+          <div class="brand">
+            <span class="smark smark-slot"></span>
+            <span class="brand__txt">
+              <span class="brand__domain">syncmaster.live</span>
+              <span class="brand__sub">Sync Licensing Infrastructure</span>
+            </span>
+          </div>
+          <!-- {{pillar}} -->
+          <span class="pillar">Single · Curation</span>
+        </div>
+      </article>
+
+      <!-- ════════ POST 2 · DECLARATION (light) ════════ -->
+      <article class="post p2 theme-light" data-screen-label="02 · Declaration">
+        <div class="post__grain"></div>
+        <div class="post__glow" style="bottom: -420px; left: -380px;"></div>
+        <div class="ghostmark" style="top: -120px; right: -120px;">sync</div>
+
+        <div class="chrome-top">
+          <span class="wordmark">sync</span>
+          <span class="geo">2026 · Q2 · Lagos · Cape Town · Nairobi</span>
+        </div>
+
+        <!-- {{eyebrow}} -->
+        <span class="eyebrow p2-eyebrow">African composers · Global briefs</span>
+        <!-- {{headline}} — bleeds off the right edge -->
+        <h1 class="display p2-head">Your music,<br>placed <span class="it">worldwide.</span></h1>
+
+        <div class="p2-wave wave-slot"></div>
+
+        <!-- {{subtext}} -->
+        <p class="body p2-body">From Nollywood scores to Netflix cues — vetted African composers, matched to briefs that pay.</p>
+        <!-- {{cta}} -->
+        <a class="cta p2-cta" href="#">Get early access <span>→</span></a>
+
+        <div class="chrome-foot">
+          <div class="brand">
+            <span class="smark smark-slot"></span>
+            <span class="brand__txt">
+              <span class="brand__domain">syncmaster.live</span>
+              <span class="brand__sub">Sync Licensing Infrastructure</span>
+            </span>
+          </div>
+          <!-- {{pillar}} -->
+          <span class="pillar">Single · Access</span>
+        </div>
+      </article>
+
+      <!-- ════════ POST 3 · SPLIT (dark) ════════ -->
+      <article class="post p3 theme-dark" data-screen-label="03 · Split">
+        <div class="post__grain"></div>
+        <div class="post__glow" style="top: -300px; right: -420px;"></div>
+        <div class="ghostmark" style="bottom: -160px; left: -60px;">sync</div>
+
+        <div class="chrome-top">
+          <span class="wordmark">sync</span>
+          <span class="geo">2026 · Q2 · Lagos · Cape Town · Nairobi</span>
+        </div>
+
+        <div class="p3-rule"></div>
+        <div class="p3-left">
+          <!-- {{eyebrow}} -->
+          <span class="eyebrow eyebrow--plain" style="font-size:22px;">The problem</span>
+          <span class="lbl">Industry<br>status quo</span>
+          <span class="lbl"><b>Brief 042</b><br>Lagos → London</span>
+        </div>
+        <div class="p3-right">
+          <!-- {{headline}} -->
+          <h1 class="display p3-head">500 in.<br><span class="accent">Zero</span> curated.</h1>
+          <!-- {{subtext}} -->
+          <p class="body p3-body">Supervisors drown in noise. African composers stay stuck behind directories built for the West.</p>
+          <!-- {{cta}} -->
+          <a class="cta p3-cta" href="#">There's a better way <span>→</span></a>
+        </div>
+
+        <div class="p3-wave wave-slot"></div>
+
+        <div class="chrome-foot">
+          <div class="brand">
+            <span class="smark smark-slot"></span>
+            <span class="brand__txt">
+              <span class="brand__domain">syncmaster.live</span>
+              <span class="brand__sub">Sync Licensing Infrastructure</span>
+            </span>
+          </div>
+          <!-- {{pillar}} -->
+          <span class="pillar">Single · Briefs</span>
+        </div>
+      </article>
+
+      <!-- ════════ POST 4 · DENSE STACK (light) ════════ -->
+      <article class="post p4-post theme-light" data-screen-label="04 · Dense Stack">
+        <div class="post__grain"></div>
+        <div class="post__glow" style="top: -360px; right: -360px;"></div>
+        <div class="ghostmark" style="bottom: -150px; right: -60px;">sync</div>
+
+        <div class="chrome-top">
+          <span class="wordmark">sync</span>
+          <span class="geo">2026 · Q2 · Lagos · Cape Town · Nairobi</span>
+        </div>
+
+        <div class="p4">
+          <!-- {{eyebrow}} -->
+          <span class="eyebrow">For composers</span>
+          <!-- {{headline}} — tight multi-line stack, waveform as the break -->
+          <span class="stack-line xl">Apply once.</span>
+          <span class="stack-line md">Get vetted once.</span>
+          <div class="p4-break wave-slot"></div>
+          <span class="stack-line lg">Then let the<br><span class="accent">briefs</span> come to you.</span>
+          <!-- {{subtext}} -->
+          <p class="body p4-body">One curated profile. Lifetime access to global sync briefs — no re-applying, ever.</p>
+          <!-- {{cta}} -->
+          <a class="cta p4-cta" href="#">Join the roster <span>→</span></a>
+        </div>
+
+        <div class="chrome-foot">
+          <div class="brand">
+            <span class="smark smark-slot"></span>
+            <span class="brand__txt">
+              <span class="brand__domain">syncmaster.live</span>
+              <span class="brand__sub">Sync Licensing Infrastructure</span>
+            </span>
+          </div>
+          <!-- {{pillar}} -->
+          <span class="pillar">Single · Roster</span>
+        </div>
+      </article>
+
+      <!-- ════════ POST 5 · BADGE (dark) ════════ -->
+      <article class="post p5 theme-dark" data-screen-label="05 · Badge">
+        <div class="post__grain"></div>
+        <div class="post__glow" style="top: 120px; left: 50%; transform: translateX(-50%);"></div>
+        <div class="ghostmark" style="bottom: -150px; left: -80px;">sync</div>
+
+        <div class="chrome-top">
+          <span class="wordmark">sync</span>
+          <span class="geo">2026 · Q2 · Lagos · Cape Town · Nairobi</span>
+        </div>
+
+        <!-- {{eyebrow}} -->
+        <span class="eyebrow p5-eyebrow">Turnaround</span>
+        <div class="p5-ring r2"></div>
+        <div class="p5-ring"></div>
+        <div class="p5-badge">
+          <!-- {{stat}} -->
+          <span class="num">24<span class="accent">–</span>48<span class="lbl" style="font-family:'DM Sans'; font-size:96px; letter-spacing:-0.05em; color:var(--fg); text-transform:none;">h</span></span>
+          <span class="lbl">brief → shortlist</span>
+        </div>
+        <div class="p5-wave wave-slot"></div>
+        <!-- {{subtext}} -->
+        <p class="body p5-body">From brief posted to a hand-picked shortlist delivered. Every time.</p>
+
+        <div class="chrome-foot">
+          <div class="brand">
+            <span class="smark smark-slot"></span>
+            <span class="brand__txt">
+              <span class="brand__domain">syncmaster.live</span>
+              <span class="brand__sub">Sync Licensing Infrastructure · Placements</span>
+            </span>
+          </div>
+          <span class="pillar">Single · Placements</span>
+        </div>
+      </article>
+
+      <!-- ════════ POST 6 · MINIMAL (light) ════════ -->
+      <article class="post p6-post theme-light" data-screen-label="06 · Minimal">
+        <div class="post__grain"></div>
+        <div class="ghostmark" style="bottom: -150px; right: -90px;">sync</div>
+
+        <div class="chrome-top">
+          <span class="wordmark">sync</span>
+          <span class="geo">2026 · Q2 · Lagos · Cape Town · Nairobi</span>
+        </div>
+
+        <div class="p6-wave wave-slot"></div>
+
+        <div class="p6">
+          <!-- {{eyebrow}} -->
+          <span class="eyebrow">Rights clarity</span>
+          <!-- {{headline}} -->
+          <h1 class="display p6-head">Cleared to sync. Worldwide.</h1>
+          <!-- lime rule -->
+          <div class="p6-rule"></div>
+          <!-- domain -->
+          <span class="p6-domain">syncmaster.live</span>
+        </div>
+
+        <div class="chrome-foot">
+          <div class="brand">
+            <span class="smark smark-slot"></span>
+            <span class="brand__txt">
+              <span class="brand__domain">syncmaster.live</span>
+              <span class="brand__sub">Sync Licensing Infrastructure</span>
+            </span>
+          </div>
+          <!-- {{pillar}} -->
+          <span class="pillar">Single · Rights</span>
+        </div>
+      </article>
+
+    </div><!-- /canvas-wrap -->
+
+    <button class="nav nav--prev" id="prev" aria-label="Previous">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button class="nav nav--next" id="next" aria-label="Next">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+    <div class="counter"><b id="cNow">01</b> / 06</div>
+  </div>
+</div>
+
+<!-- waveform template (two-stroke sine, from vector-23 / vector-24) -->
+<template id="wave-tpl">
+  <svg class="wave" viewBox="0 0 1520 62" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path class="w1" stroke-width="2.4" d="M0 31.2C53.3 -8.8 106.7 -8.8 160 31.2C213.3 71.2 266.7 71.2 320 31.2C373.3 -8.8 426.7 -8.8 480 31.2C533.3 71.2 586.7 71.2 640 31.2C693.3 -8.8 746.7 -8.8 800 31.2C853.3 71.2 906.7 71.2 960 31.2C1013.3 -8.8 1066.7 -8.8 1120 31.2C1173.3 71.2 1226.7 71.2 1280 31.2C1333.3 -8.8 1386.7 -8.8 1440 31.2C1493.3 71.2 1520 71.2 1520 31.2"></path>
+    <path class="w2" stroke-width="2" d="M0 31C40 -9 80 -9 120 31C160 71 200 71 240 31C280 -9 320 -9 360 31C400 71 440 71 480 31C520 -9 560 -9 600 31C640 71 680 71 720 31C760 -9 800 -9 840 31C880 71 920 71 960 31C1000 -9 1040 -9 1080 31C1120 71 1160 71 1200 31C1240 -9 1280 -9 1320 31C1360 71 1400 71 1440 31C1480 -9 1506.7 -9 1520 31"></path>
+  </svg>
+</template>
+
+<!-- SyncMaster S-mark glyph (from s-31.svg) -->
+<template id="smark-tpl">
+  <svg viewBox="0 0 49 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M33.8311 0.638672C41.384 0.638672 47.4268 6.74615 47.4268 14.2344V26.8174C47.4268 34.1583 41.7237 40.0684 34.4697 40.3975V32.7852C37.4803 32.4654 39.834 29.9113 39.834 26.8174V14.2344C39.834 10.9248 37.1406 8.23145 33.8311 8.23145C30.5216 8.23161 27.8291 10.9249 27.8291 14.2344V26.8174C27.8291 34.3702 21.7224 40.4128 14.2344 40.4131C6.67939 40.4131 0.638672 34.3724 0.638672 26.8174V14.2344C0.638672 6.95863 6.34292 0.986361 13.5947 0.65332V8.26562C10.5845 8.58575 8.23145 11.1407 8.23145 14.2344V26.8174C8.23145 30.1269 10.9248 32.8193 14.2344 32.8193C17.5437 32.8191 20.2363 30.1268 20.2363 26.8174V14.2344C20.2363 6.74826 26.345 0.638834 33.8311 0.638672Z" class="sfill"></path>
+  </svg>
+</template>
+
+<script>
+(function () {
+  // inject waveforms
+  const waveTpl = document.getElementById('wave-tpl');
+  document.querySelectorAll('.wave-slot').forEach(slot => {
+    slot.appendChild(waveTpl.content.cloneNode(true));
+  });
+  // inject S-marks (fill via theme var)
+  const smarkTpl = document.getElementById('smark-tpl');
+  document.querySelectorAll('.smark-slot').forEach(slot => {
+    const node = smarkTpl.content.cloneNode(true);
+    slot.appendChild(node);
+  });
+  // resolve smark fill per theme
+  document.querySelectorAll('.post').forEach(post => {
+    const cs = getComputedStyle(post);
+    const sFill = cs.getPropertyValue('--mark-s').trim();
+    post.querySelectorAll('.smark .sfill').forEach(p => { p.setAttribute('fill', sFill); });
+  });
+
+  const TABS = [
+    ['01', 'Stat Hero'], ['02', 'Declaration'], ['03', 'Split'],
+    ['04', 'Dense Stack'], ['05', 'Badge'], ['06', 'Minimal']
+  ];
+  const posts = Array.from(document.querySelectorAll('.post'));
+  const tabbar = document.getElementById('tabbar');
+  const cNow = document.getElementById('cNow');
+  const KEY = 'sm_single_idx';
+
+  let idx = parseInt(localStorage.getItem(KEY) || '0', 10);
+  if (isNaN(idx) || idx < 0 || idx >= posts.length) idx = 0;
+
+  // build tabs
+  TABS.forEach((t, i) => {
+    const b = document.createElement('button');
+    b.className = 'tab';
+    b.innerHTML = '<span class="tab__no">' + t[0] + '</span>' +
+                  '<span class="tab__name">' + t[1] + '</span>' +
+                  '<span class="tab__bar"></span>';
+    b.addEventListener('click', () => go(i));
+    tabbar.appendChild(b);
+  });
+  const tabEls = Array.from(tabbar.children);
+
+  function go(n) {
+    idx = (n + posts.length) % posts.length;
+    posts.forEach((p, i) => p.classList.toggle('is-active', i === idx));
+    tabEls.forEach((t, i) => t.classList.toggle('is-active', i === idx));
+    cNow.textContent = TABS[idx][0];
+    localStorage.setItem(KEY, String(idx));
+  }
+
+  document.getElementById('prev').addEventListener('click', () => go(idx - 1));
+  document.getElementById('next').addEventListener('click', () => go(idx + 1));
+  window.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') go(idx - 1);
+    else if (e.key === 'ArrowRight') go(idx + 1);
+  });
+
+  // scale canvas to fit
+  const stage = document.getElementById('stage');
+  const wrap = document.getElementById('canvasWrap');
+  function fit() {
+    const pad = 56;
+    const aw = stage.clientWidth - pad * 2;
+    const ah = stage.clientHeight - pad * 2;
+    const s = Math.min(aw / 1080, ah / 1350);
+    wrap.style.transform = 'scale(' + Math.max(s, 0.05) + ')';
+  }
+  window.addEventListener('resize', fit);
+  fit();
+  go(idx);
+})();
+</script>
+
+<template id="__bundler_thumbnail" data-bg-color="#0a0a20">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0a0a20"></rect>
+    <circle cx="600" cy="360" r="120" fill="#c9e84c"></circle>
+    <path d="M640 300c45 0 72 27 72 72M560 420c-45 0-72-27-72-72" stroke="#0a0a20" stroke-width="22" stroke-linecap="round" fill="none"></path>
+    <text x="600" y="600" fill="#f9f9f9" font-family="sans-serif" font-weight="800" font-size="120" letter-spacing="-6" text-anchor="middle">sync</text>
+  </svg>
+</template>
+
+</body>
+</html>
