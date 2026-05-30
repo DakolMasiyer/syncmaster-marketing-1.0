@@ -16,110 +16,127 @@
     "#FilmMusic",
     "#SyncMaster"
   ],
-  "caption_hook": "Nobody explained this in music school.\nSync licensing = your music in film, TV, ads & games. ↓",
+  "caption_hook": "Nobody explained this in music school.\nAnd it's worth more than anything they did teach you. ↓",
   "caption_hook_len": 94,
-  "caption_full": "Nobody explained this in music school.\nSync licensing = your music in film, TV, ads & games. ↓\n\nSave this post. It's the starting point for everything.\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicBusiness #FilmMusic",
-  "slide_count": 8,
+  "caption_full": "Nobody explained this in music school.\nAnd it's worth more than anything they did teach you. ↓\n\nSync licensing = your music in film, TV, ads & games.\n\nSave this post. It's the starting point for everything.\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicBusiness #FilmMusic",
+  "slide_count": 7,
+  "fit_warnings": [
+    "[01 hook.headline] copy (93 chars) exceeds slot budget (57 at 200px) — needs a rewrite",
+    "[05 context.body] copy (301 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+  ],
   "slides": [
     {
-      "role": "hook",
-      "eyebrow": "Education · What is sync licensing?",
-      "headline": "Nobody explained this in music school.",
-      "lede": "And it's worth more than anything they did teach you. ↓",
-      "footer_kicker": "Written by",
+      "archetype": "hook",
+      "headline": "Nobody explained this in music school.\nAnd it's worth more than anything they did teach you. ↓",
+      "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "footer_pageno": "01 / 08"
+      "eyebrow": "Education · What is sync licensing?",
+      "counter": "01 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 200
+      },
+      "fit_warnings": [
+        "[01 hook.headline] copy (93 chars) exceeds slot budget (57 at 200px) — needs a rewrite"
+      ]
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 1/7",
-      "headline": "Sync licensing = your music in film, TV, ads & games.",
-      "lede": "",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "Sync licensing = your music in film, TV, ads & games.",
       "footer_name": "syncmaster.live",
       "slide": 2,
-      "footer_pageno": "02 / 08"
+      "eyebrow": "Education · 2/7",
+      "counter": "02 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "proof",
-      "eyebrow": "Education · 2/7",
+      "archetype": "proof",
       "headline": "The work, in numbers.",
       "stats": [
         {
-          "label": "One Netflix scene",
-          "value": "$5,000–$20,000"
+          "label": "ONE NETFLIX",
+          "value": "$5,000"
         },
         {
-          "label": "One global ad campaign",
-          "value": "$10,000–$75,000"
+          "label": "ONE GLOBAL ",
+          "value": "$10,00"
         }
       ],
-      "footer_kicker": "Proof",
       "footer_name": "syncmaster.live",
       "slide": 3,
-      "footer_pageno": "03 / 08"
+      "eyebrow": "Education · 3/7",
+      "counter": "03 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 176
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 3/7",
-      "headline": "Here's the full breakdown — swipe through all 8 slides:",
-      "lede": "",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "Here's the full breakdown — swipe through all 8 slides:",
       "footer_name": "syncmaster.live",
       "slide": 4,
-      "footer_pageno": "04 / 08"
+      "eyebrow": "Education · 4/7",
+      "counter": "04 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "list",
-      "eyebrow": "Education · 4/7",
-      "headline": "Here's what you need to know:",
-      "lede": "What sync licensing actually is · Who's involved and what they each do · What placements actually pay (with real numbers) · The two licences in every single deal",
-      "list_items": [
-        "What sync licensing actually is",
-        "Who's involved and what they each do",
-        "What placements actually pay (with real numbers)",
-        "The two licences in every single deal",
-        "What music supervisors actually look for",
-        "What \"sync-ready\" means for your catalogue",
-        "The African opportunity right now",
-        "How to get started"
-      ],
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "→ What sync licensing actually is\n→ Who's involved and what they each do\n→ What placements actually pay (with real numbers)\n→ The two licences in every single deal\n→ What music supervisors actually look for\n→ What \"sync-ready\" means for your catalogue\n→ The African opportunity right now\n→ How to get started",
       "footer_name": "syncmaster.live",
       "slide": 5,
-      "footer_pageno": "05 / 08"
+      "eyebrow": "Education · 5/7",
+      "counter": "05 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 48
+      },
+      "fit_warnings": [
+        "[05 context.body] copy (301 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+      ]
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 5/7",
-      "headline": "This is the foundation. Everything else builds on it.",
-      "lede": "",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "This is the foundation. Everything else builds on it. Save this. Share it with a composer who needs to know. #SyncLicensing #AfricanComposers #MusicBusiness #FilmMusic #SyncMaster",
       "footer_name": "syncmaster.live",
       "slide": 6,
-      "footer_pageno": "06 / 08"
+      "eyebrow": "Education · 6/7",
+      "counter": "06 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 52
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 6/7",
-      "headline": "Save this. Share it with a composer who needs to know.",
-      "lede": "",
-      "footer_kicker": "Education",
+      "archetype": "cta",
+      "headline": "Open briefs. Every Tuesday.",
+      "body": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Apply now",
       "footer_name": "syncmaster.live",
       "slide": 7,
-      "footer_pageno": "07 / 08"
-    },
-    {
-      "role": "cta",
       "eyebrow": "Apply this week",
-      "headline": "Open briefs. Every Tuesday.",
-      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
-      "cta_text": "Apply now",
-      "footer_kicker": "Apply",
-      "footer_name": "syncmaster.live",
-      "slide": 8,
-      "footer_pageno": "08 / 08"
+      "counter": "07 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 220,
+        "body": 60,
+        "cta_text": 64
+      }
     }
   ]
 }

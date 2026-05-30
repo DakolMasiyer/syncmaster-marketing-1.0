@@ -18,135 +18,116 @@
   "caption_hook": "Your track got shortlisted.\nThe supervisor likes it. ↓",
   "caption_hook_len": 54,
   "caption_full": "Your track got shortlisted.\nThe supervisor likes it. ↓\n\nMissing stems for any pitched track? Rebuild them this week.\n\n#SyncMaster #AfricanComposers #SyncReady #Stems",
-  "slide_count": 10,
+  "slide_count": 7,
+  "fit_warnings": [
+    "[01 hook.eyebrow] copy (59 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
+    "[06 context.body] copy (1189 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+  ],
   "slides": [
     {
-      "role": "hook",
-      "eyebrow": "Education · What great stems look like — the technical spec",
+      "archetype": "hook",
       "headline": "Your track got shortlisted.",
-      "lede": "",
-      "footer_kicker": "Written by",
+      "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "footer_pageno": "01 / 10"
+      "eyebrow": "Education · What great stems look like — the technical spec",
+      "counter": "01 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 320
+      },
+      "fit_warnings": [
+        "[01 hook.eyebrow] copy (59 chars) exceeds slot budget (48 at 44px) — needs a rewrite"
+      ]
     },
     {
-      "role": "list",
-      "eyebrow": "Education · 1/11",
-      "headline": "Here's what you need to know:",
-      "lede": "The supervisor likes it. The picture edit is locked. · Then they ask: \"Can I get stems?\"",
-      "list_items": [
-        "The supervisor likes it. The picture edit is locked.",
-        "Then they ask: \"Can I get stems?\""
-      ],
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "The supervisor likes it. The picture edit is locked.",
       "footer_name": "syncmaster.live",
       "slide": 2,
-      "footer_pageno": "02 / 10"
+      "eyebrow": "Education · 2/7",
+      "counter": "02 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 3/11",
-      "headline": "What happens in the next 2 hours determines whether you get the deal.",
-      "lede": "Here's what professional stems look like. ↓",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "Then they ask: \"Can I get stems?\"",
       "footer_name": "syncmaster.live",
       "slide": 3,
-      "footer_pageno": "03 / 10"
+      "eyebrow": "Education · 3/7",
+      "counter": "03 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 5/11",
-      "headline": "WHAT STEMS ACTUALLY ARE:\nSeparate audio exports of each main element in your track.",
-      "lede": "Not a \"no drums\" version. Not a \"no music\" version.\nIndividual layers that can be mixed independently.",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "What happens in the next 2 hours determines whether you get the deal.",
       "footer_name": "syncmaster.live",
       "slide": 4,
-      "footer_pageno": "04 / 10"
+      "eyebrow": "Education · 4/7",
+      "counter": "04 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "list",
-      "eyebrow": "Education · 6/11",
-      "headline": "Here's what you need to know:",
-      "lede": "THE STANDARD STEM CATEGORIES: · Full mix (the complete, mastered track) · Drums and percussion (isolated) · Bass (isolated)",
-      "list_items": [
-        "THE STANDARD STEM CATEGORIES:",
-        "Full mix (the complete, mastered track)",
-        "Drums and percussion (isolated)",
-        "Bass (isolated)",
-        "Harmony / chords (keys, guitar, pads)",
-        "Melody / lead (primary melodic element)",
-        "Atmosphere / FX (pads, risers, ambience)",
-        "Vocals (if applicable — main and backing separate)"
-      ],
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "Here's what professional stems look like. ↓",
       "footer_name": "syncmaster.live",
       "slide": 5,
-      "footer_pageno": "05 / 10"
+      "eyebrow": "Education · 5/7",
+      "counter": "05 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "list",
-      "eyebrow": "Education · 7/11",
-      "headline": "Here's what you need to know:",
-      "lede": "THE TECHNICAL SPEC: · Format: 24-bit WAV, 48kHz (broadcast standard) · Length: same as full mix, to the exact sample · Peak level: –6dBFS maximum",
-      "list_items": [
-        "THE TECHNICAL SPEC:",
-        "Format: 24-bit WAV, 48kHz (broadcast standard)",
-        "Length: same as full mix, to the exact sample",
-        "Peak level: –6dBFS maximum",
-        "Naming convention: Artist_Title_Stem-Name.wav"
-      ],
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "WHAT STEMS ACTUALLY ARE:\nSeparate audio exports of each main element in your track.\nNot a \"no drums\" version. Not a \"no music\" version.\nIndividual layers that can be mixed independently. THE STANDARD STEM CATEGORIES:\n→ Full mix (the complete, mastered track)\n→ Drums and percussion (isolated)\n→ Bass (isolated)\n→ Harmony / chords (keys, guitar, pads)\n→ Melody / lead (primary melodic element)\n→ Atmosphere / FX (pads, risers, ambience)\n→ Vocals (if applicable — main and backing separate) THE TECHNICAL SPEC:\n→ Format: 24-bit WAV, 48kHz (broadcast standard)\n→ Length: same as full mix, to the exact sample\n→ Peak level: –6dBFS maximum\n→ Naming convention: Artist_Title_Stem-Name.wav THE DELIVERY STANDARD:\n→ Packaged in a single named folder\n→ Shared via Google Drive or Dropbox (link ready to send)\n→ Delivered in under 2 hours. Ideally under 30 minutes. When a director wants to drop out percussion for a quiet scene, they need your drums stem.\nWhen an editor needs to extend a section, they need your loops.\nIf you can't deliver stems cleanly and fast, another composer gets the placement. Build your stem library as you produce.\nNot after the brief arrives. #Stems #SyncReady #AfricanComposers #SyncMaster",
       "footer_name": "syncmaster.live",
       "slide": 6,
-      "footer_pageno": "06 / 10"
+      "eyebrow": "Education · 6/7",
+      "counter": "06 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 48
+      },
+      "fit_warnings": [
+        "[06 context.body] copy (1189 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+      ]
     },
     {
-      "role": "list",
-      "eyebrow": "Education · 8/11",
-      "headline": "Here's what you need to know:",
-      "lede": "THE DELIVERY STANDARD: · Packaged in a single named folder · Shared via Google Drive or Dropbox (link ready to send) · Delivered in under 2 hours. Ideally under 30 minutes.",
-      "list_items": [
-        "THE DELIVERY STANDARD:",
-        "Packaged in a single named folder",
-        "Shared via Google Drive or Dropbox (link ready to send)",
-        "Delivered in under 2 hours. Ideally under 30 minutes."
-      ],
-      "footer_kicker": "Education",
+      "archetype": "cta",
+      "headline": "Open briefs. Every Tuesday.",
+      "body": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Apply now",
       "footer_name": "syncmaster.live",
       "slide": 7,
-      "footer_pageno": "07 / 10"
-    },
-    {
-      "role": "body",
-      "eyebrow": "Education · 9/11",
-      "headline": "When a director wants to drop out percussion for a quiet scene, they need your drums stem.",
-      "lede": "When an editor needs to extend a section, they need your loops.\nIf you can't deliver stems cleanly and fast, another composer gets the placement.",
-      "footer_kicker": "Education",
-      "footer_name": "syncmaster.live",
-      "slide": 8,
-      "footer_pageno": "08 / 10"
-    },
-    {
-      "role": "body",
-      "eyebrow": "Education · 10/11",
-      "headline": "Build your stem library as you produce.\nNot after the brief arrives.",
-      "lede": "",
-      "footer_kicker": "Education",
-      "footer_name": "syncmaster.live",
-      "slide": 9,
-      "footer_pageno": "09 / 10"
-    },
-    {
-      "role": "cta",
       "eyebrow": "Apply this week",
-      "headline": "Open briefs. Every Tuesday.",
-      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
-      "cta_text": "Apply now",
-      "footer_kicker": "Apply",
-      "footer_name": "syncmaster.live",
-      "slide": 10,
-      "footer_pageno": "10 / 10"
+      "counter": "07 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 220,
+        "body": 60,
+        "cta_text": 64
+      }
     }
   ]
 }

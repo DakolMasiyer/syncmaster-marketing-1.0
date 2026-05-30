@@ -18,112 +18,119 @@
   "caption_hook": "Before you send your next sync pitch, run this audit. ↓",
   "caption_hook_len": 55,
   "caption_full": "Before you send your next sync pitch, run this audit. ↓\n\nMost composers who fail at the brief stage don't fail on music quality.\n\nRun this today. Fix the gaps before the brief lands.\n\n#SyncMaster #AfricanComposers #MusicBusiness #SyncAudit",
-  "slide_count": 10,
+  "slide_count": 7,
+  "fit_warnings": [
+    "[01 hook.eyebrow] copy (64 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
+    "[06 context.body] copy (812 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+  ],
   "slides": [
     {
-      "role": "hook",
-      "eyebrow": "Education · The composer audit: 6 things to fix before you pitch",
+      "archetype": "hook",
       "headline": "Before you send your next sync pitch, run this audit.",
-      "lede": "",
-      "footer_kicker": "Written by",
+      "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "footer_pageno": "01 / 10"
+      "eyebrow": "Education · The composer audit: 6 things to fix before you pitch",
+      "counter": "01 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 216
+      },
+      "fit_warnings": [
+        "[01 hook.eyebrow] copy (64 chars) exceeds slot budget (48 at 44px) — needs a rewrite"
+      ]
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 1/12",
-      "headline": "Most composers who fail at the brief stage don't fail on music quality.",
-      "lede": "They fail on one of these 6 things. ↓",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "Most composers who fail at the brief stage don't fail on music quality.",
       "footer_name": "syncmaster.live",
       "slide": 2,
-      "footer_pageno": "02 / 10"
+      "eyebrow": "Education · 2/7",
+      "counter": "02 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 3/12",
-      "headline": "1/ RIGHTS CHAIN DOCUMENTATION\nCan you confirm in writing who owns the master and who controls publishing?",
-      "lede": "Not \"probably me.\" Confirmed and documented.\nIf not: fix this before anything else.",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "They fail on one of these 6 things. ↓",
       "footer_name": "syncmaster.live",
       "slide": 3,
-      "footer_pageno": "03 / 10"
+      "eyebrow": "Education · 3/7",
+      "counter": "03 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "stat",
-      "eyebrow": "Education · 4/12",
-      "stat_number": "2",
-      "lede": "One uncleared sample in your best track = that track is unplaceable.\nIf you're unsure: assume it's not cleared.",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "1",
+      "headline": "",
+      "body": "/ RIGHTS CHAIN DOCUMENTATION\nCan you confirm in writing who owns the master and who controls publishing?\nNot \"probably me.\" Confirmed and documented.\nIf not: fix this before anything else.",
       "footer_name": "syncmaster.live",
       "slide": 4,
-      "footer_pageno": "04 / 10"
+      "eyebrow": "Education · 4/7",
+      "counter": "04 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 52,
+        "stat_number": 320
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 5/12",
-      "headline": "3/ FILE QUALITY\nDo you have broadcast-spec WAV files for every track you're pitching?",
-      "lede": "Not 320k MP3. Not a Spotify link.\nReady to send today.",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "2",
+      "headline": "",
+      "body": "/ SAMPLE CLEARANCE\nDoes every track you're pitching use 100% original material?\nOne uncleared sample in your best track = that track is unplaceable.\nIf you're unsure: assume it's not cleared.",
       "footer_name": "syncmaster.live",
       "slide": 5,
-      "footer_pageno": "05 / 10"
+      "eyebrow": "Education · 5/7",
+      "counter": "05 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 52,
+        "stat_number": 320
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 6/12",
-      "headline": "4/ STEMS\nWhen a supervisor asks \"can I get stems?\" — do you have them?",
-      "lede": "Not \"I'll re-export from the session.\"\nOrganised, named, cloud-accessible within 10 minutes.",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "3",
+      "headline": "",
+      "body": "/ FILE QUALITY\nDo you have broadcast-spec WAV files for every track you're pitching?\nNot 320k MP3. Not a Spotify link.\nReady to send today. / STEMS\nWhen a supervisor asks \"can I get stems?\" — do you have them?\nNot \"I'll re-export from the session.\"\nOrganised, named, cloud-accessible within 10 minutes. / METADATA\nIs your ISRC embedded in the file?\nAre BPM, key, and mood tags complete?\nIs your PRO registration current and reflected in the metadata? / RESPONSE TIME\nCan you respond to a brief within 24 hours?\nNot \"I'll check when I see it.\"\nAn active notification. A clear process. A fast reply. Supervisors give the placement to whoever responds first with the right track. Not the best track. The right track, first. Audit now. Fix the gaps before the brief lands. #SyncAudit #AfricanComposers #SyncMaster #MusicBusiness",
       "footer_name": "syncmaster.live",
       "slide": 6,
-      "footer_pageno": "06 / 10"
+      "eyebrow": "Education · 6/7",
+      "counter": "06 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 48,
+        "stat_number": 320
+      },
+      "fit_warnings": [
+        "[06 context.body] copy (812 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+      ]
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 7/12",
-      "headline": "5/ METADATA\nIs your ISRC embedded in the file?",
-      "lede": "Are BPM, key, and mood tags complete?\nIs your PRO registration current and reflected in the metadata?",
-      "footer_kicker": "Education",
+      "archetype": "cta",
+      "headline": "Open briefs. Every Tuesday.",
+      "body": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Apply now",
       "footer_name": "syncmaster.live",
       "slide": 7,
-      "footer_pageno": "07 / 10"
-    },
-    {
-      "role": "body",
-      "eyebrow": "Education · 8/12",
-      "headline": "6/ RESPONSE TIME\nCan you respond to a brief within 24 hours?",
-      "lede": "Not \"I'll check when I see it.\"\nAn active notification. A clear process. A fast reply. · Supervisors give the placement to whoever responds first with the right track.",
-      "footer_kicker": "Education",
-      "footer_name": "syncmaster.live",
-      "slide": 8,
-      "footer_pageno": "08 / 10"
-    },
-    {
-      "role": "list",
-      "eyebrow": "Education · 10/12",
-      "headline": "Here's what you need to know:",
-      "lede": "Not the best track. The right track, first. · Audit now. Fix the gaps before the brief lands.",
-      "list_items": [
-        "Not the best track. The right track, first.",
-        "Audit now. Fix the gaps before the brief lands."
-      ],
-      "footer_kicker": "Education",
-      "footer_name": "syncmaster.live",
-      "slide": 9,
-      "footer_pageno": "09 / 10"
-    },
-    {
-      "role": "cta",
       "eyebrow": "Apply this week",
-      "headline": "Open briefs. Every Tuesday.",
-      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
-      "cta_text": "Apply now",
-      "footer_kicker": "Apply",
-      "footer_name": "syncmaster.live",
-      "slide": 10,
-      "footer_pageno": "10 / 10"
+      "counter": "07 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 220,
+        "body": 60,
+        "cta_text": 64
+      }
     }
   ]
 }

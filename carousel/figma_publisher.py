@@ -18,6 +18,11 @@ import warnings
 from pathlib import Path
 from datetime import datetime, timedelta
 
+# Unsplash auto-fetch is DISABLED for now — flip to True once the API key /
+# attribution flow is set up. While False, "unsplash" slides fall back to a
+# solid brand-colour fill and no network call is made.
+ENABLE_UNSPLASH = False
+
 try:
     import asset_fetcher
 except ImportError:
@@ -78,7 +83,8 @@ DARK_LAYER_NAMES = {
     },
     "194:2667": { # CONTEXT / BODY
         "eyebrow":       "section_eyebrow",
-        "headline":      "stat_number",
+        "stat_number":   "stat_number",
+        "type_overlay":  "type_overlay",
         "body":          "body",
         "footer_label":  "footer_label",
         "footer_sub":    "footer_sublabel",
@@ -87,7 +93,8 @@ DARK_LAYER_NAMES = {
     },
     "194:2696": { # SHOWCASE
         "eyebrow":       "section_eyebrow",
-        "headline":      "stat_number",
+        "stat_number":   "stat_number",
+        "type_overlay":  "type_overlay",
         "body":          "body",
         "footer_label":  "footer_label",
         "footer_sub":    "footer_sublabel",
@@ -341,8 +348,8 @@ def select_single_template(post: dict, copy_data: dict) -> str:
         if _RE_CONTRAST.search(hook):
             return "238:3535"   # Single · 03 · Split · Dark
 
-        # Fallback dark
-        return "198:3022"       # Single Post · Dark Clean
+        # Fallback dark — use the current Stat Hero template, not the legacy frame
+        return "238:3472"       # Single · 01 · Stat Hero · Dark
 
     # ── LIGHT template pool: Declaration · Dense Stack · Minimal · Light Edit ─
     else:
@@ -366,8 +373,8 @@ def select_single_template(post: dict, copy_data: dict) -> str:
         if "industry" in pillar or words <= 7:
             return "238:3631"   # Single · 06 · Minimal · Light
 
-        # Fallback light
-        return "198:3023"       # Single Post · Light Editorial
+        # Fallback light — use the current Declaration template, not the legacy frame
+        return "238:3505"       # Single · 02 · Declaration · Light
 
 
 def section_for_role(role: str, template: str, is_last: bool) -> str:
@@ -462,6 +469,82 @@ def build_text_ops(slide: dict, section_id: str, slide_num: int, total: int, tem
     return ops
 
 
+ARCHETYPE_SECTION = {
+    "hook": "hook", "context": "body", "stat": "body",
+    "showcase": "showcase", "proof": "proof", "cta": "cta",
+}
+
+def section_for_archetype(archetype, template):
+    key = ARCHETYPE_SECTION.get(archetype, "body")
+    return (DARK_SECTIONS if template == "dark" else LIGHT_SECTIONS)[key]
+
+# Beat field -> ordered candidate semantic keys understood by the section layer maps.
+_FIELD_TO_KEY = {
+    "eyebrow": ["eyebrow", "section_eyebrow", "top_eyebrow"],
+    "headline": ["headline"],
+    "body": ["body"],
+    "stat_number": ["stat_number"],
+    "cta_text": ["cta_text"],
+    "counter": ["counter", "counter_main"],
+}
+
+def build_text_ops_v2(beat, section_id, template):
+    layers = (DARK_LAYER_NAMES if template == "dark" else LIGHT_LAYER_NAMES).get(section_id, {})
+    fonts = beat.get("fonts", {})
+    ops = []
+
+    def emit(field, value):
+        if not value:
+            return
+        for key in _FIELD_TO_KEY.get(field, [field]):
+            if key in layers:
+                op = {"find_by_name": layers[key], "set_text": str(value).strip()}
+                if field in fonts:
+                    op["set_font_size"] = fonts[field]
+                ops.append(op)
+                return
+
+    emit("counter", beat.get("counter"))
+    emit("eyebrow", beat.get("eyebrow"))
+    emit("headline", beat.get("headline"))
+    emit("stat_number", beat.get("stat_number"))
+    emit("body", beat.get("body"))
+    emit("cta_text", beat.get("cta_text"))
+
+    # Blank the template's placeholder big-number / ghost-digit layers when this
+    # beat doesn't fill them, so the clone doesn't keep "500"/ghost placeholders.
+    if not beat.get("stat_number"):
+        for ph_key in ("stat_number", "type_overlay"):
+            if ph_key in layers:
+                ops.append({"find_by_name": layers[ph_key], "set_text": " "})
+
+    # Proof stat grid
+    for i, slot in enumerate(("placed", "roster", "turnaround")):
+        if i < len(beat.get("stats", [])):
+            st = beat["stats"][i]
+            lbl = layers.get("stat_%s_label" % slot)
+            val = layers.get("stat_%s_value" % slot)
+            if lbl and st.get("label"):
+                ops.append({"find_by_name": lbl, "set_text": st["label"]})
+            if val and st.get("value"):
+                ops.append({"find_by_name": val, "set_text": st["value"]})
+    return ops
+
+def validate_ops(beat, section_id, template, strict_fields=None):
+    """Raise if any populated content field has no destination layer in this section."""
+    layers = (DARK_LAYER_NAMES if template == "dark" else LIGHT_LAYER_NAMES).get(section_id, {})
+    check = strict_fields or {"headline", "body", "stat_number", "cta_text"}
+    for field in check:
+        if not beat.get(field):
+            continue
+        keys = _FIELD_TO_KEY.get(field, [field])
+        if not any(k in layers for k in keys):
+            raise ValueError(
+                "slide %s (%s): field '%s' has copy but no layer in section %s — would be dropped"
+                % (beat.get("slide"), beat.get("archetype"), field, section_id)
+            )
+
+
 def screenshot_op_for(post_data: dict, slide_index: int):
     """Return a screenshot operation descriptor if the slide needs one, else None."""
     pd = post_data.get("product_data")
@@ -477,6 +560,9 @@ def screenshot_op_for(post_data: dict, slide_index: int):
     if screen_type == "checklist":
         return {"type": "fixture_render", "fixture_type": "checklist", "items": pd.get("checklist_items", [])}
     if screen_type == "unsplash":
+        if not ENABLE_UNSPLASH:
+            # Disabled by flag — no fetch, no network. Slide gets a solid fill.
+            return None
         if asset_fetcher is None:
             warnings.warn("asset_fetcher not importable — falling back to colour fill")
             return None
@@ -578,8 +664,10 @@ def build_publish_plan(month=1, post_id=None):
 
         for i, slide in enumerate(slides):
             is_last = (i == total - 1)
-            sec_id = section_for_role(slide.get("role", "body"), template, is_last)
-            text_ops = build_text_ops(slide, sec_id, i + 1, total, template, is_sequential)
+            arch = slide.get("archetype", slide.get("role", "context"))
+            sec_id = section_for_archetype(arch, template)
+            validate_ops(slide, sec_id, template)        # fail loud on silent drops
+            text_ops = build_text_ops_v2(slide, sec_id, template)
             shot_op = screenshot_op_for(copy_data, i)
 
             slide_ops.append({

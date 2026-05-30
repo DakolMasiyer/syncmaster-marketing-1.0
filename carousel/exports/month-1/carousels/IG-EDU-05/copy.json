@@ -16,123 +16,121 @@
     "#SyncLicensing",
     "#MusicBusiness"
   ],
-  "caption_hook": "Sending a SoundCloud link to a music supervisor is like sending a screenshot of ↓",
-  "caption_hook_len": 81,
-  "caption_full": "Sending a SoundCloud link to a music supervisor is like sending a screenshot of ↓\n\nIt tells them you exist.\n\nSave this. Build the package. Then reach out.\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicBusiness #SyncReady",
-  "slide_count": 10,
+  "caption_hook": "Sending a SoundCloud link to a music supervisor is like sending a screenshot of your CV to a hiring manager. ↓",
+  "caption_hook_len": 110,
+  "caption_full": "Sending a SoundCloud link to a music supervisor is like sending a screenshot of your CV to a hiring manager. ↓\n\nIt tells them you exist.\n\nSave this. Build the package. Then reach out.\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicBusiness #SyncReady",
+  "slide_count": 7,
+  "fit_warnings": [
+    "[01 hook.eyebrow] copy (49 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
+    "[01 hook.headline] copy (108 chars) exceeds slot budget (57 at 200px) — needs a rewrite",
+    "[06 context.body] copy (757 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+  ],
   "slides": [
     {
-      "role": "hook",
-      "eyebrow": "Education · Why your SoundCloud link isn't enough",
-      "headline": "Sending a SoundCloud link to a music supervisor is like sending a screenshot of",
-      "lede": "your CV to a hiring manager.",
-      "footer_kicker": "Written by",
+      "archetype": "hook",
+      "headline": "Sending a SoundCloud link to a music supervisor is like sending a screenshot of your CV to a hiring manager.",
+      "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "footer_pageno": "01 / 10"
+      "eyebrow": "Education · Why your SoundCloud link isn't enough",
+      "counter": "01 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 200
+      },
+      "fit_warnings": [
+        "[01 hook.eyebrow] copy (49 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
+        "[01 hook.headline] copy (108 chars) exceeds slot budget (57 at 200px) — needs a rewrite"
+      ]
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 2/13",
-      "headline": "Here's what a supervisor actually needs to move your track forward:",
-      "lede": "It tells them you exist. That's all. ↓",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "It tells them you exist. That's all. ↓",
       "footer_name": "syncmaster.live",
       "slide": 2,
-      "footer_pageno": "02 / 10"
+      "eyebrow": "Education · 2/7",
+      "counter": "02 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 3/13",
-      "headline": "✓ High-quality WAV or AIFF\nNot a stream.",
-      "lede": "Not a download link. A file, ready immediately.",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "Here's what a supervisor actually needs to move your track forward:",
       "footer_name": "syncmaster.live",
       "slide": 3,
-      "footer_pageno": "03 / 10"
+      "eyebrow": "Education · 3/7",
+      "counter": "03 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 4/13",
-      "headline": "✓ Proper file naming\nFormat:",
-      "lede": "ArtistName_TrackTitle_BPM_Key.wav\n\"finalfinalv3_mixdown.wav\" doesn't cut it.",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "✓ High-quality WAV or AIFF\nNot a stream. Not a download link. A file, ready immediately.",
       "footer_name": "syncmaster.live",
       "slide": 4,
-      "footer_pageno": "04 / 10"
+      "eyebrow": "Education · 4/7",
+      "counter": "04 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 5/13",
-      "headline": "✓ Embedded metadata\nTitle, composer, ISRC, mood, genre, BPM — inside the file,",
-      "lede": "not in an email.",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "✓ Proper file naming\nFormat: ArtistName_TrackTitle_BPM_Key.wav\n\"finalfinalv3_mixdown.wav\" doesn't cut it.",
       "footer_name": "syncmaster.live",
       "slide": 5,
-      "footer_pageno": "05 / 10"
+      "eyebrow": "Education · 5/7",
+      "counter": "05 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 6/13",
-      "headline": "✓ Rights status confirmed\nOne-stop or clearly defined split, documented before",
-      "lede": "you pitch. · ✓ Stems available\nNot now. But ready when they ask.",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "✓ Embedded metadata\nTitle, composer, ISRC, mood, genre, BPM — inside the file, not in an email. ✓ Rights status confirmed\nOne-stop or clearly defined split, documented before you pitch. ✓ Stems available\nNot now. But ready when they ask. The work, in numbers. SoundCloud tells a supervisor:\n→ A track exists\n→ You have a profile That's not enough to move a placement forward. → Why streaming links fail supervisors every time\n→ The file format issue — and what broadcast spec actually means\n→ What proper metadata looks like inside a file\n→ How to handle the rights conversation before it becomes a problem\n→ What a professional submission package looks like Save this before your next outreach. #SyncReady #AfricanComposers #SyncMaster #SyncLicensing #MusicBusiness",
       "footer_name": "syncmaster.live",
       "slide": 6,
-      "footer_pageno": "06 / 10"
+      "eyebrow": "Education · 6/7",
+      "counter": "06 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 48
+      },
+      "fit_warnings": [
+        "[06 context.body] copy (757 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+      ]
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 8/13",
-      "headline": "✓ Response within 24 hours\nIf you respond in 3 days, the slot is filled.",
-      "lede": "",
-      "footer_kicker": "Education",
+      "archetype": "cta",
+      "headline": "Open briefs. Every Tuesday.",
+      "body": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Apply now",
       "footer_name": "syncmaster.live",
       "slide": 7,
-      "footer_pageno": "07 / 10"
-    },
-    {
-      "role": "list",
-      "eyebrow": "Education · 9/13",
-      "headline": "Here's what you need to know:",
-      "lede": "SoundCloud tells a supervisor: · A track exists · You have a profile · That's not enough to move a placement forward.",
-      "list_items": [
-        "SoundCloud tells a supervisor:",
-        "A track exists",
-        "You have a profile"
-      ],
-      "footer_kicker": "Education",
-      "footer_name": "syncmaster.live",
-      "slide": 8,
-      "footer_pageno": "08 / 10"
-    },
-    {
-      "role": "list",
-      "eyebrow": "Education · 11/13",
-      "headline": "Here's what you need to know:",
-      "lede": "Why streaming links fail supervisors every time · The file format issue — and what broadcast spec actually means · What proper metadata looks like inside a file · How to handle the rights conversation before it becomes a problem · Save this before your next outreach.",
-      "list_items": [
-        "Why streaming links fail supervisors every time",
-        "The file format issue — and what broadcast spec actually means",
-        "What proper metadata looks like inside a file",
-        "How to handle the rights conversation before it becomes a problem",
-        "What a professional submission package looks like"
-      ],
-      "footer_kicker": "Education",
-      "footer_name": "syncmaster.live",
-      "slide": 9,
-      "footer_pageno": "09 / 10"
-    },
-    {
-      "role": "cta",
       "eyebrow": "Apply this week",
-      "headline": "Open briefs. Every Tuesday.",
-      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
-      "cta_text": "Apply now",
-      "footer_kicker": "Apply",
-      "footer_name": "syncmaster.live",
-      "slide": 10,
-      "footer_pageno": "10 / 10"
+      "counter": "07 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 220,
+        "body": 60,
+        "cta_text": 64
+      }
     }
   ],
   "product_data": {

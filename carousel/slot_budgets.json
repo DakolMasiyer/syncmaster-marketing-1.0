@@ -1,0 +1,36 @@
+{
+  "_meta": {
+    "measured_from": "SyncMaster Design System & Brand Guidelines / Templates",
+    "measured_on": "2026-05-30",
+    "note": "Dark (196:2855) and light (144:63) carousels are structurally identical; budgets apply to both. char/line limits derived from placeholder copy that fits the box at font_max."
+  },
+  "carousel": {
+    "hook": {
+      "eyebrow":  { "layer": "top_eyebrow",   "kind": "text",   "max_lines": 1, "max_chars": 48,  "font_max": 44,  "font_min": 44 },
+      "headline": { "layer": "headline",       "kind": "text",   "max_lines": 3, "max_chars": 36,  "font_max": 320, "font_min": 200 },
+      "body":     { "layer": "body",           "kind": "text",   "max_lines": 2, "max_chars": 110, "font_max": 60,  "font_min": 48 }
+    },
+    "context": {
+      "eyebrow":     { "layer": "section_eyebrow", "kind": "text",   "max_lines": 1, "max_chars": 40,  "font_max": 44,  "font_min": 44 },
+      "stat_number": { "layer": "stat_number",     "kind": "number", "max_lines": 1, "max_chars": 6,   "font_max": 320, "font_min": 180 },
+      "body":        { "layer": "body",            "kind": "text",   "max_lines": 3, "max_chars": 165, "font_max": 60,  "font_min": 48 }
+    },
+    "showcase": {
+      "eyebrow":     { "layer": "section_eyebrow", "kind": "text",   "max_lines": 1, "max_chars": 40,  "font_max": 44,  "font_min": 44 },
+      "stat_number": { "layer": "stat_number",     "kind": "number", "max_lines": 1, "max_chars": 6,   "font_max": 320, "font_min": 180 },
+      "body":        { "layer": "body",            "kind": "text",   "max_lines": 3, "max_chars": 165, "font_max": 60,  "font_min": 48 }
+    },
+    "proof": {
+      "eyebrow":  { "layer": "section_eyebrow", "kind": "text",   "max_lines": 1, "max_chars": 40, "font_max": 44,  "font_min": 44 },
+      "headline": { "layer": "headline",        "kind": "text",   "max_lines": 1, "max_chars": 24, "font_max": 176, "font_min": 120 },
+      "stat_label": { "layer": "stat_*_label",  "kind": "text",   "max_lines": 1, "max_chars": 11, "font_max": 28,  "font_min": 28 },
+      "stat_value": { "layer": "stat_*_value",  "kind": "number", "max_lines": 1, "max_chars": 6,  "font_max": 176, "font_min": 120 }
+    },
+    "cta": {
+      "eyebrow":  { "layer": "section_eyebrow", "kind": "text", "max_lines": 1, "max_chars": 40,  "font_max": 44,  "font_min": 44 },
+      "headline": { "layer": "headline",        "kind": "text", "max_lines": 2, "max_chars": 30,  "font_max": 220, "font_min": 140 },
+      "body":     { "layer": "body",            "kind": "text", "max_lines": 2, "max_chars": 115, "font_max": 60,  "font_min": 48 },
+      "cta_text": { "layer": "cta_text",        "kind": "text", "max_lines": 1, "max_chars": 14,  "font_max": 64,  "font_min": 52 }
+    }
+  }
+}

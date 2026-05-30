@@ -18,132 +18,118 @@
   "caption_hook": "Month 1 you learned what sync is.\nMonth 2 you learned what sync pays. ↓",
   "caption_hook_len": 71,
   "caption_full": "Month 1 you learned what sync is.\nMonth 2 you learned what sync pays. ↓\n\nMonth 3 question: what separates a catalogue that gets briefs from one that doesn't?\n\nNo brief gets fulfilled without these:\nWAV masters at →\n\n#SyncMaster #AfricanComposers #SyncLicensing #CatalogueStrategy",
-  "slide_count": 10,
+  "slide_count": 7,
+  "fit_warnings": [
+    "[01 hook.eyebrow] copy (72 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
+    "[01 hook.headline] copy (68 chars) exceeds slot budget (57 at 200px) — needs a rewrite",
+    "[06 context.body] copy (1500 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+  ],
   "slides": [
     {
-      "role": "hook",
-      "eyebrow": "Education · Advanced catalogue strategy — what separates good from great",
+      "archetype": "hook",
       "headline": "Month 1 you learned what sync is.\nMonth 2 you learned what sync pays.",
-      "lede": "Month 3 question: what separates a catalogue that gets briefs from one that doesn't? ↓ · Here's what you need to know: — — — · DEPTH OVER WIDTH",
-      "footer_kicker": "Written by",
+      "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "footer_pageno": "01 / 10"
+      "eyebrow": "Education · Advanced catalogue strategy — what separates good from great",
+      "counter": "01 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 200
+      },
+      "fit_warnings": [
+        "[01 hook.eyebrow] copy (72 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
+        "[01 hook.headline] copy (68 chars) exceeds slot budget (57 at 200px) — needs a rewrite"
+      ]
     },
     {
-      "role": "proof",
-      "eyebrow": "Education · 4/20",
-      "headline": "The work, in numbers.",
-      "stats": [],
-      "footer_kicker": "Proof",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "Month 3 question: what separates a catalogue that gets briefs from one that doesn't? ↓",
       "footer_name": "syncmaster.live",
       "slide": 2,
-      "footer_pageno": "02 / 10"
+      "eyebrow": "Education · 2/7",
+      "counter": "02 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "list",
-      "eyebrow": "Education · 5/20",
-      "headline": "Here's what you need to know:",
-      "lede": "Depth means: · Every track has a complete metadata record · Every track has stems prepared and labelled · Every co-writer credit is documented and signed",
-      "list_items": [
-        "Depth means:",
-        "Every track has a complete metadata record",
-        "Every track has stems prepared and labelled",
-        "Every co-writer credit is documented and signed",
-        "Rights are confirmed on every piece before any brief arrives"
-      ],
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "— — —",
       "footer_name": "syncmaster.live",
       "slide": 3,
-      "footer_pageno": "03 / 10"
+      "eyebrow": "Education · 3/7",
+      "counter": "03 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 6/20",
-      "headline": "Width means: you have a lot of stuff.\nSupervisors can't use \"a lot of stuff.\"",
-      "lede": "Here's what you need to know: — — — · MOODBOARD YOUR CATALOGUE · Great catalogue managers don't think in track titles. They think in placement types.",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "DEPTH OVER WIDTH",
       "footer_name": "syncmaster.live",
       "slide": 4,
-      "footer_pageno": "04 / 10"
+      "eyebrow": "Education · 4/7",
+      "counter": "04 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 10/20",
-      "headline": "Build a mood index:\n— Upbeat / celebratory (sports, celebration, product",
-      "lede": "launch)\n— Tension / build (thriller, drama, documentary)\n— Intimate / emotive (healthcare, charity, human interest)\n— Epic / cinematic (films, streaming originals, trailers)\n— Background / atmospheric (hospitality, retail, ambient brand)",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "A supervisor doesn't need 400 tracks.\nThey need 40 tracks that are deeply documented, consistently available, instantly deliverable.",
       "footer_name": "syncmaster.live",
       "slide": 5,
-      "footer_pageno": "05 / 10"
+      "eyebrow": "Education · 5/7",
+      "counter": "05 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 11/20",
-      "headline": "Every track should have a primary and secondary placement type.",
-      "lede": "Supervisors search this way. Speak their language. · Here's what you need to know: — — — · VERSIONING IS A COMPETITIVE ADVANTAGE",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "Depth means:\n→ Every track has a complete metadata record\n→ Every track has stems prepared and labelled\n→ Every co-writer credit is documented and signed\n→ Rights are confirmed on every piece before any brief arrives Width means: you have a lot of stuff.\nSupervisors can't use \"a lot of stuff.\" — — — MOODBOARD YOUR CATALOGUE Great catalogue managers don't think in track titles.\nThey think in placement types. Build a mood index:\n— Upbeat / celebratory (sports, celebration, product launch)\n— Tension / build (thriller, drama, documentary)\n— Intimate / emotive (healthcare, charity, human interest)\n— Epic / cinematic (films, streaming originals, trailers)\n— Background / atmospheric (hospitality, retail, ambient brand) Every track should have a primary and secondary placement type.\nSupervisors search this way. Speak their language. — — — VERSIONING IS A COMPETITIVE ADVANTAGE One track. Multiple submissions.\nStandard: full mix\nInstrumental: vocals removed\n60-second edit: advertising format\n30-second edit: social media / shorter spots\nExtended: episodic or documentary use Most composers submit one version.\nThe composers getting repeat briefs submit five. — — — THE TECHNICAL FLOOR No brief gets fulfilled without these:\n→ WAV masters at 24-bit / 48kHz minimum\n→ ISRC registered\n→ Stems labelled by instrument group (not by track number)\n→ BPM and key confirmed\n→ Mood and instrumentation tags completed This isn't advanced practice.\nIt's the baseline. #SyncLicensing #AfricanComposers #CatalogueStrategy #SyncMaster",
       "footer_name": "syncmaster.live",
       "slide": 6,
-      "footer_pageno": "06 / 10"
+      "eyebrow": "Education · 6/7",
+      "counter": "06 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 48
+      },
+      "fit_warnings": [
+        "[06 context.body] copy (1500 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+      ]
     },
     {
-      "role": "proof",
-      "eyebrow": "Education · 14/20",
-      "headline": "The work, in numbers.",
-      "stats": [
-        {
-          "value": "60",
-          "label": "-second edit: advertising format"
-        },
-        {
-          "value": "30",
-          "label": "-second edit: social media / shorter spots"
-        }
-      ],
-      "footer_kicker": "Proof",
+      "archetype": "cta",
+      "headline": "Open briefs. Every Tuesday.",
+      "body": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Apply now",
       "footer_name": "syncmaster.live",
       "slide": 7,
-      "footer_pageno": "07 / 10"
-    },
-    {
-      "role": "body",
-      "eyebrow": "Education · 15/20",
-      "headline": "Most composers submit one version.",
-      "lede": "The composers getting repeat briefs submit five. · Here's what you need to know: — — — · THE TECHNICAL FLOOR",
-      "footer_kicker": "Education",
-      "footer_name": "syncmaster.live",
-      "slide": 8,
-      "footer_pageno": "08 / 10"
-    },
-    {
-      "role": "list",
-      "eyebrow": "Education · 18/20",
-      "headline": "Here's what you need to know:",
-      "lede": "No brief gets fulfilled without these: · WAV masters at 24-bit / 48kHz minimum · ISRC registered · Stems labelled by instrument group (not by track number) · This isn't advanced practice.\nIt's the baseline.",
-      "list_items": [
-        "No brief gets fulfilled without these:",
-        "WAV masters at 24-bit / 48kHz minimum",
-        "ISRC registered",
-        "Stems labelled by instrument group (not by track number)",
-        "BPM and key confirmed",
-        "Mood and instrumentation tags completed"
-      ],
-      "footer_kicker": "Education",
-      "footer_name": "syncmaster.live",
-      "slide": 9,
-      "footer_pageno": "09 / 10"
-    },
-    {
-      "role": "cta",
       "eyebrow": "Apply this week",
-      "headline": "Open briefs. Every Tuesday.",
-      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
-      "cta_text": "Apply now",
-      "footer_kicker": "Apply",
-      "footer_name": "syncmaster.live",
-      "slide": 10,
-      "footer_pageno": "10 / 10"
+      "counter": "07 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 220,
+        "body": 60,
+        "cta_text": 64
+      }
     }
   ]
 }

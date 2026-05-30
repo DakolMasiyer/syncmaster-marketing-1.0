@@ -16,120 +16,121 @@
     "#SyncMaster",
     "#StreamingVsSync"
   ],
-  "caption_hook": "A South African composer just earned more from one Showmax documentary than ↓",
-  "caption_hook_len": 77,
-  "caption_full": "A South African composer just earned more from one Showmax documentary than ↓\n\nThis is not exceptional.\n\nSave this. Then ask yourself: is your music sync-ready?\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicBusiness #StreamingVsSync",
-  "slide_count": 10,
+  "caption_hook": "A South African composer just earned more from one Showmax documentary than from 6 months of streaming royalties. ↓",
+  "caption_hook_len": 115,
+  "caption_full": "A South African composer just earned more from one Showmax documentary than from 6 months of streaming royalties. ↓\n\nThis is not exceptional.\n\nSave this. Then ask yourself: is your music sync-ready?\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicBusiness #StreamingVsSync",
+  "slide_count": 7,
+  "fit_warnings": [
+    "[01 hook.eyebrow] copy (52 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
+    "[01 hook.headline] copy (113 chars) exceeds slot budget (57 at 200px) — needs a rewrite",
+    "[06 context.body] copy (528 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+  ],
   "slides": [
     {
-      "role": "hook",
-      "eyebrow": "Education · What does a sync placement actually pay?",
-      "headline": "A South African composer just earned more from one Showmax documentary than",
-      "lede": "from 6 months of streaming royalties.",
-      "footer_kicker": "Written by",
+      "archetype": "hook",
+      "headline": "A South African composer just earned more from one Showmax documentary than from 6 months of streaming royalties.",
+      "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "footer_pageno": "01 / 10"
+      "eyebrow": "Education · What does a sync placement actually pay?",
+      "counter": "01 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 200
+      },
+      "fit_warnings": [
+        "[01 hook.eyebrow] copy (52 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
+        "[01 hook.headline] copy (113 chars) exceeds slot budget (57 at 200px) — needs a rewrite"
+      ]
     },
     {
-      "role": "list",
-      "eyebrow": "Education · 1/12",
-      "headline": "Here's what you need to know:",
-      "lede": "This is not exceptional. This is the market rate. ↓ · Here's what sync placements actually pay:",
-      "list_items": [
-        "This is not exceptional. This is the market rate. ↓",
-        "Here's what sync placements actually pay:"
-      ],
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "This is not exceptional. This is the market rate. ↓",
       "footer_name": "syncmaster.live",
       "slide": 2,
-      "footer_pageno": "02 / 10"
+      "eyebrow": "Education · 2/7",
+      "counter": "02 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "proof",
-      "eyebrow": "Education · 3/12",
-      "headline": "The work, in numbers.",
-      "stats": [
-        {
-          "value": "$2,000",
-          "label": "$8,000"
-        }
-      ],
-      "footer_kicker": "Proof",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "Here's what sync placements actually pay:",
       "footer_name": "syncmaster.live",
       "slide": 3,
-      "footer_pageno": "03 / 10"
+      "eyebrow": "Education · 3/7",
+      "counter": "03 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "stat",
-      "eyebrow": "Education · 4/12",
-      "stat_number": "$5,000",
-      "lede": "🎬 Feature film (indie)\n$5,000 – $15,000+",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "📺 TV (major network, 30 sec)\n$2,000 – $8,000",
       "footer_name": "syncmaster.live",
       "slide": 4,
-      "footer_pageno": "04 / 10"
+      "eyebrow": "Education · 4/7",
+      "counter": "04 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "stat",
-      "eyebrow": "Education · 5/12",
-      "stat_number": "$10,000",
-      "lede": "📱 Global ad campaign\n$10,000 – $75,000+",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "🎬 Feature film (indie)\n$5,000 – $15,000+",
       "footer_name": "syncmaster.live",
       "slide": 5,
-      "footer_pageno": "05 / 10"
+      "eyebrow": "Education · 5/7",
+      "counter": "05 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "stat",
-      "eyebrow": "Education · 6/12",
-      "stat_number": "$5,000",
-      "lede": "🎮 AAA video game\n$5,000 – $20,000+",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "📱 Global ad campaign\n$10,000 – $75,000+ 🎮 AAA video game\n$5,000 – $20,000+ These are upfront licensing fees.\nNot royalties. Not splits. Not \"exposure.\" You also earn performance royalties every time the content airs. Streaming: fractions of a cent per play.\nSync: thousands, once, yours. The market exists. The demand is real.\nWhat's missing is the infrastructure connecting African composers to it. Save this. Then ask yourself: is your music in the room? #SyncLicensing #AfricanComposers #MusicBusiness #SyncMaster #StreamingVsSync",
       "footer_name": "syncmaster.live",
       "slide": 6,
-      "footer_pageno": "06 / 10"
+      "eyebrow": "Education · 6/7",
+      "counter": "06 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 48
+      },
+      "fit_warnings": [
+        "[06 context.body] copy (528 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+      ]
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 7/12",
-      "headline": "These are upfront licensing fees.\nNot royalties. Not splits. Not \"exposure.\"",
-      "lede": "You also earn performance royalties every time the content airs.",
-      "footer_kicker": "Education",
+      "archetype": "cta",
+      "headline": "Open briefs. Every Tuesday.",
+      "body": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Apply now",
       "footer_name": "syncmaster.live",
       "slide": 7,
-      "footer_pageno": "07 / 10"
-    },
-    {
-      "role": "body",
-      "eyebrow": "Education · 9/12",
-      "headline": "Streaming: fractions of a cent per play.\nSync: thousands, once, yours.",
-      "lede": "",
-      "footer_kicker": "Education",
-      "footer_name": "syncmaster.live",
-      "slide": 8,
-      "footer_pageno": "08 / 10"
-    },
-    {
-      "role": "body",
-      "eyebrow": "Education · 10/12",
-      "headline": "The market exists.",
-      "lede": "The demand is real.\nWhat's missing is the infrastructure connecting African composers to it. · Save this. Then ask yourself: is your music in the room?",
-      "footer_kicker": "Education",
-      "footer_name": "syncmaster.live",
-      "slide": 9,
-      "footer_pageno": "09 / 10"
-    },
-    {
-      "role": "cta",
       "eyebrow": "Apply this week",
-      "headline": "Open briefs. Every Tuesday.",
-      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
-      "cta_text": "Apply now",
-      "footer_kicker": "Apply",
-      "footer_name": "syncmaster.live",
-      "slide": 10,
-      "footer_pageno": "10 / 10"
+      "counter": "07 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 220,
+        "body": 60,
+        "cta_text": 64
+      }
     }
   ]
 }
