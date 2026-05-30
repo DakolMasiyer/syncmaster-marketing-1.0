@@ -377,97 +377,6 @@ def select_single_template(post: dict, copy_data: dict) -> str:
         return "238:3505"       # Single · 02 · Declaration · Light
 
 
-def section_for_role(role: str, template: str, is_last: bool) -> str:
-    if is_last or role == "cta":
-        return DARK_SECTIONS["cta"] if template == "dark" else LIGHT_SECTIONS["cta"]
-    mapping = {
-        "hook":     "hook",
-        "body":     "body",
-        "list":     "body",
-        "context":  "body",
-        "showcase": "showcase",
-        "proof":    "proof",
-        "stat":     "proof",
-    }
-    key = mapping.get(role, "body")
-    return (DARK_SECTIONS if template == "dark" else LIGHT_SECTIONS)[key]
-
-
-def counter_text(slide_num: int, total: int) -> str:
-    n = f"{slide_num:02d}"
-    t = f"{total:02d}"
-    return f"END · {n} / {t}" if slide_num == total else f"{n} / {t}"
-
-
-def build_text_ops(slide: dict, section_id: str, slide_num: int, total: int, template: str, is_sequential: bool) -> list:
-    """
-    Build a list of {find_by_name, set_text} operations for a single slide.
-    These are executed after clone_node by scanning the clone and matching layer names.
-    """
-    ops = []
-    layers = (DARK_LAYER_NAMES if template == "dark" else LIGHT_LAYER_NAMES).get(section_id, {})
-    ctr = counter_text(slide_num, total)
-
-    def op(key, value):
-        if key in layers and value:
-            ops.append({"find_by_name": layers[key], "set_text": str(value).strip()})
-
-    # Counter
-    op("counter", ctr)
-    op("counter_main", ctr if slide_num == total else f"{slide_num:02d} / {total:02d}")
-    op("counter_small", f"{slide_num:02d} / {total:02d}")
-
-    # Eyebrow
-    eyebrow = slide.get("eyebrow", "")
-    if eyebrow:
-        op("eyebrow", eyebrow)
-        op("section_eyebrow", eyebrow)
-        op("top_eyebrow", eyebrow)
-        op("top_chrome", f"SyncMaster · {eyebrow}")
-
-    # Headline
-    op("headline", slide.get("headline", ""))
-
-    # Body — prefer lede, fall back to body text
-    body_text = slide.get("lede") or slide.get("body_text") or ""
-    op("body", body_text)
-
-    # CTA text
-    op("cta_text", slide.get("cta_text", ""))
-
-    # Stat number (big typographic overlay) — only for sequential or stat role
-    stat_num = slide.get("stat_number", "")
-    if stat_num and (is_sequential or slide.get("role") in ("stat", "proof")):
-        # Long stat_number (>30 chars) belongs in body layer at 60px, not 320px stat layer
-        if len(stat_num) > 30:
-            op("body", stat_num)
-        else:
-            op("stat_number", stat_num)
-            op("type_overlay", stat_num)
-    elif not is_sequential and "type_overlay" in layers:
-        # Non-sequential light posts: blank the ghost number
-        ops.append({"find_by_name": layers["type_overlay"], "set_text": " "})
-
-    # Proof stats grid (light template slide 4)
-    stats = slide.get("stats", [])
-    if stats:
-        if len(stats) >= 1:
-            ops.append({"find_by_name": layers.get("stat_placed_label", "PLACED"), "set_text": stats[0].get("label", "")})
-            ops.append({"find_by_name": layers.get("stat_placed_value", "$148k"), "set_text": stats[0].get("value", "")})
-        if len(stats) >= 2:
-            ops.append({"find_by_name": layers.get("stat_roster_label", "ROSTER"), "set_text": stats[1].get("label", "")})
-            ops.append({"find_by_name": layers.get("stat_roster_value", "42"), "set_text": stats[1].get("value", "")})
-        if len(stats) >= 3:
-            ops.append({"find_by_name": layers.get("stat_turnaround_label", "TURNAROUND"), "set_text": stats[2].get("label", "")})
-            ops.append({"find_by_name": layers.get("stat_turnaround_value", "37h"), "set_text": stats[2].get("value", "")})
-
-    # Footer labels
-    op("footer_label",   slide.get("footer_kicker", ""))
-    op("footer_sublabel", slide.get("footer_kicker", ""))
-    op("footer_domain",  slide.get("footer_name", ""))
-
-    return ops
-
 
 ARCHETYPE_SECTION = {
     "hook": "hook", "context": "body", "stat": "body",
@@ -652,11 +561,6 @@ def build_publish_plan(month=1, post_id=None):
 
         slides = copy_data.get("slides", []) if ptype == "Carousel" else []
         total = len(slides)
-
-        # Detect sequential pattern (step-by-step: most body slides are numbered)
-        is_sequential = ptype == "Carousel" and sum(
-            1 for s in slides if s.get("role") == "body"
-        ) >= 3
 
         slide_ops = []
         slide_width = 2160   # px per slide

@@ -58,7 +58,7 @@ def output_dir(post):
     return EXPORTS_DIR / month_folder(post) / folder / post["id"]
 
 
-def run(posts, dry_run=False):
+def run(posts, dry_run=False, rewrite=False):
     results = {"generated": [], "skipped": [], "errors": []}
     posts = attach_references(posts)
 
@@ -85,7 +85,8 @@ def run(posts, dry_run=False):
             continue
 
         try:
-            out_path = gen.generate(post, copy_data, out)
+            kwargs = {"rewrite": rewrite} if post_type == "carousel" else {}
+            out_path = gen.generate(post, copy_data, out, **kwargs)
             rel = out_path.relative_to(CAROUSEL_DIR)
             print(f"  [ok]   {pid:30s} -> {rel}")
             results["generated"].append({
@@ -160,6 +161,8 @@ def main():
     parser.add_argument("--id", dest="post_id", help="Generate a single specific post by ID")
     parser.add_argument("--dry-run", action="store_true", help="Show what would be generated without writing files")
     parser.add_argument("--validate", action="store_true", help="Validate continuity references without generating files")
+    parser.add_argument("--rewrite", action="store_true",
+                        help="LLM rewrite pass on over-budget beats (requires ANTHROPIC_API_KEY)")
     args = parser.parse_args()
 
     # Build filter kwargs
@@ -196,7 +199,7 @@ def main():
     mode = "DRY RUN" if args.dry_run else "GENERATING"
     print(f"\n{mode} — {len(posts)} posts\n")
 
-    results = run(posts, dry_run=args.dry_run)
+    results = run(posts, dry_run=args.dry_run, rewrite=args.rewrite)
 
     print(f"\nDone: {len(results['generated'])} generated, {len(results['skipped'])} skipped, {len(results['errors'])} errors")
 

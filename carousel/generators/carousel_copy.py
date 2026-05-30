@@ -38,7 +38,10 @@ def _extract_hashtags(body):
 def _fit_beat(beat):
     """Fit each text field of a beat to its slot budget; record font sizes."""
     arch = beat["archetype"]
-    slot_budgets = _BUDGETS[arch]
+    slot_budgets = _BUDGETS.get(arch)
+    if slot_budgets is None:
+        beat["fonts"] = {}
+        return beat
     fonts = {}
     warnings_out = []
     for field in ("eyebrow", "headline", "body", "stat_number", "cta_text"):
@@ -61,15 +64,30 @@ def _build_slides(post, body):
     return [_fit_beat(b) for b in built]
 
 
-def generate(post, copy_data, out_dir):
+def generate(post, copy_data, out_dir, rewrite=False):
     """
     Generate carousel copy JSON with Figma-layer-aligned fields.
     post: dict from calendar
     copy_data: dict from copy_extractor
     out_dir: pathlib.Path
+    rewrite: if True, run LLM rewrite pass on over-budget beats (requires ANTHROPIC_API_KEY)
     """
     body = copy_data["body"]
     slides = _build_slides(post, body)
+
+    if rewrite:
+        from generators.rewriter import rewrite_beats
+        slides = rewrite_beats(slides, _BUDGETS, post)
+        # Re-fit after rewrite to update font sizes and clear warnings
+        for i, slide in enumerate(slides):
+            slide.pop("fit_warnings", None)
+            slide.pop("fonts", None)
+            slide.pop("slide", None)
+        slides = [_fit_beat(b) for b in slides]
+        # Re-stamp slide numbers (cleared above)
+        for n, slide in enumerate(slides, 1):
+            slide["slide"] = n
+
     fit_warnings = [w for s in slides for w in s.get("fit_warnings", [])]
     if fit_warnings:
         print(f"  [fit]  {post['id']} — {len(fit_warnings)} slot(s) over budget:")
