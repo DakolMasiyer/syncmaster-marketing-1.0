@@ -240,9 +240,13 @@ def _normalize(text: str) -> str:
 
 
 def _capacity(budget: dict, font: int) -> int:
-    """Effective character capacity at a given font size."""
-    scale = budget["font_max"] / font
-    return int(budget["max_chars"] * budget["max_lines"] * scale / budget["max_lines"]) * budget["max_lines"]
+    """Effective TOTAL character capacity at a given font size.
+
+    `max_chars` is the total budget across all lines, measured at font_max.
+    A smaller font fits proportionally more characters, so capacity scales by
+    (font_max / font). `max_lines` is informational here (not multiplied in).
+    """
+    return int(budget["max_chars"] * budget["font_max"] / font)
 
 
 def fit(text: str, budget: dict) -> FitResult:
@@ -355,7 +359,7 @@ MAX_SLIDES = 7
 FOOTER_NAME = "syncmaster.live"
 
 _RE_STAT_LINE = re.compile(r"[\$€£]\s?[\d,]+|\b\d+%|\b\d+\s?(?:h|hrs|hours|days|k|m)\b", re.I)
-_RE_LEAD_NUM = re.compile(r"^[\s\W]*([\$€£]?\d[\d,\.]*[kKmM%+]?)")
+_RE_LEAD_NUM = re.compile(r"^\s*([\$€£]?\d[\d,\.]*[kKmM%+]?)")  # \s* not [\s\W]* — \W would eat the leading $
 
 
 def _eyebrow(post, archetype, idx, total):
