@@ -84,6 +84,7 @@ DARK_LAYER_NAMES = {
     "194:2667": { # CONTEXT / BODY
         "eyebrow":       "section_eyebrow",
         "stat_number":   "stat_number",
+        "type_overlay":  "type_overlay",
         "body":          "body",
         "footer_label":  "footer_label",
         "footer_sub":    "footer_sublabel",
@@ -93,6 +94,7 @@ DARK_LAYER_NAMES = {
     "194:2696": { # SHOWCASE
         "eyebrow":       "section_eyebrow",
         "stat_number":   "stat_number",
+        "type_overlay":  "type_overlay",
         "body":          "body",
         "footer_label":  "footer_label",
         "footer_sub":    "footer_sublabel",
@@ -484,7 +486,6 @@ _FIELD_TO_KEY = {
     "stat_number": ["stat_number"],
     "cta_text": ["cta_text"],
     "counter": ["counter", "counter_main"],
-    "footer_name": ["footer_domain"],
 }
 
 def build_text_ops_v2(beat, section_id, template):
@@ -509,7 +510,13 @@ def build_text_ops_v2(beat, section_id, template):
     emit("stat_number", beat.get("stat_number"))
     emit("body", beat.get("body"))
     emit("cta_text", beat.get("cta_text"))
-    emit("footer_name", beat.get("footer_name"))
+
+    # Blank the template's placeholder big-number / ghost-digit layers when this
+    # beat doesn't fill them, so the clone doesn't keep "500"/ghost placeholders.
+    if not beat.get("stat_number"):
+        for ph_key in ("stat_number", "type_overlay"):
+            if ph_key in layers:
+                ops.append({"find_by_name": layers[ph_key], "set_text": " "})
 
     # Proof stat grid
     for i, slot in enumerate(("placed", "roster", "turnaround")):
@@ -517,10 +524,10 @@ def build_text_ops_v2(beat, section_id, template):
             st = beat["stats"][i]
             lbl = layers.get("stat_%s_label" % slot)
             val = layers.get("stat_%s_value" % slot)
-            if lbl:
-                ops.append({"find_by_name": lbl, "set_text": st.get("label", "")})
-            if val:
-                ops.append({"find_by_name": val, "set_text": st.get("value", "")})
+            if lbl and st.get("label"):
+                ops.append({"find_by_name": lbl, "set_text": st["label"]})
+            if val and st.get("value"):
+                ops.append({"find_by_name": val, "set_text": st["value"]})
     return ops
 
 def validate_ops(beat, section_id, template, strict_fields=None):
