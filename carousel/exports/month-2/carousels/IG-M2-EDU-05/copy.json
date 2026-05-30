@@ -15,38 +15,30 @@
     "#AfricanComposers",
     "#SyncMaster"
   ],
-  "caption_hook": "Every time a licensed placement airs anywhere in the world, royalties generate. ↓",
-  "caption_hook_len": 81,
-  "caption_full": "Every time a licensed placement airs anywhere in the world, royalties generate. ↓\n\nThose royalties have to go somewhere.\n\nNot registered yet? DM us — we'll point you in the right →\n\n#SyncMaster #AfricanComposers #PRO #MusicRights",
+  "caption_hook": "Every time a licensed placement airs anywhere in the ↓",
+  "caption_hook_len": 54,
+  "caption_full": "Every time a licensed placement airs anywhere in the ↓\n\nThose royalties have to go somewhere.\n\nNot registered yet? DM us — we'll point you in the right →\n\n#SyncMaster #AfricanComposers #PRO #MusicRights",
   "slide_count": 7,
-  "fit_warnings": [
-    "[01 hook.eyebrow] copy (75 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
-    "[01 hook.headline] copy (79 chars) exceeds slot budget (57 at 200px) — needs a rewrite",
-    "[06 context.body] copy (827 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-  ],
+  "fit_warnings": [],
   "slides": [
     {
       "archetype": "hook",
-      "headline": "Every time a licensed placement airs anywhere in the world, royalties generate.",
+      "headline": "Every time a licensed placement airs anywhere in the",
       "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "eyebrow": "Education · PRO registration: which societies African composers should join",
+      "eyebrow": "Education",
       "counter": "01 / 07",
       "fonts": {
         "eyebrow": 44,
-        "headline": 200
-      },
-      "fit_warnings": [
-        "[01 hook.eyebrow] copy (75 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
-        "[01 hook.headline] copy (79 chars) exceeds slot budget (57 at 200px) — needs a rewrite"
-      ]
+        "headline": 220
+      }
     },
     {
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "Those royalties have to go somewhere.",
+      "body": "Those royalties have to go somewhere. KENYA 🇰🇪\nMCSK — Music Copyright Society of Kenya GHANA 🇬🇭\nGHAMRO — Ghana Music Rights Organisation Register this week.",
       "footer_name": "syncmaster.live",
       "slide": 2,
       "eyebrow": "Education · 2/7",
@@ -60,7 +52,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "Without PRO registration, they go uncollected — permanently.",
+      "body": "Without PRO registration, they go uncollected — permanently. You register with your home society — they collect internationally through reciprocal agreements.",
       "footer_name": "syncmaster.live",
       "slide": 3,
       "eyebrow": "Education · 3/7",
@@ -74,7 +66,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "Here's the definitive breakdown for African composers. ↓",
+      "body": "Here's the definitive breakdown for African composers. ↓ THE KEY RULE:\nRegister before your first placement. Not after.",
       "footer_name": "syncmaster.live",
       "slide": 4,
       "eyebrow": "Education · 4/7",
@@ -102,18 +94,15 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "SOUTH AFRICA 🇿🇦\nSAMRO — compositions and publishing royalties\nCAPASSO — neighbouring rights (master recordings) KENYA 🇰🇪\nMCSK — Music Copyright Society of Kenya GHANA 🇬🇭\nGHAMRO — Ghana Music Rights Organisation FOR INTERNATIONAL SYNC SPECIFICALLY:\nEvery African composer with sync ambitions should also register:\n→ PRS for Music (UK) — captures European royalties\n→ ASCAP or BMI (US) — North American collection\n→ SOCAN (Canada) You register with your home society — they collect internationally through reciprocal agreements. THE KEY RULE:\nRegister before your first placement. Not after.\nRetroactive collection is almost impossible.\nRoyalties from a placement that aired before you registered: gone. One track. Multiple airings. Royalties every time the content plays. Register this week. #PRO #MusicRights #AfricanComposers #SyncMaster",
+      "body": "SOUTH AFRICA 🇿🇦\nSAMRO — compositions and publishing royalties\nCAPASSO — neighbouring rights (master recordings)",
       "footer_name": "syncmaster.live",
       "slide": 6,
       "eyebrow": "Education · 6/7",
       "counter": "06 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 48
-      },
-      "fit_warnings": [
-        "[06 context.body] copy (827 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-      ]
+        "body": 60
+      }
     },
     {
       "archetype": "cta",

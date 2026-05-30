@@ -4,7 +4,7 @@
 ---
 ### TWEET 1/6
 
-Three placements. 90 days.
+3 placements. 90 days.
 
 Here's the exact breakdown of how each one happened. 🧵
 
@@ -55,12 +55,12 @@ The music was already world-class.
 The infrastructure made it submittable.
 
 ---
-### TWEET 6/6  ⚠ 306 chars (over 280 limit)
+### TWEET 6/6  ⚠ 302 chars (over 280 limit)
 
 5/ What this means for Month 3:
 
 Nine briefs handled.
-Three placements confirmed.
+3 placements confirmed.
 Six pitches that didn't convert — all documented with rejection reasons.
 
 The rejection data is as valuable as the placement data.

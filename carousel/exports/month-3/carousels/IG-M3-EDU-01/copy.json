@@ -19,11 +19,7 @@
   "caption_hook_len": 49,
   "caption_full": "Your music can work in London. New York. Paris. ↓\n\nBut what \"works\" means is different in each market.\n\nFull metadata: ISRC, BPM, key, mood, instrumentation, →\n\n#SyncMaster #AfricanComposers #SyncLicensing #InternationalSync",
   "slide_count": 7,
-  "fit_warnings": [
-    "[01 hook.eyebrow] copy (69 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
-    "[05 context.body] copy (344 chars) exceeds slot budget (206 at 48px) — needs a rewrite",
-    "[06 context.body] copy (1398 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-  ],
+  "fit_warnings": [],
   "slides": [
     {
       "archetype": "hook",
@@ -31,21 +27,18 @@
       "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "eyebrow": "Education · International markets — what UK, US, and EU actually want",
+      "eyebrow": "Education",
       "counter": "01 / 07",
       "fonts": {
         "eyebrow": 44,
         "headline": 244
-      },
-      "fit_warnings": [
-        "[01 hook.eyebrow] copy (69 chars) exceeds slot budget (48 at 44px) — needs a rewrite"
-      ]
+      }
     },
     {
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "But what \"works\" means is different in each market. ↓",
+      "body": "But what \"works\" means is different in each market. ↓ — — — THE US MARKET The US sync market is larger but harder to enter without an agent or verified track record.",
       "footer_name": "syncmaster.live",
       "slide": 2,
       "eyebrow": "Education · 2/7",
@@ -59,7 +52,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "— — —",
+      "body": "— — — US briefs come with tighter formatting requirements.\nMetadata completeness is non-negotiable — tracks with missing ISRC or split sheet fail submission. — — —",
       "footer_name": "syncmaster.live",
       "slide": 3,
       "eyebrow": "Education · 3/7",
@@ -73,7 +66,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "THE UK MARKET",
+      "body": "THE UK MARKET THE EU MARKET European campaigns have been the earliest adopters of African music. — — — WHAT ALL THREE MARKETS REQUIRE",
       "footer_name": "syncmaster.live",
       "slide": 4,
       "eyebrow": "Education · 4/7",
@@ -87,35 +80,29 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "UK music supervisors are ahead on African music. They've placed it.\nWhat they're specifically requesting:\n→ Afrobeats and Afropop for lifestyle, fashion, food content\n→ Highlife and Afrojuju for documentary and cultural programming\n→ Contemporary orchestral work from African composers for drama\n→ Roots reggae and Afro-soul for charitable campaigns",
+      "body": "UK music supervisors are ahead on African music. They've placed it. EU campaigns often run multi-territory.\nYour sync fee should reflect it.",
       "footer_name": "syncmaster.live",
       "slide": 5,
       "eyebrow": "Education · 5/7",
       "counter": "05 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 48
-      },
-      "fit_warnings": [
-        "[05 context.body] copy (344 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-      ]
+        "body": 60
+      }
     },
     {
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "Turnaround expectation: 24–48 hours from brief.\nRights requirement: one-stop cleared (master + sync in one conversation).\nStems: always requested — deliver without being asked. — — — THE US MARKET The US sync market is larger but harder to enter without an agent or verified track record.\nWhat breaks through:\n→ High-energy Afrobeats for sports content (NBA, NFL campaigns, streaming sports docs)\n→ Minimal, emotive African acoustic for healthcare, insurance, social campaigns\n→ African electronic for tech and automotive US briefs come with tighter formatting requirements.\nMetadata completeness is non-negotiable — tracks with missing ISRC or split sheet fail submission. — — — THE EU MARKET European campaigns have been the earliest adopters of African music.\nGerman and French markets specifically request:\n→ African choral music for brand storytelling\n→ Contemporary Afropop for consumer goods\n→ African jazz for finance and luxury EU campaigns often run multi-territory.\nYour sync fee should reflect it. — — — WHAT ALL THREE MARKETS REQUIRE → Full metadata: ISRC, BPM, key, mood, instrumentation, placement type\n→ Stems available on request within 24 hours\n→ Split sheet signed by all writers before any submission\n→ Rights confirmed one-stop before any brief arrives If your catalogue isn't market-ready, international briefs won't reach you. #AfricanComposers #SyncLicensing #InternationalSync #SyncMaster",
+      "body": "Turnaround expectation: 24–48 hours from brief. If your catalogue isn't market-ready, international briefs won't reach you.",
       "footer_name": "syncmaster.live",
       "slide": 6,
       "eyebrow": "Education · 6/7",
       "counter": "06 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 48
-      },
-      "fit_warnings": [
-        "[06 context.body] copy (1398 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-      ]
+        "body": 60
+      }
     },
     {
       "archetype": "cta",

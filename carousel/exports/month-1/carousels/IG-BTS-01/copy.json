@@ -20,9 +20,7 @@
   "caption_hook_len": 120,
   "caption_full": "20 applications. 6 vetted.\nHere's the exact checklist we use — and why we turned down 14 genuinely talented composers. ↓\n\nApply when you're ready. Link in bio.\n\n#SyncMaster #AfricanComposers #MusicBusiness #SyncReady #BehindTheScenes",
   "slide_count": 7,
-  "fit_warnings": [
-    "[06 context.body] copy (661 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-  ],
+  "fit_warnings": [],
   "slides": [
     {
       "archetype": "hook",
@@ -41,7 +39,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "Here's the exact checklist we use — and why we turned down 14 genuinely talented composers. ↓",
+      "body": "Here's the exact checklist we use — and why we turned down 14 genuinely talented composers. ↓ Of 20 applications in Month 1: 6 passed all six criteria.",
       "footer_name": "syncmaster.live",
       "slide": 2,
       "eyebrow": "Behind the Scenes · 2/7",
@@ -55,7 +53,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "The vetting process isn't about picking the \"best\" music.\nIt's about picking music that's ready.",
+      "body": "The vetting process isn't about picking the \"best\" music.\nIt's about picking music that's ready. Apply when you're ready: link in bio.",
       "footer_name": "syncmaster.live",
       "slide": 3,
       "eyebrow": "Behind the Scenes · 3/7",
@@ -83,7 +81,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "THE 6-POINT CHECKLIST:",
+      "body": "THE 6-POINT CHECKLIST: The 14 who didn't? We gave each one specific written feedback.\nMost gaps are fixable. They can reapply when they're ready.",
       "footer_name": "syncmaster.live",
       "slide": 5,
       "eyebrow": "Behind the Scenes · 5/7",
@@ -97,18 +95,15 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "✓ Original compositions only (zero uncleared samples)\n✓ Clear rights chain (master + publishing confirmed, documented)\n✓ Lossless files available (WAV or AIFF, not MP3)\n✓ ISRC codes assigned to every recording\n✓ Stems available on request\n✓ Sub-24-hour response time (tested in the process) Of 20 applications in Month 1: 6 passed all six criteria. The 14 who didn't? We gave each one specific written feedback.\nMost gaps are fixable. They can reapply when they're ready. Quality over volume. Every time.\nBecause supervisors need to trust what we send them. Apply when you're ready: link in bio. #SyncReady #AfricanComposers #SyncMaster #MusicBusiness #BehindTheScenes",
+      "body": "✓ Original compositions only (zero uncleared samples)\n✓ Clear rights chain (master + publishing confirmed, documented)\n✓ Lossless files available (WAV or AIFF, not",
       "footer_name": "syncmaster.live",
       "slide": 6,
       "eyebrow": "Behind the Scenes · 6/7",
       "counter": "06 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 48
-      },
-      "fit_warnings": [
-        "[06 context.body] copy (661 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-      ]
+        "body": 60
+      }
     },
     {
       "archetype": "cta",

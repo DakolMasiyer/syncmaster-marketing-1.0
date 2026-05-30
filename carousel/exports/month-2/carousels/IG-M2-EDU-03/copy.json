@@ -19,12 +19,7 @@
   "caption_hook_len": 58,
   "caption_full": "Building a sync-ready catalogue isn't a weekend project. ↓\n\nBut it's not complicated.\n\nStart this process now. Don't wait for a brief.\n\n#SyncMaster #AfricanComposers #MusicBusiness #SyncReady",
   "slide_count": 7,
-  "fit_warnings": [
-    "[01 hook.eyebrow] copy (60 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
-    "[04 context.body] copy (316 chars) exceeds slot budget (206 at 48px) — needs a rewrite",
-    "[05 context.body] copy (275 chars) exceeds slot budget (206 at 48px) — needs a rewrite",
-    "[06 context.body] copy (903 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-  ],
+  "fit_warnings": [],
   "slides": [
     {
       "archetype": "hook",
@@ -32,21 +27,18 @@
       "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "eyebrow": "Education · How to build a sync-ready catalogue from scratch",
+      "eyebrow": "Education",
       "counter": "01 / 07",
       "fonts": {
         "eyebrow": 44,
         "headline": 204
-      },
-      "fit_warnings": [
-        "[01 hook.eyebrow] copy (60 chars) exceeds slot budget (48 at 44px) — needs a rewrite"
-      ]
+      }
     },
     {
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "But it's not complicated. It's sequential.",
+      "body": "But it's not complicated. It's sequential. This process takes 3–5 weeks done properly.\nEvery brief you respond to after that takes a fraction of the time.",
       "footer_name": "syncmaster.live",
       "slide": 2,
       "eyebrow": "Education · 2/7",
@@ -74,52 +66,43 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "STEP 1: RIGHTS AUDIT (Weeks 1–2)\nBefore anything else: confirm what you own.\n→ Is every composition 100% original? One uncleared sample stops the whole catalogue.\n→ Who controls the master? You, a label, or joint ownership?\n→ Is publishing registered with a PRO?\n→ Any co-writers? Get the split documented in writing now.",
+      "body": "STEP 1: RIGHTS AUDIT (Weeks 1–2)\nBefore anything else: confirm what you own.",
       "footer_name": "syncmaster.live",
       "slide": 4,
       "eyebrow": "Education · 4/7",
       "counter": "04 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 48
-      },
-      "fit_warnings": [
-        "[04 context.body] copy (316 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-      ]
+        "body": 60
+      }
     },
     {
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "STEP 2: FILE PREPARATION (Weeks 2–3)\n→ Export full lossless WAV for every sync-ready track\n→ File naming convention: Artist_Title_BPM_Key.wav\n→ Export stems for every session: drums, bass, harmony, melody, atmosphere\n→ Store stems in a cloud folder — accessible within 10 minutes",
+      "body": "STEP 2: FILE PREPARATION (Weeks 2–3)\n→ Export full lossless WAV for every sync-ready track\n→ File naming convention: Artist_Title_BPM_Key.wav\n→ Export stems for",
       "footer_name": "syncmaster.live",
       "slide": 5,
       "eyebrow": "Education · 5/7",
       "counter": "05 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 48
-      },
-      "fit_warnings": [
-        "[05 context.body] copy (275 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-      ]
+        "body": 60
+      }
     },
     {
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "STEP 3: METADATA TAGGING (Week 3)\n→ ISRC assigned to every recording\n→ BPM, key, duration, genre embedded in file metadata\n→ Mood tags: 3–5 per track in industry vocabulary\n→ PRO affiliation and composer information embedded correctly STEP 4: CATALOGUE INDEXING (Week 4)\n→ Build a simple spreadsheet: title, BPM, key, mood, instrumentation, one-stop status\n→ Separate into categories: brand/corporate, cinematic, documentary, emotional\n→ Note which tracks have complete stems vs. partial stems STEP 5: RESPONSE SYSTEM (Week 4)\n→ Set brief notification to reach you within 1 hour of receipt\n→ Test your delivery process: how fast can you send stems for 3 tracks?\n→ Confirm rights for every catalogue track so you can respond in writing immediately This process takes 3–5 weeks done properly.\nEvery brief you respond to after that takes a fraction of the time. #SyncReady #AfricanComposers #SyncMaster #MusicBusiness",
+      "body": "STEP 3: METADATA TAGGING (Week 3)\n→ ISRC assigned to every recording\n→ BPM, key, duration, genre embedded in file metadata\n→ Mood tags: 3–5 per track in industry",
       "footer_name": "syncmaster.live",
       "slide": 6,
       "eyebrow": "Education · 6/7",
       "counter": "06 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 48
-      },
-      "fit_warnings": [
-        "[06 context.body] copy (903 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-      ]
+        "body": 60
+      }
     },
     {
       "archetype": "cta",

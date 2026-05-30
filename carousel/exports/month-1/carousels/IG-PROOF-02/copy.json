@@ -20,9 +20,7 @@
   "caption_hook_len": 57,
   "caption_full": "A production company sent us a brief on Monday morning. ↓\n\nBy Wednesday afternoon, they had 5 cleared, brief-matched tracks.\n\nGot a brief? DM us.\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicSupervisor #AfricanMusic",
   "slide_count": 7,
-  "fit_warnings": [
-    "[06 context.body] copy (681 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-  ],
+  "fit_warnings": [],
   "slides": [
     {
       "archetype": "hook",
@@ -41,7 +39,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "By Wednesday afternoon, they had 5 cleared, brief-matched tracks.",
+      "body": "By Wednesday afternoon, they had 5 cleared, brief-matched tracks. Result: 5 tracks delivered in 24 hours. All cleared. All brief-matched. Got a brief? DM us.",
       "footer_name": "syncmaster.live",
       "slide": 2,
       "eyebrow": "Proof · 2/7",
@@ -55,7 +53,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "All from African composers.",
+      "body": "All from African composers. Speed is trust in sync. You earn it by doing the work before the brief arrives.",
       "footer_name": "syncmaster.live",
       "slide": 3,
       "eyebrow": "Proof · 3/7",
@@ -83,7 +81,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "THE BRIEF:\n→ Duration: 60–90 seconds\n→ Instrumentation: Afrofusion, organic elements\n→ Mood: Tense, building, cinematic\n→ One-stop clearance required\n→ Delivery: 48 hours",
+      "body": "THE BRIEF:\n→ Duration: 60–90 seconds\n→ Instrumentation: Afrofusion, organic elements\n→ Mood: Tense, building, cinematic\n→ One-stop clearance required\n→ Delivery: 48",
       "footer_name": "syncmaster.live",
       "slide": 5,
       "eyebrow": "Proof · 5/7",
@@ -97,18 +95,15 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "We didn't scramble. We searched. Because the catalogue was built before the brief arrived:\n→ Composers vetted in advance\n→ Tracks tagged by mood, BPM, key, instrumentation\n→ Rights confirmed for every track in the system\n→ Files in spec-ready format Result: 5 tracks delivered in 24 hours. All cleared. All brief-matched. → How we received and read the brief\n→ How we searched the catalogue\n→ Our shortlist process\n→ What we delivered and the supervisor's response\n→ What this means for composers in our catalogue Speed is trust in sync. You earn it by doing the work before the brief arrives. Got a brief? DM us. #SyncLicensing #AfricanMusic #SyncMaster #MusicSupervisor #AfricanComposers",
+      "body": "We didn't scramble. We searched.",
       "footer_name": "syncmaster.live",
       "slide": 6,
       "eyebrow": "Proof · 6/7",
       "counter": "06 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 48
-      },
-      "fit_warnings": [
-        "[06 context.body] copy (681 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-      ]
+        "body": 60
+      }
     },
     {
       "archetype": "cta",

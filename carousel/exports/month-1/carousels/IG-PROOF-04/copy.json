@@ -20,10 +20,7 @@
   "caption_hook_len": 28,
   "caption_full": "20 applications. 6 vetted. ↓\n\nHere's the detailed feedback we gave the 14 who didn't make it — because rejection without explanation is useless.\n\nCome back when you've fixed it. Application stays open.\n\n#SyncMaster #AfricanComposers #MusicBusiness #SyncReady #MusicRights",
   "slide_count": 7,
-  "fit_warnings": [
-    "[01 hook.eyebrow] copy (49 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
-    "[06 context.body] copy (862 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-  ],
+  "fit_warnings": [],
   "slides": [
     {
       "archetype": "hook",
@@ -31,21 +28,18 @@
       "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "eyebrow": "Proof · The vetting milestone — detailed feedback",
+      "eyebrow": "Proof",
       "counter": "01 / 07",
       "fonts": {
         "eyebrow": 44,
         "headline": 320
-      },
-      "fit_warnings": [
-        "[01 hook.eyebrow] copy (49 chars) exceeds slot budget (48 at 44px) — needs a rewrite"
-      ]
+      }
     },
     {
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "Here's the detailed feedback we gave the 14 who didn't make it — because rejection without explanation is useless. ↓",
+      "body": "Here's the detailed feedback we gave the 14 who didn't make it — because rejection without explanation is useless. ↓ Most of these overlap. Most are fixable.",
       "footer_name": "syncmaster.live",
       "slide": 2,
       "eyebrow": "Proof · 2/7",
@@ -59,7 +53,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "All 20 composers were genuinely talented.",
+      "body": "All 20 composers were genuinely talented. /14 had metadata problems\n→ No ISRC codes assigned\n→ No BPM, key, or mood data\n→ Files with no embedded information",
       "footer_name": "syncmaster.live",
       "slide": 3,
       "eyebrow": "Proof · 3/7",
@@ -73,7 +67,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "The 14 we didn't accept were rejected for readiness, not music.",
+      "body": "The 14 we didn't accept were rejected for readiness, not music. /14 had response issues\n→ 3+ day reply time in the response-time test scenario",
       "footer_name": "syncmaster.live",
       "slide": 4,
       "eyebrow": "Proof · 4/7",
@@ -87,7 +81,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "THE BREAKDOWN:",
+      "body": "THE BREAKDOWN: /14 had file issues\n→ Only MP3 available\n→ No stems exported or accessible\n→ Files not named to any standard",
       "footer_name": "syncmaster.live",
       "slide": 5,
       "eyebrow": "Proof · 5/7",
@@ -101,19 +95,16 @@
       "archetype": "context",
       "stat_number": "9",
       "headline": "",
-      "body": "/14 had rights issues\n→ Labels holding masters with no clear route to clearance\n→ Uncleared samples embedded in commercial-quality work\n→ Publishing registered with the wrong entity /14 had metadata problems\n→ No ISRC codes assigned\n→ No BPM, key, or mood data\n→ Files with no embedded information /14 had file issues\n→ Only MP3 available\n→ No stems exported or accessible\n→ Files not named to any standard /14 had response issues\n→ 3+ day reply time in the response-time test scenario Most of these overlap. Most are fixable. → What each rejection reason actually means\n→ How to fix rights issues (and what takes longest)\n→ The metadata checklist you need on every file\n→ File format requirements for sync\n→ How to build a faster response culture Come back when you've fixed it. The application stays open. #SyncReady #AfricanComposers #SyncMaster #MusicBusiness #MusicRights",
+      "body": "/14 had rights issues\n→ Labels holding masters with no clear route to clearance\n→ Uncleared samples embedded in commercial-quality work\n→ Publishing registered with",
       "footer_name": "syncmaster.live",
       "slide": 6,
       "eyebrow": "Proof · 6/7",
       "counter": "06 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 48,
+        "body": 60,
         "stat_number": 320
-      },
-      "fit_warnings": [
-        "[06 context.body] copy (862 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-      ]
+      }
     },
     {
       "archetype": "cta",

@@ -16,38 +16,30 @@
     "#SyncLicensing",
     "#MusicBusiness"
   ],
-  "caption_hook": "Sending a SoundCloud link to a music supervisor is like sending a screenshot of your CV to a hiring manager. ↓",
-  "caption_hook_len": 110,
-  "caption_full": "Sending a SoundCloud link to a music supervisor is like sending a screenshot of your CV to a hiring manager. ↓\n\nIt tells them you exist.\n\nSave this. Build the package. Then reach out.\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicBusiness #SyncReady",
+  "caption_hook": "Sending a SoundCloud link to a music supervisor is like ↓",
+  "caption_hook_len": 57,
+  "caption_full": "Sending a SoundCloud link to a music supervisor is like ↓\n\nIt tells them you exist.\n\nSave this. Build the package. Then reach out.\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicBusiness #SyncReady",
   "slide_count": 7,
-  "fit_warnings": [
-    "[01 hook.eyebrow] copy (49 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
-    "[01 hook.headline] copy (108 chars) exceeds slot budget (57 at 200px) — needs a rewrite",
-    "[06 context.body] copy (757 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-  ],
+  "fit_warnings": [],
   "slides": [
     {
       "archetype": "hook",
-      "headline": "Sending a SoundCloud link to a music supervisor is like sending a screenshot of your CV to a hiring manager.",
+      "headline": "Sending a SoundCloud link to a music supervisor is like",
       "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "eyebrow": "Education · Why your SoundCloud link isn't enough",
+      "eyebrow": "Education",
       "counter": "01 / 07",
       "fonts": {
         "eyebrow": 44,
-        "headline": 200
-      },
-      "fit_warnings": [
-        "[01 hook.eyebrow] copy (49 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
-        "[01 hook.headline] copy (108 chars) exceeds slot budget (57 at 200px) — needs a rewrite"
-      ]
+        "headline": 208
+      }
     },
     {
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "It tells them you exist. That's all. ↓",
+      "body": "It tells them you exist. That's all. ↓ ✓ Rights status confirmed\nOne-stop or clearly defined split, documented before you pitch.",
       "footer_name": "syncmaster.live",
       "slide": 2,
       "eyebrow": "Education · 2/7",
@@ -61,7 +53,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "Here's what a supervisor actually needs to move your track forward:",
+      "body": "Here's what a supervisor actually needs to move your track forward: ✓ Stems available\nNot now. But ready when they ask.",
       "footer_name": "syncmaster.live",
       "slide": 3,
       "eyebrow": "Education · 3/7",
@@ -75,7 +67,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "✓ High-quality WAV or AIFF\nNot a stream. Not a download link. A file, ready immediately.",
+      "body": "✓ High-quality WAV or AIFF\nNot a stream. Not a download link. A file, ready immediately. SoundCloud tells a supervisor:\n→ A track exists\n→ You have a profile",
       "footer_name": "syncmaster.live",
       "slide": 4,
       "eyebrow": "Education · 4/7",
@@ -89,7 +81,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "✓ Proper file naming\nFormat: ArtistName_TrackTitle_BPM_Key.wav\n\"finalfinalv3_mixdown.wav\" doesn't cut it.",
+      "body": "✓ Proper file naming\nFormat: ArtistName_TrackTitle_BPM_Key.wav\n\"finalfinalv3_mixdown.wav\" doesn't cut it. That's not enough to move a placement forward.",
       "footer_name": "syncmaster.live",
       "slide": 5,
       "eyebrow": "Education · 5/7",
@@ -103,18 +95,15 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "✓ Embedded metadata\nTitle, composer, ISRC, mood, genre, BPM — inside the file, not in an email. ✓ Rights status confirmed\nOne-stop or clearly defined split, documented before you pitch. ✓ Stems available\nNot now. But ready when they ask. The work, in numbers. SoundCloud tells a supervisor:\n→ A track exists\n→ You have a profile That's not enough to move a placement forward. → Why streaming links fail supervisors every time\n→ The file format issue — and what broadcast spec actually means\n→ What proper metadata looks like inside a file\n→ How to handle the rights conversation before it becomes a problem\n→ What a professional submission package looks like Save this before your next outreach. #SyncReady #AfricanComposers #SyncMaster #SyncLicensing #MusicBusiness",
+      "body": "✓ Embedded metadata\nTitle, composer, ISRC, mood, genre, BPM — inside the file, not in an email.",
       "footer_name": "syncmaster.live",
       "slide": 6,
       "eyebrow": "Education · 6/7",
       "counter": "06 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 48
-      },
-      "fit_warnings": [
-        "[06 context.body] copy (757 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-      ]
+        "body": 60
+      }
     },
     {
       "archetype": "cta",

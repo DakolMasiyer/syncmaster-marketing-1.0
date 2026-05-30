@@ -203,6 +203,7 @@ def generate(post, copy_data, out_dir):
         "hashtags":         hashtags,
         "caption_full":     caption_full,
         # ── Designer brief ───────────────────────────────────
+        "aspect_ratio":     "4:5",
         "visual_direction": visual_direction,
     }
     if product_data:

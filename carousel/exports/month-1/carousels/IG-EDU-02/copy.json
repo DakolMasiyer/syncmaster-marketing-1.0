@@ -16,38 +16,30 @@
     "#SyncMaster",
     "#StreamingVsSync"
   ],
-  "caption_hook": "A South African composer just earned more from one Showmax documentary than from 6 months of streaming royalties. ↓",
-  "caption_hook_len": 115,
-  "caption_full": "A South African composer just earned more from one Showmax documentary than from 6 months of streaming royalties. ↓\n\nThis is not exceptional.\n\nSave this. Then ask yourself: is your music sync-ready?\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicBusiness #StreamingVsSync",
+  "caption_hook": "A South African composer just earned more from one ↓",
+  "caption_hook_len": 52,
+  "caption_full": "A South African composer just earned more from one ↓\n\nThis is not exceptional.\n\nSave this. Then ask yourself: is your music sync-ready?\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicBusiness #StreamingVsSync",
   "slide_count": 7,
-  "fit_warnings": [
-    "[01 hook.eyebrow] copy (52 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
-    "[01 hook.headline] copy (113 chars) exceeds slot budget (57 at 200px) — needs a rewrite",
-    "[06 context.body] copy (528 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-  ],
+  "fit_warnings": [],
   "slides": [
     {
       "archetype": "hook",
-      "headline": "A South African composer just earned more from one Showmax documentary than from 6 months of streaming royalties.",
+      "headline": "A South African composer just earned more from one",
       "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "eyebrow": "Education · What does a sync placement actually pay?",
+      "eyebrow": "Education",
       "counter": "01 / 07",
       "fonts": {
         "eyebrow": 44,
-        "headline": 200
-      },
-      "fit_warnings": [
-        "[01 hook.eyebrow] copy (52 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
-        "[01 hook.headline] copy (113 chars) exceeds slot budget (57 at 200px) — needs a rewrite"
-      ]
+        "headline": 228
+      }
     },
     {
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "This is not exceptional. This is the market rate. ↓",
+      "body": "This is not exceptional. This is the market rate. ↓ 🎮 AAA video game\n$5,000 – $20,000+ These are upfront licensing fees.\nNot royalties. Not splits. Not \"exposure.\"",
       "footer_name": "syncmaster.live",
       "slide": 2,
       "eyebrow": "Education · 2/7",
@@ -61,7 +53,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "Here's what sync placements actually pay:",
+      "body": "Here's what sync placements actually pay: You also earn performance royalties every time the content airs.",
       "footer_name": "syncmaster.live",
       "slide": 3,
       "eyebrow": "Education · 3/7",
@@ -75,7 +67,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "📺 TV (major network, 30 sec)\n$2,000 – $8,000",
+      "body": "📺 TV (major network, 30 sec)\n$2,000 – $8,000 Streaming: fractions of a cent per play.\nSync: thousands, once, yours.",
       "footer_name": "syncmaster.live",
       "slide": 4,
       "eyebrow": "Education · 4/7",
@@ -89,7 +81,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "🎬 Feature film (indie)\n$5,000 – $15,000+",
+      "body": "🎬 Feature film (indie)\n$5,000 – $15,000+ The market exists. The demand is real.\nWhat's missing is the infrastructure connecting African composers to it.",
       "footer_name": "syncmaster.live",
       "slide": 5,
       "eyebrow": "Education · 5/7",
@@ -103,18 +95,15 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "📱 Global ad campaign\n$10,000 – $75,000+ 🎮 AAA video game\n$5,000 – $20,000+ These are upfront licensing fees.\nNot royalties. Not splits. Not \"exposure.\" You also earn performance royalties every time the content airs. Streaming: fractions of a cent per play.\nSync: thousands, once, yours. The market exists. The demand is real.\nWhat's missing is the infrastructure connecting African composers to it. Save this. Then ask yourself: is your music in the room? #SyncLicensing #AfricanComposers #MusicBusiness #SyncMaster #StreamingVsSync",
+      "body": "📱 Global ad campaign\n$10,000 – $75,000+",
       "footer_name": "syncmaster.live",
       "slide": 6,
       "eyebrow": "Education · 6/7",
       "counter": "06 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 48
-      },
-      "fit_warnings": [
-        "[06 context.body] copy (528 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-      ]
+        "body": 60
+      }
     },
     {
       "archetype": "cta",

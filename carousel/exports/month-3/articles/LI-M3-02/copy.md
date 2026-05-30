@@ -15,7 +15,7 @@ date: 2026-08-10
 
 ## Body
 
-Opening: In June, we vetted 12 African composers. One of them now has three confirmed sync placements.
+Opening: In June, we vetted 12 African composers. One of them now has 3 confirmed sync placements.
 
 Article covers the pathway: vetting, documentation, brief matching, submission, negotiation, confirmed placement.
 

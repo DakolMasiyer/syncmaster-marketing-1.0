@@ -15,39 +15,30 @@
     "#AfricanComposers",
     "#SyncMaster"
   ],
-  "caption_hook": "A supervisor searched 3,000 tracks for \"90-second hopeful African instrumental.\" ↓",
-  "caption_hook_len": 82,
-  "caption_full": "A supervisor searched 3,000 tracks for \"90-second hopeful African instrumental.\" ↓\n\nYour track existed.\n\nIs your metadata complete? DM us to check.\n\n#SyncMaster #AfricanComposers #SyncReady #min #MusicMetadata",
+  "caption_hook": "A supervisor searched 3,000 tracks for \"90-second ↓",
+  "caption_hook_len": 51,
+  "caption_full": "A supervisor searched 3,000 tracks for \"90-second ↓\n\nYour track existed.\n\nIs your metadata complete? DM us to check.\n\n#SyncMaster #AfricanComposers #SyncReady #min #MusicMetadata",
   "slide_count": 7,
-  "fit_warnings": [
-    "[01 hook.eyebrow] copy (55 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
-    "[01 hook.headline] copy (80 chars) exceeds slot budget (57 at 200px) — needs a rewrite",
-    "[05 context.body] copy (516 chars) exceeds slot budget (206 at 48px) — needs a rewrite",
-    "[06 context.body] copy (751 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-  ],
+  "fit_warnings": [],
   "slides": [
     {
       "archetype": "hook",
-      "headline": "A supervisor searched 3,000 tracks for \"90-second hopeful African instrumental.\"",
+      "headline": "A supervisor searched 3,000 tracks for \"90-second",
       "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "eyebrow": "Education · Metadata deep dive — every tag that matters",
+      "eyebrow": "Education",
       "counter": "01 / 07",
       "fonts": {
         "eyebrow": 44,
-        "headline": 200
-      },
-      "fit_warnings": [
-        "[01 hook.eyebrow] copy (55 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
-        "[01 hook.headline] copy (80 chars) exceeds slot budget (57 at 200px) — needs a rewrite"
-      ]
+        "headline": 232
+      }
     },
     {
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "Your track existed.",
+      "body": "Your track existed. Metadata doesn't make your music better.\nIt makes your music findable.",
       "footer_name": "syncmaster.live",
       "slide": 2,
       "eyebrow": "Education · 2/7",
@@ -61,7 +52,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "She never found it.",
+      "body": "She never found it. In every sync database and brief-matching tool — metadata is how your track surfaces.",
       "footer_name": "syncmaster.live",
       "slide": 3,
       "eyebrow": "Education · 3/7",
@@ -75,7 +66,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "Here's why metadata is the invisible infrastructure. ↓",
+      "body": "Here's why metadata is the invisible infrastructure. ↓ Without it, you're invisible.\nYour music exists. The brief exists. They never meet.",
       "footer_name": "syncmaster.live",
       "slide": 4,
       "eyebrow": "Education · 4/7",
@@ -89,35 +80,29 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "WHAT NEEDS TO LIVE IN THE FILE (embedded metadata):\n→ Title: exact, consistent across every platform\n→ Artist/Composer: your name as it appears on your PRO registration\n→ ISRC: your 12-character unique recording identifier\n→ BPM: to the decimal if possible (147.5 is more useful than \"fast\")\n→ Key: standard notation — Cm, Gmaj, F#min\n→ Genre: specific — \"Afrofusion\" is searchable; \"African\" is not\n→ Mood: industry vocabulary — cinematic, tense, hopeful, driving, sparse, melancholic\n→ Year: year of recording, not release",
+      "body": "WHAT NEEDS TO LIVE IN THE FILE (embedded metadata):\n→ Title: exact, consistent across every platform\n→ Artist/Composer: your name as it appears on your PRO",
       "footer_name": "syncmaster.live",
       "slide": 5,
       "eyebrow": "Education · 5/7",
       "counter": "05 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 48
-      },
-      "fit_warnings": [
-        "[05 context.body] copy (516 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-      ]
+        "body": 60
+      }
     },
     {
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "WHAT NEEDS TO LIVE IN YOUR CATALOGUE SYSTEM:\n→ Duration: exact, to the second\n→ Instrumentation: list every prominent instrument\n→ Vocal vs. instrumental flag\n→ One-stop status: confirmed yes/no with documentation\n→ Stems availability: what exists and how fast you can deliver\n→ PRO affiliation WHAT NEEDS TO LIVE IN YOUR PITCH:\n→ Rights summary: one-stop or split, documented and ready to send\n→ Response time commitment: stated and real\n→ Direct licensing contact Metadata doesn't make your music better.\nIt makes your music findable. In every sync database and brief-matching tool — metadata is how your track surfaces. Without it, you're invisible.\nYour music exists. The brief exists. They never meet. #MusicMetadata #SyncReady #AfricanComposers #SyncMaster",
+      "body": "WHAT NEEDS TO LIVE IN YOUR CATALOGUE SYSTEM:\n→ Duration: exact, to the second\n→ Instrumentation: list every prominent instrument\n→ Vocal vs.",
       "footer_name": "syncmaster.live",
       "slide": 6,
       "eyebrow": "Education · 6/7",
       "counter": "06 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 48
-      },
-      "fit_warnings": [
-        "[06 context.body] copy (751 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-      ]
+        "body": 60
+      }
     },
     {
       "archetype": "cta",

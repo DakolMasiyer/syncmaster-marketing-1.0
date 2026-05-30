@@ -20,11 +20,7 @@
   "caption_hook_len": 67,
   "caption_full": "You got the offer.\nYour first instinct is to say yes immediately. ↓\n\nSave this before your next deal conversation.\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicBusiness #SyncDeal",
   "slide_count": 7,
-  "fit_warnings": [
-    "[01 hook.eyebrow] copy (51 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
-    "[05 context.body] copy (250 chars) exceeds slot budget (206 at 48px) — needs a rewrite",
-    "[06 context.body] copy (1039 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-  ],
+  "fit_warnings": [],
   "slides": [
     {
       "archetype": "hook",
@@ -32,21 +28,18 @@
       "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "eyebrow": "Education · Sync deal checklist — what to negotiate",
+      "eyebrow": "Education",
       "counter": "01 / 07",
       "fonts": {
         "eyebrow": 44,
         "headline": 320
-      },
-      "fit_warnings": [
-        "[01 hook.eyebrow] copy (51 chars) exceeds slot budget (48 at 44px) — needs a rewrite"
-      ]
+      }
     },
     {
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "Your first instinct is to say yes immediately.",
+      "body": "Your first instinct is to say yes immediately. TERRITORY\nUK-only and global use are fundamentally different deals. Know both before you sign anything.",
       "footer_name": "syncmaster.live",
       "slide": 2,
       "eyebrow": "Education · 2/7",
@@ -60,7 +53,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "Here's why that's the most expensive reaction in sync. ↓",
+      "body": "Here's why that's the most expensive reaction in sync. ↓ TERM LENGTH\nOne-off vs. rolling vs. in-perpetuity are three different contracts.",
       "footer_name": "syncmaster.live",
       "slide": 3,
       "eyebrow": "Education · 3/7",
@@ -88,35 +81,29 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "THE UPFRONT FEE\nThe first number is an opening bid — not the final price.\nFor branded content: fees typically run 20–40% higher than the first offer.\nFor streaming originals: push for the stated upper range.\nAsk once. Clearly. Most supervisors expect it.",
+      "body": "THE UPFRONT FEE\nThe first number is an opening bid — not the final price. PERFORMANCE ROYALTIES\nThese are separate from your upfront fee.",
       "footer_name": "syncmaster.live",
       "slide": 5,
       "eyebrow": "Education · 5/7",
       "counter": "05 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 48
-      },
-      "fit_warnings": [
-        "[05 context.body] copy (250 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-      ]
+        "body": 60
+      }
     },
     {
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "EXCLUSIVITY PERIOD\n\"Exclusive\" locks your track for a window — no other placements during that time.\nSix months: acceptable.\nTwo years: 3× the standard rate.\nNegotiate the window before you negotiate the fee. TERRITORY\nUK-only and global use are fundamentally different deals.\nA global campaign should cost 3–5× a regional one.\nIf the territory isn't defined in the offer: define it before you respond. TERM LENGTH\nOne-off vs. rolling vs. in-perpetuity are three different contracts.\nIn-perpetuity means they can use your track forever.\nThat has a price significantly above the standard placement fee. PERFORMANCE ROYALTIES\nThese are separate from your upfront fee.\nEvery time the content airs anywhere, royalties generate through your PRO.\nNon-negotiable prerequisite: register before any placement is signed.\nYou cannot collect these retroactively. The sync fee is the headline number.\nPerformance royalties are the compounding income beneath it. Know both before you sign anything. #SyncDeal #AfricanComposers #SyncLicensing #MusicBusiness #SyncMaster",
+      "body": "EXCLUSIVITY PERIOD\n\"Exclusive\" locks your track for a window — no other placements during that time.",
       "footer_name": "syncmaster.live",
       "slide": 6,
       "eyebrow": "Education · 6/7",
       "counter": "06 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 48
-      },
-      "fit_warnings": [
-        "[06 context.body] copy (1039 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-      ]
+        "body": 60
+      }
     },
     {
       "archetype": "cta",

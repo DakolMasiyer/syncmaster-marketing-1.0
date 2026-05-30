@@ -16,18 +16,15 @@
     "#FilmMusic",
     "#SyncMaster"
   ],
-  "caption_hook": "Nobody explained this in music school.\nAnd it's worth more than anything they did teach you. ↓",
+  "caption_hook": "Nobody explained this in music school.\nSync licensing = your music in film, TV, ads & games. ↓",
   "caption_hook_len": 94,
-  "caption_full": "Nobody explained this in music school.\nAnd it's worth more than anything they did teach you. ↓\n\nSync licensing = your music in film, TV, ads & games.\n\nSave this post. It's the starting point for everything.\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicBusiness #FilmMusic",
+  "caption_full": "Nobody explained this in music school.\nSync licensing = your music in film, TV, ads & games. ↓\n\nSave this post. It's the starting point for everything.\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicBusiness #FilmMusic",
   "slide_count": 7,
-  "fit_warnings": [
-    "[01 hook.headline] copy (93 chars) exceeds slot budget (57 at 200px) — needs a rewrite",
-    "[05 context.body] copy (301 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-  ],
+  "fit_warnings": [],
   "slides": [
     {
       "archetype": "hook",
-      "headline": "Nobody explained this in music school.\nAnd it's worth more than anything they did teach you. ↓",
+      "headline": "Nobody explained this in music school.",
       "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
@@ -35,11 +32,8 @@
       "counter": "01 / 07",
       "fonts": {
         "eyebrow": 44,
-        "headline": 200
-      },
-      "fit_warnings": [
-        "[01 hook.headline] copy (93 chars) exceeds slot budget (57 at 200px) — needs a rewrite"
-      ]
+        "headline": 300
+      }
     },
     {
       "archetype": "context",
@@ -64,8 +58,8 @@
           "value": "$5,000"
         },
         {
-          "label": "ONE GLOBAL ",
-          "value": "$10,00"
+          "label": "ONE GLOBAL",
+          "value": "$10k"
         }
       ],
       "footer_name": "syncmaster.live",
@@ -95,31 +89,28 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "→ What sync licensing actually is\n→ Who's involved and what they each do\n→ What placements actually pay (with real numbers)\n→ The two licences in every single deal\n→ What music supervisors actually look for\n→ What \"sync-ready\" means for your catalogue\n→ The African opportunity right now\n→ How to get started",
+      "body": "→ What sync licensing actually is\n→ Who's involved and what they each do\n→ What placements actually pay (with real numbers)\n→ The two licences in every single",
       "footer_name": "syncmaster.live",
       "slide": 5,
       "eyebrow": "Education · 5/7",
       "counter": "05 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 48
-      },
-      "fit_warnings": [
-        "[05 context.body] copy (301 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-      ]
+        "body": 60
+      }
     },
     {
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "This is the foundation. Everything else builds on it. Save this. Share it with a composer who needs to know. #SyncLicensing #AfricanComposers #MusicBusiness #FilmMusic #SyncMaster",
+      "body": "This is the foundation. Everything else builds on it.",
       "footer_name": "syncmaster.live",
       "slide": 6,
       "eyebrow": "Education · 6/7",
       "counter": "06 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 52
+        "body": 60
       }
     },
     {

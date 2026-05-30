@@ -19,10 +19,7 @@
   "caption_hook_len": 59,
   "caption_full": "\"One-stop\" is the most valuable status in sync licensing. ↓\n\nMost composers know the term.\n\nDM us if you're unsure about your rights status.\n\n#SyncMaster #AfricanComposers #SyncLicensing #OneClearance",
   "slide_count": 7,
-  "fit_warnings": [
-    "[01 hook.eyebrow] copy (63 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
-    "[06 context.body] copy (1023 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-  ],
+  "fit_warnings": [],
   "slides": [
     {
       "archetype": "hook",
@@ -30,21 +27,18 @@
       "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "eyebrow": "Education · What \"one-stop\" really means — and how to get there",
+      "eyebrow": "Education",
       "counter": "01 / 07",
       "fonts": {
         "eyebrow": 44,
         "headline": 200
-      },
-      "fit_warnings": [
-        "[01 hook.eyebrow] copy (63 chars) exceeds slot budget (48 at 44px) — needs a rewrite"
-      ]
+      }
     },
     {
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "Most composers know the term. Almost none fully understand how to get there — especially once a label is involved.",
+      "body": "Most composers know the term. Almost none fully understand how to get there — especially once a label is involved. If you control both → one-stop.",
       "footer_name": "syncmaster.live",
       "slide": 2,
       "eyebrow": "Education · 2/7",
@@ -58,7 +52,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "Here's the clear explanation. ↓",
+      "body": "Here's the clear explanation. ↓ Supervisors strongly prefer one-stop. When time is short (it always is), they go there first.",
       "footer_name": "syncmaster.live",
       "slide": 3,
       "eyebrow": "Education · 3/7",
@@ -100,18 +94,15 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "LICENCE 2: The master licence\n→ Controls: the specific recording\n→ Held by: whoever owns the master — often a label, unless you recorded independently If you control both → one-stop.\nIf a label controls the master → the supervisor has to negotiate with two parties, on two timelines, with two chances for the deal to fall apart. Supervisors strongly prefer one-stop. When time is short (it always is), they go there first. IF YOUR LABEL HOLDS YOUR MASTERS:\n→ Check your deal: do you have sync approval rights? Even partial co-approval?\n→ Negotiate co-approval on new work before signing\n→ Build one-stop status into your next deal explicitly IF YOU'RE FULLY INDEPENDENT:\n→ Distribute through a platform that doesn't claim master rights (most don't — but check)\n→ Self-publish: register directly with your PRO\n→ Document every track's rights status from day one The path to one-stop is mostly paperwork.\nIt's the most commercial thing you can do for your catalogue right now. #OneClearance #SyncLicensing #AfricanComposers #SyncMaster",
+      "body": "LICENCE 2: The master licence\n→ Controls: the specific recording\n→ Held by: whoever owns the master — often a label, unless you recorded independently",
       "footer_name": "syncmaster.live",
       "slide": 6,
       "eyebrow": "Education · 6/7",
       "counter": "06 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 48
-      },
-      "fit_warnings": [
-        "[06 context.body] copy (1023 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-      ]
+        "body": 60
+      }
     },
     {
       "archetype": "cta",

@@ -157,6 +157,7 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     parser.add_argument("--month", help="Month number (1, 2, 3) or 'all'")
+    parser.add_argument("--date", help="Specific date (YYYY-MM-DD)")
     parser.add_argument("--type", help="Post type: Carousel, Single, Thread, Tweet, Article, Blog, Video")
     parser.add_argument("--platform", help="Platform: Instagram, LinkedIn, Twitter/X, Blog, YouTube")
     parser.add_argument("--pillar", help="Pillar: Education, Proof, BTS, Culture, Industry")
@@ -174,6 +175,8 @@ def main():
     filters = {}
     if args.month and args.month.lower() != "all":
         filters["month"] = int(args.month)
+    if args.date:
+        filters["date"] = args.date
     if args.type:
         filters["type"] = args.type
     if args.platform:

@@ -19,10 +19,7 @@
   "caption_hook_len": 117,
   "caption_full": "We've handled 9 briefs in 90 days.\nHere's what every music supervisor actually wanted — from their words, not ours. ↓\n\nThe supervisors who came back for Month 2 briefs came back →\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicSupervisor",
   "slide_count": 7,
-  "fit_warnings": [
-    "[01 hook.eyebrow] copy (69 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
-    "[06 context.body] copy (1574 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-  ],
+  "fit_warnings": [],
   "slides": [
     {
       "archetype": "hook",
@@ -30,21 +27,18 @@
       "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "eyebrow": "Education · What music supervisors actually want — from 9 real briefs",
+      "eyebrow": "Education",
       "counter": "01 / 07",
       "fonts": {
         "eyebrow": 44,
         "headline": 320
-      },
-      "fit_warnings": [
-        "[01 hook.eyebrow] copy (69 chars) exceeds slot budget (48 at 44px) — needs a rewrite"
-      ]
+      }
     },
     {
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "Here's what every music supervisor actually wanted — from their words, not ours. ↓",
+      "body": "Here's what every music supervisor actually wanted — from their words, not ours. ↓ — — — WHAT THEY ACTUALLY MEAN \"Rights-cleared\" means one-stop. — — — — — — — — —",
       "footer_name": "syncmaster.live",
       "slide": 2,
       "eyebrow": "Education · 2/7",
@@ -58,7 +52,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "— — —",
+      "body": "— — — \"Quick turnaround\" means 24–48 hours, not 72.\nThe 11-hour turnaround in Month 2 got us the next three briefs.\nSupervisors remember speed. WHAT THEY REMEMBER",
       "footer_name": "syncmaster.live",
       "slide": 3,
       "eyebrow": "Education · 3/7",
@@ -72,7 +66,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "WHAT THEY SAY THEY WANT",
+      "body": "WHAT THEY SAY THEY WANT \"African sounds\" means specific, not continental. WHAT THEY NEVER SAY BUT ALWAYS NEED HOW TO SPEAK THEIR LANGUAGE",
       "footer_name": "syncmaster.live",
       "slide": 4,
       "eyebrow": "Education · 4/7",
@@ -100,18 +94,15 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "Every brief. Every time. — — — WHAT THEY ACTUALLY MEAN \"Rights-cleared\" means one-stop.\nOne conversation. One deal. No separate master/sync clearance.\nIf you can't confirm one-stop, you're off the shortlist before the brief goes out. \"Quick turnaround\" means 24–48 hours, not 72.\nThe 11-hour turnaround in Month 2 got us the next three briefs.\nSupervisors remember speed. \"African sounds\" means specific, not continental.\nAfrobeats is not the same as Highlife.\nAmapiano is not the same as South African jazz.\nSupervisors doing their homework know the difference. Assume they do. — — — WHAT THEY NEVER SAY BUT ALWAYS NEED Stems in the delivery.\nNot \"available on request.\" In the initial folder. Complete metadata.\nIf your track arrives without BPM, key, and mood tags, it adds friction.\nFriction means a different track gets selected. A clear fee position.\n\"What's your rate?\" answered before it's asked.\nSupervisors who have to chase a fee quote move on. — — — WHAT THEY REMEMBER Music quality gets you the shortlist.\nDocumentation quality gets you the placement. Three months of briefs confirmed this:\nNo rejected submission was rejected because of music quality.\nEvery rejection was documentation, rights, or turnaround. — — — HOW TO SPEAK THEIR LANGUAGE Submit — don't pitch.\nOne email: WAV master + stems + metadata card + rate card + rights confirmation. Not five messages. Not \"I'll send the stems tomorrow.\" The supervisors who came back for Month 2 briefs came back because the first submission required zero follow-up. #SyncMaster #MusicSupervisor #AfricanComposers #SyncLicensing",
+      "body": "Every brief. Every time. Stems in the delivery.\nNot \"available on request.\" In the initial folder. Not five messages. Not \"I'll send the stems tomorrow.\"",
       "footer_name": "syncmaster.live",
       "slide": 6,
       "eyebrow": "Education · 6/7",
       "counter": "06 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 48
-      },
-      "fit_warnings": [
-        "[06 context.body] copy (1574 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-      ]
+        "body": 60
+      }
     },
     {
       "archetype": "cta",

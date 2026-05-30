@@ -15,38 +15,30 @@
     "#SyncIncome",
     "#SyncMaster"
   ],
-  "caption_hook": "Month 1 answer: \"Sync can be significant secondary income.\"\nMonth 3 answer — after 3 confirmed placements and 90 days of ↓",
-  "caption_hook_len": 122,
-  "caption_full": "Month 1 answer: \"Sync can be significant secondary income.\"\nMonth 3 answer — after 3 confirmed placements and 90 days of ↓\n\n— — —\n\nApply at syncmaster.io\n\n#SyncMaster #AfricanComposers #SyncLicensing #SyncIncome",
+  "caption_hook": "Month 1 answer\n— — —",
+  "caption_hook_len": 20,
+  "caption_full": "Month 1 answer\n— — —\n\nApply at syncmaster.io\n\n#SyncMaster #AfricanComposers #SyncLicensing #SyncIncome",
   "slide_count": 7,
-  "fit_warnings": [
-    "[01 hook.eyebrow] copy (80 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
-    "[01 hook.headline] copy (127 chars) exceeds slot budget (57 at 200px) — needs a rewrite",
-    "[06 context.body] copy (1544 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-  ],
+  "fit_warnings": [],
   "slides": [
     {
       "archetype": "hook",
-      "headline": "Month 1 answer: \"Sync can be significant secondary income.\"\nMonth 3 answer — after 3 confirmed placements and 90 days of data. ↓",
+      "headline": "Month 1 answer",
       "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "eyebrow": "Education · Is sync realistic as primary income? The honest answer after 90 days",
+      "eyebrow": "Education",
       "counter": "01 / 07",
       "fonts": {
         "eyebrow": 44,
-        "headline": 200
-      },
-      "fit_warnings": [
-        "[01 hook.eyebrow] copy (80 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
-        "[01 hook.headline] copy (127 chars) exceeds slot budget (57 at 200px) — needs a rewrite"
-      ]
+        "headline": 320
+      }
     },
     {
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "— — —",
+      "body": "— — — Sync wins on timeline — if you can get the placements. — — — WHAT MAKES IT VIABLE AS PRIMARY INCOME — — — THE HONEST LIMITS — — — THE HONEST ANSWER",
       "footer_name": "syncmaster.live",
       "slide": 2,
       "eyebrow": "Education · 2/7",
@@ -60,7 +52,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "WHAT THE NUMBERS SHOW",
+      "body": "WHAT THE NUMBERS SHOW Sync is not passive income.\nEach placement requires documentation, brief response, negotiation, and delivery.",
       "footer_name": "syncmaster.live",
       "slide": 3,
       "eyebrow": "Education · 3/7",
@@ -75,15 +67,16 @@
       "headline": "The work, in numbers.",
       "stats": [
         {
-          "label": "→ UPFRONT S",
-          "value": "$800–$"
+          "label": "UPFRONT SYN",
+          "value": "$800"
         },
         {
-          "label": "→ MASTER FE",
-          "value": "adds 3"
+          "label": "MASTER FEE",
+          "value": "30"
         }
       ],
       "footer_name": "syncmaster.live",
+      "body": "Critical variables:\n→ Catalogue size: 30–60 sync-ready tracks (not 300 rough tracks)\n→ Placement rate: one per quarter is sustainable; one per month is scalable\n→",
       "slide": 4,
       "eyebrow": "Education · 4/7",
       "counter": "04 / 07",
@@ -102,6 +95,7 @@
         }
       ],
       "footer_name": "syncmaster.live",
+      "body": "It's also not consistent month-to-month.\nA quiet month with no briefs is followed by a month with four.",
       "slide": 5,
       "eyebrow": "Education · 5/7",
       "counter": "05 / 07",
@@ -114,18 +108,15 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "Compare that to streaming:\n1 million streams = roughly $3,000–$4,000 at standard rates.\nGetting to 1 million streams for most independent composers: 6–18 months. Sync wins on timeline — if you can get the placements. — — — WHAT MAKES IT VIABLE AS PRIMARY INCOME Critical variables:\n→ Catalogue size: 30–60 sync-ready tracks (not 300 rough tracks)\n→ Placement rate: one per quarter is sustainable; one per month is scalable\n→ PRO registration: every placement must be registered to collect performance income\n→ Repeat brief flow: supervisors who return = predictable pipeline — — — THE HONEST LIMITS Sync is not passive income.\nEach placement requires documentation, brief response, negotiation, and delivery. It's also not consistent month-to-month.\nA quiet month with no briefs is followed by a month with four. What sync offers that streaming doesn't:\n— Significantly higher per-use income\n— Performance royalty compounding over years\n— Industry relationships that generate further work What streaming offers that sync doesn't:\n— Volume (thousands of micro-transactions vs. dozens of large ones)\n— Speed (release today, earn this month)\n— No gatekeeping (no vetting required) — — — THE HONEST ANSWER Yes — with 3+ confirmed placements per year, PRO registration, and a documented catalogue of 40+ tracks, sync can be primary income. No — if you haven't completed rights documentation, don't have stems, or haven't registered with a PRO. The talent is there. The infrastructure has to catch up first. #AfricanComposers #SyncLicensing #SyncIncome #SyncMaster",
+      "body": "Compare that to streaming:\n1 million streams = roughly $3,000–$4,000 at standard rates.\nGetting to 1 million streams for most independent composers: 6–18 months.",
       "footer_name": "syncmaster.live",
       "slide": 6,
       "eyebrow": "Education · 6/7",
       "counter": "06 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 48
-      },
-      "fit_warnings": [
-        "[06 context.body] copy (1544 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-      ]
+        "body": 60
+      }
     },
     {
       "archetype": "cta",

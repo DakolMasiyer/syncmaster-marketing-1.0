@@ -81,6 +81,26 @@ def apply_live_metrics(body, post):
             (r"→ 94 tracks entered the active pool", f"→ {snapshot['tracks_in_pool']} tracks entered the active pool"),
             (r"94 tracks in the active pool\.", f"{snapshot['tracks_in_pool']} tracks in the active pool."),
             (r"12 active composers \(2 applications under vetting\)\.", f"{snapshot['composers_active']} active composers (2 applications under vetting)."),
+            # ── Additional Month 3 Bullet lists and article variations ──
+            (r"— 47 applications received", f"— {snapshot['applications_received']} applications received"),
+            (r"— 12 composers vetted, cleared, active", f"— {snapshot['composers_active']} composers vetted, cleared, active"),
+            (r"— 9 briefs handled", f"— {snapshot['briefs_handled']} briefs handled"),
+            (r"— 31 tracks submitted across those briefs", f"— {snapshot['tracks_submitted']} tracks submitted across those briefs"),
+            (r"— 3 confirmed placements", f"— {snapshot['placements_confirmed']} confirmed placements"),
+            (r"— Fastest brief response: 11 hours", f"— Fastest brief response: {snapshot['fastest_turnaround_hours']} hours"),
+            (r"Active composers: 12", f"Active composers: {snapshot['composers_active']}"),
+            (r"Catalogues fully documented: 12", f"Catalogues fully documented: {snapshot['composers_active']}"),
+            (r"Tracks in active submission pool: 94", f"Tracks in active submission pool: {snapshot['tracks_in_pool']}"),
+            (r"We've handled 9 briefs in 90 days\.", f"We've handled {snapshot['briefs_handled']} briefs in 90 days."),
+            (r"vetted 12 African composers", f"vetted {snapshot['composers_active']} African composers"),
+            (r"three confirmed sync placements", f"{snapshot['placements_confirmed']} confirmed sync placements"),
+            (r"three confirmed placements", f"{snapshot['placements_confirmed']} confirmed placements"),
+            (r"Three placements\. 90 days\.", f"{snapshot['placements_confirmed']} placements. 90 days."),
+            (r"Three placements confirmed\.", f"{snapshot['placements_confirmed']} placements confirmed."),
+            (r"3 confirmed placements entering August: 3", f"3 confirmed placements entering August: {snapshot['placements_confirmed']}"),
+            (r"3 confirmed placements across 2 months\.", f"{snapshot['placements_confirmed']} confirmed placements across 2 months."),
+            (r"three placements across 90 days", f"{snapshot['placements_confirmed']} placements across 90 days"),
+            (r"three placements over 90 days", f"{snapshot['placements_confirmed']} placements over 90 days"),
         ]
 
     return _substitute(patterns, body)

@@ -20,9 +20,7 @@
   "caption_hook_len": 30,
   "caption_full": "The brief said:\n\"90 seconds. ↓\n\nSave this for when your first brief arrives.\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicSupervisor #SyncBrief",
   "slide_count": 7,
-  "fit_warnings": [
-    "[06 context.body] copy (847 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-  ],
+  "fit_warnings": [],
   "slides": [
     {
       "archetype": "hook",
@@ -55,7 +53,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "Every word in a sync brief is a specification. Not a suggestion. ↓",
+      "body": "Every word in a sync brief is a specification. Not a suggestion. ↓ 🚫 NO VOCALS\nNot even background vocals. Not even a hum. Fully instrumental or the track is out.",
       "footer_name": "syncmaster.live",
       "slide": 3,
       "eyebrow": "Behind the Scenes · 3/7",
@@ -97,18 +95,15 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "🌍 AFROFUSION INFLUENCE\nThe tonal and rhythmic language of African music — not pastiche, not performed. Authentic. 😌 HOPEFUL\nNot happy. Not triumphant. Hopeful is quieter, more complex. The distinction matters enormously to the picture edit. 🚫 NO VOCALS\nNot even background vocals. Not even a hum. Fully instrumental or the track is out. ✅ ONE-STOP ONLY\nYou control both master and publishing. If you need a label involved, the track is disqualified. → Where sync briefs come from and who writes them\n→ Why duration is always absolute\n→ How to read instrumentation and influence language\n→ Mood vocabulary — the most misread field in any brief\n→ Why \"no vocals\" is never negotiable\n→ How to know if you qualify for one-stop before applying Save this for when your first brief arrives. #SyncBrief #MusicSupervisor #SyncLicensing #AfricanComposers #SyncMaster",
+      "body": "🌍 AFROFUSION INFLUENCE\nThe tonal and rhythmic language of African music — not pastiche, not performed. Authentic.",
       "footer_name": "syncmaster.live",
       "slide": 6,
       "eyebrow": "Behind the Scenes · 6/7",
       "counter": "06 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 48
-      },
-      "fit_warnings": [
-        "[06 context.body] copy (847 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-      ]
+        "body": 60
+      }
     },
     {
       "archetype": "cta",

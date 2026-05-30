@@ -23,7 +23,7 @@ Structure:
 — Brief #1 (the Showmax documentary brief — category, timeline, what was submitted)
 — Brief #2 (the NGO campaign — different category, different territory, same documentation standard)
 — Brief #3 (the UK commercial — fastest turnaround, highest fee)
-— What he earned (directional: "five-figure USD across three placements over 90 days")
+— What he earned (directional: "five-figure USD across 3 placements over 90 days")
 — What's next (his catalogue is now in active submission for every matching brief)
 
 Tone: specific, narrative, honest. This is a story, not a press release.

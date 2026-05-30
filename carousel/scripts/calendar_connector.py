@@ -73,7 +73,7 @@ def _get_copy_cache():
     return _copy_cache
 
 
-def get_posts(type=None, platform=None, pillar=None, month=None, purpose=None):
+def get_posts(type=None, platform=None, pillar=None, month=None, purpose=None, date=None):
     """Return filtered list of post dicts from the content calendar."""
     posts = _get_posts()
     if type:
@@ -86,6 +86,8 @@ def get_posts(type=None, platform=None, pillar=None, month=None, purpose=None):
         posts = [p for p in posts if p.get("month") == int(month)]
     if purpose:
         posts = [p for p in posts if p.get("purpose", "").lower() == purpose.lower()]
+    if date:
+        posts = [p for p in posts if p.get("date") == date]
     return posts
 
 

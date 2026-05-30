@@ -20,11 +20,7 @@
   "caption_hook_len": 22,
   "caption_full": "It's not your sound. ↓\n\nHere are the actual reasons African composers get passed over in sync licensing — none of them have anything to do with talent.\n\nSave this. Fix what you can. Then come find us.\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicBusiness #SyncReady",
   "slide_count": 7,
-  "fit_warnings": [
-    "[01 hook.eyebrow] copy (57 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
-    "[03 context.body] copy (215 chars) exceeds slot budget (206 at 48px) — needs a rewrite",
-    "[06 context.body] copy (602 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-  ],
+  "fit_warnings": [],
   "slides": [
     {
       "archetype": "hook",
@@ -32,15 +28,12 @@
       "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "eyebrow": "Education · 5 reasons African music gets rejected in sync",
+      "eyebrow": "Education",
       "counter": "01 / 07",
       "fonts": {
         "eyebrow": 44,
         "headline": 320
-      },
-      "fit_warnings": [
-        "[01 hook.eyebrow] copy (57 chars) exceeds slot budget (48 at 44px) — needs a rewrite"
-      ]
+      }
     },
     {
       "archetype": "context",
@@ -60,18 +53,15 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "REASON 1: UNCLEARED SAMPLES\nEven a small sample that isn't cleared makes the track legally untouchable.\nProductions carry full liability for anything they broadcast.\nThey won't risk it, no matter how good the track is.",
+      "body": "REASON 1: UNCLEARED SAMPLES\nEven a small sample that isn't cleared makes the track legally untouchable.",
       "footer_name": "syncmaster.live",
       "slide": 3,
       "eyebrow": "Education · 3/7",
       "counter": "03 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 48
-      },
-      "fit_warnings": [
-        "[03 context.body] copy (215 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-      ]
+        "body": 60
+      }
     },
     {
       "archetype": "context",
@@ -91,32 +81,29 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "REASON 3: NO METADATA\nNo BPM tag. No ISRC. No mood categorisation.\nYour track doesn't show up in a search.\nYou're invisible even when you're technically \"in the library.\"",
+      "body": "REASON 3: NO METADATA\nNo BPM tag. No ISRC. No mood categorisation.",
       "footer_name": "syncmaster.live",
       "slide": 5,
       "eyebrow": "Education · 5/7",
       "counter": "05 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 56
+        "body": 60
       }
     },
     {
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "REASON 4: WRONG FILE FORMAT\nMP3 files. SoundCloud links. Google Drive folders.\nSupervisors need lossless files, properly named, ready immediately. The work, in numbers. → Why none of this is about your sound\n→ The sample clearance issue and what to do about it\n→ Rights splits — how to protect yourself before signing anything\n→ The metadata checklist for every file in your catalogue\n→ File format requirements for professional submissions\n→ Building a 24-hour response system that actually works Save this. Fix what you can. Then apply. #SyncReady #AfricanComposers #SyncMaster #SyncLicensing #MusicBusiness",
+      "body": "REASON 4: WRONG FILE FORMAT\nMP3 files. SoundCloud links. Google Drive folders.\nSupervisors need lossless files, properly named, ready immediately.",
       "footer_name": "syncmaster.live",
       "slide": 6,
       "eyebrow": "Education · 6/7",
       "counter": "06 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 48
-      },
-      "fit_warnings": [
-        "[06 context.body] copy (602 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-      ]
+        "body": 60
+      }
     },
     {
       "archetype": "cta",

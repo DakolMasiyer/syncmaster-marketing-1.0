@@ -20,9 +20,7 @@
   "caption_hook_len": 95,
   "caption_full": "One month in.\nHere's everything we built, the numbers behind it, and what Month 2 looks like. ↓\n\nFollow along. Month 2 starts Monday.\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicBusiness #BuildingInPublic",
   "slide_count": 7,
-  "fit_warnings": [
-    "[06 context.body] copy (552 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-  ],
+  "fit_warnings": [],
   "slides": [
     {
       "archetype": "hook",
@@ -41,7 +39,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "Here's everything we built, the numbers behind it, and what Month 2 looks like. ↓",
+      "body": "Here's everything we built, the numbers behind it, and what Month 2 looks like. ↓ Follow along.",
       "footer_name": "syncmaster.live",
       "slide": 2,
       "eyebrow": "Behind the Scenes · 2/7",
@@ -55,14 +53,14 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "THE NUMBERS\n📬 Applications received: 20\n✅ Composers vetted: 6\n📋 Briefs received from supervisors: 3\n🎵 Tracks pitched: 11\n🤝 Placements confirmed: 1\n⏱ Fastest turnaround (brief to delivery): 48 hours",
+      "body": "THE NUMBERS\n📬 Applications received: 20\n✅ Composers vetted: 6\n📋 Briefs received from supervisors: 3\n🎵 Tracks pitched: 11\n🤝 Placements confirmed: 1\n⏱ Fastest",
       "footer_name": "syncmaster.live",
       "slide": 3,
       "eyebrow": "Behind the Scenes · 3/7",
       "counter": "03 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 48
+        "body": 60
       }
     },
     {
@@ -83,7 +81,7 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "THE CONTENT\n42 pieces of content across 5 platforms in 30 days.",
+      "body": "THE CONTENT\n42 pieces of content across 5 platforms in 30 days. MONTH 2\nMore composers. More briefs. More placements.\nMore content to prove it's real.",
       "footer_name": "syncmaster.live",
       "slide": 5,
       "eyebrow": "Behind the Scenes · 5/7",
@@ -97,18 +95,15 @@
       "archetype": "context",
       "stat_number": "",
       "headline": "",
-      "body": "WHAT WE LEARNED\n→ Speed wins. Every brief we didn't win was lost on response time, not quality.\n→ Rights is the highest barrier. 9 of 14 rejected applications had rights issues.\n→ Supervisors want African music. Genuinely. The demand is real and explicit.\n→ The brief-to-placement cycle is faster than we expected.\n→ Building in public works. Application volume doubled in Week 3. MONTH 2\nMore composers. More briefs. More placements.\nMore content to prove it's real. Follow along. #SyncMaster #BuildingInPublic #AfricanComposers #SyncLicensing #MusicBusiness",
+      "body": "WHAT WE LEARNED\n→ Speed wins. Every brief we didn't win was lost on response time, not quality.",
       "footer_name": "syncmaster.live",
       "slide": 6,
       "eyebrow": "Behind the Scenes · 6/7",
       "counter": "06 / 07",
       "fonts": {
         "eyebrow": 44,
-        "body": 48
-      },
-      "fit_warnings": [
-        "[06 context.body] copy (552 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
-      ]
+        "body": 60
+      }
     },
     {
       "archetype": "cta",
