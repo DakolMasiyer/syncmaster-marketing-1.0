@@ -83,7 +83,7 @@ DARK_LAYER_NAMES = {
     },
     "194:2667": { # CONTEXT / BODY
         "eyebrow":       "section_eyebrow",
-        "headline":      "stat_number",
+        "stat_number":   "stat_number",
         "body":          "body",
         "footer_label":  "footer_label",
         "footer_sub":    "footer_sublabel",
@@ -92,7 +92,7 @@ DARK_LAYER_NAMES = {
     },
     "194:2696": { # SHOWCASE
         "eyebrow":       "section_eyebrow",
-        "headline":      "stat_number",
+        "stat_number":   "stat_number",
         "body":          "body",
         "footer_label":  "footer_label",
         "footer_sub":    "footer_sublabel",
@@ -467,6 +467,77 @@ def build_text_ops(slide: dict, section_id: str, slide_num: int, total: int, tem
     return ops
 
 
+ARCHETYPE_SECTION = {
+    "hook": "hook", "context": "body", "stat": "body",
+    "showcase": "showcase", "proof": "proof", "cta": "cta",
+}
+
+def section_for_archetype(archetype, template):
+    key = ARCHETYPE_SECTION.get(archetype, "body")
+    return (DARK_SECTIONS if template == "dark" else LIGHT_SECTIONS)[key]
+
+# Beat field -> ordered candidate semantic keys understood by the section layer maps.
+_FIELD_TO_KEY = {
+    "eyebrow": ["eyebrow", "section_eyebrow", "top_eyebrow"],
+    "headline": ["headline"],
+    "body": ["body"],
+    "stat_number": ["stat_number"],
+    "cta_text": ["cta_text"],
+    "counter": ["counter", "counter_main"],
+    "footer_name": ["footer_domain"],
+}
+
+def build_text_ops_v2(beat, section_id, template):
+    layers = (DARK_LAYER_NAMES if template == "dark" else LIGHT_LAYER_NAMES).get(section_id, {})
+    fonts = beat.get("fonts", {})
+    ops = []
+
+    def emit(field, value):
+        if not value:
+            return
+        for key in _FIELD_TO_KEY.get(field, [field]):
+            if key in layers:
+                op = {"find_by_name": layers[key], "set_text": str(value).strip()}
+                if field in fonts:
+                    op["set_font_size"] = fonts[field]
+                ops.append(op)
+                return
+
+    emit("counter", beat.get("counter"))
+    emit("eyebrow", beat.get("eyebrow"))
+    emit("headline", beat.get("headline"))
+    emit("stat_number", beat.get("stat_number"))
+    emit("body", beat.get("body"))
+    emit("cta_text", beat.get("cta_text"))
+    emit("footer_name", beat.get("footer_name"))
+
+    # Proof stat grid
+    for i, slot in enumerate(("placed", "roster", "turnaround")):
+        if i < len(beat.get("stats", [])):
+            st = beat["stats"][i]
+            lbl = layers.get("stat_%s_label" % slot)
+            val = layers.get("stat_%s_value" % slot)
+            if lbl:
+                ops.append({"find_by_name": lbl, "set_text": st.get("label", "")})
+            if val:
+                ops.append({"find_by_name": val, "set_text": st.get("value", "")})
+    return ops
+
+def validate_ops(beat, section_id, template, strict_fields=None):
+    """Raise if any populated content field has no destination layer in this section."""
+    layers = (DARK_LAYER_NAMES if template == "dark" else LIGHT_LAYER_NAMES).get(section_id, {})
+    check = strict_fields or {"headline", "body", "stat_number", "cta_text"}
+    for field in check:
+        if not beat.get(field):
+            continue
+        keys = _FIELD_TO_KEY.get(field, [field])
+        if not any(k in layers for k in keys):
+            raise ValueError(
+                "slide %s (%s): field '%s' has copy but no layer in section %s — would be dropped"
+                % (beat.get("slide"), beat.get("archetype"), field, section_id)
+            )
+
+
 def screenshot_op_for(post_data: dict, slide_index: int):
     """Return a screenshot operation descriptor if the slide needs one, else None."""
     pd = post_data.get("product_data")
@@ -586,8 +657,10 @@ def build_publish_plan(month=1, post_id=None):
 
         for i, slide in enumerate(slides):
             is_last = (i == total - 1)
-            sec_id = section_for_role(slide.get("role", "body"), template, is_last)
-            text_ops = build_text_ops(slide, sec_id, i + 1, total, template, is_sequential)
+            arch = slide.get("archetype", slide.get("role", "context"))
+            sec_id = section_for_archetype(arch, template)
+            validate_ops(slide, sec_id, template)        # fail loud on silent drops
+            text_ops = build_text_ops_v2(slide, sec_id, template)
             shot_op = screenshot_op_for(copy_data, i)
 
             slide_ops.append({
