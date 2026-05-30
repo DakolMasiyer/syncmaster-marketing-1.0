@@ -18,6 +18,11 @@ import warnings
 from pathlib import Path
 from datetime import datetime, timedelta
 
+# Unsplash auto-fetch is DISABLED for now — flip to True once the API key /
+# attribution flow is set up. While False, "unsplash" slides fall back to a
+# solid brand-colour fill and no network call is made.
+ENABLE_UNSPLASH = False
+
 try:
     import asset_fetcher
 except ImportError:
@@ -477,6 +482,9 @@ def screenshot_op_for(post_data: dict, slide_index: int):
     if screen_type == "checklist":
         return {"type": "fixture_render", "fixture_type": "checklist", "items": pd.get("checklist_items", [])}
     if screen_type == "unsplash":
+        if not ENABLE_UNSPLASH:
+            # Disabled by flag — no fetch, no network. Slide gets a solid fill.
+            return None
         if asset_fetcher is None:
             warnings.warn("asset_fetcher not importable — falling back to colour fill")
             return None
