@@ -19,121 +19,116 @@
   "caption_hook": "Two licences. One placement. Most composers only know about one. ↓",
   "caption_hook_len": 66,
   "caption_full": "Two licences. One placement. Most composers only know about one. ↓\n\nIf you've ever wondered why sync deals feel complicated — every placement requires two separate legal permissions.\n\nSave this before your next deal conversation.\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicRights #IndependentArtist",
-  "slide_count": 10,
+  "slide_count": 7,
+  "fit_warnings": [
+    "[01 hook.headline] copy (64 chars) exceeds slot budget (57 at 200px) — needs a rewrite",
+    "[06 context.body] copy (629 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+  ],
   "slides": [
     {
-      "role": "hook",
-      "eyebrow": "Education · Master vs sync licence",
+      "archetype": "hook",
       "headline": "Two licences. One placement. Most composers only know about one.",
-      "lede": "",
-      "footer_kicker": "Written by",
+      "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "footer_pageno": "01 / 10"
+      "eyebrow": "Education · Master vs sync licence",
+      "counter": "01 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 200
+      },
+      "fit_warnings": [
+        "[01 hook.headline] copy (64 chars) exceeds slot budget (57 at 200px) — needs a rewrite"
+      ]
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 1/10",
-      "headline": "If you've ever wondered why sync deals feel complicated — every placement requires two separate legal permissions.",
-      "lede": "↓",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "If you've ever wondered why sync deals feel complicated — every placement requires two separate legal permissions. ↓",
       "footer_name": "syncmaster.live",
       "slide": 2,
-      "footer_pageno": "02 / 10"
+      "eyebrow": "Education · 2/7",
+      "counter": "02 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 2/10",
-      "headline": "🔑 THE SYNC LICENCE\nPermission to pair your composition with visual content.",
-      "lede": "Controlled by: the publisher (or you, if you self-publish).",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "🔑 THE SYNC LICENCE\nPermission to pair your composition with visual content.\nControlled by: the publisher (or you, if you self-publish).",
       "footer_name": "syncmaster.live",
       "slide": 3,
-      "footer_pageno": "03 / 10"
+      "eyebrow": "Education · 3/7",
+      "counter": "03 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 3/10",
-      "headline": "🔑 THE MASTER LICENCE\nPermission to use the specific recording.",
-      "lede": "Controlled by: whoever owns the master — often the label, unless you recorded independently. · One placement = two separate negotiations.",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "🔑 THE MASTER LICENCE\nPermission to use the specific recording.\nControlled by: whoever owns the master — often the label, unless you recorded independently.",
       "footer_name": "syncmaster.live",
       "slide": 4,
-      "footer_pageno": "04 / 10"
+      "eyebrow": "Education · 4/7",
+      "counter": "04 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "list",
-      "eyebrow": "Education · 5/10",
-      "headline": "Here's what you need to know:",
-      "lede": "If a label owns your master: · They share in every sync deal you ever make · A supervisor has to negotiate with two parties · That friction kills deals",
-      "list_items": [
-        "If a label owns your master:",
-        "They share in every sync deal you ever make",
-        "A supervisor has to negotiate with two parties",
-        "That friction kills deals"
-      ],
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "One placement = two separate negotiations.",
       "footer_name": "syncmaster.live",
       "slide": 5,
-      "footer_pageno": "05 / 10"
+      "eyebrow": "Education · 5/7",
+      "counter": "05 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 6/10",
-      "headline": "\"One-stop\" means you control both.",
-      "lede": "",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "If a label owns your master:\n→ They share in every sync deal you ever make\n→ A supervisor has to negotiate with two parties\n→ That friction kills deals \"One-stop\" means you control both. Supervisors prioritise one-stop tracks.\nFewer calls. Faster deals. No surprises. → What the sync licence actually covers\n→ What the master licence covers and who typically holds it\n→ Why one-stop status changes everything\n→ How to protect your position before you sign anything\n→ What to do if a label already holds your master Save this before your next deal conversation. #MusicRights #SyncLicensing #AfricanComposers #SyncMaster #IndependentArtist",
       "footer_name": "syncmaster.live",
       "slide": 6,
-      "footer_pageno": "06 / 10"
+      "eyebrow": "Education · 6/7",
+      "counter": "06 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 48
+      },
+      "fit_warnings": [
+        "[06 context.body] copy (629 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+      ]
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 7/10",
-      "headline": "Supervisors prioritise one-stop tracks.\nFewer calls. Faster deals. No surprises.",
-      "lede": "",
-      "footer_kicker": "Education",
+      "archetype": "cta",
+      "headline": "Open briefs. Every Tuesday.",
+      "body": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Apply now",
       "footer_name": "syncmaster.live",
       "slide": 7,
-      "footer_pageno": "07 / 10"
-    },
-    {
-      "role": "list",
-      "eyebrow": "Education · 8/10",
-      "headline": "Here's what you need to know:",
-      "lede": "What the sync licence actually covers · What the master licence covers and who typically holds it · Why one-stop status changes everything · How to protect your position before you sign anything",
-      "list_items": [
-        "What the sync licence actually covers",
-        "What the master licence covers and who typically holds it",
-        "Why one-stop status changes everything",
-        "How to protect your position before you sign anything",
-        "What to do if a label already holds your master"
-      ],
-      "footer_kicker": "Education",
-      "footer_name": "syncmaster.live",
-      "slide": 8,
-      "footer_pageno": "08 / 10"
-    },
-    {
-      "role": "body",
-      "eyebrow": "Education · 9/10",
-      "headline": "Save this before your next deal conversation.",
-      "lede": "",
-      "footer_kicker": "Education",
-      "footer_name": "syncmaster.live",
-      "slide": 9,
-      "footer_pageno": "09 / 10"
-    },
-    {
-      "role": "cta",
       "eyebrow": "Apply this week",
-      "headline": "Open briefs. Every Tuesday.",
-      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
-      "cta_text": "Apply now",
-      "footer_kicker": "Apply",
-      "footer_name": "syncmaster.live",
-      "slide": 10,
-      "footer_pageno": "10 / 10"
+      "counter": "07 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 220,
+        "body": 60,
+        "cta_text": 64
+      }
     }
   ]
 }

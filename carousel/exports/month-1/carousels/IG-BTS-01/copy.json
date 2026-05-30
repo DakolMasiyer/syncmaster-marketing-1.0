@@ -19,108 +19,112 @@
   "caption_hook": "20 applications. 6 vetted.\nHere's the exact checklist we use — and why we turned down 14 genuinely talented composers. ↓",
   "caption_hook_len": 120,
   "caption_full": "20 applications. 6 vetted.\nHere's the exact checklist we use — and why we turned down 14 genuinely talented composers. ↓\n\nApply when you're ready. Link in bio.\n\n#SyncMaster #AfricanComposers #MusicBusiness #SyncReady #BehindTheScenes",
-  "slide_count": 10,
+  "slide_count": 7,
+  "fit_warnings": [
+    "[06 context.body] copy (661 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+  ],
   "slides": [
     {
-      "role": "hook",
-      "eyebrow": "Behind the Scenes · How vetting works",
+      "archetype": "hook",
       "headline": "20 applications. 6 vetted.",
-      "lede": "",
-      "footer_kicker": "Written by",
+      "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "footer_pageno": "01 / 10"
+      "eyebrow": "Behind the Scenes · How vetting works",
+      "counter": "01 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 320
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Behind the Scenes · 1/10",
-      "headline": "Here's the exact checklist we use — and why we turned down 14 genuinely talented composers.",
-      "lede": "↓",
-      "footer_kicker": "Behind the Scenes",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "Here's the exact checklist we use — and why we turned down 14 genuinely talented composers. ↓",
       "footer_name": "syncmaster.live",
       "slide": 2,
-      "footer_pageno": "02 / 10"
+      "eyebrow": "Behind the Scenes · 2/7",
+      "counter": "02 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Behind the Scenes · 2/10",
-      "headline": "The vetting process isn't about picking the \"best\" music.",
-      "lede": "It's about picking music that's ready.",
-      "footer_kicker": "Behind the Scenes",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "The vetting process isn't about picking the \"best\" music.\nIt's about picking music that's ready.",
       "footer_name": "syncmaster.live",
       "slide": 3,
-      "footer_pageno": "03 / 10"
+      "eyebrow": "Behind the Scenes · 3/7",
+      "counter": "03 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Behind the Scenes · 3/10",
-      "headline": "Because our credibility with music supervisors depends on what we pitch to them.",
-      "lede": "THE 6-POINT CHECKLIST:",
-      "footer_kicker": "Behind the Scenes",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "Because our credibility with music supervisors depends on what we pitch to them.",
       "footer_name": "syncmaster.live",
       "slide": 4,
-      "footer_pageno": "04 / 10"
+      "eyebrow": "Behind the Scenes · 4/7",
+      "counter": "04 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Behind the Scenes · 5/10",
-      "headline": "✓ Original compositions only (zero uncleared samples)\n✓ Clear rights chain",
-      "lede": "(master + publishing confirmed, documented)\n✓ Lossless files available (WAV or AIFF, not MP3)\n✓ ISRC codes assigned to every recording\n✓ Stems available on request\n✓ Sub-24-hour response time (tested in the process)",
-      "footer_kicker": "Behind the Scenes",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "THE 6-POINT CHECKLIST:",
       "footer_name": "syncmaster.live",
       "slide": 5,
-      "footer_pageno": "05 / 10"
+      "eyebrow": "Behind the Scenes · 5/7",
+      "counter": "05 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Behind the Scenes · 6/10",
-      "headline": "Of 20 applications in Month 1: 6 passed all six criteria.",
-      "lede": "",
-      "footer_kicker": "Behind the Scenes",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "✓ Original compositions only (zero uncleared samples)\n✓ Clear rights chain (master + publishing confirmed, documented)\n✓ Lossless files available (WAV or AIFF, not MP3)\n✓ ISRC codes assigned to every recording\n✓ Stems available on request\n✓ Sub-24-hour response time (tested in the process) Of 20 applications in Month 1: 6 passed all six criteria. The 14 who didn't? We gave each one specific written feedback.\nMost gaps are fixable. They can reapply when they're ready. Quality over volume. Every time.\nBecause supervisors need to trust what we send them. Apply when you're ready: link in bio. #SyncReady #AfricanComposers #SyncMaster #MusicBusiness #BehindTheScenes",
       "footer_name": "syncmaster.live",
       "slide": 6,
-      "footer_pageno": "06 / 10"
+      "eyebrow": "Behind the Scenes · 6/7",
+      "counter": "06 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 48
+      },
+      "fit_warnings": [
+        "[06 context.body] copy (661 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+      ]
     },
     {
-      "role": "body",
-      "eyebrow": "Behind the Scenes · 7/10",
-      "headline": "The 14 who didn't?",
-      "lede": "We gave each one specific written feedback.\nMost gaps are fixable. They can reapply when they're ready.",
-      "footer_kicker": "Behind the Scenes",
+      "archetype": "cta",
+      "headline": "Open briefs. Every Tuesday.",
+      "body": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Work with us",
       "footer_name": "syncmaster.live",
       "slide": 7,
-      "footer_pageno": "07 / 10"
-    },
-    {
-      "role": "body",
-      "eyebrow": "Behind the Scenes · 8/10",
-      "headline": "Quality over volume.",
-      "lede": "Every time.\nBecause supervisors need to trust what we send them.",
-      "footer_kicker": "Behind the Scenes",
-      "footer_name": "syncmaster.live",
-      "slide": 8,
-      "footer_pageno": "08 / 10"
-    },
-    {
-      "role": "body",
-      "eyebrow": "Behind the Scenes · 9/10",
-      "headline": "Apply when you're ready: link in bio.",
-      "lede": "",
-      "footer_kicker": "Behind the Scenes",
-      "footer_name": "syncmaster.live",
-      "slide": 9,
-      "footer_pageno": "09 / 10"
-    },
-    {
-      "role": "cta",
       "eyebrow": "Apply this week",
-      "headline": "Open briefs. Every Tuesday.",
-      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
-      "cta_text": "Work with us",
-      "footer_kicker": "Apply",
-      "footer_name": "syncmaster.live",
-      "slide": 10,
-      "footer_pageno": "10 / 10"
+      "counter": "07 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 220,
+        "body": 60,
+        "cta_text": 64
+      }
     }
   ],
   "product_data": {

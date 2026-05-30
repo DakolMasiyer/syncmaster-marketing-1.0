@@ -19,122 +19,112 @@
   "caption_hook": "Your track has no ISRC code?\nThat's the first thing we fix at SyncMaster. ↓",
   "caption_hook_len": 75,
   "caption_full": "Your track has no ISRC code?\nThat's the first thing we fix at SyncMaster. ↓\n\nDo your tracks have ISRCs? DM us if you need help.\n\n#SyncMaster #AfricanComposers #SyncReady #ISRC #MusicRights",
-  "slide_count": 10,
+  "slide_count": 7,
+  "fit_warnings": [
+    "[06 context.body] copy (895 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+  ],
   "slides": [
     {
-      "role": "hook",
-      "eyebrow": "Education · ISRC codes explained",
+      "archetype": "hook",
       "headline": "Your track has no ISRC code?",
-      "lede": "",
-      "footer_kicker": "Written by",
+      "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "footer_pageno": "01 / 10"
+      "eyebrow": "Education · ISRC codes explained",
+      "counter": "01 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 320
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 1/14",
-      "headline": "That's the first thing we fix at SyncMaster.",
-      "lede": "Here's exactly why it matters more than almost anything else in your catalogue. ↓ · ISRC = International Standard Recording Code",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "That's the first thing we fix at SyncMaster. Here's exactly why it matters more than almost anything else in your catalogue. ↓",
       "footer_name": "syncmaster.live",
       "slide": 2,
-      "footer_pageno": "02 / 10"
+      "eyebrow": "Education · 2/7",
+      "counter": "02 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 3/14",
-      "headline": "A unique identifier assigned to each individual recording.",
-      "lede": "Think of it as a barcode for your music. · Why it matters for sync specifically:",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "ISRC = International Standard Recording Code",
       "footer_name": "syncmaster.live",
       "slide": 3,
-      "footer_pageno": "03 / 10"
+      "eyebrow": "Education · 3/7",
+      "counter": "03 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "list",
-      "eyebrow": "Education · 5/14",
-      "headline": "Here's what you need to know:",
-      "lede": "It identifies your recording in global licensing databases · It links your track to royalty collection societies worldwide (SAMRO, COSON, SOCAN, PRS, ASCAP, and more) · Without it, performance royalties from any placement can't reach you · Without it, your track can't be properly catalogued in sync libraries",
-      "list_items": [
-        "It identifies your recording in global licensing databases",
-        "It links your track to royalty collection societies worldwide (SAMRO, COSON, SOCAN, PRS, ASCAP, and more)",
-        "Without it, performance royalties from any placement can't reach you",
-        "Without it, your track can't be properly catalogued in sync libraries"
-      ],
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "A unique identifier assigned to each individual recording.\nThink of it as a barcode for your music.",
       "footer_name": "syncmaster.live",
       "slide": 4,
-      "footer_pageno": "04 / 10"
+      "eyebrow": "Education · 4/7",
+      "counter": "04 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 6/14",
-      "headline": "A placement without an ISRC = money you'll never collect.",
-      "lede": "HOW TO GET ONE:",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "Why it matters for sync specifically:",
       "footer_name": "syncmaster.live",
       "slide": 5,
-      "footer_pageno": "05 / 10"
+      "eyebrow": "Education · 5/7",
+      "counter": "05 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "list",
-      "eyebrow": "Education · 8/14",
-      "headline": "Here's what you need to know:",
-      "lede": "Through your national music body: · RISA (South Africa) · COSON (Nigeria) · MCSK (Kenya)",
-      "list_items": [
-        "Through your national music body:",
-        "RISA (South Africa)",
-        "COSON (Nigeria)",
-        "MCSK (Kenya)",
-        "CAPASSO (South Africa)",
-        "GHAMRO (Ghana)"
-      ],
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "→ It identifies your recording in global licensing databases\n→ It links your track to royalty collection societies worldwide (SAMRO, COSON, SOCAN, PRS, ASCAP, and more)\n→ Without it, performance royalties from any placement can't reach you\n→ Without it, your track can't be properly catalogued in sync libraries A placement without an ISRC = money you'll never collect. HOW TO GET ONE: Through your national music body:\n→ RISA (South Africa)\n→ COSON (Nigeria)\n→ MCSK (Kenya)\n→ CAPASSO (South Africa)\n→ GHAMRO (Ghana) Through your distributor:\n→ DistroKid, TuneCore, CD Baby all assign ISRCs automatically Direct registration: IFPI.org Cost: Free or minimal.\nTime: 24–72 hours in most cases. Every track in the SyncMaster catalogue has an ISRC.\nEvery composer we onboard gets this sorted in the first call. Questions? DM us. Or apply: link in bio. #ISRC #MusicRights #SyncReady #AfricanComposers #SyncMaster",
       "footer_name": "syncmaster.live",
       "slide": 6,
-      "footer_pageno": "06 / 10"
+      "eyebrow": "Education · 6/7",
+      "counter": "06 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 48
+      },
+      "fit_warnings": [
+        "[06 context.body] copy (895 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+      ]
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 9/14",
-      "headline": "Through your distributor:\n→ DistroKid, TuneCore, CD Baby all assign ISRCs",
-      "lede": "automatically · Direct registration: IFPI.org",
-      "footer_kicker": "Education",
+      "archetype": "cta",
+      "headline": "Open briefs. Every Tuesday.",
+      "body": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Apply now",
       "footer_name": "syncmaster.live",
       "slide": 7,
-      "footer_pageno": "07 / 10"
-    },
-    {
-      "role": "body",
-      "eyebrow": "Education · 11/14",
-      "headline": "Cost: Free or minimal.\nTime: 24–72 hours in most cases.",
-      "lede": "",
-      "footer_kicker": "Education",
-      "footer_name": "syncmaster.live",
-      "slide": 8,
-      "footer_pageno": "08 / 10"
-    },
-    {
-      "role": "body",
-      "eyebrow": "Education · 12/14",
-      "headline": "Every track in the SyncMaster catalogue has an ISRC.",
-      "lede": "Every composer we onboard gets this sorted in the first call. · Questions? DM us. Or apply: link in bio.",
-      "footer_kicker": "Education",
-      "footer_name": "syncmaster.live",
-      "slide": 9,
-      "footer_pageno": "09 / 10"
-    },
-    {
-      "role": "cta",
       "eyebrow": "Apply this week",
-      "headline": "Open briefs. Every Tuesday.",
-      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
-      "cta_text": "Apply now",
-      "footer_kicker": "Apply",
-      "footer_name": "syncmaster.live",
-      "slide": 10,
-      "footer_pageno": "10 / 10"
+      "counter": "07 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 220,
+        "body": 60,
+        "cta_text": 64
+      }
     }
   ]
 }

@@ -18,122 +18,118 @@
   "caption_hook": "A composer we spoke to in Month 2 had three confirmed placements. ↓",
   "caption_hook_len": 67,
   "caption_full": "A composer we spoke to in Month 2 had three confirmed placements. ↓\n\nMusic already aired.\n\nSave this before your next deal. DM us if you have an offer →\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicPublishing",
-  "slide_count": 10,
+  "slide_count": 7,
+  "fit_warnings": [
+    "[01 hook.eyebrow] copy (69 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
+    "[01 hook.headline] copy (65 chars) exceeds slot budget (57 at 200px) — needs a rewrite",
+    "[06 context.body] copy (1025 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+  ],
   "slides": [
     {
-      "role": "hook",
-      "eyebrow": "Education · Publishing rights: what composers give up without knowing",
+      "archetype": "hook",
       "headline": "A composer we spoke to in Month 2 had three confirmed placements.",
-      "lede": "",
-      "footer_kicker": "Written by",
+      "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "footer_pageno": "01 / 10"
+      "eyebrow": "Education · Publishing rights: what composers give up without knowing",
+      "counter": "01 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 200
+      },
+      "fit_warnings": [
+        "[01 hook.eyebrow] copy (69 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
+        "[01 hook.headline] copy (65 chars) exceeds slot budget (57 at 200px) — needs a rewrite"
+      ]
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 2/10",
-      "headline": "But he had never registered publishing before the licences were signed.",
-      "lede": "Music already aired. Already used. Fees already paid.",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "Music already aired. Already used. Fees already paid.",
       "footer_name": "syncmaster.live",
       "slide": 2,
-      "footer_pageno": "02 / 10"
+      "eyebrow": "Education · 2/7",
+      "counter": "02 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 3/10",
-      "headline": "Estimated performance royalties gone: over ₦800K. Uncollectable. Permanently.",
-      "lede": "",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "But he had never registered publishing before the licences were signed.",
       "footer_name": "syncmaster.live",
       "slide": 3,
-      "footer_pageno": "03 / 10"
+      "eyebrow": "Education · 3/7",
+      "counter": "03 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 4/10",
-      "headline": "Here's the publishing rights breakdown nobody teaches in Lagos. ↓",
-      "lede": "",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "Estimated performance royalties gone: over ₦800K. Uncollectable. Permanently.",
       "footer_name": "syncmaster.live",
       "slide": 4,
-      "footer_pageno": "04 / 10"
+      "eyebrow": "Education · 4/7",
+      "counter": "04 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "list",
-      "eyebrow": "Education · 5/10",
-      "headline": "Here's what you need to know:",
-      "lede": "WHAT PUBLISHING RIGHTS ACTUALLY CONTROL: · Who collects your performance royalties every time the content airs · Who approves sync licence requests — if they can say no, they can block placements · Who shares in your sync fee (publishers take a cut — know the percentage)",
-      "list_items": [
-        "WHAT PUBLISHING RIGHTS ACTUALLY CONTROL:",
-        "Who collects your performance royalties every time the content airs",
-        "Who approves sync licence requests — if they can say no, they can block placements",
-        "Who shares in your sync fee (publishers take a cut — know the percentage)",
-        "How your music can be used after the deal is signed"
-      ],
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "Here's the publishing rights breakdown nobody teaches in Lagos. ↓",
       "footer_name": "syncmaster.live",
       "slide": 5,
-      "footer_pageno": "05 / 10"
+      "eyebrow": "Education · 5/7",
+      "counter": "05 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "stat",
-      "eyebrow": "Education · 6/10",
-      "stat_number": "50%",
-      "lede": "You sign for distribution.\nThe small print gives them 50% of your publishing income — including sync.",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "WHAT PUBLISHING RIGHTS ACTUALLY CONTROL:\n→ Who collects your performance royalties every time the content airs\n→ Who approves sync licence requests — if they can say no, they can block placements\n→ Who shares in your sync fee (publishers take a cut — know the percentage)\n→ How your music can be used after the deal is signed THE MOST COMMON MISTAKE:\nSigning a label deal that includes a publishing clause without understanding it.\nYou sign for distribution.\nThe small print gives them 50% of your publishing income — including sync. WHAT TO PROTECT:\n→ Self-publish where possible: register directly with COSON, SAMRO, PRS\n→ If signing a publishing deal: keep sync approval rights in your name\n→ Document splits with co-writers before any deal reaches the table\n→ Register every finished track before any placement conversation starts One sync fee pays once.\nPublished royalties from a single placement can pay for years. Don't leave the second half of the deal unregistered. #MusicPublishing #AfricanComposers #SyncLicensing #SyncMaster",
       "footer_name": "syncmaster.live",
       "slide": 6,
-      "footer_pageno": "06 / 10"
+      "eyebrow": "Education · 6/7",
+      "counter": "06 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 48
+      },
+      "fit_warnings": [
+        "[06 context.body] copy (1025 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+      ]
     },
     {
-      "role": "list",
-      "eyebrow": "Education · 7/10",
-      "headline": "Here's what you need to know:",
-      "lede": "WHAT TO PROTECT: · Self-publish where possible: register directly with COSON, SAMRO, PRS · If signing a publishing deal: keep sync approval rights in your name · Document splits with co-writers before any deal reaches the table",
-      "list_items": [
-        "WHAT TO PROTECT:",
-        "Self-publish where possible: register directly with COSON, SAMRO, PRS",
-        "If signing a publishing deal: keep sync approval rights in your name",
-        "Document splits with co-writers before any deal reaches the table",
-        "Register every finished track before any placement conversation starts"
-      ],
-      "footer_kicker": "Education",
+      "archetype": "cta",
+      "headline": "Open briefs. Every Tuesday.",
+      "body": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Apply now",
       "footer_name": "syncmaster.live",
       "slide": 7,
-      "footer_pageno": "07 / 10"
-    },
-    {
-      "role": "body",
-      "eyebrow": "Education · 8/10",
-      "headline": "One sync fee pays once.",
-      "lede": "Published royalties from a single placement can pay for years.",
-      "footer_kicker": "Education",
-      "footer_name": "syncmaster.live",
-      "slide": 8,
-      "footer_pageno": "08 / 10"
-    },
-    {
-      "role": "body",
-      "eyebrow": "Education · 9/10",
-      "headline": "Don't leave the second half of the deal unregistered.",
-      "lede": "",
-      "footer_kicker": "Education",
-      "footer_name": "syncmaster.live",
-      "slide": 9,
-      "footer_pageno": "09 / 10"
-    },
-    {
-      "role": "cta",
       "eyebrow": "Apply this week",
-      "headline": "Open briefs. Every Tuesday.",
-      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
-      "cta_text": "Apply now",
-      "footer_kicker": "Apply",
-      "footer_name": "syncmaster.live",
-      "slide": 10,
-      "footer_pageno": "10 / 10"
+      "counter": "07 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 220,
+        "body": 60,
+        "cta_text": 64
+      }
     }
   ]
 }

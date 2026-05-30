@@ -18,132 +18,130 @@
   "caption_hook": "Month 1 answer: \"Sync can be significant secondary income.\"\nMonth 3 answer — after 3 confirmed placements and 90 days of ↓",
   "caption_hook_len": 122,
   "caption_full": "Month 1 answer: \"Sync can be significant secondary income.\"\nMonth 3 answer — after 3 confirmed placements and 90 days of ↓\n\n— — —\n\nApply at syncmaster.io\n\n#SyncMaster #AfricanComposers #SyncLicensing #SyncIncome",
-  "slide_count": 10,
+  "slide_count": 7,
+  "fit_warnings": [
+    "[01 hook.eyebrow] copy (80 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
+    "[01 hook.headline] copy (127 chars) exceeds slot budget (57 at 200px) — needs a rewrite",
+    "[06 context.body] copy (1544 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+  ],
   "slides": [
     {
-      "role": "hook",
-      "eyebrow": "Education · Is sync realistic as primary income? The honest answer after 90 days",
-      "headline": "Month 1 answer: \"Sync can be significant secondary income.\"\nMonth 3 answer — after 3 confirmed placements and 90 days of data.",
-      "lede": "↓ · Here's what you need to know: — — — · WHAT THE NUMBERS SHOW",
-      "footer_kicker": "Written by",
+      "archetype": "hook",
+      "headline": "Month 1 answer: \"Sync can be significant secondary income.\"\nMonth 3 answer — after 3 confirmed placements and 90 days of data. ↓",
+      "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "footer_pageno": "01 / 10"
+      "eyebrow": "Education · Is sync realistic as primary income? The honest answer after 90 days",
+      "counter": "01 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 200
+      },
+      "fit_warnings": [
+        "[01 hook.eyebrow] copy (80 chars) exceeds slot budget (48 at 44px) — needs a rewrite",
+        "[01 hook.headline] copy (127 chars) exceeds slot budget (57 at 200px) — needs a rewrite"
+      ]
     },
     {
-      "role": "list",
-      "eyebrow": "Education · 3/21",
-      "headline": "Here's what you need to know:",
-      "lede": "A single confirmed placement generates: · Upfront sync fee: $800–$3,000 for regional / short-term (typical entry range) · Master fee (if you control your master): adds 30–50% to the upfront total · Performance royalties: ongoing for 1–3 years per placement, through your PRO",
-      "list_items": [
-        "A single confirmed placement generates:",
-        "Upfront sync fee: $800–$3,000 for regional / short-term (typical entry range)",
-        "Master fee (if you control your master): adds 30–50% to the upfront total",
-        "Performance royalties: ongoing for 1–3 years per placement, through your PRO"
-      ],
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "— — —",
       "footer_name": "syncmaster.live",
       "slide": 2,
-      "footer_pageno": "02 / 10"
+      "eyebrow": "Education · 2/7",
+      "counter": "02 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "proof",
-      "eyebrow": "Education · 4/21",
-      "headline": "The work, in numbers.",
-      "stats": [
-        {
-          "label": "Upfront income",
-          "value": "$4,500–$7,400 across three deals"
-        }
-      ],
-      "footer_kicker": "Proof",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "WHAT THE NUMBERS SHOW",
       "footer_name": "syncmaster.live",
       "slide": 3,
-      "footer_pageno": "03 / 10"
+      "eyebrow": "Education · 3/7",
+      "counter": "03 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "proof",
-      "eyebrow": "Education · 5/21",
+      "archetype": "proof",
       "headline": "The work, in numbers.",
       "stats": [
         {
-          "value": "1",
-          "label": "million streams = roughly $3,000–$4,000 at standard rates"
+          "label": "→ UPFRONT S",
+          "value": "$800–$"
+        },
+        {
+          "label": "→ MASTER FE",
+          "value": "adds 3"
         }
       ],
-      "footer_kicker": "Proof",
       "footer_name": "syncmaster.live",
-      "lede": "Here's what you need to know: Sync wins on timeline — if you can get the placements. · — — — · WHAT MAKES IT VIABLE AS PRIMARY INCOME",
       "slide": 4,
-      "footer_pageno": "04 / 10"
+      "eyebrow": "Education · 4/7",
+      "counter": "04 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 176
+      }
     },
     {
-      "role": "list",
-      "eyebrow": "Education · 9/21",
-      "headline": "Here's what you need to know:",
-      "lede": "Critical variables: · Catalogue size: 30–60 sync-ready tracks (not 300 rough tracks) · Placement rate: one per quarter is sustainable; one per month is scalable · PRO registration: every placement must be registered to collect performance income · Here's what you need to know: — — — · THE HONEST LIMITS",
-      "list_items": [
-        "Critical variables:",
-        "Catalogue size: 30–60 sync-ready tracks (not 300 rough tracks)",
-        "Placement rate: one per quarter is sustainable; one per month is scalable",
-        "PRO registration: every placement must be registered to collect performance income",
-        "Repeat brief flow: supervisors who return = predictable pipeline"
+      "archetype": "proof",
+      "headline": "The work, in numbers.",
+      "stats": [
+        {
+          "label": "UPFRONT INC",
+          "value": "$4,500"
+        }
       ],
-      "footer_kicker": "Education",
       "footer_name": "syncmaster.live",
       "slide": 5,
-      "footer_pageno": "05 / 10"
+      "eyebrow": "Education · 5/7",
+      "counter": "05 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 176
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 12/21",
-      "headline": "Sync is not passive income.",
-      "lede": "Each placement requires documentation, brief response, negotiation, and delivery. · It's also not consistent month-to-month. A quiet month with no briefs is followed by a month with four.",
-      "footer_kicker": "Education",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "Compare that to streaming:\n1 million streams = roughly $3,000–$4,000 at standard rates.\nGetting to 1 million streams for most independent composers: 6–18 months. Sync wins on timeline — if you can get the placements. — — — WHAT MAKES IT VIABLE AS PRIMARY INCOME Critical variables:\n→ Catalogue size: 30–60 sync-ready tracks (not 300 rough tracks)\n→ Placement rate: one per quarter is sustainable; one per month is scalable\n→ PRO registration: every placement must be registered to collect performance income\n→ Repeat brief flow: supervisors who return = predictable pipeline — — — THE HONEST LIMITS Sync is not passive income.\nEach placement requires documentation, brief response, negotiation, and delivery. It's also not consistent month-to-month.\nA quiet month with no briefs is followed by a month with four. What sync offers that streaming doesn't:\n— Significantly higher per-use income\n— Performance royalty compounding over years\n— Industry relationships that generate further work What streaming offers that sync doesn't:\n— Volume (thousands of micro-transactions vs. dozens of large ones)\n— Speed (release today, earn this month)\n— No gatekeeping (no vetting required) — — — THE HONEST ANSWER Yes — with 3+ confirmed placements per year, PRO registration, and a documented catalogue of 40+ tracks, sync can be primary income. No — if you haven't completed rights documentation, don't have stems, or haven't registered with a PRO. The talent is there. The infrastructure has to catch up first. #AfricanComposers #SyncLicensing #SyncIncome #SyncMaster",
       "footer_name": "syncmaster.live",
       "slide": 6,
-      "footer_pageno": "06 / 10"
+      "eyebrow": "Education · 6/7",
+      "counter": "06 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 48
+      },
+      "fit_warnings": [
+        "[06 context.body] copy (1544 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+      ]
     },
     {
-      "role": "body",
-      "eyebrow": "Education · 14/21",
-      "headline": "What sync offers that streaming doesn't:\n— Significantly higher per-use",
-      "lede": "income\n— Performance royalty compounding over years\n— Industry relationships that generate further work",
-      "footer_kicker": "Education",
+      "archetype": "cta",
+      "headline": "Open briefs. Every Tuesday.",
+      "body": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Apply now",
       "footer_name": "syncmaster.live",
       "slide": 7,
-      "footer_pageno": "07 / 10"
-    },
-    {
-      "role": "body",
-      "eyebrow": "Education · 15/21",
-      "headline": "What streaming offers that sync doesn't:\n— Volume (thousands of micro-transactions vs.",
-      "lede": "dozens of large ones)\n— Speed (release today, earn this month)\n— No gatekeeping (no vetting required) · Here's what you need to know: — — — · THE HONEST ANSWER · Yes — with 3+ confirmed placements per year, PRO registration, and a documented catalogue of 40+ tracks, sync can be primary income.",
-      "footer_kicker": "Education",
-      "footer_name": "syncmaster.live",
-      "slide": 8,
-      "footer_pageno": "08 / 10"
-    },
-    {
-      "role": "body",
-      "eyebrow": "Education · 19/21",
-      "headline": "No — if you haven't completed rights documentation, don't have stems, or",
-      "lede": "haven't registered with a PRO. · The talent is there. The infrastructure has to catch up first.",
-      "footer_kicker": "Education",
-      "footer_name": "syncmaster.live",
-      "slide": 9,
-      "footer_pageno": "09 / 10"
-    },
-    {
-      "role": "cta",
       "eyebrow": "Apply this week",
-      "headline": "Open briefs. Every Tuesday.",
-      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
-      "cta_text": "Apply now",
-      "footer_kicker": "Apply",
-      "footer_name": "syncmaster.live",
-      "slide": 10,
-      "footer_pageno": "10 / 10"
+      "counter": "07 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 220,
+        "body": 60,
+        "cta_text": 64
+      }
     }
   ]
 }

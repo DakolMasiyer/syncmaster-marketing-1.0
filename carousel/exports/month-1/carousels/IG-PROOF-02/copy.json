@@ -19,134 +19,112 @@
   "caption_hook": "A production company sent us a brief on Monday morning. ↓",
   "caption_hook_len": 57,
   "caption_full": "A production company sent us a brief on Monday morning. ↓\n\nBy Wednesday afternoon, they had 5 cleared, brief-matched tracks.\n\nGot a brief? DM us.\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicSupervisor #AfricanMusic",
-  "slide_count": 10,
+  "slide_count": 7,
+  "fit_warnings": [
+    "[06 context.body] copy (681 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+  ],
   "slides": [
     {
-      "role": "hook",
-      "eyebrow": "Proof · 48-hour curation turnaround",
+      "archetype": "hook",
       "headline": "A production company sent us a brief on Monday morning.",
-      "lede": "",
-      "footer_kicker": "Written by",
+      "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "footer_pageno": "01 / 10"
+      "eyebrow": "Proof · 48-hour curation turnaround",
+      "counter": "01 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 208
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Proof · 1/11",
-      "headline": "By Wednesday afternoon, they had 5 cleared, brief-matched tracks.",
-      "lede": "",
-      "footer_kicker": "Proof",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "By Wednesday afternoon, they had 5 cleared, brief-matched tracks.",
       "footer_name": "syncmaster.live",
       "slide": 2,
-      "footer_pageno": "02 / 10"
+      "eyebrow": "Proof · 2/7",
+      "counter": "02 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "list",
-      "eyebrow": "Proof · 2/11",
-      "headline": "Here's what you need to know:",
-      "lede": "All from African composers. · Here's how we did it in 48 hours ↓",
-      "list_items": [
-        "All from African composers.",
-        "Here's how we did it in 48 hours ↓"
-      ],
-      "footer_kicker": "Proof",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "All from African composers.",
       "footer_name": "syncmaster.live",
       "slide": 3,
-      "footer_pageno": "03 / 10"
+      "eyebrow": "Proof · 3/7",
+      "counter": "03 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "list",
-      "eyebrow": "Proof · 4/11",
-      "headline": "Here's what you need to know:",
-      "lede": "THE BRIEF: · Duration: 60–90 seconds · Instrumentation: Afrofusion, organic elements · Mood: Tense, building, cinematic · We didn't scramble. We searched.",
-      "list_items": [
-        "THE BRIEF:",
-        "Duration: 60–90 seconds",
-        "Instrumentation: Afrofusion, organic elements",
-        "Mood: Tense, building, cinematic",
-        "One-stop clearance required",
-        "Delivery: 48 hours"
-      ],
-      "footer_kicker": "Proof",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "Here's how we did it in 48 hours ↓",
       "footer_name": "syncmaster.live",
       "slide": 4,
-      "footer_pageno": "04 / 10"
+      "eyebrow": "Proof · 4/7",
+      "counter": "04 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "list",
-      "eyebrow": "Proof · 6/11",
-      "headline": "Here's what you need to know:",
-      "lede": "Because the catalogue was built before the brief arrived: · Composers vetted in advance · Tracks tagged by mood, BPM, key, instrumentation · Rights confirmed for every track in the system",
-      "list_items": [
-        "Because the catalogue was built before the brief arrived:",
-        "Composers vetted in advance",
-        "Tracks tagged by mood, BPM, key, instrumentation",
-        "Rights confirmed for every track in the system",
-        "Files in spec-ready format"
-      ],
-      "footer_kicker": "Proof",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "THE BRIEF:\n→ Duration: 60–90 seconds\n→ Instrumentation: Afrofusion, organic elements\n→ Mood: Tense, building, cinematic\n→ One-stop clearance required\n→ Delivery: 48 hours",
       "footer_name": "syncmaster.live",
       "slide": 5,
-      "footer_pageno": "05 / 10"
+      "eyebrow": "Proof · 5/7",
+      "counter": "05 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Proof · 7/11",
-      "headline": "Result: 5 tracks delivered in 24 hours. All cleared. All brief-matched.",
-      "lede": "",
-      "footer_kicker": "Proof",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "We didn't scramble. We searched. Because the catalogue was built before the brief arrived:\n→ Composers vetted in advance\n→ Tracks tagged by mood, BPM, key, instrumentation\n→ Rights confirmed for every track in the system\n→ Files in spec-ready format Result: 5 tracks delivered in 24 hours. All cleared. All brief-matched. → How we received and read the brief\n→ How we searched the catalogue\n→ Our shortlist process\n→ What we delivered and the supervisor's response\n→ What this means for composers in our catalogue Speed is trust in sync. You earn it by doing the work before the brief arrives. Got a brief? DM us. #SyncLicensing #AfricanMusic #SyncMaster #MusicSupervisor #AfricanComposers",
       "footer_name": "syncmaster.live",
       "slide": 6,
-      "footer_pageno": "06 / 10"
+      "eyebrow": "Proof · 6/7",
+      "counter": "06 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 48
+      },
+      "fit_warnings": [
+        "[06 context.body] copy (681 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+      ]
     },
     {
-      "role": "list",
-      "eyebrow": "Proof · 8/11",
-      "headline": "Here's what you need to know:",
-      "lede": "How we received and read the brief · How we searched the catalogue · Our shortlist process · What we delivered and the supervisor's response",
-      "list_items": [
-        "How we received and read the brief",
-        "How we searched the catalogue",
-        "Our shortlist process",
-        "What we delivered and the supervisor's response",
-        "What this means for composers in our catalogue"
-      ],
-      "footer_kicker": "Proof",
+      "archetype": "cta",
+      "headline": "Open briefs. Every Tuesday.",
+      "body": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Work with us",
       "footer_name": "syncmaster.live",
       "slide": 7,
-      "footer_pageno": "07 / 10"
-    },
-    {
-      "role": "body",
-      "eyebrow": "Proof · 9/11",
-      "headline": "Speed is trust in sync. You earn it by doing the work before the brief arrives.",
-      "lede": "",
-      "footer_kicker": "Proof",
-      "footer_name": "syncmaster.live",
-      "slide": 8,
-      "footer_pageno": "08 / 10"
-    },
-    {
-      "role": "body",
-      "eyebrow": "Proof · 10/11",
-      "headline": "Got a brief? DM us.",
-      "lede": "",
-      "footer_kicker": "Proof",
-      "footer_name": "syncmaster.live",
-      "slide": 9,
-      "footer_pageno": "09 / 10"
-    },
-    {
-      "role": "cta",
       "eyebrow": "Apply this week",
-      "headline": "Open briefs. Every Tuesday.",
-      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
-      "cta_text": "Work with us",
-      "footer_kicker": "Apply",
-      "footer_name": "syncmaster.live",
-      "slide": 10,
-      "footer_pageno": "10 / 10"
+      "counter": "07 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 220,
+        "body": 60,
+        "cta_text": 64
+      }
     }
   ]
 }

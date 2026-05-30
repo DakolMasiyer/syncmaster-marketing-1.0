@@ -19,116 +19,112 @@
   "caption_hook": "The brief said:\n\"90 seconds. ↓",
   "caption_hook_len": 30,
   "caption_full": "The brief said:\n\"90 seconds. ↓\n\nSave this for when your first brief arrives.\n\n#SyncMaster #AfricanComposers #SyncLicensing #MusicSupervisor #SyncBrief",
-  "slide_count": 10,
+  "slide_count": 7,
+  "fit_warnings": [
+    "[06 context.body] copy (847 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+  ],
   "slides": [
     {
-      "role": "hook",
-      "eyebrow": "Behind the Scenes · Anatomy of a sync brief",
+      "archetype": "hook",
       "headline": "The brief said:",
-      "lede": "",
-      "footer_kicker": "Written by",
+      "body": "",
       "footer_name": "syncmaster.live",
       "slide": 1,
-      "footer_pageno": "01 / 10"
+      "eyebrow": "Behind the Scenes · Anatomy of a sync brief",
+      "counter": "01 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 320
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Behind the Scenes · 1/11",
-      "headline": "\"90 seconds.",
-      "lede": "Orchestral. Afrofusion influence. Hopeful. No vocals. One-stop only.\" · Every word in a sync brief is a specification. Not a suggestion. ↓",
-      "footer_kicker": "Behind the Scenes",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "\"90 seconds. Orchestral. Afrofusion influence. Hopeful. No vocals. One-stop only.\"",
       "footer_name": "syncmaster.live",
       "slide": 2,
-      "footer_pageno": "02 / 10"
+      "eyebrow": "Behind the Scenes · 2/7",
+      "counter": "02 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "proof",
-      "eyebrow": "Behind the Scenes · 3/11",
-      "headline": "The work, in numbers.",
-      "stats": [],
-      "footer_kicker": "Proof",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "Every word in a sync brief is a specification. Not a suggestion. ↓",
       "footer_name": "syncmaster.live",
       "slide": 3,
-      "footer_pageno": "03 / 10"
+      "eyebrow": "Behind the Scenes · 3/7",
+      "counter": "03 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Behind the Scenes · 4/11",
-      "headline": "🎻 ORCHESTRAL\nReal strings or a convincing orchestral arrangement.",
-      "lede": "Bedroom synth pads don't make the shortlist here.",
-      "footer_kicker": "Behind the Scenes",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "⏱ 90 SECONDS\nThe edit is locked. Not \"around 90 seconds.\" Exactly 90 seconds. Match it.",
       "footer_name": "syncmaster.live",
       "slide": 4,
-      "footer_pageno": "04 / 10"
+      "eyebrow": "Behind the Scenes · 4/7",
+      "counter": "04 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Behind the Scenes · 5/11",
-      "headline": "🌍 AFROFUSION INFLUENCE\nThe tonal and rhythmic language of African music — not pastiche, not performed.",
-      "lede": "Authentic.",
-      "footer_kicker": "Behind the Scenes",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "🎻 ORCHESTRAL\nReal strings or a convincing orchestral arrangement. Bedroom synth pads don't make the shortlist here.",
       "footer_name": "syncmaster.live",
       "slide": 5,
-      "footer_pageno": "05 / 10"
+      "eyebrow": "Behind the Scenes · 5/7",
+      "counter": "05 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 60
+      }
     },
     {
-      "role": "body",
-      "eyebrow": "Behind the Scenes · 6/11",
-      "headline": "😌 HOPEFUL\nNot happy.",
-      "lede": "Not triumphant. Hopeful is quieter, more complex. The distinction matters enormously to the picture edit.",
-      "footer_kicker": "Behind the Scenes",
+      "archetype": "context",
+      "stat_number": "",
+      "headline": "",
+      "body": "🌍 AFROFUSION INFLUENCE\nThe tonal and rhythmic language of African music — not pastiche, not performed. Authentic. 😌 HOPEFUL\nNot happy. Not triumphant. Hopeful is quieter, more complex. The distinction matters enormously to the picture edit. 🚫 NO VOCALS\nNot even background vocals. Not even a hum. Fully instrumental or the track is out. ✅ ONE-STOP ONLY\nYou control both master and publishing. If you need a label involved, the track is disqualified. → Where sync briefs come from and who writes them\n→ Why duration is always absolute\n→ How to read instrumentation and influence language\n→ Mood vocabulary — the most misread field in any brief\n→ Why \"no vocals\" is never negotiable\n→ How to know if you qualify for one-stop before applying Save this for when your first brief arrives. #SyncBrief #MusicSupervisor #SyncLicensing #AfricanComposers #SyncMaster",
       "footer_name": "syncmaster.live",
       "slide": 6,
-      "footer_pageno": "06 / 10"
+      "eyebrow": "Behind the Scenes · 6/7",
+      "counter": "06 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "body": 48
+      },
+      "fit_warnings": [
+        "[06 context.body] copy (847 chars) exceeds slot budget (206 at 48px) — needs a rewrite"
+      ]
     },
     {
-      "role": "body",
-      "eyebrow": "Behind the Scenes · 7/11",
-      "headline": "🚫 NO VOCALS\nNot even background vocals.",
-      "lede": "Not even a hum. Fully instrumental or the track is out.",
-      "footer_kicker": "Behind the Scenes",
+      "archetype": "cta",
+      "headline": "Open briefs. Every Tuesday.",
+      "body": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
+      "cta_text": "Apply now",
       "footer_name": "syncmaster.live",
       "slide": 7,
-      "footer_pageno": "07 / 10"
-    },
-    {
-      "role": "body",
-      "eyebrow": "Behind the Scenes · 8/11",
-      "headline": "✅ ONE-STOP ONLY\nYou control both master and publishing.",
-      "lede": "If you need a label involved, the track is disqualified.",
-      "footer_kicker": "Behind the Scenes",
-      "footer_name": "syncmaster.live",
-      "slide": 8,
-      "footer_pageno": "08 / 10"
-    },
-    {
-      "role": "list",
-      "eyebrow": "Behind the Scenes · 9/11",
-      "headline": "Here's what you need to know:",
-      "lede": "Where sync briefs come from and who writes them · Why duration is always absolute · How to read instrumentation and influence language · Mood vocabulary — the most misread field in any brief · Save this for when your first brief arrives.",
-      "list_items": [
-        "Where sync briefs come from and who writes them",
-        "Why duration is always absolute",
-        "How to read instrumentation and influence language",
-        "Mood vocabulary — the most misread field in any brief",
-        "Why \"no vocals\" is never negotiable",
-        "How to know if you qualify for one-stop before applying"
-      ],
-      "footer_kicker": "Behind the Scenes",
-      "footer_name": "syncmaster.live",
-      "slide": 9,
-      "footer_pageno": "09 / 10"
-    },
-    {
-      "role": "cta",
       "eyebrow": "Apply this week",
-      "headline": "Open briefs. Every Tuesday.",
-      "lede": "Composers: apply once, get matched for life. Supervisors: shortlist in 48h.",
-      "cta_text": "Apply now",
-      "footer_kicker": "Apply",
-      "footer_name": "syncmaster.live",
-      "slide": 10,
-      "footer_pageno": "10 / 10"
+      "counter": "07 / 07",
+      "fonts": {
+        "eyebrow": 44,
+        "headline": 220,
+        "body": 60,
+        "cta_text": 64
+      }
     }
   ],
   "product_data": {
