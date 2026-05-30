@@ -348,8 +348,8 @@ def select_single_template(post: dict, copy_data: dict) -> str:
         if _RE_CONTRAST.search(hook):
             return "238:3535"   # Single · 03 · Split · Dark
 
-        # Fallback dark
-        return "198:3022"       # Single Post · Dark Clean
+        # Fallback dark — use the current Stat Hero template, not the legacy frame
+        return "238:3472"       # Single · 01 · Stat Hero · Dark
 
     # ── LIGHT template pool: Declaration · Dense Stack · Minimal · Light Edit ─
     else:
@@ -373,8 +373,8 @@ def select_single_template(post: dict, copy_data: dict) -> str:
         if "industry" in pillar or words <= 7:
             return "238:3631"   # Single · 06 · Minimal · Light
 
-        # Fallback light
-        return "198:3023"       # Single Post · Light Editorial
+        # Fallback light — use the current Declaration template, not the legacy frame
+        return "238:3505"       # Single · 02 · Declaration · Light
 
 
 def section_for_role(role: str, template: str, is_last: bool) -> str:
