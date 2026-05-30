@@ -431,8 +431,12 @@ def build_text_ops(slide: dict, section_id: str, slide_num: int, total: int, tem
     # Stat number (big typographic overlay) — only for sequential or stat role
     stat_num = slide.get("stat_number", "")
     if stat_num and (is_sequential or slide.get("role") in ("stat", "proof")):
-        op("stat_number", stat_num)
-        op("type_overlay", stat_num)
+        # Long stat_number (>30 chars) belongs in body layer at 60px, not 320px stat layer
+        if len(stat_num) > 30:
+            op("body", stat_num)
+        else:
+            op("stat_number", stat_num)
+            op("type_overlay", stat_num)
     elif not is_sequential and "type_overlay" in layers:
         # Non-sequential light posts: blank the ghost number
         ops.append({"find_by_name": layers["type_overlay"], "set_text": " "})
@@ -542,6 +546,7 @@ def build_publish_plan(month=1, post_id=None):
 
     pages: dict[str, list] = {}
     posts_out = []
+    post_y_by_page = {}
 
     for post in ig_posts:
         pid = post["post_id"]
@@ -553,6 +558,11 @@ def build_publish_plan(month=1, post_id=None):
         copy_data = load_copy(base, post)
         if not copy_data:
             continue
+
+        # Compute page and page_y before building slides
+        figma_page = f"Published · {wlabel}"
+        page_y = post_y_by_page.get(figma_page, 0)
+        post_y_by_page[figma_page] = page_y + 2700
 
         slides = copy_data.get("slides", []) if ptype == "Carousel" else []
         total = len(slides)
@@ -596,7 +606,7 @@ def build_publish_plan(month=1, post_id=None):
             _sop("eyebrow",       copy_data.get("eyebrow") or post.get("pillar", ""))
             _sop("headline",      copy_data.get("headline") or post.get("hook", ""))
             _sop("body",          copy_data.get("subtext") or copy_data.get("body", ""))
-            _sop("cta_text",      copy_data.get("cta_text", ""))
+            _sop("cta_text",      copy_data.get("cta_text") or copy_data.get("cta", ""))
             _sop("footer_domain", copy_data.get("footer_name", "syncmaster.live"))
             _sop("footer_tag",    copy_data.get("footer_tag", "Sync Licensing Infrastructure"))
             _sop("pillar",        copy_data.get("pillar") or post.get("pillar", ""))
@@ -613,7 +623,6 @@ def build_publish_plan(month=1, post_id=None):
                 "screenshot_op": screenshot_op_for(copy_data, 0),
             })
 
-        figma_page = f"Published · {wlabel}"
         posts_out.append({
             "post_id":    pid,
             "date":       date,
@@ -621,6 +630,7 @@ def build_publish_plan(month=1, post_id=None):
             "template":   template,
             "type":       ptype,
             "figma_page": figma_page,
+            "page_y":     page_y,
             "slides":     slide_ops,
         })
         pages.setdefault(wlabel, []).append(pid)
