@@ -58,7 +58,7 @@ def output_dir(post):
     return EXPORTS_DIR / month_folder(post) / folder / post["id"]
 
 
-def run(posts, dry_run=False, rewrite=False):
+def run(posts, dry_run=False, rewrite=False, template=None):
     results = {"generated": [], "skipped": [], "errors": []}
     posts = attach_references(posts)
 
@@ -89,7 +89,7 @@ def run(posts, dry_run=False, rewrite=False):
             out_path = gen.generate(post, copy_data, out, **kwargs)
             rel = out_path.relative_to(CAROUSEL_DIR)
             print(f"  [ok]   {pid:30s} -> {rel}")
-            results["generated"].append({
+            entry = {
                 "post_id": pid,
                 "type": post.get("type"),
                 "platform": post.get("platform"),
@@ -99,7 +99,10 @@ def run(posts, dry_run=False, rewrite=False):
                 "date": post.get("date"),
                 "path": str(rel),
                 "references": post.get("references", []),
-            })
+            }
+            if template:
+                entry["figma_template"] = template
+            results["generated"].append(entry)
         except Exception as e:
             print(f"  [err]  {pid} — {e}")
             results["errors"].append({"post_id": pid, "error": str(e)})
@@ -163,6 +166,8 @@ def main():
     parser.add_argument("--validate", action="store_true", help="Validate continuity references without generating files")
     parser.add_argument("--rewrite", action="store_true",
                         help="LLM rewrite pass on over-budget beats (requires ANTHROPIC_API_KEY)")
+    parser.add_argument("--template", choices=["dark", "light"], default=None,
+                        help="Figma template colour for all posts in this run. Prompts if omitted.")
     args = parser.parse_args()
 
     # Build filter kwargs
@@ -196,10 +201,18 @@ def main():
         exit_code = run_validation(posts, filters if filters else None)
         sys.exit(exit_code)
 
-    mode = "DRY RUN" if args.dry_run else "GENERATING"
-    print(f"\n{mode} — {len(posts)} posts\n")
+    # Resolve template choice — flag wins; otherwise prompt (skip in dry-run)
+    template = args.template
+    if template is None and not args.dry_run:
+        while template not in ("dark", "light"):
+            template = input("\nTemplate — dark or light? ").strip().lower()
+            if template not in ("dark", "light"):
+                print("  Enter 'dark' or 'light'.")
 
-    results = run(posts, dry_run=args.dry_run, rewrite=args.rewrite)
+    mode = "DRY RUN" if args.dry_run else "GENERATING"
+    print(f"\n{mode} [{template or 'unset'}] — {len(posts)} posts\n")
+
+    results = run(posts, dry_run=args.dry_run, rewrite=args.rewrite, template=template)
 
     print(f"\nDone: {len(results['generated'])} generated, {len(results['skipped'])} skipped, {len(results['errors'])} errors")
 

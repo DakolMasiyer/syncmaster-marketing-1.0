@@ -271,24 +271,11 @@ def week_label(date_str: str) -> str:
     return f"Week {week_num} · {monday.strftime('%b %-d')}–{sunday.strftime('%-d')}"
 
 
-def assign_templates(posts: list) -> list:
-    """
-    BTS posts always get dark template.
-    All other posts alternate dark/light by calendar position.
-    BTS slots do not advance the toggle — they're treated as dark overrides.
-    """
-    toggle = 0
+def assign_templates(posts: list, template: str = "dark") -> list:
+    """Set figma_template on every post. Respects a pre-stored value from the manifest."""
     for post in posts:
-        pid = post.get("post_id", "")
-        pillar = post.get("pillar", "")
-        is_bts = "Behind the Scenes" in pillar or any(
-            pid.startswith(p) for p in ("IG-BTS", "IG-M2-BTS", "IG-M3-BTS", "IG-EDU-06")
-        )
-        if is_bts:
-            post["figma_template"] = "dark"
-        else:
-            post["figma_template"] = "dark" if toggle % 2 == 0 else "light"
-            toggle += 1
+        if not post.get("figma_template"):
+            post["figma_template"] = template
     return posts
 
 
@@ -524,7 +511,16 @@ def load_copy(base: Path, post: dict):
 
 # ── Plan builder ──────────────────────────────────────────────────────────────
 
-def build_publish_plan(month=1, post_id=None):
+def _prompt_template() -> str:
+    """Ask the user to choose dark or light interactively."""
+    while True:
+        choice = input("Template — dark or light? ").strip().lower()
+        if choice in ("dark", "light"):
+            return choice
+        print("  Enter 'dark' or 'light'.")
+
+
+def build_publish_plan(month=1, post_id=None, template=None):
     base = Path(__file__).parent
     with open(base / "exports" / "manifest.json") as f:
         manifest = json.load(f)
@@ -537,7 +533,15 @@ def build_publish_plan(month=1, post_id=None):
     elif month:
         ig_posts = [p for p in ig_posts if p.get("month") == month]
 
-    assign_templates(ig_posts)
+    if template is not None:
+        # Explicit flag — overrides any stored per-post value
+        for post in ig_posts:
+            post["figma_template"] = template
+    else:
+        # Use stored per-post choice from manifest; prompt only if any are missing
+        if any(not p.get("figma_template") for p in ig_posts):
+            template = _prompt_template()
+        assign_templates(ig_posts, template or "dark")
 
     pages: dict[str, list] = {}
     posts_out = []
@@ -634,13 +638,15 @@ def build_publish_plan(month=1, post_id=None):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="SyncMaster Figma Publisher")
-    parser.add_argument("--month",   type=int, default=1,  help="Month to publish (1/2/3)")
-    parser.add_argument("--id",      dest="post_id",        help="Publish a single post by ID")
-    parser.add_argument("--plan",    action="store_true",   help="Output full publish plan as JSON")
-    parser.add_argument("--summary", action="store_true",   help="Human-readable summary")
+    parser.add_argument("--month",    type=int, default=1,  help="Month to publish (1/2/3)")
+    parser.add_argument("--id",       dest="post_id",        help="Publish a single post by ID")
+    parser.add_argument("--template", choices=["dark", "light"], default=None,
+                        help="Figma template colour. Prompts if omitted.")
+    parser.add_argument("--plan",     action="store_true",   help="Output full publish plan as JSON")
+    parser.add_argument("--summary",  action="store_true",   help="Human-readable summary")
     args = parser.parse_args()
 
-    plan = build_publish_plan(month=args.month, post_id=args.post_id)
+    plan = build_publish_plan(month=args.month, post_id=args.post_id, template=args.template)
 
     if args.plan:
         print(json.dumps(plan, indent=2))
