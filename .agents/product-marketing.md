@@ -33,11 +33,14 @@
 - Goal: reduce turnaround time from brief to approved track; access diverse, cleared African catalogue
 - Language: efficiency, speed, rights certainty, professional delivery
 
-### Nollywood (Tertiary — Nigerian Film Production)
-- Nigerian film director or producer needing original music for theatrical or streaming release
-- Uses music informally; wants to graduate to proper sync licensing
-- Pain: finding one-stop cleared music without clearance drama
-- Language: direct, practical, peer-to-peer tone
+### Denzel (Tertiary — Senior Global Supervisor)
+- Senior Music Supervisor, Head of Music, or Creative Director (Music) at a major production house, streaming platform, sports brand, or global ad agency
+- Clients/context: HBO, Netflix, A24, EA Sports, Pepsi, Champions League, Oscars-level film, global brand campaigns
+- Budget authority: $250K+ music budgets; can approve multi-track and catalogue licensing deals
+- Location: LA, London, New York, Amsterdam, Paris
+- Pain: every major library sounds the same; authentic African music is hard to source at rights-clean quality and at their speed and scale; one bad rights situation = legal and PR exposure at this level
+- Goal: find music that makes a cultural statement — sounds their audience doesn't know they're waiting for — before it becomes mainstream
+- Language: efficiency, indemnification, catalogue depth, professional delivery at volume — and a genuine hunger to discover something the competition hasn't found yet
 
 ---
 

@@ -77,7 +77,7 @@ When Tunde considers SyncMaster, he asks:
 
 ---
 
-## Producer Persona: Amara
+## Supervisor Persona: Amara
 
 ### Demographics
 - **Role**: Music Supervisor, Creative Producer, Ads Agency Producer, Streaming Exec
@@ -150,3 +150,72 @@ When Amara considers SyncMaster, she asks:
 - What's the quality/relevance like?
 - What's the workload for me?
 - Can I trust the composer to deliver?
+
+---
+
+## Senior Global Supervisor Persona: Denzel
+
+### Demographics
+- **Role**: Senior Music Supervisor, Head of Music, or Creative Director (Music)
+- **Employer**: Major production house, premium streaming platform, global sports brand, or top-tier ad agency
+- **Clients / Context**: HBO, Netflix, A24, EA Sports, Pepsi, Champions League, Oscars-level film, global brand campaigns
+- **Location**: LA, London, New York, Amsterdam, Paris
+- **Experience**: 10+ years in music supervision or creative direction
+- **Budget Authority**: $250K+ music budgets; can approve multi-track and catalogue licensing deals
+
+### Goals & Motivations
+- **Primary Goal**: Find music that makes a cultural statement — not soundtrack filler
+- **Secondary Goals**:
+  - Discover artists and sounds before they're mainstream
+  - Create music moments that become cultural touchstones
+  - Build a reputation for bold, authentic music choices
+  - Maintain zero legal/rights exposure on high-profile productions
+- **Success Metrics**:
+  - Music that earns press coverage, not just approval
+  - Zero rights disputes post-placement
+  - Exclusive or early access to emerging talent
+  - Briefs solved at speed without compromising quality
+
+### Daily Pains & Frustrations
+- Every major library (APM, Musicbed, Artlist) sounds identical — no differentiation
+- Authentic African music is nearly impossible to source at rights-clean quality and at the speed and scale their productions demand
+- One bad rights situation at this level means legal exposure, PR damage, and production delays on $10M+ projects
+- No dedicated, vetted pipeline for African music — it's always a cold-search or a favour from a contact
+- Submissions from unknown sources lack the documentation their legal teams require (chain of title, master + sync clearance, one-stop confirmation)
+
+### Top Objections You'll Hear
+1. "Can you handle our brief volume and turnaround requirements?"
+2. "Do you have the legal documentation our clearance team needs?"
+3. "Are these composers credible at the level of our productions?"
+4. "What's your indemnification process if rights issues arise post-placement?"
+5. "We already have relationships with established sources — why add another layer?"
+
+### What Success Looks Like for Denzel
+- Receives 3–5 options per brief that are culturally precise, not just genre-tagged
+- Full documentation package with every submission (chain of title, master clearance, sync rights, ISRC, one-stop confirmation)
+- Composer available for revisions, stems, and custom edits within 24 hours
+- SyncMaster becomes his go-to for any brief with an African, pan-African, or Afrodiaspora sonic direction
+- Discovery credit — he found the sound before anyone else at his level
+
+### Where to Find Denzel
+- Guild of Music Supervisors (senior events, panels)
+- Sundance, Cannes, SXSW (film & music tracks)
+- Music Week, Variety, Hollywood Reporter (reads and publishes)
+- LinkedIn (thought leadership, not job hunting)
+- Private Slack/Discord communities for senior supervisors
+- Direct referral from Amara-tier supervisors who've been promoted
+
+### Messaging That Resonates
+- "The sound your audience doesn't know they're waiting for — rights-clean, documented, 48h delivery"
+- "One-stop cleared African music with a documentation package your legal team can approve in one pass"
+- "We find the composers. We vet the rights. You brief us and we deliver."
+- "Exclusive access to a vetted African catalogue that isn't in any of the major libraries yet"
+- "If you placed it through SyncMaster, you placed it first"
+
+### Evaluation Criteria
+When Denzel considers SyncMaster, he asks:
+- Can they move at my speed without cutting corners on rights?
+- Will my legal team accept their documentation?
+- Is the quality and range genuinely brief-matchable for high-profile work?
+- Do I get exclusivity or early access, or is this the same catalogue every supervisor gets?
+- What happens if something goes wrong post-placement?

@@ -53,11 +53,15 @@ Composers don't cold-submit. Briefs arrive, SyncMaster matches, composers respon
 - **Messaging that resonates:** "Solve your brief in 24 hours with rights-cleared African music," "Zero rights issues — documentation provided upfront," "Fresh discoveries not in the big libraries yet"
 - **Where to find:** LinkedIn, Guild of Music Supervisors, Sync Summit, MIDEM, Music Week, Twitter/X, production companies, ad agencies, streaming platforms
 
-### Nollywood (Tertiary — Nigerian Film Production)
-- Nigerian film director/producer needing original music for theatrical or streaming release
-- Uses music informally; wants to graduate to proper sync licensing
-- Pain: finding one-stop cleared music without clearance drama
-- Tone: direct, practical, peer-to-peer
+### Denzel (Tertiary — Senior Global Supervisor)
+- Senior Music Supervisor, Head of Music, or Creative Director (Music) at a major production house, premium streaming platform, global sports brand, or top-tier ad agency
+- Clients/context: HBO, Netflix, A24, EA Sports, Pepsi, Champions League, Oscars-level film, global brand campaigns
+- Budget authority: $250K+ music budgets; can approve multi-track and catalogue licensing deals
+- Location: LA, London, New York, Amsterdam, Paris; 10+ years experience
+- **Pains:** every major library sounds the same; authentic African music is impossible to source at rights-clean quality and at their speed and scale; one bad rights situation at this level = legal exposure and PR damage on a $10M+ production; incoming submissions lack the documentation their legal teams require (chain of title, one-stop confirmation)
+- **Goals:** find music that makes a cultural statement — discovery credit before the sound goes mainstream — while maintaining zero rights exposure
+- **Objections:** "Can you handle our volume?", "Do you have documentation our legal team will accept?", "What's your indemnification process?", "Are these composers credible at our level?"
+- **Messaging that resonates:** "The sound your audience doesn't know they're waiting for — rights-clean, documented, 48h delivery," "One-stop cleared with a documentation package your legal team approves in one pass," "If you placed it through SyncMaster, you placed it first"
 
 ---
 
@@ -87,7 +91,7 @@ Composers don't cold-submit. Briefs arrive, SyncMaster matches, composers respon
 | LinkedIn | Long-form industry analysis, supervisor-facing content |
 | Blog (syncmaster.io/blog) | Deep-dive articles, monthly updates, SEO foundation |
 | YouTube | Deal walkthroughs, placement stories, composer journeys |
-| WhatsApp/DM/Email | Direct outreach to supervisors and Nollywood producers |
+| WhatsApp/DM/Email | Direct outreach to supervisors and production contacts |
 
 ---
 
@@ -195,7 +199,7 @@ Pillar themes already written as social content (ready to expand into blog posts
 **Target audience SEO intent:**
 - Composer searches: "how to get music in TV shows," "sync licensing for African composers," "music supervisor submission guide," "ISRC codes explained," "sync licensing income"
 - Supervisor searches: "rights-cleared African music," "African music for film," "music supervisor workflow Africa," "one-stop license music"
-- Industry searches: "African sync licensing market," "Afrofusion film music," "Nollywood music licensing"
+- Industry searches: "African sync licensing market," "Afrofusion film music," "African music for global productions," "rights-cleared African catalogue"
 
 **Positioning rules:**
 - SyncMaster is infrastructure, not a music library or label
